@@ -1,0 +1,25 @@
+//
+//  AmigaOS MUI C++ wrapper
+//
+//  (c) TDolphin 2022-2023
+//
+
+#pragma once
+
+#include <string>
+
+class ToString
+{
+  public:
+    static std::string FromDataPointer(const void *value);
+    static std::string FromHexValue(const unsigned long value);
+
+    // below methods could be removed if C++20 would be used with std::format
+    static std::string Format(std::string format, const std::string &arg0);
+    static std::string Format(std::string format, const std::string &arg0, const std::string &arg1);
+    static std::string Format(std::string format, const std::string &arg0, const std::string &arg1, const std::string &arg2);
+    static std::string Format(std::string format, const std::string &arg0, const std::string &arg1, const std::string &arg2,
+                              const std::string &arg3);
+    static std::string Format(std::string format, const std::string &arg0, const std::string &arg1, const std::string &arg2,
+                              const std::string &arg3, const std::string &arg4);
+};
