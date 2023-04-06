@@ -7,7 +7,7 @@
 #
 #  for MorphOS (host) (ppc)
 #
-#    requires: MUI dev
+#    requires: MUI dev (MorphOS SDK)
 #
 #  for Linux (host) x86_64 (64-bit)
 #
@@ -20,7 +20,9 @@
 # TRACE_MUI - trace MUI (-DTRACE_MUI)
 DEBUG_FLAGS = #-ggdb -g3 
 
+# compiler/linker flags
 CPP_FLAGS = $(DEBUG_FLAGS) -std=c++17 -Isrc -O2
+AFLAGS = rcs
 
 dir_guard = mkdir -p $(@D)
 
@@ -31,13 +33,21 @@ SRC_DIRS = src $(addprefix src/,$(MODULES))
 SRCS = $(foreach sdir,$(SRC_DIRS),$(wildcard $(sdir)/*.cpp))
 OBJS = $(patsubst src/%.cpp,obj/$(SUB_BUILD_PATH)/%.o,$(SRCS))
 
-all: $(OBJS)
+# target lib
+LIB_MUICPP = lib/$(SUB_BUILD_PATH)/libMUIcpp.a
+
+all: $(LIB_MUICPP)
 
 obj/$(SUB_BUILD_PATH)/%.o: src/%.cpp src/%.hpp
 	$(dir_guard)
 	$(CPPC) $(CPP_FLAGS) -c $< -o $@
 
+$(LIB_MUICPP): $(OBJS) 
+	$(dir_guard)
+	$(AR) $(AFLAGS) $@ $<
+
 clean :
 	rm -f obj/$(SUB_BUILD_PATH)/*.o
+	rm -f lib/$(SUB_BUILD_PATH)/*.a
 
 rebuild : clean all
