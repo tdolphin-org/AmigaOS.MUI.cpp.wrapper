@@ -1,0 +1,34 @@
+# Common settings Clang 10
+BasedOnStyle: WebKit
+TabWidth: 4
+IndentWidth: 4
+ColumnLimit: 140
+---
+Language: Cpp
+AlignAfterOpenBracket: true
+AccessModifierOffset: -2
+IndentCaseLabels: true
+PointerAlignment: Right
+BreakBeforeBraces: Custom
+BraceWrapping: {
+    AfterClass: 'true'
+    AfterControlStatement: 'true'
+    AfterEnum : 'true'
+    AfterFunction : 'true'
+    AfterNamespace : 'true'
+    AfterStruct : 'true'
+    AfterUnion : 'true'
+    BeforeCatch : 'true'
+    BeforeElse : 'true'
+    IndentBraces : 'false'
+    AfterExternBlock : 'true'
+    SplitEmptyFunction : 'true'
+    SplitEmptyRecord : 'true'
+    SplitEmptyNamespace : 'true'
+}
+BreakConstructorInitializersBeforeComma: true
+#AllowAllConstructorInitializersOnNextLine: true
+#ConstructorInitializerAllOnOneLineOrOnePerLine: false
+ConstructorInitializerIndentWidth: 2
+AllowShortFunctionsOnASingleLine: Empty
+NamespaceIndentation: All
