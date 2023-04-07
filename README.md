@@ -18,12 +18,12 @@ ___
 
 *Linux cross compilation for AmigaOS3 68k*
 ```
-make amigaos_m68k
+make aos_m68k
 ```
 
 *MorphOS compilation*
 ```
-make morphos_ppc
+make mos_ppc
 ```
 
 ### build structure
