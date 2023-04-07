@@ -1,22 +1,43 @@
 #
-#  MakeFile for AmigaOS MUI C++ wrapper
+#  MakeFile for "AmigaOS MUI C++ wrapper" project
 #
-#  (c) TDolphin 2022-2023
+# (c) TDolphin 2022-2023
 #
+
+SUB_PROJECTS = wrappers tests examples
 
 all:
-	@echo "make amigaos_m68k <--- cross compilation on linux"
-	@echo "make morphos_ppc <--- build on MorphOS"
-	@echo "make clean <--- remove all .o files"
+	@echo "make aos_m68k - AmigaOS m68k build (cross compilation on linux)"
+	@echo "make mos_ppc - MorphOS PowerPC build"
+	@echo "make clean - remove all obj files and lib file"
 
-amigaos_m68k:
-	@echo "# Build for AmigaOS m68k"
-	$(MAKE) -f makefile.generic.gcc.mk SUB_BUILD_PATH=amigaos/m68k CPPC=m68k-amigaos-g++ AR=m68k-amigaos-ar all
+aos_m68k: sub_projects_aos_m68k
 
-morphos_ppc:
-	@echo "# Build for MorphOS PowerPC"
-	$(MAKE) -f makefile.generic.gcc.mk SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar all
+mos_ppc: sub_projects_mos_ppc
+
+sub_projects_aos_m68k:
+	@echo "------------------------------------------------"
+	@date
+	@for dir in $(SUB_PROJECTS); do \
+		$(MAKE) amigaos_m68k -C $$dir; \
+	done
+	@date
+	@echo "------------------------------------------------"
+
+sub_projects_mos_ppc:
+	@echo "------------------------------------------------"
+	@date
+	@for dir in $(SUB_PROJECTS); do \
+		$(MAKE) morphos_ppc -C $$dir; \
+	done
+	@date
+	@echo "------------------------------------------------"
 
 clean:
-	rm -f -R obj/*
-	rm -f -R lib/*
+	@for dir in $(SUB_PROJECTS); do \
+		$(MAKE) clean -C $$dir; \
+	done
+
+rebuild_aos_m68k: clean aos_m68k
+
+rebuild_mos_ppc: clean mos_ppc
