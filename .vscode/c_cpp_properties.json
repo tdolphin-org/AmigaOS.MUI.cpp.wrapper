@@ -3,7 +3,7 @@
         {
             "name": "amiga",
             "includePath": [
-                "${workspaceFolder}/src/**",
+                "${workspaceFolder}/wrappers/src/**",
                 "/opt/amiga/m68k-amigaos/ndk-include/",
                 "/opt/amiga/m68k-amigaos/include/"
             ],
@@ -15,7 +15,8 @@
             "compilerArgs": [
                 "-lamiga",
                 "-noixemul"
-            ]
+            ],
+            "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],
     "version": 4
