@@ -18,15 +18,40 @@ namespace MUI
         return GetValueAsLong(MUIA_HelpLine);
     }
 
-    Notify &Notify::setHelpLine(const long helpLine)
+    std::string Notify::getHelpNode() const
     {
-        SetValue(MUIA_HelpLine, helpLine);
-        return *this;
+        return GetValueAsString(MUIA_HelpNode);
+    }
+
+    unsigned long Notify::getObjectID() const
+    {
+        return GetValueAsULong(MUIA_ObjectID);
     }
 
     Object *Notify::getParent()
     {
         return GetValueAsObjectPtr(MUIA_Parent);
+    }
+
+    long Notify::getRevision() const
+    {
+        return GetValueAsLong(MUIA_Revision);
+    }
+
+    unsigned long Notify::getUserData() const
+    {
+        return GetValueAsULong(MUIA_UserData);
+    }
+
+    long Notify::getVersion() const
+    {
+        return GetValueAsLong(MUIA_Version);
+    }
+
+    Notify &Notify::setHelpLine(const long helpLine)
+    {
+        SetValue(MUIA_HelpLine, helpLine);
+        return *this;
     }
 
     NotifyBuilder::NotifyBuilder() { }
