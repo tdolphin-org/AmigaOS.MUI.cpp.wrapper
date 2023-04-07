@@ -21,14 +21,14 @@
 DEBUG_FLAGS = #-ggdb -g3 
 
 # compiler/linker flags
-CPP_FLAGS = $(DEBUG_FLAGS) -std=c++17 -Isrc -O2
+CPP_FLAGS = $(DEBUG_FLAGS) -std=c++17 -Isrc -O1
 AFLAGS = rcs
 
 dir_guard = mkdir -p $(@D)
 
 BINPATH = out/$(SUB_BUILD_PATH)
 
-MODULES = AOS Core MUI MUI/Core MUI/MCC
+MODULES = AOS Core MUI/Core MUI MUI/MCC
 SRC_DIRS = src $(addprefix src/,$(MODULES))
 SRCS = $(foreach sdir,$(SRC_DIRS),$(wildcard $(sdir)/*.cpp))
 OBJS = $(patsubst src/%.cpp,obj/$(SUB_BUILD_PATH)/%.o,$(SRCS))
@@ -44,7 +44,7 @@ obj/$(SUB_BUILD_PATH)/%.o: src/%.cpp src/%.hpp
 
 $(LIB_MUICPP): $(OBJS) 
 	$(dir_guard)
-	$(AR) $(AFLAGS) $@ $<
+	$(AR) $(AFLAGS) $@ $^
 
 clean :
 	rm -f obj/$(SUB_BUILD_PATH)/*.o
