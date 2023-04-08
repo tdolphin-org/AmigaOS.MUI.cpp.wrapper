@@ -16,12 +16,15 @@
 #  	  requires: MUI5 dev
 #
 
+# replace , => space
+MORE_CPP_FLAGS_X = $(shell echo $(MORE_CPP_FLAGS) | tr ',' ' ')
+
 # trace flags
 # TRACE_MUI - trace MUI (-DTRACE_MUI)
 DEBUG_FLAGS = #-ggdb -g3 
 
 # compiler/linker flags
-CPP_FLAGS = $(DEBUG_FLAGS) -std=c++17 -Isrc -O1
+CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS_X) -std=c++17 -Isrc -O1
 AFLAGS = rcs
 
 dir_guard = mkdir -p $(@D)

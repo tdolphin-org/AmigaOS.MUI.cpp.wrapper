@@ -15,7 +15,7 @@ amigaos_m68k:
 
 morphos_ppc:
 	@echo "# Build for MorphOS PowerPC"
-	$(MAKE) -f makefile.generic.gcc.mk SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar all
+	$(MAKE) -f makefile.generic.gcc.mk SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar MORE_CPP_FLAGS=-noixemul all
 
 clean:
 	rm -f -R obj/*
