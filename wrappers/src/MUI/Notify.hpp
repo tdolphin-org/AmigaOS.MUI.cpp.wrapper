@@ -45,6 +45,16 @@ namespace MUI
 
         /// @brief [ @b MUIA_HelpLine ]
         Notify &setHelpLine(const long helpLine);
+        /// @brief [ @b MUIA_HelpNode ]
+        Notify &setHelpNode(const std::string &helpNode);
+        /// @brief [ @b MUIA_NoNotify ]
+        Notify &setNoNotify(const bool noNotify);
+        /// @brief [ @b MUIA_NoNotifyMethod ]
+        Notify &setNoNotifyMethod(const unsigned long noNotifyMethod);
+        /// @brief [ @b MUIA_ObjectID ]
+        Notify &setObjectID(const unsigned long objectID);
+        /// @brief [ @b MUIA_UserData ]
+        Notify &setUserData(const unsigned long userData);
 
         // methods, some can return object
     };

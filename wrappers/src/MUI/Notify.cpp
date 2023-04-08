@@ -54,5 +54,35 @@ namespace MUI
         return *this;
     }
 
+    Notify &Notify::setHelpNode(const std::string &helpNode)
+    {
+        SetValue(MUIA_HelpNode, helpNode);
+        return *this;
+    }
+
+    Notify &Notify::setNoNotify(const bool noNotify)
+    {
+        SetValue(MUIA_NoNotify, noNotify);
+        return *this;
+    }
+
+    Notify &Notify::setNoNotifyMethod(const unsigned long noNotifyMethod)
+    {
+        SetValue(MUIA_NoNotifyMethod, noNotifyMethod);
+        return *this;
+    }
+
+    Notify &Notify::setObjectID(const unsigned long objectID)
+    {
+        SetValue(MUIA_ObjectID, objectID);
+        return *this;
+    }
+
+    Notify &Notify::setUserData(const unsigned long userData)
+    {
+        SetValue(MUIA_UserData, userData);
+        return *this;
+    }
+
     NotifyBuilder::NotifyBuilder() { }
 }
