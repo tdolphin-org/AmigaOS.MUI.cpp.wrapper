@@ -36,11 +36,11 @@ namespace MUI
         {
         }
 
-        /// @brief MUIA_Menuitem_Enabled
+        /// @brief [ @b MUIA_Menuitem_Enabled ]
         T &tagEnabled(const bool enabled);
-        /// @brief MUIA_Menuitem_Title
+        /// @brief [ @b MUIA_Menuitem_Title ]
         T &tagTitle(const char *title);
-        /// @brief MUIA_Menuitem_Title
+        /// @brief [ @b MUIA_Menuitem_Title ]
         T &tagTitle(const std::string &title);
     };
 
