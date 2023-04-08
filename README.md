@@ -1,5 +1,7 @@
 # AmigaOS.MUI.cpp.wrapper
 AmigaOS/MorphOS MUI C++ wrapper classes
+
+**Not all MUI classes/attributes/methods are implemented! (work in progress)**
 ___
 ## Requirements for build
 
@@ -21,15 +23,16 @@ ___
 make aos_m68k
 ```
 
-*MorphOS compilation*
+*MorphOS PowerPC compilation*
 ```
 make mos_ppc
 ```
 
-### build structure
+### build structure in *wrappers* folder
+```
+obj -> morphos  -> ppc
+    -> amigaos  -> m68k
 
-    obj -> morphos  -> ppc
-        -> amigaos  -> m68k
-
-    lib -> morphos  -> ppc
-        -> amigaos  -> m68k
+lib -> morphos  -> ppc
+    -> amigaos  -> m68k
+```
