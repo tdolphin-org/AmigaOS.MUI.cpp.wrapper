@@ -24,6 +24,7 @@ MORE_CPP_FLAGS_X = $(shell echo $(MORE_CPP_FLAGS) | tr ',' ' ')
 DEBUG_FLAGS = #-ggdb -g3 
 
 # compiler/linker flags
+# WARNING: use the same -Ox option for this lib and Your application, differnet values can case linking errors
 CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS_X) -std=c++17 -Isrc -O1
 AFLAGS = rcs
 
@@ -31,7 +32,7 @@ dir_guard = mkdir -p $(@D)
 
 BINPATH = out/$(SUB_BUILD_PATH)
 
-MODULES = AOS Core MUI/Core MUI MUI/MCC
+MODULES = AOS Core MUI MUI/Core MUI/MCC
 SRC_DIRS = src $(addprefix src/,$(MODULES))
 SRCS = $(foreach sdir,$(SRC_DIRS),$(wildcard $(sdir)/*.cpp))
 OBJS = $(patsubst src/%.cpp,obj/$(SUB_BUILD_PATH)/%.o,$(SRCS))
