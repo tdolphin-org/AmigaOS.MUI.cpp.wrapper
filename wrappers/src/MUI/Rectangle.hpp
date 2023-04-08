@@ -27,11 +27,11 @@ namespace MUI
         {
         }
 
-        /// @brief MUIA_Rectangle_BarTitle
+        /// @brief [ @b MUIA_Rectangle_BarTitle ]
         T &tagBarTitle(const char *barTitle);
-        /// @brief MUIA_Rectangle_HBar
+        /// @brief [ @b MUIA_Rectangle_HBar ]
         T &tagHBar(const bool hBar);
-        /// @brief MUIA_Rectangle_VBar
+        /// @brief [ @b MUIA_Rectangle_VBar ]
         T &tagVBar(const bool vBar);
     };
 
