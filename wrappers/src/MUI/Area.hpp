@@ -149,7 +149,7 @@ namespace MUI
         /// @brief [ @b MUIA_ShortHelp ]
         Area &setShortHelp(const std::string &shortHelp);
 
-        // methods, some methods can return object reference
+        // methods, some can return object reference
 
         /// @brief setDisabled(false)
         Area &Enable();

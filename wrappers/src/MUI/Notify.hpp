@@ -56,7 +56,7 @@ namespace MUI
         /// @brief [ @b MUIA_UserData ]
         Notify &setUserData(const unsigned long userData);
 
-        // methods, some can return object
+        // methods, some can return object reference
     };
 
     template <typename T, typename U> class NotifyBuilderTemplate : public BuilderRoot<U>
