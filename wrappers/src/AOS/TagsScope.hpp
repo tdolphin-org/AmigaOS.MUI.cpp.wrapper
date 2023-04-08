@@ -26,6 +26,7 @@ namespace AOS
             return mpTagItems;
         }
 
+        /// @brief return tag name aand value; only part of tags are detected and converted to "name=vale"
         std::string ToString() const;
 
       private:
