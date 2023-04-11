@@ -41,6 +41,10 @@ namespace MUI
         WindowBuilder &tagHeight(const long height);
         /// @brief [ @b MUIA_Window_ID ]
         WindowBuilder &tagID(const char id[4]);
+        /// @brief [ @b MUIA_Window_Menustrip ]
+        WindowBuilder &tagMenustrip(const Object *menustrip);
+        /// @brief [ @b MUIA_Window_NoMenus ]
+        WindowBuilder &tagNoMenus(const bool noMenus);
         /// @brief [ @b MUIA_Window_RootObject ]
         WindowBuilder &tagRootObject(const Object *pRootObject);
         /// @brief [ @b MUIA_Window_RootObject ]

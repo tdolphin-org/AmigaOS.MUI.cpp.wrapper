@@ -52,6 +52,18 @@ namespace MUI
         return *this;
     }
 
+    WindowBuilder &WindowBuilder::tagMenustrip(const Object *menustrip)
+    {
+        this->PushTag(MUIA_Window_Menustrip, menustrip);
+        return *this;
+    }
+
+    WindowBuilder &WindowBuilder::tagNoMenus(const bool noMenus)
+    {
+        this->PushTag(MUIA_Window_NoMenus, noMenus);
+        return *this;
+    }
+
     WindowBuilder &WindowBuilder::tagRootObject(const Object *pRootObject)
     {
         this->PushTag(MUIA_Window_RootObject, pRootObject);
