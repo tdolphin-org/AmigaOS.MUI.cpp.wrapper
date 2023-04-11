@@ -25,6 +25,16 @@ namespace MUI
 
         // get/set (attributes), all setters return object reference
 
+        /// @brief [ @b MUIA_Menuitem_Enabled ]
+        bool getEnabled() const;
+        /// @brief [ @b MUIA_Menuitem_Title ]
+        std::string getTitle() const;
+
+        /// @brief [ @b MUIA_Menuitem_Enabled ]
+        Menuitem &setEnabled(const bool enabled);
+        /// @brief [ @b MUIA_Menuitem_Title ]
+        Menuitem &setTitle(const std::string &title);
+
         // methods, some can return object reference
     };
 
@@ -36,6 +46,8 @@ namespace MUI
         {
         }
 
+        /// @brief [ @b MUIA_Menuitem_CopyStrings ]
+        T &tagCopyStrings(const bool copyStrings);
         /// @brief [ @b MUIA_Menuitem_Enabled ]
         T &tagEnabled(const bool enabled);
         /// @brief [ @b MUIA_Menuitem_Title ]
@@ -49,6 +61,12 @@ namespace MUI
       public:
         MenuitemBuilder();
     };
+
+    template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagCopyStrings(const bool copyStrings)
+    {
+        this->PushTag(MUIA_Menuitem_CopyStrings, copyStrings);
+        return (T &)*this;
+    }
 
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagEnabled(const bool enabled)
     {
