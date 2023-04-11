@@ -45,6 +45,10 @@ namespace MUI
         ApplicationBuilder &tagDescription(const char *description);
         /// @brief [ @b MUIA_Application_Description ]
         ApplicationBuilder &tagDescription(const std::string &description);
+        /// @brief [ @b MUIA_Application_Menustrip ]
+        ApplicationBuilder &tagMenustrip(const Object *menustrip);
+        /// @brief [ @b MUIA_Application_SingleTask ]
+        ApplicationBuilder &tagSingleTask(const bool singleTask);
         /// @brief [ @b MUIA_Application_Title ]
         ApplicationBuilder &tagTitle(const char *title);
         /// @brief [ @b MUIA_Application_Title ]

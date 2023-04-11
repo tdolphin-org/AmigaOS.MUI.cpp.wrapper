@@ -63,6 +63,18 @@ namespace MUI
         return *this;
     }
 
+    ApplicationBuilder &ApplicationBuilder::tagMenustrip(const Object *menustrip)
+    {
+        this->PushTag(MUIA_Application_Menustrip, menustrip);
+        return *this;
+    }
+
+    ApplicationBuilder &ApplicationBuilder::tagSingleTask(const bool singleTask)
+    {
+        this->PushTag(MUIA_Application_SingleTask, singleTask);
+        return *this;
+    }
+
     ApplicationBuilder &ApplicationBuilder::tagTitle(const char *title)
     {
         this->PushTag(MUIA_Application_Title, title);
