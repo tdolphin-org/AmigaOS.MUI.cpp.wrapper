@@ -20,12 +20,17 @@ ___
 
 *Linux cross compilation for AmigaOS3 68k*
 ```
-make aos_m68k
+$ make aos_m68k
+```
+
+*Linux rebuild (parallel on 4 threads/cores) for AmigaOS3 68k*
+```
+$ make clear ; make aos_m68k -j 4
 ```
 
 *MorphOS PowerPC compilation*
 ```
-make mos_ppc
+$ make mos_ppc
 ```
 
 ### build structure in *wrappers* folder
