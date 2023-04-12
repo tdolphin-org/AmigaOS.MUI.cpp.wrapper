@@ -18,14 +18,14 @@ ___
 ___
 ## Build
 
-*Linux cross compilation for AmigaOS3 68k*
+*Linux cross compilation for AmigaOS3 m68k*
 ```
 $ make aos_m68k
 ```
 
-*Linux rebuild (parallel on 4 threads/cores) for AmigaOS3 68k*
+*Linux rebuild (parallel on 4 threads/cores) for AmigaOS3 m68k*
 ```
-$ make clear ; make aos_m68k -j 4
+$ make clean ; make aos_m68k -j 4
 ```
 
 *MorphOS PowerPC compilation*
