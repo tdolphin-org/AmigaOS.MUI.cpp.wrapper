@@ -10,6 +10,8 @@
 
 namespace MUI
 {
+    class Menustrip;
+
     class Window : public Notify
     {
       public:
@@ -42,7 +44,7 @@ namespace MUI
         /// @brief [ @b MUIA_Window_ID ]
         WindowBuilder &tagID(const char id[4]);
         /// @brief [ @b MUIA_Window_Menustrip ]
-        WindowBuilder &tagMenustrip(const Object *menustrip);
+        WindowBuilder &tagMenustrip(const Menustrip &menustrip);
         /// @brief [ @b MUIA_Window_NoMenus ]
         WindowBuilder &tagNoMenus(const bool noMenus);
         /// @brief [ @b MUIA_Window_RootObject ]

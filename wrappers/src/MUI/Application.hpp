@@ -12,6 +12,8 @@
 namespace MUI
 {
     class Window;
+    class Menustrip;
+
     class Application : public Notify
     {
       public:
@@ -46,7 +48,7 @@ namespace MUI
         /// @brief [ @b MUIA_Application_Description ]
         ApplicationBuilder &tagDescription(const std::string &description);
         /// @brief [ @b MUIA_Application_Menustrip ]
-        ApplicationBuilder &tagMenustrip(const Object *menustrip);
+        ApplicationBuilder &tagMenustrip(const Menustrip &menustrip);
         /// @brief [ @b MUIA_Application_SingleTask ]
         ApplicationBuilder &tagSingleTask(const bool singleTask);
         /// @brief [ @b MUIA_Application_Title ]

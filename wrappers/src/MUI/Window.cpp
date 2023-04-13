@@ -9,6 +9,8 @@
 #include <libraries/iffparse.h>
 #include <proto/intuition.h>
 
+#include "Menustrip.hpp"
+
 namespace MUI
 {
     Window &Window::Open()
@@ -52,9 +54,9 @@ namespace MUI
         return *this;
     }
 
-    WindowBuilder &WindowBuilder::tagMenustrip(const Object *menustrip)
+    WindowBuilder &WindowBuilder::tagMenustrip(const Menustrip &menustrip)
     {
-        this->PushTag(MUIA_Window_Menustrip, menustrip);
+        this->PushTag(MUIA_Window_Menustrip, menustrip.muiObject());
         return *this;
     }
 

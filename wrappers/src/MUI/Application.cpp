@@ -6,6 +6,7 @@
 
 #include "Application.hpp"
 
+#include "Menustrip.hpp"
 #include "Window.hpp"
 
 namespace MUI
@@ -63,9 +64,9 @@ namespace MUI
         return *this;
     }
 
-    ApplicationBuilder &ApplicationBuilder::tagMenustrip(const Object *menustrip)
+    ApplicationBuilder &ApplicationBuilder::tagMenustrip(const Menustrip &menustrip)
     {
-        this->PushTag(MUIA_Application_Menustrip, menustrip);
+        this->PushTag(MUIA_Application_Menustrip, menustrip.muiObject());
         return *this;
     }
 
