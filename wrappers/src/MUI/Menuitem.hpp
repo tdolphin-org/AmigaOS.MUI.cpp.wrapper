@@ -25,15 +25,27 @@ namespace MUI
 
         // get/set (attributes), all setters return object reference
 
+        /// @brief [ @b MUIA_Menuitem_Checked ]
+        bool getChecked() const;
+        /// @brief [ @b MUIA_Menuitem_Checkit ]
+        bool getCheckit() const;
         /// @brief [ @b MUIA_Menuitem_Enabled ]
         bool getEnabled() const;
         /// @brief [ @b MUIA_Menuitem_Title ]
         std::string getTitle() const;
+        /// @brief [ @b MUIA_Menuitem_Toggle ]
+        bool getToggle() const;
 
+        /// @brief [ @b MUIA_Menuitem_Checked ]
+        Menuitem &setChecked(const bool checked);
+        /// @brief [ @b MUIA_Menuitem_Checkit ]
+        Menuitem &setCheckit(const bool checkit);
         /// @brief [ @b MUIA_Menuitem_Enabled ]
         Menuitem &setEnabled(const bool enabled);
         /// @brief [ @b MUIA_Menuitem_Title ]
         Menuitem &setTitle(const std::string &title);
+        /// @brief [ @b MUIA_Menuitem_Toggle ]
+        Menuitem &setToggle(const bool toggle);
 
         // methods, some can return object reference
     };
@@ -46,6 +58,10 @@ namespace MUI
         {
         }
 
+        /// @brief [ @b MUIA_Menuitem_Checked ]
+        T &tagChecked(const bool checked);
+        /// @brief [ @b MUIA_Menuitem_Checkit ]
+        T &tagCheckit(const bool checkit);
         /// @brief [ @b MUIA_Menuitem_CopyStrings ]
         T &tagCopyStrings(const bool copyStrings);
         /// @brief [ @b MUIA_Menuitem_Enabled ]
@@ -54,6 +70,8 @@ namespace MUI
         T &tagTitle(const char *title);
         /// @brief [ @b MUIA_Menuitem_Title ]
         T &tagTitle(const std::string &title);
+        /// @brief [ @b MUIA_Menuitem_Toggle ]
+        T &tagToggle(const bool toggle);
     };
 
     class MenuitemBuilder : public MenuitemBuilderTemplate<MenuitemBuilder, Menuitem>
@@ -61,6 +79,18 @@ namespace MUI
       public:
         MenuitemBuilder();
     };
+
+    template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagChecked(const bool checked)
+    {
+        this->PushTag(MUIA_Menuitem_Checked, checked);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagCheckit(const bool checkit)
+    {
+        this->PushTag(MUIA_Menuitem_Checkit, checkit);
+        return (T &)*this;
+    }
 
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagCopyStrings(const bool copyStrings)
     {
@@ -83,6 +113,12 @@ namespace MUI
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagTitle(const std::string &title)
     {
         this->PushTag(MUIA_Menuitem_Title, title);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagToggle(const bool toggle)
+    {
+        this->PushTag(MUIA_Menuitem_Toggle, toggle);
         return (T &)*this;
     }
 }
