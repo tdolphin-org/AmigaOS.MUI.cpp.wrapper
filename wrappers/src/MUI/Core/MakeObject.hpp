@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) TDolphin 2022-2023
+//  (c) 2022-2023 TDolphin
 //
 
 #pragma once
@@ -27,6 +27,7 @@
 
 namespace MUI
 {
+    /// @brief factory
     class MakeObject
     {
       public:
