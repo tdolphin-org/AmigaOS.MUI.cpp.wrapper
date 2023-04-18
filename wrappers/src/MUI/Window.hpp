@@ -11,6 +11,7 @@
 namespace MUI
 {
     class Menustrip;
+    struct NewMenu;
 
     class Window : public Notify
     {
@@ -45,6 +46,8 @@ namespace MUI
         WindowBuilder &tagID(const char id[4]);
         /// @brief [ @b MUIA_Window_Menustrip ]
         WindowBuilder &tagMenustrip(const Menustrip &menustrip);
+        /// @brief [ @b MUIA_Window_Menustrip ]
+        WindowBuilder &tagMenustrip(const struct NewMenu &newmenu, const unsigned long flags = 0);
         /// @brief [ @b MUIA_Window_NoMenus ]
         WindowBuilder &tagNoMenus(const bool noMenus);
         /// @brief [ @b MUIA_Window_RootObject ]

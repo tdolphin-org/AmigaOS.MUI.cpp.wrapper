@@ -6,8 +6,10 @@
 
 #include "Window.hpp"
 
+#include <libraries/gadtools.h>
 #include <libraries/iffparse.h>
 #include <proto/intuition.h>
+#include <proto/muimaster.h>
 
 #include "Menustrip.hpp"
 
@@ -57,6 +59,12 @@ namespace MUI
     WindowBuilder &WindowBuilder::tagMenustrip(const Menustrip &menustrip)
     {
         this->PushTag(MUIA_Window_Menustrip, menustrip.muiObject());
+        return *this;
+    }
+
+    WindowBuilder &WindowBuilder::tagMenustrip(const NewMenu &newmenu, const unsigned long flags)
+    {
+        this->PushTag(MUIA_Window_Menustrip, MUI_MakeObject(MUIO_MenustripNM, (unsigned long)&newmenu, flags));
         return *this;
     }
 
