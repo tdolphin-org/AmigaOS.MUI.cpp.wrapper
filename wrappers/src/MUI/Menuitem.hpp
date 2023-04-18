@@ -50,6 +50,12 @@ namespace MUI
         // methods, some can return object reference
     };
 
+    class MenuItemFactory
+    {
+      public:
+        static Menuitem Separator();
+    };
+
     template <typename T, typename U> class MenuitemBuilderTemplate : public FamilyBuilderTemplate<T, U>
     {
       public:

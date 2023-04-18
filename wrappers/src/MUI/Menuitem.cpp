@@ -6,6 +6,8 @@
 
 #include "Menuitem.hpp"
 
+#include "libraries/gadtools.h"
+
 namespace MUI
 {
     MenuitemBuilder::MenuitemBuilder() { }
@@ -63,5 +65,10 @@ namespace MUI
     {
         SetValue(MUIA_Menuitem_Toggle, toggle);
         return *this;
+    }
+
+    Menuitem MenuItemFactory::Separator()
+    {
+        return MenuitemBuilder().tagTitle(NM_BARLABEL).object();
     }
 }
