@@ -71,4 +71,9 @@ namespace MUI
     {
         return MenuitemBuilder().tagTitle(NM_BARLABEL).object();
     }
+
+    Menuitem MenuItemFactory::BasicItem(const std::string &title, const unsigned long userData)
+    {
+        return MenuitemBuilder().tagTitle(title).tagUserData(userData).object();
+    }
 }

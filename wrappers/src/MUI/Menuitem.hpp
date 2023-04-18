@@ -53,7 +53,12 @@ namespace MUI
     class MenuItemFactory
     {
       public:
+        /// @brief create and return menu separator [ @b NM_BARLABEL ]
         static Menuitem Separator();
+        /// @brief create and return basic menu item with title and user data
+        /// @param title text in item
+        /// @param userData user data 
+        static Menuitem BasicItem(const std::string &title, const unsigned long userData);
     };
 
     template <typename T, typename U> class MenuitemBuilderTemplate : public FamilyBuilderTemplate<T, U>
