@@ -92,7 +92,19 @@ namespace MUI
         return *this;
     }
 
+    WindowBuilder &WindowBuilder::tagScreenTitle(const std::string &screenTitle)
+    {
+        this->PushTag(MUIA_Window_ScreenTitle, screenTitle);
+        return *this;
+    }
+
     WindowBuilder &WindowBuilder::tagTitle(const char *title)
+    {
+        this->PushTag(MUIA_Window_Title, title);
+        return *this;
+    }
+
+    WindowBuilder &WindowBuilder::tagTitle(const std::string &title)
     {
         this->PushTag(MUIA_Window_Title, title);
         return *this;

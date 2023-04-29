@@ -56,8 +56,12 @@ namespace MUI
         WindowBuilder &tagRootObject(const Root &root);
         /// @brief [ @b MUIA_Window_ScreenTitle ]
         WindowBuilder &tagScreenTitle(const char *screenTitle);
+        /// @brief [ @b MUIA_Window_ScreenTitle ]
+        WindowBuilder &tagScreenTitle(const std::string &screenTitle);
         /// @brief [ @b MUIA_Window_Title ]
         WindowBuilder &tagTitle(const char *title);
+        /// @brief [ @b MUIA_Window_Title ]
+        WindowBuilder &tagTitle(const std::string &title);
         /// @brief [ @b MUIA_Window_Width ]
         WindowBuilder &tagWidth(const long width);
     };
