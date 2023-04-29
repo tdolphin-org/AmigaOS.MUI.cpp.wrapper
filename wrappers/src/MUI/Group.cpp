@@ -6,6 +6,8 @@
 
 #include "Group.hpp"
 
+#include <proto/alib.h>
+
 namespace MUI
 {
     long Group::getActivePage() const

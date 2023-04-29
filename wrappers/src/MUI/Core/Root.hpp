@@ -9,8 +9,6 @@
 #include <string>
 
 #include <intuition/classusr.h>
-#include <libraries/mui.h>
-#include <proto/alib.h>
 
 namespace MUI
 {

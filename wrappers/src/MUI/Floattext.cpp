@@ -6,6 +6,8 @@
 
 #include "Floattext.hpp"
 
+#include <proto/alib.h>
+
 namespace MUI
 {
     bool Floattext::getJustify() const

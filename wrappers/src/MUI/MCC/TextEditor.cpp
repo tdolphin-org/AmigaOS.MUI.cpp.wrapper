@@ -7,6 +7,7 @@
 #include "TextEditor.hpp"
 
 #include <mui/TextEditor_mcc.h>
+#include <proto/alib.h>
 
 namespace MUI::MCC
 {

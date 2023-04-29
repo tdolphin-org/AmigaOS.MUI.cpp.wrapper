@@ -9,6 +9,8 @@
 #include "Core/BuilderRoot.hpp"
 #include "Core/Root.hpp"
 
+#include <libraries/mui.h>
+
 namespace MUI
 {
     class Notify : public Root

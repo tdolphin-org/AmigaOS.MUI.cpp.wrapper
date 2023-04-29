@@ -6,6 +6,8 @@
 
 #include "List.hpp"
 
+#include <proto/alib.h>
+
 namespace MUI
 {
     long List::getActive() const
