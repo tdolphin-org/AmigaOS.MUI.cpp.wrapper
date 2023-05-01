@@ -65,6 +65,8 @@ namespace MUI
         ApplicationBuilder &tagVersion(const std::string &version);
         /// @brief [ @b MUIA_Application_Window ]
         ApplicationBuilder &tagWindow(const Window &window);
+        /// @brief [ @b MUIA_Application_Window ]
+        ApplicationBuilder &tagWindows(const std::vector<Window> &windows);
     };
 
     class ApplicationScope : ObjectScope
