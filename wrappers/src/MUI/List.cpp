@@ -31,6 +31,48 @@ namespace MUI
         return *this;
     }
 
+    List &List::setActiveOff()
+    {
+        SetValue(MUIA_List_Active, (long)MUIV_List_Active_Off);
+        return *this;
+    }
+
+    List &List::setActiveTop()
+    {
+        SetValue(MUIA_List_Active, (long)MUIV_List_Active_Top);
+        return *this;
+    }
+
+    List &List::setActiveBottom()
+    {
+        SetValue(MUIA_List_Active, (long)MUIV_List_Active_Bottom);
+        return *this;
+    }
+
+    List &List::setActiveUp()
+    {
+        SetValue(MUIA_List_Active, (long)MUIV_List_Active_Up);
+        return *this;
+    }
+
+    List &List::setActiveDown()
+    {
+        SetValue(MUIA_List_Active, (long)MUIV_List_Active_Down);
+        return *this;
+    }
+
+    List &List::setActivePageUp()
+    {
+        SetValue(MUIA_List_Active, (long)MUIV_List_Active_PageUp);
+        return *this;
+    }
+
+    List &List::setActivePageDown()
+    {
+        SetValue(MUIA_List_Active, (long)MUIV_List_Active_PageDown);
+        return *this;
+    }
+
     List &List::setFormat(const char *format)
     {
         SetValue(MUIA_List_Format, format);

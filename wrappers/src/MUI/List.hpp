@@ -55,6 +55,20 @@ namespace MUI
 
         /// @brief [ @b MUIA_List_Active ]
         List &setActive(const long active);
+        /// @brief [ @b MUIA_List_Active, @b MUIV_List_Active_Off ]
+        List &setActiveOff();
+        /// @brief [ @b MUIA_List_Active, @b MUIV_List_Active_Top ]
+        List &setActiveTop();
+        /// @brief [ @b MUIA_List_Active, @b MUIV_List_Active_Bottom ]
+        List &setActiveBottom();
+        /// @brief [ @b MUIA_List_Active, @b MUIV_List_Active_Up ]
+        List &setActiveUp();
+        /// @brief [ @b MUIA_List_Active, @b MUIV_List_Active_Down ]
+        List &setActiveDown();
+        /// @brief [ @b MUIA_List_Active, @b MUIV_List_Active_PageUp ]
+        List &setActivePageUp();
+        /// @brief [ @b MUIA_List_Active, @b MUIV_List_Active_PageDown ]
+        List &setActivePageDown();
         /// @brief [ @b MUIA_List_Format ]
         List &setFormat(const char *format);
         /// @brief [ @b MUIA_List_Format ]
