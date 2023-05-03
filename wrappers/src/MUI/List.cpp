@@ -15,6 +15,11 @@ namespace MUI
         return GetValueAsLong(MUIA_List_Active);
     }
 
+    bool List::isActiveOff() const
+    {
+        return GetValueAsLong(MUIA_List_Active) == MUIV_List_Active_Off;
+    }
+
     long List::getEntries() const
     {
         return GetValueAsLong(MUIA_List_Entries);

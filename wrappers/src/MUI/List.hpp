@@ -47,6 +47,9 @@ namespace MUI
         /// @return The number of the active entry (the one with the cursor on it). The result is between 0 and MUIA_List_Entries-1 or
         /// MUIV_List_Active_Off, in which case there is currently no active entry.
         long getActive() const;
+        /// @brief [ @b MUIA_List_Active != @b MUIV_List_Active_Off ]
+        /// @return true if not active
+        bool isActiveOff() const;
         /// @brief [ @b MUIA_List_Entries ]
         /// @return The current number of entries in the list.
         long getEntries() const;
