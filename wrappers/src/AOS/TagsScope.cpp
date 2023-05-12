@@ -86,7 +86,7 @@ namespace AOS
                     break;
                 case MUIA_Window_ID:
                     result += "MUIA_Window_ID";
-                    result += "=" + std::to_string(tagValue); // @todo convert to ID
+                    result += "=" + std::to_string(tagValue); // TODO convert to ID
                     break;
                 case MUIA_Window_RootObject:
                     result += "MUIA_Window_RootObject";

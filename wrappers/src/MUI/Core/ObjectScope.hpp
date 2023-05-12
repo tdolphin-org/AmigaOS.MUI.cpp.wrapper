@@ -19,7 +19,7 @@ namespace MUI
         ObjectScope(Object *pObject);
         ~ObjectScope();
 
-        Object *object() const // @todo maybe should be named muiObject() ???
+        Object *object() const // TODO maybe should be named muiObject() ???
         {
             return mpObject;
         }

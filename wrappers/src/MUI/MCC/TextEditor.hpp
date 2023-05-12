@@ -11,7 +11,7 @@
 
 namespace MUI::MCC
 {
-    class TextEditor : public MUI::Root // @todo check if custom classes are derived from Root or Notify?
+    class TextEditor : public MUI::Root // TODO check if custom classes are derived from Root or Notify?
     {
 
       public:

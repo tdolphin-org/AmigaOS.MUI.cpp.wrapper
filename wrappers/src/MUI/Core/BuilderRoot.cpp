@@ -53,7 +53,7 @@ namespace MUI
 #ifdef TRACE_MUI
         std::cout << "# tags [" << tags.size() << "]: " << tagsScope.ToString() << std::endl;
 #endif
-        // @todo? for #?.mcc MUI_NewObject could be used (see muimaster doc)
+        // TODO? for #?.mcc MUI_NewObject could be used (see muimaster doc)
         auto *pObject = (Object *)NewObjectA(mccScope->mcc()->mcc_Class, nullptr, tagsScope.tagItems());
 #ifdef TRACE_MUI
         std::cout << "==> " << pObject << std::endl;

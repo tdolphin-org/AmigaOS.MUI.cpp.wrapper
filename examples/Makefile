@@ -1,8 +1,8 @@
 # placeholder
-# @todo examples
+# TODO examples
 
 amigaos_m68k:
-	@echo "@todo examples"
+	@echo "TODO examples"
 
 morphos_ppc:
-	@echo "@todo examples"
+	@echo "TODO examples"

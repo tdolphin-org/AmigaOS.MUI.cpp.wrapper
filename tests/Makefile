@@ -1,8 +1,8 @@
 # placeholder
-# @todo tests
+# TODO tests
 
 amigaos_m68k:
-	@echo "@todo tests"
+	@echo "TODO tests"
 
 morphos_ppc:
-	@echo "@todo tests"
+	@echo "TODO tests"
