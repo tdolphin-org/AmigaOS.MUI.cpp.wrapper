@@ -18,7 +18,9 @@ namespace MUI
         DestAreaNotifier(const SourceNotifier &sourceNotifier, const Area &area);
 
       public:
-        DestAreaNotifier &setDisabled(const bool disabled);
-        DestAreaNotifier &setSelected(const bool selected);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Disabled ]
+        DestAreaNotifier &setDisabled(const bool disabled, bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Selected ]
+        DestAreaNotifier &setSelected(const bool selected, bool notify = true);
     };
 }

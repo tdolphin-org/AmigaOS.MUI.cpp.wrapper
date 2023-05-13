@@ -17,18 +17,18 @@ namespace MUI
     {
     }
 
-    DestAreaNotifier &DestAreaNotifier::setDisabled(const bool disabled)
+    DestAreaNotifier &DestAreaNotifier::setDisabled(const bool disabled, bool notify)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTrigValue(), mObject.muiObject(), 3, MUIM_Set, MUIA_Disabled,
-                 (ULONG)disabled);
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTrigValue(), mObject.muiObject(), 3,
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Disabled, (unsigned long)disabled);
 
         return *this;
     }
 
-    DestAreaNotifier &DestAreaNotifier::setSelected(const bool selected)
+    DestAreaNotifier &DestAreaNotifier::setSelected(const bool selected, bool notify)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTrigValue(), mObject.muiObject(), 3, MUIM_Set, MUIA_Selected,
-                 (ULONG)selected);
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTrigValue(), mObject.muiObject(), 3,
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Selected, (unsigned long)selected);
 
         return *this;
     }
