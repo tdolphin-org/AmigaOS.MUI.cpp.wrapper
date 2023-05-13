@@ -8,6 +8,8 @@
 
 #include <proto/alib.h>
 
+#include "Notifier/Core/SourceNotifier.hpp"
+
 namespace MUI
 {
     long Group::getActivePage() const
@@ -15,7 +17,7 @@ namespace MUI
         return GetValueAsLong(MUIA_Group_ActivePage);
     }
 
-    Group &Group::setActivePage(const unsigned long activePage)
+    Group &Group::setActivePage(const long activePage)
     {
         SetValue(MUIA_Group_ActivePage, activePage);
         return *this;
@@ -82,6 +84,16 @@ namespace MUI
     {
         DoMethod(muiObject(), MUIM_Group_Remove, (ULONG)pChildObject);
         return *this;
+    }
+
+    SourceNotifier Group::onActivePage(const long activePage)
+    {
+        return SourceNotifier(*this, MUIA_Group_ActivePage, activePage);
+    }
+
+    SourceNotifier Group::onActivePage(const enum GroupActivePage activePage)
+    {
+        return SourceNotifier(*this, MUIA_Group_ActivePage, (long)activePage);
     }
 
     GroupBuilder::GroupBuilder() { }

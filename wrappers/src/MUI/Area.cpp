@@ -59,14 +59,14 @@ namespace MUI
         return *this;
     }
 
-    SourceNotifier Area::onSelected(const bool trigValue)
+    SourceNotifier Area::onSelected(const bool selected)
     {
-        return SourceNotifier(*this, MUIA_Selected, trigValue);
+        return SourceNotifier(*this, MUIA_Selected, selected);
     }
 
-    SourceNotifier Area::onPressed(const bool trigValue)
+    SourceNotifier Area::onPressed(const bool pressed)
     {
-        return SourceNotifier(*this, MUIA_Pressed, trigValue);
+        return SourceNotifier(*this, MUIA_Pressed, pressed);
     }
 
     AreaBuilder::AreaBuilder() { }

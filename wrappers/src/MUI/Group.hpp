@@ -14,6 +14,8 @@
 
 namespace MUI
 {
+    class SourceNotifier;
+
     enum class GroupActivePage
     {
         First = MUIV_Group_ActivePage_First,
@@ -58,7 +60,7 @@ namespace MUI
         /// @brief [ @b MUIA_Group_ActivePage ]
         /// Activate given page.
         /// @param activePage index of page to activate (unsigned long to prevent pass #define < 0)
-        Group &setActivePage(const unsigned long activePage);
+        Group &setActivePage(const long activePage);
         /// @brief [ @b MUIA_Group_ActivePage ]
         /// Activate given page by enum GroupActivePage.
         Group &setActivePage(const enum GroupActivePage activePage);
@@ -89,6 +91,13 @@ namespace MUI
         Group &InitChange();
         /// @brief [ @b MUIM_Group_Remove ]
         Group &Remove(const Object *pChildObject);
+
+        // MUI notification methods
+
+        /// @brief [ @b MUIM_Notify, @b MUIA_Group_ActivePage ]
+        SourceNotifier onActivePage(const long activePage);
+        /// @brief [ @b MUIM_Notify, @b MUIA_Group_ActivePage ]
+        SourceNotifier onActivePage(const enum GroupActivePage activePage);
     };
 
     template <typename T, typename U> class GroupBuilderTemplate : public AreaBuilderTemplate<T, U>
