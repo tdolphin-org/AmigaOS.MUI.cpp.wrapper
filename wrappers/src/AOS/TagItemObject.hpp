@@ -6,50 +6,16 @@
 
 #pragma once
 
-#include <string>
-
-#include <intuition/classusr.h>
 #include <utility/tagitem.h>
+
+#include "ValueObject.hpp"
 
 namespace AOS
 {
     class TagItemObject
     {
-        enum class TagType
-        {
-            TagULong,
-            TagLong,
-            TagPointer,
-            TagPtrArray,
-        };
-
-        const ULONG tagName;
-        const TagType tagType;
-        union Value
-        {
-            const APTR pointer;
-            const ULONG ulong;
-            const LONG slong;
-            const APTR *pArray;
-
-            Value(const APTR pointer)
-              : pointer(pointer)
-            {
-            }
-            Value(const ULONG ulong)
-              : ulong(ulong)
-            {
-            }
-            Value(const LONG slong)
-              : slong(slong)
-            {
-            }
-            Value(const APTR *pArray)
-              : pArray(pArray)
-            {
-            }
-
-        } value;
+        const ULONG mTagName;
+        ValueObject mValueObject;
 
       public:
         TagItemObject(const unsigned long tagName, const void *pointer);

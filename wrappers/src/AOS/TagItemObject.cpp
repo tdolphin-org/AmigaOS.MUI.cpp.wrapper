@@ -12,30 +12,26 @@
 namespace AOS
 {
     TagItemObject::TagItemObject(const unsigned long tagName, const void *pointer)
-      : tagName(tagName)
-      , tagType(TagType::TagPointer)
-      , value((APTR)pointer)
+      : mTagName(tagName)
+      , mValueObject(pointer)
     {
     }
 
     TagItemObject::TagItemObject(const unsigned long tagName, const unsigned long ulong)
-      : tagName(tagName)
-      , tagType(TagType::TagULong)
-      , value((ULONG)ulong)
+      : mTagName(tagName)
+      , mValueObject(ulong)
     {
     }
 
     TagItemObject::TagItemObject(const unsigned long tagName, const long slong)
-      : tagName(tagName)
-      , tagType(TagType::TagLong)
-      , value((LONG)slong)
+      : mTagName(tagName)
+      , mValueObject(slong)
     {
     }
 
     TagItemObject::TagItemObject(const unsigned long tagName, const void **pArray)
-      : tagName(tagName)
-      , tagType(TagType::TagPtrArray)
-      , value((APTR *)pArray)
+      : mTagName(tagName)
+      , mValueObject(pArray)
     {
     }
 
@@ -43,25 +39,8 @@ namespace AOS
     {
         struct TagItem tagItem;
 
-        tagItem.ti_Tag = tagName;
-        switch (tagType)
-        {
-            case TagType::TagPointer:
-                tagItem.ti_Data = (ULONG)value.pointer;
-                break;
-            case TagType::TagULong:
-                tagItem.ti_Data = value.ulong;
-                break;
-            case TagType::TagLong:
-                tagItem.ti_Data = value.slong;
-                break;
-            case TagType::TagPtrArray:
-                tagItem.ti_Data = (ULONG)value.pArray;
-                break;
-            default:
-                std::string error = (std::string) __PRETTY_FUNCTION__ + " undefined tag type: " + std::to_string(static_cast<int>(tagType));
-                throw std::runtime_error(error);
-        }
+        tagItem.ti_Tag = mTagName;
+        tagItem.ti_Data = mValueObject.value();
 
         return tagItem;
     }
