@@ -6,6 +6,8 @@
 
 #include "Area.hpp"
 
+#include "Notifier/Core/SourceNotifier.hpp"
+
 namespace MUI
 {
     bool Area::getSelected() const
@@ -55,6 +57,16 @@ namespace MUI
     {
         setDisabled(true);
         return *this;
+    }
+
+    SourceNotifier Area::onSelected(const bool trigValue)
+    {
+        return SourceNotifier(*this, MUIA_Selected, trigValue);
+    }
+
+    SourceNotifier Area::onPressed(const bool trigValue)
+    {
+        return SourceNotifier(*this, MUIA_Pressed, trigValue);
     }
 
     AreaBuilder::AreaBuilder() { }

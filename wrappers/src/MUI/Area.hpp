@@ -13,6 +13,8 @@
 
 namespace MUI
 {
+    class SourceNotifier;
+
     enum class Font
     {
         Inherit = MUIV_Font_Inherit,
@@ -215,6 +217,13 @@ namespace MUI
         Area &Enable();
         /// @brief setDisabled(true)
         Area &Disable();
+
+        // MUI notification methods
+
+        /// @brief [ @b MUIM_Notify, @b MUIA_Selected ]
+        SourceNotifier onSelected(const bool trigValue);
+        /// @brief [ @b MUIM_Notify, @b MUIA_Pressed ]
+        SourceNotifier onPressed(const bool trigValue);
     };
 
     template <typename T, typename U> class AreaBuilderTemplate : public NotifyBuilderTemplate<T, U>
