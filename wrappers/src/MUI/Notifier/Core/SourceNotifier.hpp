@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include "AOS/ValueObject.hpp"
 #include "MUI/Core/Root.hpp"
 
 namespace MUI
@@ -28,9 +29,13 @@ namespace MUI
 
         Root mObject;
         unsigned long mAttribute;
-        unsigned long mTrigValue;
+        AOS::ValueObject mTrigValue;
 
-        SourceNotifier(const Root &root, unsigned long attribute, unsigned long trigValue);
+        SourceNotifier(const Root &root, const unsigned long attribute, const void *trigValue);
+        SourceNotifier(const Root &root, const unsigned long attribute, const unsigned long trigValue);
+        SourceNotifier(const Root &root, const unsigned long attribute, const long trigValue);
+        SourceNotifier(const Root &root, const unsigned long attribute, const void **trigValue);
+        SourceNotifier(const Root &root, const unsigned long attribute, const bool trigValue);
 
       public:
         DestNotifyNotifier destObject(const Notify &notify);

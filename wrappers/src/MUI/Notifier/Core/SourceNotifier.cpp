@@ -12,10 +12,38 @@
 
 namespace MUI
 {
-    SourceNotifier::SourceNotifier(const Root &root, unsigned long attribute, unsigned long trigValue)
+    SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const void *trigValue)
       : mObject(root)
       , mAttribute(attribute)
       , mTrigValue(trigValue)
+    {
+    }
+
+    SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const unsigned long trigValue)
+      : mObject(root)
+      , mAttribute(attribute)
+      , mTrigValue(trigValue)
+    {
+    }
+
+    SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const long trigValue)
+      : mObject(root)
+      , mAttribute(attribute)
+      , mTrigValue(trigValue)
+    {
+    }
+
+    SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const void **trigValue)
+      : mObject(root)
+      , mAttribute(attribute)
+      , mTrigValue(trigValue)
+    {
+    }
+
+    SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const bool trigValue)
+      : mObject(root)
+      , mAttribute(attribute)
+      , mTrigValue((unsigned long)trigValue)
     {
     }
 

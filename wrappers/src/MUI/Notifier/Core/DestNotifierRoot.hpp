@@ -31,7 +31,7 @@ namespace MUI
 
         unsigned long getTrigValue()
         {
-            return mSourceNotifier.mTrigValue;
+            return mSourceNotifier.mTrigValue.value();
         }
     };
 }

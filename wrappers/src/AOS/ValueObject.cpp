@@ -43,7 +43,6 @@ namespace AOS
                 return (ULONG)mValue.pointer;
             case ValueType::ValueULong:
                 return mValue.ulong;
-                break;
             case ValueType::ValueLong:
                 return mValue.slong;
             case ValueType::ValuePtrArray:
