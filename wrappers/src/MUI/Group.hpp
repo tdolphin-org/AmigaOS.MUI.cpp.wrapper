@@ -60,7 +60,7 @@ namespace MUI
         /// @brief [ @b MUIA_Group_ActivePage ]
         /// Activate given page.
         /// @param activePage index of page to activate (unsigned long to prevent pass #define < 0)
-        Group &setActivePage(const long activePage);
+        Group &setActivePage(const unsigned long activePage);
         /// @brief [ @b MUIA_Group_ActivePage ]
         /// Activate given page by enum GroupActivePage.
         Group &setActivePage(const enum GroupActivePage activePage);

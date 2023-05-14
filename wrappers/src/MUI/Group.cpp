@@ -17,7 +17,7 @@ namespace MUI
         return GetValueAsLong(MUIA_Group_ActivePage);
     }
 
-    Group &Group::setActivePage(const long activePage)
+    Group &Group::setActivePage(const unsigned long activePage)
     {
         SetValue(MUIA_Group_ActivePage, activePage);
         return *this;

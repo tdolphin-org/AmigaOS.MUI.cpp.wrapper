@@ -17,13 +17,13 @@ namespace MUI
     {
     }
 
-    DestGroupNotifier &DestGroupNotifier::setActivePage(const long activePage, bool notify)
+    DestGroupNotifier &DestGroupNotifier::setActivePage(const unsigned long activePage, bool notify)
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTrigValue(), mObject.muiObject(), 3,
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Group_ActivePage, activePage);
     }
 
-    DestGroupNotifier &DestGroupNotifier::setActivePage(const GroupActivePage activePage, bool notify)
+    DestGroupNotifier &DestGroupNotifier::setActivePage(const enum GroupActivePage activePage, bool notify)
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTrigValue(), mObject.muiObject(), 3,
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Group_ActivePage, (unsigned long)activePage);
