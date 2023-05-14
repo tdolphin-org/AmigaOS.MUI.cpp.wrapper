@@ -10,6 +10,7 @@
 
 namespace MUI
 {
+    class SourceNotifier;
     class Menustrip;
     struct NewMenu;
 
@@ -29,6 +30,11 @@ namespace MUI
         Window &Open();
         /// @brief [ @b MUIA_Window_Open, FALSE ]
         Window &Close();
+
+        // MUI notification methods
+
+        /// @brief [ @b MUIM_Notify, @b MUIA_Window_CloseRequest ]
+        SourceNotifier onCloseRequest(const bool closeRequest);
     };
 
     class WindowBuilder : public NotifyBuilderTemplate<WindowBuilder, Window>

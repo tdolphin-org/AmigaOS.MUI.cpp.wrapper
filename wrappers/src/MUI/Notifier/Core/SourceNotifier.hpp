@@ -12,11 +12,14 @@
 namespace MUI
 {
     class Notify;
+    class Application;
     class Area;
     class Group;
+    class Window;
 
     class DestNotifierRoot;
     class DestNotifyNotifier;
+    class DestApplicationNotifier;
     class DestAreaNotifier;
     class DestGroupNotifier;
 
@@ -24,8 +27,10 @@ namespace MUI
     {
         friend class DestNotifierRoot;
         friend class Notify;
+        friend class Application;
         friend class Area;
         friend class Group;
+        friend class Window;
 
         Root mObject;
         unsigned long mAttribute;
@@ -39,6 +44,7 @@ namespace MUI
 
       public:
         DestNotifyNotifier destObject(const Notify &notify);
+        DestApplicationNotifier destObject(const Application &application);
         DestAreaNotifier destObject(const Area &area);
         DestGroupNotifier destObject(const Group &group);
     };

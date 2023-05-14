@@ -7,6 +7,7 @@
 #include "SourceNotifier.hpp"
 
 #include "../DestAreaNotifier.hpp"
+#include "../DestApplicationNotifier.hpp"
 #include "../DestGroupNotifier.hpp"
 #include "../DestNotifyNotifier.hpp"
 
@@ -50,6 +51,11 @@ namespace MUI
     DestNotifyNotifier SourceNotifier::destObject(const Notify &notify)
     {
         return DestNotifyNotifier(*this, notify);
+    }
+
+    DestApplicationNotifier SourceNotifier::destObject(const Application &application)
+    {
+        return DestApplicationNotifier(*this, application);
     }
 
     DestAreaNotifier SourceNotifier::destObject(const Area &area)

@@ -12,6 +12,7 @@
 #include <proto/muimaster.h>
 
 #include "Menustrip.hpp"
+#include "Notifier/Core/SourceNotifier.hpp"
 
 namespace MUI
 {
@@ -25,6 +26,11 @@ namespace MUI
     {
         SetValue(MUIA_Window_Open, false);
         return *this;
+    }
+
+    SourceNotifier Window::onCloseRequest(const bool closeRequest)
+    {
+        return SourceNotifier(*this, MUIA_Window_CloseRequest, closeRequest);
     }
 
     WindowBuilder::WindowBuilder()
