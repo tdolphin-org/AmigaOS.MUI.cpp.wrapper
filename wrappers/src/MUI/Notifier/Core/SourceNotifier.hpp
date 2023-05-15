@@ -11,10 +11,11 @@
 
 namespace MUI
 {
-    class Notify;
     class Application;
     class Area;
     class Group;
+    class List;
+    class Notify;
     class Window;
 
     class DestNotifierRoot;
@@ -26,10 +27,11 @@ namespace MUI
     class SourceNotifier
     {
         friend class DestNotifierRoot;
-        friend class Notify;
         friend class Application;
         friend class Area;
         friend class Group;
+        friend class List;
+        friend class Notify;
         friend class Window;
 
         Root mObject;
