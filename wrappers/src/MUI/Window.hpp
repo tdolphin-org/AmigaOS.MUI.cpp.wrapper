@@ -31,7 +31,7 @@ namespace MUI
         /// @brief [ @b MUIA_Window_Open, FALSE ]
         Window &Close();
 
-        // MUI notification methods
+        //  notification methods
 
         /// @brief [ @b MUIM_Notify, @b MUIA_Window_CloseRequest ]
         SourceNotifier onCloseRequest(const bool closeRequest);

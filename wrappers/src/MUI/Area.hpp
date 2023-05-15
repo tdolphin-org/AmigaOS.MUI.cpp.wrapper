@@ -218,7 +218,7 @@ namespace MUI
         /// @brief setDisabled(true)
         Area &Disable();
 
-        // MUI notification methods
+        //  notification methods
 
         /// @brief [ @b MUIM_Notify, @b MUIA_Selected ]
         SourceNotifier onSelected(const bool selected);

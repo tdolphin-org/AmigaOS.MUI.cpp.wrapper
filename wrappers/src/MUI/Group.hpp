@@ -92,7 +92,7 @@ namespace MUI
         /// @brief [ @b MUIM_Group_Remove ]
         Group &Remove(const Object *pChildObject);
 
-        // MUI notification methods
+        //  notification methods
 
         /// @brief [ @b MUIM_Notify, @b MUIA_Group_ActivePage ]
         SourceNotifier onActivePage(const long activePage);
