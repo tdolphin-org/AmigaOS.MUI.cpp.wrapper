@@ -13,6 +13,7 @@ namespace MUI
 {
     class Application;
     class Area;
+    class Cycle;
     class Group;
     class List;
     class Notify;
@@ -29,6 +30,7 @@ namespace MUI
         friend class DestNotifierRoot;
         friend class Application;
         friend class Area;
+        friend class Cycle;
         friend class Group;
         friend class List;
         friend class Notify;

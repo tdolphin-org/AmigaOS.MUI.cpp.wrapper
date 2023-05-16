@@ -6,6 +6,8 @@
 
 #include "Cycle.hpp"
 
+#include "Notifier/Core/SourceNotifier.hpp"
+
 namespace MUI
 {
     CycleBuilder::CycleBuilder() { }
@@ -43,5 +45,15 @@ namespace MUI
     {
         SetValue(MUIA_Cycle_Entries, entries);
         return *this;
+    }
+    
+    SourceNotifier Cycle::onActiveEveryTime()
+    {
+        return SourceNotifier(*this, MUIA_List_Active, (long)MUIV_EveryTime);
+    }
+
+    SourceNotifier Cycle::onActive(const enum CycleActive active)
+    {
+        return SourceNotifier(*this, MUIA_List_Active, (unsigned long)active);
     }
 }
