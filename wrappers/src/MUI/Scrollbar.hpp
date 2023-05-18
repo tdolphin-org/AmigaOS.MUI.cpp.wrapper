@@ -8,17 +8,10 @@
 
 #include "Group.hpp"
 
+#include "ValueTypes/ScrollbarType.hpp"
+
 namespace MUI
 {
-    enum class ScrollbarType
-    {
-        Default = MUIV_Scrollbar_Type_Default,
-        Bottom = MUIV_Scrollbar_Type_Bottom,
-        Top = MUIV_Scrollbar_Type_Top,
-        Sym = MUIV_Scrollbar_Type_Sym,
-        None = MUIV_Scrollbar_Type_None,
-    };
-
     class Scrollbar : public Group
     {
       public:

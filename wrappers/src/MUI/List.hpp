@@ -8,31 +8,14 @@
 
 #include "Area.hpp"
 
+#include "ValueTypes/DragType.hpp"
+#include "ValueTypes/ListNextSelected.hpp"
+#include "ValueTypes/MultiSelect.hpp"
+
 #undef Remove
-#undef End
 
 namespace MUI
 {
-    enum class ListNextSelected
-    {
-        Start = MUIV_List_NextSelected_Start,
-        End = MUIV_List_NextSelected_End
-    };
-
-    enum class MultiSelect
-    {
-        None = MUIV_List_MultiSelect_None,
-        Default = MUIV_List_MultiSelect_Default,
-        Shifted = MUIV_List_MultiSelect_Shifted,
-        Always = MUIV_List_MultiSelect_Always,
-    };
-
-    enum class DragType
-    {
-        None = MUIV_List_DragType_None,
-        Immediate = MUIV_List_DragType_Immediate,
-    };
-
     class List : public Area
     {
       public:

@@ -8,6 +8,10 @@
 
 #include "Area.hpp"
 
+#include "ValueTypes/GroupActivePage.hpp"
+#include "ValueTypes/GroupHorizCenter.hpp"
+#include "ValueTypes/GroupVertCenter.hpp"
+
 #undef AddHead
 #undef AddTail
 #undef Remove
@@ -15,33 +19,6 @@
 namespace MUI
 {
     class SourceNotifier;
-
-    enum class GroupActivePage
-    {
-        First = MUIV_Group_ActivePage_First,
-        Last = MUIV_Group_ActivePage_Last,
-        Prev = MUIV_Group_ActivePage_Prev,
-        Next = MUIV_Group_ActivePage_Next,
-        Advance = MUIV_Group_ActivePage_Advance
-    };
-
-    enum class GroupHorizCenter
-    {
-#ifndef __MORPHOS__
-        Left = MUIV_Group_HorizCenter_Left,
-        Center = MUIV_Group_HorizCenter_Center,
-        Right = MUIV_Group_HorizCenter_Right
-#endif
-        };
-
-    enum class GroupVertCenter
-    {
-#ifndef __MORPHOS__
-        Top = MUIV_Group_VertCenter_Top,
-        Center = MUIV_Group_VertCenter_Center,
-        Bottom = MUIV_Group_VertCenter_Bottom
-#endif
-        };
 
     class Group : public Area
     {

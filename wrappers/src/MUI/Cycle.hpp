@@ -8,17 +8,13 @@
 
 #include "Group.hpp"
 
+#include "ValueTypes/CycleActive.hpp"
+
 #undef Cycle
 
 namespace MUI
 {
     class SourceNotifier;
-
-    enum class CycleActive
-    {
-        Next = MUIV_Cycle_Active_Next,
-        Prev = MUIV_Cycle_Active_Prev
-    };
 
     class Cycle : public Group
     {
