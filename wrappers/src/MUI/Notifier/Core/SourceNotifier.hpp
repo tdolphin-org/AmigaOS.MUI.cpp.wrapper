@@ -8,6 +8,7 @@
 
 #include "AOS/ValueObject.hpp"
 #include "MUI/Core/Root.hpp"
+#include "NotifierObject.hpp"
 
 namespace MUI
 {
@@ -25,7 +26,7 @@ namespace MUI
     class DestAreaNotifier;
     class DestGroupNotifier;
 
-    class SourceNotifier
+    class SourceNotifier : public NotifierObject
     {
         friend class DestNotifierRoot;
         friend class Application;
@@ -35,10 +36,6 @@ namespace MUI
         friend class List;
         friend class Notify;
         friend class Window;
-
-        Root mObject;
-        unsigned long mAttribute;
-        AOS::ValueObject mTrigValue;
 
         SourceNotifier(const Root &root, const unsigned long attribute, const void *trigValue);
         SourceNotifier(const Root &root, const unsigned long attribute, const unsigned long trigValue);

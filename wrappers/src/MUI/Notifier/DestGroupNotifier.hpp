@@ -7,17 +7,18 @@
 #pragma once
 
 #include "DestAreaNotifier.hpp"
+#include "MUI/Group.hpp"
 
 namespace MUI
 {
-     enum class GroupActivePage;
+    enum class GroupActivePage;
 
     class DestGroupNotifier : public DestAreaNotifier
     {
         friend class SourceNotifier;
 
       protected:
-        DestGroupNotifier(const SourceNotifier &sourceNotifier, const Group &group);
+        DestGroupNotifier(const NotifierObject &notifierObject, const Group &group);
 
       public:
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Group_ActivePage ]

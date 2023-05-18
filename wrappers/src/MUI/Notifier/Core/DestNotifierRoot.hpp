@@ -6,32 +6,34 @@
 
 #pragma once
 
-#include "SourceNotifier.hpp"
+#include "NotifierObject.hpp"
 
 namespace MUI
 {
     class DestNotifierRoot
     {
       protected:
-        SourceNotifier mSourceNotifier;
+        NotifierObject mNotifierObject;
         Root mObject;
 
       protected:
-        DestNotifierRoot(const SourceNotifier &sourceNotifier, const Root &root);
+        DestNotifierRoot() = delete;
+
+        DestNotifierRoot(const NotifierObject &notifierObject, const Root &root);
 
         Object *muiSourceObject()
         {
-            return mSourceNotifier.mObject.muiObject();
+            return mNotifierObject.getObject().muiObject();
         }
 
         unsigned long getAttribute()
         {
-            return mSourceNotifier.mAttribute;
+            return mNotifierObject.getAttribute();
         }
 
-        unsigned long getTrigValue()
+        unsigned long getTriggerValue()
         {
-            return mSourceNotifier.mTrigValue.value();
+            return mNotifierObject.getTriggerValue().value();
         }
     };
 }

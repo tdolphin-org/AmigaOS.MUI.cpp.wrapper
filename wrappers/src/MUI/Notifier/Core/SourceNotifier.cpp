@@ -6,65 +6,55 @@
 
 #include "SourceNotifier.hpp"
 
-#include "../DestAreaNotifier.hpp"
 #include "../DestApplicationNotifier.hpp"
+#include "../DestAreaNotifier.hpp"
 #include "../DestGroupNotifier.hpp"
 #include "../DestNotifyNotifier.hpp"
 
 namespace MUI
 {
     SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const void *trigValue)
-      : mObject(root)
-      , mAttribute(attribute)
-      , mTrigValue(trigValue)
+      : NotifierObject(root, attribute, trigValue)
     {
     }
 
     SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const unsigned long trigValue)
-      : mObject(root)
-      , mAttribute(attribute)
-      , mTrigValue(trigValue)
+      : NotifierObject(root, attribute, trigValue)
     {
     }
 
     SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const long trigValue)
-      : mObject(root)
-      , mAttribute(attribute)
-      , mTrigValue(trigValue)
+      : NotifierObject(root, attribute, trigValue)
     {
     }
 
     SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const void **trigValue)
-      : mObject(root)
-      , mAttribute(attribute)
-      , mTrigValue(trigValue)
+      : NotifierObject(root, attribute, trigValue)
     {
     }
 
     SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const bool trigValue)
-      : mObject(root)
-      , mAttribute(attribute)
-      , mTrigValue((unsigned long)trigValue)
+      : NotifierObject(root, attribute, (unsigned long)trigValue)
     {
     }
 
     DestNotifyNotifier SourceNotifier::destObject(const Notify &notify)
     {
-        return DestNotifyNotifier(*this, notify);
+        return DestNotifyNotifier((NotifierObject &)*this, notify);
     }
 
     DestApplicationNotifier SourceNotifier::destObject(const Application &application)
     {
-        return DestApplicationNotifier(*this, application);
+        return DestApplicationNotifier((NotifierObject &)*this, application);
     }
 
     DestAreaNotifier SourceNotifier::destObject(const Area &area)
     {
-        return DestAreaNotifier(*this, area);
+        return DestAreaNotifier((NotifierObject &)*this, area);
     }
 
     DestGroupNotifier SourceNotifier::destObject(const Group &group)
     {
-        return DestGroupNotifier(*this, group);
+        return DestGroupNotifier((NotifierObject &)*this, group);
     }
 }

@@ -8,8 +8,8 @@
 
 namespace MUI
 {
-    DestNotifierRoot::DestNotifierRoot(const SourceNotifier &sourceNotifier, const Root &root)
-      : mSourceNotifier(sourceNotifier)
+    DestNotifierRoot::DestNotifierRoot(const NotifierObject &notifierObject, const Root &root)
+      : mNotifierObject(notifierObject)
       , mObject(root)
     {
     }

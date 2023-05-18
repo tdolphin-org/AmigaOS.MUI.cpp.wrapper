@@ -7,6 +7,7 @@
 #pragma once
 
 #include "Core/DestNotifierRoot.hpp"
+#include "MUI/Notify.hpp"
 
 namespace MUI
 {
@@ -15,6 +16,6 @@ namespace MUI
         friend class SourceNotifier;
 
       protected:
-        DestNotifyNotifier(const SourceNotifier &sourceNotifier, const Notify &notify);
+        DestNotifyNotifier(const NotifierObject &notifierObject, const Notify &notify);
     };
 }

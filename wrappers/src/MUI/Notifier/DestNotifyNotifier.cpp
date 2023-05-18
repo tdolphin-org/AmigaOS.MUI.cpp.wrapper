@@ -6,12 +6,10 @@
 
 #include "DestNotifyNotifier.hpp"
 
-#include "MUI/Notify.hpp"
-
 namespace MUI
 {
-    DestNotifyNotifier::DestNotifyNotifier(const SourceNotifier &sourceNotifier, const Notify &notify)
-      : DestNotifierRoot(sourceNotifier, notify)
+    DestNotifyNotifier::DestNotifyNotifier(const NotifierObject &notifierObject, const Notify &notify)
+      : DestNotifierRoot(notifierObject, (MUI::Root &)notify)
     {
     }
 }

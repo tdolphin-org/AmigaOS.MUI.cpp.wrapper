@@ -12,14 +12,14 @@
 
 namespace MUI
 {
-    DestAreaNotifier::DestAreaNotifier(const SourceNotifier &sourceNotifier, const Area &area)
-      : DestNotifyNotifier(sourceNotifier, area)
+    DestAreaNotifier::DestAreaNotifier(const NotifierObject &notifierObject, const Area &area)
+      : DestNotifyNotifier(notifierObject, area)
     {
     }
 
     DestAreaNotifier &DestAreaNotifier::setDisabled(const bool disabled, bool notify)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTrigValue(), mObject.muiObject(), 3,
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Disabled, (unsigned long)disabled);
 
         return *this;
@@ -27,7 +27,7 @@ namespace MUI
 
     DestAreaNotifier &DestAreaNotifier::setSelected(const bool selected, bool notify)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTrigValue(), mObject.muiObject(), 3,
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Selected, (unsigned long)selected);
 
         return *this;

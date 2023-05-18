@@ -7,6 +7,7 @@
 #pragma once
 
 #include "DestNotifyNotifier.hpp"
+#include "MUI/Area.hpp"
 
 namespace MUI
 {
@@ -15,7 +16,7 @@ namespace MUI
         friend class SourceNotifier;
 
       protected:
-        DestAreaNotifier(const SourceNotifier &sourceNotifier, const Area &area);
+        DestAreaNotifier(const NotifierObject &notifierObject, const Area &area);
 
       public:
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Disabled ]
