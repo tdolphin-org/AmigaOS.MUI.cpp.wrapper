@@ -120,11 +120,6 @@ namespace MUI
         List &RedrawEntry(const void *entry) const;
         /// @brief [ @b MUIM_List_Redraw, @b MUIV_List_Redraw_All ]
         List &RedrawAll() const;
-
-        //  notification methods
-
-        /// @brief [ @b MUIM_Notify, @b MUIA_List_Active == @b MUIV_EveryTime ]
-        SourceNotifier onActiveEveryTime();
     };
 
     template <typename T, typename U> class ListBuilderTemplate : public AreaBuilderTemplate<T, U>

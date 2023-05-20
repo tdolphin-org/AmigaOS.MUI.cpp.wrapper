@@ -8,8 +8,6 @@
 
 #include <proto/alib.h>
 
-#include "Notifier/Core/SourceNotifier.hpp"
-
 namespace MUI
 {
     long List::getActive() const
@@ -211,11 +209,6 @@ namespace MUI
     {
         DoMethod(muiObject(), MUIM_List_Redraw, MUIV_List_Redraw_All, NULL);
         return (List &)*this;
-    }
-
-    SourceNotifier List::onActiveEveryTime()
-    {
-        return SourceNotifier(*this, MUIA_List_Active, (long)MUIV_EveryTime);
     }
 
     ListBuilder::ListBuilder() { }

@@ -18,8 +18,6 @@
 
 namespace MUI
 {
-    class SourceNotifier;
-
     class Group : public Area
     {
       public:
@@ -68,13 +66,6 @@ namespace MUI
         Group &InitChange();
         /// @brief [ @b MUIM_Group_Remove ]
         Group &Remove(const Object *pChildObject);
-
-        //  notification methods
-
-        /// @brief [ @b MUIM_Notify, @b MUIA_Group_ActivePage ]
-        SourceNotifier onActivePage(const long activePage);
-        /// @brief [ @b MUIM_Notify, @b MUIA_Group_ActivePage ]
-        SourceNotifier onActivePage(const enum GroupActivePage activePage);
     };
 
     template <typename T, typename U> class GroupBuilderTemplate : public AreaBuilderTemplate<T, U>

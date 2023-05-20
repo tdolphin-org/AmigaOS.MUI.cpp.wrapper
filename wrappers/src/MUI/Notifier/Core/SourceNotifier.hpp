@@ -10,43 +10,52 @@
 #include "MUI/Core/Root.hpp"
 #include "NotifierObject.hpp"
 
+#include "../Dest/DestApplicationNotifier.hpp"
+#include "../Dest/DestAreaNotifier.hpp"
+#include "../Dest/DestCycleNotifier.hpp"
+#include "../Dest/DestGroupNotifier.hpp"
+#include "../Dest/DestListNotifier.hpp"
+#include "../Dest/DestNotifyNotifier.hpp"
+#include "../Dest/DestWindowNotifier.hpp"
+
 namespace MUI
 {
-    class Application;
-    class Area;
-    class Cycle;
-    class Group;
-    class List;
-    class Notify;
-    class Window;
-
-    class DestNotifierRoot;
-    class DestNotifyNotifier;
-    class DestApplicationNotifier;
-    class DestAreaNotifier;
-    class DestGroupNotifier;
-
-    class SourceNotifier : public NotifierObject
+    class SourceNotifierRoot : public NotifierObject
     {
-        friend class DestNotifierRoot;
-        friend class Application;
-        friend class Area;
-        friend class Cycle;
-        friend class Group;
-        friend class List;
-        friend class Notify;
-        friend class Window;
-
-        SourceNotifier(const Root &root, const unsigned long attribute, const void *trigValue);
-        SourceNotifier(const Root &root, const unsigned long attribute, const unsigned long trigValue);
-        SourceNotifier(const Root &root, const unsigned long attribute, const long trigValue);
-        SourceNotifier(const Root &root, const unsigned long attribute, const void **trigValue);
-        SourceNotifier(const Root &root, const unsigned long attribute, const bool trigValue);
+      protected:
+        SourceNotifierRoot() = delete;
+        SourceNotifierRoot(const Root &root, const unsigned long attribute, const AOS::ValueObject &triggerValue);
 
       public:
-        DestNotifyNotifier destObject(const Notify &notify);
         DestApplicationNotifier destObject(const Application &application);
         DestAreaNotifier destObject(const Area &area);
+        DestCycleNotifier destObject(const Cycle &cycle);
         DestGroupNotifier destObject(const Group &group);
+        DestListNotifier destObject(const List &list);
+        DestNotifyNotifier destObject(const Notify &notify);
+        DestWindowNotifier destObject(const Window &window);
     };
+
+    template <typename T, typename U> class SourceNotifier : public SourceNotifierRoot
+    {
+        T mObject;
+
+      public:
+        SourceNotifier(const T &object, const unsigned long attribute, const AOS::ValueObject &triggerValue);
+        U notifySelf();
+    };
+
+    template <typename T, typename U>
+    inline SourceNotifier<T, U>::SourceNotifier(const T &object, const unsigned long attribute, const AOS::ValueObject &triggerValue)
+      : mObject(object)
+      , SourceNotifierRoot(object, attribute, triggerValue)
+    {
+    }
+
+    /// @tparam T mui class
+    /// @tparam U dest notifier class
+    template <typename T, typename U> inline U SourceNotifier<T, U>::notifySelf()
+    {
+        return U(*this, mObject);
+    }
 }

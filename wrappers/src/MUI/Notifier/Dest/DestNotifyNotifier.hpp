@@ -6,16 +6,23 @@
 
 #pragma once
 
-#include "Core/DestNotifierRoot.hpp"
+#include "../Core/DestNotifierRoot.hpp"
 #include "MUI/Notify.hpp"
 
 namespace MUI
 {
+    class NotifierObject;
+
     class DestNotifyNotifier : public DestNotifierRoot
     {
-        friend class SourceNotifier;
+        friend class SourceNotifierRoot;
+        template <typename T, typename U> friend class SourceNotifier;
 
       protected:
+        DestNotifyNotifier() = delete;
         DestNotifyNotifier(const NotifierObject &notifierObject, const Notify &notify);
+
+      public:
+        DestNotifyNotifier &any(const unsigned long any);
     };
 }

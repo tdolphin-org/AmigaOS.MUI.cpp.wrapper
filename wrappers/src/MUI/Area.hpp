@@ -18,8 +18,6 @@
 
 namespace MUI
 {
-    class SourceNotifier;
-
     class Area : public Notify
     {
       public:
@@ -57,13 +55,6 @@ namespace MUI
         Area &Enable();
         /// @brief setDisabled(true)
         Area &Disable();
-
-        //  notification methods
-
-        /// @brief [ @b MUIM_Notify, @b MUIA_Selected ]
-        SourceNotifier onSelected(const bool selected);
-        /// @brief [ @b MUIM_Notify, @b MUIA_Pressed ]
-        SourceNotifier onPressed(const bool pressed);
     };
 
     template <typename T, typename U> class AreaBuilderTemplate : public NotifyBuilderTemplate<T, U>

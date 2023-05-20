@@ -8,8 +8,6 @@
 
 #include <proto/alib.h>
 
-#include "MUI/Area.hpp"
-
 namespace MUI
 {
     DestAreaNotifier::DestAreaNotifier(const NotifierObject &notifierObject, const Area &area)
@@ -21,7 +19,6 @@ namespace MUI
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Disabled, (unsigned long)disabled);
-
         return *this;
     }
 
@@ -29,7 +26,6 @@ namespace MUI
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Selected, (unsigned long)selected);
-
         return *this;
     }
 }

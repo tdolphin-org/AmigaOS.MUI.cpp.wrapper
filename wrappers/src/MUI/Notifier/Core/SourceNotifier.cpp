@@ -6,55 +6,45 @@
 
 #include "SourceNotifier.hpp"
 
-#include "../DestApplicationNotifier.hpp"
-#include "../DestAreaNotifier.hpp"
-#include "../DestGroupNotifier.hpp"
-#include "../DestNotifyNotifier.hpp"
-
 namespace MUI
 {
-    SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const void *trigValue)
-      : NotifierObject(root, attribute, trigValue)
+    SourceNotifierRoot::SourceNotifierRoot(const Root &root, const unsigned long attribute, const AOS::ValueObject &triggerValue)
+      : NotifierObject(root, attribute, triggerValue)
     {
     }
 
-    SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const unsigned long trigValue)
-      : NotifierObject(root, attribute, trigValue)
+    DestApplicationNotifier SourceNotifierRoot::destObject(const Application &application)
     {
+        return DestApplicationNotifier(*this, application);
     }
 
-    SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const long trigValue)
-      : NotifierObject(root, attribute, trigValue)
+    DestAreaNotifier SourceNotifierRoot::destObject(const Area &area)
     {
+        return DestAreaNotifier(*this, area);
     }
 
-    SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const void **trigValue)
-      : NotifierObject(root, attribute, trigValue)
+    DestCycleNotifier SourceNotifierRoot::destObject(const Cycle &cycle)
     {
+        return DestCycleNotifier(*this, cycle);
     }
 
-    SourceNotifier::SourceNotifier(const Root &root, const unsigned long attribute, const bool trigValue)
-      : NotifierObject(root, attribute, (unsigned long)trigValue)
+    DestGroupNotifier SourceNotifierRoot::destObject(const Group &group)
     {
+        return DestGroupNotifier(*this, group);
     }
 
-    DestNotifyNotifier SourceNotifier::destObject(const Notify &notify)
+    DestListNotifier SourceNotifierRoot::destObject(const List &list)
     {
-        return DestNotifyNotifier((NotifierObject &)*this, notify);
+        return DestListNotifier(*this, list);
     }
 
-    DestApplicationNotifier SourceNotifier::destObject(const Application &application)
+    DestNotifyNotifier SourceNotifierRoot::destObject(const Notify &notify)
     {
-        return DestApplicationNotifier((NotifierObject &)*this, application);
+        return DestNotifyNotifier(*this, notify);
     }
 
-    DestAreaNotifier SourceNotifier::destObject(const Area &area)
+    DestWindowNotifier SourceNotifierRoot::destObject(const Window &window)
     {
-        return DestAreaNotifier((NotifierObject &)*this, area);
-    }
-
-    DestGroupNotifier SourceNotifier::destObject(const Group &group)
-    {
-        return DestGroupNotifier((NotifierObject &)*this, group);
+        return DestWindowNotifier(*this, window);
     }
 }

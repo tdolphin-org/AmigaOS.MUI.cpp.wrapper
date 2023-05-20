@@ -13,9 +13,11 @@ namespace MUI
 {
     class DestAreaNotifier : public DestNotifyNotifier
     {
-        friend class SourceNotifier;
+        friend class SourceNotifierRoot;
+        template <typename T, typename U> friend class SourceNotifier;
 
       protected:
+        DestAreaNotifier() = delete;
         DestAreaNotifier(const NotifierObject &notifierObject, const Area &area);
 
       public:

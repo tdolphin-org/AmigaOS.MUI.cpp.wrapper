@@ -51,6 +51,7 @@ namespace AOS
         ValueObject(const unsigned long ulong);
         ValueObject(const long slong);
         ValueObject(const void **pArray);
+        ValueObject(const bool boolval);
 
         ULONG value() const;
     };

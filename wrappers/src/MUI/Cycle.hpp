@@ -14,8 +14,6 @@
 
 namespace MUI
 {
-    class SourceNotifier;
-
     class Cycle : public Group
     {
       public:
@@ -39,13 +37,6 @@ namespace MUI
         Cycle &setActive(const unsigned long active);
         /// @brief [ @b MUIA_Cycle_Entries ]
         Cycle &setEntries(const char *entries[]);
-
-        //  notification methods
-
-        /// @brief [ @b MUIM_Notify, @b MUIA_Cycle_Active == @b MUIV_EveryTime ]
-        SourceNotifier onActiveEveryTime();
-        /// @brief [ @b MUIM_Notify, @b MUIA_Cycle_Active ]
-        SourceNotifier onActive(const enum CycleActive active);
     };
 
     template <typename T, typename U> class CycleBuilderTemplate : public GroupBuilderTemplate<T, U>

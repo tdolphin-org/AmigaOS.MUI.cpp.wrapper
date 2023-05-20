@@ -35,6 +35,12 @@ namespace AOS
     {
     }
 
+    ValueObject::ValueObject(const bool boolval)
+      : mType(ValueType::ValueULong)
+      , mValue((ULONG)boolval)
+    {
+    }
+
     ULONG ValueObject::value() const
     {
         switch (mType)
