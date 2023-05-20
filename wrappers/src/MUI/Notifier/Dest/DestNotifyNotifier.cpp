@@ -15,9 +15,9 @@ namespace MUI
     {
     }
 
-    DestNotifyNotifier &DestNotifyNotifier::any(const unsigned long any)
+    DestNotifyNotifier &DestNotifyNotifier::method(const unsigned long methodId)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 1, any);
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 1, methodId);
         return *this;
     }
 }

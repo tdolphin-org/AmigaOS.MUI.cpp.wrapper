@@ -23,6 +23,6 @@ namespace MUI
         DestNotifyNotifier(const NotifierObject &notifierObject, const Notify &notify);
 
       public:
-        DestNotifyNotifier &any(const unsigned long any);
+        DestNotifyNotifier &method(const unsigned long methodId);
     };
 }
