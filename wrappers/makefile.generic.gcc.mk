@@ -32,7 +32,7 @@ dir_guard = mkdir -p $(@D)
 
 BINPATH = out/$(SUB_BUILD_PATH)
 
-MODULES = AOS Core MUI MUI/Core MUI/MCC MUI/Notifier MUI/Notifier/Core
+MODULES = AOS Core MUI MUI/Core MUI/MCC MUI/Notifier MUI/Notifier/Core MUI/Notifier/Dest
 SRC_DIRS = src $(addprefix src/,$(MODULES))
 SRCS = $(foreach sdir,$(SRC_DIRS),$(wildcard $(sdir)/*.cpp))
 OBJS = $(patsubst src/%.cpp,obj/$(SUB_BUILD_PATH)/%.o,$(SRCS))
