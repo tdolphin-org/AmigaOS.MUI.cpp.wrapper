@@ -43,6 +43,11 @@ namespace MUI
         return DestNotifyNotifier(*this, notify);
     }
 
+    DestStringNotifier SourceNotifierRoot::notifyObject(const String &string)
+    {
+        return DestStringNotifier(*this, string);
+    }
+
     DestWindowNotifier SourceNotifierRoot::notifyObject(const Window &window)
     {
         return DestWindowNotifier(*this, window);

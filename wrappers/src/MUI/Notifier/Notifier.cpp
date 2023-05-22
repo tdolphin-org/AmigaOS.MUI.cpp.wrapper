@@ -33,6 +33,11 @@ namespace MUI
         return NotifyNotifier(from);
     }
 
+    StringNotifier Notifier::from(const String &string)
+    {
+        return StringNotifier(string);
+    }
+
     WindowNotifier Notifier::from(const Window &window)
     {
         return WindowNotifier(window);

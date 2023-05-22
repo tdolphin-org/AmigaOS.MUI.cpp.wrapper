@@ -16,6 +16,7 @@
 #include "../Dest/DestGroupNotifier.hpp"
 #include "../Dest/DestListNotifier.hpp"
 #include "../Dest/DestNotifyNotifier.hpp"
+#include "../Dest/DestStringNotifier.hpp"
 #include "../Dest/DestWindowNotifier.hpp"
 
 namespace MUI
@@ -33,6 +34,7 @@ namespace MUI
         DestGroupNotifier notifyObject(const Group &group);
         DestListNotifier notifyObject(const List &list);
         DestNotifyNotifier notifyObject(const Notify &notify);
+        DestStringNotifier notifyObject(const String &string);
         DestWindowNotifier notifyObject(const Window &window);
     };
 

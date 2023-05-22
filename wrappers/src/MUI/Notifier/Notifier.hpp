@@ -11,6 +11,7 @@
 #include "Source/GroupNotifier.hpp"
 #include "Source/ListNotifier.hpp"
 #include "Source/NotifyNotifier.hpp"
+#include "Source/StringNotifier.hpp"
 #include "Source/WindowNotifier.hpp"
 
 namespace MUI
@@ -24,6 +25,7 @@ namespace MUI
         static GroupNotifier from(const Group &group);
         static ListNotifier from(const List &list);
         static NotifyNotifier from(const Notify &from);
+        static StringNotifier from(const String &string);
         static WindowNotifier from(const Window &window);
     };
 }
