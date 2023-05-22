@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "Core/SourceNotifier.hpp"
+#include "../Core/SourceNotifier.hpp"
 #include "MUI/Notify.hpp"
 
 namespace MUI

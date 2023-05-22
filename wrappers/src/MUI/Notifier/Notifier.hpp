@@ -6,12 +6,12 @@
 
 #pragma once
 
-#include "../AreaNotifier.hpp"
-#include "../CycleNotifier.hpp"
-#include "../GroupNotifier.hpp"
-#include "../ListNotifier.hpp"
-#include "../NotifyNotifier.hpp"
-#include "../WindowNotifier.hpp"
+#include "Source/AreaNotifier.hpp"
+#include "Source/CycleNotifier.hpp"
+#include "Source/GroupNotifier.hpp"
+#include "Source/ListNotifier.hpp"
+#include "Source/NotifyNotifier.hpp"
+#include "Source/WindowNotifier.hpp"
 
 namespace MUI
 {
