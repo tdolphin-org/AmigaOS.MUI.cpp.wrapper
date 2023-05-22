@@ -68,8 +68,8 @@ int main(int argc, char **argv)
     MUI::ApplicationScope application(app);
 
     // events
-    MUI::Notifier::from(window).onCloseRequest(true).destObject(app).returnIDQuit();
-    MUI::Notifier::from(MUI::Area(closeButton)).onPressed(false).destObject(app).returnIDQuit();
+    MUI::Notifier::from(window).onCloseRequest(true).notifyObject(app).returnIDQuit();
+    MUI::Notifier::from(MUI::Area(closeButton)).onPressed(false).notifyObject(app).returnIDQuit();
 
     // open window on constructor, close on destructor
     MUI::WindowScope windowScope(window);

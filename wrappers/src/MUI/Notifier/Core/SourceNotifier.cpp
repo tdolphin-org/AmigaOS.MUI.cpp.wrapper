@@ -13,37 +13,37 @@ namespace MUI
     {
     }
 
-    DestApplicationNotifier SourceNotifierRoot::destObject(const Application &application)
+    DestApplicationNotifier SourceNotifierRoot::notifyObject(const Application &application)
     {
         return DestApplicationNotifier(*this, application);
     }
 
-    DestAreaNotifier SourceNotifierRoot::destObject(const Area &area)
+    DestAreaNotifier SourceNotifierRoot::notifyObject(const Area &area)
     {
         return DestAreaNotifier(*this, area);
     }
 
-    DestCycleNotifier SourceNotifierRoot::destObject(const Cycle &cycle)
+    DestCycleNotifier SourceNotifierRoot::notifyObject(const Cycle &cycle)
     {
         return DestCycleNotifier(*this, cycle);
     }
 
-    DestGroupNotifier SourceNotifierRoot::destObject(const Group &group)
+    DestGroupNotifier SourceNotifierRoot::notifyObject(const Group &group)
     {
         return DestGroupNotifier(*this, group);
     }
 
-    DestListNotifier SourceNotifierRoot::destObject(const List &list)
+    DestListNotifier SourceNotifierRoot::notifyObject(const List &list)
     {
         return DestListNotifier(*this, list);
     }
 
-    DestNotifyNotifier SourceNotifierRoot::destObject(const Notify &notify)
+    DestNotifyNotifier SourceNotifierRoot::notifyObject(const Notify &notify)
     {
         return DestNotifyNotifier(*this, notify);
     }
 
-    DestWindowNotifier SourceNotifierRoot::destObject(const Window &window)
+    DestWindowNotifier SourceNotifierRoot::notifyObject(const Window &window)
     {
         return DestWindowNotifier(*this, window);
     }

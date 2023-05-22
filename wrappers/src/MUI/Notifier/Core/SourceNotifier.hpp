@@ -27,13 +27,13 @@ namespace MUI
         SourceNotifierRoot(const Root &root, const unsigned long attribute, const AOS::ValueObject &triggerValue);
 
       public:
-        DestApplicationNotifier destObject(const Application &application);
-        DestAreaNotifier destObject(const Area &area);
-        DestCycleNotifier destObject(const Cycle &cycle);
-        DestGroupNotifier destObject(const Group &group);
-        DestListNotifier destObject(const List &list);
-        DestNotifyNotifier destObject(const Notify &notify);
-        DestWindowNotifier destObject(const Window &window);
+        DestApplicationNotifier notifyObject(const Application &application);
+        DestAreaNotifier notifyObject(const Area &area);
+        DestCycleNotifier notifyObject(const Cycle &cycle);
+        DestGroupNotifier notifyObject(const Group &group);
+        DestListNotifier notifyObject(const List &list);
+        DestNotifyNotifier notifyObject(const Notify &notify);
+        DestWindowNotifier notifyObject(const Window &window);
     };
 
     template <typename T, typename U> class SourceNotifier : public SourceNotifierRoot
