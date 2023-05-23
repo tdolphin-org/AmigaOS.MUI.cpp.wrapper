@@ -41,3 +41,9 @@ obj -> morphos  -> ppc
 lib -> morphos  -> ppc
     -> amigaos  -> m68k
 ```
+___
+## Examples
+
+*basic example*
+
+![git desktop window](/docs/assets/basic.example.png)
