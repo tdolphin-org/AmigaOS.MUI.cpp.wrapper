@@ -46,4 +46,6 @@ ___
 
 *basic example*
 
+All example code in one file, see: [Main.cpp](/examples/basic/Main.cpp)
+
 ![git desktop window](/docs/assets/basic.example.png)
