@@ -140,6 +140,8 @@ namespace MUI
         T &tagConstructHookString();
         /// @brief [ @b MUIA_List_DestructHook ]
         T &tagDestructHook(const struct Hook *destructHook);
+        /// @brief [ @b MUIA_List_DestructHook, @b MUIV_List_DestructHook_String ]
+        T &tagDestructHookString();
         /// @brief [ @b MUIA_List_DisplayHook ]
         T &tagDisplayHook(const struct Hook *displayHook);
         /// @brief [ @b MUIA_List_DragType ]
@@ -195,6 +197,12 @@ namespace MUI
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDestructHook(const struct Hook *destructHook)
     {
         this->PushTag(MUIA_List_DestructHook, destructHook);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDestructHookString()
+    {
+        this->PushTag(MUIA_List_DestructHook, (const Hook *)MUIV_List_DestructHook_String);
         return (T &)*this;
     }
 
