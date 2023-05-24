@@ -24,7 +24,7 @@ namespace MUI
         static CycleNotifier from(const Cycle &cycle);
         static GroupNotifier from(const Group &group);
         static ListNotifier from(const List &list);
-        static NotifyNotifier from(const Notify &from);
+        static NotifyNotifier from(const Notify &notify);
         static StringNotifier from(const String &string);
         static WindowNotifier from(const Window &window);
     };

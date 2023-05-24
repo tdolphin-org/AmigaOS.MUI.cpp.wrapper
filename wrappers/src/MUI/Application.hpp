@@ -23,6 +23,7 @@ namespace MUI
         }
 
         // get/set (attributes), all setters return object reference
+
         // methods, some can return object reference
     };
 

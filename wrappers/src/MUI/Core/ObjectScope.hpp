@@ -10,6 +10,7 @@
 
 namespace MUI
 {
+    /// @brief scope for MUI object, calls @b MUI_DisposeObject on destructor
     class ObjectScope
     {
         Object *mpObject;
@@ -19,7 +20,7 @@ namespace MUI
         ObjectScope(Object *pObject);
         ~ObjectScope();
 
-        Object *object() const // TODO maybe should be named muiObject() ???
+        Object *muiObject() const
         {
             return mpObject;
         }

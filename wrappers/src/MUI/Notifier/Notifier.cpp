@@ -28,9 +28,9 @@ namespace MUI
         return ListNotifier(list);
     }
 
-    NotifyNotifier Notifier::from(const Notify &from)
+    NotifyNotifier Notifier::from(const Notify &notify)
     {
-        return NotifyNotifier(from);
+        return NotifyNotifier(notify);
     }
 
     StringNotifier Notifier::from(const String &string)
