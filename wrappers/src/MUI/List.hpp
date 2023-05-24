@@ -136,6 +136,8 @@ namespace MUI
         T &tagCompareHook(const struct Hook *compareHook);
         /// @brief [ @b MUIA_List_ConstructHook ]
         T &tagConstructHook(const struct Hook *constructHook);
+        /// @brief [ @b MUIA_List_ConstructHook, @b MUIV_List_ConstructHook_String ]
+        T &tagConstructHookString();
         /// @brief [ @b MUIA_List_DestructHook ]
         T &tagDestructHook(const struct Hook *destructHook);
         /// @brief [ @b MUIA_List_DisplayHook ]
@@ -181,6 +183,12 @@ namespace MUI
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagConstructHook(const struct Hook *constructHook)
     {
         this->PushTag(MUIA_List_ConstructHook, constructHook);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagConstructHookString()
+    {
+        this->PushTag(MUIA_List_ConstructHook, (const Hook *)MUIV_List_ConstructHook_String);
         return (T &)*this;
     }
 
