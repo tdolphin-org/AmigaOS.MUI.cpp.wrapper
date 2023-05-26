@@ -6,6 +6,8 @@
 
 #include "Window.hpp"
 
+#include <stdexcept>
+
 #include <libraries/gadtools.h>
 #include <libraries/iffparse.h>
 #include <proto/intuition.h>
@@ -15,6 +17,33 @@
 
 namespace MUI
 {
+    bool Window::isOpen()
+    {
+        return GetValueAsBool(MUIA_Window_Open);
+    }
+
+    Object *Window::getRootObject()
+    {
+        return GetValueAsObjectPtr(MUIA_Window_RootObject);
+    }
+
+    std::string Window::getScreenTitle()
+    {
+        return GetValueAsString(MUIA_Window_ScreenTitle);
+    }
+
+    Window &Window::setRootObject(const Object *rootObject)
+    {
+        SetValue(MUIA_Window_RootObject, rootObject);
+        return *this;
+    }
+
+    Window &Window::setScreenTitle(const std::string &screenTitle)
+    {
+        SetValue(MUIA_Window_ScreenTitle, screenTitle);
+        return *this;
+    }
+
     Window &Window::Open()
     {
         SetValue(MUIA_Window_Open, true);
@@ -29,6 +58,7 @@ namespace MUI
 
     WindowBuilder::WindowBuilder()
       : NotifyBuilderTemplate(MUI::EmptyUniqueId, MUIC_Window)
+      , hasRootObject(false)
     {
     }
 
@@ -82,6 +112,7 @@ namespace MUI
 
     WindowBuilder &WindowBuilder::tagRootObject(const Root &root)
     {
+        hasRootObject = true;
         this->PushTag(MUIA_Window_RootObject, root.muiObject());
         return *this;
     }
@@ -114,5 +145,33 @@ namespace MUI
     {
         this->PushTag(MUIA_Window_Width, width);
         return *this;
+    }
+
+    Window WindowBuilder::object() const
+    {
+        // The root object is mandatory during window creation and trying to create a window without a root object will fail.
+        // So check if there is tag for RootObject.
+        if (!hasRootObject)
+        {
+            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing RootObject for Window!";
+            throw std::runtime_error(error);
+        }
+
+        return NotifyBuilderTemplate<WindowBuilder, Window>::object();
+    }
+
+    WindowScope::WindowScope(Window &window)
+      : mWindow(window)
+    {
+        if (!mWindow.Open().isOpen())
+        {
+            std::string error = (std::string) __PRETTY_FUNCTION__ + ", failed to open window!";
+            throw std::runtime_error(error);
+        }
+    }
+
+    WindowScope::~WindowScope()
+    {
+        mWindow.Close();
     }
 }

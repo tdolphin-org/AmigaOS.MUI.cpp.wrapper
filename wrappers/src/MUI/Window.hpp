@@ -23,16 +23,33 @@ namespace MUI
 
         // get/set (attributes), all setters return object reference
 
+        /// @brief [ @b MUIA_Window_Open ]
+        bool isOpen();
+        /// @brief [ @b MUIA_Window_RootObject ]
+        /// @return a pointer to a MUI object, the contents of window,
+        /// The root object is treated as child of a window and will be disposed when the window is disposed. Window can only have one
+        /// child.
+        Object *getRootObject();
+        /// @brief [ @b MUIA_Window_ScreenTitle ]
+        std::string getScreenTitle();
+
+        /// @brief [ @b MUIA_Window_RootObject ]
+        Window &setRootObject(const Object *rootObject);
+        /// @brief [ @b MUIA_Window_ScreenTitle ]
+        Window &setScreenTitle(const std::string &screenTitle);
+
         // methods, some can return object reference
 
-        /// @brief [ @b MUIA_Window_Open, TRUE ]
+        /// @brief [ @b MUIA_Window_Open, @b TRUE ]
         Window &Open();
-        /// @brief [ @b MUIA_Window_Open, FALSE ]
+        /// @brief [ @b MUIA_Window_Open, @b FALSE ]
         Window &Close();
     };
 
     class WindowBuilder : public NotifyBuilderTemplate<WindowBuilder, Window>
     {
+        bool hasRootObject;
+
       public:
         WindowBuilder();
 
@@ -64,6 +81,8 @@ namespace MUI
         WindowBuilder &tagTitle(const std::string &title);
         /// @brief [ @b MUIA_Window_Width ]
         WindowBuilder &tagWidth(const long width);
+
+        Window object() const;
     };
 
     class WindowScope
@@ -71,14 +90,7 @@ namespace MUI
         Window &mWindow;
 
       public:
-        WindowScope(Window &window)
-          : mWindow(window)
-        {
-            mWindow.Open();
-        }
-        ~WindowScope()
-        {
-            mWindow.Close();
-        }
+        WindowScope(Window &window);
+        ~WindowScope();
     };
 }
