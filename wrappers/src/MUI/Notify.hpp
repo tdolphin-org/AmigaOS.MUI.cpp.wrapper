@@ -59,6 +59,49 @@ namespace MUI
         Notify &setUserData(const unsigned long userData);
 
         // methods, some can return object reference
+
+        /// @brief [ @b MUIM_FindObject ]
+        Object *FindObject(const Root &findme);
+        /// @brief [ @b MUIM_FindObject ]
+        Object *FindObject(const Object *findme);
+        /// @brief [ @b MUIM_FindUData ]
+        Object *FindUData(const unsigned long udata);
+        /// @brief [ @b MUIM_GetUData ]
+        Object *GetUData(const unsigned long udata, const unsigned long attr, const unsigned long *storage);
+        /// @brief [ @b MUIM_KillNotify ]
+        Notify &KillNotify(const unsigned long trigAttr);
+        /// @brief [ @b MUIM_KillNotifyObj ]
+        Notify &KillNotifyObj(const unsigned long trigAttr, const Root &dest);
+        /// @brief [ @b MUIM_KillNotifyObj ]
+        Notify &KillNotifyObj(const unsigned long trigAttr, const Object *dest);
+        /// @brief [ @b MUIM_MultiSet ]
+        Notify &MultiSet(const unsigned long attr, const unsigned long val, const Root &obj0);
+        Notify &MultiSet(const unsigned long attr, const unsigned long val, const Root &obj0, const Root &obj1);
+        Notify &MultiSet(const unsigned long attr, const unsigned long val, const Root &obj0, const Root &obj1, const Root &obj2);
+        Notify &MultiSet(const unsigned long attr, const unsigned long val, const Root &obj0, const Root &obj1, const Root &obj2,
+                         const Root &obj3);
+        /// @brief [ @b MUIM_NoNotifySet ]
+        Notify &NoNotifySet(const unsigned long attr, const unsigned long val);
+        /// @brief [ @b MUIM_Notify ]
+        Notify &doNotify(const unsigned long attr, const unsigned long val, const Root destObj);
+        /// @brief [ @b MUIM_Set ]
+        Notify &Set(const unsigned long attr, const unsigned long val);
+        /// @brief [ @b MUIM_SetAsString ]
+        Notify &SetAsString(const unsigned long attr, const std::string &format, const unsigned long val0);
+        Notify &SetAsString(const unsigned long attr, const std::string &format, const unsigned long val0, const unsigned long val1);
+        Notify &SetAsString(const unsigned long attr, const std::string &format, const unsigned long val0, const unsigned long val1,
+                            const unsigned long val2);
+        /// @brief [ @b MUIM_SetUData ]
+        /// Method tests if the MUIA_UserData of the object contains the given user data (udata) and sets attaribute to value for itself in
+        /// this case.
+        /// @param udata userdata to look for
+        /// @param attr attribute to set
+        /// @param val value to set attribute to
+        Notify &SetUData(const unsigned long udata, const unsigned long attr, const unsigned long val);
+        /// @brief [ @b MUIM_SetUDataOnce ]
+        // Method performs like SetUData(), but stops when it has found an object with the given user data (udata).
+        Notify &SetUDataOnce(const unsigned long udata, const unsigned long attr, const unsigned long val);
+        /// @brief [ @b MUIM_WriteLong ]
     };
 
     template <typename T, typename U> class NotifyBuilderTemplate : public BuilderRoot<U>
