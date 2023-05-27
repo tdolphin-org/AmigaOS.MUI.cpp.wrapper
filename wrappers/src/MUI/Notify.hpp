@@ -101,7 +101,6 @@ namespace MUI
         /// @brief [ @b MUIM_SetUDataOnce ]
         // Method performs like SetUData(), but stops when it has found an object with the given user data (udata).
         Notify &SetUDataOnce(const unsigned long udata, const unsigned long attr, const unsigned long val);
-        /// @brief [ @b MUIM_WriteLong ]
     };
 
     template <typename T, typename U> class NotifyBuilderTemplate : public BuilderRoot<U>

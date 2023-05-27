@@ -34,5 +34,13 @@ namespace MUI
         DestNotifyNotifier &callHook(const void *hook, const void *arg0, const void *arg1);
         /// @brief [ @b MUIM_CallHook, three parameters ]
         DestNotifyNotifier &callHook(const void *hook, const void *arg0, const void *arg1, const void *arg2);
+        /// @brief [ @b MUIM_WriteLong ]
+        DestNotifyNotifier &writeLong(const unsigned long val, unsigned long *memory);
+        /// @brief [ @b MUIM_WriteLong, @b MUIV_TriggerValue ]
+        DestNotifyNotifier &writeLongTriggerValue(unsigned long *memory);
+        /// @brief [ @b MUIM_WriteString ]
+        DestNotifyNotifier &writeString(const char *str, char *memory);
+        /// @brief [ @b MUIM_WriteString, @b MUIV_TriggerValue ]
+        DestNotifyNotifier &writeStringTriggerValue(char *memory);
     };
 }
