@@ -11,6 +11,8 @@
 
 namespace MUI
 {
+    class Window;
+
     class DestApplicationNotifier : public DestNotifyNotifier
     {
         friend class SourceNotifierRoot;
@@ -21,6 +23,8 @@ namespace MUI
         DestApplicationNotifier(const NotifierObject &notifierObject, const Application &application);
 
       public:
+        /// @brief [ @b MUIM_Application_AboutMUI ]
+        DestApplicationNotifier &aboutMUI(const Window &window);
         /// @brief [ @b MUIM_Application_ReturnID, @b MUIV_Application_ReturnID_Quit ]
         DestApplicationNotifier &returnIDQuit();
         /// @brief [ @b MUIM_Application_ReturnID ]

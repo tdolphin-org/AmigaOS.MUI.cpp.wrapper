@@ -13,8 +13,10 @@
 #include "../Dest/DestApplicationNotifier.hpp"
 #include "../Dest/DestAreaNotifier.hpp"
 #include "../Dest/DestCycleNotifier.hpp"
+#include "../Dest/DestFamilyNotifier.hpp"
 #include "../Dest/DestGroupNotifier.hpp"
 #include "../Dest/DestListNotifier.hpp"
+#include "../Dest/DestMenuitemNotifier.hpp"
 #include "../Dest/DestNotifyNotifier.hpp"
 #include "../Dest/DestStringNotifier.hpp"
 #include "../Dest/DestWindowNotifier.hpp"
@@ -31,8 +33,10 @@ namespace MUI
         DestApplicationNotifier notifyObject(const Application &application);
         DestAreaNotifier notifyObject(const Area &area);
         DestCycleNotifier notifyObject(const Cycle &cycle);
+        DestFamilyNotifier notifyObject(const Family &family);
         DestGroupNotifier notifyObject(const Group &group);
         DestListNotifier notifyObject(const List &list);
+        DestMenuitemNotifier notifyObject(const Menuitem &menuitem);
         DestNotifyNotifier notifyObject(const Notify &notify);
         DestStringNotifier notifyObject(const String &string);
         DestWindowNotifier notifyObject(const Window &window);

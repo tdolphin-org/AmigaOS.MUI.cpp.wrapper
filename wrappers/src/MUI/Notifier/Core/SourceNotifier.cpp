@@ -28,6 +28,11 @@ namespace MUI
         return DestCycleNotifier(*this, cycle);
     }
 
+    DestFamilyNotifier SourceNotifierRoot::notifyObject(const Family &family)
+    {
+        return DestFamilyNotifier(*this, family);
+    }
+
     DestGroupNotifier SourceNotifierRoot::notifyObject(const Group &group)
     {
         return DestGroupNotifier(*this, group);
@@ -36,6 +41,11 @@ namespace MUI
     DestListNotifier SourceNotifierRoot::notifyObject(const List &list)
     {
         return DestListNotifier(*this, list);
+    }
+
+    DestMenuitemNotifier SourceNotifierRoot::notifyObject(const Menuitem &menuitem)
+    {
+        return DestMenuitemNotifier(*this, menuitem);
     }
 
     DestNotifyNotifier SourceNotifierRoot::notifyObject(const Notify &notify)

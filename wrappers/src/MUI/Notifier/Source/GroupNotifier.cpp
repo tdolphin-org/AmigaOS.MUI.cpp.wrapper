@@ -23,5 +23,4 @@ namespace MUI
     {
         return SourceNotifier<Group, DestGroupNotifier>(mGroup, MUIA_Group_ActivePage, (long)activePage);
     }
-
 }

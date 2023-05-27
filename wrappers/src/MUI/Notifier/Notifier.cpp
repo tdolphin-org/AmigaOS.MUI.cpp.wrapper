@@ -18,6 +18,11 @@ namespace MUI
         return CycleNotifier(cycle);
     }
 
+    FamilyNotifier Notifier::from(const Family &family)
+    {
+        return FamilyNotifier(family);
+    }
+
     GroupNotifier Notifier::from(const Group &group)
     {
         return GroupNotifier(group);
@@ -26,6 +31,11 @@ namespace MUI
     ListNotifier Notifier::from(const List &list)
     {
         return ListNotifier(list);
+    }
+
+    MenuitemNotifier Notifier::from(const Menuitem &menuitem)
+    {
+        return MenuitemNotifier(menuitem);
     }
 
     NotifyNotifier Notifier::from(const Notify &notify)
