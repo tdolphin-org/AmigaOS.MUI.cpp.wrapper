@@ -33,13 +33,18 @@ $ make clean ; make aos_m68k -j 4
 $ make mos_ppc
 ```
 
+*MorphOS rebuild*
+```
+$ make clean ; make mos_ppc
+```
+
 ### build structure in *wrappers* folder
 ```
-obj -> morphos  -> ppc
-    -> amigaos  -> m68k
+obj -> morphos  -> ppc  -> *.o
+    -> amigaos  -> m68k -> *.o
 
-lib -> morphos  -> ppc
-    -> amigaos  -> m68k
+lib -> morphos  -> ppc  -> libMUIcpp.a
+    -> amigaos  -> m68k -> libMUIcpp.a
 ```
 ___
 ## Examples
