@@ -11,6 +11,11 @@
 
 namespace MUI
 {
+    Object *Application::getMenustrip() const
+    {
+        return GetValueAsObjectPtr(MUIA_Application_Menustrip);
+    }
+
     ApplicationBuilder::ApplicationBuilder()
       : NotifyBuilderTemplate(MUI::EmptyUniqueId, MUIC_Application)
     {
