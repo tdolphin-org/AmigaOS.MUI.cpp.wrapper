@@ -12,9 +12,14 @@
 
 namespace MUI
 {
-    Object *Application::getMenustrip() const
+    Object *Application::getMenustripObject() const
     {
         return GetValueAsObjectPtr(MUIA_Application_Menustrip);
+    }
+
+    Menustrip Application::getMenustrip() const
+    {
+        return Menustrip(GetValueAsObjectPtr(MUIA_Application_Menustrip));
     }
 
     ApplicationBuilder::ApplicationBuilder()

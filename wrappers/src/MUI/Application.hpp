@@ -25,7 +25,12 @@ namespace MUI
         // get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Application_Menustrip ]
-        Object *getMenustrip() const;
+        Object *getMenustripObject() const;
+        /// @brief [ @b MUIA_Application_Menustrip ]
+        Menustrip getMenustrip() const;
+
+        /// @brief [ @b MUIA_Application_WindowList ]
+        
 
         // methods, some can return object reference
     };
