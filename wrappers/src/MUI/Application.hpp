@@ -76,9 +76,6 @@ namespace MUI
     class ApplicationScope : ObjectScope
     {
       public:
-        ApplicationScope(const Application &application)
-          : ObjectScope(application.muiObject())
-        {
-        }
+        ApplicationScope(const Application &application);
     };
 }

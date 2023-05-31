@@ -6,6 +6,7 @@
 
 #include "Application.hpp"
 
+#include "Context/ApplicationContext.hpp"
 #include "Menustrip.hpp"
 #include "Window.hpp"
 
@@ -122,5 +123,11 @@ namespace MUI
         for (auto window : windows)
             this->PushTag(MUIA_Application_Window, window.muiObject());
         return *this;
+    }
+
+    ApplicationScope::ApplicationScope(const Application &application)
+      : ObjectScope(application.muiObject())
+    {
+        ApplicationContext::instance().Init(application);
     }
 }
