@@ -13,9 +13,9 @@
 
 namespace MUI
 {
-    bool instanceOf(Object *object, const std::string className)
+    bool instanceOf(Object *object, const char *className)
     {
-        struct IClass *objClass = MUI_GetClass(className.c_str());
+        struct IClass *objClass = MUI_GetClass(className);
         struct IClass *clazz;
         for (clazz = OCLASS(object); clazz; clazz = clazz->cl_Super)
             if (clazz == objClass)

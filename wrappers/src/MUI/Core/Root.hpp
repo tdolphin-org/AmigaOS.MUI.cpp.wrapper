@@ -12,7 +12,7 @@
 
 namespace MUI
 {
-    bool instanceOf(Object *object, const std::string className);
+    bool instanceOf(Object *object, const char *className);
 
     class Root
     {

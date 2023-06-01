@@ -23,6 +23,11 @@ namespace MUI
         {
         }
 
+        inline bool instanceOf(Object *pMuiObject) const
+        {
+            return MUI::instanceOf(pMuiObject, MUIC_Menustrip);
+        }
+
         // get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Menustrip_CaseSensitive ]

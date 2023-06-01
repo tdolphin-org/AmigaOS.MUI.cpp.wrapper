@@ -23,6 +23,11 @@ namespace MUI
         {
         }
 
+        inline bool instanceOf(Object *pMuiObject) const
+        {
+            return MUI::instanceOf(pMuiObject, MUIC_Menuitem);
+        }
+
         // get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Menuitem_Checked ]
@@ -57,7 +62,7 @@ namespace MUI
         static Menuitem Separator();
         /// @brief create and return basic menu item with title and user data
         /// @param title text in item
-        /// @param userData user data 
+        /// @param userData user data
         static Menuitem BasicItem(const std::string &title, const unsigned long userData);
     };
 

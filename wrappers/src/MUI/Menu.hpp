@@ -23,6 +23,11 @@ namespace MUI
         {
         }
 
+        inline bool instanceOf(Object *pMuiObject) const
+        {
+            return MUI::instanceOf(pMuiObject, MUIC_Menu);
+        }
+
         // get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Menu_Enabled ]
@@ -61,13 +66,13 @@ namespace MUI
       public:
         MenuBuilder();
     };
-    
+
     template <typename T, typename U> inline T &MenuBuilderTemplate<T, U>::tagCopyStrings(const bool copyStrings)
     {
         this->PushTag(MUIA_Menu_CopyStrings, copyStrings);
         return (T &)*this;
     }
-    
+
     template <typename T, typename U> inline T &MenuBuilderTemplate<T, U>::tagEnabled(const bool enabled)
     {
         this->PushTag(MUIA_Menu_Enabled, enabled);

@@ -26,6 +26,11 @@ namespace MUI
         {
         }
 
+        inline bool instanceOf(Object *pMuiObject) const
+        {
+            return MUI::instanceOf(pMuiObject, MUIC_Group);
+        }
+
         // get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Group_ActivePage ]

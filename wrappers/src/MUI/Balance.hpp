@@ -17,6 +17,11 @@ namespace MUI
           : Area(pMuiObject)
         {
         }
+
+        inline bool instanceOf(Object *pMuiObject) const
+        {
+            return MUI::instanceOf(pMuiObject, MUIC_Balance);
+        }
     };
 
     template <typename T, typename U> class BalanceBuilderTemplate : public AreaBuilderTemplate<T, U>

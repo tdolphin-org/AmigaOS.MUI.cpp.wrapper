@@ -23,6 +23,11 @@ namespace MUI
         {
         }
 
+        inline bool instanceOf(Object *pMuiObject) const
+        {
+            return MUI::instanceOf(pMuiObject, MUIC_Family);
+        }
+
         // get/set (attributes), all setters return object reference
 
         // methods, some can return object reference

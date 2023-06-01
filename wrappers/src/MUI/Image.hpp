@@ -18,6 +18,11 @@ namespace MUI
           : Area(pMuiObject)
         {
         }
+
+        inline bool instanceOf(Object *pMuiObject) const
+        {
+            return MUI::instanceOf(pMuiObject, MUIC_Image);
+        }
     };
 
     template <typename T, typename U> class ImageBuilderTemplate : public AreaBuilderTemplate<T, U>

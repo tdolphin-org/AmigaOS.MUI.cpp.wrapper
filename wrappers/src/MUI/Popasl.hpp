@@ -19,6 +19,11 @@ namespace MUI
           : Popstring(pMuiObject)
         {
         }
+
+        inline bool instanceOf(Object *pMuiObject) const
+        {
+            return MUI::instanceOf(pMuiObject, MUIC_Popasl);
+        }
     };
 
     template <typename T, typename U> class PopaslBuilderTemplate : public PopstringBuilderTemplate<T, U>

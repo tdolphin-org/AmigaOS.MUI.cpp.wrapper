@@ -17,6 +17,11 @@ namespace MUI
           : Group(pMuiObject)
         {
         }
+
+        inline bool instanceOf(Object *pMuiObject) const
+        {
+            return MUI::instanceOf(pMuiObject, MUIC_Register);
+        }
     };
 
     template <typename T, typename U> class RegisterBuilderTemplate : public GroupBuilderTemplate<T, U>
