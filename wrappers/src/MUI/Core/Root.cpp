@@ -9,9 +9,20 @@
 #include <stdexcept>
 
 #include <proto/intuition.h>
+#include <proto/muimaster.h>
 
 namespace MUI
 {
+    bool instanceOf(Object *object, const std::string className)
+    {
+        struct IClass *objClass = MUI_GetClass(className.c_str());
+        struct IClass *clazz;
+        for (clazz = OCLASS(object); clazz; clazz = clazz->cl_Super)
+            if (clazz == objClass)
+                return true;
+        return false;
+    }
+
     Root::Root(const Object *pMuiObject)
     {
         if (pMuiObject == nullptr)

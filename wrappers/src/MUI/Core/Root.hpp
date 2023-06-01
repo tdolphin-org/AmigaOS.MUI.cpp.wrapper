@@ -12,6 +12,8 @@
 
 namespace MUI
 {
+    bool instanceOf(Object *object, const std::string className);
+
     class Root
     {
         Object *mpMuiObject;
