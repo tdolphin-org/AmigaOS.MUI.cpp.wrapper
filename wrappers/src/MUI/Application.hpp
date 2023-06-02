@@ -22,7 +22,7 @@ namespace MUI
         {
         }
 
-        inline bool instanceOf(Object *pMuiObject) const
+        static inline bool instanceOf(Object *pMuiObject)
         {
             return MUI::instanceOf(pMuiObject, MUIC_Application);
         }
@@ -33,6 +33,9 @@ namespace MUI
         Object *getMenustripObject() const;
         /// @brief [ @b MUIA_Application_Menustrip ]
         Menustrip getMenustrip() const;
+
+        /// @brief [ @b MUIA_Application_WindowList ]
+        std::vector<Window> getWindowList();
 
         // methods, some can return object reference
     };

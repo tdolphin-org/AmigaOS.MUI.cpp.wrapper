@@ -22,6 +22,23 @@ namespace MUI
         return Menustrip(GetValueAsObjectPtr(MUIA_Application_Menustrip));
     }
 
+    std::vector<Window> Application::getWindowList()
+    {
+        struct List *list = (struct List *)GetValueAsObjectPtr(MUIA_Application_WindowList);
+        if (IsListEmpty(list))
+            return std::vector<Window>();
+
+        std::vector<Window> result;
+        Object *object, *objectstate = (Object *)list->lh_Head;
+        while (object = (Object *)NextObject(&objectstate))
+        {
+            if (Window::instanceOf(object))
+                result.push_back(Window(object));
+        }
+
+        return result;
+    }
+
     ApplicationBuilder::ApplicationBuilder()
       : NotifyBuilderTemplate(MUI::EmptyUniqueId, MUIC_Application)
     {
