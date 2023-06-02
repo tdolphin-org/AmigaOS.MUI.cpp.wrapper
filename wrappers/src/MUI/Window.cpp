@@ -22,6 +22,17 @@ namespace MUI
         return GetValueAsBool(MUIA_Window_Open);
     }
 
+    unsigned long Window::getID()
+    {
+        return GetValueAsULong(MUIA_Window_ID);
+    }
+
+    std::string Window::getIDAsString()
+    {
+        auto id = GetValueAsULong(MUIA_Window_ID);
+        return std::string({ (char)(id >> 24 & 0xFF), (char)(id >> 16 & 0xFF), (char)(id >> 8 & 0xFF), (char)(id & 0xFF), 0 });
+    }
+
     Object *Window::getRootObject()
     {
         return GetValueAsObjectPtr(MUIA_Window_RootObject);
@@ -30,6 +41,18 @@ namespace MUI
     std::string Window::getScreenTitle()
     {
         return GetValueAsString(MUIA_Window_ScreenTitle);
+    }
+
+    Window &Window::setID(const unsigned long id)
+    {
+        SetValue(MUIA_Window_ID, id);
+        return *this;
+    }
+
+    Window &Window::setID(const char id[4])
+    {
+        SetValue(MUIA_Window_ID, MAKE_ID(id[0], id[1], id[2], id[3]));
+        return *this;
     }
 
     Window &Window::setRootObject(const Object *rootObject)

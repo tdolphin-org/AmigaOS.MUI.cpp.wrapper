@@ -21,7 +21,7 @@ namespace MUI
         {
         }
 
-        inline bool instanceOf(Object *pMuiObject) const
+        static inline bool instanceOf(Object *pMuiObject)
         {
             return MUI::instanceOf(pMuiObject, MUIC_Window);
         }
@@ -30,6 +30,10 @@ namespace MUI
 
         /// @brief [ @b MUIA_Window_Open ]
         bool isOpen();
+        /// @brief [ @b MUIA_Window_ID ]
+        unsigned long getID();
+        /// @brief [ @b MUIA_Window_ID ]
+        std::string getIDAsString();
         /// @brief [ @b MUIA_Window_RootObject ]
         /// @return a pointer to a MUI object, the contents of window,
         /// The root object is treated as child of a window and will be disposed when the window is disposed. Window can only have one
@@ -38,6 +42,10 @@ namespace MUI
         /// @brief [ @b MUIA_Window_ScreenTitle ]
         std::string getScreenTitle();
 
+        /// @brief [ @b MUIA_Window_ID ]
+        Window &setID(const unsigned long id);
+        /// @brief [ @b MUIA_Window_ID ]
+        Window &setID(const char id[4]);
         /// @brief [ @b MUIA_Window_RootObject ]
         Window &setRootObject(const Object *rootObject);
         /// @brief [ @b MUIA_Window_ScreenTitle ]
