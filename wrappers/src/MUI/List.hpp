@@ -24,7 +24,7 @@ namespace MUI
         {
         }
 
-        inline bool instanceOf(Object *pMuiObject) const
+        static inline bool instanceOf(Object *pMuiObject)
         {
             return MUI::instanceOf(pMuiObject, MUIC_List);
         }
