@@ -6,14 +6,18 @@
 
 #pragma once
 
+#include <vector>
+
 #include "Core/Singleton.hpp"
+
 #include <intuition/classusr.h>
 
 namespace MUI
 {
-    class Notify;
     class Application;
+    class Notify;
     class Menustrip;
+    class Window;
 
     class ApplicationContextCore
     {
@@ -31,6 +35,9 @@ namespace MUI
       public:
         Application getApplication();
         Menustrip getMenustrip();
+        std::vector<Window> getWindows();
+        Window getAppWindow();
+        Window getWindow(const char id[4]);
     };
 
     typedef class td::Singleton<ApplicationContextCore> ApplicationContext;

@@ -8,8 +8,11 @@
 
 #include <stdexcept>
 
+#include <libraries/iffparse.h>
+
 #include "MUI/Application.hpp"
 #include "MUI/Menustrip.hpp"
+#include "MUI/Window.hpp"
 
 namespace MUI
 {
@@ -40,5 +43,27 @@ namespace MUI
     Menustrip ApplicationContextCore::getMenustrip()
     {
         return Application(mpMuiApplicationObject).getMenustrip();
+    }
+
+    std::vector<Window> ApplicationContextCore::getWindows()
+    {
+        return Application(mpMuiApplicationObject).getWindowList();
+    }
+    
+    Window ApplicationContextCore::getAppWindow()
+    {
+        return Application(mpMuiApplicationObject).getWindowList().at(0);
+    }
+    
+    Window ApplicationContextCore::getWindow(const char id[4])
+    {
+        unsigned long encodedId = MAKE_ID(id[0], id[1], id[2], id[3]);
+        auto windows = Application(mpMuiApplicationObject).getWindowList();
+        for(auto &window : windows)
+            if (window.getID() == encodedId)
+                return window;
+
+        std::string error = (std::string) __PRETTY_FUNCTION__ + " undefined window " + id + "!";
+        throw std::runtime_error(error);
     }
 }
