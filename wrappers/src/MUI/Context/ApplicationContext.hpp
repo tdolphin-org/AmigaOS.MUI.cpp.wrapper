@@ -19,6 +19,8 @@ namespace MUI
     class Menustrip;
     class Window;
 
+    /// @brief application context facade class to get application object and related objects
+    /// NOTICE: to use it application have to be scoped by @b ApplicationScope
     class ApplicationContextCore
     {
         friend class td::Singleton<ApplicationContextCore>;
@@ -33,10 +35,20 @@ namespace MUI
         void Init(const Application &application);
 
       public:
+        /// @brief return current application object
+        /// or throw excpetion if application not scoped by @b ApplicationScope
+        /// @return Application object
         Application getApplication();
+        /// @brief return current menu strip of application
+        /// @return Menustrip object
         Menustrip getMenustrip();
         std::vector<Window> getWindows();
+        /// @brief return current main application window (first window)
+        /// @return Window object
         Window getAppWindow();
+        /// @brief returm window with given identifier, or throw excpetion if window doesn't exists
+        /// @param id identifier of window to get
+        /// @return Window object
         Window getWindow(const AOS::Identifier &id);
     };
 
