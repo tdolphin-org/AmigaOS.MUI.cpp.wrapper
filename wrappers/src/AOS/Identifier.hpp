@@ -26,11 +26,6 @@ namespace AOS
             return id;
         };
 
-        operator Identifier() const
-        {
-            return id;
-        }
-
         bool operator==(const Identifier &b) const
         {
             return id == b.id;

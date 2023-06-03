@@ -6,6 +6,8 @@
 
 #include "Application.hpp"
 
+#include <proto/intuition.h>
+
 #include "Context/ApplicationContext.hpp"
 #include "Menustrip.hpp"
 #include "Window.hpp"
