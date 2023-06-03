@@ -28,7 +28,7 @@ namespace AOS
         delete[] mpTagItems;
     }
 
-    std::string TagsScope::ToString() const
+    std::string TagsScope::toString() const
     {
         std::string result = "(";
         for (int i = 0; mpTagItems[i].ti_Tag != TAG_END; i++)
