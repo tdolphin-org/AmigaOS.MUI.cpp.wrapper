@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include "AOS/Identifier.hpp"
 #include "Notify.hpp"
 
 namespace MUI
@@ -31,9 +32,7 @@ namespace MUI
         /// @brief [ @b MUIA_Window_Open ]
         bool isOpen();
         /// @brief [ @b MUIA_Window_ID ]
-        unsigned long getID();
-        /// @brief [ @b MUIA_Window_ID ]
-        std::string getIDAsString();
+        AOS::Identifier getID();
         /// @brief [ @b MUIA_Window_RootObject ]
         /// @return a pointer to a MUI object, the contents of window,
         /// The root object is treated as child of a window and will be disposed when the window is disposed. Window can only have one
@@ -43,9 +42,7 @@ namespace MUI
         std::string getScreenTitle();
 
         /// @brief [ @b MUIA_Window_ID ]
-        Window &setID(const unsigned long id);
-        /// @brief [ @b MUIA_Window_ID ]
-        Window &setID(const char id[4]);
+        Window &setID(const AOS::Identifier &id);
         /// @brief [ @b MUIA_Window_RootObject ]
         Window &setRootObject(const Object *rootObject);
         /// @brief [ @b MUIA_Window_ScreenTitle ]
@@ -73,7 +70,7 @@ namespace MUI
         /// @brief [ @b MUIA_Window_Height ]
         WindowBuilder &tagHeight(const long height);
         /// @brief [ @b MUIA_Window_ID ]
-        WindowBuilder &tagID(const char id[4]);
+        WindowBuilder &tagID(const AOS::Identifier &id);
         /// @brief [ @b MUIA_Window_Menustrip ]
         WindowBuilder &tagMenustrip(const Menustrip &menustrip);
         /// @brief [ @b MUIA_Window_Menustrip ]

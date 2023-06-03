@@ -22,15 +22,9 @@ namespace MUI
         return GetValueAsBool(MUIA_Window_Open);
     }
 
-    unsigned long Window::getID()
+    AOS::Identifier Window::getID()
     {
-        return GetValueAsULong(MUIA_Window_ID);
-    }
-
-    std::string Window::getIDAsString()
-    {
-        auto id = GetValueAsULong(MUIA_Window_ID);
-        return std::string({ (char)(id >> 24 & 0xFF), (char)(id >> 16 & 0xFF), (char)(id >> 8 & 0xFF), (char)(id & 0xFF), 0 });
+        return AOS::Identifier(GetValueAsULong(MUIA_Window_ID));
     }
 
     Object *Window::getRootObject()
@@ -43,15 +37,9 @@ namespace MUI
         return GetValueAsString(MUIA_Window_ScreenTitle);
     }
 
-    Window &Window::setID(const unsigned long id)
+    Window &Window::setID(const AOS::Identifier &id)
     {
-        SetValue(MUIA_Window_ID, id);
-        return *this;
-    }
-
-    Window &Window::setID(const char id[4])
-    {
-        SetValue(MUIA_Window_ID, MAKE_ID(id[0], id[1], id[2], id[3]));
+        SetValue(MUIA_Window_ID, id.value());
         return *this;
     }
 
@@ -103,9 +91,9 @@ namespace MUI
         return *this;
     }
 
-    WindowBuilder &WindowBuilder::tagID(const char id[4])
+    WindowBuilder &WindowBuilder::tagID(const AOS::Identifier &id)
     {
-        this->PushTag(MUIA_Window_ID, MAKE_ID(id[0], id[1], id[2], id[3]));
+        this->PushTag(MUIA_Window_ID, id.value());
         return *this;
     }
 

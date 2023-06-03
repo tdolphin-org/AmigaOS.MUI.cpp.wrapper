@@ -49,21 +49,20 @@ namespace MUI
     {
         return Application(mpMuiApplicationObject).getWindowList();
     }
-    
+
     Window ApplicationContextCore::getAppWindow()
     {
         return Application(mpMuiApplicationObject).getWindowList().at(0);
     }
-    
-    Window ApplicationContextCore::getWindow(const char id[4])
+
+    Window ApplicationContextCore::getWindow(const AOS::Identifier &id)
     {
-        unsigned long encodedId = MAKE_ID(id[0], id[1], id[2], id[3]);
         auto windows = Application(mpMuiApplicationObject).getWindowList();
-        for(auto &window : windows)
-            if (window.getID() == encodedId)
+        for (auto &window : windows)
+            if (window.getID() == id)
                 return window;
 
-        std::string error = (std::string) __PRETTY_FUNCTION__ + " undefined window " + id + "!";
+        std::string error = (std::string) __PRETTY_FUNCTION__ + " undefined window " + id.toString() + "!";
         throw std::runtime_error(error);
     }
 }

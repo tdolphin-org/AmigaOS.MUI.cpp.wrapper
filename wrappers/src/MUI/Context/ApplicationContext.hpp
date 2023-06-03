@@ -6,11 +6,11 @@
 
 #pragma once
 
+#include <intuition/classusr.h>
 #include <vector>
 
+#include "AOS/Identifier.hpp"
 #include "Core/Singleton.hpp"
-
-#include <intuition/classusr.h>
 
 namespace MUI
 {
@@ -37,7 +37,7 @@ namespace MUI
         Menustrip getMenustrip();
         std::vector<Window> getWindows();
         Window getAppWindow();
-        Window getWindow(const char id[4]);
+        Window getWindow(const AOS::Identifier &id);
     };
 
     typedef class td::Singleton<ApplicationContextCore> ApplicationContext;
