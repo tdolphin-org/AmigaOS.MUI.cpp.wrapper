@@ -67,8 +67,8 @@ namespace MUI
         return *this;
     }
 
-    WindowBuilder::WindowBuilder()
-      : NotifyBuilderTemplate(MUI::EmptyUniqueId, MUIC_Window)
+    WindowBuilder::WindowBuilder(const std::string &uniqueId)
+      : NotifyBuilderTemplate(uniqueId, MUIC_Window)
       , hasRootObject(false)
     {
     }

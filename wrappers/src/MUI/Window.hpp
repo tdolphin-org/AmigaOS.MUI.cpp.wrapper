@@ -61,7 +61,7 @@ namespace MUI
         bool hasRootObject;
 
       public:
-        WindowBuilder();
+        WindowBuilder(const std::string &uniqueId = MUI::EmptyUniqueId);
 
         /// @brief [ @b MUIA_Window_AltHeight ]
         WindowBuilder &tagAltHeight(const long altHeight);
