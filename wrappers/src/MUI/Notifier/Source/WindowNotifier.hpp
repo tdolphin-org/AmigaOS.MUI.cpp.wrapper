@@ -21,7 +21,11 @@ namespace MUI
 
         // notification methods
 
+        /// @brief [ @b MUIM_Notify, @b MUIA_Window_Activate ]
+        SourceNotifier<Window, DestWindowNotifier> onActivate(const bool activate);
         /// @brief [ @b MUIM_Notify, @b MUIA_Window_CloseRequest ]
         SourceNotifier<Window, DestWindowNotifier> onCloseRequest(const bool closeRequest);
+        /// @brief [ @b MUIM_Notify, @b MUIA_Window_Open ]
+        SourceNotifier<Window, DestWindowNotifier> onOpen(const bool open);
     };
 }
