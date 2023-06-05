@@ -7,11 +7,15 @@
 #pragma once
 
 #include "AOS/Identifier.hpp"
+#include "Menustrip.hpp"
 #include "Notify.hpp"
+
+#include <stdexcept>
+
+#include <proto/muimaster.h>
 
 namespace MUI
 {
-    class Menustrip;
     struct NewMenu;
 
     class Window : public Notify
@@ -56,44 +60,152 @@ namespace MUI
         Window &Close();
     };
 
-    class WindowBuilder : public NotifyBuilderTemplate<WindowBuilder, Window>
+    template <typename T, typename U> class WindowBuilderTemplate : public NotifyBuilderTemplate<T, U>
     {
         bool hasRootObject;
 
       public:
-        WindowBuilder(const std::string &uniqueId = MUI::EmptyUniqueId);
+        WindowBuilderTemplate(const std::string &uniqueId = MUI::EmptyUniqueId, const std::string &muiClassName = MUIC_Window)
+          : NotifyBuilderTemplate<T, U>(uniqueId, muiClassName)
+          , hasRootObject(false)
+        {
+        }
 
         /// @brief [ @b MUIA_Window_AltHeight ]
-        WindowBuilder &tagAltHeight(const long altHeight);
+        T &tagAltHeight(const long altHeight);
         /// @brief [ @b MUIA_Window_AltWidth ]
-        WindowBuilder &tagAltWidth(const long altWidth);
+        T &tagAltWidth(const long altWidth);
         /// @brief [ @b MUIA_Window_Height ]
-        WindowBuilder &tagHeight(const long height);
+        T &tagHeight(const long height);
         /// @brief [ @b MUIA_Window_ID ]
-        WindowBuilder &tagID(const AOS::Identifier &id);
+        T &tagID(const AOS::Identifier &id);
         /// @brief [ @b MUIA_Window_Menustrip ]
-        WindowBuilder &tagMenustrip(const Menustrip &menustrip);
+        T &tagMenustrip(const Menustrip &menustrip);
         /// @brief [ @b MUIA_Window_Menustrip ]
-        WindowBuilder &tagMenustrip(const struct NewMenu &newmenu, const unsigned long flags = 0);
+        T &tagMenustrip(const struct NewMenu &newmenu, const unsigned long flags = 0);
         /// @brief [ @b MUIA_Window_NoMenus ]
-        WindowBuilder &tagNoMenus(const bool noMenus);
+        T &tagNoMenus(const bool noMenus);
         /// @brief [ @b MUIA_Window_RootObject ]
-        WindowBuilder &tagRootObject(const Object *pRootObject);
+        T &tagRootObject(const Object *pRootObject);
         /// @brief [ @b MUIA_Window_RootObject ]
-        WindowBuilder &tagRootObject(const Root &root);
+        T &tagRootObject(const Root &root);
         /// @brief [ @b MUIA_Window_ScreenTitle ]
-        WindowBuilder &tagScreenTitle(const char *screenTitle);
+        T &tagScreenTitle(const char *screenTitle);
         /// @brief [ @b MUIA_Window_ScreenTitle ]
-        WindowBuilder &tagScreenTitle(const std::string &screenTitle);
+        T &tagScreenTitle(const std::string &screenTitle);
         /// @brief [ @b MUIA_Window_Title ]
-        WindowBuilder &tagTitle(const char *title);
+        T &tagTitle(const char *title);
         /// @brief [ @b MUIA_Window_Title ]
-        WindowBuilder &tagTitle(const std::string &title);
+        T &tagTitle(const std::string &title);
         /// @brief [ @b MUIA_Window_Width ]
-        WindowBuilder &tagWidth(const long width);
+        T &tagWidth(const long width);
 
-        Window object() const;
+        U object() const;
     };
+
+    class WindowBuilder : public WindowBuilderTemplate<WindowBuilder, Window>
+    {
+      public:
+        WindowBuilder();
+    };
+
+    template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagAltHeight(const long altHeight)
+    {
+        this->PushTag(MUIA_Window_AltHeight, altHeight);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagAltWidth(const long altWidth)
+    {
+        this->PushTag(MUIA_Window_AltWidth, altWidth);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagHeight(const long height)
+    {
+        this->PushTag(MUIA_Window_Height, height);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagID(const AOS::Identifier &id)
+    {
+        this->PushTag(MUIA_Window_ID, id.value());
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagMenustrip(const Menustrip &menustrip)
+    {
+        this->PushTag(MUIA_Window_Menustrip, menustrip.muiObject());
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagMenustrip(const NewMenu &newmenu, const unsigned long flags)
+    {
+        this->PushTag(MUIA_Window_Menustrip, MUI_MakeObject(MUIO_MenustripNM, (unsigned long)&newmenu, flags));
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagNoMenus(const bool noMenus)
+    {
+        this->PushTag(MUIA_Window_NoMenus, noMenus);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagRootObject(const Object *pRootObject)
+    {
+        this->PushTag(MUIA_Window_RootObject, pRootObject);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagRootObject(const Root &root)
+    {
+        hasRootObject = true;
+        this->PushTag(MUIA_Window_RootObject, root.muiObject());
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagScreenTitle(const char *screenTitle)
+    {
+        this->PushTag(MUIA_Window_ScreenTitle, screenTitle);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagScreenTitle(const std::string &screenTitle)
+    {
+        this->PushTag(MUIA_Window_ScreenTitle, screenTitle);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagTitle(const char *title)
+    {
+        this->PushTag(MUIA_Window_Title, title);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagTitle(const std::string &title)
+    {
+        this->PushTag(MUIA_Window_Title, title);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagWidth(const long width)
+    {
+        this->PushTag(MUIA_Window_Width, width);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline U WindowBuilderTemplate<T, U>::object() const
+    {
+        // The root object is mandatory during window creation and trying to create a window without a root object will fail.
+        // So check if there is tag for RootObject.
+        if (!hasRootObject)
+        {
+            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing RootObject for Window!";
+            throw std::runtime_error(error);
+        }
+
+        return NotifyBuilderTemplate<WindowBuilder, Window>::object();
+    }
 
     class WindowScope
     {
