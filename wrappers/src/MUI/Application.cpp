@@ -6,6 +6,7 @@
 
 #include "Application.hpp"
 
+#include <proto/alib.h>
 #include <proto/intuition.h>
 
 #include "Context/ApplicationContext.hpp"
@@ -39,6 +40,18 @@ namespace MUI
         }
 
         return result;
+    }
+
+    Application &Application::LoadEnvArc()
+    {
+        DoMethod(muiObject(), MUIM_Application_Load, MUIV_Application_Load_ENVARC);
+        return *this;
+    }
+
+    Application &Application::SaveEnvArc()
+    {
+        DoMethod(muiObject(), MUIM_Application_Save, MUIV_Application_Save_ENVARC);
+        return *this;
     }
 
     ApplicationBuilder::ApplicationBuilder()
@@ -153,5 +166,11 @@ namespace MUI
       : ObjectScope(application.muiObject())
     {
         ApplicationContext::instance().Init(application);
+        Application(muiObject()).LoadEnvArc();
+    }
+
+    ApplicationScope::~ApplicationScope()
+    {
+        Application(muiObject()).SaveEnvArc();
     }
 }

@@ -38,6 +38,11 @@ namespace MUI
         std::vector<Window> getWindowList();
 
         // methods, some can return object reference
+
+        /// @brief [ @b MUIM_Application_Load, @b MUIV_Application_Load_ENVARC ]
+        Application &LoadEnvArc();
+        /// @brief [ @b MUIM_Application_Save, @b MUIV_Application_Save_ENVARC ]
+        Application &SaveEnvArc();
     };
 
     class ApplicationBuilder : public NotifyBuilderTemplate<ApplicationBuilder, Application>
@@ -87,5 +92,6 @@ namespace MUI
     {
       public:
         ApplicationScope(const Application &application);
+        ~ApplicationScope();
     };
 }
