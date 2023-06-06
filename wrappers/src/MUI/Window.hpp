@@ -101,6 +101,7 @@ namespace MUI
         T &tagWidth(const long width);
 
         U object() const;
+        U object(const unsigned long dataSize, const void *pDispatcher) const;
     };
 
     class WindowBuilder : public WindowBuilderTemplate<WindowBuilder, Window>
@@ -204,7 +205,21 @@ namespace MUI
             throw std::runtime_error(error);
         }
 
-        return NotifyBuilderTemplate<WindowBuilder, Window>::object();
+        return NotifyBuilderTemplate<T, U>::object();
+    }
+
+    template <typename T, typename U>
+    inline U WindowBuilderTemplate<T, U>::object(const unsigned long dataSize, const void *pDispatcher) const
+    {
+        // The root object is mandatory during window creation and trying to create a window without a root object will fail.
+        // So check if there is tag for RootObject.
+        if (!hasRootObject)
+        {
+            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing RootObject for Window!";
+            throw std::runtime_error(error);
+        }
+
+        return NotifyBuilderTemplate<T, U>::object(dataSize, pDispatcher);
     }
 
     class WindowScope
