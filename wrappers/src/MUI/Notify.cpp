@@ -25,9 +25,9 @@ namespace MUI
         return GetValueAsString(MUIA_HelpNode);
     }
 
-    unsigned long Notify::getObjectID() const
+    AOS::Identifier Notify::getObjectID() const
     {
-        return GetValueAsULong(MUIA_ObjectID);
+        return AOS::Identifier(GetValueAsULong(MUIA_ObjectID));
     }
 
     Object *Notify::getParent()
@@ -74,9 +74,9 @@ namespace MUI
         return *this;
     }
 
-    Notify &Notify::setObjectID(const unsigned long objectID)
+    Notify &Notify::setObjectID(const AOS::Identifier &objectID)
     {
-        SetValue(MUIA_ObjectID, objectID);
+        SetValue(MUIA_ObjectID, objectID.value());
         return *this;
     }
 

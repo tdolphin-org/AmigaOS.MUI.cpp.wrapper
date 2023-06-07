@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include "AOS/Identifier.hpp"
 #include "Core/BuilderRoot.hpp"
 #include "Core/Root.hpp"
 
@@ -40,7 +41,7 @@ namespace MUI
         /// @brief [ @b MUIA_HelpNode ]
         std::string getHelpNode() const;
         /// @brief [ @b MUIA_ObjectID ]
-        unsigned long getObjectID() const;
+        AOS::Identifier getObjectID() const;
         /// @brief [ @b MUIA_Parent ]
         Object *getParent();
         /// @brief [ @b MUIA_Revision ]
@@ -59,7 +60,7 @@ namespace MUI
         /// @brief [ @b MUIA_NoNotifyMethod ]
         Notify &setNoNotifyMethod(const unsigned long noNotifyMethod);
         /// @brief [ @b MUIA_ObjectID ]
-        Notify &setObjectID(const unsigned long objectID);
+        Notify &setObjectID(const AOS::Identifier &objectID);
         /// @brief [ @b MUIA_UserData ]
         Notify &setUserData(const unsigned long userData);
 
@@ -121,7 +122,7 @@ namespace MUI
         /// @brief [ @b MUIA_HelpNode ]
         T &tagHelpLine(const std::string &helpNode);
         /// @brief [ @b MUIA_ObjectID ]
-        T &tagObjectID(const unsigned long objectID);
+        T &tagObjectID(const AOS::Identifier &idobjectID);
         /// @brief [ @b MUIA_UserData ]
         T &tagUserData(const unsigned long userData);
     };
@@ -144,9 +145,9 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &NotifyBuilderTemplate<T, U>::tagObjectID(const unsigned long objectID)
+    template <typename T, typename U> inline T &NotifyBuilderTemplate<T, U>::tagObjectID(const AOS::Identifier &objectID)
     {
-        this->PushTag(MUIA_ObjectID, objectID);
+        this->PushTag(MUIA_ObjectID, objectID.value());
         return (T &)*this;
     }
 
