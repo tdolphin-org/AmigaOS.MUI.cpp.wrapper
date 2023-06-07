@@ -43,6 +43,10 @@ namespace MUI
         Application &LoadEnvArc();
         /// @brief [ @b MUIM_Application_Save, @b MUIV_Application_Save_ENVARC ]
         Application &SaveEnvArc();
+        /// @brief [ @b MUIA_Application_Sleep, @b TRUE ]
+        Application &Sleep(); // TODO create scope
+        /// @brief [ @b MUIA_Application_Sleep, @b FALSE ]
+        Application &WakeUp();
     };
 
     class ApplicationBuilder : public NotifyBuilderTemplate<ApplicationBuilder, Application>
@@ -93,5 +97,12 @@ namespace MUI
       public:
         ApplicationScope(const Application &application);
         ~ApplicationScope();
+    };
+
+    class ApplicationSleepScope
+    {
+      public:
+        ApplicationSleepScope();
+        ~ApplicationSleepScope();
     };
 }

@@ -54,6 +54,18 @@ namespace MUI
         return *this;
     }
 
+    Application &Application::Sleep()
+    {
+        SetValue(MUIA_Application_Sleep, true);
+        return *this;
+    }
+
+    Application &Application::WakeUp()
+    {
+        SetValue(MUIA_Application_Sleep, false);
+        return *this;
+    }
+
     ApplicationBuilder::ApplicationBuilder()
       : NotifyBuilderTemplate(MUI::EmptyUniqueId, MUIC_Application)
     {
@@ -172,5 +184,15 @@ namespace MUI
     ApplicationScope::~ApplicationScope()
     {
         Application(muiObject()).SaveEnvArc();
+    }
+
+    ApplicationSleepScope::ApplicationSleepScope()
+    {
+        ApplicationContext::instance().getApplication().Sleep();
+    }
+
+    ApplicationSleepScope::~ApplicationSleepScope()
+    {
+        ApplicationContext::instance().getApplication().WakeUp();
     }
 }
