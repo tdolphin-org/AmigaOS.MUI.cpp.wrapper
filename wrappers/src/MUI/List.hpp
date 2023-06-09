@@ -8,7 +8,9 @@
 
 #include "Area.hpp"
 
+#include "ValueTypes/Active.hpp"
 #include "ValueTypes/DragType.hpp"
+#include "ValueTypes/Jump.hpp"
 #include "ValueTypes/ListNextSelected.hpp"
 #include "ValueTypes/MultiSelect.hpp"
 
@@ -46,6 +48,8 @@ namespace MUI
 
         /// @brief [ @b MUIA_List_Active ]
         List &setActive(const long active);
+        /// @brief [ @b MUIA_List_Active ]
+        List &setActive(const enum Active active);
         /// @brief [ @b MUIA_List_Active, @b MUIV_List_Active_Off ]
         List &setActiveOff();
         /// @brief [ @b MUIA_List_Active, @b MUIV_List_Active_Top ]
@@ -70,6 +74,11 @@ namespace MUI
         List &setQuiet(const bool quiet);
 
         // methods, some can return object reference
+
+        /// @brief [ @b MUIM_List_Jump ]
+        List &Jump(const enum Jump position);
+        /// @brief [ @b MUIM_List_Jump ]
+        List &Jump(const long position);
 
         /// @brief [ @b MUIM_List_GetEntry ]
         /// @param position index in list
@@ -135,8 +144,14 @@ namespace MUI
         {
         }
 
+        /// @brief [ @b MUIA_List_Active ]
+        T &tagActive(const enum Active active);
+        /// @brief [ @b MUIA_List_Active ]
+        T &tagActive(const long active);
         /// @brief [ @b MUIA_List_AutoLineHeight ]
         T &tagAutoLineHeight(const bool autoLineHeight);
+        /// @brief [ @b MUIA_List_AutoVisible ]
+        T &tagAutoVisible(const bool autoVisible);
         /// @brief [ @b MUIA_List_CompareHook ]
         T &tagCompareHook(const struct Hook *compareHook);
         /// @brief [ @b MUIA_List_ConstructHook ]
@@ -175,9 +190,27 @@ namespace MUI
         ListBuilder();
     };
 
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagActive(const enum Active active)
+    {
+        this->PushTag(MUIA_List_Active, active);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagActive(const long active)
+    {
+        this->PushTag(MUIA_List_Active, active);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagAutoLineHeight(const bool autoLineHeight)
     {
         this->PushTag(MUIA_List_AutoLineHeight, autoLineHeight);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagAutoVisible(const bool autoVisible)
+    {
+        this->PushTag(MUIA_List_AutoVisible, autoVisible);
         return (T &)*this;
     }
 

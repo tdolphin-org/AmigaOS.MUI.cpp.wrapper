@@ -36,6 +36,12 @@ namespace MUI
         return *this;
     }
 
+    List &List::setActive(const enum Active active)
+    {
+        SetValue(MUIA_List_Active, (long)active);
+        return *this;
+    }
+
     List &List::setActiveOff()
     {
         SetValue(MUIA_List_Active, (long)MUIV_List_Active_Off);
@@ -102,9 +108,16 @@ namespace MUI
         return *this;
     }
 
-    void List::Clear()
+    List &List::Jump(const enum Jump position)
     {
-        DoMethod(muiObject(), MUIM_List_Clear);
+        DoMethod(muiObject(), MUIM_List_Jump, (long)position);
+        return *this;
+    }
+
+    List &List::Jump(const long position)
+    {
+        DoMethod(muiObject(), MUIM_List_Jump, position);
+        return *this;
     }
 
     void *List::GetEntry(const long position) const
@@ -185,6 +198,11 @@ namespace MUI
     List &List::InsertBottom(const char *entries[])
     {
         return InsertBottom((const void **)entries);
+    }
+
+    void List::Clear()
+    {
+        DoMethod(muiObject(), MUIM_List_Clear);
     }
 
     List &List::Redraw(long pos) const
