@@ -45,16 +45,30 @@ namespace MUI
         return *this;
     }
 
+    Area &Area::setShowMe(const bool showMe)
+    {
+        SetValue(MUIA_ShowMe, showMe);
+        return *this;
+    }
+
     Area &Area::Enable()
     {
-        setDisabled(false);
-        return *this;
+        return setDisabled(false);
     }
 
     Area &Area::Disable()
     {
-        setDisabled(true);
-        return *this;
+        return setDisabled(true);
+    }
+
+    Area &Area::Show()
+    {
+        return setShowMe(true);
+    }
+
+    Area &Area::Hide()
+    {
+        return setShowMe(false);
     }
 
     AreaBuilder::AreaBuilder() { }

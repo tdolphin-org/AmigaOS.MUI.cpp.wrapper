@@ -53,6 +53,8 @@ namespace MUI
         Area &setSelected(const bool selected);
         /// @brief [ @b MUIA_ShortHelp ]
         Area &setShortHelp(const std::string &shortHelp);
+        /// @brief [ @b MUIA_ShowMe ]
+        Area &setShowMe(const bool showMe);
 
         // methods, some can return object reference
 
@@ -60,6 +62,10 @@ namespace MUI
         Area &Enable();
         /// @brief setDisabled(true)
         Area &Disable();
+        /// @brief setShowMe(true)
+        Area &Show();
+        /// @brief setShowMe(false)
+        Area &Hide();
     };
 
     template <typename T, typename U> class AreaBuilderTemplate : public NotifyBuilderTemplate<T, U>
