@@ -53,6 +53,11 @@ namespace MUI
         return DestNotifyNotifier(*this, notify);
     }
 
+    DestRegisterNotifier SourceNotifierRoot::notifyObject(const Register &registerObject)
+    {
+        return DestRegisterNotifier(*this, registerObject);
+    }
+
     DestStringNotifier SourceNotifierRoot::notifyObject(const String &string)
     {
         return DestStringNotifier(*this, string);

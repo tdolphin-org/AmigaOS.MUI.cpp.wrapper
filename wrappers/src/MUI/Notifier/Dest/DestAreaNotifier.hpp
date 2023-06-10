@@ -25,5 +25,9 @@ namespace MUI
         DestAreaNotifier &setDisabled(const bool disabled, bool notify = true);
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Selected ]
         DestAreaNotifier &setSelected(const bool selected, bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_ShowMe ]
+        DestAreaNotifier &setShowMe(const bool showMe, bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_ShowMe = @b MUIV_TriggerValue ]
+        DestAreaNotifier &setShowMeTriggerValue(bool notify = true);
     };
 }

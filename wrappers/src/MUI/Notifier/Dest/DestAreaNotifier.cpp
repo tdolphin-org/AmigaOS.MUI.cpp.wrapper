@@ -28,4 +28,18 @@ namespace MUI
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Selected, (unsigned long)selected);
         return *this;
     }
+
+    DestAreaNotifier &DestAreaNotifier::setShowMe(const bool showMe, bool notify)
+    {
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_ShowMe, (unsigned long)showMe);
+        return *this;
+    }
+
+    DestAreaNotifier &DestAreaNotifier::setShowMeTriggerValue(bool notify)
+    {
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_ShowMe, MUIV_TriggerValue);
+        return *this;
+    }
 }

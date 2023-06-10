@@ -19,4 +19,9 @@ namespace MUI
     {
         return SourceNotifier<Menuitem, DestMenuitemNotifier>(mMenuitem, MUIA_Menuitem_Trigger, (long)MUIV_EveryTime);
     }
+    
+    SourceNotifier<Menuitem, DestMenuitemNotifier> MenuitemNotifier::onCheckitEveryTime()
+    {
+        return SourceNotifier<Menuitem, DestMenuitemNotifier>(mMenuitem, MUIA_Menuitem_Checkit, (long)MUIV_EveryTime);
+    }
 }
