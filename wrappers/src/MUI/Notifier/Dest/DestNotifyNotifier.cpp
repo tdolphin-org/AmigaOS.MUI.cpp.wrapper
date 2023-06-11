@@ -58,7 +58,7 @@ namespace MUI
     DestNotifyNotifier &DestNotifyNotifier::callHook(const void *hook, const void *arg0, const void *arg1, const void *arg2,
                                                      const void *arg3, const void *arg4)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 6, MUIM_CallHook, hook, arg0, arg1,
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 7, MUIM_CallHook, hook, arg0, arg1,
                  arg2, arg3, arg4);
         return *this;
     }
@@ -66,7 +66,7 @@ namespace MUI
     DestNotifyNotifier &DestNotifyNotifier::callHook(const void *hook, const void *arg0, const void *arg1, const void *arg2,
                                                      const void *arg3, const void *arg4, const void *arg5)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 6, MUIM_CallHook, hook, arg0, arg1,
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 8, MUIM_CallHook, hook, arg0, arg1,
                  arg2, arg3, arg4, arg5);
         return *this;
     }
