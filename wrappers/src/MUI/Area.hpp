@@ -79,7 +79,9 @@ namespace MUI
         /// @brief [ @b MUIA_Background ]
         T &tagBackground(const enum ImageOrBackground background);
         /// @brief [ @b MUIA_CycleChain ]
-        T &tagCycleChain(const long cycleChain);
+        /// Keyboard cycle chain system. Set MUIA_CycleChain to 1 for every object that you want to have in your chain, MUI does the rest
+        /// automatically.
+        T &tagCycleChain(const long cycleChain = 1);
         /// @brief [ @b MUIA_Disabled ]
         T &tagDisabled(const bool disabled = true);
         /// @brief [ @b MUIA_Frame ]

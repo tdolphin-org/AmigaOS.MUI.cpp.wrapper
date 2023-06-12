@@ -75,8 +75,10 @@ namespace MUI
         }
 
         /// @brief [ @b MUIA_Menuitem_Checked ]
+        /// Define checked state of a checkit menu item
         T &tagChecked(const bool checked);
         /// @brief [ @b MUIA_Menuitem_Checkit ]
+        /// For @b true this item will become a checkmarkable item.
         T &tagCheckit(const bool checkit);
         /// @brief [ @b MUIA_Menuitem_CopyStrings ]
         T &tagCopyStrings(const bool copyStrings);
@@ -87,6 +89,7 @@ namespace MUI
         /// @brief [ @b MUIA_Menuitem_Title ]
         T &tagTitle(const std::string &title);
         /// @brief [ @b MUIA_Menuitem_Toggle ]
+        /// Define the state of the TOGGLE flag for this item.
         T &tagToggle(const bool toggle);
     };
 
