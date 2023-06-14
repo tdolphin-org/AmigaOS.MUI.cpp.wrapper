@@ -28,18 +28,18 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, MUIC_Menuitem);
         }
 
-        // get/set (attributes), all setters return object reference
+        // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Menuitem_Checked ]
-        bool getChecked() const;
+        bool isChecked() const;
         /// @brief [ @b MUIA_Menuitem_Checkit ]
-        bool getCheckit() const;
+        bool isCheckit() const;
         /// @brief [ @b MUIA_Menuitem_Enabled ]
-        bool getEnabled() const;
+        bool isEnabled() const;
         /// @brief [ @b MUIA_Menuitem_Title ]
         std::string getTitle() const;
         /// @brief [ @b MUIA_Menuitem_Toggle ]
-        bool getToggle() const;
+        bool isToggle() const;
 
         /// @brief [ @b MUIA_Menuitem_Checked ]
         Menuitem &setChecked(const bool checked);

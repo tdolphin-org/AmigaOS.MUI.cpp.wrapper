@@ -27,7 +27,7 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, MUIC_Application);
         }
 
-        // get/set (attributes), all setters return object reference
+        // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Application_Menustrip ]
         Object *getMenustripObject() const;

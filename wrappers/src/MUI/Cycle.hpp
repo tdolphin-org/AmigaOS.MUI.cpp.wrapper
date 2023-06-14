@@ -27,7 +27,7 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, MUIC_Cycle);
         }
 
-        // get/set (attributes), all setters return object reference
+        // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Cycle_Active ]
         long getActive() const;

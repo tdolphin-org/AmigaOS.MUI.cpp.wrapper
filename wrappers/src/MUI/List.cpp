@@ -25,7 +25,7 @@ namespace MUI
         return GetValueAsLong(MUIA_List_Entries);
     }
 
-    bool List::getQuiet() const
+    bool List::isQuiet() const
     {
         return GetValueAsBool(MUIA_List_Quiet);
     }

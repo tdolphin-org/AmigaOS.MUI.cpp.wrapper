@@ -10,7 +10,7 @@ namespace MUI
 {
     MenuBuilder::MenuBuilder() { }
     
-    bool Menu::getEnabled() const
+    bool Menu::isEnabled() const
     {
         return GetValueAsBool(MUIA_Menu_Enabled);
     }

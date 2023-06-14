@@ -28,12 +28,12 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, MUIC_Menustrip);
         }
 
-        // get/set (attributes), all setters return object reference
+        // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Menustrip_CaseSensitive ]
-        bool getCaseSensitive() const;
+        bool isCaseSensitive() const;
         /// @brief [ @b MUIA_Menustrip_Enabled ]
-        bool getEnabled() const;
+        bool isEnabled() const;
 
         /// @brief [ @b MUIA_Menustrip_Enabled ]
         Menustrip &setEnabled(const bool enabled);

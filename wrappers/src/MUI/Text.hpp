@@ -25,7 +25,7 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, MUIC_Text);
         }
 
-        // get/set (attributes), all setters return object reference
+        // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Text_Contents ]
         /// String to be displayed. If the string is larger than available display space, it will be clipped. Setting

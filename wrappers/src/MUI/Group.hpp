@@ -31,7 +31,7 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, MUIC_Group);
         }
 
-        // get/set (attributes), all setters return object reference
+        // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Group_ActivePage ]
         /// @return active page (index).

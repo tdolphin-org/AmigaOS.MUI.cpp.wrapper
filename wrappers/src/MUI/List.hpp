@@ -31,7 +31,7 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, MUIC_List);
         }
 
-        // get/set (attributes), all setters return object reference
+        // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_List_Active ]
         /// @return The number of the active entry (the one with the cursor on it). The result is between 0 and MUIA_List_Entries-1 or
@@ -44,7 +44,7 @@ namespace MUI
         /// @return The current number of entries in the list.
         long getEntries() const;
         /// @brief [ @b MUIA_List_Quiet ]
-        bool getQuiet() const;
+        bool isQuiet() const;
 
         /// @brief [ @b MUIA_List_Active ]
         List &setActive(const long active);

@@ -10,7 +10,7 @@
 
 namespace MUI
 {
-    bool Floattext::getJustify() const
+    bool Floattext::isJustify() const
     {
         return GetValueAsBool(MUIA_Floattext_Justify);
     }

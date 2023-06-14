@@ -10,12 +10,12 @@ namespace MUI
 {
     MenustripBuilder::MenustripBuilder() { }
 
-    bool Menustrip::getCaseSensitive() const
+    bool Menustrip::isCaseSensitive() const
     {
         return GetValueAsBool(MUIA_Menustrip_CaseSensitive);
     }
 
-    bool Menustrip::getEnabled() const
+    bool Menustrip::isEnabled() const
     {
         return GetValueAsBool(MUIA_Menustrip_Enabled);
     }

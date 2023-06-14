@@ -32,7 +32,7 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, MUIC_Notify);
         }
 
-        // get/set (attributes), all setters return object reference
+        // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_ApplicationObject ]
         Object *getApplicationObject() const;

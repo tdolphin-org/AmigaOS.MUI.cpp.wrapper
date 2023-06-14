@@ -12,17 +12,17 @@ namespace MUI
 {
     MenuitemBuilder::MenuitemBuilder() { }
 
-    bool Menuitem::getChecked() const
+    bool Menuitem::isChecked() const
     {
         return GetValueAsBool(MUIA_Menuitem_Checked);
     }
 
-    bool Menuitem::getCheckit() const
+    bool Menuitem::isCheckit() const
     {
         return GetValueAsBool(MUIA_Menuitem_Checkit);
     }
 
-    bool Menuitem::getEnabled() const
+    bool Menuitem::isEnabled() const
     {
         return GetValueAsBool(MUIA_Menuitem_Enabled);
     }
@@ -32,7 +32,7 @@ namespace MUI
         return GetValueAsString(MUIA_Menuitem_Title);
     }
 
-    bool Menuitem::getToggle() const
+    bool Menuitem::isToggle() const
     {
         return GetValueAsBool(MUIA_Menuitem_Toggle);
     }

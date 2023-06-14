@@ -23,11 +23,11 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, MUIC_Floattext);
         }
 
-        // get/set (attributes), all setters return object reference
+        // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Floattext_Justify ]
         /// Is the text aligned to the left and right border.
-        bool getJustify() const;
+        bool isJustify() const;
         /// @brief [ @b MUIA_Floattext_Text ]
         /// Returns pointer to text buffer, could be NULL.
         char *getText() const;

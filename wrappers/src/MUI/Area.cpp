@@ -8,7 +8,7 @@
 
 namespace MUI
 {
-    bool Area::getSelected() const
+    bool Area::isSelected() const
     {
         return GetValueAsBool(MUIA_Selected);
     }

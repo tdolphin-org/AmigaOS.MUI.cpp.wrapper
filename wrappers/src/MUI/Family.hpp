@@ -28,7 +28,7 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, MUIC_Family);
         }
 
-        // get/set (attributes), all setters return object reference
+        // is/get/set (attributes), all setters return object reference
 
         // methods, some can return object reference
     };

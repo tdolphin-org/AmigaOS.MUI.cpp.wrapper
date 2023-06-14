@@ -28,10 +28,10 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, MUIC_Menu);
         }
 
-        // get/set (attributes), all setters return object reference
+        // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Menu_Enabled ]
-        bool getEnabled() const;
+        bool isEnabled() const;
         /// @brief [ @b MUIA_Menu_Title ]
         std::string getTitle() const;
 

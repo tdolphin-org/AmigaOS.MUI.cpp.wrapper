@@ -36,10 +36,10 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, MUIC_Area);
         }
 
-        // get/set (attributes), all setters return object reference
+        // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Selected ]
-        bool getSelected() const;
+        bool isSelected() const;
 
         /// @brief [ @b MUIA_Disabled ]
         Area &setDisabled(const bool disabled);

@@ -31,7 +31,7 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, MUIC_Window);
         }
 
-        // get/set (attributes), all setters return object reference
+        // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Window_Open ]
         bool isOpen();
