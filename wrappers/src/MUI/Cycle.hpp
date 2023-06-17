@@ -22,6 +22,11 @@ namespace MUI
         {
         }
 
+        Cycle(const APTR pMuiObject)
+          : Group(pMuiObject)
+        {
+        }
+
         static inline bool instanceOf(Object *pMuiObject)
         {
             return MUI::instanceOf(pMuiObject, MUIC_Cycle);

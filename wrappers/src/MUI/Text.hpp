@@ -20,6 +20,11 @@ namespace MUI
         {
         }
 
+        Text(const APTR pMuiObject)
+          : Area(pMuiObject)
+        {
+        }
+
         static inline bool instanceOf(Object *pMuiObject)
         {
             return MUI::instanceOf(pMuiObject, MUIC_Text);

@@ -20,6 +20,7 @@ namespace MUI
 
       public:
         Root(const Object *pMuiObject);
+        Root(const APTR pMuiObject);
 
         Object *muiObject() const
         {
