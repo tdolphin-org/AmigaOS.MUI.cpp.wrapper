@@ -12,17 +12,20 @@
 #include "MUI/List.hpp"
 #include "MUI/Window.hpp"
 
-class AppWindow
+namespace Components
 {
-    MUI::List mItemsList;
-    MUI::Area closeButton;
-    MUI::Window mComponent;
-
-  public:
-    AppWindow();
-    
-    MUI::Window &muiRoot()
+    class AppWindow
     {
-        return mComponent;
-    }
-};
+        MUI::List mItemsList;
+        MUI::Area closeButton;
+        MUI::Window mComponent;
+    
+      public:
+        AppWindow();
+        
+        MUI::Window &muiRoot()
+        {
+            return mComponent;
+        }
+    };
+}
