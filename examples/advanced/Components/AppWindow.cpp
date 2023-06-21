@@ -42,5 +42,6 @@ namespace Components
                                      .object())
                   .object())
     {
+        MUI::Notifier::from(MUI::Area(mCloseButton)).onPressed(false).notifyObject(app).returnIDQuit();
     }
 }

@@ -8,7 +8,7 @@
 
 #include "Main.hpp
 
-#include "Components/AppWindow.hpp"
+#include "Components/Application.hpp"
 #include "MUI/Core/MuiMasterBaseScope.hpp"
 
 #include <iostream>
@@ -21,6 +21,10 @@ int main(int argc, char **argv)
 
     MuiMasterBaseScope muiBase;
 
+    Components::Application application;
+    
+    // do MUI_DisposeObject(..) on destructor
+    MUI::ApplicationScope appScope(application);
 
 
     return 0;
