@@ -20,7 +20,9 @@ namespace Components
 
       public:
         Application();
-        
+
+        void RegisterEvents();
+
         MUI::Application &muiRoot()
         {
             return mComponent;

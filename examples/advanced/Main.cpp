@@ -26,6 +26,7 @@ int main(int argc, char **argv)
     // do MUI_DisposeObject(..) on destructor
     MUI::ApplicationScope appScope(application);
 
+    application.RegisterEvents():
 
     return 0;
 }

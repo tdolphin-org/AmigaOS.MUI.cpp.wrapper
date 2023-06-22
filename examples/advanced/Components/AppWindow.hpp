@@ -22,7 +22,9 @@ namespace Components
     
       public:
         AppWindow();
-        
+
+        void RegisterEvents();
+
         MUI::Window &muiRoot()
         {
             return mComponent;

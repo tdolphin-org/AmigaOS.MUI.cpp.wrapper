@@ -21,7 +21,12 @@ namespace Components
                    .tagWindow(mAppWindow)
                    .object())
     {
-        // events
+    }
+
+    void Application::RegisterEvents()
+    {
         MUI::Notifier::from(mAppWindow).onCloseRequest(true).notifyObject(mComponent).returnIDQuit();
+
+        mAppWindow.RegisterEvents();
     }
 }
