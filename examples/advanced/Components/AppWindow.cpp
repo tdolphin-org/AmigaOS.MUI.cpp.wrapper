@@ -43,6 +43,7 @@ namespace Components
                                      .object())
                   .object())
     {
+        mItemsList.InsertTop((const void **)items);
     }
 
     void AppWindow::RegisterEvents()
