@@ -15,7 +15,7 @@ namespace Components
                    .tagAuthor("rz")
                    .tagBase("advanced.example.bin")
                    .tagCopyright("(c) 2022-2023 TDolphin")
-                   .tagDescription("More Advanced Example of usage MUI C++ wrapper")
+                   .tagDescription("Advanced Example of usage MUI C++ wrapper")
                    .tagTitle("Advanced Example")
                    .tagVersion("$VER: 1.0")
                    .tagWindow(mAppWindow)
