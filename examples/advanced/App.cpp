@@ -37,7 +37,7 @@ void AppCore::Run()
 
     // main application loop
     ULONG signals = 0;
-    while (DoMethod(application.muiObject(), MUIM_Application_NewInput, &signals) != MUIV_Application_ReturnID_Quit)
+    while (DoMethod(mApplication.muiObject(), MUIM_Application_NewInput, &signals) != MUIV_Application_ReturnID_Quit)
     {
         if (signals)
         {
