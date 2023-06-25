@@ -9,11 +9,12 @@
 #pragma once
 
 #include "AppWindow.hpp"
+#include "Components/Core/Root.hpp"
 #include "MUI/Application.hpp"
 
 namespace Components
 {
-    class Application
+    class Application : public Root
     {
         AppWindow mAppWindow;
         MUI::Application mComponent;
@@ -23,9 +24,21 @@ namespace Components
 
         void RegisterEvents();
 
-        MUI::Application &muiRoot()
+        operator MUI::Application &()
         {
             return mComponent;
         }
+
+        MUI::Application &muiRoot() const
+        {
+            return (MUI::Application &)mComponent;
+        }
+
+      protected:
+        const MUI::Notify &muiNotify() const
+        {
+            return mComponent;
+        }
+
     };
 }
