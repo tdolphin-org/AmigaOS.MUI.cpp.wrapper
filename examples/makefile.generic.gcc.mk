@@ -22,16 +22,14 @@
 MORE_CPP_FLAGS_X = $(shell echo $(MORE_CPP_FLAGS) | tr ',' ' ')
 MORE_LFLAGS_X = $(shell echo $(MORE_LFLAGS) | tr ',' ' ')
 
-CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS_X) -std=c++17 -I../wrappers/src -O1
+CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS_X) -std=c++17 -I$(MODULE) -I../wrappers/src -O1
 LFLAGS = -L../wrappers/lib/$(SUB_BUILD_PATH) -lMUIcpp $(MORE_LFLAGS_X) -lstdc++ -noixemul
 
 dir_guard = mkdir -p $(@D)
 
 BINPATH = out/$(SUB_BUILD_PATH)
 
-SRC_DIRS = $(shell echo $(MODULES) | tr ',' ' ')
-SRCS = $(foreach sdir,$(SRC_DIRS),$(wildcard $(sdir)/*.cpp))
-OBJS = $(patsubst %.cpp,obj/$(SUB_BUILD_PATH)/%.o,$(SRCS))
+OBJS = $(patsubst %.cpp,obj/$(SUB_BUILD_PATH)/%.o,$(wildcard $(MODULE)/*.cpp))
 
 all: $(BINPATH)/$(APP_EXAMPLE)
 
