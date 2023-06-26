@@ -27,7 +27,7 @@ namespace Components
 
     void Application::RegisterEvents()
     {
-        MUI::Notifier::from(mAppWindow).onCloseRequest(true).notifyObject(mComponent).returnIDQuit();
+        MUI::Notifier::from(mAppWindow.muiRoot()).onCloseRequest(true).notifyObject(mComponent).returnIDQuit();
 
         mAppWindow.RegisterEvents();
     }

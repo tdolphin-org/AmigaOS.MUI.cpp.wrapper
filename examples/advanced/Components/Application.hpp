@@ -39,6 +39,5 @@ namespace Components
         {
             return mComponent;
         }
-
     };
 }

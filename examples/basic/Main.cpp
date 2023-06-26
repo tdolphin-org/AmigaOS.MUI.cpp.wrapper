@@ -25,7 +25,7 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    cout << "basic MUI app example, created with 'AmigaOS MUI C++ wrapper'" << endl;
+    cout << "basic MUI app example, showing usage of 'AmigaOS MUI C++ wrapper'" << endl;
 
     MuiMasterBaseScope muiBase;
 
