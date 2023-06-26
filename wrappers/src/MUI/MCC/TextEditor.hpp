@@ -22,7 +22,7 @@ namespace MUI::MCC
 
         const static std::string className;
 
-        // get/set (attributes), all setters return object reference
+        // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_TextEditor_Contents ]
         TextEditor &setContents(const std::string &contents);

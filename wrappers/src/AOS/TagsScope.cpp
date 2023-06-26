@@ -10,6 +10,7 @@
 #include <libraries/mui.h>
 #include <mui/TextEditor_mcc.h>
 
+#include "AOS/Identifier.hpp"
 #include "Core/ToString.hpp"
 #include "TagsScope.hpp"
 
@@ -86,7 +87,7 @@ namespace AOS
                     break;
                 case MUIA_Window_ID:
                     result += "MUIA_Window_ID";
-                    result += "=" + std::to_string(tagValue); // TODO convert to ID
+                    result += "=" + Identifier(tagValue).toString();
                     break;
                 case MUIA_Window_RootObject:
                     result += "MUIA_Window_RootObject";

@@ -49,7 +49,7 @@ namespace MUI
         /// @brief [ @b MUIM_Application_Save, @b MUIV_Application_Save_ENVARC ]
         Application &SaveEnvArc();
         /// @brief [ @b MUIA_Application_Sleep, @b TRUE ]
-        Application &Sleep(); // TODO create scope
+        Application &Sleep();
         /// @brief [ @b MUIA_Application_Sleep, @b FALSE ]
         Application &WakeUp();
     };
