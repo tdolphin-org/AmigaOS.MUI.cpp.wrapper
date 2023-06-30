@@ -6,17 +6,16 @@
 
 #pragma once
 
-#include "MUI/Core/BuilderRoot.hpp"
-#include "MUI/Core/Root.hpp"
+#include "MUI/Notify.hpp"
 
 namespace MUI::MCC
 {
-    class TextEditor : public MUI::Root // TODO check if custom classes are derived from Root or Notify?
+    class TextEditor : public MUI::Notify
     {
 
       public:
         TextEditor(const Object *pObject)
-          : Root(pObject)
+          : Notify(pObject)
         {
         }
 
@@ -35,7 +34,7 @@ namespace MUI::MCC
         std::string ExportText() const;
     };
 
-    class TextEditorBuilder : public BuilderRoot<TextEditor>
+    class TextEditorBuilder : public NotifyBuilderTemplate<TextEditorBuilder, TextEditor>
     {
       public:
         TextEditorBuilder();

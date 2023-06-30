@@ -14,7 +14,7 @@ namespace MUI::MCC
     const std::string TextEditor::className = MUIC_TextEditor;
 
     TextEditorBuilder::TextEditorBuilder()
-      : BuilderRoot(MUI::EmptyUniqueId, TextEditor::className)
+      : NotifyBuilderTemplate(MUI::EmptyUniqueId, TextEditor::className)
     {
     }
 
