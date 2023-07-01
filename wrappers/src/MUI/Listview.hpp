@@ -8,9 +8,12 @@
 
 #include "Group.hpp"
 
+#include "List.hpp"
 #include "ValueTypes/Listview/DragType.hpp"
 #include "ValueTypes/Listview/MultiSelect.hpp"
 #include "ValueTypes/Listview/ScrollerPos.hpp"
+
+#include <stdexcept>
 
 namespace MUI
 {
@@ -37,9 +40,12 @@ namespace MUI
 
     template <typename T, typename U> class ListviewBuilderTemplate : public GroupBuilderTemplate<T, U>
     {
+        bool hasListObject;
+
       public:
         ListviewBuilderTemplate(const std::string &uniqueId = MUI::EmptyUniqueId, const std::string &muiClassName = MUIC_Listview)
           : GroupBuilderTemplate<T, U>(uniqueId, muiClassName)
+          , hasListObject(false)
         {
         }
 
@@ -54,11 +60,16 @@ namespace MUI
         /// @brief [ @b MUIA_Listview_Input ]
         T &tagInput(const bool input);
         /// @brief [ @b MUIA_Listview_List ]
+        T &tagList(const MUI::List &list);
+        /// @brief [ @b MUIA_Listview_List ]
         T &tagList(const Object *pList);
         /// @brief [ @b MUIA_Listview_MultiSelect ]
         T &tagMultiSelect(const enum Listview_MultiSelect multiSelect);
         /// @brief [ @b MUIA_Listview_ScrollerPos ]
         T &tagScrollerPos(const enum Listview_ScrollerPos scrollerPos);
+
+        U object() const;
+        U object(const unsigned long dataSize, const void *pDispatcher) const;
     };
 
     class ListviewBuilder : public ListviewBuilderTemplate<ListviewBuilder, Listview>
@@ -97,8 +108,16 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U> inline T &ListviewBuilderTemplate<T, U>::tagList(const MUI::List &list)
+    {
+        hasListObject = true;
+        this->PushTag(MUIA_Listview_List, list.muiObject());
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &ListviewBuilderTemplate<T, U>::tagList(const Object *pList)
     {
+        hasListObject = pList != nullptr;
         this->PushTag(MUIA_Listview_List, pList);
         return (T &)*this;
     }
@@ -113,5 +132,32 @@ namespace MUI
     {
         this->PushTag(MUIA_Listview_ScrollerPos, (long)scrollerPos);
         return (T &)*this;
+    }
+
+    template <typename T, typename U> inline U ListviewBuilderTemplate<T, U>::object() const
+    {
+        // Every listview needs a list object as child. The list object is mandatory for listview, without it object will fail on creation.
+        // So check if there is tag for List (not null).
+        if (!hasListObject)
+        {
+            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing ListObject for Listview!";
+            throw std::runtime_error(error);
+        }
+
+        return GroupBuilderTemplate<T, U>::object();
+    }
+
+    template <typename T, typename U>
+    inline U ListviewBuilderTemplate<T, U>::object(const unsigned long dataSize, const void *pDispatcher) const
+    {
+        // Every listview needs a list object as child. The list object is mandatory for listview, without it object will fail on creation.
+        // So check if there is tag for List (not null).
+        if (!hasListObject)
+        {
+            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing ListObject for Listview!";
+            throw std::runtime_error(error);
+        }
+
+        return GroupBuilderTemplate<T, U>::object(dataSize, pDispatcher);
     }
 }

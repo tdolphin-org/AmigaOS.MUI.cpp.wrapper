@@ -159,6 +159,7 @@ namespace MUI
 
     template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagRootObject(const Object *pRootObject)
     {
+        hasRootObject = pRootObject != nullptr;
         this->PushTag(MUIA_Window_RootObject, pRootObject);
         return (T &)*this;
     }
@@ -203,7 +204,7 @@ namespace MUI
     template <typename T, typename U> inline U WindowBuilderTemplate<T, U>::object() const
     {
         // The root object is mandatory during window creation and trying to create a window without a root object will fail.
-        // So check if there is tag for RootObject.
+        // So check if there is tag for RootObject (not null).
         if (!hasRootObject)
         {
             std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing RootObject for Window!";
@@ -217,7 +218,7 @@ namespace MUI
     inline U WindowBuilderTemplate<T, U>::object(const unsigned long dataSize, const void *pDispatcher) const
     {
         // The root object is mandatory during window creation and trying to create a window without a root object will fail.
-        // So check if there is tag for RootObject.
+        // So check if there is tag for RootObject (not null).
         if (!hasRootObject)
         {
             std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing RootObject for Window!";
