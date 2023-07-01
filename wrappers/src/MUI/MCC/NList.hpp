@@ -8,8 +8,8 @@
 
 #include "MUI/Notify.hpp"
 #include "ValueTypes/NList/DragType.hpp"
-#include "ValueTypes/NList/TypeSelect.hpp"
 #include "ValueTypes/NList/MultiSelect.hpp"
+#include "ValueTypes/NList/TypeSelect.hpp"
 
 namespace MUI::MCC
 {
@@ -117,6 +117,12 @@ namespace MUI::MCC
         NListBuilder &tagSourceArray(const void *sourceArray);
         /// @brief [ @b MUIA_NList_Title ]
         NListBuilder &tagTitle(const std::string &title);
+        /// @brief [ @b MUIA_NList_Title ]
+        /// When you use a display hook, its value is used as a BOOL/LONG
+        NListBuilder &tagTitle(const bool title);
+        /// @brief [ @b MUIA_NList_Title ]
+        /// When you use a display hook, its value is used as a BOOL/LONG
+        NListBuilder &tagTitle(const long title);
         /// @brief [ @b MUIA_NList_CopyEntryToClipHook ]
         NListBuilder &tagCopyEntryToClipHook(const struct Hook *copyEntryToClipHook);
         /// @brief [ @b MUIA_NList_SourceString ]
@@ -133,5 +139,23 @@ namespace MUI::MCC
         NListBuilder &tagPrivateData(const void *privateData);
         /// @brief [ @b MUIA_NList_EntryValueDependent ]
         NListBuilder &tagEntryValueDependent(const bool entryValueDependent);
+
+        /// @brief [ @b MUIA_NList_IgnoreSpecialChars ]
+        NListBuilder &tagIgnoreSpecialChars(const std::string &ignoreSpecialChars);
+
+        /// @brief [ @b MUIA_NList_StackCheck ]
+        NListBuilder &tagStackCheck(const bool stackCheck);
+        /// @brief [ @b MUIA_NList_WordSelectChars ]
+        NListBuilder &tagWordSelectChars(const std::string &wordSelectChars);
+        /// @brief [ @b MUIA_NList_DragColOnly ]
+        NListBuilder &tagDragColOnly(const long dragColOnly);
+        /// @brief [ @b MUIA_NList_TitleClick ]
+        NListBuilder &tagTitleClick(const long titleClick);
+        /// @brief [ @b MUIA_NList_ForcePen ]
+        NListBuilder &tagForcePen(const long forcePen);
+        /// @brief [ @b MUIA_NList_SourceInsert ]
+        NListBuilder &tagSourceInsert(const struct MUIP_NList_InsertWrap *sourceInsert);
+        /// @brief [ @b MUIA_NList_TitleSeparator ]
+        NListBuilder &tagTitleSeparator(const bool titleSeparator);
     };
 }

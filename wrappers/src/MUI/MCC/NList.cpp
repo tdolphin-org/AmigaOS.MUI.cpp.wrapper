@@ -233,6 +233,19 @@ namespace MUI::MCC
         PushTag(MUIA_NList_Title, title);
         return *this;
     }
+
+    NListBuilder &NListBuilder::tagTitle(const bool title)
+    {
+        PushTag(MUIA_NList_Title, title);
+        return *this;
+    }
+
+    NListBuilder &NListBuilder::tagTitle(const long title)
+    {
+        PushTag(MUIA_NList_Title, title);
+        return *this;
+    }
+
     NListBuilder &NListBuilder::tagCopyEntryToClipHook(const struct Hook *copyEntryToClipHook)
     {
         PushTag(MUIA_NList_CopyEntryToClipHook, copyEntryToClipHook);
@@ -271,6 +284,54 @@ namespace MUI::MCC
     NListBuilder &NListBuilder::tagEntryValueDependent(const bool entryValueDependent)
     {
         PushTag(MUIA_NList_EntryValueDependent, entryValueDependent);
+        return *this;
+    }
+
+    NListBuilder &NListBuilder::tagIgnoreSpecialChars(const std::string &ignoreSpecialChars)
+    {
+        PushTag(MUIA_NList_IgnoreSpecialChars, ignoreSpecialChars);
+        return *this;
+    }
+
+    NListBuilder &NListBuilder::tagStackCheck(const bool stackCheck)
+    {
+        PushTag(MUIA_NList_StackCheck, stackCheck);
+        return *this;
+    }
+
+    NListBuilder &NListBuilder::tagWordSelectChars(const std::string &wordSelectChars)
+    {
+        PushTag(MUIA_NList_WordSelectChars, wordSelectChars);
+        return *this;
+    }
+
+    NListBuilder &NListBuilder::tagDragColOnly(const long dragColOnly)
+    {
+        PushTag(MUIA_NList_DragColOnly, dragColOnly);
+        return *this;
+    }
+
+    NListBuilder &NListBuilder::tagTitleClick(const long titleClick)
+    {
+        PushTag(MUIA_NList_TitleClick, titleClick);
+        return *this;
+    }
+
+    NListBuilder &NListBuilder::tagForcePen(const long forcePen)
+    {
+        PushTag(MUIA_NList_ForcePen, forcePen);
+        return *this;
+    }
+
+    NListBuilder &NListBuilder::tagSourceInsert(const struct MUIP_NList_InsertWrap *sourceInsert)
+    {
+        PushTag(MUIA_NList_SourceInsert, sourceInsert);
+        return *this;
+    }
+
+    NListBuilder &NListBuilder::tagTitleSeparator(const bool titleSeparator)
+    {
+        PushTag(MUIA_NList_TitleSeparator, titleSeparator);
         return *this;
     }
 
