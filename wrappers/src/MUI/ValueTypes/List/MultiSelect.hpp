@@ -10,7 +10,7 @@
 
 namespace MUI
 {
-    enum class MultiSelect
+    enum class List_MultiSelect
     {
         None = MUIV_List_MultiSelect_None,
         Default = MUIV_List_MultiSelect_Default,

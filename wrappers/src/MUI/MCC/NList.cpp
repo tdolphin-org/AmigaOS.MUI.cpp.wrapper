@@ -18,7 +18,7 @@ namespace MUI::MCC
     {
     }
 
-    NListBuilder &NListBuilder::tagTypeSelect(const enum MUI::MCC_NList::TypeSelect typeSelect)
+    NListBuilder &NListBuilder::tagTypeSelect(const enum MUI::MCC::NList_TypeSelect typeSelect)
     {
         PushTag(MUIA_NList_TypeSelect, (long)typeSelect);
         return *this;
@@ -120,7 +120,7 @@ namespace MUI::MCC
         return *this;
     }
 
-    NListBuilder &NListBuilder::tagDragType(const MUI::MCC_NList::DragType dragType)
+    NListBuilder &NListBuilder::tagDragType(const MUI::MCC::NList_DragType dragType)
     {
         PushTag(MUIA_NList_DragType, (long)dragType);
         return *this;
@@ -132,7 +132,7 @@ namespace MUI::MCC
         return *this;
     }
 
-    NListBuilder &NListBuilder::tagMultiSelect(const enum MUI::MCC_NList::MultiSelect multiSelect)
+    NListBuilder &NListBuilder::tagMultiSelect(const enum MUI::MCC::NList_MultiSelect multiSelect)
     {
         PushTag(MUIA_NList_MultiSelect, (long)multiSelect);
         return *this;

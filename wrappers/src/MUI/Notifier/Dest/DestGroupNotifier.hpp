@@ -11,7 +11,7 @@
 
 namespace MUI
 {
-    enum class GroupActivePage;
+    enum class Group_ActivePage;
 
     class DestGroupNotifier : public DestAreaNotifier
     {
@@ -27,6 +27,6 @@ namespace MUI
         /// @param activePage index of page to activate (unsigned long to prevent pass #define < 0)
         DestGroupNotifier &setActivePage(const unsigned long activePage, bool notify = true);
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Group_ActivePage ]
-        DestGroupNotifier &setActivePage(const enum GroupActivePage activePage, bool notify = true);
+        DestGroupNotifier &setActivePage(const enum Group_ActivePage activePage, bool notify = true);
     };
 }

@@ -8,7 +8,7 @@
 
 #include "Group.hpp"
 
-#include "ValueTypes/ScrollbarType.hpp"
+#include "ValueTypes/Scrollbar/Type.hpp"
 
 namespace MUI
 {
@@ -40,7 +40,7 @@ namespace MUI
         }
 
         /// @brief [ @b MUIA_Scrollbar_Type ]
-        T &tagType(const enum ScrollbarType type);
+        T &tagType(const enum Scrollbar_Type type);
     };
 
     class ScrollbarBuilder : public ScrollbarBuilderTemplate<ScrollbarBuilder, Scrollbar>
@@ -49,7 +49,7 @@ namespace MUI
         ScrollbarBuilder();
     };
 
-    template <typename T, typename U> inline T &ScrollbarBuilderTemplate<T, U>::tagType(const enum ScrollbarType type)
+    template <typename T, typename U> inline T &ScrollbarBuilderTemplate<T, U>::tagType(const enum Scrollbar_Type type)
     {
         this->PushTag(MUIA_Scrollbar_Type, (long)type);
         return (T &)*this;

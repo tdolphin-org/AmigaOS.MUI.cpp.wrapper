@@ -8,9 +8,9 @@
 
 #include <mui/NList_mcc.h>
 
-namespace MUI::MCC_NList
+namespace MUI::MCC
 {
-    enum class MultiSelect
+    enum class NList_MultiSelect
     {
         None = MUIV_NList_MultiSelect_None,
         Default = MUIV_NList_MultiSelect_Default,

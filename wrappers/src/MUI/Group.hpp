@@ -8,9 +8,9 @@
 
 #include "Area.hpp"
 
-#include "ValueTypes/GroupActivePage.hpp"
-#include "ValueTypes/GroupHorizCenter.hpp"
-#include "ValueTypes/GroupVertCenter.hpp"
+#include "ValueTypes/Group/ActivePage.hpp"
+#include "ValueTypes/Group/HorizCenter.hpp"
+#include "ValueTypes/Group/VertCenter.hpp"
 
 #undef AddHead
 #undef AddTail
@@ -47,8 +47,8 @@ namespace MUI
         /// @param activePage index of page to activate (unsigned long to prevent pass #define < 0)
         Group &setActivePage(const unsigned long activePage);
         /// @brief [ @b MUIA_Group_ActivePage ]
-        /// Activate given page by enum GroupActivePage.
-        Group &setActivePage(const enum GroupActivePage activePage);
+        /// Activate given page by enum Group_ActivePage.
+        Group &setActivePage(const enum Group_ActivePage activePage);
         /// @brief [ @b MUIA_Group_ActivePage, @b MUIV_Group_ActivePage_First ]
         /// Activate first page.
         Group &setActivePageFirst();
@@ -104,7 +104,7 @@ namespace MUI
         /// Indicate whether the objects in this group shall be layouted horizontally or vertically. Defaults to FALSE.
         T &tagHoriz(const bool horiz);
         /// @brief [ @b MUIA_Group_HorizCenter ]
-        T &tagHorizCenter(const enum GroupHorizCenter horizCenter);
+        T &tagHorizCenter(const enum Group_HorizCenter horizCenter);
         /// @brief [ @b MUIA_Group_HorizSpacing ]
         T &tagHorizSpacing(const long horizSpacing);
         /// @brief [ @b MUIA_Group_PageMode ]
@@ -120,7 +120,7 @@ namespace MUI
         /// @brief [ @b MUIM_Group_Spacing ]
         T &tagSpacing(const long spacing);
         /// @brief [ @b MUIA_Group_VertCenter ]
-        T &tagVertCenter(const enum GroupVertCenter vertCenter);
+        T &tagVertCenter(const enum Group_VertCenter vertCenter);
         /// @brief [ @b MUIA_Group_VertSpacing ]
         T &tagVertSpacing(const long vertSpacing);
     };
@@ -175,7 +175,7 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::tagHorizCenter(const enum GroupHorizCenter horizCenter)
+    template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::tagHorizCenter(const enum Group_HorizCenter horizCenter)
     {
         this->PushTag(MUIA_Group_HorizCenter, (long)horizCenter);
         return (T &)*this;
@@ -223,7 +223,7 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::tagVertCenter(const enum GroupVertCenter vertCenter)
+    template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::tagVertCenter(const enum Group_VertCenter vertCenter)
     {
         this->PushTag(MUIA_Group_VertCenter, (long)vertCenter);
         return (T &)*this;

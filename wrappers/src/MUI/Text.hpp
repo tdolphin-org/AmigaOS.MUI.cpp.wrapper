@@ -8,7 +8,7 @@
 
 #include "Area.hpp"
 
-#include "ValueTypes/TextShorten.hpp"
+#include "ValueTypes/Text/Shorten.hpp"
 
 namespace MUI
 {
@@ -72,7 +72,7 @@ namespace MUI
         T &tagPreParse(const std::string &preParse);
         /// @brief [ @b MUIA_Text_Shorten ]
         /// controls whether MUI is allowed to shorten the text to be displayed and how this shortening process will be done
-        T &tagShorten(const enum TextShorten shorten);
+        T &tagShorten(const enum Text_Shorten shorten);
     };
 
     class TextBuilder : public TextBuilderTemplate<TextBuilder, Text>
@@ -105,7 +105,7 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &TextBuilderTemplate<T, U>::tagShorten(const enum TextShorten shorten)
+    template <typename T, typename U> inline T &TextBuilderTemplate<T, U>::tagShorten(const enum Text_Shorten shorten)
     {
         this->PushTag(MUIA_Text_Shorten, (long)shorten);
         return (T &)*this;

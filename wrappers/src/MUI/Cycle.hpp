@@ -8,7 +8,7 @@
 
 #include "Group.hpp"
 
-#include "ValueTypes/CycleActive.hpp"
+#include "ValueTypes/Cycle/Active.hpp"
 
 #undef Cycle
 
@@ -38,7 +38,7 @@ namespace MUI
         long getActive() const;
 
         /// @brief [ @b MUIA_Cycle_Active ]
-        Cycle &setActive(const enum CycleActive active);
+        Cycle &setActive(const enum Cycle_Active active);
         /// @brief [ @b MUIA_Cycle_Active, @b MUIV_Cycle_Active_Next ]
         Cycle &setActiveNext();
         /// @brief [ @b MUIA_Cycle_Active, @b MUIV_Cycle_Active_Prev ]

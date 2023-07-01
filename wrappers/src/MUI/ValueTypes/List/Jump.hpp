@@ -10,7 +10,7 @@
 
 namespace MUI
 {
-    enum class Jump
+    enum class List_Jump
     {
         Top = MUIV_List_Jump_Top,
         Active = MUIV_List_Jump_Active,

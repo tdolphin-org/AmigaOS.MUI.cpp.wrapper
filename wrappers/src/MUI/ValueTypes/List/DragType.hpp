@@ -10,7 +10,7 @@
 
 namespace MUI
 {
-    enum class DragType
+    enum class List_DragType
     {
         None = MUIV_List_DragType_None,
         Immediate = MUIV_List_DragType_Immediate,

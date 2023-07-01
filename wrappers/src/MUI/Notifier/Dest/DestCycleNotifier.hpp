@@ -11,7 +11,7 @@
 
 namespace MUI
 {
-    enum class CycleActive;
+    enum class Cycle_Active;
 
     class DestCycleNotifier : public DestGroupNotifier
     {
@@ -24,6 +24,6 @@ namespace MUI
 
       public:
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Cycle_Active ]
-        DestCycleNotifier &setActivePage(const enum CycleActive active, bool notify = true);
+        DestCycleNotifier &setActivePage(const enum Cycle_Active active, bool notify = true);
     };
 }

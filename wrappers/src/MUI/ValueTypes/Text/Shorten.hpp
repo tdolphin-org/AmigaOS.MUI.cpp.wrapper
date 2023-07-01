@@ -10,7 +10,7 @@
 
 namespace MUI
 {
-    enum class TextShorten
+    enum class Text_Shorten
     {
         Nothing = MUIV_Text_Shorten_Nothing,
         Cutoff = MUIV_Text_Shorten_Cutoff,

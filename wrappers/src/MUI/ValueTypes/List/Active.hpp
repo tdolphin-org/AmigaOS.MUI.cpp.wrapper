@@ -10,7 +10,7 @@
 
 namespace MUI
 {
-    enum class Active
+    enum class List_Active
     {
         Off = MUIV_List_Active_Off,
         Top = MUIV_List_Active_Top,

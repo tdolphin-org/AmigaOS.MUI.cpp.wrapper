@@ -10,7 +10,7 @@
 
 namespace MUI
 {
-    enum class ScrollbarType
+    enum class Scrollbar_Type
     {
         Default = MUIV_Scrollbar_Type_Default,
         Bottom = MUIV_Scrollbar_Type_Bottom,

@@ -35,7 +35,7 @@ namespace MUI::MCC
         NListBuilder();
 
         /// @brief [ @b MUIA_NList_TypeSelect ]
-        NListBuilder &tagTypeSelect(const enum MUI::MCC_NList::TypeSelect typeSelect);
+        NListBuilder &tagTypeSelect(const enum MUI::MCC::NList_TypeSelect typeSelect);
 
         /// @brief [ @b MUIA_NList_TitlePen ]
         NListBuilder &tagTitlePen(const long titlePen);
@@ -73,11 +73,11 @@ namespace MUI::MCC
         /// @brief [ @b MUIA_NList_DefClickColumn ]
         NListBuilder &tagDefClickColumn(const long defClickColumn);
         /// @brief [ @b MUIA_NList_DragType ]
-        NListBuilder &tagDragType(const enum MUI::MCC_NList::DragType dragType);
+        NListBuilder &tagDragType(const enum MUI::MCC::NList_DragType dragType);
         /// @brief [ @b MUIA_NList_Input ]
         NListBuilder &tagInput(const bool input);
         /// @brief [ @b MUIA_NList_MultiSelect ]
-        NListBuilder &tagMultiSelect(const enum MUI::MCC_NList::MultiSelect multiSelect);
+        NListBuilder &tagMultiSelect(const enum MUI::MCC::NList_MultiSelect multiSelect);
 
         /// @brief [ @b MUIA_NList_Active ]
         NListBuilder &tagActive(const long active);

@@ -12,7 +12,7 @@
 
 namespace MUI
 {
-    enum class ListNextSelected
+    enum class List_NextSelected
     {
         Start = MUIV_List_NextSelected_Start,
         End = MUIV_List_NextSelected_End

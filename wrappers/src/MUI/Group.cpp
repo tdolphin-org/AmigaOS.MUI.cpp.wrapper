@@ -21,7 +21,7 @@ namespace MUI
         return *this;
     }
 
-    Group &Group::setActivePage(const enum GroupActivePage activePage)
+    Group &Group::setActivePage(const enum Group_ActivePage activePage)
     {
         SetValue(MUIA_Group_ActivePage, (long)activePage);
         return *this;

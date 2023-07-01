@@ -19,7 +19,7 @@ namespace MUI
         return SourceNotifier<Group, DestGroupNotifier>(mGroup, MUIA_Group_ActivePage, activePage);
     }
 
-    SourceNotifier<Group, DestGroupNotifier> GroupNotifier::onActivePage(const enum GroupActivePage activePage)
+    SourceNotifier<Group, DestGroupNotifier> GroupNotifier::onActivePage(const enum Group_ActivePage activePage)
     {
         return SourceNotifier<Group, DestGroupNotifier>(mGroup, MUIA_Group_ActivePage, (long)activePage);
     }

@@ -22,7 +22,7 @@ namespace MUI
         return *this;
     }
 
-    DestGroupNotifier &DestGroupNotifier::setActivePage(const enum GroupActivePage activePage, bool notify)
+    DestGroupNotifier &DestGroupNotifier::setActivePage(const enum Group_ActivePage activePage, bool notify)
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Group_ActivePage, (unsigned long)activePage);

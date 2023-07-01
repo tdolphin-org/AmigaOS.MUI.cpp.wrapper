@@ -24,6 +24,6 @@ namespace MUI
         /// @brief [ @b MUIM_Notify, @b MUIA_Group_ActivePage ]
         SourceNotifier<Group, DestGroupNotifier> onActivePage(const long activePage);
         /// @brief [ @b MUIM_Notify, @b MUIA_Group_ActivePage ]
-        SourceNotifier<Group, DestGroupNotifier> onActivePage(const enum GroupActivePage activePage);
+        SourceNotifier<Group, DestGroupNotifier> onActivePage(const enum Group_ActivePage activePage);
     };
 }

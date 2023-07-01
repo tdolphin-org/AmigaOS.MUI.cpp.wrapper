@@ -8,9 +8,9 @@
 
 #include <mui/NList_mcc.h>
 
-namespace MUI::MCC_NList
+namespace MUI::MCC
 {
-    enum class TypeSelect
+    enum class NList_TypeSelect
     {
         Line = MUIV_NList_TypeSelect_Line,
         Char = MUIV_NList_TypeSelect_Char

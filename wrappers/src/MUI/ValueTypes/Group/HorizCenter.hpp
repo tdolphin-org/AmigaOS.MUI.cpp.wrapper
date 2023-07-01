@@ -10,7 +10,7 @@
 
 namespace MUI
 {
-    enum class GroupHorizCenter
+    enum class Group_HorizCenter
     {
 #ifndef __MORPHOS__
         Left = MUIV_Group_HorizCenter_Left,

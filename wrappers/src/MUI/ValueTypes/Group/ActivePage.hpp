@@ -10,7 +10,7 @@
 
 namespace MUI
 {
-    enum class GroupActivePage
+    enum class Group_ActivePage
     {
         First = MUIV_Group_ActivePage_First,
         Last = MUIV_Group_ActivePage_Last,

@@ -15,7 +15,7 @@ namespace MUI
         return GetValueAsLong(MUIA_Cycle_Active);
     }
 
-    Cycle &Cycle::setActive(const enum CycleActive active)
+    Cycle &Cycle::setActive(const enum Cycle_Active active)
     {
         SetValue(MUIA_Cycle_Active, (long)active);
         return *this;

@@ -7,11 +7,11 @@
 #pragma once
 
 #include "Notify.hpp"
-#include "ValueTypes/Font.hpp"
-#include "ValueTypes/Frame.hpp"
+#include "ValueTypes/Area/Font.hpp"
+#include "ValueTypes/Area/Frame.hpp"
 #include "ValueTypes/ImageOrBackground.hpp"
-#include "ValueTypes/InputMode.hpp"
-#include "ValueTypes/PointerType.hpp"
+#include "ValueTypes/Area/InputMode.hpp"
+#include "ValueTypes/Area/PointerType.hpp"
 
 #undef Enable
 #undef Disable

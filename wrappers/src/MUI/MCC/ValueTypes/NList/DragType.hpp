@@ -8,9 +8,9 @@
 
 #include <mui/NList_mcc.h>
 
-namespace MUI::MCC_NList
+namespace MUI::MCC
 {
-    enum class DragType
+    enum class NList_DragType
     {
         None = MUIV_NList_DragType_None,
         Default = MUIV_NList_DragType_Default,

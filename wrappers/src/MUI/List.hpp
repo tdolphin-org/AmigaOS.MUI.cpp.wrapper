@@ -8,11 +8,11 @@
 
 #include "Area.hpp"
 
-#include "ValueTypes/Active.hpp"
-#include "ValueTypes/DragType.hpp"
-#include "ValueTypes/Jump.hpp"
-#include "ValueTypes/ListNextSelected.hpp"
-#include "ValueTypes/MultiSelect.hpp"
+#include "ValueTypes/List/Active.hpp"
+#include "ValueTypes/List/DragType.hpp"
+#include "ValueTypes/List/Jump.hpp"
+#include "ValueTypes/List/NextSelected.hpp"
+#include "ValueTypes/List/MultiSelect.hpp"
 
 #undef Remove
 
@@ -54,7 +54,7 @@ namespace MUI
         /// @brief [ @b MUIA_List_Active ]
         List &setActive(const long active);
         /// @brief [ @b MUIA_List_Active ]
-        List &setActive(const enum Active active);
+        List &setActive(const enum List_Active active);
         /// @brief [ @b MUIA_List_Active, @b MUIV_List_Active_Off ]
         List &setActiveOff();
         /// @brief [ @b MUIA_List_Active, @b MUIV_List_Active_Top ]
@@ -81,7 +81,7 @@ namespace MUI
         // methods, some can return object reference
 
         /// @brief [ @b MUIM_List_Jump ]
-        List &Jump(const enum Jump position);
+        List &Jump(const enum List_Jump position);
         /// @brief [ @b MUIM_List_Jump ]
         List &Jump(const long position);
 
@@ -150,7 +150,7 @@ namespace MUI
         }
 
         /// @brief [ @b MUIA_List_Active ]
-        T &tagActive(const enum Active active);
+        T &tagActive(const enum List_Active active);
         /// @brief [ @b MUIA_List_Active ]
         T &tagActive(const long active);
         /// @brief [ @b MUIA_List_AutoLineHeight ]
@@ -170,7 +170,7 @@ namespace MUI
         /// @brief [ @b MUIA_List_DisplayHook ]
         T &tagDisplayHook(const struct Hook *displayHook);
         /// @brief [ @b MUIA_List_DragType ]
-        T &tagDragType(const enum DragType dragType);
+        T &tagDragType(const enum List_DragType dragType);
         /// @brief [ @b MUIA_List_DragSortable ]
         T &tagDragSortable(const bool dragSortable);
         /// @brief [ @b MUIA_List_Format ]
@@ -180,7 +180,7 @@ namespace MUI
         /// @brief [ @b MUIA_List_Input ]
         T &tagInput(const bool input);
         /// @brief [ @b MUIA_List_MultiSelect ]
-        T &tagMultiSelect(const enum MultiSelect multiSelect);
+        T &tagMultiSelect(const enum List_MultiSelect multiSelect);
         /// @brief [ @b MUIA_List_SortColumn ]
         T &tagSortColumn(const long sortColumn);
         /// @brief [ @b MUIA_List_SourceArray ]
@@ -195,7 +195,7 @@ namespace MUI
         ListBuilder();
     };
 
-    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagActive(const enum Active active)
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagActive(const enum List_Active active)
     {
         this->PushTag(MUIA_List_Active, active);
         return (T &)*this;
@@ -255,7 +255,7 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDragType(const enum DragType dragType)
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDragType(const enum List_DragType dragType)
     {
         this->PushTag(MUIA_List_DragType, (long)dragType);
         return (T &)*this;
@@ -285,7 +285,7 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagMultiSelect(const enum MultiSelect multiSelect)
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagMultiSelect(const enum List_MultiSelect multiSelect)
     {
         this->PushTag(MUIA_List_MultiSelect, (long)multiSelect);
         return (T &)*this;

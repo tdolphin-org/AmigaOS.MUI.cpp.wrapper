@@ -36,7 +36,7 @@ namespace MUI
         return *this;
     }
 
-    List &List::setActive(const enum Active active)
+    List &List::setActive(const enum List_Active active)
     {
         SetValue(MUIA_List_Active, (long)active);
         return *this;
@@ -108,7 +108,7 @@ namespace MUI
         return *this;
     }
 
-    List &List::Jump(const enum Jump position)
+    List &List::Jump(const enum List_Jump position)
     {
         DoMethod(muiObject(), MUIM_List_Jump, (long)position);
         return *this;

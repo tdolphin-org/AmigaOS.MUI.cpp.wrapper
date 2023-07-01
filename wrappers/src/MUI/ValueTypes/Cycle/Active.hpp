@@ -10,7 +10,7 @@
 
 namespace MUI
 {
-    enum class CycleActive
+    enum class Cycle_Active
     {
         Next = MUIV_Cycle_Active_Next,
         Prev = MUIV_Cycle_Active_Prev
