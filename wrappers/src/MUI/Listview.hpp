@@ -36,6 +36,22 @@ namespace MUI
         }
 
         // is/get/set (attributes), all setters return object reference
+
+        /// @brief [ @b MUIA_Listview_AgainClick ]
+        bool isAgainClick() const;
+        /// @brief [ @b MUIA_Listview_ClickColumn ]
+        long getClickColumn() const;
+        /// @brief [ @b MUIA_Listview_DefClickColumn ]
+        long getDefClickColumn() const;
+        /// @brief [ @b MUIA_Listview_DoubleClick ]
+        bool isDoubleClick() const;
+        /// @brief [ @b MUIA_Listview_DragType ]
+        enum Listview_DragType getDragType() const;
+        /// @brief [ @b MUIA_Listview_List ]
+        /// @return MUI::List object
+        List getList();
+        /// @brief [ @b MUIA_Listview_SelectChange ]
+        bool isSelectChange() const;
     };
 
     template <typename T, typename U> class ListviewBuilderTemplate : public GroupBuilderTemplate<T, U>
