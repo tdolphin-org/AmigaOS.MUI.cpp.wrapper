@@ -8,7 +8,7 @@
 
 #include <mui/NList_mcc.h>
 
-namespace MUI::MCC
+namespace MUI::MCC_NList
 {
     enum class TypeSelect
     {

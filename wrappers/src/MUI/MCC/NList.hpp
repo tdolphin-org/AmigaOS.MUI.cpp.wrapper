@@ -33,7 +33,35 @@ namespace MUI::MCC
         NListBuilder();
 
         /// @brief [ @b MUIA_NList_TypeSelect ]
-        NListBuilder &tagTypeSelect(const enum MUI::MCC::TypeSelect typeSelect);
+        NListBuilder &tagTypeSelect(const enum MUI::MCC_NList::TypeSelect typeSelect);
+
+        /// @brief [ @b MUIA_NList_TitlePen ]
+        NListBuilder &tagTitlePen(const long titlePen);
+        /// @brief [ @b MUIA_NList_ListPen ]
+        NListBuilder &tagListPen(const long listPen);
+        /// @brief [ @b MUIA_NList_SelectPen ]
+        NListBuilder &tagSelectPen(const long selectPen);
+        /// @brief [ @b MUIA_NList_CursorPen ]
+        NListBuilder &tagCursorPen(const long cursorPen);
+        /// @brief [ @b MUIA_NList_UnselCurPen ]
+        NListBuilder &tagUnselCurPen(const long unselCurPen);
+        /// @brief [ @b MUIA_NList_InactivePen ]
+        NListBuilder &tagInactivePen(const long inactivePen);
+
+        /// @brief [ @b MUIA_NList_ListBackground ]
+        NListBuilder &tagListBackground(const long listBackground);
+        /// @brief [ @b MUIA_NList_ListAltBackground ]
+        NListBuilder &tagListAltBackground(const long listAltBackground);
+        /// @brief [ @b MUIA_NList_TitleBackground ]
+        NListBuilder &tagTitleBackground(const long titleBackground);
+        /// @brief [ @b MUIA_NList_SelectBackground ]
+        NListBuilder &tagSelectBackground(const long selectBackground);
+        /// @brief [ @b MUIA_NList_CursorBackground ]
+        NListBuilder &tagCursorBackground(const long cursorBackground);
+        /// @brief [ @b MUIA_NList_UnselCurBackground ]
+        NListBuilder &tagUnselCurBackground(const long unselCurBackground);
+        /// @brief [ @b MUIA_NList_InactiveBackground ]
+        NListBuilder &tagInactiveBackground(const long inactiveBackground);
 
         /// @brief [ @b MUIA_NList_DefaultObjectOnClick ]
         NListBuilder &tagDefaultObjectOnClick(const bool defaultObjectOnClick);
