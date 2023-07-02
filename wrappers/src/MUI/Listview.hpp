@@ -52,6 +52,11 @@ namespace MUI
         List getList();
         /// @brief [ @b MUIA_Listview_SelectChange ]
         bool isSelectChange() const;
+
+        /// @brief [ @b MUIA_Listview_DefClickColumn ]
+        Listview &setDefClickColumn(const long defClickColumn);
+        /// @brief [ @b MUIA_Listview_DragType ]
+        Listview &setDragType(const Listview_DragType dragType);
     };
 
     template <typename T, typename U> class ListviewBuilderTemplate : public GroupBuilderTemplate<T, U>

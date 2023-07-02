@@ -43,5 +43,17 @@ namespace MUI
         return GetValueAsBool(MUIA_Listview_SelectChange);
     }
 
+    Listview &Listview::setDefClickColumn(const long defClickColumn)
+    {
+        SetValue(MUIA_Listview_DefClickColumn, defClickColumn);
+        return *this;
+    }
+
+    Listview &Listview::setDragType(const Listview_DragType dragType)
+    {
+        SetValue(MUIA_Listview_DragType, (long)dragType);
+        return *this;
+    }
+
     ListviewBuilder::ListviewBuilder() { }
 }
