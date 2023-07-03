@@ -33,7 +33,7 @@ namespace MUI
         return Listview_DragType(GetValueAsLong(MUIA_Listview_DragType));
     }
 
-    List Listview::getList()
+    List Listview::getList() const
     {
         return List(GetValueAsObjectPtr(MUIA_Listview_List));
     }

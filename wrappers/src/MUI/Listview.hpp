@@ -49,7 +49,7 @@ namespace MUI
         enum Listview_DragType getDragType() const;
         /// @brief [ @b MUIA_Listview_List ]
         /// @return MUI::List object
-        List getList();
+        List getList() const;
         /// @brief [ @b MUIA_Listview_SelectChange ]
         bool isSelectChange() const;
 
@@ -157,11 +157,11 @@ namespace MUI
 
     template <typename T, typename U> inline U ListviewBuilderTemplate<T, U>::object() const
     {
-        // Every listview needs a list object as child. The list object is mandatory for listview, without it object will fail on creation.
+        // Each listview needs a list object as child. The list object is mandatory for listview, without it object will fail on creation.
         // So check if there is tag for List (not null).
         if (!hasListObject)
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing ListObject for Listview!";
+            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing List object for Listview!";
             throw std::runtime_error(error);
         }
 
@@ -171,11 +171,11 @@ namespace MUI
     template <typename T, typename U>
     inline U ListviewBuilderTemplate<T, U>::object(const unsigned long dataSize, const void *pDispatcher) const
     {
-        // Every listview needs a list object as child. The list object is mandatory for listview, without it object will fail on creation.
+        // Each listview needs a list object as child. The list object is mandatory for listview, without it object will fail on creation.
         // So check if there is tag for List (not null).
         if (!hasListObject)
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing ListObject for Listview!";
+            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing List object for Listview!";
             throw std::runtime_error(error);
         }
 

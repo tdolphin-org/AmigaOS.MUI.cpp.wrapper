@@ -6,7 +6,6 @@
 
 #include "NList.hpp"
 
-#include <mui/NList_mcc.h>
 #include <proto/alib.h>
 
 namespace MUI::MCC

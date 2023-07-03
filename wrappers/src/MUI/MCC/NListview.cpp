@@ -6,8 +6,8 @@
 
 #include "NListview.hpp"
 
-#include <mui/NListview_mcc.h>
 #include <proto/alib.h>
+#include <stdexcept>
 
 namespace MUI::MCC
 {
@@ -52,11 +52,13 @@ namespace MUI::MCC
 
     NListviewBuilder::NListviewBuilder()
       : NotifyBuilderTemplate(MUI::EmptyUniqueId, NListview::className)
+      , hasNListObject(false)
     {
     }
 
     NListviewBuilder &NListviewBuilder::tagNList(const NList &list)
     {
+        hasNListObject = true;
         PushTag(MUIA_NListview_NList, list.muiObject());
         return *this;
     }
@@ -71,5 +73,31 @@ namespace MUI::MCC
     {
         PushTag(MUIA_NListview_Horiz_ScrollBar, (long)horiz_ScrollBar);
         return *this;
+    }
+
+    NListview NListviewBuilder::object() const
+    {
+        // Each listview needs a list object as child. The list object is mandatory for NListview, without it object will fail on creation.
+        // So check if there is tag for NList (MUIA_NListview_NList).
+        if (!hasNListObject)
+        {
+            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing NList object for NListview!";
+            throw std::runtime_error(error);
+        }
+
+        return NotifyBuilderTemplate::object();
+    }
+
+    NListview NListviewBuilder::object(const unsigned long dataSize, const void *pDispatcher) const
+    {
+        // Each listview needs a list object as child. The list object is mandatory for NListview, without it object will fail on creation.
+        // So check if there is tag for NList (MUIA_NListview_NList).
+        if (!hasNListObject)
+        {
+            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing NList object for NListview!";
+            throw std::runtime_error(error);
+        }
+
+        return NotifyBuilderTemplate::object();
     }
 }

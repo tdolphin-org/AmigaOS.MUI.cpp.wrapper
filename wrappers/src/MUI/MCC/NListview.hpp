@@ -45,6 +45,8 @@ namespace MUI::MCC
 
     class NListviewBuilder : public NotifyBuilderTemplate<NListviewBuilder, NListview>
     {
+        bool hasNListObject;
+
       public:
         NListviewBuilder();
 
@@ -54,5 +56,8 @@ namespace MUI::MCC
         NListviewBuilder &tagVert_ScrollBar(const enum NListview_VSB vert_ScrollBar);
         /// @brief [ @b MUIA_NListview_Horiz_ScrollBar ]
         NListviewBuilder &tagHoriz_ScrollBar(const enum NListview_HSB horiz_ScrollBar);
+
+        NListview object() const;
+        NListview object(const unsigned long dataSize, const void *pDispatcher) const;
     };
 }
