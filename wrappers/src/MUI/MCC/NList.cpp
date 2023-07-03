@@ -137,6 +137,12 @@ namespace MUI::MCC
         return *this;
     }
 
+    NListBuilder &NListBuilder::tagActive(const enum NList_Active active)
+    {
+        PushTag(MUIA_NList_Active, (long)active);
+        return *this;
+    }
+
     NListBuilder &NListBuilder::tagActive(const long active)
     {
         PushTag(MUIA_NList_Active, active);
@@ -173,9 +179,21 @@ namespace MUI::MCC
         return *this;
     }
 
+    NListBuilder &NListBuilder::tagConstructHookString()
+    {
+        PushTag(MUIA_NList_ConstructHook, (const Hook *)MUIV_NList_ConstructHook_String);
+        return *this;
+    }
+
     NListBuilder &NListBuilder::tagDestructHook(const struct Hook *destructHook)
     {
         PushTag(MUIA_NList_DestructHook, destructHook);
+        return *this;
+    }
+
+    NListBuilder &NListBuilder::tagDestructHookString()
+    {
+        PushTag(MUIA_NList_DestructHook, (const Hook *)MUIV_NList_DestructHook_String);
         return *this;
     }
 
@@ -188,6 +206,12 @@ namespace MUI::MCC
     NListBuilder &NListBuilder::tagDragSortable(const bool dragSortable)
     {
         PushTag(MUIA_NList_DragSortable, dragSortable);
+        return *this;
+    }
+
+    NListBuilder &NListBuilder::tagFirst(const enum NList_First first)
+    {
+        PushTag(MUIA_NList_First, (long)first);
         return *this;
     }
 

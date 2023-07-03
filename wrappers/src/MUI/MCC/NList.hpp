@@ -7,8 +7,18 @@
 #pragma once
 
 #include "MUI/Notify.hpp"
+#include "ValueTypes/NList/Active.hpp"
 #include "ValueTypes/NList/DragType.hpp"
+#include "ValueTypes/NList/Exchange.hpp"
+#include "ValueTypes/NList/First.hpp"
+#include "ValueTypes/NList/HorizFirst.hpp"
+#include "ValueTypes/NList/Insert.hpp"
+#include "ValueTypes/NList/Jump.hpp"
+#include "ValueTypes/NList/Move.hpp"
 #include "ValueTypes/NList/MultiSelect.hpp"
+#include "ValueTypes/NList/Redraw.hpp"
+#include "ValueTypes/NList/Remove.hpp"
+#include "ValueTypes/NList/Select.hpp"
 #include "ValueTypes/NList/TypeSelect.hpp"
 
 namespace MUI::MCC
@@ -79,6 +89,8 @@ namespace MUI::MCC
         NListBuilder &tagMultiSelect(const enum NList_MultiSelect multiSelect);
 
         /// @brief [ @b MUIA_NList_Active ]
+        NListBuilder &tagActive(const enum NList_Active active);
+        /// @brief [ @b MUIA_NList_Active ]
         NListBuilder &tagActive(const long active);
         /// @brief [ @b MUIA_NList_AdjustHeight ]
         NListBuilder &tagAdjustHeight(const bool adjustHeight);
@@ -90,12 +102,18 @@ namespace MUI::MCC
         NListBuilder &tagCompareHook(const struct Hook *compareHook);
         /// @brief [ @b MUIA_NList_ConstructHook ]
         NListBuilder &tagConstructHook(const struct Hook *constructHook);
+        /// @brief [ @b MUIA_NList_ConstructHook, @b MUIV_NList_ConstructHook_String ]
+        NListBuilder &tagConstructHookString();
         /// @brief [ @b MUIA_NList_DestructHook ]
         NListBuilder &tagDestructHook(const struct Hook *destructHook);
+        /// @brief [ @b MUIA_NList_DestructHook, @b MUIV_NList_DestructHook_String ]
+        NListBuilder &tagDestructHookString();
         /// @brief [ @b MUIA_NList_DisplayHook ]
         NListBuilder &tagDisplayHook(const struct Hook *displayHook);
         /// @brief [ @b MUIA_NList_DragSortable ]
         NListBuilder &tagDragSortable(const bool dragSortable);
+        /// @brief [ @b MUIA_NList_First ]
+        NListBuilder &tagFirst(const enum NList_First first);
         /// @brief [ @b MUIA_NList_First ]
         NListBuilder &tagFirst(const long first);
         /// @brief [ @b MUIA_NList_Format ]
