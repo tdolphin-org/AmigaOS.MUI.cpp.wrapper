@@ -15,7 +15,6 @@ namespace MUI::MCC
 {
     class NList : public MUI::Notify
     {
-
       public:
         NList(const Object *pObject)
           : Notify(pObject)
@@ -35,7 +34,7 @@ namespace MUI::MCC
         NListBuilder();
 
         /// @brief [ @b MUIA_NList_TypeSelect ]
-        NListBuilder &tagTypeSelect(const enum MUI::MCC::NList_TypeSelect typeSelect);
+        NListBuilder &tagTypeSelect(const enum NList_TypeSelect typeSelect);
 
         /// @brief [ @b MUIA_NList_TitlePen ]
         NListBuilder &tagTitlePen(const long titlePen);
@@ -73,11 +72,11 @@ namespace MUI::MCC
         /// @brief [ @b MUIA_NList_DefClickColumn ]
         NListBuilder &tagDefClickColumn(const long defClickColumn);
         /// @brief [ @b MUIA_NList_DragType ]
-        NListBuilder &tagDragType(const enum MUI::MCC::NList_DragType dragType);
+        NListBuilder &tagDragType(const enum NList_DragType dragType);
         /// @brief [ @b MUIA_NList_Input ]
         NListBuilder &tagInput(const bool input);
         /// @brief [ @b MUIA_NList_MultiSelect ]
-        NListBuilder &tagMultiSelect(const enum MUI::MCC::NList_MultiSelect multiSelect);
+        NListBuilder &tagMultiSelect(const enum NList_MultiSelect multiSelect);
 
         /// @brief [ @b MUIA_NList_Active ]
         NListBuilder &tagActive(const long active);

@@ -18,7 +18,7 @@ namespace MUI::MCC
     {
     }
 
-    NListBuilder &NListBuilder::tagTypeSelect(const enum MUI::MCC::NList_TypeSelect typeSelect)
+    NListBuilder &NListBuilder::tagTypeSelect(const enum NList_TypeSelect typeSelect)
     {
         PushTag(MUIA_NList_TypeSelect, (long)typeSelect);
         return *this;
@@ -120,7 +120,7 @@ namespace MUI::MCC
         return *this;
     }
 
-    NListBuilder &NListBuilder::tagDragType(const MUI::MCC::NList_DragType dragType)
+    NListBuilder &NListBuilder::tagDragType(const enum NList_DragType dragType)
     {
         PushTag(MUIA_NList_DragType, (long)dragType);
         return *this;
@@ -132,7 +132,7 @@ namespace MUI::MCC
         return *this;
     }
 
-    NListBuilder &NListBuilder::tagMultiSelect(const enum MUI::MCC::NList_MultiSelect multiSelect)
+    NListBuilder &NListBuilder::tagMultiSelect(const enum NList_MultiSelect multiSelect)
     {
         PushTag(MUIA_NList_MultiSelect, (long)multiSelect);
         return *this;
@@ -143,91 +143,109 @@ namespace MUI::MCC
         PushTag(MUIA_NList_Active, active);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagAdjustHeight(const bool adjustHeight)
     {
         PushTag(MUIA_NList_AdjustHeight, adjustHeight);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagAdjustWidth(const bool adjustWidth)
     {
         PushTag(MUIA_NList_AdjustWidth, adjustWidth);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagAutoVisible(const bool autoVisible)
     {
         PushTag(MUIA_NList_AutoVisible, autoVisible);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagCompareHook(const struct Hook *compareHook)
     {
         PushTag(MUIA_NList_CompareHook, compareHook);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagConstructHook(const struct Hook *constructHook)
     {
         PushTag(MUIA_NList_ConstructHook, constructHook);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagDestructHook(const struct Hook *destructHook)
     {
         PushTag(MUIA_NList_DestructHook, destructHook);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagDisplayHook(const struct Hook *displayHook)
     {
         PushTag(MUIA_NList_DisplayHook, displayHook);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagDragSortable(const bool dragSortable)
     {
         PushTag(MUIA_NList_DragSortable, dragSortable);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagFirst(const long first)
     {
         PushTag(MUIA_NList_First, first);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagFormat(const std::string &format)
     {
         PushTag(MUIA_NList_Format, format);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagMinLineHeight(const long minLineHeight)
     {
         PushTag(MUIA_NList_MinLineHeight, minLineHeight);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagMultiTestHook(const struct Hook *multiTestHook)
     {
         PushTag(MUIA_NList_MultiTestHook, multiTestHook);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagPool(const void *pool)
     {
         PushTag(MUIA_NList_Pool, pool);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagPoolPuddleSize(const unsigned long poolPuddleSize)
     {
         PushTag(MUIA_NList_PoolPuddleSize, poolPuddleSize);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagPoolThreshSize(const unsigned long poolThreshSize)
     {
         PushTag(MUIA_NList_PoolThreshSize, poolThreshSize);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagShowDropMarks(const bool showDropMarks)
     {
         PushTag(MUIA_NList_ShowDropMarks, showDropMarks);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagSourceArray(const void *sourceArray)
     {
         PushTag(MUIA_NList_SourceArray, sourceArray);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagTitle(const std::string &title)
     {
         PushTag(MUIA_NList_Title, title);
@@ -251,36 +269,43 @@ namespace MUI::MCC
         PushTag(MUIA_NList_CopyEntryToClipHook, copyEntryToClipHook);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagSourceString(const std::string &sourceString)
     {
         PushTag(MUIA_NList_SourceString, sourceString);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagCopyColumnToClipHook(const struct Hook *copyColumnToClipHook)
     {
         PushTag(MUIA_NList_CopyColumnToClipHook, copyColumnToClipHook);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagAutoCopyToClip(const bool autoCopyToClip)
     {
         PushTag(MUIA_NList_AutoCopyToClip, autoCopyToClip);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagTabSize(const unsigned long tabSize)
     {
         PushTag(MUIA_NList_TabSize, tabSize);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagSkipChars(const std::string &skipChars)
     {
         PushTag(MUIA_NList_SkipChars, skipChars);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagPrivateData(const void *privateData)
     {
         PushTag(MUIA_NList_PrivateData, privateData);
         return *this;
     }
+
     NListBuilder &NListBuilder::tagEntryValueDependent(const bool entryValueDependent)
     {
         PushTag(MUIA_NList_EntryValueDependent, entryValueDependent);
@@ -334,5 +359,4 @@ namespace MUI::MCC
         PushTag(MUIA_NList_TitleSeparator, titleSeparator);
         return *this;
     }
-
 }
