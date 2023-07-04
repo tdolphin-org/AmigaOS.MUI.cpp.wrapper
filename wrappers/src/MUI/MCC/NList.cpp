@@ -12,6 +12,78 @@ namespace MUI::MCC
 {
     const std::string NList::className = MUIC_NList;
 
+    NList &NList::InsertTop(const void *entries[])
+    {
+        DoMethod(muiObject(), MUIM_NList_Insert, -1, MUIV_NList_Insert_Top, 0);
+        return *this;
+    }
+
+    NList &NList::InsertActive(const void *entries[])
+    {
+        DoMethod(muiObject(), MUIM_NList_Insert, -1, MUIV_NList_Insert_Active, 0);
+        return *this;
+    }
+
+    NList &NList::InsertSorted(const void *entries[])
+    {
+        DoMethod(muiObject(), MUIM_NList_Insert, -1, MUIV_NList_Insert_Sorted, 0);
+        return *this;
+    }
+
+    NList &NList::InsertBottom(const void *entries[])
+    {
+        DoMethod(muiObject(), MUIM_NList_Insert, -1, MUIV_NList_Insert_Bottom, 0);
+        return *this;
+    }
+
+    NList &NList::InsertSingleTop(const void *entry)
+    {
+        DoMethod(muiObject(), MUIM_NList_InsertSingle, entry, MUIV_NList_Insert_Top);
+        return *this;
+    }
+
+    NList &NList::InsertSingleActive(const void *entry)
+    {
+        DoMethod(muiObject(), MUIM_NList_InsertSingle, entry, MUIV_NList_Insert_Active);
+        return *this;
+    }
+
+    NList &NList::InsertSingleSorted(const void *entry)
+    {
+        DoMethod(muiObject(), MUIM_NList_InsertSingle, entry, MUIV_NList_Insert_Sorted);
+        return *this;
+    }
+
+    NList &NList::InsertSingleBottom(const void *entry)
+    {
+        DoMethod(muiObject(), MUIM_NList_InsertSingle, entry, MUIV_NList_Insert_Bottom);
+        return *this;
+    }
+
+    NList &NList::InsertSingleWrapTop(const void *entry)
+    {
+        DoMethod(muiObject(), MUIM_NList_InsertSingleWrap, entry, MUIV_NList_Insert_Top, WRAPCOL0, ALIGN_LEFT);
+        return *this;
+    }
+
+    NList &NList::InsertSingleWrapActive(const void *entry)
+    {
+        DoMethod(muiObject(), MUIM_NList_InsertSingleWrap, entry, MUIV_NList_Insert_Active, WRAPCOL0, ALIGN_LEFT);
+        return *this;
+    }
+
+    NList &NList::InsertSingleWrapSorted(const void *entry)
+    {
+        DoMethod(muiObject(), MUIM_NList_InsertSingleWrap, entry, MUIV_NList_Insert_Sorted, WRAPCOL0, ALIGN_LEFT);
+        return *this;
+    }
+
+    NList &NList::InsertSingleWrapBottom(const void *entry)
+    {
+        DoMethod(muiObject(), MUIM_NList_InsertSingleWrap, entry, MUIV_NList_Insert_Bottom, WRAPCOL0, ALIGN_LEFT);
+        return *this;
+    }
+
     NListBuilder::NListBuilder()
       : NotifyBuilderTemplate(MUI::EmptyUniqueId, NList::className)
     {

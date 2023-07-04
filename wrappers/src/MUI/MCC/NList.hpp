@@ -36,6 +36,35 @@ namespace MUI::MCC
         // is/get/set (attributes), all setters return object reference
 
         // methods, some can return object reference
+
+        // insert methods
+
+        /// @brief [ @b MUIM_NList_Insert, count = -1, pos = @b MUIV_NList_Insert_Top, flags = 0 ]
+        NList &InsertTop(const void *entries[]);
+        /// @brief [ @b MUIM_NList_Insert,  count = -1, pos = @b MUIV_NList_Insert_Active, flags = 0 ]
+        NList &InsertActive(const void *entries[]);
+        /// @brief [ @b MUIM_NList_Insert,  count = -1, pos = @b MUIV_NList_Insert_Sorted, flags = 0 ]
+        NList &InsertSorted(const void *entries[]);
+        /// @brief [ @b MUIM_NList_Insert,  count = -1, pos = @b MUIV_NList_Insert_Bottom, flags = 0 ]
+        NList &InsertBottom(const void *entries[]);
+
+        /// @brief [ @b MUIM_NList_InsertSingle, @b MUIV_NList_Insert_Top ]
+        NList &InsertSingleTop(const void *entry);
+        /// @brief [ @b MUIM_NList_InsertSingle, @b MUIV_NList_Insert_Active ]
+        NList &InsertSingleActive(const void *entry);
+        /// @brief [ @b MUIM_NList_InsertSingle, @b MUIV_NList_Insert_Sorted ]
+        NList &InsertSingleSorted(const void *entry);
+        /// @brief [ @b MUIM_NList_InsertSingle, @b MUIV_NList_Insert_Bottom ]
+        NList &InsertSingleBottom(const void *entry);
+
+        /// @brief [ @b MUIM_NList_InsertSingleWrap, @b MUIV_NList_Insert_Top ]
+        NList &InsertSingleWrapTop(const void *entry);
+        /// @brief [ @b MUIM_NList_InsertSingleWrap, @b MUIV_NList_Insert_Active ]
+        NList &InsertSingleWrapActive(const void *entry);
+        /// @brief [ @b MUIM_NList_InsertSingleWrap, @b MUIV_NList_Insert_Sorted ]
+        NList &InsertSingleWrapSorted(const void *entry);
+        /// @brief [ @b MUIM_NList_InsertSingleWrap, @b MUIV_NList_Insert_Bottom ]
+        NList &InsertSingleWrapBottom(const void *entry);
     };
 
     class NListBuilder : public NotifyBuilderTemplate<NListBuilder, NList>
