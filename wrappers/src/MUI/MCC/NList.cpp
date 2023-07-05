@@ -60,27 +60,27 @@ namespace MUI::MCC
         return *this;
     }
 
-    NList &NList::InsertSingleWrapTop(const void *entry)
+    NList &NList::InsertSingleWrapTop(const void *entry, const enum NList_WrapCol wrapcol, const enum NList_Align align)
     {
-        DoMethod(muiObject(), MUIM_NList_InsertSingleWrap, entry, MUIV_NList_Insert_Top, WRAPCOL0, ALIGN_LEFT);
+        DoMethod(muiObject(), MUIM_NList_InsertSingleWrap, entry, MUIV_NList_Insert_Top, wrapcol, align);
         return *this;
     }
 
-    NList &NList::InsertSingleWrapActive(const void *entry)
+    NList &NList::InsertSingleWrapActive(const void *entry, const enum NList_WrapCol wrapcol, const enum NList_Align align)
     {
-        DoMethod(muiObject(), MUIM_NList_InsertSingleWrap, entry, MUIV_NList_Insert_Active, WRAPCOL0, ALIGN_LEFT);
+        DoMethod(muiObject(), MUIM_NList_InsertSingleWrap, entry, MUIV_NList_Insert_Active, wrapcol, align);
         return *this;
     }
 
-    NList &NList::InsertSingleWrapSorted(const void *entry)
+    NList &NList::InsertSingleWrapSorted(const void *entry, const enum NList_WrapCol wrapcol, const enum NList_Align align)
     {
-        DoMethod(muiObject(), MUIM_NList_InsertSingleWrap, entry, MUIV_NList_Insert_Sorted, WRAPCOL0, ALIGN_LEFT);
+        DoMethod(muiObject(), MUIM_NList_InsertSingleWrap, entry, MUIV_NList_Insert_Sorted, wrapcol, align);
         return *this;
     }
 
-    NList &NList::InsertSingleWrapBottom(const void *entry)
+    NList &NList::InsertSingleWrapBottom(const void *entry, const enum NList_WrapCol wrapcol, const enum NList_Align align)
     {
-        DoMethod(muiObject(), MUIM_NList_InsertSingleWrap, entry, MUIV_NList_Insert_Bottom, WRAPCOL0, ALIGN_LEFT);
+        DoMethod(muiObject(), MUIM_NList_InsertSingleWrap, entry, MUIV_NList_Insert_Bottom, wrapcol, align);
         return *this;
     }
 

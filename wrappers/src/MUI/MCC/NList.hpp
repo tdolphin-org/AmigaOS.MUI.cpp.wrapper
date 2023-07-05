@@ -23,6 +23,26 @@
 
 namespace MUI::MCC
 {
+    enum class NList_WrapCol
+    {
+        NoWrap = NOWRAP,
+        WrapColumn0 = WRAPCOL0,
+        WrapColumn1 = WRAPCOL1,
+        WrapColumn2 = WRAPCOL2,
+        WrapColumn3 = WRAPCOL3,
+        WrapColumn4 = WRAPCOL4,
+        WrapColumn5 = WRAPCOL5,
+        WrapColumn6 = WRAPCOL6,
+    };
+
+    enum class NList_Align
+    {
+        Left = ALIGN_LEFT,
+        Center = ALIGN_CENTER,
+        Right = ALIGN_RIGHT,
+        Justify = ALIGN_JUSTIFY,
+    };
+
     class NList : public MUI::Notify
     {
       public:
@@ -58,13 +78,13 @@ namespace MUI::MCC
         NList &InsertSingleBottom(const void *entry);
 
         /// @brief [ @b MUIM_NList_InsertSingleWrap, @b MUIV_NList_Insert_Top ]
-        NList &InsertSingleWrapTop(const void *entry);
+        NList &InsertSingleWrapTop(const void *entry, const enum NList_WrapCol wrapcol, const enum NList_Align align);
         /// @brief [ @b MUIM_NList_InsertSingleWrap, @b MUIV_NList_Insert_Active ]
-        NList &InsertSingleWrapActive(const void *entry);
+        NList &InsertSingleWrapActive(const void *entry, const enum NList_WrapCol wrapcol, const enum NList_Align align);
         /// @brief [ @b MUIM_NList_InsertSingleWrap, @b MUIV_NList_Insert_Sorted ]
-        NList &InsertSingleWrapSorted(const void *entry);
+        NList &InsertSingleWrapSorted(const void *entry, const enum NList_WrapCol wrapcol, const enum NList_Align align);
         /// @brief [ @b MUIM_NList_InsertSingleWrap, @b MUIV_NList_Insert_Bottom ]
-        NList &InsertSingleWrapBottom(const void *entry);
+        NList &InsertSingleWrapBottom(const void *entry, const enum NList_WrapCol wrapcol, const enum NList_Align align);
     };
 
     class NListBuilder : public NotifyBuilderTemplate<NListBuilder, NList>
