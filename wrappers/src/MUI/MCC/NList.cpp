@@ -14,25 +14,49 @@ namespace MUI::MCC
 
     NList &NList::InsertTop(const void *entries[])
     {
-        DoMethod(muiObject(), MUIM_NList_Insert, -1, MUIV_NList_Insert_Top, 0);
+        DoMethod(muiObject(), MUIM_NList_Insert, entries, -1, MUIV_NList_Insert_Top, 0);
         return *this;
     }
 
     NList &NList::InsertActive(const void *entries[])
     {
-        DoMethod(muiObject(), MUIM_NList_Insert, -1, MUIV_NList_Insert_Active, 0);
+        DoMethod(muiObject(), MUIM_NList_Insert, entries, -1, MUIV_NList_Insert_Active, 0);
         return *this;
     }
 
     NList &NList::InsertSorted(const void *entries[])
     {
-        DoMethod(muiObject(), MUIM_NList_Insert, -1, MUIV_NList_Insert_Sorted, 0);
+        DoMethod(muiObject(), MUIM_NList_Insert, entries, -1, MUIV_NList_Insert_Sorted, 0);
         return *this;
     }
 
     NList &NList::InsertBottom(const void *entries[])
     {
-        DoMethod(muiObject(), MUIM_NList_Insert, -1, MUIV_NList_Insert_Bottom, 0);
+        DoMethod(muiObject(), MUIM_NList_Insert, entries, -1, MUIV_NList_Insert_Bottom, 0);
+        return *this;
+    }
+
+    NList &NList::InsertWrapActive(const void *entries[], const NList_WrapCol wrapcol, const NList_Align align)
+    {
+        DoMethod(muiObject(), MUIM_NList_InsertWrap, entries, -1, MUIV_NList_Insert_Active, wrapcol, align, 0);
+        return *this;
+    }
+
+    NList &NList::InsertWrapTop(const void *entries[], const NList_WrapCol wrapcol, const NList_Align align)
+    {
+        DoMethod(muiObject(), MUIM_NList_InsertWrap, entries, -1, MUIV_NList_Insert_Top, wrapcol, align, 0);
+        return *this;
+    }
+
+    NList &NList::InsertWrapSorted(const void *entries[], const NList_WrapCol wrapcol, const NList_Align align)
+    {
+        DoMethod(muiObject(), MUIM_NList_InsertWrap, entries, -1, MUIV_NList_Insert_Sorted, wrapcol, align, 0);
+        return *this;
+    }
+
+    NList &NList::InsertWrapBottom(const void *entries[], const NList_WrapCol wrapcol, const NList_Align align)
+    {
+        DoMethod(muiObject(), MUIM_NList_InsertWrap, entries, -1, MUIV_NList_Insert_Bottom, wrapcol, align, 0);
         return *this;
     }
 
