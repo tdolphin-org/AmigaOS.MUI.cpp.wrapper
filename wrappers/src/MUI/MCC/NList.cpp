@@ -36,25 +36,25 @@ namespace MUI::MCC
         return *this;
     }
 
-    NList &NList::InsertWrapActive(const void *entries[], const NList_WrapCol wrapcol, const NList_Align align)
+    NList &NList::InsertWrapActive(const void *entries[], const enum NList_WrapCol wrapcol, const enum NList_Align align)
     {
         DoMethod(muiObject(), MUIM_NList_InsertWrap, entries, -1, MUIV_NList_Insert_Active, wrapcol, align, 0);
         return *this;
     }
 
-    NList &NList::InsertWrapTop(const void *entries[], const NList_WrapCol wrapcol, const NList_Align align)
+    NList &NList::InsertWrapTop(const void *entries[], const enum NList_WrapCol wrapcol, const enum NList_Align align)
     {
         DoMethod(muiObject(), MUIM_NList_InsertWrap, entries, -1, MUIV_NList_Insert_Top, wrapcol, align, 0);
         return *this;
     }
 
-    NList &NList::InsertWrapSorted(const void *entries[], const NList_WrapCol wrapcol, const NList_Align align)
+    NList &NList::InsertWrapSorted(const void *entries[], const enum NList_WrapCol wrapcol, const enum NList_Align align)
     {
         DoMethod(muiObject(), MUIM_NList_InsertWrap, entries, -1, MUIV_NList_Insert_Sorted, wrapcol, align, 0);
         return *this;
     }
 
-    NList &NList::InsertWrapBottom(const void *entries[], const NList_WrapCol wrapcol, const NList_Align align)
+    NList &NList::InsertWrapBottom(const void *entries[], const enum NList_WrapCol wrapcol, const enum NList_Align align)
     {
         DoMethod(muiObject(), MUIM_NList_InsertWrap, entries, -1, MUIV_NList_Insert_Bottom, wrapcol, align, 0);
         return *this;
@@ -106,6 +106,36 @@ namespace MUI::MCC
     {
         DoMethod(muiObject(), MUIM_NList_InsertSingleWrap, entry, MUIV_NList_Insert_Bottom, wrapcol, align);
         return *this;
+    }
+
+    NList &NList::Clear()
+    {
+        DoMethod(muiObject(), MUIM_NList_Clear);
+        return *this;
+    }
+
+    NList &NList::Redraw(long pos) const
+    {
+        DoMethod(muiObject(), MUIM_NList_Redraw, pos);
+        return (NList &)*this;
+    }
+
+    NList &NList::RedrawActive() const
+    {
+        DoMethod(muiObject(), MUIM_NList_Redraw, MUIV_NList_Redraw_Active);
+        return (NList &)*this;
+    }
+
+    NList &NList::RedrawAll(const void *entry) const
+    {
+        DoMethod(muiObject(), MUIM_NList_Redraw, MUIV_NList_Redraw_All);
+        return (NList &)*this;
+    }
+
+    NList &NList::RedrawTitle() const
+    {
+        DoMethod(muiObject(), MUIM_NList_Redraw, MUIV_NList_Redraw_Title);
+        return (NList &)*this;
     }
 
     NListBuilder::NListBuilder()

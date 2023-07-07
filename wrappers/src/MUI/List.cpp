@@ -192,7 +192,7 @@ namespace MUI
     List &List::InsertBottom(const void *entries[])
     {
         DoMethod(muiObject(), MUIM_List_Insert, (ULONG)entries, -1, MUIV_List_Insert_Bottom);
-        return (List &)*this;
+        return *this;
     }
 
     List &List::InsertBottom(const char *entries[])
@@ -200,9 +200,10 @@ namespace MUI
         return InsertBottom((const void **)entries);
     }
 
-    void List::Clear()
+    List &List::Clear()
     {
         DoMethod(muiObject(), MUIM_List_Clear);
+        return *this;
     }
 
     List &List::Redraw(long pos) const

@@ -94,6 +94,19 @@ namespace MUI::MCC
         NList &InsertSingleWrapSorted(const void *entry, const enum NList_WrapCol wrapcol, const enum NList_Align align);
         /// @brief [ @b MUIM_NList_InsertSingleWrap, @b MUIV_NList_Insert_Bottom ]
         NList &InsertSingleWrapBottom(const void *entry, const enum NList_WrapCol wrapcol, const enum NList_Align align);
+
+        // redraw methods
+
+        /// @brief [ @b MUIM_NList_Clear ]
+        NList &Clear();
+        /// @brief [ @b MUIM_NList_Redraw ]
+        NList &Redraw(long pos) const;
+        /// @brief [ @b MUIM_NList_Redraw, @b MUIV_NList_Redraw_Active ]
+        NList &RedrawActive() const;
+        /// @brief [ @b MUIM_NList_Redraw, @b MUIV_NList_Redraw_All ]
+        NList &RedrawAll(const void *entry) const;
+        /// @brief [ @b MUIM_NList_Redraw, @b MUIV_NList_Redraw_Title ]
+        NList &RedrawTitle() const;
     };
 
     class NListBuilder : public NotifyBuilderTemplate<NListBuilder, NList>

@@ -130,7 +130,7 @@ namespace MUI
         // redraw methods
 
         /// @brief [ @b MUIM_List_Clear ]
-        void Clear();
+        List &Clear();
         /// @brief [ @b MUIM_List_Redraw ]
         List &Redraw(long pos) const;
         /// @brief [ @b MUIM_List_Redraw, @b MUIV_List_Redraw_Active ]
