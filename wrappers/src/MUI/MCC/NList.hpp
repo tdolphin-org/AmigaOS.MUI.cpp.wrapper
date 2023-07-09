@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "MUI/Notify.hpp"
+#include "MUI/Area.hpp"
 #include "ValueTypes/NList/Active.hpp"
 #include "ValueTypes/NList/DragType.hpp"
 #include "ValueTypes/NList/Exchange.hpp"
@@ -43,15 +43,20 @@ namespace MUI::MCC
         Justify = ALIGN_JUSTIFY,
     };
 
-    class NList : public MUI::Notify
+    class NList : public MUI::Area
     {
       public:
         NList(const Object *pObject)
-          : Notify(pObject)
+          : Area(pObject)
         {
         }
 
         const static std::string className;
+
+        static inline bool instanceOf(Object *pMuiObject)
+        {
+            return MUI::instanceOf(pMuiObject, className.c_str());
+        }
 
         // is/get/set (attributes), all setters return object reference
 
@@ -109,11 +114,11 @@ namespace MUI::MCC
         NList &RedrawTitle() const;
     };
 
-    template <typename T, typename U> class NListBuilderTemplate : public NotifyBuilderTemplate<T, U>
+    template <typename T, typename U> class NListBuilderTemplate : public AreaBuilderTemplate<T, U>
     {
       public:
         NListBuilderTemplate(const std::string &uniqueId = MUI::EmptyUniqueId, const std::string &muiClassName = U::className)
-          : NotifyBuilderTemplate<T, U>(uniqueId, muiClassName)
+          : AreaBuilderTemplate<T, U>(uniqueId, muiClassName)
         {
         }
 

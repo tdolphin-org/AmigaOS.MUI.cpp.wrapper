@@ -12,11 +12,11 @@
 
 namespace MUI::MCC
 {
-    class NListview : public MUI::Notify
+    class NListview : public MUI::Area
     {
       public:
         NListview(const Object *pObject)
-          : Notify(pObject)
+          : Area(pObject)
         {
         }
 
@@ -43,7 +43,7 @@ namespace MUI::MCC
         // methods, some can return object reference
     };
 
-    class NListviewBuilder : public NotifyBuilderTemplate<NListviewBuilder, NListview>
+    class NListviewBuilder : public AreaBuilderTemplate<NListviewBuilder, NListview>
     {
         bool hasNListObject;
 

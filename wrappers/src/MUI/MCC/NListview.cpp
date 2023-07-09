@@ -51,7 +51,7 @@ namespace MUI::MCC
     }
 
     NListviewBuilder::NListviewBuilder()
-      : NotifyBuilderTemplate(MUI::EmptyUniqueId, NListview::className)
+      : AreaBuilderTemplate(MUI::EmptyUniqueId, NListview::className)
       , hasNListObject(false)
     {
     }
@@ -85,7 +85,7 @@ namespace MUI::MCC
             throw std::runtime_error(error);
         }
 
-        return NotifyBuilderTemplate::object();
+        return AreaBuilderTemplate::object();
     }
 
     NListview NListviewBuilder::object(const unsigned long dataSize, const void *pDispatcher) const
@@ -98,6 +98,6 @@ namespace MUI::MCC
             throw std::runtime_error(error);
         }
 
-        return NotifyBuilderTemplate::object();
+        return AreaBuilderTemplate::object();
     }
 }
