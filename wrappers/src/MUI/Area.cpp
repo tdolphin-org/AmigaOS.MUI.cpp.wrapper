@@ -8,6 +8,8 @@
 
 namespace MUI
 {
+    const std::string Area::className = MUIC_Area;
+
     bool Area::isSelected() const
     {
         return GetValueAsBool(MUIA_Selected);

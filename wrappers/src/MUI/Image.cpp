@@ -8,5 +8,7 @@
 
 namespace MUI
 {
+    const std::string Image::className = MUIC_Image;
+
     ImageBuilder::ImageBuilder() { }
 }

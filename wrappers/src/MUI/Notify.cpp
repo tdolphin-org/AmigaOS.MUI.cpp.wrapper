@@ -10,6 +10,8 @@
 
 namespace MUI
 {
+    const std::string Notify::className = MUIC_Notify;
+
     Object *Notify::getApplicationObject() const
     {
         return GetValueAsObjectPtr(MUIA_ApplicationObject);

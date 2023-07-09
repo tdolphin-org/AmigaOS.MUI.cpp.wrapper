@@ -51,6 +51,13 @@ namespace MUI::MCC
         {
         }
 
+        NList(const APTR pMuiObject)
+          : Area(pMuiObject)
+        {
+        }
+
+        // instanceOf
+
         const static std::string className;
 
         static inline bool instanceOf(Object *pMuiObject)

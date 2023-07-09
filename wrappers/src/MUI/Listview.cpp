@@ -8,6 +8,8 @@
 
 namespace MUI
 {
+    const std::string Listview::className = MUIC_Listview;
+
     bool Listview::isAgainClick() const
     {
         return GetValueAsBool(MUIA_Listview_AgainClick);

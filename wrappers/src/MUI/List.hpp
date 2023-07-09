@@ -11,8 +11,8 @@
 #include "ValueTypes/List/Active.hpp"
 #include "ValueTypes/List/DragType.hpp"
 #include "ValueTypes/List/Jump.hpp"
-#include "ValueTypes/List/NextSelected.hpp"
 #include "ValueTypes/List/MultiSelect.hpp"
+#include "ValueTypes/List/NextSelected.hpp"
 
 #undef Remove
 
@@ -31,9 +31,13 @@ namespace MUI
         {
         }
 
+        // instanceOf
+
+        const static std::string className;
+
         static inline bool instanceOf(Object *pMuiObject)
         {
-            return MUI::instanceOf(pMuiObject, MUIC_List);
+            return MUI::instanceOf(pMuiObject, className.c_str());
         }
 
         // is/get/set (attributes), all setters return object reference

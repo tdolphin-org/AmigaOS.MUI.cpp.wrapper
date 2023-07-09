@@ -12,6 +12,8 @@
 
 namespace MUI
 {
+    const std::string Window::className = MUIC_Window;
+
     bool Window::isOpen()
     {
         return GetValueAsBool(MUIA_Window_Open);

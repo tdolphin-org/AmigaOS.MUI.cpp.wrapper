@@ -10,6 +10,8 @@
 
 namespace MUI
 {
+    const std::string Floattext::className = MUIC_Floattext;
+
     bool Floattext::isJustify() const
     {
         return GetValueAsBool(MUIA_Floattext_Justify);

@@ -8,7 +8,7 @@
 
 namespace MUI
 {
-    MenustripBuilder::MenustripBuilder() { }
+    const std::string Menustrip::className = MUIC_Menustrip;
 
     bool Menustrip::isCaseSensitive() const
     {
@@ -25,4 +25,6 @@ namespace MUI
         SetValue(MUIA_Menustrip_Enabled, enabled);
         return *this;
     }
+
+    MenustripBuilder::MenustripBuilder() { }
 }

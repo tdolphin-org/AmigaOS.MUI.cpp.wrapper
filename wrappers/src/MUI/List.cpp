@@ -10,6 +10,8 @@
 
 namespace MUI
 {
+    const std::string List::className = MUIC_List;
+
     long List::getActive() const
     {
         return GetValueAsLong(MUIA_List_Active);

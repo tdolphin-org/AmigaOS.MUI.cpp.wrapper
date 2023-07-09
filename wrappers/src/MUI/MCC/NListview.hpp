@@ -20,7 +20,19 @@ namespace MUI::MCC
         {
         }
 
+        NListview(const APTR pMuiObject)
+          : Area(pMuiObject)
+        {
+        }
+
+        // instanceOf
+
         const static std::string className;
+
+        static inline bool instanceOf(Object *pMuiObject)
+        {
+            return MUI::instanceOf(pMuiObject, className.c_str());
+        }
 
         // is/get/set (attributes), all setters return object reference
 

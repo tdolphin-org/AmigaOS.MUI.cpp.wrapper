@@ -8,5 +8,7 @@
 
 namespace MUI
 {
+    const std::string Family::className = MUIC_Family;
+
     FamilyBuilder::FamilyBuilder() { }
 }

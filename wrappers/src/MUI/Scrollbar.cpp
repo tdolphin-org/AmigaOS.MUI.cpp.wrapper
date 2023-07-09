@@ -8,5 +8,7 @@
 
 namespace MUI
 {
+    const std::string Scrollbar::className = MUIC_Scrollbar;
+
     ScrollbarBuilder::ScrollbarBuilder() { }
 }

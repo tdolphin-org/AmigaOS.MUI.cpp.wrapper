@@ -19,7 +19,19 @@ namespace MUI::MCC
         {
         }
 
+        TextEditor(const APTR pMuiObject)
+          : Notify(pMuiObject)
+        {
+        }
+
+        // instanceOf
+
         const static std::string className;
+
+        static inline bool instanceOf(Object *pMuiObject)
+        {
+            return MUI::instanceOf(pMuiObject, className.c_str());
+        }
 
         // is/get/set (attributes), all setters return object reference
 

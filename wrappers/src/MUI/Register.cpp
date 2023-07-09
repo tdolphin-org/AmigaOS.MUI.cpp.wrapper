@@ -8,5 +8,7 @@
 
 namespace MUI
 {
+    const std::string Register::className = MUIC_Register;
+
     RegisterBuilder::RegisterBuilder() { }
 }

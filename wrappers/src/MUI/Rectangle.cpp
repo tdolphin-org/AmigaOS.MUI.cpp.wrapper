@@ -8,5 +8,7 @@
 
 namespace MUI
 {
+    const std::string Rectangle::className = MUIC_Rectangle;
+
     RectangleBuilder::RectangleBuilder() { }
 }

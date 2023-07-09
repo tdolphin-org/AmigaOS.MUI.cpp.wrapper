@@ -8,5 +8,7 @@
 
 namespace MUI
 {
+    const std::string Balance::className = MUIC_Balance;
+
     BalanceBuilder::BalanceBuilder() { }
 }

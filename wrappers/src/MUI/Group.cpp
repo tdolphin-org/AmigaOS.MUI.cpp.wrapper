@@ -10,6 +10,8 @@
 
 namespace MUI
 {
+    const std::string Group::className = MUIC_Group;
+
     long Group::getActivePage() const
     {
         return GetValueAsLong(MUIA_Group_ActivePage);

@@ -8,13 +8,13 @@
 
 namespace MUI
 {
-    MenuBuilder::MenuBuilder() { }
-    
+    const std::string Menu::className = MUIC_Menu;
+
     bool Menu::isEnabled() const
     {
         return GetValueAsBool(MUIA_Menu_Enabled);
     }
-    
+
     std::string Menu::getTitle() const
     {
         return GetValueAsString(MUIA_Menu_Title);
@@ -31,4 +31,6 @@ namespace MUI
         SetValue(MUIA_Menu_Title, title);
         return *this;
     }
+
+    MenuBuilder::MenuBuilder() { }
 }

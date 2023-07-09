@@ -15,6 +15,8 @@
 
 namespace MUI
 {
+    const std::string Application::className = MUIC_Application;
+
     Object *Application::getMenustripObject() const
     {
         return GetValueAsObjectPtr(MUIA_Application_Menustrip);

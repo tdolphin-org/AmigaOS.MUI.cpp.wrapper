@@ -8,6 +8,8 @@
 
 namespace MUI
 {
+    const std::string String::className = MUIC_String;
+
     std::string String::getContents()
     {
         return GetValueAsString(MUIA_String_Contents);

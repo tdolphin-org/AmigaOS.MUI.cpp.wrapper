@@ -9,9 +9,9 @@
 #include "Notify.hpp"
 #include "ValueTypes/Area/Font.hpp"
 #include "ValueTypes/Area/Frame.hpp"
-#include "ValueTypes/ImageOrBackground.hpp"
 #include "ValueTypes/Area/InputMode.hpp"
 #include "ValueTypes/Area/PointerType.hpp"
+#include "ValueTypes/ImageOrBackground.hpp"
 
 #undef Enable
 #undef Disable
@@ -36,9 +36,13 @@ namespace MUI
         {
         }
 
+        // instanceOf
+
+        const static std::string className;
+
         static inline bool instanceOf(Object *pMuiObject)
         {
-            return MUI::instanceOf(pMuiObject, MUIC_Area);
+            return MUI::instanceOf(pMuiObject, className.c_str());
         }
 
         // is/get/set (attributes), all setters return object reference

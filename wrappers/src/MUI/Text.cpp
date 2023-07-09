@@ -8,6 +8,8 @@
 
 namespace MUI
 {
+    const std::string Text::className = MUIC_Text;
+
     Text &Text::setContents(const std::string &contents)
     {
         SetValue(MUIA_Text_Contents, contents);

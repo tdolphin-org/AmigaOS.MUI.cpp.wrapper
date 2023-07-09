@@ -8,7 +8,7 @@
 
 namespace MUI
 {
-    CycleBuilder::CycleBuilder() { }
+    const std::string Cycle::className = MUIC_Cycle;
 
     long Cycle::getActive() const
     {
@@ -44,4 +44,6 @@ namespace MUI
         SetValue(MUIA_Cycle_Entries, entries);
         return *this;
     }
+
+    CycleBuilder::CycleBuilder() { }
 }

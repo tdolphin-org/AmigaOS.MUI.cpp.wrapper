@@ -8,5 +8,7 @@
 
 namespace MUI
 {
+    const std::string Popasl::className = MUIC_Popasl;
+
     PopaslBuilder::PopaslBuilder() { }
 }

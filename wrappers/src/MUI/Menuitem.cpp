@@ -10,7 +10,7 @@
 
 namespace MUI
 {
-    MenuitemBuilder::MenuitemBuilder() { }
+    const std::string Menuitem::className = MUIC_Balance;
 
     bool Menuitem::isChecked() const
     {
@@ -76,4 +76,6 @@ namespace MUI
     {
         return MenuitemBuilder().tagTitle(title).tagUserData(userData).object();
     }
+
+    MenuitemBuilder::MenuitemBuilder() { }
 }

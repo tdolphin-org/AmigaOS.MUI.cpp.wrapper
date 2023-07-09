@@ -8,5 +8,7 @@
 
 namespace MUI
 {
+    const std::string Popstring::className = MUIC_Popstring;
+
     PopstringBuilder::PopstringBuilder() { }
 }
