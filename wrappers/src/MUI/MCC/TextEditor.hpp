@@ -7,6 +7,7 @@
 #pragma once
 
 #include "MUI/Notify.hpp"
+#include "ValueTypes/TextEditor/WrapMode.hpp"
 
 namespace MUI::MCC
 {
@@ -53,6 +54,12 @@ namespace MUI::MCC
 
         /// @brief [ @b MUIA_TextEditor_Contents ]
         TextEditorBuilder &tagContents(const std::string &contents);
+        /// @brief [ @b MUIA_TextEditor_FixedFont ]
+        TextEditorBuilder &tagFixedFont(const bool fixedFont = true);
+        /// @brief [ @b MUIA_TextEditor_ReadOnly ]
+        TextEditorBuilder &tagReadOnly(const bool readOnly = true);
+        /// @brief [ @b MUIA_TextEditor_WrapMode ]
+        TextEditorBuilder &tagWrapMode(const enum TextEditor_WrapMode wrapMode);
         /// @brief [ @b MUIA_TextEditor_Rows ]
         TextEditorBuilder &tagRows(const long rows);
         /// @brief [ @b MUIA_TextEditor_Slider ]

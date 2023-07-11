@@ -42,6 +42,24 @@ namespace MUI::MCC
         return *this;
     }
 
+    TextEditorBuilder &TextEditorBuilder::tagFixedFont(const bool fixedFont)
+    {
+        PushTag(MUIA_TextEditor_FixedFont, fixedFont);
+        return *this;
+    }
+
+    TextEditorBuilder &TextEditorBuilder::tagReadOnly(const bool readOnly)
+    {
+        PushTag(MUIA_TextEditor_ReadOnly, readOnly);
+        return *this;
+    }
+
+    TextEditorBuilder &TextEditorBuilder::tagWrapMode(const enum TextEditor_WrapMode wrapMode)
+    {
+        PushTag(MUIA_TextEditor_WrapMode, (unsigned long)wrapMode);
+        return *this;
+    }
+
     TextEditorBuilder &TextEditorBuilder::tagRows(const long rows)
     {
         PushTag(MUIA_TextEditor_Rows, rows);
