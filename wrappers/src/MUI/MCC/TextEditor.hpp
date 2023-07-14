@@ -7,6 +7,10 @@
 #pragma once
 
 #include "MUI/Notify.hpp"
+#include "ValueTypes/TextEditor/InsertText.hpp"
+#include "ValueTypes/TextEditor/MarkText.hpp"
+#include "ValueTypes/TextEditor/SetBlock.hpp"
+#include "ValueTypes/TextEditor/TabSize.hpp"
 #include "ValueTypes/TextEditor/WrapMode.hpp"
 
 namespace MUI::MCC
@@ -38,10 +42,21 @@ namespace MUI::MCC
 
         /// @brief [ @b MUIA_TextEditor_Contents ]
         TextEditor &setContents(const std::string &contents);
+        /// @brief [ @b MUIA_TextEditor_Contents, contents = nullptr ]
+        TextEditor &setContentsNull();
 
         // methods, some can return object reference
 
-        TextEditor &Clear();
+        /// @brief [ @b MUIM_TextEditor_ClearText ]
+        TextEditor &ClearText();
+        /// @brief [ @b MUIM_TextEditor_InsertText ]
+        TextEditor &InsertText(const std::string &text, const enum TextEditor_InsertText pos);
+        /// @brief [ @b MUIM_TextEditor_InsertText, pos = @b MUIV_TextEditor_InsertText_Cursor ]
+        TextEditor &InsertTextAtCursor(const std::string &text);
+        /// @brief [ @b MUIM_TextEditor_InsertText, pos = @b MUIV_TextEditor_InsertText_Top ]
+        TextEditor &InsertTextAtTop(const std::string &text);
+        /// @brief [ @b MUIM_TextEditor_InsertText, pos = @b MUIV_TextEditor_InsertText_Bottom ]
+        TextEditor &InsertTextAtBottom(const std::string &text);
 
         /// @brief [ @b MUIM_TextEditor_ExportText ]
         std::string ExportText() const;

@@ -24,9 +24,39 @@ namespace MUI::MCC
         return *this;
     }
 
-    TextEditor &TextEditor::Clear()
+    TextEditor &TextEditor::setContentsNull()
     {
         SetValue(MUIA_TextEditor_Contents, nullptr);
+        return *this;
+    }
+
+    TextEditor &TextEditor::ClearText()
+    {
+        DoMethod(muiObject(), MUIM_TextEditor_ClearText);
+        return *this;
+    }
+
+    TextEditor &TextEditor::InsertText(const std::string &text, const enum TextEditor_InsertText pos)
+    {
+        DoMethod(muiObject(), MUIM_TextEditor_InsertText, (long)pos);
+        return *this;
+    }
+
+    TextEditor &TextEditor::InsertTextAtCursor(const std::string &text)
+    {
+        DoMethod(muiObject(), MUIM_TextEditor_InsertText, MUIV_TextEditor_InsertText_Cursor);
+        return *this;
+    }
+
+    TextEditor &TextEditor::InsertTextAtTop(const std::string &text)
+    {
+        DoMethod(muiObject(), MUIM_TextEditor_InsertText, MUIV_TextEditor_InsertText_Top);
+        return *this;
+    }
+
+    TextEditor &TextEditor::InsertTextAtBottom(const std::string &text)
+    {
+        DoMethod(muiObject(), MUIM_TextEditor_InsertText, MUIV_TextEditor_InsertText_Bottom);
         return *this;
     }
 
