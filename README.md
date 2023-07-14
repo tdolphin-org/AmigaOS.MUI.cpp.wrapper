@@ -8,13 +8,15 @@ ___
 ### MorphOS compilation
 
 - MorphOS SDK3.16+
-- TextEditor developer files
+- TextEditor developer files (https://github.com/amiga-mui/texteditor)
+- NList developer files (https://github.com/amiga-mui/nlist)
 
 ### Linux cross compilation for AmigaOS
 
 - bebbo/amiga-gcc (https://github.com/bebbo/amiga-gcc)
-- AmigaOS MUI5+ developer files
-- TextEditor developer files
+- AmigaOS MUI5+ developer files (https://github.com/amiga-mui/muidev)
+- TextEditor developer files (https://github.com/amiga-mui/texteditor)
+- NList developer files (https://github.com/amiga-mui/nlist)
 ___
 ## Build
 
