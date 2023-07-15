@@ -114,6 +114,8 @@ namespace MUI
         /// @brief [ @b MUIA_ShortHelp ]
         T &tagShortHelp(const std::string &shortHelp);
         /// @brief [ @b MUIA_Weight ]
+        /// An object with a weight of 0 will always stay at its minimum size. By default, all objects have a weight of 100.
+        /// @param weight long weight of object, for negative value is ignored
         T &tagWeight(const long weight);
     };
 
@@ -188,7 +190,8 @@ namespace MUI
 
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagWeight(const long weight)
     {
-        this->PushTag(MUIA_Weight, weight);
+        if (weight >= 0)
+            this->PushTag(MUIA_Weight, weight);
         return (T &)*this;
     }
 }
