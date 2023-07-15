@@ -7,7 +7,7 @@ ___
 
 ### MorphOS compilation
 
-- MorphOS SDK3.16+
+- MorphOS SDK3.18+
 - [TextEditor developer files](https://github.com/amiga-mui/texteditor)
 - [NList developer files](https://github.com/amiga-mui/nlist)
 
