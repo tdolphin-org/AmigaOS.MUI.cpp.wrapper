@@ -49,7 +49,7 @@ namespace MUI
     {
         char *value;
         GetAttr(tagName, muiObject(), (unsigned long *)&value);
-        return std::string(value);
+        return (value == nullptr) ? std::string() : std::string(value); // TODO should be exception on null ??
     }
 
     unsigned long Root::GetValueAsULong(const unsigned long tagName) const

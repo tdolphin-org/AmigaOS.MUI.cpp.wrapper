@@ -163,7 +163,8 @@ namespace MUI
 
     template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::tagChild(const Root &child)
     {
-        this->PushTag(MUIA_Group_Child, child.muiObject());
+        if (child.muiObject())
+            this->PushTag(MUIA_Group_Child, child.muiObject());
         return (T &)*this;
     }
 

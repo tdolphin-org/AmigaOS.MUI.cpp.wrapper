@@ -37,6 +37,9 @@ namespace MUI
         // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Text_Contents ]
+        std::string getContents() const;
+
+        /// @brief [ @b MUIA_Text_Contents ]
         /// String to be displayed. If the string is larger than available display space, it will be clipped. Setting
         /// @b MUIA_Text_Contents to @b NULL results in an empty text object. The string is copied into a private buffer (unless
         /// @b MUIA_Text_Copy is set to @b FALSE), you can destroy the original string after using this tag. Contest may contain some

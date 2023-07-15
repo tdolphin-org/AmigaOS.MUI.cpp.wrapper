@@ -93,6 +93,8 @@ namespace MUI
         T &tagCycleChain(const long cycleChain = 1);
         /// @brief [ @b MUIA_Disabled ]
         T &tagDisabled(const bool disabled = true);
+        /// @brief [ @b MUIA_FixWidthTxt ]
+        T &tagFixWidthTxt(const std::string &fixWidthTxt);
         /// @brief [ @b MUIA_Frame ]
         /// @param frame enum Frame
         T &tagFrame(const enum Frame frame);
@@ -139,6 +141,13 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFixWidthTxt(const std::string &fixWidthTxt)
+    {
+        if (!fixWidthTxt.empty()) // no fixed with when empty string
+            this->PushTag(MUIA_FixWidthTxt, fixWidthTxt);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFrame(const enum Frame frame)
     {
         this->PushTag(MUIA_Frame, (long)frame);
@@ -164,7 +173,7 @@ namespace MUI
     }
 
 #ifndef __MORPHOS__
-    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagPointerType(const PointerType pointerType)
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagPointerType(const enum PointerType pointerType)
     {
         this->PushTag(MUIA_PointerType, (long)pointerType);
         return (T &)*this;

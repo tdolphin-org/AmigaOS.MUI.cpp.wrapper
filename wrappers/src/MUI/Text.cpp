@@ -10,6 +10,11 @@ namespace MUI
 {
     const std::string Text::className = MUIC_Text;
 
+    std::string Text::getContents() const
+    {
+        return GetValueAsString(MUIA_Text_Contents);
+    }
+
     Text &Text::setContents(const std::string &contents)
     {
         SetValue(MUIA_Text_Contents, contents);
