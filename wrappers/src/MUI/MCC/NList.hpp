@@ -82,11 +82,11 @@ namespace MUI::MCC
 
         /// @brief [ @b MUIM_NList_Insert, count = -1, pos = @b MUIV_NList_Insert_Top, flags = 0 ]
         NList &InsertWrapTop(const void *entries[], const enum NList_WrapCol wrapcol, const enum NList_Align align);
-        /// @brief [ @b MUIM_NList_Insert,  count = -1, pos = @b MUIV_NList_Insert_Active, flags = 0 ]
+        /// @brief [ @b MUIM_NList_Insert, count = -1, pos = @b MUIV_NList_Insert_Active, flags = 0 ]
         NList &InsertWrapActive(const void *entries[], const enum NList_WrapCol wrapcol, const enum NList_Align align);
-        /// @brief [ @b MUIM_NList_Insert,  count = -1, pos = @b MUIV_NList_Insert_Sorted, flags = 0 ]
+        /// @brief [ @b MUIM_NList_Insert, count = -1, pos = @b MUIV_NList_Insert_Sorted, flags = 0 ]
         NList &InsertWrapSorted(const void *entries[], const enum NList_WrapCol wrapcol, const enum NList_Align align);
-        /// @brief [ @b MUIM_NList_Insert,  count = -1, pos = @b MUIV_NList_Insert_Bottom, flags = 0 ]
+        /// @brief [ @b MUIM_NList_Insert, count = -1, pos = @b MUIV_NList_Insert_Bottom, flags = 0 ]
         NList &InsertWrapBottom(const void *entries[], const enum NList_WrapCol wrapcol, const enum NList_Align align);
 
         /// @brief [ @b MUIM_NList_InsertSingle, @b MUIV_NList_Insert_Top ]
