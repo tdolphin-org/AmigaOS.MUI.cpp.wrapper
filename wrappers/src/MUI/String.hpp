@@ -8,6 +8,8 @@
 
 #include "Area.hpp"
 
+#include "ValueTypes/String/Format.hpp"
+
 #undef String // undef macro from mui.h
 
 namespace MUI
@@ -59,8 +61,14 @@ namespace MUI
         T &tagContents(const char *contents);
         /// @brief [ @b MUIA_String_Contents ]
         T &tagContents(const std::string &contents);
+        /// @brief [ @b MUIA_String_Format ]
+        T &tagFormat(const enum String_Format format);
         /// @brief [ @b MUIA_String_MaxLen ]
         T &tagMaxLen(const long maxLen);
+#ifdef __MORPHOS__
+        /// @brief [ @b MUIA_String_Multiline ]
+        T &tagMultiline(const bool multiline);
+#endif
         /// @brief [ @b MUIA_String_Placeholder ]
         T &tagPlaceholder(const char *placeholder);
         /// @brief [ @b MUIA_String_Placeholder ]
@@ -85,11 +93,25 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagFormat(const enum String_Format format)
+    {
+        this->PushTag(MUIA_String_Format, (long)format);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagMaxLen(const long maxLen)
     {
         this->PushTag(MUIA_String_MaxLen, maxLen);
         return (T &)*this;
     }
+
+#ifdef __MORPHOS__
+    template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagMultiline(const bool multiline)
+    {
+        this->PushTag(MUIA_String_Multiline, multiline);
+        return (T &)*this;
+    }
+#endif
 
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagPlaceholder(const char *placeholder)
     {
