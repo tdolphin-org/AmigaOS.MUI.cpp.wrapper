@@ -15,6 +15,12 @@ namespace MUI
         return GetValueAsBool(MUIA_Selected);
     }
 
+    Area &Area::setBackground(const std::string &background)
+    {
+        SetValue(MUIA_Background, (long)background.c_str());
+        return *this;
+    }
+
     Area &Area::setDisabled(const bool disabled)
     {
         SetValue(MUIA_Disabled, disabled);

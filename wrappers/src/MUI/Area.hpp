@@ -50,6 +50,8 @@ namespace MUI
         /// @brief [ @b MUIA_Selected ]
         bool isSelected() const;
 
+        /// @brief [ @b MUIA_Background ]
+        Area &setBackground(const std::string &background);
         /// @brief [ @b MUIA_Disabled ]
         Area &setDisabled(const bool disabled);
         /// @brief [ @b MUIA_Font ] - seems that setting font doesn't work (at least for MUI::Floattext)
@@ -87,6 +89,8 @@ namespace MUI
 
         /// @brief [ @b MUIA_Background ]
         T &tagBackground(const enum ImageOrBackground background);
+        /// @brief [ @b MUIA_Background ]
+        T &tagBackground(const std::string &background);
         /// @brief [ @b MUIA_CycleChain ]
         /// Keyboard cycle chain system. Set MUIA_CycleChain to 1 for every object that you want to have in your chain, MUI does the rest
         /// automatically.
@@ -128,6 +132,12 @@ namespace MUI
     template <typename T, typename U> T &AreaBuilderTemplate<T, U>::tagBackground(const enum ImageOrBackground background)
     {
         this->PushTag(MUIA_Background, (long)background);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> T &AreaBuilderTemplate<T, U>::tagBackground(const std::string &background)
+    {
+        this->PushTag(MUIA_Background, (long)background.c_str());
         return (T &)*this;
     }
 
