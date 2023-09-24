@@ -47,6 +47,8 @@ namespace MUI
         {
         }
 
+        /// @brief [ @b MUIA_Image_CopySpec (copySpec = true) ]
+        T &tagCopySpec(const bool copySpec = true);
         /// @brief [ @b MUIA_Image_Spec ]
         T &tagSpec(char *spec);
         /// @brief [ @b MUIA_Image_Spec with predefined images (like MUI::ImageOrBackground::ArrowUp) ]
@@ -58,6 +60,12 @@ namespace MUI
       public:
         ImageBuilder();
     };
+
+    template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagCopySpec(const bool copySpec /* = true */)
+    {
+        this->PushTag(copySpec, copySpec);
+        return (T &)*this;
+    }
 
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagSpec(char *spec)
     {

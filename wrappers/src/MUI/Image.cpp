@@ -12,7 +12,7 @@ namespace MUI
 
     ImageBuilder::ImageBuilder() { }
     
-    Image &Image::setBackground(const ImageOrBackground spec)
+    Image &Image::setBackground(const enum ImageOrBackground spec)
     {
         SetValue(MUIA_Image_Spec, (long)spec);
         return *this;
