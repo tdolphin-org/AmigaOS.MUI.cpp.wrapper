@@ -93,6 +93,8 @@ namespace MUI
         T &tagBackground(const enum ImageOrBackground background);
         /// @brief [ @b MUIA_Background ]
         T &tagBackground(const std::string &background);
+        /// @brief [ @b MUIA_Background ]
+        T &tagBackground(const char *background);
         /// @brief [ @b MUIA_CycleChain ]
         /// Keyboard cycle chain system. Set MUIA_CycleChain to 1 for every object that you want to have in your chain, MUI does the rest
         /// automatically.
@@ -117,8 +119,12 @@ namespace MUI
         /// @param font enum PointerType
         T &tagPointerType(const enum PointerType pointerType);
 #endif
+        /// @brief [ @b MUIA_Selected ]
+        T &tagSelected(const bool &selected);
         /// @brief [ @b MUIA_ShortHelp ]
         T &tagShortHelp(const std::string &shortHelp);
+        /// @brief [ @b MUIA_ShowSelState ]
+        T &tagShowSelState(const bool &showSelState);
         /// @brief [ @b MUIA_Weight ]
         /// An object with a weight of 0 will always stay at its minimum size. By default, all objects have a weight of 100.
         /// @param weight long weight of object, for negative value is ignored
@@ -140,6 +146,12 @@ namespace MUI
     template <typename T, typename U> T &AreaBuilderTemplate<T, U>::tagBackground(const std::string &background)
     {
         this->PushTag(MUIA_Background, (long)background.c_str());
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagBackground(const char *background)
+    {
+        this->PushTag(MUIA_Background, (long)background);
         return (T &)*this;
     }
 
@@ -194,9 +206,21 @@ namespace MUI
     }
 #endif
 
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagSelected(const bool &selected)
+    {
+        this->PushTag(MUIA_Selected, selected);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagShortHelp(const std::string &shortHelp)
     {
         this->PushTag(MUIA_ShortHelp, shortHelp);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagShowSelState(const bool &showSelState)
+    {
+        this->PushTag(MUIA_ShowSelState, showSelState);
         return (T &)*this;
     }
 
