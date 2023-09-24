@@ -11,4 +11,10 @@ namespace MUI
     const std::string Image::className = MUIC_Image;
 
     ImageBuilder::ImageBuilder() { }
+    
+    Image &Image::setBackground(const ImageOrBackground spec)
+    {
+        SetValue(MUIA_Image_Spec, (long)spec);
+        return *this;
+    }
 }

@@ -32,6 +32,11 @@ namespace MUI
         {
             return MUI::instanceOf(pMuiObject, className.c_str());
         }
+
+        // is/get/set (attributes), all setters return object reference
+
+        /// @brief [ @b MUIA_Image_Spec with predefined images (like MUI::ImageOrBackground::ArrowUp) ]
+        Image &setBackground(const enum ImageOrBackground spec);
     };
 
     template <typename T, typename U> class ImageBuilderTemplate : public AreaBuilderTemplate<T, U>

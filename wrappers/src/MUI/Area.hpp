@@ -51,6 +51,8 @@ namespace MUI
         bool isSelected() const;
 
         /// @brief [ @b MUIA_Background ]
+        Area &setBackground(const enum ImageOrBackground background);
+        /// @brief [ @b MUIA_Background ]
         Area &setBackground(const std::string &background);
         /// @brief [ @b MUIA_Disabled ]
         Area &setDisabled(const bool disabled);
