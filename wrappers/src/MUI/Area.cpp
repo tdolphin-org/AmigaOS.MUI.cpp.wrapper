@@ -15,6 +15,11 @@ namespace MUI
         return GetValueAsBool(MUIA_Selected);
     }
 
+    bool Area::isFloating() const
+    {
+        return GetValueAsBool(MUIA_Floating);
+    }
+
     Area &Area::setBackground(const enum ImageOrBackground background)
     {
         SetValue(MUIA_Background, (long)background);
@@ -30,6 +35,18 @@ namespace MUI
     Area &Area::setDisabled(const bool disabled)
     {
         SetValue(MUIA_Disabled, disabled);
+        return *this;
+    }
+
+    Area &Area::setFillArea(const bool fillArea)
+    {
+        SetValue(MUIA_FillArea, fillArea);
+        return *this;
+    }
+
+    Area &Area::setFloating(const bool floating)
+    {
+        SetValue(MUIA_Floating, floating);
         return *this;
     }
 

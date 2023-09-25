@@ -49,6 +49,8 @@ namespace MUI
 
         /// @brief [ @b MUIA_Selected ]
         bool isSelected() const;
+        /// @brief [ @b MUIA_Floating ]
+        bool isFloating() const;
 
         /// @brief [ @b MUIA_Background ]
         Area &setBackground(const enum ImageOrBackground background);
@@ -56,6 +58,10 @@ namespace MUI
         Area &setBackground(const std::string &background);
         /// @brief [ @b MUIA_Disabled ]
         Area &setDisabled(const bool disabled);
+        /// @brief [ @b MUIA_FillArea ]
+        Area &setFillArea(const bool fillArea);
+        /// @brief [ @b MUIA_Floating ]
+        Area &setFloating(const bool floating);
         /// @brief [ @b MUIA_Font ] - seems that setting font doesn't work (at least for MUI::Floattext)
         Area &setFont(const enum Font font);
 #ifndef __MORPHOS__
@@ -101,8 +107,18 @@ namespace MUI
         T &tagCycleChain(const long cycleChain = 1);
         /// @brief [ @b MUIA_Disabled ]
         T &tagDisabled(const bool disabled = true);
+        /// @brief [ @b MUIA_FillArea ]
+        T &tagFillArea(const bool fillArea);
+        /// @brief [ @b MUIA_FixHeight ]
+        T &tagFixHeight(const long fixHeight);
+        /// @brief [ @b MUIA_FixHeightTxt ]
+        T &tagFixHeightTxt(const std::string &fixHeightTxt);
+        /// @brief [ @b MUIA_FixWidth ]
+        T &tagFixWidth(const long fixWidth);
         /// @brief [ @b MUIA_FixWidthTxt ]
         T &tagFixWidthTxt(const std::string &fixWidthTxt);
+        /// @brief [ @b MUIA_Floating ]
+        T &tagFloating(const bool floating);
         /// @brief [ @b MUIA_Frame ]
         /// @param frame enum Frame
         T &tagFrame(const enum Frame frame);
@@ -167,10 +183,41 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFillArea(const bool fillArea)
+    {
+        this->PushTag(MUIA_FillArea, fillArea);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFixHeight(const long fixHeight)
+    {
+        this->PushTag(MUIA_FixHeight, fixHeight);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFixHeightTxt(const std::string &fixHeightTxt)
+    {
+        if (!fixHeightTxt.empty()) // no fixed height when empty string
+            this->PushTag(MUIA_FixHeightTxt, fixHeightTxt);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFixWidth(const long fixWidth)
+    {
+        this->PushTag(MUIA_FixWidth, fixWidth);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFixWidthTxt(const std::string &fixWidthTxt)
     {
-        if (!fixWidthTxt.empty()) // no fixed with when empty string
+        if (!fixWidthTxt.empty()) // no fixed width when empty string
             this->PushTag(MUIA_FixWidthTxt, fixWidthTxt);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFloating(const bool floating)
+    {
+        this->PushTag(MUIA_Floating, floating);
         return (T &)*this;
     }
 
