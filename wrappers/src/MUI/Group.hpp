@@ -150,21 +150,21 @@ namespace MUI
     template <typename T, typename U> T &GroupBuilderTemplate<T, U>::tagChild(const Object *pChildObject)
     {
         if (pChildObject)
-            this->PushTag(MUIA_Group_Child, pChildObject);
+            this->PushTag(MUIA_Group_Child, pChildObject, false);
         return (T &)*this;
     }
 
     template <typename T, typename U> T &GroupBuilderTemplate<T, U>::tagChild(const APTR pChildObject)
     {
         if (pChildObject)
-            this->PushTag(MUIA_Group_Child, (const Object *)pChildObject);
+            this->PushTag(MUIA_Group_Child, (const Object *)pChildObject, false);
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::tagChild(const Root &child)
     {
         if (child.muiObject())
-            this->PushTag(MUIA_Group_Child, child.muiObject());
+            this->PushTag(MUIA_Group_Child, child.muiObject(), false);
         return (T &)*this;
     }
 

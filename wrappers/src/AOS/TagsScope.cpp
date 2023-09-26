@@ -392,7 +392,7 @@ namespace AOS
                     break;
 
                 default:
-                    result += ToString::ToString::FromHexValue(tagName);
+                    result += ToString::FromHexValue(tagName);
             }
             result += ", ";
         }
