@@ -15,12 +15,20 @@
 #include "MUI/Rectangle.hpp"
 #include "MUI/Text.hpp"
 
-char const *items[] = { "AmigaOS", "MorphOS", "AROS", nullptr };
+const std::string helpText = "help text";
 
 namespace Components
 {
     AppWindow::AppWindow()
-      : mItemsList(MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).object())
+      : mExampleImage(MUI::ImageBuilder()
+                          .tagFrame(MUI::Frame::Button)
+                          .tagCopySpec(true)
+                          .tagFixWidth(160)
+                          .tagFixHeight(160)
+                          .tagSpec("5:PROGDIR:close.160x160.png")
+                          .tagFreeHoriz(true)
+                          .tagFreeVert(true)
+                          .object())
       , mCloseButton(MUI::MakeObject::SimpleButton("_Quit Application"))
       , mComponent(MUI::WindowBuilder()
                        .tagTitle("Window Title")
@@ -33,11 +41,11 @@ namespace Components
                        .tagRootObject(
                            MUI::GroupBuilder()
                                .tagChild(MUI::TextBuilder()
-                                             .tagShortHelp("help text")
+                                             .tagShortHelp(helpText) // FIXME not working when using std::string
                                              .tagContents(MUIX_C "some centered text in MUI::Text\n\n" MUIX_PH " (c) 2022-2023 TDolphin")
                                              .object())
                                .tagChild(mCloseButton)
-                               .tagChild(mItemsList)
+                               .tagChild(MUI::GroupBuilder().horizontal().tagChild(mHardwareList).tagChild(mExampleImage).object())
                                .tagChild(MUI::GroupBuilder()
                                              .horizontal()
                                              .tagChild(MUI::MakeObject::SimpleButton("_Left Button"))
@@ -47,7 +55,6 @@ namespace Components
                                .object())
                        .object())
     {
-        mItemsList.InsertTop((const void **)items);
     }
 
     void AppWindow::RegisterEvents()

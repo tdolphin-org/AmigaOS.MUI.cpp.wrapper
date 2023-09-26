@@ -31,3 +31,7 @@
 *.out
 *.app
 *.bin
+
+# folders
+examples/out/*
+out/*

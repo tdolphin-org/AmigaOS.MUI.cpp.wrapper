@@ -8,16 +8,18 @@
 
 #pragma once
 
-#include "Components/Core/Root.hpp"
+#include "Core/Root.hpp"
+#include "HardwareList.hpp"
 #include "MUI/Area.hpp"
-#include "MUI/List.hpp"
+#include "MUI/Image.hpp"
 #include "MUI/Window.hpp"
 
 namespace Components
 {
     class AppWindow : public Root
     {
-        MUI::List mItemsList;
+        HardwareList mHardwareList;
+        MUI::Image mExampleImage;
         MUI::Area mCloseButton;
         MUI::Window mComponent;
 

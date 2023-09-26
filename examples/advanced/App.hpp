@@ -10,7 +10,6 @@
 
 #include <proto/muimaster.h>
 
-#include "Components/AppWindow.hpp"
 #include "Components/Application.hpp"
 #include "Core/Singleton.hpp"
 #include "MUI/Core/MuiMasterBaseScope.hpp"
