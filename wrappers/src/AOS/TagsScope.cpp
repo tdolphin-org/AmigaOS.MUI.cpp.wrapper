@@ -115,6 +115,30 @@ namespace AOS
                     result += "MUIA_CycleChain";
                     result += "=" + std::to_string(tagValue);
                     break;
+                case MUIA_FillArea:
+                    result += "MUIA_FillArea";
+                    result += "=" + TagDataBool(tagValue);
+                    break;
+                case MUIA_FixHeight:
+                    result += "MUIA_FixHeight";
+                    result += "=" + std::to_string(tagValue);
+                    break;
+                case MUIA_FixHeightTxt:
+                    result += "MUIA_FixHeightTxt";
+                    result += "=" + TagDataSTRPTR(tagValue);
+                    break;
+                case MUIA_FixWidth:
+                    result += "MUIA_FixWidth";
+                    result += "=" + std::to_string(tagValue);
+                    break;
+                case MUIA_FixWidthTxt:
+                    result += "MUIA_FixWidthTxt";
+                    result += "=" + TagDataSTRPTR(tagValue);
+                    break;
+                case MUIA_Floating:
+                    result += "MUIA_Floating";
+                    result += "=" + TagDataBool(tagValue);
+                    break;
                 case MUIA_Frame:
                     result += "MUIA_Frame";
                     result += "=" + std::to_string(tagValue);
@@ -131,9 +155,17 @@ namespace AOS
                     result += "MUIA_InputMode";
                     result += "=" + ToString::FromHexValue(tagValue);
                     break;
+                case MUIA_Selected:
+                    result += "MUIA_Selected";
+                    result += "=" + TagDataBool(tagValue);
+                    break;
                 case MUIA_ShortHelp:
                     result += "MUIA_ShortHelp";
                     result += "=" + TagDataSTRPTR(tagValue);
+                    break;
+                case MUIA_ShowSelState:
+                    result += "MUIA_ShowSelState";
+                    result += "=" + TagDataBool(tagValue);
                     break;
                 case MUIA_Weight:
                     result += "MUIA_Weight";
@@ -157,7 +189,6 @@ namespace AOS
                     result += "MUIA_Floattext_TabSize";
                     result += "=" + std::to_string(tagValue);
                     break;
-
                 case MUIA_Floattext_Text:
                     result += "MUIA_Floattext_Text";
                     result += "=" + TagDataSTRPTR(tagValue);
@@ -198,10 +229,24 @@ namespace AOS
                     break;
 
                 // Image
+                case MUIA_Image_CopySpec:
+                    result += "MUIA_Image_CopySpec";
+                    result += "=" + TagDataBool(tagValue);
+                    break;
+                case MUIA_Image_FreeHoriz:
+                    result += "MUIA_Image_FreeHoriz";
+                    result += "=" + TagDataBool(tagValue);
+                    break;
+                case MUIA_Image_FreeVert:
+                    result += "MUIA_Image_FreeVert";
+                    result += "=" + TagDataBool(tagValue);
+                    break;
                 case MUIA_Image_Spec:
                     result += "MUIA_Image_Spec";
                     if (tagValue <= MUII_Count)
                         result += "=" + std::to_string(tagValue);
+                    else if (((char *)tagValue)[0] == '5' && ((char *)tagValue)[1] == ':')
+                        result += "=" + TagDataSTRPTR(tagValue);
                     else
                         result += "=" + ToString::FromHexValue(tagValue);
                     break;
