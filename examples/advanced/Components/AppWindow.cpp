@@ -22,7 +22,6 @@ namespace Components
     AppWindow::AppWindow()
       : mExampleImage(MUI::ImageBuilder()
                           .tagFrame(MUI::Frame::Button)
-                          .tagCopySpec(true)
                           .tagFixWidth(160)
                           .tagFixHeight(160)
                           .tagSpec("5:PROGDIR:close.160x160.png")
