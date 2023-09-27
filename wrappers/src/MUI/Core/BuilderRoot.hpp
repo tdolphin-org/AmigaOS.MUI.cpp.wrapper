@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "AOS/TagItemObject.hpp"
+#include "AOS/TagUtil.hpp"
 #include "Core/ToString.hpp"
 
 namespace MUI
@@ -57,8 +58,8 @@ namespace MUI
         {
             if (mTagKeys.find(tagName) != mTagKeys.end())
             {
-                std::string error = (std::string) __PRETTY_FUNCTION__ + " tag already exists: " + ToString::FromHexValue(tagName);
-                std::cerr << error << std::endl;
+                std::string error = (std::string) __PRETTY_FUNCTION__ + " tag " + AOS::TagUtil::ToString(tagName) + " already added by Builder!";
+                std::cerr << error << std::endl; // FIXME remove it, after catching exceptions will start to work
                 throw std::invalid_argument(error);
             }
             mTagKeys.insert(tagName);
