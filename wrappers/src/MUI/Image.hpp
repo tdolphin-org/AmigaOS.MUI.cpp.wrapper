@@ -61,6 +61,9 @@ namespace MUI
 
     template <typename T, typename U> class ImageBuilderTemplate : public AreaBuilderTemplate<T, U>
     {
+        std::string spec;
+        char colorSpec[29] = { '2', ':', 0, 0, 0, 0, 0, 0, 0, 0, ',', 0, 0, 0, 0, 0, 0, 0, 0, ',', 0, 0, 0, 0, 0, 0, 0, 0, '\0' }; // FIXME
+
       public:
         ImageBuilderTemplate(const std::string &uniqueId = MUI::EmptyUniqueId, const std::string &muiClassName = MUIC_Image)
           : AreaBuilderTemplate<T, U>(uniqueId, muiClassName)
@@ -174,15 +177,15 @@ namespace MUI
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagSpecPicture(const std::string &imagePath)
     {
         this->PushTag(MUIA_Image_CopySpec, true);
-        this->PushTag(MUIA_Image_Spec, "5:" + imagePath);
+        spec = "5:" + imagePath;
+        this->PushTag(MUIA_Image_Spec, spec);
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagSpecColor(const unsigned long rgbColor)
     {
-        // FIXME add proper convert rgbColor to "2:RRRRRRRR,GGGGGGGG,BBBBBBBB"
-        char colorSpec[29] = { '2', ':', 0, 0, 0, 0, 0, 0, 0, 0, ',', 0, 0, 0, 0, 0, 0, 0, 0, ',', 0, 0, 0, 0, 0, 0, 0, 0, '\0' };
         this->PushTag(MUIA_Image_CopySpec, true);
+        // FIXME add proper convert rgbColor to "2:RRRRRRRR,GGGGGGGG,BBBBBBBB" from rgbColor
         this->PushTag(MUIA_Image_Spec, colorSpec);
         return (T &)*this;
     }
