@@ -53,6 +53,12 @@ ___
 
 *basic example*
 
-All example code in one file, see: [Main.cpp](/examples/basic/Main.cpp)
+All code in one file, see: [Main.cpp](/examples/basic/Main.cpp)
 
 ![git desktop window](/docs/assets/basic.example.png)
+
+*advanced example*
+
+Code extended and divided in many files (Components), see: [advanced](/examples/advanced/)
+
+![git desktop window](/docs/assets/advanced.example.png)
