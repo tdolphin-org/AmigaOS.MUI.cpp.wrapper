@@ -165,14 +165,14 @@ namespace MUI
 
     ApplicationBuilder &ApplicationBuilder::tagWindow(const Window &window)
     {
-        this->PushTag(MUIA_Application_Window, window.muiObject());
+        this->PushTag(MUIA_Application_Window, window.muiObject(), false);
         return *this;
     }
 
     ApplicationBuilder &ApplicationBuilder::tagWindows(const std::vector<Window> &windows)
     {
         for (auto window : windows)
-            this->PushTag(MUIA_Application_Window, window.muiObject());
+            this->PushTag(MUIA_Application_Window, window.muiObject(), false);
         return *this;
     }
 

@@ -64,13 +64,14 @@ namespace MUI
 
     template <typename T, typename U> inline T &FamilyBuilderTemplate<T, U>::tagChild(const MUI::Root &child)
     {
-        this->PushTag(MUIA_Family_Child, child.muiObject());
+        this->PushTag(MUIA_Family_Child, child.muiObject(), false);
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &FamilyBuilderTemplate<T, U>::tagChild(const Object *child)
     {
-        this->PushTag(MUIA_Family_Child, child);
+        if (child)
+            this->PushTag(MUIA_Family_Child, child, false);
         return (T &)*this;
     }
 }
