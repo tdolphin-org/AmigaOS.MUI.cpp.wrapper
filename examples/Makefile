@@ -20,7 +20,7 @@ morphos_ppc:
 	SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar STRIP=strip MORE_CPP_FLAGS=-noixemul all
 	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=advanced.example.bin PROJECT=advanced MODULES=Components,Components/Core \
 	SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar STRIP=strip MORE_CPP_FLAGS=-noixemul all
-	cp advanced/img/* out/amigaos/m68k
+	cp advanced/img/* out/morphos/ppc
 
 clean:
 	rm -f -R obj/*

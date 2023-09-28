@@ -72,8 +72,10 @@ namespace MUI
 
         /// @brief [ @b MUIA_Image_BuiltinSpec ]
         T &tagBuiltinSpec(const unsigned long builtinSpec);
+#ifndef __MORPHOS__
         /// @brief [ @b MUIA_Image_CopySpec ]
         T &tagCopySpec(const bool copySpec);
+#endif
         /// @brief [ @b MUIA_Image_FontMatch ]
         T &tagFontMatch(const bool fontMatch);
         /// @brief [ @b MUIA_Image_FontMatchHeight ]
@@ -113,11 +115,13 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifndef __MORPHOS__
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagCopySpec(const bool copySpec /* = true */)
     {
         this->PushTag(MUIA_Image_CopySpec, copySpec);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagFontMatch(const bool fontMatch)
     {
@@ -163,7 +167,9 @@ namespace MUI
 
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagSpec(const std::string &spec)
     {
+#ifndef __MORPHOS__
         this->PushTag(MUIA_Image_CopySpec, true);
+#endif
         this->PushTag(MUIA_Image_Spec, spec);
         return (T &)*this;
     }
@@ -176,7 +182,9 @@ namespace MUI
 
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagSpecPicture(const std::string &imagePath)
     {
+#ifndef __MORPHOS__
         this->PushTag(MUIA_Image_CopySpec, true);
+#endif
         spec = "5:" + imagePath;
         this->PushTag(MUIA_Image_Spec, spec);
         return (T &)*this;
@@ -184,7 +192,9 @@ namespace MUI
 
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagSpecColor(const unsigned long rgbColor)
     {
+#ifndef __MORPHOS__
         this->PushTag(MUIA_Image_CopySpec, true);
+#endif
         // FIXME add proper convert rgbColor to "2:RRRRRRRR,GGGGGGGG,BBBBBBBB" from rgbColor
         this->PushTag(MUIA_Image_Spec, colorSpec);
         return (T &)*this;

@@ -188,9 +188,11 @@ namespace AOS
                     break;
 
                 // Image
+#ifndef __MORPHOS__
                 case MUIA_Image_CopySpec:
                     result += "=" + TagDataBool(tagValue);
                     break;
+#endif
                 case MUIA_Image_FreeHoriz:
                     result += "=" + TagDataBool(tagValue);
                     break;

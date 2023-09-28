@@ -70,7 +70,9 @@ namespace AOS
         MAP_PAIR(MUIA_Window_DepthGadget),
         MAP_PAIR(MUIA_Window_DisableKeys),
         MAP_PAIR(MUIA_Window_DragBar),
+#ifndef __MORPHOS__
         MAP_PAIR(MUIA_Window_DrawInfo),
+#endif
         MAP_PAIR(MUIA_Window_FancyDrawing),
         MAP_PAIR(MUIA_Window_Height),
         MAP_PAIR(MUIA_Window_ID),
@@ -105,7 +107,9 @@ namespace AOS
         MAP_PAIR(MUIA_Background),
         MAP_PAIR(MUIA_BottomEdge),
         MAP_PAIR(MUIA_ContextMenu),
+#ifndef __MORPHOS__
         MAP_PAIR(MUIA_ContextMenuHook),
+#endif
         MAP_PAIR(MUIA_ContextMenuTrigger),
         MAP_PAIR(MUIA_ControlChar),
         MAP_PAIR(MUIA_CycleChain),
@@ -135,13 +139,17 @@ namespace AOS
         MAP_PAIR(MUIA_InnerRight),
         MAP_PAIR(MUIA_InnerTop),
         MAP_PAIR(MUIA_InputMode),
+#ifndef __MORPHOS__
         MAP_PAIR(MUIA_KnowsDisabled),
+#endif
         MAP_PAIR(MUIA_LeftEdge),
         MAP_PAIR(MUIA_MaxHeight),
         MAP_PAIR(MUIA_MaxWidth),
+#ifndef __MORPHOS__
         MAP_PAIR(MUIA_MinHeight),
         MAP_PAIR(MUIA_MinWidth),
         MAP_PAIR(MUIA_PointerType),
+#endif
         MAP_PAIR(MUIA_Pressed),
         MAP_PAIR(MUIA_RightEdge),
         MAP_PAIR(MUIA_Selected),
@@ -168,7 +176,9 @@ namespace AOS
 
         // Floattext
         MAP_PAIR(MUIA_Floattext_Justify),
+#ifndef __MORPHOS__
         MAP_PAIR(MUIA_Floattext_KeepStyles),
+#endif
         MAP_PAIR(MUIA_Floattext_SkipChars),
         MAP_PAIR(MUIA_Floattext_TabSize),
         MAP_PAIR(MUIA_Floattext_Text),
@@ -196,7 +206,9 @@ namespace AOS
 
         // Image
         MAP_PAIR(MUIA_Image_BuiltinSpec),
+#ifndef __MORPHOS__
         MAP_PAIR(MUIA_Image_CopySpec),
+#endif
         MAP_PAIR(MUIA_Image_FontMatch),
         MAP_PAIR(MUIA_Image_FontMatchHeight),
         MAP_PAIR(MUIA_Image_FontMatchString),
@@ -258,15 +270,19 @@ namespace AOS
         MAP_PAIR(MUIA_List_VisiblePixel),
 
         // Menu
+#ifndef __MORPHOS__
         MAP_PAIR(MUIA_Menuitem_AISSName),
+#endif
         MAP_PAIR(MUIA_Menuitem_Checked),
         MAP_PAIR(MUIA_Menuitem_Checkit),
         MAP_PAIR(MUIA_Menuitem_CommandString),
         MAP_PAIR(MUIA_Menuitem_CopyStrings),
         MAP_PAIR(MUIA_Menuitem_Enabled),
         MAP_PAIR(MUIA_Menuitem_Exclude),
+#ifndef __MORPHOS__
         MAP_PAIR(MUIA_Menuitem_FreeImage),
         MAP_PAIR(MUIA_Menuitem_Image),
+#endif
         MAP_PAIR(MUIA_Menuitem_Menuitem),
         MAP_PAIR(MUIA_Menuitem_Shortcut),
         MAP_PAIR(MUIA_Menuitem_Title),
@@ -305,7 +321,9 @@ namespace AOS
         MAP_PAIR(MUIA_Rectangle_VBar),
 
         // Scrollbar
+#ifndef __MORPHOS__
         MAP_PAIR(MUIA_Scrollbar_IncDecSize),
+#endif
         MAP_PAIR(MUIA_Scrollbar_Type),
 
         // String
@@ -318,7 +336,9 @@ namespace AOS
         MAP_PAIR(MUIA_String_DisplayPos),
         MAP_PAIR(MUIA_String_EditHook),
         MAP_PAIR(MUIA_String_Format),
+#ifndef __MORPHOS__
         MAP_PAIR(MUIA_String_InactiveContents),
+#endif
         MAP_PAIR(MUIA_String_Integer),
         MAP_PAIR(MUIA_String_Integer64),
         MAP_PAIR(MUIA_String_LonelyEditHook),
@@ -331,7 +351,9 @@ namespace AOS
         MAP_PAIR(MUIA_Text_Contents),
         MAP_PAIR(MUIA_Text_ControlChar),
         MAP_PAIR(MUIA_Text_Copy),
+#ifndef __MORPHOS__
         MAP_PAIR(MUIA_Text_Data),
+#endif
         MAP_PAIR(MUIA_Text_HiChar),
         MAP_PAIR(MUIA_Text_Marking),
         MAP_PAIR(MUIA_Text_PreParse),
