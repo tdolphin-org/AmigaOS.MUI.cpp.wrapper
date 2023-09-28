@@ -62,7 +62,7 @@ namespace MUI
 
     Image &Image::setSpecPicture(const std::string &imagePath)
     {
-        SetValue(MUIA_Image_State, "5:" + imagePath);
+        SetValue(MUIA_Image_Spec, "5:" + imagePath);
         return *this;
     }
 
@@ -70,7 +70,7 @@ namespace MUI
     {
         // FIXME add proper convert rgbColor to "2:RRRRRRRR,GGGGGGGG,BBBBBBBB"
         char colorSpec[29] = { '2', ':', 0, 0, 0, 0, 0, 0, 0, 0, ',', 0, 0, 0, 0, 0, 0, 0, 0, ',', 0, 0, 0, 0, 0, 0, 0, 0, '\0' };
-        SetValue(MUIA_Image_State, colorSpec);
+        SetValue(MUIA_Image_Spec, colorSpec);
         return *this;
     }
 
