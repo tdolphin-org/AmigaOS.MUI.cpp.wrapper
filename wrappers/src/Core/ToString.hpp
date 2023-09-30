@@ -7,6 +7,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 class ToString
 {
@@ -16,7 +17,9 @@ class ToString
 
     // below methods could be removed if C++20 would be used with std::format
     static std::string Format(std::string format, const std::string &arg0);
+    static std::string Format(std::string format, const std::vector<std::string> &args0);
     static std::string Format(std::string format, const std::string &arg0, const std::string &arg1);
+    static std::string Format(std::string format, const std::vector<std::string> &args0, const std::vector<std::string> &args1);
     static std::string Format(std::string format, const std::string &arg0, const std::string &arg1, const std::string &arg2);
     static std::string Format(std::string format, const std::string &arg0, const std::string &arg1, const std::string &arg2,
                               const std::string &arg3);

@@ -5,6 +5,7 @@
 //
 
 #include <iostream>
+#include <numeric>
 #include <sstream>
 
 #include "ToString.hpp"
@@ -36,10 +37,44 @@ std::string ToString::Format(std::string format, const std::string &arg0)
     }
 }
 
+std::string ToString::Format(std::string format, const std::vector<std::string> &args0)
+{
+    try
+    {
+        auto arg0 = std::accumulate(args0.begin(), args0.end(), std::string(""),
+                                    [](const std::string &a, const std::string &b) { return a + " " + b; });
+        return format.replace(format.find("{}"), 2, arg0);
+    }
+    catch (...)
+    {
+        std::cerr << "exception on std::format(arg0)=" << format << std::endl;
+        return format;
+    }
+}
+
 std::string ToString::Format(std::string format, const std::string &arg0, const std::string &arg1)
 {
     try
     {
+        format.replace(format.find("{}"), 2, arg0);
+        format.replace(format.find("{}"), 2, arg1);
+        return format;
+    }
+    catch (...)
+    {
+        std::cerr << "exception on std::format(arg0,arg1)=" << format << std::endl;
+        return format;
+    }
+}
+
+std::string ToString::Format(std::string format, const std::vector<std::string> &args0, const std::vector<std::string> &args1)
+{
+    try
+    {
+        auto arg0 = std::accumulate(args0.begin(), args0.end(), std::string(""),
+                                    [](const std::string &a, const std::string &b) { return a + " " + b; });
+        auto arg1 = std::accumulate(args1.begin(), args1.end(), std::string(""),
+                                    [](const std::string &a, const std::string &b) { return a + " " + b; });
         format.replace(format.find("{}"), 2, arg0);
         format.replace(format.find("{}"), 2, arg1);
         return format;
