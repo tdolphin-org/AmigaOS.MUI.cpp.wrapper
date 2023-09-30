@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <string>
+#include "Core/StringStorage.hpp"
 
 #include <intuition/classusr.h>
 
@@ -16,6 +16,8 @@ namespace MUI
 
     class Root
     {
+        static StringStorage mStringStorage;
+
         Object *mpMuiObject;
 
       public:
@@ -28,6 +30,11 @@ namespace MUI
         }
 
         // methods
+
+        const char *StoreString(const std::string &string)
+        {
+            return mStringStorage.Add(string);
+        }
 
         std::string GetValueAsString(const unsigned long tagName) const;
         unsigned long GetValueAsULong(const unsigned long tagName) const;

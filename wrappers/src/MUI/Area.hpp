@@ -261,7 +261,8 @@ namespace MUI
 
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagShortHelp(const std::string &shortHelp)
     {
-        this->PushTag(MUIA_ShortHelp, shortHelp);
+        auto copy = this->StoreString(shortHelp);
+        this->PushTag(MUIA_ShortHelp, copy);
         return (T &)*this;
     }
 

@@ -15,8 +15,6 @@
 #include "MUI/Rectangle.hpp"
 #include "MUI/Text.hpp"
 
-const std::string helpText = "help text";
-
 namespace Components
 {
     AppWindow::AppWindow()
@@ -24,7 +22,7 @@ namespace Components
                           .tagFrame(MUI::Frame::Button)
                           .tagFixWidth(160)
                           .tagFixHeight(160)
-                          .tagSpec("5:PROGDIR:close.160x160.png")
+                          .tagSpecPicture("PROGDIR:close.160x160.png")
                           .tagFreeHoriz(true)
                           .tagFreeVert(true)
                           .object())
@@ -40,7 +38,7 @@ namespace Components
                        .tagRootObject(
                            MUI::GroupBuilder()
                                .tagChild(MUI::TextBuilder()
-                                             .tagShortHelp(helpText) // FIXME not working when using std::string
+                                             .tagShortHelp("some help text")
                                              .tagContents(MUIX_C "some centered text in MUI::Text\n\n" MUIX_PH " (c) 2022-2023 TDolphin")
                                              .object())
                                .tagChild(mCloseButton)

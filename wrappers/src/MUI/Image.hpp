@@ -167,10 +167,13 @@ namespace MUI
 
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagSpec(const std::string &spec)
     {
-#ifndef __MORPHOS__
+#ifdef __MORPHOS__
+        auto copy = this->StoreString(spec);
+        this->PushTag(MUIA_Image_Spec, copy);
+#else
         this->PushTag(MUIA_Image_CopySpec, true);
-#endif
         this->PushTag(MUIA_Image_Spec, spec);
+#endif
         return (T &)*this;
     }
 
@@ -182,21 +185,27 @@ namespace MUI
 
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagSpecPicture(const std::string &imagePath)
     {
-#ifndef __MORPHOS__
-        this->PushTag(MUIA_Image_CopySpec, true);
-#endif
         spec = "5:" + imagePath;
+#ifdef __MORPHOS__
+        auto copy = this->StoreString(spec);
+        this->PushTag(MUIA_Image_Spec, copy);
+#else
+        this->PushTag(MUIA_Image_CopySpec, true);
         this->PushTag(MUIA_Image_Spec, spec);
+#endif
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagSpecColor(const unsigned long rgbColor)
     {
-#ifndef __MORPHOS__
-        this->PushTag(MUIA_Image_CopySpec, true);
-#endif
         // FIXME add proper convert rgbColor to "2:RRRRRRRR,GGGGGGGG,BBBBBBBB" from rgbColor
+#ifdef __MORPHOS__
+        auto copy = this->StoreString(colorSpec);
+        this->PushTag(MUIA_Image_Spec, copy);
+#else
+        this->PushTag(MUIA_Image_CopySpec, true);
         this->PushTag(MUIA_Image_Spec, colorSpec);
+#endif
         return (T &)*this;
     }
 

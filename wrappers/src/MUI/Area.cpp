@@ -72,7 +72,8 @@ namespace MUI
 
     Area &Area::setShortHelp(const std::string &shortHelp)
     {
-        SetValue(MUIA_ShortHelp, shortHelp);
+        auto copy = StoreString(shortHelp);
+        SetValue(MUIA_ShortHelp, copy);
         return *this;
     }
 

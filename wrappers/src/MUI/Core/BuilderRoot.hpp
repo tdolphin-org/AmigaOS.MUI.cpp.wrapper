@@ -6,15 +6,14 @@
 
 #pragma once
 
+#include "AOS/TagItemObject.hpp"
+#include "AOS/TagUtil.hpp"
+#include "Core/StringStorage.hpp"
+#include "Core/ToString.hpp"
+
 #include <iostream>
 #include <set>
 #include <stdexcept>
-#include <string>
-#include <vector>
-
-#include "AOS/TagItemObject.hpp"
-#include "AOS/TagUtil.hpp"
-#include "Core/ToString.hpp"
 
 namespace MUI
 {
@@ -27,6 +26,8 @@ namespace MUI
 
     template <typename T> class BuilderRoot
     {
+        static StringStorage mStringStorage;
+
         std::set<ULONG> mTagKeys;
         std::vector<AOS::TagItemObject> mTags;
         const std::string mClassName;
@@ -54,11 +55,17 @@ namespace MUI
             return T(mUniqueId.empty() ? muiObject(mClassName, mTags) : amccObject(mUniqueId, mClassName, mTags, dataSize, pDispatcher));
         }
 
+        const char *StoreString(const std::string &string)
+        {
+            return mStringStorage.Add(string);
+        }
+
         void CheckUniqueTag(const unsigned long tagName)
         {
             if (mTagKeys.find(tagName) != mTagKeys.end())
             {
-                std::string error = (std::string) __PRETTY_FUNCTION__ + " tag " + AOS::TagUtil::ToString(tagName) + " already added by Builder!";
+                std::string error
+                    = (std::string) __PRETTY_FUNCTION__ + " tag " + AOS::TagUtil::ToString(tagName) + " already added by Builder!";
                 std::cerr << error << std::endl; // FIXME remove it, after catching exceptions will start to work
                 throw std::invalid_argument(error);
             }
@@ -128,4 +135,6 @@ namespace MUI
             mTags.push_back(AOS::TagItemObject(tagName, (void **)pStringArray));
         }
     };
+
+    template <typename T> StringStorage BuilderRoot<T>::mStringStorage;
 }
