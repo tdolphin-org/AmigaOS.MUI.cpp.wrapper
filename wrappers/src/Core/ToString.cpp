@@ -41,8 +41,9 @@ std::string ToString::Format(std::string format, const std::vector<std::string> 
 {
     try
     {
-        auto arg0 = std::accumulate(args0.begin(), args0.end(), std::string(""),
-                                    [](const std::string &a, const std::string &b) { return a + " " + b; });
+        auto arg0 = args0.size() == 1 ? args0[0]
+                                      : std::accumulate(args0.begin(), args0.end(), std::string(""),
+                                                        [](const std::string &a, const std::string &b) { return a + "] [" + b; });
         return format.replace(format.find("{}"), 2, arg0);
     }
     catch (...)
@@ -71,10 +72,12 @@ std::string ToString::Format(std::string format, const std::vector<std::string> 
 {
     try
     {
-        auto arg0 = std::accumulate(args0.begin(), args0.end(), std::string(""),
-                                    [](const std::string &a, const std::string &b) { return a + " " + b; });
-        auto arg1 = std::accumulate(args1.begin(), args1.end(), std::string(""),
-                                    [](const std::string &a, const std::string &b) { return a + " " + b; });
+        auto arg0 = args0.size() == 1 ? args0[0]
+                                      : std::accumulate(args0.begin(), args0.end(), std::string(""),
+                                                        [](const std::string &a, const std::string &b) { return a + " " + b; });
+        auto arg1 = args1.size() == 1 ? args1[0]
+                                      : std::accumulate(args1.begin(), args1.end(), std::string(""),
+                                                        [](const std::string &a, const std::string &b) { return a + " " + b; });
         format.replace(format.find("{}"), 2, arg0);
         format.replace(format.find("{}"), 2, arg1);
         return format;
