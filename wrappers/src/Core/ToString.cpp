@@ -43,7 +43,7 @@ std::string ToString::Format(std::string format, const std::vector<std::string> 
     {
         auto arg0 = args0.size() == 1 ? args0[0]
                                       : std::accumulate(args0.begin(), args0.end(), std::string(""),
-                                                        [](const std::string &a, const std::string &b) { return a + "] [" + b; });
+                                                        [](const std::string &a, const std::string &b) { return a + " " + b; });
         return format.replace(format.find("{}"), 2, arg0);
     }
     catch (...)
