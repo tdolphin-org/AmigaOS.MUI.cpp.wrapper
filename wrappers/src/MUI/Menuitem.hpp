@@ -140,7 +140,8 @@ namespace MUI
 
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagTitle(const std::string &title)
     {
-        this->PushTag(MUIA_Menuitem_Title, title);
+        auto copy = this->StoreString(title);
+        this->PushTag(MUIA_Menuitem_Title, copy);
         return (T &)*this;
     }
 
