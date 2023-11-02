@@ -112,7 +112,9 @@ namespace MUI
         /// @brief [ @b MUIA_Group_HorizSpacing ]
         T &tagHorizSpacing(const long horizSpacing);
         /// @brief [ @b MUIA_Group_PageMode ]
-        T &tagPageMode(const bool pageMode);
+        /// This attribute makes the current group a page group. Page groups always display only one of their children.
+        /// Which one can be adjusted with the MUIA_Group_ActivePage attribute.
+        T &tagPageMode(const bool pageMode = true);
         /// @brief [ @b MUIM_Group_Rows ]
         T &tagRows(const long rows);
         /// @brief [ @b MUIM_Group_SameHeight ]

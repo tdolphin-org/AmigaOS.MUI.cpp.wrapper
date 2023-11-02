@@ -111,8 +111,8 @@ namespace MUI
         /// @return id of next selected
         long GetNextSelected(const long position) const;
 
-        /// @brief Return positions of all selected elements in list.
-        /// @return vector with positions of all selected
+        /// @brief Return indexes/positions of all selected elements in list.
+        /// @return vector with indexes/positions of all selected
         std::vector<long> GetAllSelected() const;
 
         // insert methods
@@ -183,7 +183,7 @@ namespace MUI
         T &tagFormat(const std::string &format);
         /// @brief [ @b MUIA_List_Input ]
         T &tagInput(const bool input);
-        /// @brief [ @b MUIA_List_MultiSelect ]
+        /// @brief [ @b MUIA_List_MultiSelect listviews multi select capabilities. Do NOT override the user's prefs unless you have a good reason!]
         T &tagMultiSelect(const enum List_MultiSelect multiSelect);
         /// @brief [ @b MUIA_List_SortColumn ]
         T &tagSortColumn(const long sortColumn);
