@@ -7,6 +7,7 @@
 #include <iostream>
 #include <numeric>
 #include <sstream>
+#include <type_traits>
 
 #include "ToString.hpp"
 
@@ -22,6 +23,14 @@ std::string ToString::FromHexValue(const unsigned long value)
     std::stringstream stream;
     stream << "0x" << std::hex << value;
     return stream.str();
+}
+
+std::string ToString::VectorToString(const std::vector<std::string> &array)
+{
+    return array.size() == 1 ? array[0]
+                             : std::accumulate(array.begin(), array.end(), std::string(""),
+                                               [](const std::string &a, const std::string &b) { return a + " " + b; });
+    ;
 }
 
 std::string ToString::Format(std::string format, const std::string &arg0)
@@ -73,10 +82,7 @@ std::string ToString::Format(std::string format, const std::string &arg0, const 
     try
     {
         format.replace(format.find("{}"), 2, arg0);
-        auto arg1 = args1.size() == 1 ? args1[0]
-                                      : std::accumulate(args1.begin(), args1.end(), std::string(""),
-                                                        [](const std::string &a, const std::string &b) { return a + " " + b; });
-        format.replace(format.find("{}"), 2, arg1);
+        format.replace(format.find("{}"), 2, VectorToString(args1));
         return format;
     }
     catch (...)
@@ -90,14 +96,8 @@ std::string ToString::Format(std::string format, const std::vector<std::string> 
 {
     try
     {
-        auto arg0 = args0.size() == 1 ? args0[0]
-                                      : std::accumulate(args0.begin(), args0.end(), std::string(""),
-                                                        [](const std::string &a, const std::string &b) { return a + " " + b; });
-        auto arg1 = args1.size() == 1 ? args1[0]
-                                      : std::accumulate(args1.begin(), args1.end(), std::string(""),
-                                                        [](const std::string &a, const std::string &b) { return a + " " + b; });
-        format.replace(format.find("{}"), 2, arg0);
-        format.replace(format.find("{}"), 2, arg1);
+        format.replace(format.find("{}"), 2, VectorToString(args0));
+        format.replace(format.find("{}"), 2, VectorToString(args1));
         return format;
     }
     catch (...)
