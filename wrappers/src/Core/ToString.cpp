@@ -68,6 +68,24 @@ std::string ToString::Format(std::string format, const std::string &arg0, const 
     }
 }
 
+std::string ToString::Format(std::string format, const std::string &arg0, const std::vector<std::string> &args1)
+{
+    try
+    {
+        format.replace(format.find("{}"), 2, arg0);
+        auto arg1 = args1.size() == 1 ? args1[0]
+                                      : std::accumulate(args1.begin(), args1.end(), std::string(""),
+                                                        [](const std::string &a, const std::string &b) { return a + " " + b; });
+        format.replace(format.find("{}"), 2, arg1);
+        return format;
+    }
+    catch (...)
+    {
+        std::cerr << "exception on std::format(arg0,arg1)=" << format << std::endl;
+        return format;
+    }
+}
+
 std::string ToString::Format(std::string format, const std::vector<std::string> &args0, const std::vector<std::string> &args1)
 {
     try

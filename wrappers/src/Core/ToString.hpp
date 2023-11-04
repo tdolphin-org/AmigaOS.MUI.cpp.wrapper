@@ -19,6 +19,7 @@ class ToString
     static std::string Format(std::string format, const std::string &arg0);
     static std::string Format(std::string format, const std::vector<std::string> &args0);
     static std::string Format(std::string format, const std::string &arg0, const std::string &arg1);
+    static std::string Format(std::string format, const std::string &arg0, const std::vector<std::string> &args1);
     static std::string Format(std::string format, const std::vector<std::string> &args0, const std::vector<std::string> &args1);
     static std::string Format(std::string format, const std::string &arg0, const std::string &arg1, const std::string &arg2);
     static std::string Format(std::string format, const std::string &arg0, const std::string &arg1, const std::string &arg2,
