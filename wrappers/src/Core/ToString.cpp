@@ -25,12 +25,11 @@ std::string ToString::FromHexValue(const unsigned long value)
     return stream.str();
 }
 
-std::string ToString::VectorToString(const std::vector<std::string> &array)
+std::string ToString::Concatenate(const std::vector<std::string> &array, const std::string &separator)
 {
     return array.size() == 1 ? array[0]
                              : std::accumulate(array.begin(), array.end(), std::string(""),
-                                               [](const std::string &a, const std::string &b) { return a + " " + b; });
-    ;
+                                               [&separator](const std::string &a, const std::string &b) { return a + " " + b; });
 }
 
 std::string ToString::Format(std::string format, const std::string &arg0)
@@ -82,7 +81,7 @@ std::string ToString::Format(std::string format, const std::string &arg0, const 
     try
     {
         format.replace(format.find("{}"), 2, arg0);
-        format.replace(format.find("{}"), 2, VectorToString(args1));
+        format.replace(format.find("{}"), 2, Concatenate(args1, " "));
         return format;
     }
     catch (...)
@@ -96,8 +95,8 @@ std::string ToString::Format(std::string format, const std::vector<std::string> 
 {
     try
     {
-        format.replace(format.find("{}"), 2, VectorToString(args0));
-        format.replace(format.find("{}"), 2, VectorToString(args1));
+        format.replace(format.find("{}"), 2, Concatenate(args0, " "));
+        format.replace(format.find("{}"), 2, Concatenate(args1, " "));
         return format;
     }
     catch (...)

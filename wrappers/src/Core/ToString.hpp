@@ -14,7 +14,7 @@ class ToString
   public:
     static std::string FromDataPointer(const void *value);
     static std::string FromHexValue(const unsigned long value);
-    static std::string VectorToString(const std::vector<std::string> &array);
+    static std::string Concatenate(const std::vector<std::string> &array, const std::string &separator);
 
     // below methods could be removed if C++20 would be used with std::format
     static std::string Format(std::string format, const std::string &arg0);
