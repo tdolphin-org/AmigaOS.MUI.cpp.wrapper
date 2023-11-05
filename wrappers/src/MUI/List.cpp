@@ -185,6 +185,24 @@ namespace MUI
         return *this;
     }
 
+    List &List::InsertSingleTop(const std::string &entry)
+    {
+        DoMethod(muiObject(), MUIM_List_InsertSingle, (ULONG)entry.c_str(), MUIV_List_Insert_Top);
+        return *this;
+    }
+
+    List &List::InsertSingleBottom(const std::string &entry)
+    {
+        DoMethod(muiObject(), MUIM_List_InsertSingle, (ULONG)entry.c_str(), MUIV_List_Insert_Bottom);
+        return *this;
+    }
+
+    List &List::InsertSingleSorted(const std::string &entry)
+    {
+        DoMethod(muiObject(), MUIM_List_InsertSingle, (ULONG)entry.c_str(), MUIV_List_Insert_Top);
+        return *this;
+    }
+
     List &List::InsertTop(const void *entries[])
     {
         DoMethod(muiObject(), MUIM_List_Insert, (ULONG)entries, -1, MUIV_List_Insert_Bottom);
