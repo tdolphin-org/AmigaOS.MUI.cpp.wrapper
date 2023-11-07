@@ -23,8 +23,12 @@ namespace MUI
       public:
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Disabled ]
         DestAreaNotifier &setDisabled(const bool disabled, bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Disabled = @b MUIV_TriggerValue ]
+        DestAreaNotifier &setDisabledTriggerValue(bool notify = true);
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Selected ]
         DestAreaNotifier &setSelected(const bool selected, bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Selected = @b MUIV_TriggerValue ]
+        DestAreaNotifier &setSelectedTriggerValue(bool notify = true);
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_ShowMe ]
         DestAreaNotifier &setShowMe(const bool showMe, bool notify = true);
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_ShowMe = @b MUIV_TriggerValue ]

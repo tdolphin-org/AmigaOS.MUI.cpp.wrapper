@@ -22,10 +22,24 @@ namespace MUI
         return *this;
     }
 
+    DestAreaNotifier &DestAreaNotifier::setDisabledTriggerValue(bool notify)
+    {
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Disabled, MUIV_TriggerValue);
+        return *this;
+    }
+
     DestAreaNotifier &DestAreaNotifier::setSelected(const bool selected, bool notify)
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Selected, (unsigned long)selected);
+        return *this;
+    }
+
+    DestAreaNotifier &DestAreaNotifier::setSelectedTriggerValue(bool notify)
+    {
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Selected, MUIV_TriggerValue);
         return *this;
     }
 

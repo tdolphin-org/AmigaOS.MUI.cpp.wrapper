@@ -19,8 +19,18 @@ namespace MUI
         return SourceNotifier<Area, DestAreaNotifier>(mArea, MUIA_Selected, selected);
     }
 
+    SourceNotifier<Area, DestAreaNotifier> AreaNotifier::onSelectedEveryTime()
+    {
+        return SourceNotifier<Area, DestAreaNotifier>(mArea, MUIA_Selected, (long)MUIV_EveryTime);
+    }
+
     SourceNotifier<Area, DestAreaNotifier> AreaNotifier::onPressed(const bool pressed)
     {
         return SourceNotifier<Area, DestAreaNotifier>(mArea, MUIA_Pressed, pressed);
+    }
+
+    SourceNotifier<Area, DestAreaNotifier> AreaNotifier::onPressedEveryTime()
+    {
+        return SourceNotifier<Area, DestAreaNotifier>(mArea, MUIA_Pressed, (long)MUIV_EveryTime);
     }
 }

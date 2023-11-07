@@ -14,13 +14,13 @@ namespace MUI
     {
     }
 
-    SourceNotifier<Cycle, DestCycleNotifier> CycleNotifier::onActiveEveryTime()
-    {
-        return SourceNotifier<Cycle, DestCycleNotifier>(mCycle, MUIA_Cycle_Active, (long)MUIV_EveryTime);
-    }
-
     SourceNotifier<Cycle, DestCycleNotifier> CycleNotifier::onActive(const enum Cycle_Active active)
     {
         return SourceNotifier<Cycle, DestCycleNotifier>(mCycle, MUIA_Cycle_Active, (unsigned long)active);
+    }
+
+    SourceNotifier<Cycle, DestCycleNotifier> CycleNotifier::onActiveEveryTime()
+    {
+        return SourceNotifier<Cycle, DestCycleNotifier>(mCycle, MUIA_Cycle_Active, (long)MUIV_EveryTime);
     }
 }
