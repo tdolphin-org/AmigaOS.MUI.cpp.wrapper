@@ -10,9 +10,11 @@
 
 #include "ValueTypes/List/Active.hpp"
 #include "ValueTypes/List/DragType.hpp"
+#include "ValueTypes/List/HScrollerVisibility.hpp"
 #include "ValueTypes/List/Jump.hpp"
 #include "ValueTypes/List/MultiSelect.hpp"
 #include "ValueTypes/List/NextSelected.hpp"
+#include "ValueTypes/List/ScrollerPos.hpp"
 
 #undef Remove
 
@@ -164,6 +166,12 @@ namespace MUI
         T &tagActive(const enum List_Active active);
         /// @brief [ @b MUIA_List_Active ]
         T &tagActive(const long active);
+        /// @brief [ @b MUIA_List_AdjustHeight ]
+        T &tagAdjustHeight(const bool adjustHeight);
+        /// @brief [ @b MUIA_List_AdjustWidth ]
+        T &tagAdjustWidth(const bool adjustWidth);
+        /// @brief [ @b MUIA_List_AgainClick ]
+        T &tagAgainClick(const bool againClick);
         /// @brief [ @b MUIA_List_AutoLineHeight ]
         T &tagAutoLineHeight(const bool autoLineHeight);
         /// @brief [ @b MUIA_List_AutoVisible ]
@@ -188,10 +196,17 @@ namespace MUI
         T &tagFormat(const char *format);
         /// @brief [ @b MUIA_List_Format ]
         T &tagFormat(const std::string &format);
+        /// @brief [ @b MUIA_List_HScrollerVisibility set possibilities for the list's horizontal scroll bar:
+        /// Please do NOT override the user's prefs unless you have a good reason!]
+        T &tagHScrollerVisibility(const enum List_HScrollerVisibility hScrollerVisibility);
         /// @brief [ @b MUIA_List_Input ]
         T &tagInput(const bool input);
-        /// @brief [ @b MUIA_List_MultiSelect listviews multi select capabilities. Do NOT override the user's prefs unless you have a good reason!]
+        /// @brief [ @b MUIA_List_MultiSelect listviews multi select capabilities.
+        /// Do NOT override the user's prefs unless you have a good reason!]
         T &tagMultiSelect(const enum List_MultiSelect multiSelect);
+        /// @brief [ @b MUIA_List_ScrollerPos specifies the position of a listviews scrollbar.
+        /// Don't use this tag unless it is absolutely required!]
+        T &tagScrollerPos(const enum List_ScrollerPos scrollerPos);
         /// @brief [ @b MUIA_List_SortColumn ]
         T &tagSortColumn(const long sortColumn);
         /// @brief [ @b MUIA_List_SourceArray ]
@@ -215,6 +230,24 @@ namespace MUI
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagActive(const long active)
     {
         this->PushTag(MUIA_List_Active, active);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagAdjustHeight(const bool adjustHeight)
+    {
+        this->PushTag(MUIA_List_AdjustHeight, adjustHeight);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagAdjustWidth(const bool adjustWidth)
+    {
+        this->PushTag(MUIA_List_AdjustWidth, adjustWidth);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagAgainClick(const bool againClick)
+    {
+        this->PushTag(MUIA_List_AgainClick, againClick);
         return (T &)*this;
     }
 
@@ -290,6 +323,13 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U>
+    inline T &ListBuilderTemplate<T, U>::tagHScrollerVisibility(const enum List_HScrollerVisibility hScrollerVisibility)
+    {
+        this->PushTag(MUIA_List_HScrollerVisibility, (long)hScrollerVisibility);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagInput(const bool input)
     {
         this->PushTag(MUIA_List_Input, input);
@@ -299,6 +339,12 @@ namespace MUI
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagMultiSelect(const enum List_MultiSelect multiSelect)
     {
         this->PushTag(MUIA_List_MultiSelect, (long)multiSelect);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagScrollerPos(const enum List_ScrollerPos scrollerPos)
+    {
+        this->PushTag(MUIA_List_ScrollerPos, (long)scrollerPos);
         return (T &)*this;
     }
 
