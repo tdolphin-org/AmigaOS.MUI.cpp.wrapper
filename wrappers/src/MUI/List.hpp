@@ -54,6 +54,8 @@ namespace MUI
         /// @brief [ @b MUIA_List_Entries ]
         /// @return The current number of entries in the list.
         long getEntries() const;
+        /// @brief [ @b MUIA_List_TopPixel ]
+        long getTopPixel() const;
         /// @brief [ @b MUIA_List_Quiet ]
         bool isQuiet() const;
 
@@ -81,6 +83,8 @@ namespace MUI
         List &setFormat(const std::string &format);
         /// @brief [ @b MUIA_List_SortColumn ]
         List &setSortColumn(const long sortColumn);
+        /// @brief [ @b MUIA_List_TopPixel ]
+        List &setTopPixel(const long topPixel);
         /// @brief [ @b MUIA_List_Quiet ]
         List &setQuiet(const bool quiet);
 

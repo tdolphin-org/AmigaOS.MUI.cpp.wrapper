@@ -27,6 +27,11 @@ namespace MUI
         return GetValueAsLong(MUIA_List_Entries);
     }
 
+    long List::getTopPixel() const
+    {
+        return GetValueAsLong(MUIA_List_TopPixel);
+    }
+
     bool List::isQuiet() const
     {
         return GetValueAsBool(MUIA_List_Quiet);
@@ -101,6 +106,12 @@ namespace MUI
     List &List::setSortColumn(const long sortColumn)
     {
         SetValue(MUIA_List_SortColumn, sortColumn);
+        return *this;
+    }
+
+    List &List::setTopPixel(const long topPixel)
+    {
+        SetValue(MUIA_List_TopPixel, topPixel);
         return *this;
     }
 
