@@ -33,6 +33,14 @@ namespace MUI
         {
             return MUI::instanceOf(pMuiObject, className.c_str());
         }
+
+        // is/get/set (attributes), all setters return object reference
+
+        /// @brief [ @b MUIA_Scrollbar_IncDecSize ]
+        unsigned long getIncDecSize();
+
+        /// @brief [ @b MUIA_Scrollbar_IncDecSize ]
+        Scrollbar &setIncDecSize(unsigned long incDecSize);
     };
 
     template <typename T, typename U> class ScrollbarBuilderTemplate : public GroupBuilderTemplate<T, U>
@@ -43,6 +51,8 @@ namespace MUI
         {
         }
 
+        /// @brief [ @b MUIA_Scrollbar_IncDecSize ]
+        T &tagIncDecSize(const unsigned long incDecSize);
         /// @brief [ @b MUIA_Scrollbar_Type ]
         T &tagType(const enum Scrollbar_Type type);
     };
@@ -52,6 +62,12 @@ namespace MUI
       public:
         ScrollbarBuilder();
     };
+
+    template <typename T, typename U> inline T &ScrollbarBuilderTemplate<T, U>::tagIncDecSize(const unsigned long incDecSize)
+    {
+        this->PushTag(MUIA_Scrollbar_IncDecSize, incDecSize);
+        return (T &)*this;
+    }
 
     template <typename T, typename U> inline T &ScrollbarBuilderTemplate<T, U>::tagType(const enum Scrollbar_Type type)
     {

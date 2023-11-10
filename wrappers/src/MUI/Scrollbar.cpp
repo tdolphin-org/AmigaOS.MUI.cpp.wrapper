@@ -11,4 +11,15 @@ namespace MUI
     const std::string Scrollbar::className = MUIC_Scrollbar;
 
     ScrollbarBuilder::ScrollbarBuilder() { }
+
+    unsigned long Scrollbar::getIncDecSize()
+    {
+        return GetValueAsULong(MUIA_Scrollbar_IncDecSize);
+    }
+
+    Scrollbar &Scrollbar::setIncDecSize(unsigned long incDecSize)
+    {
+        SetValue(MUIA_Scrollbar_IncDecSize, incDecSize);
+        return *this;
+    }
 }
