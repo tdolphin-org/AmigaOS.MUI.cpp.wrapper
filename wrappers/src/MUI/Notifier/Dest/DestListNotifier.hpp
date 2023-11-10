@@ -21,5 +21,11 @@ namespace MUI
       protected:
         DestListNotifier() = delete;
         DestListNotifier(const NotifierObject &notifierObject, const List &list);
+
+      public:
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_List_TopPixel ]
+        DestListNotifier &setTopPixel(const long topPixel, bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_List_TopPixel = @b MUIV_TriggerValue ]
+        DestListNotifier &setTopPixelTriggerValue(bool notify = true);
     };
 }

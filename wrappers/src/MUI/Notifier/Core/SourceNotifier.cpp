@@ -33,6 +33,11 @@ namespace MUI
         return DestFamilyNotifier(*this, family);
     }
 
+    DestGadgetNotifier SourceNotifierRoot::notifyObject(const Gadget &gadget)
+    {
+        return DestGadgetNotifier(*this, gadget);
+    }
+
     DestGroupNotifier SourceNotifierRoot::notifyObject(const Group &group)
     {
         return DestGroupNotifier(*this, group);
@@ -51,6 +56,11 @@ namespace MUI
     DestNotifyNotifier SourceNotifierRoot::notifyObject(const Notify &notify)
     {
         return DestNotifyNotifier(*this, notify);
+    }
+
+    DestPropNotifier SourceNotifierRoot::notifyObject(const Prop &prop)
+    {
+        return DestPropNotifier(*this, prop);
     }
 
     DestRegisterNotifier SourceNotifierRoot::notifyObject(const Register &registerObject)

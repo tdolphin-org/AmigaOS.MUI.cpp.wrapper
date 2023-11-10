@@ -25,5 +25,11 @@ namespace MUI
         SourceNotifier<List, DestListNotifier> onActiveEveryTime();
         /// @brief [ @b MUIM_Notify, @b MUIA_List_DoubleClick ]
         SourceNotifier<List, DestListNotifier> onDoubleClick(const bool doubleClick);
+        /// @brief [ @b MUIM_Notify, @b MUIA_List_TotalPixel == @b MUIV_EveryTime ]
+        SourceNotifier<List, DestListNotifier> onTotalPixelEveryTime();
+        /// @brief [ @b MUIM_Notify, @b MUIA_List_VisiblePixel == @b MUIV_EveryTime ]
+        SourceNotifier<List, DestListNotifier> onVisiblePixelEveryTime();
+        /// @brief [ @b MUIM_Notify, @b MUIA_List_TopPixel == @b MUIV_EveryTime ]
+        SourceNotifier<List, DestListNotifier> onTopPixelEveryTime();
     };
 }

@@ -23,6 +23,11 @@ namespace MUI
         return FamilyNotifier(family);
     }
 
+    GadgetNotifier Notifier::from(const Gadget &gadget)
+    {
+        return GadgetNotifier(gadget);
+    }
+
     GroupNotifier Notifier::from(const Group &group)
     {
         return GroupNotifier(group);
@@ -41,6 +46,11 @@ namespace MUI
     NotifyNotifier Notifier::from(const Notify &notify)
     {
         return NotifyNotifier(notify);
+    }
+
+    PropNotifier Notifier::from(const Prop &prop)
+    {
+        return PropNotifier(prop);
     }
 
     StringNotifier Notifier::from(const String &string)

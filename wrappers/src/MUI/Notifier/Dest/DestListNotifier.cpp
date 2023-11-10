@@ -14,4 +14,18 @@ namespace MUI
       : DestAreaNotifier(notifierObject, list)
     {
     }
+
+    DestListNotifier &DestListNotifier::setTopPixel(const long topPixel, bool notify)
+    {
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_List_TopPixel, topPixel);
+        return *this;
+    }
+
+    DestListNotifier &DestListNotifier::setTopPixelTriggerValue(bool notify)
+    {
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_List_TopPixel, MUIV_TriggerValue);
+        return *this;
+    }
 }

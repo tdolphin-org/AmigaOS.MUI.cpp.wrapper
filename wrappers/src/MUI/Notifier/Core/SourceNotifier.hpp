@@ -14,10 +14,12 @@
 #include "../Dest/DestAreaNotifier.hpp"
 #include "../Dest/DestCycleNotifier.hpp"
 #include "../Dest/DestFamilyNotifier.hpp"
+#include "../Dest/DestGadgetNotifier.hpp"
 #include "../Dest/DestGroupNotifier.hpp"
 #include "../Dest/DestListNotifier.hpp"
 #include "../Dest/DestMenuitemNotifier.hpp"
 #include "../Dest/DestNotifyNotifier.hpp"
+#include "../Dest/DestPropNotifier.hpp"
 #include "../Dest/DestRegisterNotifier.hpp"
 #include "../Dest/DestStringNotifier.hpp"
 #include "../Dest/DestWindowNotifier.hpp"
@@ -35,15 +37,20 @@ namespace MUI
         DestAreaNotifier notifyObject(const Area &area);
         DestCycleNotifier notifyObject(const Cycle &cycle);
         DestFamilyNotifier notifyObject(const Family &family);
+        DestGadgetNotifier notifyObject(const Gadget &gadget);
         DestGroupNotifier notifyObject(const Group &group);
         DestListNotifier notifyObject(const List &list);
         DestMenuitemNotifier notifyObject(const Menuitem &menuitem);
         DestNotifyNotifier notifyObject(const Notify &notify);
+        DestPropNotifier notifyObject(const Prop &prop);
         DestRegisterNotifier notifyObject(const Register &registerObject);
         DestStringNotifier notifyObject(const String &string);
         DestWindowNotifier notifyObject(const Window &window);
     };
 
+    /// @brief
+    /// @tparam T object class, source of notification
+    /// @tparam U dest notifier to notify self
     template <typename T, typename U> class SourceNotifier : public SourceNotifierRoot
     {
         T mObject;
