@@ -23,6 +23,10 @@ namespace MUI
         DestListNotifier(const NotifierObject &notifierObject, const List &list);
 
       public:
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_List_Active ]
+        DestListNotifier &setActive(const long active, bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_List_Active = @b MUIV_TriggerValue ]
+        DestListNotifier &setActiveTriggerValue(bool notify = true);
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_List_TopPixel ]
         DestListNotifier &setTopPixel(const long topPixel, bool notify = true);
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_List_TopPixel = @b MUIV_TriggerValue ]
