@@ -42,7 +42,9 @@ namespace MUI
         }
 
         /// @brief [ @b MUIA_Balance_Quiet ]
-        T &tagQuiet(const long quiet);
+        /// If set to true the balance object will show its frame only if the mouse is located over the object. Otherwise it will be invisible.
+        /// By default is false.
+        T &tagQuiet(const bool quiet);
     };
 
     class BalanceBuilder : public BalanceBuilderTemplate<BalanceBuilder, Balance>
@@ -51,7 +53,7 @@ namespace MUI
         BalanceBuilder();
     };
 
-    template <typename T, typename U> inline T &BalanceBuilderTemplate<T, U>::tagQuiet(const long quiet)
+    template <typename T, typename U> inline T &BalanceBuilderTemplate<T, U>::tagQuiet(const bool quiet)
     {
         this->PushTag(MUIA_Balance_Quiet, quiet);
         return (T &)*this;

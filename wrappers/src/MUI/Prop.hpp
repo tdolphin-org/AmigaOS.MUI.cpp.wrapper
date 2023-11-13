@@ -109,7 +109,7 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &PropBuilderTemplate<T, U>::tagUseWinBorder(const Prop_UseWinBorder useWinBorder)
+    template <typename T, typename U> inline T &PropBuilderTemplate<T, U>::tagUseWinBorder(const enum Prop_UseWinBorder useWinBorder)
     {
         this->PushTag(MUIA_Prop_UseWinBorder, useWinBorder);
         return (T &)*this;
