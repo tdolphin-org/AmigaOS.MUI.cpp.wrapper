@@ -24,6 +24,12 @@ namespace MUI
 
       public:
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Cycle_Active ]
-        DestCycleNotifier &setActivePage(const enum Cycle_Active active, bool notify = true);
+        DestCycleNotifier &setActive(const enum Cycle_Active active, bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Cycle_Active = @b MUIV_TriggerValue ]
+        DestCycleNotifier &setActiveTriggerValue(bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Cycle_Entries ]
+        DestCycleNotifier &setEntries(const char *entries[], bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Cycle_Entries = @b MUIV_TriggerValue ]
+        DestCycleNotifier &setEntriesTriggerValue(bool notify = true);
     };
 }

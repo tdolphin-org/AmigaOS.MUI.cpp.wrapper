@@ -23,4 +23,9 @@ namespace MUI
     {
         return SourceNotifier<Cycle, DestCycleNotifier>(mCycle, MUIA_Cycle_Active, (long)MUIV_EveryTime);
     }
+
+    SourceNotifier<Cycle, DestCycleNotifier> CycleNotifier::onEntriesEveryTime()
+    {
+        return SourceNotifier<Cycle, DestCycleNotifier>(mCycle, MUIA_Cycle_Entries, (long)MUIV_EveryTime);
+    }
 }

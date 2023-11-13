@@ -15,6 +15,27 @@ namespace MUI
     {
     }
 
+    DestPropNotifier &DestPropNotifier::setDeltaFactor(const long deltaFactor, bool notify)
+    {
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Prop_DeltaFactor, deltaFactor);
+        return *this;
+    }
+
+    DestPropNotifier &DestPropNotifier::setDeltaFactorTriggerValue(bool notify)
+    {
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Prop_DeltaFactor, MUIV_TriggerValue);
+        return *this;
+    }
+
+    DestPropNotifier &DestPropNotifier::setEntries(const long entries, bool notify)
+    {
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Prop_Entries, entries);
+        return *this;
+    }
+
     DestPropNotifier &DestPropNotifier::setEntriesTriggerValue(bool notify)
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
@@ -22,10 +43,10 @@ namespace MUI
         return *this;
     }
 
-    DestPropNotifier &DestPropNotifier::setVisibleTriggerValue(bool notify)
+    DestPropNotifier &DestPropNotifier::setFirst(const long first, bool notify)
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
-                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Prop_Visible, MUIV_TriggerValue);
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Prop_First, first);
         return *this;
     }
 
@@ -33,6 +54,20 @@ namespace MUI
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Prop_First, MUIV_TriggerValue);
+        return *this;
+    }
+
+    DestPropNotifier &DestPropNotifier::setVisible(const long visible, bool notify)
+    {
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Prop_Visible, visible);
+        return *this;
+    }
+
+    DestPropNotifier &DestPropNotifier::setVisibleTriggerValue(bool notify)
+    {
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Prop_Visible, MUIV_TriggerValue);
         return *this;
     }
 }

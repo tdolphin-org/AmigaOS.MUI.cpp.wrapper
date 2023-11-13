@@ -25,5 +25,7 @@ namespace MUI
         SourceNotifier<Cycle, DestCycleNotifier> onActive(const enum Cycle_Active active);
         /// @brief [ @b MUIM_Notify, @b MUIA_Cycle_Active == @b MUIV_EveryTime ]
         SourceNotifier<Cycle, DestCycleNotifier> onActiveEveryTime();
+        /// @brief [ @b MUIM_Notify, @b MUIA_Cycle_Entries == @b MUIV_EveryTime ]
+        SourceNotifier<Cycle, DestCycleNotifier> onEntriesEveryTime();
     };
 }

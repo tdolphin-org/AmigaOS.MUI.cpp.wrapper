@@ -21,11 +21,21 @@ namespace MUI
         DestPropNotifier(const NotifierObject &notifierObject, const Prop &prop);
 
       public:
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Prop_DeltaFactor ]
+        DestPropNotifier &setDeltaFactor(const long deltaFactor, bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Prop_DeltaFactor = @b MUIV_TriggerValue ]
+        DestPropNotifier &setDeltaFactorTriggerValue(bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Prop_Entries ]
+        DestPropNotifier &setEntries(const long entries, bool notify = true);
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Prop_Entries = @b MUIV_TriggerValue ]
         DestPropNotifier &setEntriesTriggerValue(bool notify = true);
-        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Prop_Visible = @b MUIV_TriggerValue ]
-        DestPropNotifier &setVisibleTriggerValue(bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Prop_First ]
+        DestPropNotifier &setFirst(const long first, bool notify = true);
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Prop_First = @b MUIV_TriggerValue ]
         DestPropNotifier &setFirstTriggerValue(bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Prop_Visible ]
+        DestPropNotifier &setVisible(const long visible, bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Prop_Visible = @b MUIV_TriggerValue ]
+        DestPropNotifier &setVisibleTriggerValue(bool notify = true);
     };
 }
