@@ -35,7 +35,7 @@ namespace MUI
         // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Gadget_Gadget ]
-        Gadget *getGadget() const;
+        ::Gadget *getGadget() const;
     };
 
     template <typename T, typename U> class GadgetBuilderTemplate : public AreaBuilderTemplate<T, U>
