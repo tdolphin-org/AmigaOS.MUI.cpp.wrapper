@@ -15,18 +15,24 @@ namespace Components
     void Root::MuiAlert(const std::string &message) const
     {
         auto appObject = muiNotify().getApplicationObject();
-        MUI_Request(appObject, (ULONG)NULL, 0, (ULONG)NULL, (char *)"_Ok", (char *)message.c_str(), TAG_END);
+        MUI_Request(appObject, nullptr, MUIV_Requester_Image_Error, nullptr, (char *)"_Ok", (char *)message.c_str(), TAG_END);
+    }
+
+    void Root::MuiWarining(const std::string &message) const
+    {
+        auto appObject = muiNotify().getApplicationObject();
+        MUI_Request(appObject, nullptr, MUIV_Requester_Image_Warning, nullptr, (char *)"_Ok", (char *)message.c_str(), TAG_END);
     }
 
     void Root::MuiInfo(const std::string &message, const std::string &gadgets) const
     {
         auto appObject = muiNotify().getApplicationObject();
-        MUI_Request(appObject, (ULONG)NULL, 0, (ULONG)NULL, (char *)gadgets.c_str(), (char *)message.c_str(), TAG_END);
+        MUI_Request(appObject, nullptr, 0, nullptr, (char *)gadgets.c_str(), (char *)message.c_str(), TAG_END);
     }
 
     long Root::MuiRequest(const std::string &title, const std::string &message, const std::string &gadgets) const
     {
         auto appObject = muiNotify().getApplicationObject();
-        return MUI_Request(appObject, (ULONG)NULL, 0, (char *)title.c_str(), (char *)gadgets.c_str(), (char *)message.c_str(), TAG_END);
+        return MUI_Request(appObject, nullptr, 0, (char *)title.c_str(), (char *)gadgets.c_str(), (char *)message.c_str(), TAG_END);
     }
 }
