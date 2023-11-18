@@ -22,6 +22,11 @@ namespace MUI
         return GetValueAsBool(MUIA_Menuitem_Checkit);
     }
 
+    bool Menuitem::isCommandString() const
+    {
+        return GetValueAsBool(MUIA_Menuitem_CommandString);
+    }
+
     bool Menuitem::isEnabled() const
     {
         return GetValueAsBool(MUIA_Menuitem_Enabled);
@@ -46,6 +51,12 @@ namespace MUI
     Menuitem &Menuitem::setCheckit(const bool checkit)
     {
         SetValue(MUIA_Menuitem_Checkit, checkit);
+        return *this;
+    }
+
+    Menuitem &Menuitem::setCommandString(const bool commandString)
+    {
+        SetValue(MUIA_Menuitem_CommandString, commandString);
         return *this;
     }
 
