@@ -33,6 +33,22 @@ namespace MUI
         {
             return MUI::instanceOf(pMuiObject, className.c_str());
         }
+
+        // is/get/set (attributes), all setters return object reference
+
+        /// @brief [ @b MUIA_Popasl_Active ]
+        bool isActive() const;
+        /// @brief [ @b MUIA_Popasl_StartHook ]
+        Hook *getStartHook() const;
+        /// @brief [ @b MUIA_Popasl_StopHook ]
+        Hook *getStopHook() const;
+        /// @brief [ @b MUIA_Popasl_Type ]
+        unsigned long getType() const;
+
+        /// @brief [ @b MUIA_Popasl_StartHook ]
+        Popasl &setStartHook(const Hook *startHook);
+        /// @brief [ @b MUIA_Popasl_StopHook ]
+        Popasl &setStopHook(const Hook *stopHook);
     };
 
     template <typename T, typename U> class PopaslBuilderTemplate : public PopstringBuilderTemplate<T, U>
