@@ -54,6 +54,13 @@ namespace MUI
         Prop &setFirst(const long first);
         /// @brief [ @b MUIA_Prop_Visible ]
         Prop &setVisible(const long visible);
+
+        // methods, some can return object reference
+
+        /// @brief [ @b MUIM_Prop_Decrease ]
+        Notify &Decrease(const long amount);
+        /// @brief [ @b MUIM_Prop_Increase ]
+        Notify &Increase(const long amount);
     };
 
     template <typename T, typename U> class PropBuilderTemplate : public GadgetBuilderTemplate<T, U>

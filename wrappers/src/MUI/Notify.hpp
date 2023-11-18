@@ -11,6 +11,7 @@
 #include "Core/Root.hpp"
 
 #include <libraries/mui.h>
+#include <workbench/workbench.h>
 
 namespace MUI
 {
@@ -45,6 +46,8 @@ namespace MUI
 
         /// @brief [ @b MUIA_ApplicationObject ]
         Object *getApplicationObject() const;
+        /// @brief [ @b MUIA_AppMessage ]
+        AppMessage *getAppMessage() const;
         /// @brief [ @b MUIA_HelpLine ]
         long getHelpLine() const;
         /// @brief [ @b MUIA_HelpNode ]
@@ -129,7 +132,7 @@ namespace MUI
         /// @brief [ @b MUIA_HelpLine ]
         T &tagHelpLine(const long helpLine);
         /// @brief [ @b MUIA_HelpNode ]
-        T &tagHelpLine(const std::string &helpNode);
+        T &tagHelpNode(const std::string &helpNode);
         /// @brief [ @b MUIA_ObjectID ]
         T &tagObjectID(const AOS::Identifier &idobjectID);
         /// @brief [ @b MUIA_UserData ]
@@ -148,9 +151,9 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &NotifyBuilderTemplate<T, U>::tagHelpLine(const std::string &helpNode)
+    template <typename T, typename U> inline T &NotifyBuilderTemplate<T, U>::tagHelpNode(const std::string &helpNode)
     {
-        this->PushTag(MUIA_HelpLine, helpNode);
+        this->PushTag(MUIA_HelpNode, helpNode);
         return (T &)*this;
     }
 

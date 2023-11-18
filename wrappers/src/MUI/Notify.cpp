@@ -17,6 +17,11 @@ namespace MUI
         return GetValueAsObjectPtr(MUIA_ApplicationObject);
     }
 
+    AppMessage *Notify::getAppMessage() const
+    {
+        return (AppMessage *)GetValueAsPtr(MUIA_AppMessage);
+    }
+
     long Notify::getHelpLine() const
     {
         return GetValueAsLong(MUIA_HelpLine);

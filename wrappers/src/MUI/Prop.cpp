@@ -6,6 +6,8 @@
 
 #include "Prop.hpp"
 
+#include <proto/alib.h>
+
 namespace MUI
 {
     const std::string Prop::className = MUIC_Prop;
@@ -58,6 +60,18 @@ namespace MUI
     Prop &Prop::setVisible(const long visible)
     {
         SetValue(MUIA_Prop_Visible, visible);
+        return *this;
+    }
+
+    Notify &Prop::Decrease(const long amount)
+    {
+        DoMethod(muiObject(), MUIM_Prop_Decrease, amount);
+        return *this;
+    }
+
+    Notify &Prop::Increase(const long amount)
+    {
+        DoMethod(muiObject(), MUIM_Prop_Increase, amount);
         return *this;
     }
 }
