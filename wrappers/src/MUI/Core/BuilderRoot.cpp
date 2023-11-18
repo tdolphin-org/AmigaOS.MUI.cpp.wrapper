@@ -6,15 +6,15 @@
 
 #include "BuilderRoot.hpp"
 
+#include "AOS/TagsScope.hpp"
+#include "CustomClassManager.hpp"
+#include "CustomClassScope.hpp"
+
 #include <iostream>
 #include <stdexcept>
 
 #include <proto/intuition.h>
 #include <proto/muimaster.h>
-
-#include "AOS/TagsScope.hpp"
-#include "CustomClassManager.hpp"
-#include "CustomClassScope.hpp"
 
 namespace MUI
 {

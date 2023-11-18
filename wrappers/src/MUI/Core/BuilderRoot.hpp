@@ -6,14 +6,9 @@
 
 #pragma once
 
-#include "AOS/TagItemObject.hpp"
-#include "AOS/TagUtil.hpp"
+#include "AOS/TagBuilderRoot.hpp"
 #include "Core/StringStorage.hpp"
 #include "Core/ToString.hpp"
-
-#include <iostream>
-#include <set>
-#include <stdexcept>
 
 namespace MUI
 {
@@ -24,12 +19,10 @@ namespace MUI
 
     static std::string EmptyUniqueId = "";
 
-    template <typename T> class BuilderRoot
+    template <typename T> class BuilderRoot : public AOS::TagBuilderRoot
     {
         static StringStorage mStringStorage;
 
-        std::set<ULONG> mTagKeys;
-        std::vector<AOS::TagItemObject> mTags;
         const std::string mClassName;
         /// @brief not empty if class is internal for application, created based od other MUI builtin class
         const std::string mUniqueId;
@@ -46,93 +39,18 @@ namespace MUI
 
         T object() const
         {
-            return T(mUniqueId.empty() ? muiObject(mClassName, mTags) : amccObject(mUniqueId, mClassName, mTags));
+            return T(mUniqueId.empty() ? muiObject(mClassName, getTags()) : amccObject(mUniqueId, mClassName, getTags()));
         }
 
       protected:
         T object(const unsigned long dataSize, const void *pDispatcher) const
         {
-            return T(mUniqueId.empty() ? muiObject(mClassName, mTags) : amccObject(mUniqueId, mClassName, mTags, dataSize, pDispatcher));
+            return T(mUniqueId.empty() ? muiObject(mClassName, getTags()) : amccObject(mUniqueId, mClassName, getTags(), dataSize, pDispatcher));
         }
 
         const char *StoreString(const std::string &string)
         {
             return mStringStorage.Add(string);
-        }
-
-        void CheckUniqueTag(const unsigned long tagName)
-        {
-            if (mTagKeys.find(tagName) != mTagKeys.end())
-            {
-                std::string error
-                    = (std::string) __PRETTY_FUNCTION__ + " tag " + AOS::TagUtil::ToString(tagName) + " already added by Builder!";
-                std::cerr << error << std::endl; // FIXME remove it, after catching exceptions will start to work
-                throw std::invalid_argument(error);
-            }
-            mTagKeys.insert(tagName);
-        }
-
-        void PushTag(const unsigned long tagName, const void *pointer, const bool uniqueTag = true)
-        {
-            if (uniqueTag)
-                CheckUniqueTag(tagName);
-            mTags.push_back(AOS::TagItemObject(tagName, pointer));
-        }
-
-        void PushTag(const unsigned long tagName, const char *pString, const bool uniqueTag = true)
-        {
-            if (uniqueTag)
-                CheckUniqueTag(tagName);
-            mTags.push_back(AOS::TagItemObject(tagName, (void *)pString));
-        }
-
-        void PushTag(const unsigned long tagName, const std::string &string, const bool uniqueTag = true)
-        {
-            if (uniqueTag)
-                CheckUniqueTag(tagName);
-            mTags.push_back(AOS::TagItemObject(tagName, (void *)string.c_str()));
-        }
-
-        void PushTag(const unsigned long tagName, const unsigned long ulong, const bool uniqueTag = true)
-        {
-            if (uniqueTag)
-                CheckUniqueTag(tagName);
-            mTags.push_back(AOS::TagItemObject(tagName, ulong));
-        }
-
-        void PushTag(const unsigned long tagName, const long slong, const bool uniqueTag = true)
-        {
-            if (uniqueTag)
-                CheckUniqueTag(tagName);
-            mTags.push_back(AOS::TagItemObject(tagName, slong));
-        }
-
-        void PushTag(const unsigned long tagName, const bool boolean, const bool uniqueTag = true)
-        {
-            if (uniqueTag)
-                CheckUniqueTag(tagName);
-            mTags.push_back(AOS::TagItemObject(tagName, (unsigned long)boolean));
-        }
-
-        void PushTag(const unsigned long tagName, const Object *pObject, const bool uniqueTag = true)
-        {
-            if (uniqueTag)
-                CheckUniqueTag(tagName);
-            mTags.push_back(AOS::TagItemObject(tagName, (void *)pObject));
-        }
-
-        void PushTag(const unsigned long tagName, const void *pArray[], const bool uniqueTag = true)
-        {
-            if (uniqueTag)
-                CheckUniqueTag(tagName);
-            mTags.push_back(AOS::TagItemObject(tagName, pArray));
-        }
-
-        void PushTag(const unsigned long tagName, const char *pStringArray[], const bool uniqueTag = true)
-        {
-            if (uniqueTag)
-                CheckUniqueTag(tagName);
-            mTags.push_back(AOS::TagItemObject(tagName, (void **)pStringArray));
         }
     };
 
