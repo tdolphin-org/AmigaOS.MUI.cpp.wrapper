@@ -61,6 +61,8 @@ namespace MUI
         }
 
         /// @brief [ @b MUIA_Menu_CopyStrings ]
+        /// Set to true if the title string defined by MUIA_Menu_Title is to be copied. Otherwise the title will be used directly and must
+        /// remain valid throughout the object's life time. By default is false.
         T &tagCopyStrings(const bool copyStrings);
         /// @brief [ @b MUIA_Menu_Enabled ]
         T &tagEnabled(const bool enabled);

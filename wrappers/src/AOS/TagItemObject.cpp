@@ -4,10 +4,10 @@
 //  (c) 2022-2023 TDolphin
 //
 
+#include "TagItemObject.hpp"
+
 #include <stdexcept>
 #include <string>
-
-#include "TagItemObject.hpp"
 
 namespace AOS
 {

@@ -6,10 +6,10 @@
 
 #pragma once
 
+#include "TagItemObject.hpp"
+
 #include <string>
 #include <vector>
-
-#include "TagItemObject.hpp"
 
 namespace AOS
 {

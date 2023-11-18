@@ -10,7 +10,6 @@
 
 namespace MUI
 {
-
     class Image : public Area
     {
       public:

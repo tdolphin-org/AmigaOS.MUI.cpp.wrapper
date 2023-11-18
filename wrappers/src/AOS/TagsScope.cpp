@@ -4,16 +4,16 @@
 //  (c) 2022-2023 TDolphin
 //
 
+#include "TagsScope.hpp"
+#include "AOS/Identifier.hpp"
+#include "Core/ToString.hpp"
+#include "TagUtil.hpp"
+
 #include <sstream>
 
 #include <libraries/asl.h>
 #include <libraries/mui.h>
 #include <mui/TextEditor_mcc.h>
-
-#include "AOS/Identifier.hpp"
-#include "Core/ToString.hpp"
-#include "TagUtil.hpp"
-#include "TagsScope.hpp"
 
 namespace AOS
 {
@@ -187,7 +187,7 @@ namespace AOS
                     result += "=" + std::to_string(tagValue);
                     break;
 
-                // Image
+                    // Image
 #ifndef __MORPHOS__
                 case MUIA_Image_CopySpec:
                     result += "=" + TagDataBool(tagValue);

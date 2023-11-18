@@ -42,8 +42,8 @@ namespace MUI
         }
 
         /// @brief [ @b MUIA_Balance_Quiet ]
-        /// If set to true the balance object will show its frame only if the mouse is located over the object. Otherwise it will be invisible.
-        /// By default is false.
+        /// If set to true the balance object will show its frame only if the mouse is located over the object. Otherwise it will be
+        /// invisible. By default is false.
         T &tagQuiet(const bool quiet);
     };
 

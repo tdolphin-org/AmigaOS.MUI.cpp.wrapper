@@ -4,10 +4,10 @@
 //  (c) 2022-2023 TDolphin
 //
 
+#include "ValueObject.hpp"
+
 #include <stdexcept>
 #include <string>
-
-#include "ValueObject.hpp"
 
 namespace AOS
 {

@@ -6,11 +6,11 @@
 
 #include "TagUtil.hpp"
 
+#include "Core/ToString.hpp"
+
 #include <libraries/asl.h>
 #include <libraries/mui.h>
 #include <mui/TextEditor_mcc.h>
-
-#include "Core/ToString.hpp"
 
 #define MAP_PAIR(A) { A, #A }
 
