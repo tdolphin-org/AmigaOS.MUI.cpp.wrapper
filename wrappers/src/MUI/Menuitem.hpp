@@ -66,7 +66,7 @@ namespace MUI
         /// @brief [ @b MUIA_Menuitem_Toggle ]
         Menuitem &setToggle(const bool toggle);
 
-        // methods, some can return object reference
+        // methods, some returns object reference
     };
 
     class MenuItemFactory

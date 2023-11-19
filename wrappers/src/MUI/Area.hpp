@@ -75,7 +75,7 @@ namespace MUI
         /// @brief [ @b MUIA_ShowMe ]
         Area &setShowMe(const bool showMe);
 
-        // methods, some can return object reference
+        // methods, some returns object reference
 
         /// @brief setDisabled(false)
         Area &Enable();

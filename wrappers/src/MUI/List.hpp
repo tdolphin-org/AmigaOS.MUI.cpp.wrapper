@@ -88,7 +88,7 @@ namespace MUI
         /// @brief [ @b MUIA_List_Quiet ]
         List &setQuiet(const bool quiet);
 
-        // methods, some can return object reference
+        // methods, some returns object reference
 
         /// @brief [ @b MUIM_List_Jump ]
         List &Jump(const enum List_Jump position);

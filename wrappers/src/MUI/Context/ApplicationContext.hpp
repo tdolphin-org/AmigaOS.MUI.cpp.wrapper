@@ -46,7 +46,7 @@ namespace MUI
         /// @brief return current main application window (first window)
         /// @return Window object
         Window getAppWindow();
-        /// @brief returm window with given identifier, or throw excpetion if window doesn't exists
+        /// @brief return window with given identifier, or throw excpetion if window doesn't exists
         /// @param id identifier of window to get
         /// @return Window object
         Window getWindow(const AOS::Identifier &id);

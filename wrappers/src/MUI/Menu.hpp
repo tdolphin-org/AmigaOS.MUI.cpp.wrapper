@@ -49,7 +49,7 @@ namespace MUI
         /// @brief [ @b MUIA_Menu_Title ]
         Menu &setTitle(const std::string &title);
 
-        // methods, some can return object reference
+        // methods, some returns object reference
     };
 
     template <typename T, typename U> class MenuBuilderTemplate : public FamilyBuilderTemplate<T, U>

@@ -46,7 +46,7 @@ namespace MUI
         /// special character sequences defining format, color and style of the text.
         Text &setContents(const std::string &contents);
 
-        // methods, some can return object reference
+        // methods, some returns object reference
 
         Text &Clear();
     };

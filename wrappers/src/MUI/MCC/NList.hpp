@@ -67,7 +67,7 @@ namespace MUI::MCC
 
         // is/get/set (attributes), all setters return object reference
 
-        // methods, some can return object reference
+        // methods, some returns object reference
 
         // insert methods
 

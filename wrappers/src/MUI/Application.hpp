@@ -46,7 +46,7 @@ namespace MUI
         /// @brief [ @b MUIA_Application_WindowList ]
         std::vector<Window> getWindowList();
 
-        // methods, some can return object reference
+        // methods, some returns object reference
 
         /// @brief [ @b MUIM_Application_Load, @b MUIV_Application_Load_ENVARC ]
         Application &LoadEnvArc();

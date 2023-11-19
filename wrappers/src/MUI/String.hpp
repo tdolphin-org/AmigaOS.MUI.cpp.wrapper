@@ -44,7 +44,7 @@ namespace MUI
         /// @brief [ @b MUIA_String_Contents ]
         String &setContents(const std::string &contents);
 
-        // methods, some can return object reference
+        // methods, some returns object reference
 
         String &Clear();
     };

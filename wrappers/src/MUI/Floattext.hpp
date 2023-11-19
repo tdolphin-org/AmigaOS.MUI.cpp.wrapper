@@ -54,7 +54,7 @@ namespace MUI
         /// MUI copies the complete string into a private buffer.
         Floattext &setText(const std::string &text);
 
-        // methods, some can return object reference
+        // methods, some returns object reference
 
         /// @brief [ @b MUIM_Floattext_Append ]
         /// Appends the given text to the already existing text. The additional text will be copied to a private buffer.

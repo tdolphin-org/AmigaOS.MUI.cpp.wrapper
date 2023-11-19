@@ -52,7 +52,7 @@ namespace MUI::MCC
         /// @biref [ @b MUIA_NListview_Horiz_ScrollBar ]
         NListview &setHoriz_ScrollBar(const enum NListview_HSB horiz_ScrollBar);
 
-        // methods, some can return object reference
+        // methods, some returns object reference
     };
 
     class NListviewBuilder : public AreaBuilderTemplate<NListviewBuilder, NListview>

@@ -55,7 +55,7 @@ namespace MUI
         /// @brief [ @b MUIA_Prop_Visible ]
         Prop &setVisible(const long visible);
 
-        // methods, some can return object reference
+        // methods, some returns object reference
 
         /// @brief [ @b MUIM_Prop_Decrease ]
         Notify &Decrease(const long amount);

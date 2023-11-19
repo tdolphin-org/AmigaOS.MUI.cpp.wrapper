@@ -76,7 +76,7 @@ namespace MUI
         /// @brief [ @b MUIA_UserData ]
         Notify &setUserData(const unsigned long userData);
 
-        // methods, some can return object reference
+        // methods, some returns object reference
 
         /// @brief [ @b MUIM_FindObject ]
         Object *FindObject(const Root &findme);

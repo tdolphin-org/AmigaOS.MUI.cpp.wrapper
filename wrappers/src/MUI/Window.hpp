@@ -61,7 +61,7 @@ namespace MUI
         /// @brief [ @b MUIA_Window_ScreenTitle ]
         Window &setScreenTitle(const std::string &screenTitle);
 
-        // methods, some can return object reference
+        // methods, some returns object reference
 
         /// @brief [ @b MUIA_Window_Open, @b TRUE ]
         Window &Open();

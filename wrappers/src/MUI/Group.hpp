@@ -66,7 +66,7 @@ namespace MUI
         /// Set number of columns in a two dimensional group.
         Group &setColumns(const long columns);
 
-        // methods, some can return object reference
+        // methods, some returns object reference
 
         /// @brief [ @b MUIM_Group_AddHead ]
         Group &AddHead(const Object *pChildObject);

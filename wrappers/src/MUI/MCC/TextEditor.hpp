@@ -45,7 +45,7 @@ namespace MUI::MCC
         /// @brief [ @b MUIA_TextEditor_Contents, contents = nullptr ]
         TextEditor &setContentsNull();
 
-        // methods, some can return object reference
+        // methods, some returns object reference
 
         /// @brief [ @b MUIM_TextEditor_ClearText ]
         TextEditor &ClearText();

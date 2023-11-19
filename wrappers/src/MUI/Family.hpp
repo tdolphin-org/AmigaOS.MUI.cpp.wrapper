@@ -39,7 +39,7 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-        // methods, some can return object reference
+        // methods, some returns object reference
     };
 
     template <typename T, typename U> class FamilyBuilderTemplate : public NotifyBuilderTemplate<T, U>

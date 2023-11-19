@@ -47,7 +47,7 @@ namespace MUI
         /// @brief [ @b MUIA_Menustrip_Enabled ]
         Menustrip &setEnabled(const bool enabled);
 
-        // methods, some can return object reference
+        // methods, some returns object reference
     };
 
     template <typename T, typename U> class MenustripBuilderTemplate : public FamilyBuilderTemplate<T, U>
