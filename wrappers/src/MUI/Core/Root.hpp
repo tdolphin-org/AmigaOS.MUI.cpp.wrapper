@@ -42,6 +42,7 @@ namespace MUI
         bool GetValueAsBool(const unsigned long tagName) const;
         void *GetValueAsPtr(const unsigned long tagName) const;
         Object *GetValueAsObjectPtr(const unsigned long tagName) const;
+        Hook *GetValueAsHookPtr(const unsigned long tagName) const;
 
         void SetValue(const unsigned long tagName, const std::nullptr_t &null) const;
         void SetValue(const unsigned long tagName, const std::string &string) const;
@@ -50,5 +51,6 @@ namespace MUI
         void SetValue(const unsigned long tagName, const bool boolean) const;
         void SetValue(const unsigned long tagName, const void *pointer) const;
         void SetValue(const unsigned long tagName, const Object *pObject) const;
+        void SetValue(const unsigned long tagName, const Hook *pHook) const;
     };
 }

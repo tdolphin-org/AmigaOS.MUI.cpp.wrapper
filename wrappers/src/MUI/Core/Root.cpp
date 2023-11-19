@@ -87,6 +87,11 @@ namespace MUI
         return (Object *)GetValueAsPtr(tagName);
     }
 
+    Hook *Root::GetValueAsHookPtr(const unsigned long tagName) const
+    {
+        return GetValueAsHookPtr(tagName);
+    }
+
     void Root::SetValue(const unsigned long tagName, const std::nullptr_t &null) const
     {
         SetAttrs(muiObject(), tagName, (unsigned long)null, TAG_END);
@@ -120,5 +125,10 @@ namespace MUI
     void Root::SetValue(const unsigned long tagName, const Object *pObject) const
     {
         SetAttrs(muiObject(), tagName, (unsigned long)pObject, TAG_END);
+    }
+
+    void Root::SetValue(const unsigned long tagName, const Hook *pHook) const
+    {
+        SetAttrs(muiObject(), tagName, (unsigned long)pHook, TAG_END);
     }
 }

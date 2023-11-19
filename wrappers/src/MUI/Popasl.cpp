@@ -19,12 +19,12 @@ namespace MUI
 
     Hook *Popasl::getStartHook() const
     {
-        return (Hook *)GetValueAsPtr(MUIA_Popasl_StartHook);
+        return GetValueAsHookPtr(MUIA_Popasl_StartHook);
     }
 
     Hook *Popasl::getStopHook() const
     {
-        return (Hook *)GetValueAsPtr(MUIA_Popasl_StopHook);
+        return GetValueAsHookPtr(MUIA_Popasl_StopHook);
     }
 
     unsigned long Popasl::getType() const
