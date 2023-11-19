@@ -59,8 +59,15 @@ namespace MUI
         {
         }
 
+        /// @brief [ @b MUIA_Popasl_StartHook ]
+        T &tagStartHook(const Hook *startHook);
+        /// @brief [ @b MUIA_Popasl_StopHook ]
+        T &tagStopHook(const Hook *stopHook);
         /// @brief [ @b MUIA_Popasl_Type ]
         T &tagType(const unsigned long type);
+
+        // File requester tags
+
         /// @brief [ @b ASLFR_TitleText ]
         T &tagAslFrTitleText(const char *titleText);
         /// @brief [ @b ASLFR_TitleText ]
@@ -74,6 +81,18 @@ namespace MUI
       public:
         PopaslBuilder();
     };
+
+    template <typename T, typename U> inline T &PopaslBuilderTemplate<T, U>::tagStartHook(const Hook *startHook)
+    {
+        this->PushTag(MUIA_Popasl_StartHook, startHook);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &PopaslBuilderTemplate<T, U>::tagStopHook(const Hook *stopHook)
+    {
+        this->PushTag(MUIA_Popasl_StopHook, stopHook);
+        return (T &)*this;
+    }
 
     template <typename T, typename U> inline T &PopaslBuilderTemplate<T, U>::tagType(const unsigned long type)
     {
