@@ -11,6 +11,7 @@ IndentCaseLabels: true
 PointerAlignment: Right
 BreakBeforeBraces: Custom
 BraceWrapping: {
+    AfterCaseLabel: 'true'
     AfterClass: 'true'
     AfterControlStatement: 'true'
     AfterEnum : 'true'
