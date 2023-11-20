@@ -88,8 +88,10 @@ namespace MUI
         {
         }
 
+#ifndef __MORPHOS__
         /// @brief [ @b MUIA_Menuitem_AISSName ]
         T &tagAISSName(const std::string &aissName);
+#endif
         /// @brief [ @b MUIA_Menuitem_Checked ]
         /// Define checked state of a checkit menu item
         T &tagChecked(const bool checked);
@@ -108,12 +110,14 @@ namespace MUI
         T &tagEnabled(const bool enabled);
         /// @brief [ @b MUIA_Menuitem_Exclude ]
         T &tagExclude(const long exclude);
+#ifndef __MORPHOS__
         /// @brief [ @b MUIA_Menuitem_FreeImage ]
         /// Define whether the image object passed to MUIA_Menuitem_Image will be disposed automatically or not. If this attribute is set to
         /// false it is the responsibility of the application to dispose the image object itself. Default is true.
         T &tagFreeImage(const bool freeImage);
         /// @brief [ @b MUIA_Menuitem_Image ]
         T &tagImage(const Image *image);
+#endif
         /// @brief [ @b MUIA_Menuitem_Menuitem ]
         T &tagMenuitem(const Object *menuitem);
         /// @brief [ @b MUIA_Menuitem_Shortcut ]
@@ -135,11 +139,13 @@ namespace MUI
         MenuitemBuilder();
     };
 
+#ifndef __MORPHOS__
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagAISSName(const std::string &aissName)
     {
         this->PushTag(MUIA_Menuitem_AISSName, aissName);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagChecked(const bool checked)
     {
@@ -177,6 +183,7 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifndef __MORPHOS__
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagFreeImage(const bool freeImage)
     {
         this->PushTag(MUIA_Menuitem_FreeImage, freeImage);
@@ -188,6 +195,7 @@ namespace MUI
         this->PushTag(MUIA_Menuitem_Image, image);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagMenuitem(const Object *menuitem)
     {
