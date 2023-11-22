@@ -31,6 +31,15 @@ namespace MUI
         {
             return MUI::instanceOf(pMuiObject, className.c_str());
         }
+
+        // is/get/set (attributes), all setters return object reference
+
+        /// @brief [ @b MUIA_Rectangle_BarTitle ]
+        std::string getBarTitle() const;
+        /// @brief [ @b MUIA_Rectangle_HBar ]
+        bool isHBar() const;
+        /// @brief [ @b MUIA_Rectangle_VBar ]
+        bool isVBar() const;
     };
 
     template <typename T, typename U> class RectangleBuilderTemplate : public AreaBuilderTemplate<T, U>
