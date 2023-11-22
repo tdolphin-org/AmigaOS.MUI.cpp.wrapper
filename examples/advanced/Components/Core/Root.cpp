@@ -15,13 +15,23 @@ namespace Components
     void Root::MuiAlert(const std::string &message) const
     {
         auto appObject = muiNotify().getApplicationObject();
-        MUI_Request(appObject, nullptr, MUIV_Requester_Image_Error, nullptr, (char *)"_Ok", (char *)message.c_str(), TAG_END);
+#ifdef __MORPHOS__
+        auto flags = 0;
+#else
+        auto flags = MUIV_Requester_Image_Error;
+#endif
+        MUI_Request(appObject, nullptr, flags, nullptr, (char *)"_Ok", (char *)message.c_str(), TAG_END);
     }
 
     void Root::MuiWarining(const std::string &message) const
     {
         auto appObject = muiNotify().getApplicationObject();
-        MUI_Request(appObject, nullptr, MUIV_Requester_Image_Warning, nullptr, (char *)"_Ok", (char *)message.c_str(), TAG_END);
+#ifdef __MORPHOS__
+        auto flags = 0;
+#else
+        auto flags = MUIV_Requester_Image_Warning;
+#endif
+        MUI_Request(appObject, nullptr, 0, nullptr, (char *)"_Ok", (char *)message.c_str(), TAG_END);
     }
 
     void Root::MuiInfo(const std::string &message, const std::string &gadgets) const
