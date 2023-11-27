@@ -8,6 +8,9 @@
 
 #include "Notify.hpp"
 
+#undef Insert
+#undef Remove
+
 namespace MUI
 {
     class Family : public Notify
@@ -40,6 +43,11 @@ namespace MUI
         // is/get/set (attributes), all setters return object reference
 
         // methods, some returns object reference
+
+        /// @brief [ @b MUIM_Family_Insert ]
+        Family &Insert(const MUI::Root &obj, const MUI::Root &pred);
+        /// @brief [ @b MUIM_Family_Remove ]
+        Family &Remove(const MUI::Root &obj);
     };
 
     template <typename T, typename U> class FamilyBuilderTemplate : public NotifyBuilderTemplate<T, U>

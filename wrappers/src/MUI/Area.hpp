@@ -137,6 +137,8 @@ namespace MUI
 #endif
         /// @brief [ @b MUIA_Selected ]
         T &tagSelected(const bool &selected);
+        /// @brief [ @b MUIA_ShowMe ]
+        T &tagShowMe(const bool &showMe);
         /// @brief [ @b MUIA_ShortHelp ]
         T &tagShortHelp(const std::string &shortHelp);
         /// @brief [ @b MUIA_ShowSelState ]
@@ -256,6 +258,12 @@ namespace MUI
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagSelected(const bool &selected)
     {
         this->PushTag(MUIA_Selected, selected);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagShowMe(const bool &showMe)
+    {
+        this->PushTag(MUIA_ShowMe, showMe);
         return (T &)*this;
     }
 
