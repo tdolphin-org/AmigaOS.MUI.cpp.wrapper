@@ -47,6 +47,19 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
+        /// @brief [ @b MUIA_BottomEdge ]
+        long getBottomEdge() const;
+        /// @brief [ @b MUIA_ContextMenu ]
+        Object *getContextMenu() const;
+        /// @brief [ @b MUIA_ContextMenuHook ]
+        Hook *getContextMenuHook() const;
+        /// @brief [ @b MUIA_ContextMenuTrigger ]
+        Object *getContextMenuTrigger() const;
+        /// @brief [ @b MUIA_ControlChar ]
+        char getControlChar() const;
+        /// @brief [ @b MUIA_CycleChain ]
+        long getCycleChain() const;
+
         /// @brief [ @b MUIA_Selected ]
         bool isSelected() const;
         /// @brief [ @b MUIA_Floating ]
@@ -56,6 +69,10 @@ namespace MUI
         Area &setBackground(const enum ImageOrBackground background);
         /// @brief [ @b MUIA_Background ]
         Area &setBackground(const std::string &background);
+        /// @brief [ @b MUIA_CycleChain ]
+        /// Keyboard cycle chain system. Set MUIA_CycleChain to 1 for every object that you want to have in your chain, MUI does the rest
+        /// automatically.
+        Area &setCycleChain(const long cycleChain = 1);
         /// @brief [ @b MUIA_Disabled ]
         Area &setDisabled(const bool disabled);
         /// @brief [ @b MUIA_FillArea ]

@@ -20,6 +20,36 @@ namespace MUI
         return GetValueAsBool(MUIA_Floating);
     }
 
+    long Area::getBottomEdge() const
+    {
+        return GetValueAsLong(MUIA_BottomEdge);
+    }
+
+    Object *Area::getContextMenu() const
+    {
+        return GetValueAsObjectPtr(MUIA_ContextMenu);
+    }
+
+    Hook *Area::getContextMenuHook() const
+    {
+        return GetValueAsHookPtr(MUIA_ContextMenuHook);
+    }
+
+    Object *Area::getContextMenuTrigger() const
+    {
+        return GetValueAsObjectPtr(MUIA_ContextMenuTrigger);
+    }
+
+    char Area::getControlChar() const
+    {
+        return GetValueAsChar(MUIA_ControlChar);
+    }
+
+    long Area::getCycleChain() const
+    {
+        return GetValueAsLong(MUIA_CycleChain);
+    }
+
     Area &Area::setBackground(const enum ImageOrBackground background)
     {
         SetValue(MUIA_Background, (long)background);
@@ -29,6 +59,12 @@ namespace MUI
     Area &Area::setBackground(const std::string &background)
     {
         SetValue(MUIA_Background, (long)background.c_str());
+        return *this;
+    }
+
+    Area &Area::setCycleChain(const long cycleChain)
+    {
+        SetValue(MUIA_CycleChain, cycleChain);
         return *this;
     }
 

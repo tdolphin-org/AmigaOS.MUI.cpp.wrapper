@@ -37,6 +37,7 @@ namespace MUI
         }
 
         std::string GetValueAsString(const unsigned long tagName) const;
+        char GetValueAsChar(const unsigned long tagName) const;
         unsigned long GetValueAsULong(const unsigned long tagName) const;
         long GetValueAsLong(const unsigned long tagName) const;
         bool GetValueAsBool(const unsigned long tagName) const;

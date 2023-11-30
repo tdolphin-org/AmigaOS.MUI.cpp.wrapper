@@ -54,6 +54,13 @@ namespace MUI
         return (value == nullptr) ? std::string() : std::string(value); // TODO should be exception on null ??
     }
 
+    char Root::GetValueAsChar(const unsigned long tagName) const
+    {
+        long value;
+        GetAttr(tagName, muiObject(), (unsigned long *)&value);
+        return (char)value;
+    }
+
     unsigned long Root::GetValueAsULong(const unsigned long tagName) const
     {
         unsigned long value;
@@ -89,7 +96,7 @@ namespace MUI
 
     Hook *Root::GetValueAsHookPtr(const unsigned long tagName) const
     {
-        return GetValueAsHookPtr(tagName);
+        return (Hook *)GetValueAsPtr(tagName);
     }
 
     void Root::SetValue(const unsigned long tagName, const std::nullptr_t &null) const
