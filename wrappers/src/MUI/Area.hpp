@@ -51,8 +51,10 @@ namespace MUI
         long getBottomEdge() const;
         /// @brief [ @b MUIA_ContextMenu ]
         Object *getContextMenu() const;
+#ifndef __MORPHOS__
         /// @brief [ @b MUIA_ContextMenuHook ]
         Hook *getContextMenuHook() const;
+#endif
         /// @brief [ @b MUIA_ContextMenuTrigger ]
         Object *getContextMenuTrigger() const;
         /// @brief [ @b MUIA_ControlChar ]

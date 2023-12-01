@@ -30,10 +30,12 @@ namespace MUI
         return GetValueAsObjectPtr(MUIA_ContextMenu);
     }
 
+#ifndef __MORPHOS__
     Hook *Area::getContextMenuHook() const
     {
         return GetValueAsHookPtr(MUIA_ContextMenuHook);
     }
+#endif
 
     Object *Area::getContextMenuTrigger() const
     {
