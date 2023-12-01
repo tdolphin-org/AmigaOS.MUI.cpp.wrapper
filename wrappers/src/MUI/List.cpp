@@ -32,6 +32,21 @@ namespace MUI
         return GetValueAsLong(MUIA_List_TopPixel);
     }
 
+    long List::getTotalPixel() const
+    {
+        return GetValueAsLong(MUIA_List_TotalPixel);
+    }
+
+    long List::getVisible() const
+    {
+        return GetValueAsLong(MUIA_List_Visible);
+    }
+
+    long List::getVisiblePixel() const
+    {
+        return GetValueAsLong(MUIA_List_VisiblePixel);
+    }
+
     bool List::isQuiet() const
     {
         return GetValueAsBool(MUIA_List_Quiet);

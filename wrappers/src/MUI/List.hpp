@@ -54,10 +54,16 @@ namespace MUI
         /// @brief [ @b MUIA_List_Entries ]
         /// @return The current number of entries in the list.
         long getEntries() const;
-        /// @brief [ @b MUIA_List_TopPixel ]
-        long getTopPixel() const;
         /// @brief [ @b MUIA_List_Quiet ]
         bool isQuiet() const;
+        /// @brief [ @b MUIA_List_TopPixel ]
+        long getTopPixel() const;
+        /// @brief [ @b MUIA_List_TotalPixel ]
+        long getTotalPixel() const;
+        /// @brief [ @b MUIA_List_Visible ]
+        long getVisible() const;
+        /// @brief [ @b MUIA_List_VisiblePixel ]
+        long getVisiblePixel() const;
 
         /// @brief [ @b MUIA_List_Active ]
         List &setActive(const long active);
