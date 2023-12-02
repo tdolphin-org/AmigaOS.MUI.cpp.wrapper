@@ -142,7 +142,7 @@ namespace MUI
         /// @param frame enum Frame
         T &tagFrame(const enum Frame frame);
         /// @brief [ @b MUIA_FrameTitle ]
-        T &tagFrameTitle(char *frameTitle);
+        T &tagFrameTitle(const std::string &frameTitle);
         /// @brief [ @b MUIA_Font] (for "struct TextFont *" should be separate method)
         /// @param font enum Font
         T &tagFont(const enum Font font);
@@ -248,7 +248,7 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> T &AreaBuilderTemplate<T, U>::tagFrameTitle(char *frameTitle)
+    template <typename T, typename U> T &AreaBuilderTemplate<T, U>::tagFrameTitle(const std::string &frameTitle)
     {
         this->PushTag(MUIA_FrameTitle, frameTitle);
         return (T &)*this;
