@@ -134,8 +134,10 @@ namespace MUI
         /// @brief [ @b MUIA_HelpNode ]
         T &tagHelpNode(const std::string &helpNode);
         /// @brief [ @b MUIA_ObjectID ]
+        /// Objects with a non NULL MUIA_ObjectID export their contents during MUIM_Application_Save and import them during MUIM_Application_Load.
         T &tagObjectID(const AOS::Identifier &idobjectID);
         /// @brief [ @b MUIA_UserData ]
+        /// A general purpose value to fill in any kind of information.
         T &tagUserData(const unsigned long userData);
     };
 

@@ -138,14 +138,16 @@ namespace MUI
         T &tagFixWidthTxt(const std::string &fixWidthTxt);
         /// @brief [ @b MUIA_Floating ]
         T &tagFloating(const bool floating);
+        /// @brief [ @b MUIA_Font] (for "struct TextFont *" should be separate method)
+        /// @param font enum Font
+        T &tagFont(const enum Font font);
         /// @brief [ @b MUIA_Frame ]
         /// @param frame enum Frame
         T &tagFrame(const enum Frame frame);
         /// @brief [ @b MUIA_FrameTitle ]
         T &tagFrameTitle(const std::string &frameTitle);
-        /// @brief [ @b MUIA_Font] (for "struct TextFont *" should be separate method)
-        /// @param font enum Font
-        T &tagFont(const enum Font font);
+        /// @brief [ @b MUIA_HorizWeight ]
+        T &tagHorizWeight(const short &horizWeight);
         /// @brief [ @b MUIA_InputMode ]
         /// @param inputMode enum InputMode
         T &tagInputMode(const enum InputMode inputMode);
@@ -162,6 +164,8 @@ namespace MUI
         T &tagShortHelp(const std::string &shortHelp);
         /// @brief [ @b MUIA_ShowSelState ]
         T &tagShowSelState(const bool &showSelState);
+        /// @brief [ @b MUIA_VertWeight ]
+        T &tagVertWeight(const short &vertWeight);
         /// @brief [ @b MUIA_Weight ]
         /// An object with a weight of 0 will always stay at its minimum size. By default, all objects have a weight of 100.
         /// @param weight long weight of object, for negative value is ignored
@@ -242,6 +246,12 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFont(const enum Font font)
+    {
+        this->PushTag(MUIA_Font, (long)font);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFrame(const enum Frame frame)
     {
         this->PushTag(MUIA_Frame, (long)frame);
@@ -254,9 +264,9 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFont(const enum Font font)
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagHorizWeight(const short &horizWeight)
     {
-        this->PushTag(MUIA_Font, (long)font);
+        this->PushTag(MUIA_HorizWeight, (long)horizWeight);
         return (T &)*this;
     }
 
@@ -296,6 +306,12 @@ namespace MUI
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagShowSelState(const bool &showSelState)
     {
         this->PushTag(MUIA_ShowSelState, showSelState);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagVertWeight(const short &vertWeight)
+    {
+        this->PushTag(MUIA_VertWeight, (long)vertWeight);
         return (T &)*this;
     }
 

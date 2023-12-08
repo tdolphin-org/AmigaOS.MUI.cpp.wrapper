@@ -21,5 +21,11 @@ namespace MUI
       protected:
         DestMenuitemNotifier() = delete;
         DestMenuitemNotifier(const NotifierObject &notifierObject, const Menuitem &menuitem);
+
+      public:
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Menuitem_Checked ]
+        DestMenuitemNotifier &setChecked(const bool checked, bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Menuitem_Checked = @b MUIV_TriggerValue ]
+        DestMenuitemNotifier &setCheckedTriggerValue(bool notify = true);
     };
 }
