@@ -95,13 +95,13 @@ namespace MUI::MCC
 
     template <typename T, typename U> inline T &BusyBuilderTemplate<T, U>::tagSpeedOff()
     {
-        this->PushTag(MUIA_Busy_Speed, MUIV_Busy_Speed_Off);
+        this->PushTag(MUIA_Busy_Speed, (long)MUIV_Busy_Speed_Off);
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &BusyBuilderTemplate<T, U>::tagSpeedUser()
     {
-        this->PushTag(MUIA_Busy_Speed, MUIV_Busy_Speed_User);
+        this->PushTag(MUIA_Busy_Speed, (long)MUIV_Busy_Speed_User);
         return (T &)*this;
     }
 

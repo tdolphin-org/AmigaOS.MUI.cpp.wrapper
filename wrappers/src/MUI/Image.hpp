@@ -84,8 +84,10 @@ namespace MUI
         /// @brief [ @b MUIA_Image_FontMatchWidth ]
         T &tagFontMatchWidth(const bool fontMatchWidth);
         /// @brief [ @b MUIA_Image_FreeHoriz ]
+        /// The image if its allowed to get scaled horizontally. Default is false.
         T &tagFreeHoriz(const bool freeHoriz);
         /// @brief [ @b MUIA_Image_FreeVert ]
+        /// The image if its allowed to get scaled vertically. Default is false.
         T &tagFreeVert(const bool freeVert);
         /// @brief [ @b MUIA_Image_OldImage ]
         T &tagOldImage(const struct Image *oldImage);
