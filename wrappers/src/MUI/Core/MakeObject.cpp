@@ -128,12 +128,12 @@ namespace MUI
         return MUI_MakeObject(MUIO_VSpace, space);
     }
 
-    Object *MakeObject::HBar()
+    Object *MakeObject::HBar(const unsigned long space)
     {
         return MUI_MakeObject(MUIO_HBar);
     }
 
-    Object *MakeObject::VBar()
+    Object *MakeObject::VBar(const unsigned long space)
     {
         return MUI_MakeObject(MUIO_VBar);
     }

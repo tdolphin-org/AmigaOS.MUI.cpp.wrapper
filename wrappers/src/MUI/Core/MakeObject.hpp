@@ -86,8 +86,8 @@ namespace MUI
         /// @brief [ @b MUIO_VSpace ]
         static Object *VSpace(const unsigned long space);
         /// @brief [ @b MUIO_HBar ]
-        static Object *HBar();
+        static Object *HBar(const unsigned long space);
         /// @brief [ @b MUIO_VBar ]
-        static Object *VBar();
+        static Object *VBar(const unsigned long space);
     };
 }
