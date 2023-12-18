@@ -22,6 +22,7 @@
 #undef CLabel
 #undef CLabel1
 #undef CLabel2
+#undef HVSpace
 #undef HSpace
 #undef VSpace
 
@@ -81,6 +82,8 @@ namespace MUI
         /// @brief [ @b MUIO_Label ] For use with double high frames (e.g. string gadgets). Centered. [ like MUI macro @b CLabel2() ]
         static Object *CLabel2(const std::string &label);
 
+        /// @brief [ @b HVSpace ]
+        static Object *HVSpace();
         /// @brief [ @b MUIO_HSpace ]
         static Object *HSpace(const unsigned long space);
         /// @brief [ @b MUIO_VSpace ]

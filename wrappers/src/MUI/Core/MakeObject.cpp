@@ -118,6 +118,11 @@ namespace MUI
         return MUI_MakeObject(MUIO_Label, (ULONG)label.c_str(), MUIO_Label_Centered | MUIO_Label_DoubleFrame);
     }
 
+    Object *MakeObject::HVSpace()
+    {
+        return MUI_NewObject(MUIC_Rectangle,TAG_DONE);
+    }
+
     Object *MakeObject::HSpace(const unsigned long space)
     {
         return MUI_MakeObject(MUIO_HSpace, space);
