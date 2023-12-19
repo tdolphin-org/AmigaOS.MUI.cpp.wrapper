@@ -120,7 +120,7 @@ namespace MUI
 
     Object *MakeObject::HVSpace()
     {
-        return MUI_NewObject(MUIC_Rectangle,TAG_DONE);
+        return MUI_NewObject(MUIC_Rectangle, TAG_DONE);
     }
 
     Object *MakeObject::HSpace(const unsigned long space)
@@ -135,11 +135,11 @@ namespace MUI
 
     Object *MakeObject::HBar(const unsigned long space)
     {
-        return MUI_MakeObject(MUIO_HBar);
+        return MUI_MakeObject(MUIO_HBar, space);
     }
 
     Object *MakeObject::VBar(const unsigned long space)
     {
-        return MUI_MakeObject(MUIO_VBar);
+        return MUI_MakeObject(MUIO_VBar, space);
     }
 }
