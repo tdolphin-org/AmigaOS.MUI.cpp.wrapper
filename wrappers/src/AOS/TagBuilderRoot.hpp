@@ -16,7 +16,7 @@ namespace AOS
 {
     class TagBuilderRoot
     {
-        std::set<ULONG> mTagKeys;
+        std::set<unsigned long> mTagKeys;
         std::vector<AOS::TagItemObject> mTags;
 
       public:

@@ -29,9 +29,5 @@ namespace AOS
         /// @brief return tag list with names and values; only part of tags are detected and converted to "name=vale"
         /// @return string like `(MUIA_Application_Author, "author", TAG_END)`
         std::string toString() const;
-
-      private:
-        std::string TagDataSTRPTR(const ULONG value) const;
-        std::string TagDataBool(const ULONG value) const;
     };
 }

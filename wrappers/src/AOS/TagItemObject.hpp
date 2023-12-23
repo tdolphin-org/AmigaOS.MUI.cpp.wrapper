@@ -14,7 +14,7 @@ namespace AOS
 {
     class TagItemObject
     {
-        const ULONG mTagName;
+        const unsigned long mTagName;
         ValueObject mValueObject;
 
       public:
