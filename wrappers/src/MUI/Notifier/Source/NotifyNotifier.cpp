@@ -8,13 +8,4 @@
 
 namespace MUI
 {
-    NotifyNotifier::NotifyNotifier(const Notify &notify)
-      : mNotify(notify)
-    {
-    }
-
-    SourceNotifier<Notify, DestNotifyNotifier> NotifyNotifier::onHelpLine(const long helpLine)
-    {
-        return SourceNotifier<Notify, DestNotifyNotifier>(mNotify, MUIA_HelpLine, helpLine);
-    }
 }

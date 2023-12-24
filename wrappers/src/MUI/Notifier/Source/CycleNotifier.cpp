@@ -8,24 +8,4 @@
 
 namespace MUI
 {
-    CycleNotifier::CycleNotifier(const Cycle &cycle)
-      : GroupNotifier(cycle)
-      , mCycle(cycle)
-    {
-    }
-
-    SourceNotifier<Cycle, DestCycleNotifier> CycleNotifier::onActive(const enum Cycle_Active active)
-    {
-        return SourceNotifier<Cycle, DestCycleNotifier>(mCycle, MUIA_Cycle_Active, (unsigned long)active);
-    }
-
-    SourceNotifier<Cycle, DestCycleNotifier> CycleNotifier::onActiveEveryTime()
-    {
-        return SourceNotifier<Cycle, DestCycleNotifier>(mCycle, MUIA_Cycle_Active, (long)MUIV_EveryTime);
-    }
-
-    SourceNotifier<Cycle, DestCycleNotifier> CycleNotifier::onEntriesEveryTime()
-    {
-        return SourceNotifier<Cycle, DestCycleNotifier>(mCycle, MUIA_Cycle_Entries, (long)MUIV_EveryTime);
-    }
 }

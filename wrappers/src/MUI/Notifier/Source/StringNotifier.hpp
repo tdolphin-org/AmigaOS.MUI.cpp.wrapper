@@ -11,17 +11,26 @@
 
 namespace MUI
 {
-    class StringNotifier : public AreaNotifier
+    template <typename T = DestStringNotifier> class StringNotifier : public AreaNotifier<T>
     {
         String mString;
 
       public:
         StringNotifier() = delete;
-        StringNotifier(const String &string);
+        StringNotifier(const String &string)
+          : AreaNotifier<T>(string)
+          , mString(string)
+        {
+        }
 
         // notification methods
 
         /// @brief [ @b MUIM_Notify, @b MUIA_String_Contents == @b MUIV_EveryTime ]
-        SourceNotifier<String, DestStringNotifier> onContentsEveryTime();
+        SourceNotifier<String, T> onContentsEveryTime();
     };
+
+    template <typename T> SourceNotifier<String, T> inline StringNotifier<T>::onContentsEveryTime()
+    {
+        return SourceNotifier<String, T>(mString, MUIA_String_Contents, (long)MUIV_EveryTime);
+    }
 }

@@ -8,9 +8,4 @@
 
 namespace MUI
 {
-    GadgetNotifier::GadgetNotifier(const Gadget &gadget)
-      : mGadget(gadget)
-      , AreaNotifier(gadget)
-    {
-    }
 }

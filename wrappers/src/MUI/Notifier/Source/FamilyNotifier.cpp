@@ -9,9 +9,4 @@
 
 namespace MUI
 {
-    FamilyNotifier::FamilyNotifier(const Family &family)
-      : NotifyNotifier(family)
-      , mFamily(family)
-    {
-    }
 }

@@ -8,14 +8,4 @@
 
 namespace MUI
 {
-    StringNotifier::StringNotifier(const String &string)
-      : mString(string)
-      , AreaNotifier(string)
-    {
-    }
-
-    SourceNotifier<String, DestStringNotifier> StringNotifier::onContentsEveryTime()
-    {
-        return SourceNotifier<String, DestStringNotifier>(mString, MUIA_String_Contents, (long)MUIV_EveryTime);
-    }
 }
