@@ -12,13 +12,14 @@
 
 namespace MUI
 {
-    class FamilyNotifier : public NotifyNotifier
+    template <typename T = Family, typename U = DestFamilyNotifier> class FamilyNotifier : public NotifyNotifier<T, U>
     {
-        Family mFamily;
-
       public:
         FamilyNotifier() = delete;
-        FamilyNotifier(const Family &family);
+        FamilyNotifier(const T &family)
+          : NotifyNotifier<T, U>(family)
+        {
+        }
 
         // notification methods
     };

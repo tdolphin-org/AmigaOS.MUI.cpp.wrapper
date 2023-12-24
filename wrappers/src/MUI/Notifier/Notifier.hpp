@@ -24,16 +24,16 @@ namespace MUI
     class Notifier
     {
       public:
-        static AreaNotifier from(const Area &area);
-        static CycleNotifier from(const Cycle &cycle);
-        static FamilyNotifier from(const Family &family);
-        static GadgetNotifier from(const Gadget &gadget);
-        static GroupNotifier from(const Group &group);
-        static ListNotifier from(const List &list);
-        static MenuitemNotifier from(const Menuitem &menuitem);
-        static NotifyNotifier from(const Notify &notify);
-        static PropNotifier from(const Prop &prop);
-        static StringNotifier from(const String &string);
-        static WindowNotifier from(const Window &window);
+        static AreaNotifier<> from(const Area &area);
+        static CycleNotifier<> from(const Cycle &cycle);
+        static FamilyNotifier<> from(const Family &family);
+        static GadgetNotifier<> from(const Gadget &gadget);
+        static GroupNotifier<> from(const Group &group);
+        static ListNotifier<> from(const List &list);
+        static MenuitemNotifier<> from(const Menuitem &menuitem);
+        static NotifyNotifier<> from(const Notify &notify);
+        static PropNotifier<> from(const Prop &prop);
+        static StringNotifier<> from(const String &string);
+        static WindowNotifier<> from(const Window &window);
     };
 }

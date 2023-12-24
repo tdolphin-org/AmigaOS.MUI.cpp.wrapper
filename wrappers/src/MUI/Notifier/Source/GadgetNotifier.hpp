@@ -11,12 +11,13 @@
 
 namespace MUI
 {
-    class GadgetNotifier : public AreaNotifier
+    template <typename T = Gadget, typename U = DestGadgetNotifier> class GadgetNotifier : public AreaNotifier<T, U>
     {
-        Gadget mGadget;
-
       public:
         GadgetNotifier() = delete;
-        GadgetNotifier(const Gadget &gadget);
+        GadgetNotifier(const T &gadget)
+          : AreaNotifier<T, U>(gadget)
+        {
+        }
     };
 }

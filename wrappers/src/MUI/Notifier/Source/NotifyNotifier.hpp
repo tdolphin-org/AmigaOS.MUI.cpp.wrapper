@@ -11,17 +11,26 @@
 
 namespace MUI
 {
-    class NotifyNotifier
+    template <typename T = Notify, typename U = DestNotifyNotifier> class NotifyNotifier
     {
-        Notify mNotify;
+      protected:
+        T mObject;
 
       public:
         NotifyNotifier() = delete;
-        NotifyNotifier(const Notify &notify);
+        NotifyNotifier(const T &object)
+          : mObject(object)
+        {
+        }
 
         // notification methods
 
         /// @brief [ @b MUIM_Notify, @b MUIA_HelpLine ]
-        SourceNotifier<Notify, DestNotifyNotifier> onHelpLine(const long helpLine);
+        SourceNotifier<T, U> onHelpLine(const long helpLine);
     };
+
+    template <typename T, typename U> SourceNotifier<T, U> inline NotifyNotifier<T, U>::onHelpLine(const long helpLine)
+    {
+        return SourceNotifier<T, U>(mObject, MUIA_HelpLine, helpLine);
+    }
 }

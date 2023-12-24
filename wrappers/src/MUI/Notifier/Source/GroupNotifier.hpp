@@ -11,19 +11,30 @@
 
 namespace MUI
 {
-    class GroupNotifier : public AreaNotifier
+    template <typename T = Group, typename U = DestGroupNotifier> class GroupNotifier : public AreaNotifier<T, U>
     {
-        Group mGroup;
-
       public:
         GroupNotifier() = delete;
-        GroupNotifier(const Group &group);
+        GroupNotifier(const T &group)
+          : AreaNotifier<T, U>(group)
+        {
+        }
 
         // notification methods
 
         /// @brief [ @b MUIM_Notify, @b MUIA_Group_ActivePage ]
-        SourceNotifier<Group, DestGroupNotifier> onActivePage(const long activePage);
+        SourceNotifier<T, U> onActivePage(const long activePage);
         /// @brief [ @b MUIM_Notify, @b MUIA_Group_ActivePage ]
-        SourceNotifier<Group, DestGroupNotifier> onActivePage(const enum Group_ActivePage activePage);
+        SourceNotifier<T, U> onActivePage(const enum Group_ActivePage activePage);
     };
+
+    template <typename T, typename U> SourceNotifier<T, U> inline GroupNotifier<T, U>::onActivePage(const long activePage)
+    {
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Group_ActivePage, activePage);
+    }
+
+    template <typename T, typename U> SourceNotifier<T, U> inline GroupNotifier<T, U>::onActivePage(const enum Group_ActivePage activePage)
+    {
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Group_ActivePage, (long)activePage);
+    }
 }
