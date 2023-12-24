@@ -11,33 +11,30 @@
 
 namespace MUI
 {
-    template <typename T = DestGroupNotifier> class GroupNotifier : public AreaNotifier<T>
+    template <typename T = Group, typename U = DestGroupNotifier> class GroupNotifier : public AreaNotifier<T, U>
     {
-        Group mGroup;
-
       public:
         GroupNotifier() = delete;
-        GroupNotifier(const Group &group)
-          : AreaNotifier<T>(group)
-          , mGroup(group)
+        GroupNotifier(const T &group)
+          : AreaNotifier<T, U>(group)
         {
         }
 
         // notification methods
 
         /// @brief [ @b MUIM_Notify, @b MUIA_Group_ActivePage ]
-        SourceNotifier<Group, T> onActivePage(const long activePage);
+        SourceNotifier<T, U> onActivePage(const long activePage);
         /// @brief [ @b MUIM_Notify, @b MUIA_Group_ActivePage ]
-        SourceNotifier<Group, T> onActivePage(const enum Group_ActivePage activePage);
+        SourceNotifier<T, U> onActivePage(const enum Group_ActivePage activePage);
     };
 
-    template <typename T> SourceNotifier<Group, T> inline GroupNotifier<T>::onActivePage(const long activePage)
+    template <typename T, typename U> SourceNotifier<T, U> inline GroupNotifier<T, U>::onActivePage(const long activePage)
     {
-        return SourceNotifier<Group, T>(mGroup, MUIA_Group_ActivePage, activePage);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Group_ActivePage, activePage);
     }
 
-    template <typename T> SourceNotifier<Group, T> inline GroupNotifier<T>::onActivePage(const enum Group_ActivePage activePage)
+    template <typename T, typename U> SourceNotifier<T, U> inline GroupNotifier<T, U>::onActivePage(const enum Group_ActivePage activePage)
     {
-        return SourceNotifier<Group, T>(mGroup, MUIA_Group_ActivePage, (long)activePage);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Group_ActivePage, (long)activePage);
     }
 }

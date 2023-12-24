@@ -11,41 +11,38 @@
 
 namespace MUI
 {
-    template <typename T = DestWindowNotifier> class WindowNotifier : public NotifyNotifier<T>
+    template <typename T = Window, typename U = DestWindowNotifier> class WindowNotifier : public NotifyNotifier<T, U>
     {
-        Window mWindow;
-
       public:
         WindowNotifier() = delete;
-        WindowNotifier(const Window &window)
-          : NotifyNotifier<T>(window)
-          , mWindow(window)
+        WindowNotifier(const T &window)
+          : NotifyNotifier<T, U>(window)
         {
         }
 
         // notification methods
 
         /// @brief [ @b MUIM_Notify, @b MUIA_Window_Activate ]
-        SourceNotifier<Window, T> onActivate(const bool activate);
+        SourceNotifier<T, U> onActivate(const bool activate);
         /// @brief [ @b MUIM_Notify, @b MUIA_Window_CloseRequest ]
-        SourceNotifier<Window, T> onCloseRequest(const bool closeRequest);
+        SourceNotifier<T, U> onCloseRequest(const bool closeRequest);
         /// @brief [ @b MUIM_Notify, @b MUIA_Window_Open ]
-        SourceNotifier<Window, T> onOpen(const bool open);
+        SourceNotifier<T, U> onOpen(const bool open);
     };
 
-    template <typename T> SourceNotifier<Window, T> inline WindowNotifier<T>::onActivate(const bool activate)
+    template <typename T, typename U> SourceNotifier<T, U> inline WindowNotifier<T, U>::onActivate(const bool activate)
     {
-        return SourceNotifier<Window, T>(mWindow, MUIA_Window_Activate, activate);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Window_Activate, activate);
     }
 
-    template <typename T> SourceNotifier<Window, T> inline WindowNotifier<T>::onCloseRequest(const bool closeRequest)
+    template <typename T, typename U> SourceNotifier<T, U> inline WindowNotifier<T, U>::onCloseRequest(const bool closeRequest)
     {
-        return SourceNotifier<Window, T>(mWindow, MUIA_Window_CloseRequest, closeRequest);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Window_CloseRequest, closeRequest);
     }
 
-    template <typename T> SourceNotifier<Window, T> inline WindowNotifier<T>::onOpen(const bool open)
+    template <typename T, typename U> SourceNotifier<T, U> inline WindowNotifier<T, U>::onOpen(const bool open)
     {
-        return SourceNotifier<Window, T>(mWindow, MUIA_Window_Open, open);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Window_Open, open);
     }
 
 }

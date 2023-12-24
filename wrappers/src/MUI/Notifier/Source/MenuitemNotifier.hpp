@@ -12,82 +12,79 @@
 
 namespace MUI
 {
-    template <typename T = DestMenuitemNotifier> class MenuitemNotifier : public FamilyNotifier<T>
+    template <typename T = Menuitem, typename U = DestMenuitemNotifier> class MenuitemNotifier : public FamilyNotifier<T, U>
     {
-        Menuitem mMenuitem;
-
       public:
         MenuitemNotifier() = delete;
-        MenuitemNotifier(const Menuitem &menuitem)
-          : FamilyNotifier<T>(menuitem)
-          , mMenuitem(menuitem)
+        MenuitemNotifier(const T &menuitem)
+          : FamilyNotifier<T, U>(menuitem)
         {
         }
 
         // notification methods
 
         /// @brief [ @b MUIM_Notify, @b MUIA_Menuitem_Checked ]
-        SourceNotifier<Menuitem, T> onChecked(bool checked);
+        SourceNotifier<T, U> onChecked(bool checked);
         /// @brief [ @b MUIM_Notify, @b MUIA_Menuitem_Checked == @b MUIV_EveryTime ]
-        SourceNotifier<Menuitem, T> onCheckedEveryTime();
+        SourceNotifier<T, U> onCheckedEveryTime();
         /// @brief [ @b MUIM_Notify, @b MUIA_Menuitem_Checkit ]
-        SourceNotifier<Menuitem, T> onCheckit(bool checkit);
+        SourceNotifier<T, U> onCheckit(bool checkit);
         /// @brief [ @b MUIM_Notify, @b MUIA_Menuitem_Checkit == @b MUIV_EveryTime ]
-        SourceNotifier<Menuitem, T> onCheckitEveryTime();
+        SourceNotifier<T, U> onCheckitEveryTime();
         /// @brief [ @b MUIM_Notify, @b MUIA_Menuitem_Enabled ]
-        SourceNotifier<Menuitem, T> onEnabled(bool enabled);
+        SourceNotifier<T, U> onEnabled(bool enabled);
         /// @brief [ @b MUIM_Notify, @b MUIA_Menuitem_Enabled == @b MUIV_EveryTime ]
-        SourceNotifier<Menuitem, T> onEnabledEveryTime();
+        SourceNotifier<T, U> onEnabledEveryTime();
         /// @brief [ @b MUIM_Notify, @b MUIA_Menuitem_Toggle ]
-        SourceNotifier<Menuitem, T> onToggle(bool toggle);
+        SourceNotifier<T, U> onToggle(bool toggle);
         /// @brief [ @b MUIM_Notify, @b MUIA_Menuitem_Toggle == @b MUIV_EveryTime ]
-        SourceNotifier<Menuitem, T> onToggleEveryTime();
+        SourceNotifier<T, U> onToggleEveryTime();
         /// @brief [ @b MUIM_Notify, @b MUIA_Menuitem_Trigger == @b MUIV_EveryTime ]
-        SourceNotifier<Menuitem, T> onTriggerEveryTime();
+        SourceNotifier<T, U> onTriggerEveryTime();
     };
 
-    template <typename T> SourceNotifier<Menuitem, T> inline MenuitemNotifier<T>::onChecked(bool checked)
+    template <typename T, typename U> SourceNotifier<T, U> inline MenuitemNotifier<T, U>::onChecked(bool checked)
     {
-        return SourceNotifier<Menuitem, T>(mMenuitem, MUIA_Menuitem_Checked, checked);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Menuitem_Checked, checked);
     }
 
-    template <typename T> SourceNotifier<Menuitem, T> inline MenuitemNotifier<T>::onCheckedEveryTime()
+    template <typename T, typename U> SourceNotifier<T, U> inline MenuitemNotifier<T, U>::onCheckedEveryTime()
     {
-        return SourceNotifier<Menuitem, T>(mMenuitem, MUIA_Menuitem_Checked, (long)MUIV_EveryTime);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Menuitem_Checked, (long)MUIV_EveryTime);
     }
 
-    template <typename T> SourceNotifier<Menuitem, T> inline MenuitemNotifier<T>::onCheckit(bool checkit)
+    template <typename T, typename U> SourceNotifier<T, U> inline MenuitemNotifier<T, U>::onCheckit(bool checkit)
     {
-        return SourceNotifier<Menuitem, T>(mMenuitem, MUIA_Menuitem_Checkit, checkit);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Menuitem_Checkit, checkit);
     }
 
-    template <typename T> SourceNotifier<Menuitem, T> inline MenuitemNotifier<T>::onCheckitEveryTime()
+    template <typename T, typename U> SourceNotifier<T, U> inline MenuitemNotifier<T, U>::onCheckitEveryTime()
     {
-        return SourceNotifier<Menuitem, T>(mMenuitem, MUIA_Menuitem_Checkit, (long)MUIV_EveryTime);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Menuitem_Checkit, (long)MUIV_EveryTime);
     }
 
-    template <typename T> SourceNotifier<Menuitem, T> inline MenuitemNotifier<T>::onEnabled(bool enabled)
+    template <typename T, typename U> SourceNotifier<T, U> inline MenuitemNotifier<T, U>::onEnabled(bool enabled)
     {
-        return SourceNotifier<Menuitem, T>(mMenuitem, MUIA_Menuitem_Enabled, enabled);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Menuitem_Enabled, enabled);
     }
 
-    template <typename T> SourceNotifier<Menuitem, T> inline MenuitemNotifier<T>::onEnabledEveryTime()
+    template <typename T, typename U> SourceNotifier<T, U> inline MenuitemNotifier<T, U>::onEnabledEveryTime()
     {
-        return SourceNotifier<Menuitem, T>(mMenuitem, MUIA_Menuitem_Enabled, (long)MUIV_EveryTime);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Menuitem_Enabled, (long)MUIV_EveryTime);
     }
 
-    template <typename T> SourceNotifier<Menuitem, T> inline MenuitemNotifier<T>::onToggle(bool toggle)
+    template <typename T, typename U> SourceNotifier<T, U> inline MenuitemNotifier<T, U>::onToggle(bool toggle)
     {
-        return SourceNotifier<Menuitem, T>(mMenuitem, MUIA_Menuitem_Toggle, toggle);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Menuitem_Toggle, toggle);
     }
 
-    template <typename T> SourceNotifier<Menuitem, T> inline MenuitemNotifier<T>::onToggleEveryTime()
+    template <typename T, typename U> SourceNotifier<T, U> inline MenuitemNotifier<T, U>::onToggleEveryTime()
     {
-        return SourceNotifier<Menuitem, T>(mMenuitem, MUIA_Menuitem_Toggle, (long)MUIV_EveryTime);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Menuitem_Toggle, (long)MUIV_EveryTime);
     }
 
-    template <typename T> SourceNotifier<Menuitem, T> inline MenuitemNotifier<T>::onTriggerEveryTime()
+    template <typename T, typename U> SourceNotifier<T, U> inline MenuitemNotifier<T, U>::onTriggerEveryTime()
     {
-        return SourceNotifier<Menuitem, T>(mMenuitem, MUIA_Menuitem_Trigger, (long)MUIV_EveryTime);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Menuitem_Trigger, (long)MUIV_EveryTime);
     }
 }

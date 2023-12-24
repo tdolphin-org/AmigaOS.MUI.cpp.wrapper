@@ -11,75 +11,72 @@
 
 namespace MUI
 {
-    template <typename T = DestPropNotifier> class PropNotifier : public GadgetNotifier<T>
+    template <typename T = Prop, typename U = DestPropNotifier> class PropNotifier : public GadgetNotifier<T, U>
     {
-        Prop mProp;
-
       public:
         inline PropNotifier() = delete;
-        inline PropNotifier(const Prop &prop)
-          : GadgetNotifier<T>(prop)
-          , mProp(prop)
+        inline PropNotifier(const T &prop)
+          : GadgetNotifier<T, U>(prop)
         {
         }
 
         // notification methods
 
         /// @brief [ @b MUIM_Notify, @b MUIA_Prop_DeltaFactor ]
-        SourceNotifier<Prop, T> onDeltaFactor(const long deltaFactor);
+        SourceNotifier<T, U> onDeltaFactor(const long deltaFactor);
         /// @brief [ @b MUIM_Notify, @b MUIA_Prop_DeltaFactor == @b MUIV_EveryTime ]
-        SourceNotifier<Prop, T> onDeltaFactorEveryTime();
+        SourceNotifier<T, U> onDeltaFactorEveryTime();
         /// @brief [ @b MUIM_Notify, @b MUIA_Prop_Entries ]
-        SourceNotifier<Prop, T> onEntries(const long entries);
+        SourceNotifier<T, U> onEntries(const long entries);
         /// @brief [ @b MUIM_Notify, @b MUIA_Prop_Entries == @b MUIV_EveryTime ]
-        SourceNotifier<Prop, T> onEntriesEveryTime();
+        SourceNotifier<T, U> onEntriesEveryTime();
         /// @brief [ @b MUIM_Notify, @b MUIA_Prop_First ]
-        SourceNotifier<Prop, T> onFirst(const long first);
+        SourceNotifier<T, U> onFirst(const long first);
         /// @brief [ @b MUIM_Notify, @b MUIA_Prop_First == @b MUIV_EveryTime ]
-        SourceNotifier<Prop, T> onFirstEveryTime();
+        SourceNotifier<T, U> onFirstEveryTime();
         /// @brief [ @b MUIM_Notify, @b MUIA_Prop_Visible ]
-        SourceNotifier<Prop, T> onVisible(const long visible);
+        SourceNotifier<T, U> onVisible(const long visible);
         /// @brief [ @b MUIM_Notify, @b MUIA_Prop_Visible == @b MUIV_EveryTime ]
-        SourceNotifier<Prop, T> onVisibleEveryTime();
+        SourceNotifier<T, U> onVisibleEveryTime();
     };
 
-    template <typename T> SourceNotifier<Prop, T> inline PropNotifier<T>::onDeltaFactor(const long deltaFactor)
+    template <typename T, typename U> SourceNotifier<T, U> inline PropNotifier<T, U>::onDeltaFactor(const long deltaFactor)
     {
-        return SourceNotifier<Prop, T>(mProp, MUIA_Prop_DeltaFactor, deltaFactor);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Prop_DeltaFactor, deltaFactor);
     }
 
-    template <typename T> SourceNotifier<Prop, T> inline PropNotifier<T>::onDeltaFactorEveryTime()
+    template <typename T, typename U> SourceNotifier<T, U> inline PropNotifier<T, U>::onDeltaFactorEveryTime()
     {
-        return SourceNotifier<Prop, T>(mProp, MUIA_Prop_DeltaFactor, (long)MUIV_EveryTime);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Prop_DeltaFactor, (long)MUIV_EveryTime);
     }
 
-    template <typename T> SourceNotifier<Prop, T> inline PropNotifier<T>::onEntries(const long entries)
+    template <typename T, typename U> SourceNotifier<T, U> inline PropNotifier<T, U>::onEntries(const long entries)
     {
-        return SourceNotifier<Prop, T>(mProp, MUIA_Prop_Entries, entries);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Prop_Entries, entries);
     }
 
-    template <typename T> SourceNotifier<Prop, T> inline PropNotifier<T>::onEntriesEveryTime()
+    template <typename T, typename U> SourceNotifier<T, U> inline PropNotifier<T, U>::onEntriesEveryTime()
     {
-        return SourceNotifier<Prop, T>(mProp, MUIA_Prop_Entries, (long)MUIV_EveryTime);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Prop_Entries, (long)MUIV_EveryTime);
     }
 
-    template <typename T> SourceNotifier<Prop, T> inline PropNotifier<T>::onFirst(const long first)
+    template <typename T, typename U> SourceNotifier<T, U> inline PropNotifier<T, U>::onFirst(const long first)
     {
-        return SourceNotifier<Prop, T>(mProp, MUIA_Prop_First, first);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Prop_First, first);
     }
 
-    template <typename T> SourceNotifier<Prop, T> inline PropNotifier<T>::onFirstEveryTime()
+    template <typename T, typename U> SourceNotifier<T, U> inline PropNotifier<T, U>::onFirstEveryTime()
     {
-        return SourceNotifier<Prop, T>(mProp, MUIA_Prop_First, (long)MUIV_EveryTime);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Prop_First, (long)MUIV_EveryTime);
     }
 
-    template <typename T> SourceNotifier<Prop, T> inline PropNotifier<T>::onVisible(const long visible)
+    template <typename T, typename U> SourceNotifier<T, U> inline PropNotifier<T, U>::onVisible(const long visible)
     {
-        return SourceNotifier<Prop, T>(mProp, MUIA_Prop_Visible, visible);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Prop_Visible, visible);
     }
 
-    template <typename T> SourceNotifier<Prop, T> inline PropNotifier<T>::onVisibleEveryTime()
+    template <typename T, typename U> SourceNotifier<T, U> inline PropNotifier<T, U>::onVisibleEveryTime()
     {
-        return SourceNotifier<Prop, T>(mProp, MUIA_Prop_Visible, (long)MUIV_EveryTime);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Prop_Visible, (long)MUIV_EveryTime);
     }
 }
