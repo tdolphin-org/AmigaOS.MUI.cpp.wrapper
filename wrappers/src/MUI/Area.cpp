@@ -10,11 +10,13 @@
 
 namespace MUI
 {
+#ifndef __MORPHOS__
     Dim::Dim(const unsigned long value)
     {
         width = DIM2WIDTH(value);
         height = DIM2HEIGHT(value);
     }
+#endif
 
     const std::string Area::className = MUIC_Area;
 
@@ -155,6 +157,7 @@ namespace MUI
         return *this;
     }
 
+#ifndef __MORPHOS__
     Area &Area::Text(const long left, const long top, const long width, const long height, const std::string &text, const long len,
                      const std::string &preparse, const char ulchar)
     {
@@ -167,6 +170,7 @@ namespace MUI
     {
         return Dim(DoMethod(muiObject(), MUIM_TextDim, text.c_str(), len, preparse.empty() ? nullptr : preparse.c_str(), flags));
     }
+#endif
 
     AreaBuilder::AreaBuilder() { }
 }

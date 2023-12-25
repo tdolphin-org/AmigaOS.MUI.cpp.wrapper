@@ -18,6 +18,7 @@
 
 namespace MUI
 {
+#ifndef __MORPHOS__
     struct Dim
     {
         long width;
@@ -25,6 +26,7 @@ namespace MUI
 
         Dim(const unsigned long value);
     };
+#endif
 
     class Area : public Notify
     {
@@ -116,6 +118,7 @@ namespace MUI
         /// @brief [ @b MUIM_Relayout, flags = 0 ] Perform a full relayout of the object in case it is visible. Actually the object will be
         /// completely hidden and shown again to trigger a full redraw as well.
         Area &Relayout();
+#ifndef __MORPHOS__
         /// @brief [ @b MUIM_Text ] This function is a preferred way to render text inside the object. It uses the object's font and it's
         /// color (if not specified in the string itself).
         /// @param left rectangle to render the text into
@@ -137,6 +140,7 @@ namespace MUI
         /// @param flags currently unused, by default 0
         /// @return the calculated width and height of the text string
         Dim TextDim(const std::string &text, const long len, const std::string &preparse, const long flags = 0);
+#endif
     };
 
     template <typename T, typename U> class AreaBuilderTemplate : public NotifyBuilderTemplate<T, U>
