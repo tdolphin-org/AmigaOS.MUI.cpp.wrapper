@@ -18,6 +18,14 @@
 
 namespace MUI
 {
+    struct Dim
+    {
+        long width;
+        long height;
+
+        Dim(const unsigned long value);
+    };
+
     class Area : public Notify
     {
       public:
@@ -104,6 +112,31 @@ namespace MUI
         Area &Show();
         /// @brief setShowMe(false)
         Area &Hide();
+
+        /// @brief [ @b MUIM_Relayout, flags = 0 ] Perform a full relayout of the object in case it is visible. Actually the object will be
+        /// completely hidden and shown again to trigger a full redraw as well.
+        Area &Relayout();
+        /// @brief [ @b MUIM_Text ] This function is a preferred way to render text inside the object. It uses the object's font and it's
+        /// color (if not specified in the string itself).
+        /// @param left rectangle to render the text into
+        /// @param top rectangle to render the text into
+        /// @param width rectangle to render the text into
+        /// @param height rectangle to render the text into
+        /// @param text the text to be rendered
+        /// @param len the number of characters to be respected, pass -1 to render the full string
+        /// @param preparse an optional preparse string, may be empty
+        /// @param ulchar character to be underlined (i.e. as shortcut), pass 0 for no underlining
+        Area &Text(const long left, const long top, const long width, const long height, const std::string &text, const long len,
+                   const std::string &preparse, const char ulchar = 0);
+        /// @brief [ @b MUIM_TextDim ] Use this function to measure the area which will be required to render a text of the given length.
+        /// All facilities of MUI's text engine are allowed for both the text and the preparse string. Refer to MUIA_Text_Contents for all
+        /// possible sequences.
+        /// @param text the text to be measured
+        /// @param len the number of characters to be respected, pass -1 to measure the full string
+        /// @param preparse an optional preparse string, may be empty
+        /// @param flags currently unused, by default 0
+        /// @return the calculated width and height of the text string
+        Dim TextDim(const std::string &text, const long len, const std::string &preparse, const long flags = 0);
     };
 
     template <typename T, typename U> class AreaBuilderTemplate : public NotifyBuilderTemplate<T, U>

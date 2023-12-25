@@ -6,8 +6,16 @@
 
 #include "Area.hpp"
 
+#include <proto/alib.h>
+
 namespace MUI
 {
+    Dim::Dim(const unsigned long value)
+    {
+        width = DIM2WIDTH(value);
+        height = DIM2HEIGHT(value);
+    }
+
     const std::string Area::className = MUIC_Area;
 
     bool Area::isSelected() const
@@ -139,6 +147,25 @@ namespace MUI
     Area &Area::Hide()
     {
         return setShowMe(false);
+    }
+
+    Area &Area::Relayout()
+    {
+        DoMethod(muiObject(), MUIM_Relayout, 0);
+        return *this;
+    }
+
+    Area &Area::Text(const long left, const long top, const long width, const long height, const std::string &text, const long len,
+                     const std::string &preparse, const char ulchar)
+    {
+        DoMethod(muiObject(), MUIM_Text, left, top, width, height, text.c_str(), len, preparse.empty() ? nullptr : preparse.c_str(),
+                 ulchar);
+        return *this;
+    }
+
+    Dim Area::TextDim(const std::string &text, const long len, const std::string &preparse, const long flags)
+    {
+        return Dim(DoMethod(muiObject(), MUIM_TextDim, text.c_str(), len, preparse.empty() ? nullptr : preparse.c_str(), flags));
     }
 
     AreaBuilder::AreaBuilder() { }
