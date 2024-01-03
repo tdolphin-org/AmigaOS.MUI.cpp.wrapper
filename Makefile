@@ -1,7 +1,7 @@
 #
 #  MakeFile for "AmigaOS MUI C++ wrapper" project
 #
-# (c) 2022-2023 TDolphin
+# (c) 2022-2024 TDolphin
 #
 
 SUB_PROJECTS = wrappers tests examples
