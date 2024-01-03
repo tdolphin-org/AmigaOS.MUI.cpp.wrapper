@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2023 TDolphin
+//  (c) 2022-2024 TDolphin
 //
 
 #pragma once
@@ -9,14 +9,10 @@
 #include "AOS/TagBuilderRoot.hpp"
 #include "Core/StringStorage.hpp"
 #include "Core/ToString.hpp"
+#include "Object.hpp"
 
 namespace MUI
 {
-    Object *muiObject(const std::string &className, const std::vector<AOS::TagItemObject> &tags);
-    /// @brief application (internal) mui custom class
-    Object *amccObject(const std::string &uniqueId, const std::string &className, const std::vector<AOS::TagItemObject> &tags,
-                       const unsigned long dataSize = 0, const void *pDispatcher = nullptr);
-
     static std::string EmptyUniqueId = "";
 
     template <typename T> class BuilderRoot : public AOS::TagBuilderRoot
@@ -45,7 +41,8 @@ namespace MUI
       protected:
         T object(const unsigned long dataSize, const void *pDispatcher) const
         {
-            return T(mUniqueId.empty() ? muiObject(mClassName, getTags()) : amccObject(mUniqueId, mClassName, getTags(), dataSize, pDispatcher));
+            return T(mUniqueId.empty() ? muiObject(mClassName, getTags())
+                                       : amccObject(mUniqueId, mClassName, getTags(), dataSize, pDispatcher));
         }
 
         const char *StoreString(const std::string &string)

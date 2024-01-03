@@ -1,10 +1,15 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2023 TDolphin
+//  (c) 2022-2024 TDolphin
 //
 
 #include "MakeObject.hpp"
+
+#include "AOS/TagBuilderRoot.hpp"
+#include "Object.hpp"
+
+#include <iostream>
 
 namespace MUI
 {
@@ -141,5 +146,31 @@ namespace MUI
     Object *MakeObject::VBar(const unsigned long space)
     {
         return MUI_MakeObject(MUIO_VBar, space);
+    }
+
+    Object *MakeObject::HCenter(const Object *object)
+    {
+        AOS::TagBuilderRoot tagBuilder;
+
+        tagBuilder.PushTag(MUIA_Group_Horiz, true);
+        tagBuilder.PushTag(MUIA_Group_Spacing, 0L);
+        tagBuilder.PushTag(MUIA_Group_Child, HSpace(0), false);
+        tagBuilder.PushTag(MUIA_Group_Child, object, false);
+        tagBuilder.PushTag(MUIA_Group_Child, HSpace(0), false);
+
+        return muiObject(MUIC_Group, tagBuilder.getTags());
+    }
+
+    Object *MakeObject::VCenter(const Object *object)
+    {
+        AOS::TagBuilderRoot tagBuilder;
+
+        tagBuilder.PushTag(MUIA_Group_Horiz, false);
+        tagBuilder.PushTag(MUIA_Group_Spacing, 0L);
+        tagBuilder.PushTag(MUIA_Group_Child, VSpace(0), false);
+        tagBuilder.PushTag(MUIA_Group_Child, object, false);
+        tagBuilder.PushTag(MUIA_Group_Child, VSpace(0), false);
+
+        return muiObject(MUIC_Group, tagBuilder.getTags());
     }
 }

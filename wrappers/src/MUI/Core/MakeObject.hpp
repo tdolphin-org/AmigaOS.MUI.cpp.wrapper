@@ -1,14 +1,14 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2023 TDolphin
+//  (c) 2022-2024 TDolphin
 //
 
 #pragma once
 
-#include <string>
-
 #include <proto/muimaster.h>
+
+#include <string>
 
 // undef macros from mui.h
 #undef SimpleButton
@@ -25,6 +25,8 @@
 #undef HVSpace
 #undef HSpace
 #undef VSpace
+#undef HCenter
+#undef VCenter
 
 namespace MUI
 {
@@ -82,7 +84,7 @@ namespace MUI
         /// @brief [ @b MUIO_Label ] For use with double high frames (e.g. string gadgets). Centered. [ like MUI macro @b CLabel2() ]
         static Object *CLabel2(const std::string &label);
 
-        /// @brief [ @b HVSpace ]
+        /// @brief [ @b HVSpace --> MUI_NewObject(MUIC_Rectangle, TAG_DONE) ]
         static Object *HVSpace();
         /// @brief [ @b MUIO_HSpace ]
         static Object *HSpace(const unsigned long space);
@@ -92,5 +94,10 @@ namespace MUI
         static Object *HBar(const unsigned long space);
         /// @brief [ @b MUIO_VBar ]
         static Object *VBar(const unsigned long space);
+
+        /// @brief [ @b HCenter --> (HGroup, GroupSpacing(0), Child, HSpace(0), Child, (obj), Child, HSpace(0), End) ]
+        static Object *HCenter(const Object *object);
+        /// @brief [ @b VCenter --> (VGroup, GroupSpacing(0), Child, VSpace(0), Child, (obj), Child, VSpace(0), End) ]
+        static Object *VCenter(const Object *object);
     };
 }
