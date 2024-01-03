@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2023 TDolphin
+//  (c) 2022-2024 TDolphin
 //
 
 #pragma once
@@ -115,15 +115,15 @@ namespace MUI
         /// This attribute makes the current group a page group. Page groups always display only one of their children.
         /// Which one can be adjusted with the MUIA_Group_ActivePage attribute.
         T &tagPageMode(const bool pageMode = true);
-        /// @brief [ @b MUIM_Group_Rows ]
+        /// @brief [ @b MUIA_Group_Rows ]
         T &tagRows(const long rows);
-        /// @brief [ @b MUIM_Group_SameHeight ]
+        /// @brief [ @b MUIA_Group_SameHeight ]
         T &tagSameHeight(const bool sameHeight);
-        /// @brief [ @b MUIM_Group_SameSize ]
+        /// @brief [ @b MUIA_Group_SameSize ]
         T &tagSameSize(const bool sameSize);
-        /// @brief [ @b MUIM_Group_SameWidth ]
+        /// @brief [ @b MUIA_Group_SameWidth ]
         T &tagSameWidth(const bool sameWidth);
-        /// @brief [ @b MUIM_Group_Spacing ]
+        /// @brief [ @b MUIA_Group_Spacing ]
         T &tagSpacing(const long spacing);
         /// @brief [ @b MUIA_Group_VertCenter ]
         T &tagVertCenter(const enum Group_VertCenter vertCenter);

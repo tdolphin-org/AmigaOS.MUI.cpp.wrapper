@@ -1,17 +1,17 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2023 TDolphin
+//  (c) 2022-2024 TDolphin
 //
 
 #include "Application.hpp"
 
-#include <proto/alib.h>
-#include <proto/intuition.h>
-
 #include "Context/ApplicationContext.hpp"
 #include "Menustrip.hpp"
 #include "Window.hpp"
+
+#include <proto/alib.h>
+#include <proto/intuition.h>
 
 namespace MUI
 {
