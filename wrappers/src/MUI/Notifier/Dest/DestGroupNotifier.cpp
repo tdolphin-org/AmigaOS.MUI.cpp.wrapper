@@ -28,4 +28,11 @@ namespace MUI
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Group_ActivePage, (unsigned long)activePage);
         return *this;
     }
+
+    DestGroupNotifier &DestGroupNotifier::setActivePageTriggerValue(bool notify)
+    {
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Group_ActivePage, MUIV_TriggerValue);
+        return *this;
+    }
 }

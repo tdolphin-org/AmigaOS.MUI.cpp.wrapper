@@ -28,5 +28,7 @@ namespace MUI
         DestGroupNotifier &setActivePage(const unsigned long activePage, bool notify = true);
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Group_ActivePage ]
         DestGroupNotifier &setActivePage(const enum Group_ActivePage activePage, bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Group_ActivePage = @b MUIV_TriggerValue ]
+        DestGroupNotifier &setActivePageTriggerValue(bool notify = true);
     };
 }
