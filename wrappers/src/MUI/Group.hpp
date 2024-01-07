@@ -95,6 +95,10 @@ namespace MUI
         /// @brief [ @b MUIA_Group_Horiz, TRUE ] - like macro: @b HGroup
         T &horizontal();
 
+        /// @brief [ @b MUIA_Group_ActivePage ]
+        T &tagActivePage(const unsigned long activePage);
+        /// @brief [ @b MUIA_Group_ActivePage ]
+        T &tagActivePage(const enum Group_ActivePage activePage);
         /// @brief [ @b MUIM_Group_Child ]
         T &tagChild(const Object *pChildObject);
         /// @brief [ @b MUIM_Group_Child ]
@@ -146,6 +150,18 @@ namespace MUI
     template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::horizontal()
     {
         this->PushTag(MUIA_Group_Horiz, true);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::tagActivePage(const unsigned long activePage)
+    {
+        this->PushTag(MUIA_Group_ActivePage, activePage);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::tagActivePage(const enum Group_ActivePage activePage)
+    {
+        this->PushTag(MUIA_Group_ActivePage, (long)activePage);
         return (T &)*this;
     }
 
