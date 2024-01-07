@@ -6,15 +6,22 @@
 
 #include "ObjectScope.hpp"
 
+#include <proto/muimaster.h>
+
 #include <stdexcept>
 #include <string>
 
-#include <proto/muimaster.h>
+#ifdef TRACE_MUI
+#include <iostream>
+#endif
 
 namespace MUI
 {
     ObjectScope::ObjectScope(Object *pObject)
     {
+#ifdef TRACE_MUI
+        std::cout << __PRETTY_FUNCTION__ << " " << pObject << std::endl;
+#endif
         if (pObject == nullptr)
         {
             std::string error = (std::string) __PRETTY_FUNCTION__ + " nullptr Object!";
@@ -26,6 +33,10 @@ namespace MUI
 
     ObjectScope::~ObjectScope()
     {
+#ifdef TRACE_MUI
+        std::cout << __PRETTY_FUNCTION__ << " MUI_DisposeObject(" << mpObject << ")" << std::endl;
+#endif
+
         MUI_DisposeObject(mpObject);
     }
 }
