@@ -91,6 +91,7 @@ ___
 | [MUIC_Radio](https://github.com/amiga-mui/muidev/wiki/MUI_Radio) | [MUI::Radio](/wrappers/src/MUI/Radio.hpp) | Ready | Ready | - | - |
 | [MUIC_Rectangle](https://github.com/amiga-mui/muidev/wiki/MUI_Rectangle) | [MUI::Rectangle](/wrappers/src/MUI/Rectangle.hpp) | Ready | Ready | not applicable | - |
 | [MUIC_Scrollbar](https://github.com/amiga-mui/muidev/wiki/MUI_Scrollbar) | [MUI::Scrollbar](/wrappers/src/MUI/Scrollbar.hpp) | Ready | Ready | - | - |
+| [MUIC_Slider](https://github.com/amiga-mui/muidev/wiki/MUI_Slider) | [MUI::Slider](/wrappers/src/MUI/SliderSlider.hpp) | Ready | Ready | - | - |
 | ... | ... | - | - | - | - |
 | MUIC_Busy | [MUI::Scrollbar](/wrappers/src/MUI/MCC/Busy.hpp) | Ready | Ready | - | - |
 | ... | ... | - | - | - | - |
