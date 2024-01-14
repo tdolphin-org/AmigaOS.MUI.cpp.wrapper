@@ -72,8 +72,18 @@ namespace MUI
         T &tagAslFrTitleText(const char *titleText);
         /// @brief [ @b ASLFR_TitleText ]
         T &tagAslFrTitleText(const std::string &titleText);
+        /// @brief [ @b ASLFR_DoPatterns ]
+        T &tagAslFrDoPatterns(const bool doPatterns = true);
         /// @brief [ @b ASLFR_DrawersOnly ]
         T &tagAslFrDrawersOnly(const bool drawersOnly = true);
+        /// @brief [ @b ASLFR_RejectIcons ]
+        T &tagAslFrRejectIcons(const bool rejectIcons = true);
+        /// @brief [ @b ASLFR_RejectPattern ]
+        T &tagAslFrRejectPattern(const std::string &rejectPattern);
+        /// @brief [ @b ASLFR_AcceptPattern ]
+        T &tagAslFrAcceptPattern(const std::string &acceptPattern);
+        /// @brief [ @b ASLFR_FilterDrawers ]
+        T &tagAslFrFilterDrawers(const bool filterDrawers = true);
     };
 
     class PopaslBuilder : public PopaslBuilderTemplate<PopaslBuilder, Popasl>
@@ -112,9 +122,39 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U> inline T &PopaslBuilderTemplate<T, U>::tagAslFrDoPatterns(const bool doPatterns)
+    {
+        this->PushTag(ASLFR_DoPatterns, doPatterns);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &PopaslBuilderTemplate<T, U>::tagAslFrDrawersOnly(const bool drawersOnly)
     {
         this->PushTag(ASLFR_DrawersOnly, drawersOnly);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &PopaslBuilderTemplate<T, U>::tagAslFrRejectIcons(const bool rejectIcons)
+    {
+        this->PushTag(ASLFR_RejectIcons, rejectIcons);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &PopaslBuilderTemplate<T, U>::tagAslFrRejectPattern(const std::string &rejectPattern)
+    {
+        this->PushTag(ASLFR_RejectPattern, rejectPattern);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &PopaslBuilderTemplate<T, U>::tagAslFrAcceptPattern(const std::string &acceptPattern)
+    {
+        this->PushTag(ASLFR_AcceptPattern, acceptPattern);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &PopaslBuilderTemplate<T, U>::tagAslFrFilterDrawers(const bool filterDrawers)
+    {
+        this->PushTag(ASLFR_FilterDrawers, filterDrawers);
         return (T &)*this;
     }
 }
