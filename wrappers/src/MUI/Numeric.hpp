@@ -136,7 +136,8 @@ namespace MUI
 
     template <typename T, typename U> inline T &NumericBuilderTemplate<T, U>::tagFormat(const std::string &format)
     {
-        this->PushTag(MUIA_Numeric_Format, format);
+        auto copy = this->StoreString(format);
+        this->PushTag(MUIA_Numeric_Format, copy);
         return (T &)*this;
     }
 
