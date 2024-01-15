@@ -35,92 +35,139 @@ namespace MUI
 
     Object *MakeObject::Label(const char *label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label, 0);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label, 0);
     }
 
     Object *MakeObject::Label(const std::string &label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label.c_str(), 0);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), 0);
     }
 
     Object *MakeObject::Label1(const char *label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label, MUIO_Label_SingleFrame);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label, MUIO_Label_SingleFrame);
     }
 
     Object *MakeObject::Label1(const std::string &label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label.c_str(), MUIO_Label_SingleFrame);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_SingleFrame);
     }
 
     Object *MakeObject::Label2(const char *label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label, MUIO_Label_DoubleFrame);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label, MUIO_Label_DoubleFrame);
     }
 
     Object *MakeObject::Label2(const std::string &label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label.c_str(), MUIO_Label_DoubleFrame);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_DoubleFrame);
     }
 
     Object *MakeObject::LLabel(const char *label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label, MUIO_Label_LeftAligned);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label, MUIO_Label_LeftAligned);
     }
 
     Object *MakeObject::LLabel(const std::string &label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label.c_str(), MUIO_Label_LeftAligned);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_LeftAligned);
     }
 
     Object *MakeObject::LLabel1(const char *label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label, MUIO_Label_LeftAligned | MUIO_Label_SingleFrame);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label, MUIO_Label_LeftAligned | MUIO_Label_SingleFrame);
     }
 
     Object *MakeObject::LLabel1(const std::string &label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label.c_str(), MUIO_Label_LeftAligned | MUIO_Label_SingleFrame);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_LeftAligned | MUIO_Label_SingleFrame);
     }
 
     Object *MakeObject::LLabel2(const char *label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label, MUIO_Label_LeftAligned | MUIO_Label_DoubleFrame);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label, MUIO_Label_LeftAligned | MUIO_Label_DoubleFrame);
     }
 
     Object *MakeObject::LLabel2(const std::string &label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label.c_str(), MUIO_Label_LeftAligned | MUIO_Label_DoubleFrame);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_LeftAligned | MUIO_Label_DoubleFrame);
     }
 
     Object *MakeObject::CLabel(const char *label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label, MUIO_Label_Centered);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label, MUIO_Label_Centered);
     }
 
     Object *MakeObject::CLabel(const std::string &label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label.c_str(), MUIO_Label_Centered);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_Centered);
     }
 
     Object *MakeObject::CLabel1(const char *label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label, MUIO_Label_Centered | MUIO_Label_SingleFrame);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label, MUIO_Label_Centered | MUIO_Label_SingleFrame);
     }
 
     Object *MakeObject::CLabel1(const std::string &label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label.c_str(), MUIO_Label_Centered | MUIO_Label_SingleFrame);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_Centered | MUIO_Label_SingleFrame);
     }
 
     Object *MakeObject::CLabel2(const char *label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label, MUIO_Label_Centered | MUIO_Label_DoubleFrame);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label, MUIO_Label_Centered | MUIO_Label_DoubleFrame);
     }
 
     Object *MakeObject::CLabel2(const std::string &label)
     {
-        return MUI_MakeObject(MUIO_Label, (ULONG)label.c_str(), MUIO_Label_Centered | MUIO_Label_DoubleFrame);
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_Centered | MUIO_Label_DoubleFrame);
+    }
+
+    Object *MakeObject::FreeLabel(const std::string &label)
+    {
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_FreeVert);
+    }
+
+    Object *MakeObject::FreeLabel1(const std::string &label)
+    {
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_FreeVert | MUIO_Label_SingleFrame);
+    }
+
+    Object *MakeObject::FreeLabel2(const std::string &label)
+    {
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_FreeVert | MUIO_Label_DoubleFrame);
+    }
+
+    Object *MakeObject::FreeLLabel(const std::string &label)
+    {
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_FreeVert | MUIO_Label_LeftAligned);
+    }
+
+    Object *MakeObject::FreeLLabel1(const std::string &label)
+    {
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(),
+                              MUIO_Label_FreeVert | MUIO_Label_LeftAligned | MUIO_Label_SingleFrame);
+    }
+
+    Object *MakeObject::FreeLLabel2(const std::string &label)
+    {
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(),
+                              MUIO_Label_FreeVert | MUIO_Label_LeftAligned | MUIO_Label_DoubleFrame);
+    }
+
+    Object *MakeObject::FreeCLabel(const std::string &label)
+    {
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_FreeVert | MUIO_Label_Centered);
+    }
+
+    Object *MakeObject::FreeCLabel1(const std::string &label)
+    {
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_FreeVert | MUIO_Label_Centered | MUIO_Label_SingleFrame);
+    }
+
+    Object *MakeObject::FreeCLabel2(const std::string &label)
+    {
+        return MUI_MakeObject(MUIO_Label, (unsigned long)label.c_str(), MUIO_Label_FreeVert | MUIO_Label_Centered | MUIO_Label_DoubleFrame);
     }
 
     Object *MakeObject::HVSpace()
