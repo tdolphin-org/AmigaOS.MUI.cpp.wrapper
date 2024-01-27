@@ -15,6 +15,8 @@ namespace MUI
         First = MUIV_Group_ActivePage_First,
         Second,
         Third,
+        Fourth,
+        Fifth,
         Last = MUIV_Group_ActivePage_Last,
         Prev = MUIV_Group_ActivePage_Prev,
         Next = MUIV_Group_ActivePage_Next,
