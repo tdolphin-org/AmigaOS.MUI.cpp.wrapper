@@ -147,8 +147,15 @@ namespace MUI
         List &InsertTop(const void *entries[]);
         /// @brief [ @b MUIM_List_Insert, @b MUIV_List_Insert_Bottom ]
         List &InsertBottom(const void *entries[]);
-        /// @brief [ @b MUIM_List_Insert, @b MUIV_List_Insert_Bottom ]
-        List &InsertBottom(const char *entries[]);
+        /// @brief [ @b MUIM_List_Insert, @b MUIV_List_Insert_Sorted ]
+        List &InsertSorted(const void *entries[]);
+
+        /// @brief [ in loop @b MUIM_List_InsertSingle, @b MUIV_List_Insert_Top ]
+        List &InsertTop(const std::vector<std::string> &entries);
+        /// @brief [ in loop @b MUIM_List_InsertSingle, @b MUIV_List_Insert_Bottom ]
+        List &InsertBottom(const std::vector<std::string> &entries);
+        /// @brief [ in loop @b MUIM_List_InsertSingle, @b MUIV_List_Insert_Sorted ]
+        List &InsertSorted(const std::vector<std::string> &entries);
 
         // redraw methods
 

@@ -46,12 +46,12 @@ namespace MUI
         /// @brief [ @b MUIO_Checkmark ]
         static Object *Checkmark();
 
-        /// @brief [ @b MUIO_Button ]
+        /// @brief [ @b MUIO_Button (button is an instance of the MUIC_Text class) ]
         static Object *SimpleButton(const char *label);
-        /// @brief [ @b MUIO_Button ]
+        /// @brief [ @b MUIO_Button (button is an instance of the MUIC_Text class) ]
         static Object *SimpleButton(const std::string &label);
 
-        /// @brief [ @b MUIO_Button ]
+        /// @brief [ @b MUIO_Button (button is an instance of the MUIC_Text class) ]
         static Object *PopButton(unsigned long img);
 
         /// @brief [ @b MUIO_Label ] For use with objects without a frame. Right justify. [ like MUI macro @b Label() ]

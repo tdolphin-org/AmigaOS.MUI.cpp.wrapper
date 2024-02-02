@@ -38,7 +38,7 @@ namespace MUI
 
 #ifndef __MORPHOS__
         /// @brief [ @b MUIA_Scrollbar_IncDecSize ]
-        unsigned long getIncDecSize();
+        unsigned long getIncDecSize() const;
 
         /// @brief [ @b MUIA_Scrollbar_IncDecSize ]
         Scrollbar &setIncDecSize(unsigned long incDecSize);
