@@ -14,22 +14,22 @@ namespace MUI
 {
     const std::string Window::className = MUIC_Window;
 
-    bool Window::isOpen()
+    bool Window::isOpen() const
     {
         return GetValueAsBool(MUIA_Window_Open);
     }
 
-    AOS::Identifier Window::getID()
+    AOS::Identifier Window::getID() const
     {
         return AOS::Identifier(GetValueAsULong(MUIA_Window_ID));
     }
 
-    Object *Window::getRootObject()
+    Object *Window::getRootObject() const
     {
         return GetValueAsObjectPtr(MUIA_Window_RootObject);
     }
 
-    std::string Window::getScreenTitle()
+    std::string Window::getScreenTitle() const
     {
         return GetValueAsString(MUIA_Window_ScreenTitle);
     }

@@ -43,16 +43,16 @@ namespace MUI
         // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Window_Open ]
-        bool isOpen();
+        bool isOpen() const;
         /// @brief [ @b MUIA_Window_ID ]
-        AOS::Identifier getID();
+        AOS::Identifier getID() const;
         /// @brief [ @b MUIA_Window_RootObject ]
         /// @return a pointer to a MUI object, the contents of window,
         /// The root object is treated as child of a window and will be disposed when the window is disposed. Window can only have one
         /// child.
-        Object *getRootObject();
+        Object *getRootObject() const;
         /// @brief [ @b MUIA_Window_ScreenTitle ]
-        std::string getScreenTitle();
+        std::string getScreenTitle() const;
 
         /// @brief [ @b MUIA_Window_ID ]
         Window &setID(const AOS::Identifier &id);
