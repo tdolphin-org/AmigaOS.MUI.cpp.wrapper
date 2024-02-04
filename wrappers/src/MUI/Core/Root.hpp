@@ -16,9 +16,14 @@ namespace MUI
 
     class Root
     {
+        friend class NullObject;
+
         static StringStorage mStringStorage;
 
         Object *mpMuiObject;
+
+        /// @brief can be used only for NullObject
+        Root();
 
       public:
         Root(const Object *pMuiObject);
@@ -27,6 +32,11 @@ namespace MUI
         Object *muiObject() const
         {
             return mpMuiObject;
+        }
+
+        bool isNull() const
+        {
+            mpMuiObject == nullptr;
         }
 
         // methods

@@ -25,6 +25,11 @@ namespace MUI
 
     StringStorage Root::mStringStorage;
 
+    Root::Root()
+      : mpMuiObject(nullptr)
+    {
+    }
+
     Root::Root(const Object *pMuiObject)
     {
         if (pMuiObject == nullptr)
