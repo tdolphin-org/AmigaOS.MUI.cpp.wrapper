@@ -25,6 +25,11 @@ namespace MUI
         {
         }
 
+        Text(const Root &root)
+          : Area(root.muiObject())
+        {
+        }
+
         // instanceOf
 
         const static std::string className;
@@ -32,6 +37,11 @@ namespace MUI
         static inline bool instanceOf(Object *pMuiObject)
         {
             return MUI::instanceOf(pMuiObject, className.c_str());
+        }
+
+        static inline bool instanceOf(const Root &object)
+        {
+            return MUI::instanceOf(object.muiObject(), className.c_str());
         }
 
         // is/get/set (attributes), all setters return object reference
