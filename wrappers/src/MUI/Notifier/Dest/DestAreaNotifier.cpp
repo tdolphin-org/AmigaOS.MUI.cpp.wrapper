@@ -22,10 +22,10 @@ namespace MUI
         return *this;
     }
 
-    DestAreaNotifier &DestAreaNotifier::setDisabledTriggerValue(bool notify)
+    DestAreaNotifier &DestAreaNotifier::setDisabledTriggerValue(bool notify, enum Trigger trigger)
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
-                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Disabled, MUIV_TriggerValue);
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Disabled, trigger);
         return *this;
     }
 
@@ -36,10 +36,10 @@ namespace MUI
         return *this;
     }
 
-    DestAreaNotifier &DestAreaNotifier::setSelectedTriggerValue(bool notify)
+    DestAreaNotifier &DestAreaNotifier::setSelectedTriggerValue(bool notify, enum Trigger trigger)
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
-                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Selected, MUIV_TriggerValue);
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Selected, trigger);
         return *this;
     }
 
@@ -50,10 +50,10 @@ namespace MUI
         return *this;
     }
 
-    DestAreaNotifier &DestAreaNotifier::setShowMeTriggerValue(bool notify)
+    DestAreaNotifier &DestAreaNotifier::setShowMeTriggerValue(bool notify, enum Trigger trigger)
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
-                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_ShowMe, MUIV_TriggerValue);
+                 notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_ShowMe, trigger);
         return *this;
     }
 }
