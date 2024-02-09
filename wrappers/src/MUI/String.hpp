@@ -49,7 +49,7 @@ namespace MUI
         // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_String_Contents ]
-        std::string getContents();
+        std::string getContents() const;
 
         /// @brief [ @b MUIA_String_Contents ]
         String &setContents(const std::string &contents);
