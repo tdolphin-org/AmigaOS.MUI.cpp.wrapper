@@ -251,18 +251,21 @@ namespace MUI
     {
         for (const auto &entry : entries)
             InsertSingleTop(entry.c_str());
+        return *this;
     }
 
     List &List::InsertBottom(const std::vector<std::string> &entries)
     {
         for (const auto &entry : entries)
             InsertSingleBottom(entry.c_str());
+        return *this;
     }
 
     List &List::InsertSorted(const std::vector<std::string> &entries)
     {
         for (const auto &entry : entries)
             InsertSingleSorted(entry.c_str());
+        return *this;
     }
 
     List &List::Clear()

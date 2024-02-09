@@ -36,7 +36,7 @@ namespace MUI
 
         bool isNull() const
         {
-            mpMuiObject == nullptr;
+            return mpMuiObject == nullptr;
         }
 
         // methods
