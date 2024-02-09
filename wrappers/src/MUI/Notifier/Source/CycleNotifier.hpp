@@ -32,7 +32,7 @@ namespace MUI
 
     template <typename T, typename U> SourceNotifier<T, U> inline CycleNotifier<T, U>::onActive(const enum Cycle_Active active)
     {
-        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Cycle_Active, (unsigned long)active);
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Cycle_Active, (long)active);
     }
 
     template <typename T, typename U> SourceNotifier<T, U> inline CycleNotifier<T, U>::onActiveEveryTime()

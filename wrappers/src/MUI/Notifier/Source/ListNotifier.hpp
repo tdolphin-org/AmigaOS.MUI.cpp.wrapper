@@ -22,6 +22,8 @@ namespace MUI
 
         // notification methods
 
+        /// @brief [ @b MUIM_Notify, @b MUIA_List_Active ]
+        SourceNotifier<T, U> onActive(const enum List_Active active);
         /// @brief [ @b MUIM_Notify, @b MUIA_List_Active == @b MUIV_EveryTime ]
         SourceNotifier<T, U> onActiveEveryTime();
         /// @brief [ @b MUIM_Notify, @b MUIA_List_DoubleClick ]
@@ -33,6 +35,11 @@ namespace MUI
         /// @brief [ @b MUIM_Notify, @b MUIA_List_TopPixel == @b MUIV_EveryTime ]
         SourceNotifier<T, U> onTopPixelEveryTime();
     };
+
+    template <typename T, typename U> SourceNotifier<T, U> inline ListNotifier<T, U>::onActive(const enum List_Active active)
+    {
+        return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_List_Active, (long)active);
+    }
 
     template <typename T, typename U> SourceNotifier<T, U> inline ListNotifier<T, U>::onActiveEveryTime()
     {
