@@ -32,6 +32,18 @@ std::string ToString::Concatenate(const std::vector<std::string> &array, const s
                                                [&separator](const std::string &a, const std::string &b) { return a + " " + b; });
 }
 
+std::string ToString::Replace(std::string input, const std::string &source, const std::string &replacement)
+{
+    std::size_t pos = 0;
+    while ((pos = input.find(source, pos)) != std::string::npos)
+    {
+        input.replace(pos, source.size(), replacement);
+        pos += replacement.size();
+    }
+
+    return input;
+}
+
 std::string ToString::Format(std::string format, const std::string &arg0)
 {
     try

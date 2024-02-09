@@ -16,6 +16,8 @@ class ToString
     static std::string FromHexValue(const unsigned long value);
     static std::string Concatenate(const std::vector<std::string> &array, const std::string &separator);
 
+    static std::string Replace(std::string input, const std::string &source, const std::string &replacement);
+
     // below methods could be removed if C++20 would be used with std::format
     static std::string Format(std::string format, const std::string &arg0);
     static std::string Format(std::string format, const std::vector<std::string> &args0);
