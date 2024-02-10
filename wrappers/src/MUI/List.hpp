@@ -103,7 +103,7 @@ namespace MUI
 
         /// @brief [ @b MUIM_List_GetEntry ]
         /// @param position index in list
-        /// @return pointer to list entry (shopuld be casted to proper one)
+        /// @return pointer to list entry (should be casted to proper one)
         void *GetEntry(const long position) const;
         /// @brief [ @b MUIM_List_GetEntry ]
         /// @param position index in list
@@ -195,6 +195,8 @@ namespace MUI
         T &tagAutoVisible(const bool autoVisible);
         /// @brief [ @b MUIA_List_CompareHook ]
         T &tagCompareHook(const struct Hook *compareHook);
+        /// @brief [ @b MUIA_List_CompareHook, @b MUIV_List_CompareHook_String ]
+        T &tagCompareHookString();
         /// @brief [ @b MUIA_List_ConstructHook ]
         T &tagConstructHook(const struct Hook *constructHook);
         /// @brief [ @b MUIA_List_ConstructHook, @b MUIV_List_ConstructHook_String ]
@@ -283,6 +285,12 @@ namespace MUI
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagCompareHook(const struct Hook *compareHook)
     {
         this->PushTag(MUIA_List_CompareHook, compareHook);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagCompareHookString()
+    {
+        this->PushTag(MUIA_List_CompareHook, (const Hook *)MUIV_List_CompareHook_String);
         return (T &)*this;
     }
 
