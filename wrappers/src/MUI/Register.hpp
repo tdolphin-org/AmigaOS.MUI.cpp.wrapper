@@ -31,6 +31,14 @@ namespace MUI
         {
             return MUI::instanceOf(pMuiObject, className.c_str());
         }
+
+        // is/get/set (attributes), all setters return object reference
+
+        /// @brief [ @b MUIA_Register_Titles ]
+        char **getTitles() const;
+
+        /// @brief [ @b MUIA_Register_Titles ]
+        Register &setTitles(const char *titles[]);
     };
 
     template <typename T, typename U> class RegisterBuilderTemplate : public GroupBuilderTemplate<T, U>
@@ -52,9 +60,9 @@ namespace MUI
         RegisterBuilder();
     };
 
-    template <typename T, typename U> inline T &RegisterBuilderTemplate<T, U>::tagTitles(const char *pTitles[])
+    template <typename T, typename U> inline T &RegisterBuilderTemplate<T, U>::tagTitles(const char *titles[])
     {
-        this->PushTag(MUIA_Register_Titles, (const char **)pTitles);
+        this->PushTag(MUIA_Register_Titles, (const char **)titles);
         return (T &)*this;
     }
 }

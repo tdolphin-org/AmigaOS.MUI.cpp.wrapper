@@ -19,5 +19,11 @@ namespace MUI
       protected:
         DestRegisterNotifier() = delete;
         DestRegisterNotifier(const NotifierObject &notifierObject, const Register &registerObject);
+
+      public:
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Register_Titles ]
+        DestRegisterNotifier &setTitles(const char *titles[], bool notify = true);
+        /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Register_Titles = @b MUIV_TriggerValue ]
+        DestRegisterNotifier &setTitlesTriggerValue(bool notify = true);
     };
 }

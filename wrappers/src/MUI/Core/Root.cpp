@@ -94,6 +94,11 @@ namespace MUI
         return value;
     }
 
+    char **Root::GetValueAsCharArrayPtr(const unsigned long tagName) const
+    {
+        return (char **)GetValueAsPtr(tagName);
+    }
+
     Object *Root::GetValueAsObjectPtr(const unsigned long tagName) const
     {
         return (Object *)GetValueAsPtr(tagName);
@@ -132,6 +137,11 @@ namespace MUI
     void Root::SetValue(const unsigned long tagName, const void *pointer) const
     {
         SetAttrs(muiObject(), tagName, (unsigned long)pointer, TAG_END);
+    }
+
+    void Root::SetValue(const unsigned long tagName, const char *array[]) const
+    {
+        SetAttrs(muiObject(), tagName, (unsigned long)array, TAG_END);
     }
 
     void Root::SetValue(const unsigned long tagName, const Object *pObject) const
