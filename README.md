@@ -64,7 +64,7 @@ Code extended and divided in many files (Components), see: [advanced](/examples/
 ![git desktop window](/docs/assets/advanced.example.png)
 
 ___
-## Implementation status (partial)
+## Implementation status
 
 | MUI/MCC class | C++ class | Wrapper | Builder | Source Notifier | Dest Notifier |
 |-|-|:-:|:-:|:-:|:-:|
@@ -103,17 +103,41 @@ ___
 | [MUIC_Notify](https://github.com/amiga-mui/muidev/wiki/MUI_Notify) | [MUI::Notify](/wrappers/src/MUI/Notify.hpp) | in progress | Ready | in progress | in progress |
 | [MUIC_Numericbutton](https://github.com/amiga-mui/muidev/wiki/MUI_Numericbutton) | - | - | - | - | - |
 | [MUIC_Numeric](https://github.com/amiga-mui/muidev/wiki/MUI_Numeric) | [MUI::Numeric](/wrappers/src/MUI/Numeric.hpp) | Ready | Ready | - | - |
+| [MUIC_Objectmap](https://github.com/amiga-mui/muidev/wiki/MUI_Objectmap) | - | - | - | - | - |
+| [MUIC_Palette](https://github.com/amiga-mui/muidev/wiki/MUI_Palette) | - | - | - | - | - |
+| [MUIC_Panel](https://github.com/amiga-mui/muidev/wiki/MUI_Panel) | - | - | - | - | - |
+| [MUIC_Penadjust](https://github.com/amiga-mui/muidev/wiki/MUI_Penadjust) | - | - | - | - | - |
+| [MUIC_Pendisplay](https://github.com/amiga-mui/muidev/wiki/MUI_Pendisplay) | - | - | - | - | - |
+| [MUIC_Pixmap](https://github.com/amiga-mui/muidev/wiki/MUI_Pixmap) | - | - | - | - | - |
 | [MUIC_Popasl](https://github.com/amiga-mui/muidev/wiki/MUI_Popasl) | [MUI::Popasl](/wrappers/src/MUI/Popasl.hpp) | Ready | Ready | - | - |
+| [MUIC_Poplist](https://github.com/amiga-mui/muidev/wiki/MUI_Poplist) | - | - | - | - | - |
+| [MUIC_Popobject](https://github.com/amiga-mui/muidev/wiki/MUI_Popobject) | - | - | - | - | - |
+| [MUIC_Poppen](https://github.com/amiga-mui/muidev/wiki/MUI_Poppen) | - | - | - | - | - |
+| [MUIC_Popscreen](https://github.com/amiga-mui/muidev/wiki/MUI_Popscreen) | - | - | - | - | - |
 | [MUIC_Popstring](https://github.com/amiga-mui/muidev/wiki/MUI_Popstring) | [MUI::Popstring](/wrappers/src/MUI/Popstring.hpp) | Ready | Ready | - | - |
+| [MUIC_Process](https://github.com/amiga-mui/muidev/wiki/MUI_Process) | - | - | - | - | - |
 | [MUIC_Prop](https://github.com/amiga-mui/muidev/wiki/MUI_Prop) | [MUI::Prop](/wrappers/src/MUI/Prop.hpp) | Ready | Ready | Ready | Ready |
 | [MUIC_Radio](https://github.com/amiga-mui/muidev/wiki/MUI_Radio) | [MUI::Radio](/wrappers/src/MUI/Radio.hpp) | Ready | Ready | - | - |
 | [MUIC_Rectangle](https://github.com/amiga-mui/muidev/wiki/MUI_Rectangle) | [MUI::Rectangle](/wrappers/src/MUI/Rectangle.hpp) | Ready | Ready | not applicable | - |
+| [MUIC_Register](https://github.com/amiga-mui/muidev/wiki/MUI_Register) | [MUI::Scrollbar](/wrappers/src/MUI/Register.hpp) | Ready | Ready | not applicable | Ready |
+| [MUIC_Scale](https://github.com/amiga-mui/muidev/wiki/MUI_Scale) | - | - | - | - | - |
+| [MUIC_Screenmodepanel](https://github.com/amiga-mui/muidev/wiki/MUI_Screenmodepanel) | - | - | - | - | - |
+| [MUIC_Scrmodelist](https://github.com/amiga-mui/muidev/wiki/MUI_Scrmodelist) | - | - | - | - | - |
 | [MUIC_Scrollbar](https://github.com/amiga-mui/muidev/wiki/MUI_Scrollbar) | [MUI::Scrollbar](/wrappers/src/MUI/Scrollbar.hpp) | Ready | Ready | - | - |
+| [MUIC_Scrollgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Scrollgroup) | - | - | - | - | - |
+| [MUIC_Selectgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Selectgroup) | - | - | - | - | - |
+| [MUIC_Semaphore](https://github.com/amiga-mui/muidev/wiki/MUI_Semaphore) | - | - | - | - | - |
+| [MUIC_Slave](https://github.com/amiga-mui/muidev/wiki/MUI_Slave) | - | - | - | - | - |
 | [MUIC_Slider](https://github.com/amiga-mui/muidev/wiki/MUI_Slider) | [MUI::Slider](/wrappers/src/MUI/Slider.hpp) | Ready | Ready | - | - |
 | [MUIC_String](https://github.com/amiga-mui/muidev/wiki/MUI_Sting) | [MUI::String](/wrappers/src/MUI/String.hpp) | in progress | in progress | in progress | in progress |
+| [MUIC_Textdata](https://github.com/amiga-mui/muidev/wiki/MUI_Textdata) | - | - | - | - | - |
 | [MUIC_Text](https://github.com/amiga-mui/muidev/wiki/MUI_Text) | [MUI::Text](/wrappers/src/MUI/Text.hpp) | in progress | in progress | - | - |
+| [MUIC_Title](https://github.com/amiga-mui/muidev/wiki/MUI_Title) | - | - | - | - | - |
+| [MUIC_Virtgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Virtgroup) | - | - | - | - | - |
+| [MUIC_Volumelist](https://github.com/amiga-mui/muidev/wiki/MUI_Volumelist) | - | - | - | - | - |
 | [MUIC_Window](https://github.com/amiga-mui/muidev/wiki/MUI_Window) | [MUI::Window](/wrappers/src/MUI/Window.hpp) | in progress | in progress | in progress | in progress |
 | ... | ... | - | - | - | - |
+| [MUIC_](https://github.com/amiga-mui/muidev/wiki/MUI_) | - | - | - | - | - |
 | MUIC_Busy | [MUI::Busy](/wrappers/src/MUI/MCC/Busy.hpp) | Ready | Ready | - | - |
 | ... | ... | - | - | - | - |
 ___
