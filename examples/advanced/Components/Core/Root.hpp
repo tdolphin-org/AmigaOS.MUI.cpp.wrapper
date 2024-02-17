@@ -26,7 +26,7 @@ namespace Components
         }
 
         void MuiAlert(const std::string &message) const;
-        void MuiWarining(const std::string &message) const;
+        void MuiWarning(const std::string &message) const;
         void MuiInfo(const std::string &message, const std::string &gadgets) const;
         long MuiRequest(const std::string &title, const std::string &message, const std::string &gadgets) const;
 

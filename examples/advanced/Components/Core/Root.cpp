@@ -23,7 +23,7 @@ namespace Components
         MUI_Request(appObject, nullptr, flags, nullptr, (char *)"_Ok", (char *)message.c_str(), TAG_END);
     }
 
-    void Root::MuiWarining(const std::string &message) const
+    void Root::MuiWarning(const std::string &message) const
     {
         auto appObject = muiNotify().getApplicationObject();
 #ifdef __MORPHOS__
