@@ -22,10 +22,12 @@ namespace MUI
         return GetValueAsLong(MUIA_Dtpic_DarkenSelState);
     }
 
+#ifndef __MORPHOS__
     long Dtpic::getFade() const
     {
         return GetValueAsBool(MUIA_Dtpic_Fade);
     }
+#endif
 
     long Dtpic::isLightenOnMouse() const
     {
@@ -43,11 +45,13 @@ namespace MUI
         return *this;
     }
 
+#ifndef __MORPHOS__
     Dtpic &Dtpic::setFade(const long fade)
     {
         SetValue(MUIA_Dtpic_Fade, fade);
         return *this;
     }
+#endif
 
     Dtpic &Dtpic::setName(const std::string &name)
     {
