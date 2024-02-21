@@ -104,6 +104,12 @@ namespace MUI
         return *this;
     }
 
+    Area &Area::setHorizWeight(const short horizWeight)
+    {
+        SetValue(MUIA_HorizWeight, (long)horizWeight);
+        return *this;
+    }
+
 #ifndef __MORPHOS__
     Area &Area::setPointerType(const enum PointerType pointerType)
     {
@@ -128,6 +134,18 @@ namespace MUI
     Area &Area::setShowMe(const bool showMe)
     {
         SetValue(MUIA_ShowMe, showMe);
+        return *this;
+    }
+
+    Area &Area::setVertWeight(const short vertWeight)
+    {
+        SetValue(MUIA_VertWeight, (long)vertWeight);
+        return *this;
+    }
+
+    Area &Area::setWeight(const long weight)
+    {
+        SetValue(MUIA_Weight, weight);
         return *this;
     }
 

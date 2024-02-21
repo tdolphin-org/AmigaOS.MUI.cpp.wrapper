@@ -93,6 +93,8 @@ namespace MUI
         Area &setFloating(const bool floating);
         /// @brief [ @b MUIA_Font ] - seems that setting font doesn't work (at least for MUI::Floattext)
         Area &setFont(const enum Font font);
+        /// @brief [ @b MUIA_HorizWeight ]
+        Area &setHorizWeight(const short horizWeight);
 #ifndef __MORPHOS__
         /// @brief [ @b MUIA_PointerType ]
         Area &setPointerType(const enum PointerType pointerType);
@@ -103,6 +105,10 @@ namespace MUI
         Area &setShortHelp(const std::string &shortHelp);
         /// @brief [ @b MUIA_ShowMe ]
         Area &setShowMe(const bool showMe);
+        /// @brief [ @b MUIA_VertWeight ]
+        Area &setVertWeight(const short vertWeight);
+        /// @brief [ @b MUIA_Weight ]
+        Area &setWeight(const long weight);
 
         // methods, some returns object reference
 
@@ -188,7 +194,7 @@ namespace MUI
         /// @brief [ @b MUIA_FrameTitle ]
         T &tagFrameTitle(const std::string &frameTitle);
         /// @brief [ @b MUIA_HorizWeight ]
-        T &tagHorizWeight(const short &horizWeight);
+        T &tagHorizWeight(const short horizWeight);
         /// @brief [ @b MUIA_InputMode ]
         /// @param inputMode enum InputMode
         T &tagInputMode(const enum InputMode inputMode);
@@ -198,15 +204,15 @@ namespace MUI
         T &tagPointerType(const enum PointerType pointerType);
 #endif
         /// @brief [ @b MUIA_Selected ]
-        T &tagSelected(const bool &selected);
+        T &tagSelected(const bool selected);
         /// @brief [ @b MUIA_ShowMe ]
-        T &tagShowMe(const bool &showMe);
+        T &tagShowMe(const bool showMe);
         /// @brief [ @b MUIA_ShortHelp ]
         T &tagShortHelp(const std::string &shortHelp);
         /// @brief [ @b MUIA_ShowSelState ]
-        T &tagShowSelState(const bool &showSelState);
+        T &tagShowSelState(const bool showSelState);
         /// @brief [ @b MUIA_VertWeight ]
-        T &tagVertWeight(const short &vertWeight);
+        T &tagVertWeight(const short vertWeight);
         /// @brief [ @b MUIA_Weight ]
         /// An object with a weight of 0 will always stay at its minimum size. By default, all objects have a weight of 100.
         /// @param weight long weight of object, for negative value is ignored
@@ -317,7 +323,7 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagHorizWeight(const short &horizWeight)
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagHorizWeight(const short horizWeight)
     {
         this->PushTag(MUIA_HorizWeight, (long)horizWeight);
         return (T &)*this;
@@ -337,13 +343,13 @@ namespace MUI
     }
 #endif
 
-    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagSelected(const bool &selected)
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagSelected(const bool selected)
     {
         this->PushTag(MUIA_Selected, selected);
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagShowMe(const bool &showMe)
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagShowMe(const bool showMe)
     {
         this->PushTag(MUIA_ShowMe, showMe);
         return (T &)*this;
@@ -356,13 +362,13 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagShowSelState(const bool &showSelState)
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagShowSelState(const bool showSelState)
     {
         this->PushTag(MUIA_ShowSelState, showSelState);
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagVertWeight(const short &vertWeight)
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagVertWeight(const short vertWeight)
     {
         this->PushTag(MUIA_VertWeight, (long)vertWeight);
         return (T &)*this;
