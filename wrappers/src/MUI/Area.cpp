@@ -20,16 +20,6 @@ namespace MUI
 
     const std::string Area::className = MUIC_Area;
 
-    bool Area::isSelected() const
-    {
-        return GetValueAsBool(MUIA_Selected);
-    }
-
-    bool Area::isFloating() const
-    {
-        return GetValueAsBool(MUIA_Floating);
-    }
-
     long Area::getBottomEdge() const
     {
         return GetValueAsLong(MUIA_BottomEdge);
@@ -60,6 +50,171 @@ namespace MUI
     long Area::getCycleChain() const
     {
         return GetValueAsLong(MUIA_CycleChain);
+    }
+
+    bool Area::isDisabled() const
+    {
+        return GetValueAsBool(MUIA_Disabled);
+    }
+
+    bool Area::isDoubleBuffer() const
+    {
+        return GetValueAsBool(MUIA_DoubleBuffer);
+    }
+
+    bool Area::isDoubleClick() const
+    {
+        return GetValueAsBool(MUIA_DoubleClick);
+    }
+
+    bool Area::isDraggable() const
+    {
+        return GetValueAsBool(MUIA_Draggable);
+    }
+
+    bool Area::isDropable() const
+    {
+        return GetValueAsBool(MUIA_Dropable);
+    }
+
+    bool Area::isFloating() const
+    {
+        return GetValueAsBool(MUIA_Floating);
+    }
+
+    TextFont *Area::getFont() const
+    {
+        return (TextFont *)GetValueAsPtr(MUIA_Font);
+    }
+
+    bool Area::isFrameDynamic() const
+    {
+        GetValueAsBool(MUIA_FrameDynamic);
+    }
+
+    std::string Area::getFrameTitle() const
+    {
+        GetValueAsString(MUIA_FrameTitle);
+    }
+
+    bool Area::isFrameVisible() const
+    {
+        GetValueAsBool(MUIA_FrameVisible);
+    }
+
+    long Area::getHeight() const
+    {
+        GetValueAsLong(MUIA_Height);
+    }
+
+    long Area::getHorizDisappear() const
+    {
+        GetValueAsLong(MUIA_HorizDisappear);
+    }
+
+    short Area::getHorizWeight() const
+    {
+        GetValueAsLong(MUIA_HorizWeight);
+    }
+
+    long Area::getInnerBottom() const
+    {
+        GetValueAsLong(MUIA_InnerBottom);
+    }
+
+    long Area::getInnerLeft() const
+    {
+        GetValueAsLong(MUIA_InnerLeft);
+    }
+
+    long Area::getInnerRight() const
+    {
+        GetValueAsLong(MUIA_InnerRight);
+    }
+
+    long Area::getInnerTop() const
+    {
+        GetValueAsLong(MUIA_InnerTop);
+    }
+
+    bool Area::isKnowsDisabled() const
+    {
+        return GetValueAsBool(MUIA_KnowsDisabled);
+    }
+
+    long Area::getLeftEdge() const
+    {
+        return GetValueAsLong(MUIA_LeftEdge);
+    }
+
+    enum PointerType Area::getPointerType() const
+    {
+        return (enum PointerType)GetValueAsLong(MUIA_PointerType);
+    }
+
+    bool Area::isPressed() const
+    {
+        return GetValueAsBool(MUIA_Pressed);
+    }
+
+    long Area::getRightEdge() const
+    {
+        return GetValueAsLong(MUIA_RightEdge);
+    }
+
+    bool Area::isSelected() const
+    {
+        return GetValueAsBool(MUIA_Selected);
+    }
+
+    std::string Area::getShortHelp() const
+    {
+        return GetValueAsString(MUIA_ShortHelp);
+    }
+
+    bool Area::isShowMe() const
+    {
+        return GetValueAsBool(MUIA_ShowMe);
+    }
+
+    unsigned long Area::getTextColor() const
+    {
+        return GetValueAsULong(MUIA_TextColor);
+    }
+
+    long Area::getTimer() const
+    {
+        return GetValueAsLong(MUIA_Timer);
+    }
+
+    long Area::getTopEdge() const
+    {
+        return GetValueAsLong(MUIA_TopEdge);
+    }
+
+    long Area::getVertDisappear() const
+    {
+        return GetValueAsLong(MUIA_VertDisappear);
+    }
+
+    short Area::getVertWeight() const
+    {
+        return GetValueAsLong(MUIA_VertWeight);
+    }
+
+    long Area::getWidth() const
+    {
+        return GetValueAsLong(MUIA_Width);
+    }
+
+    Window *Area::getWindow() const
+    {
+        return (Window *)GetValueAsPtr(MUIA_Window);
+    }
+
+    Object *Area::getWindowObject() const
+    {
+        return GetValueAsObjectPtr(MUIA_WindowObject);
     }
 
     Area &Area::setBackground(const enum ImageOrBackground background)

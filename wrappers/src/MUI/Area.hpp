@@ -71,11 +71,72 @@ namespace MUI
         char getControlChar() const;
         /// @brief [ @b MUIA_CycleChain ]
         long getCycleChain() const;
-
-        /// @brief [ @b MUIA_Selected ]
-        bool isSelected() const;
+        /// @brief [ @b MUIA_Disabled ]
+        bool isDisabled() const;
+        /// @brief [ @b MUIA_DoubleBuffer ]
+        bool isDoubleBuffer() const;
+        /// @brief [ @b MUIA_DoubleClick ]
+        bool isDoubleClick() const;
+        /// @brief [ @b MUIA_Draggable ]
+        bool isDraggable() const;
+        /// @brief [ @b MUIA_Dropable ]
+        bool isDropable() const;
         /// @brief [ @b MUIA_Floating ]
         bool isFloating() const;
+        /// @brief [ @b MUIA_Font ]
+        TextFont *getFont() const;
+        /// @brief [ @b MUIA_FrameDynamic ]
+        bool isFrameDynamic() const;
+        /// @brief [ @b MUIA_FrameTitle ]
+        std::string getFrameTitle() const;
+        /// @brief [ @b MUIA_FrameVisible ]
+        bool isFrameVisible() const;
+        /// @brief [ @b MUIA_Height ]
+        long getHeight() const;
+        /// @brief [ @b MUIA_HorizDisappear ]
+        long getHorizDisappear() const;
+        /// @brief [ @b MUIA_HorizWeight ]
+        short getHorizWeight() const;
+        /// @brief [ @b MUIA_InnerBottom ]
+        long getInnerBottom() const;
+        /// @brief [ @b MUIA_InnerLeft ]
+        long getInnerLeft() const;
+        /// @brief [ @b MUIA_InnerRight ]
+        long getInnerRight() const;
+        /// @brief [ @b MUIA_InnerTop ]
+        long getInnerTop() const;
+        /// @brief [ @b MUIA_KnowsDisabled ]
+        bool isKnowsDisabled() const;
+        /// @brief [ @b MUIA_LeftEdge ]
+        long getLeftEdge() const;
+        /// @brief [ @b MUIA_PointerType ]
+        enum PointerType getPointerType() const;
+        /// @brief [ @b MUIA_Pressed ]
+        bool isPressed() const;
+        /// @brief [ @b MUIA_RightEdge ]
+        long getRightEdge() const;
+        /// @brief [ @b MUIA_Selected ]
+        bool isSelected() const;
+        /// @brief [ @b MUIA_ShortHelp ]
+        std::string getShortHelp() const;
+        /// @brief [ @b MUIA_ShowMe ]
+        bool isShowMe() const;
+        /// @brief [ @b MUIA_TextColor ]
+        unsigned long getTextColor() const;
+        /// @brief [ @b MUIA_Timer ]
+        long getTimer() const;
+        /// @brief [ @b MUIA_TopEdge ]
+        long getTopEdge() const;
+        /// @brief [ @b MUIA_VertDisappear ]
+        long getVertDisappear() const;
+        /// @brief [ @b MUIA_VertWeight ]
+        short getVertWeight() const;
+        /// @brief [ @b MUIA_Width ]
+        long getWidth() const;
+        /// @brief [ @b MUIA_Window ]
+        Window *getWindow() const;
+        /// @brief [ @b MUIA_WindowObject ]
+        Object *getWindowObject() const;
 
         /// @brief [ @b MUIA_Background ]
         Area &setBackground(const enum ImageOrBackground background);
