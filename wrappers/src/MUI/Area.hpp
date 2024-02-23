@@ -169,7 +169,9 @@ namespace MUI
         /// @brief [ @b MUIA_VertWeight ]
         Area &setVertWeight(const short vertWeight);
         /// @brief [ @b MUIA_Weight ]
-        Area &setWeight(const long weight);
+        /// An object with a weight of 0 will always stay at its minimum size. By default, all objects have a weight of 100.
+        /// @param weight short weight of object, for negative value is ignored
+        Area &setWeight(const short weight);
 
         // methods, some returns object reference
 
@@ -276,8 +278,8 @@ namespace MUI
         T &tagVertWeight(const short vertWeight);
         /// @brief [ @b MUIA_Weight ]
         /// An object with a weight of 0 will always stay at its minimum size. By default, all objects have a weight of 100.
-        /// @param weight long weight of object, for negative value is ignored
-        T &tagWeight(const long weight);
+        /// @param weight short weight of object, for negative value is ignored
+        T &tagWeight(const short weight);
     };
 
     class AreaBuilder : public AreaBuilderTemplate<AreaBuilder, Area>
@@ -386,7 +388,8 @@ namespace MUI
 
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagHorizWeight(const short horizWeight)
     {
-        this->PushTag(MUIA_HorizWeight, (long)horizWeight);
+        if (horizWeight >= 0)
+            this->PushTag(MUIA_HorizWeight, (long)horizWeight);
         return (T &)*this;
     }
 
@@ -431,14 +434,15 @@ namespace MUI
 
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagVertWeight(const short vertWeight)
     {
-        this->PushTag(MUIA_VertWeight, (long)vertWeight);
+        if (vertWeight >= 0)
+            this->PushTag(MUIA_VertWeight, (long)vertWeight);
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagWeight(const long weight)
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagWeight(const short weight)
     {
         if (weight >= 0)
-            this->PushTag(MUIA_Weight, weight);
+            this->PushTag(MUIA_Weight, (long)weight);
         return (T &)*this;
     }
 }

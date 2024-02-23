@@ -261,7 +261,8 @@ namespace MUI
 
     Area &Area::setHorizWeight(const short horizWeight)
     {
-        SetValue(MUIA_HorizWeight, (long)horizWeight);
+        if (horizWeight >= 0)
+            SetValue(MUIA_HorizWeight, (long)horizWeight);
         return *this;
     }
 
@@ -294,13 +295,15 @@ namespace MUI
 
     Area &Area::setVertWeight(const short vertWeight)
     {
-        SetValue(MUIA_VertWeight, (long)vertWeight);
+        if (vertWeight >= 0)
+            SetValue(MUIA_VertWeight, (long)vertWeight);
         return *this;
     }
 
-    Area &Area::setWeight(const long weight)
+    Area &Area::setWeight(const short weight)
     {
-        SetValue(MUIA_Weight, weight);
+        if (weight >= 0)
+            SetValue(MUIA_Weight, (long)weight);
         return *this;
     }
 
