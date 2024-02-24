@@ -179,10 +179,13 @@ namespace MUI
         Area &Enable();
         /// @brief setDisabled(true)
         Area &Disable();
-        /// @brief setShowMe(true)
-        Area &Show();
-        /// @brief setShowMe(false)
+
+        /// @brief [ @b MUIM_Cleanup /* Custom Class */ ]
+        Area &Cleanup();
+        /// @brief [ @b MUIM_Hide /* Custom Class */ ]
         Area &Hide();
+        /// @brief [ @b MUIM_Show /* Custom Class */ ]
+        Area &Show(struct LongRect *clip);
 
         /// @brief [ @b MUIM_Relayout, flags = 0 ] Perform a full relayout of the object in case it is visible. Actually the object will be
         /// completely hidden and shown again to trigger a full redraw as well.

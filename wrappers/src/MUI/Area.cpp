@@ -317,14 +317,22 @@ namespace MUI
         return setDisabled(true);
     }
 
-    Area &Area::Show()
+    Area &Area::Cleanup()
     {
-        return setShowMe(true);
+        DoMethod(muiObject(), MUIM_Cleanup);
+        return *this;
     }
 
     Area &Area::Hide()
     {
-        return setShowMe(false);
+        DoMethod(muiObject(), MUIM_Hide);
+        return *this;
+    }
+
+    Area &Area::Show(struct LongRect *clip)
+    {
+        DoMethod(muiObject(), MUIM_Show, clip);
+        return *this;
     }
 
     Area &Area::Relayout()
