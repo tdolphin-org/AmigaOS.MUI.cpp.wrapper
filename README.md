@@ -119,7 +119,7 @@ ___
 | [MUIC_Prop](https://github.com/amiga-mui/muidev/wiki/MUI_Prop) | [MUI::Prop](/wrappers/src/MUI/Prop.hpp) | Ready | Ready | Ready | Ready |
 | [MUIC_Radio](https://github.com/amiga-mui/muidev/wiki/MUI_Radio) | [MUI::Radio](/wrappers/src/MUI/Radio.hpp) | Ready | Ready | - | - |
 | [MUIC_Rectangle](https://github.com/amiga-mui/muidev/wiki/MUI_Rectangle) | [MUI::Rectangle](/wrappers/src/MUI/Rectangle.hpp) | Ready | Ready | not applicable | - |
-| [MUIC_Register](https://github.com/amiga-mui/muidev/wiki/MUI_Register) | [MUI::Scrollbar](/wrappers/src/MUI/Register.hpp) | Ready | Ready | not applicable | Ready |
+d| [MUIC_Register](https://github.com/amiga-mui/muidev/wiki/MUI_Register) | [MUI::Register](/wrappers/src/MUI/Register.hpp) | Ready | Ready | not applicable | Ready |
 | [MUIC_Scale](https://github.com/amiga-mui/muidev/wiki/MUI_Scale) | - | - | - | - | - |
 | [MUIC_Screenmodepanel](https://github.com/amiga-mui/muidev/wiki/MUI_Screenmodepanel) | - | - | - | - | - |
 | [MUIC_Scrmodelist](https://github.com/amiga-mui/muidev/wiki/MUI_Scrmodelist) | - | - | - | - | - |
