@@ -105,12 +105,16 @@ namespace MUI
         long getInnerRight() const;
         /// @brief [ @b MUIA_InnerTop ]
         long getInnerTop() const;
+#ifndef __MORPHOS__
         /// @brief [ @b MUIA_KnowsDisabled ]
         bool isKnowsDisabled() const;
+#endif
         /// @brief [ @b MUIA_LeftEdge ]
         long getLeftEdge() const;
+#ifndef __MORPHOS__
         /// @brief [ @b MUIA_PointerType ]
         enum PointerType getPointerType() const;
+#endif
         /// @brief [ @b MUIA_Pressed ]
         bool isPressed() const;
         /// @brief [ @b MUIA_RightEdge ]

@@ -89,68 +89,72 @@ namespace MUI
 
     bool Area::isFrameDynamic() const
     {
-        GetValueAsBool(MUIA_FrameDynamic);
+        return GetValueAsBool(MUIA_FrameDynamic);
     }
 
     std::string Area::getFrameTitle() const
     {
-        GetValueAsString(MUIA_FrameTitle);
+        return GetValueAsString(MUIA_FrameTitle);
     }
 
     bool Area::isFrameVisible() const
     {
-        GetValueAsBool(MUIA_FrameVisible);
+        return GetValueAsBool(MUIA_FrameVisible);
     }
 
     long Area::getHeight() const
     {
-        GetValueAsLong(MUIA_Height);
+        return GetValueAsLong(MUIA_Height);
     }
 
     long Area::getHorizDisappear() const
     {
-        GetValueAsLong(MUIA_HorizDisappear);
+        return GetValueAsLong(MUIA_HorizDisappear);
     }
 
     short Area::getHorizWeight() const
     {
-        GetValueAsLong(MUIA_HorizWeight);
+        return GetValueAsLong(MUIA_HorizWeight);
     }
 
     long Area::getInnerBottom() const
     {
-        GetValueAsLong(MUIA_InnerBottom);
+        return GetValueAsLong(MUIA_InnerBottom);
     }
 
     long Area::getInnerLeft() const
     {
-        GetValueAsLong(MUIA_InnerLeft);
+        return GetValueAsLong(MUIA_InnerLeft);
     }
 
     long Area::getInnerRight() const
     {
-        GetValueAsLong(MUIA_InnerRight);
+        return GetValueAsLong(MUIA_InnerRight);
     }
 
     long Area::getInnerTop() const
     {
-        GetValueAsLong(MUIA_InnerTop);
+        return GetValueAsLong(MUIA_InnerTop);
     }
 
+#ifndef __MORPHOS__
     bool Area::isKnowsDisabled() const
     {
         return GetValueAsBool(MUIA_KnowsDisabled);
     }
+#endif
 
     long Area::getLeftEdge() const
     {
         return GetValueAsLong(MUIA_LeftEdge);
     }
 
+#ifndef __MORPHOS__
     enum PointerType Area::getPointerType() const
     {
         return (enum PointerType)GetValueAsLong(MUIA_PointerType);
     }
+#endif
 
     bool Area::isPressed() const
     {
