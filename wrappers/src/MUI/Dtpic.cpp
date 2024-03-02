@@ -55,8 +55,7 @@ namespace MUI
 
     Dtpic &Dtpic::setName(const std::string &name)
     {
-        auto copy = StoreString(name);
-        SetValue(MUIA_Dtpic_Name, copy);
+        SetValue(MUIA_Dtpic_Name, StoreString(name));
         return *this;
     }
 }

@@ -68,7 +68,7 @@ namespace MUI
 
     Menuitem &Menuitem::setTitle(const std::string &title)
     {
-        SetValue(MUIA_Menuitem_Title, title);
+        SetValue(MUIA_Menuitem_Title, StoreString(title));
         return *this;
     }
 
