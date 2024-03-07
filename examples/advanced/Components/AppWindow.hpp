@@ -9,18 +9,17 @@
 #pragma once
 
 #include "Core/Root.hpp"
-#include "HardwareList.hpp"
 #include "MUI/Area.hpp"
 #include "MUI/Image.hpp"
 #include "MUI/Window.hpp"
+#include "Tabs/ContentTabs.hpp"
 
 namespace Components
 {
     class AppWindow : public Root
     {
-        HardwareList mHardwareList;
-        MUI::Image mExampleImage;
         MUI::Area mCloseButton;
+        ContentTabs mContentTabs;
         MUI::Window mComponent;
 
       public:

@@ -18,15 +18,8 @@
 namespace Components
 {
     AppWindow::AppWindow()
-      : mExampleImage(MUI::ImageBuilder()
-                          .tagFrame(MUI::Frame::Button)
-                          .tagFixWidth(160)
-                          .tagFixHeight(160)
-                          .tagSpecPicture("PROGDIR:close.160x160.png")
-                          .tagFreeHoriz(true)
-                          .tagFreeVert(true)
-                          .object())
-      , mCloseButton(MUI::MakeObject::SimpleButton("_Quit Application"))
+      : mCloseButton(MUI::MakeObject::SimpleButton("_Quit Application"))
+      , mContentTabs()
       , mComponent(MUI::WindowBuilder()
                        .tagTitle("Window Title")
                        .tagScreenTitle("Application Screen Title")
@@ -39,19 +32,20 @@ namespace Components
                            MUI::GroupBuilder()
                                .tagChild(MUI::TextBuilder()
                                              .tagShortHelp("some help text")
-                                             .tagContents(MUIX_C "some centered text in MUI::Text\n\n" MUIX_PH " (c) 2022-2023 TDolphin")
+                                             .tagContents(MUIX_C "some centered text in MUI::Text\n\n" MUIX_PH " (c) 2022-2024 TDolphin")
                                              .object())
                                .tagChild(mCloseButton)
-                               .tagChild(MUI::GroupBuilder().horizontal().tagChild(mHardwareList).tagChild(mExampleImage).object())
+                               .tagChild(mContentTabs)
                                .tagChild(MUI::GroupBuilder()
                                              .horizontal()
                                              .tagChild(MUI::MakeObject::SimpleButton("_Left Button"))
-                                             .tagChild(MUI::RectangleBuilder().object())
+                                             .tagChild(MUI::MakeObject::HVSpace())
                                              .tagChild(MUI::MakeObject::SimpleButton("_Right Button"))
                                              .object())
                                .object())
                        .object())
     {
+        mCloseButton.setCycleChain();
     }
 
     void AppWindow::RegisterEvents()

@@ -8,8 +8,7 @@
 
 #pragma once
 
-#include "Core/Root.hpp"
-
+#include "Components/Core/Root.hpp"
 #include "MUI/List.hpp"
 
 namespace Components
