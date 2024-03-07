@@ -133,6 +133,9 @@ namespace MUI
         T &tagVertCenter(const enum Group_VertCenter vertCenter);
         /// @brief [ @b MUIA_Group_VertSpacing ]
         T &tagVertSpacing(const long vertSpacing);
+
+        /// @brief replaces mui macro GroupFrameT
+        T &groupFrame(const std::string &title);
     };
 
     class GroupBuilder : public GroupBuilderTemplate<GroupBuilder, Group>
@@ -255,6 +258,14 @@ namespace MUI
     template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::tagVertSpacing(const long vertSpacing)
     {
         this->PushTag(MUIA_Group_VertSpacing, vertSpacing);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::groupFrame(const std::string &title)
+    {
+        this->PushTag(MUIA_Frame, (long)MUI::Frame::Group);
+        this->PushTag(MUIA_FrameTitle, title);
+        this->PushTag(MUIA_Background, (long)MUI::ImageOrBackground::GroupBack);
         return (T &)*this;
     }
 }

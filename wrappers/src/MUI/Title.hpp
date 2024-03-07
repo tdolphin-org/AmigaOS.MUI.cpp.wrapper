@@ -133,13 +133,13 @@ namespace MUI
 
     template <typename T, typename U> inline T &TitleBuilderTemplate<T, U>::tagOnLastClose(const enum Title_OnLastClose onLastClose)
     {
-        this->PushTag(MUIA_Title_OnLastClose, onLastClose);
+        this->PushTag(MUIA_Title_OnLastClose, (long)onLastClose);
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &TitleBuilderTemplate<T, U>::tagPosition(const enum Title_Position position)
     {
-        this->PushTag(MUIA_Title_Position, position);
+        this->PushTag(MUIA_Title_Position, (long)position);
         return (T &)*this;
     }
 
