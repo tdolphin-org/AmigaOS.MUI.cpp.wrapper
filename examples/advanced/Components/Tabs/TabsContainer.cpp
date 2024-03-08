@@ -8,6 +8,10 @@
 
 #include "TabsContainer.hpp"
 
+#ifdef __MORPHOS__
+#include "MUI/Text.hpp"
+#endif
+
 namespace Components
 {
     TabsContainer::TabsContainer(const std::vector<std::pair<std::string, MUI::Area &>> &tabs)
