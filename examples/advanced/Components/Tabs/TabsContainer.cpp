@@ -8,7 +8,7 @@
 
 #include "TabsContainer.hpp"
 
-#ifdef __MORPHOS__
+#ifndef __MORPHOS__
 #include "MUI/Text.hpp"
 #endif
 
