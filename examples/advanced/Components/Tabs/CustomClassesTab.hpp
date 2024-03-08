@@ -24,6 +24,11 @@ namespace Components
       public:
         CustomClassesTab();
 
+        operator MUI::Group &()
+        {
+            return mComponent;
+        }
+
       protected:
         const MUI::Notify &muiNotify() const
         {

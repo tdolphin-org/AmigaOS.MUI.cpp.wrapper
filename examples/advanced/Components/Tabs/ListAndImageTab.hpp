@@ -19,10 +19,16 @@ namespace Components
     {
         MUI::Image mExampleImage;
         HardwareList mHardwareList;
+
         MUI::Group mComponent;
 
       public:
         ListAndImageTab();
+
+        operator MUI::Group &()
+        {
+            return mComponent;
+        }
 
       protected:
         const MUI::Notify &muiNotify() const

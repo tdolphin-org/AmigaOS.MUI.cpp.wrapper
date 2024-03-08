@@ -8,22 +8,20 @@
 
 #pragma once
 
-#include "Components/Core/Root.hpp"
 #include "CustomClassesTab.hpp"
 #include "ListAndImageTab.hpp"
-#include "MUI/Group.hpp"
+#include "TabsContainer.hpp"
 
 namespace Components
 {
-    class ContentTabs : public Root
+    class Content : public Root
     {
         ListAndImageTab mListAndImageTab;
         CustomClassesTab mCustomClassesTab;
-
-        MUI::Group mComponent;
+        TabsContainer mComponent;
 
       public:
-        ContentTabs();
+        Content();
 
       protected:
         const MUI::Notify &muiNotify() const

@@ -12,14 +12,13 @@
 #include "MUI/Core/MakeObject.hpp"
 #include "MUI/Group.hpp"
 #include "MUI/Notifier/Notifier.hpp"
-#include "MUI/Rectangle.hpp"
 #include "MUI/Text.hpp"
 
 namespace Components
 {
     AppWindow::AppWindow()
       : mCloseButton(MUI::MakeObject::SimpleButton("_Quit Application"))
-      , mContentTabs()
+      , mContent()
       , mComponent(MUI::WindowBuilder()
                        .tagTitle("Window Title")
                        .tagScreenTitle("Application Screen Title")
@@ -35,7 +34,7 @@ namespace Components
                                              .tagContents(MUIX_C "some centered text in MUI::Text\n\n" MUIX_PH " (c) 2022-2024 TDolphin")
                                              .object())
                                .tagChild(mCloseButton)
-                               .tagChild(mContentTabs)
+                               .tagChild(mContent)
                                .tagChild(MUI::GroupBuilder()
                                              .horizontal()
                                              .tagChild(MUI::MakeObject::SimpleButton("_Left Button"))
