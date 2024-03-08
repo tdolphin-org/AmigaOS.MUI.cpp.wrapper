@@ -52,13 +52,43 @@ namespace MUI
 
     Group &Group::AddHead(const Object *pChildObject)
     {
-        DoMethod(muiObject(), MUIM_Group_AddHead, (ULONG)pChildObject);
+        if (pChildObject)
+            DoMethod(muiObject(), MUIM_Group_AddHead, (ULONG)pChildObject);
+        return *this;
+    }
+
+    Group &Group::AddHead(const APTR pChildObject)
+    {
+        if (pChildObject)
+            DoMethod(muiObject(), MUIM_Group_AddHead, (ULONG)pChildObject);
+        return *this;
+    }
+
+    Group &Group::AddHead(const Root &child)
+    {
+        if (child.muiObject())
+            DoMethod(muiObject(), MUIM_Group_AddHead, (ULONG)child.muiObject());
         return *this;
     }
 
     Group &Group::AddTail(const Object *pChildObject)
     {
-        DoMethod(muiObject(), MUIM_Group_AddTail, (ULONG)pChildObject);
+        if (pChildObject)
+            DoMethod(muiObject(), MUIM_Group_AddTail, (ULONG)pChildObject);
+        return *this;
+    }
+
+    Group &Group::AddTail(const APTR pChildObject)
+    {
+        if (pChildObject)
+            DoMethod(muiObject(), MUIM_Group_AddTail, (ULONG)pChildObject);
+        return *this;
+    }
+
+    Group &Group::AddTail(const Root &child)
+    {
+        if (child.muiObject())
+            DoMethod(muiObject(), MUIM_Group_AddTail, (ULONG)child.muiObject());
         return *this;
     }
 

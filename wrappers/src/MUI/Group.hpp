@@ -70,8 +70,16 @@ namespace MUI
 
         /// @brief [ @b MUIM_Group_AddHead ]
         Group &AddHead(const Object *pChildObject);
+        /// @brief [ @b MUIM_Group_AddHead ]
+        Group &AddHead(const APTR pChildObject);
+        /// @brief [ @b MUIM_Group_AddHead ]
+        Group &AddHead(const Root &child);
         /// @brief [ @b MUIM_Group_AddTail ]
         Group &AddTail(const Object *pChildObject);
+        /// @brief [ @b MUIM_Group_AddTail ]
+        Group &AddTail(const APTR pChildObject);
+        /// @brief [ @b MUIM_Group_AddTail ]
+        Group &AddTail(const Root &child);
         /// @brief [ @b MUIM_Group_ExitChange ]
         Group &ExitChange();
         /// @brief [ @b MUIM_Group_ExitChange2 ]
