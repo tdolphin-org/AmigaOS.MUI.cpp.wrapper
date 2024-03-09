@@ -6,24 +6,14 @@
 //  (c) 2022-2024 TDolphin
 //
 
-#include "TabsContainer.hpp"
-
-#ifndef __MORPHOS__
-#include "MUI/Text.hpp"
-#endif
+#include "TabsContainerRegister.hpp"
 
 namespace Components
 {
-    TabsContainer::TabsContainer(const std::vector<std::pair<std::string, MUI::Area &>> &tabs)
-#ifdef __MORPHOS__
+    TabsContainerRegister::TabsContainerRegister(const std::vector<std::pair<std::string, MUI::Area &>> &tabs)
       : mPageTitles(tabs.size())
       , mComponent(MUI::RegisterBuilder().object())
-#else
-      : mTabsTitle(MUI::TitleBuilder().object())
-      , mComponent(MUI::GroupBuilder().tagCycleChain().tagChild(mTabsTitle).object())
-#endif
     {
-#ifdef __MORPHOS__
         mpPageTitlesArray = new const char *[tabs.size()];
         unsigned int index = 0;
         for (auto &tab : tabs)
@@ -33,19 +23,13 @@ namespace Components
         }
         mpPageTitlesArray[index++] = (char *)nullptr;
         mComponent.setTitles(mpPageTitlesArray);
-#else
-        for (auto &tab : tabs)
-            mTabsTitle.AddTail(MUI::TextBuilder().tagContents(tab.first).object());
-#endif
 
         for (auto &tab : tabs)
             mComponent.AddTail(tab.second);
     }
 
-    TabsContainer::~TabsContainer()
+    TabsContainerRegister::~TabsContainerRegister()
     {
-#ifdef __MORPHOS__
         delete[] mpPageTitlesArray;
-#endif
     }
 }

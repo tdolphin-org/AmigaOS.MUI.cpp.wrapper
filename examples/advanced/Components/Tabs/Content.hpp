@@ -10,7 +10,9 @@
 
 #include "CustomClassesTab.hpp"
 #include "ListAndImageTab.hpp"
-#include "TabsContainer.hpp"
+
+// #include "TabsContainerRegister.hpp" // version using MUI::Register for tabs/pages
+#include "TabsContainerTitles.hpp" // version using MUI::Titles for tabs/pages
 
 namespace Components
 {
@@ -18,7 +20,7 @@ namespace Components
     {
         ListAndImageTab mListAndImageTab;
         CustomClassesTab mCustomClassesTab;
-        TabsContainer mComponent;
+        TabsContainerTitles mComponent;
 
       public:
         Content();
