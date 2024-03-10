@@ -145,6 +145,7 @@ namespace MUI
         /// @brief [ @b MUIA_Background ]
         Area &setBackground(const enum ImageOrBackground background);
         /// @brief [ @b MUIA_Background ]
+        /// The string is copied and stored internally by this C++ wrapper!
         Area &setBackground(const std::string &background);
         /// @brief [ @b MUIA_CycleChain ]
         /// Keyboard cycle chain system. Set MUIA_CycleChain to 1 for every object that you want to have in your chain, MUI does the rest
@@ -230,8 +231,10 @@ namespace MUI
         /// @brief [ @b MUIA_Background ]
         T &tagBackground(const enum ImageOrBackground background);
         /// @brief [ @b MUIA_Background ]
+        /// The string is copied and stored internally by this C++ wrapper!
         T &tagBackground(const std::string &background);
         /// @brief [ @b MUIA_Background ]
+        /// The string is copied and stored internally by this C++ wrapper!
         T &tagBackground(const char *background);
         /// @brief [ @b MUIA_CycleChain ]
         /// Keyboard cycle chain system. Set MUIA_CycleChain to 1 for every object that you want to have in your chain, MUI does the rest
@@ -303,13 +306,13 @@ namespace MUI
 
     template <typename T, typename U> T &AreaBuilderTemplate<T, U>::tagBackground(const std::string &background)
     {
-        this->PushTag(MUIA_Background, (long)background.c_str());
+        this->PushTag(MUIA_Background, this->StoreString(background));
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagBackground(const char *background)
     {
-        this->PushTag(MUIA_Background, (long)background);
+        this->PushTag(MUIA_Background, this->StoreString(background));
         return (T &)*this;
     }
 
