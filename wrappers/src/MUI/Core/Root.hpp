@@ -29,6 +29,11 @@ namespace MUI
         Root(const Object *pMuiObject);
         Root(const APTR pMuiObject);
 
+        operator Object *()
+        {
+            return mpMuiObject;
+        }
+
         Object *muiObject() const
         {
             return mpMuiObject;

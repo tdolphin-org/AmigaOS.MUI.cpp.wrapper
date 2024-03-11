@@ -208,6 +208,11 @@ namespace MUI
         return muiObject(MUIC_Group, tagBuilder.getTags());
     }
 
+    Object *MakeObject::HCenter(const Root &object)
+    {
+        return MakeObject::HCenter(object.muiObject());
+    }
+
     Object *MakeObject::VCenter(const Object *object)
     {
         AOS::TagBuilderRoot tagBuilder;
@@ -219,5 +224,10 @@ namespace MUI
         tagBuilder.PushTag(MUIA_Group_Child, VSpace(0), false);
 
         return muiObject(MUIC_Group, tagBuilder.getTags());
+    }
+
+    Object *MakeObject::VCenter(const Root &object)
+    {
+        return MakeObject::VCenter(object.muiObject());
     }
 }

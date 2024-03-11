@@ -8,6 +8,8 @@
 
 #include <proto/muimaster.h>
 
+#include "Root.hpp"
+
 #include <string>
 
 // undef macros from mui.h
@@ -131,7 +133,11 @@ namespace MUI
 
         /// @brief [ @b HCenter --> (HGroup, GroupSpacing(0), Child, HSpace(0), Child, (obj), Child, HSpace(0), End) ]
         static Object *HCenter(const Object *object);
+        /// @brief [ @b HCenter --> (HGroup, GroupSpacing(0), Child, HSpace(0), Child, (obj), Child, HSpace(0), End) ]
+        static Object *HCenter(const Root &object);
         /// @brief [ @b VCenter --> (VGroup, GroupSpacing(0), Child, VSpace(0), Child, (obj), Child, VSpace(0), End) ]
         static Object *VCenter(const Object *object);
+        /// @brief [ @b VCenter --> (VGroup, GroupSpacing(0), Child, VSpace(0), Child, (obj), Child, VSpace(0), End) ]
+        static Object *VCenter(const Root &object);
     };
 }
