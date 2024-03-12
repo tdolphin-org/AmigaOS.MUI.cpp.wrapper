@@ -280,7 +280,8 @@ namespace MUI
         T &tagSelected(const bool selected);
         /// @brief [ @b MUIA_ShowMe ]
         T &tagShowMe(const bool showMe);
-        /// @brief [ @b MUIA_ShortHelp ]
+        /// @brief [ @b MUIA_ShortHelp ] Specify a string that is to be used as bubble help for this object.
+        /// @param shortHelp help text, if empty then is ignored, not added to tag list
         T &tagShortHelp(const std::string &shortHelp);
         /// @brief [ @b MUIA_ShowSelState ]
         T &tagShowSelState(const bool showSelState);
@@ -431,8 +432,11 @@ namespace MUI
 
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagShortHelp(const std::string &shortHelp)
     {
-        auto copy = this->StoreString(shortHelp);
-        this->PushTag(MUIA_ShortHelp, copy);
+        if (!shortHelp.empty())
+        {
+            auto copy = this->StoreString(shortHelp);
+            this->PushTag(MUIA_ShortHelp, copy);
+        }
         return (T &)*this;
     }
 
