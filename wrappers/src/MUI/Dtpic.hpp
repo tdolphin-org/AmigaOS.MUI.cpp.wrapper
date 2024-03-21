@@ -124,7 +124,7 @@ namespace MUI
 
     template <typename T, typename U> inline T &DtpicBuilderTemplate<T, U>::tagName(const std::string &name)
     {
-        auto copy = this->StoreString(name);
+        auto copy = this->StoreString(MUIA_Dtpic_Name, name);
         this->PushTag(MUIA_Dtpic_Name, copy);
         return (T &)*this;
     }

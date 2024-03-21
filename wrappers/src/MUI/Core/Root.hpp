@@ -18,8 +18,6 @@ namespace MUI
     {
         friend class NullObject;
 
-        static StringStorage mStringStorage;
-
         Object *mpMuiObject;
 
         /// @brief can be used only for NullObject
@@ -46,9 +44,9 @@ namespace MUI
 
         // methods
 
-        const char *StoreString(const std::string &string)
+        const char *StoreString(const unsigned long tagName, const std::string &string)
         {
-            return mStringStorage.Add(string);
+            return StringStorage::instance().Change(mpMuiObject, tagName, string);
         }
 
         std::string GetValueAsString(const unsigned long tagName) const;

@@ -229,7 +229,7 @@ namespace MUI
 
     Area &Area::setBackground(const std::string &background)
     {
-        SetValue(MUIA_Background, StoreString(background));
+        SetValue(MUIA_Background, StoreString(MUIA_Background, background));
         return *this;
     }
 
@@ -286,7 +286,7 @@ namespace MUI
 
     Area &Area::setShortHelp(const std::string &shortHelp)
     {
-        SetValue(MUIA_ShortHelp, StoreString(shortHelp));
+        SetValue(MUIA_ShortHelp, StoreString(MUIA_ShortHelp, shortHelp));
         return *this;
     }
 

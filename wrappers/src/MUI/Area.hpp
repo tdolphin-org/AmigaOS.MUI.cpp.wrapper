@@ -434,7 +434,7 @@ namespace MUI
     {
         if (!shortHelp.empty())
         {
-            auto copy = this->StoreString(shortHelp);
+            auto copy = this->StoreString(MUIA_ShortHelp, shortHelp);
             this->PushTag(MUIA_ShortHelp, copy);
         }
         return (T &)*this;
