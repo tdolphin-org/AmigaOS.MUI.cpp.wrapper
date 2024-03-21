@@ -20,9 +20,9 @@ class StringStorageCore
     friend class td::Singleton<StringStorageCore>;
 
     unsigned long mObjectIdCounter;
-    std::vector<std::shared_ptr<char[]>> mGarbageStrings;
-    std::map<unsigned long, std::map<unsigned long, std::shared_ptr<char[]>>> mObjectIdToMap; // objectId -> map (tag -> value)
-    std::map<unsigned long, std::map<unsigned long, std::shared_ptr<char[]>>> mObjectPtrToMap; // object -> map (tag -> value)
+    std::vector<std::shared_ptr<char>> mGarbageStrings;
+    std::map<unsigned long, std::map<unsigned long, std::shared_ptr<char>>> mObjectIdToMap; // objectId -> map (tag -> value)
+    std::map<unsigned long, std::map<unsigned long, std::shared_ptr<char>>> mObjectPtrToMap; // object -> map (tag -> value)
 
   public:
     StringStorageCore();

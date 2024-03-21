@@ -19,7 +19,7 @@ const char *StringStorageCore::Add(unsigned long &objectId, unsigned long tagNam
     if (objectId == 0)
         objectId = ++mObjectIdCounter;
 
-    auto pString = std::make_shared<char[]>(string.size() + 1); // new char[string.size() + 1];
+    auto pString = std::shared_ptr<char>(new char[string.size() + 1], std::default_delete<char[]>());
     std::memcpy(pString.get(), string.c_str(), string.size() + 1);
 
     const auto &outerIterator = mObjectIdToMap.find(objectId);
@@ -81,7 +81,7 @@ char *StringStorageCore::Change(const Object *object, unsigned long tagName, con
 {
     mGarbageStrings.clear(); // remove garbage strings
 
-    auto pString = std::make_shared<char[]>(string.size() + 1);
+    auto pString = std::shared_ptr<char>(new char[string.size() + 1], std::default_delete<char[]>());
 
     const auto &outerIterator = mObjectPtrToMap.find(reinterpret_cast<uintptr_t>(object));
     if (outerIterator != mObjectPtrToMap.end())
