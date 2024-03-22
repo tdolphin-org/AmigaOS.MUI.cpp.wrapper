@@ -22,27 +22,27 @@ class StringStorageCore
 
     unsigned long mObjectIdCounter;
     std::vector<std::shared_ptr<char>> mGarbageStrings;
-    std::map<unsigned long, std::map<unsigned long, std::shared_ptr<char>>> mObjectIdToMap; // objectId -> map (tag -> value)
-    std::map<unsigned long, std::map<unsigned long, std::shared_ptr<char>>> mObjectPtrToMap; // object -> map (tag -> value)
+    std::map<unsigned long, std::map<Tag, std::shared_ptr<char>>> mObjectIdToMap; // objectId -> map (tag -> value)
+    std::map<unsigned long, std::map<Tag, std::shared_ptr<char>>> mObjectPtrToMap; // object -> map (tag -> value)
 
   public:
     StringStorageCore();
 
-    /// @brief add string to SSC for not yet created object for given object od, or 0 to get new id
-    /// if there is string for objectId and tagName, methods throws exception
+    /// @brief add string to SSC for not yet created object for given object id (> 0), or for 0 to generate new id
+    /// if string for objectId and tagName already exits, method throws exception
     /// @param objectId object id or 0
     /// @param tagName tag name/id
     /// @param string string to create copy
     /// @return pointer to string copy
     const char *Add(unsigned long &objectId, Tag tagName, const std::string &string);
-    /// @brief invalidate all strings for not yet created object
+    /// @brief invalidate (erase) all strings for not yet created object
     /// @param objectId id of object
     void Invalidate(const unsigned long objectId);
-    /// @brief finalize not yet created object with created object, in case of any error throws exception!
+    /// @brief finalize not yet created object id with created object ptr, in case of any error throws exception
     /// @param objectId object id != 0
     /// @param object pointer to created object != nullptr
     void FinalizeObject(const unsigned long objectId, const Object *object);
-    /// @brief change string for goien object and for givent tag, old string is removed (if exists), created new copy for new string
+    /// @brief change string for given object and for given tag, old string is removed (if exists), created new copy for new string
     /// @param object object ptr
     /// @param tagName tag name/id
     /// @param string new string
