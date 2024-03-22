@@ -6,6 +6,7 @@
 
 #include "StringStorage.hpp"
 
+#include "AOS/TagUtil.hpp"
 #include "ToString.hpp"
 
 #include <cstring>
@@ -20,26 +21,24 @@ StringStorageCore::StringStorageCore()
 {
 }
 
-const char *StringStorageCore::Add(unsigned long &objectId, unsigned long tagName, const std::string &string)
+const char *StringStorageCore::Add(unsigned long &objectId, Tag tagName, const std::string &string)
 {
 #ifdef TRACE_SSC
-    std::cout << "SSC::Add(objectId = " << objectId << ", tag = " << tagName << ", string = \"" << string << "\")" << std::endl;
+    std::cout << "SSC::Add(objectId = " << objectId << ", tag = " << AOS::TagUtil::toString(tagName) << ", string = \"" << string << "\")"
+              << std::endl;
 #endif
     if (objectId == 0)
         objectId = ++mObjectIdCounter;
 
     auto pString = std::shared_ptr<char>(new char[string.size() + 1], std::default_delete<char[]>());
-#ifdef TRACE_SSC
-    std::cout << "pString = " << ToString::FromDataPointer(pString.get()) << std::endl;
-#endif
     std::memcpy(pString.get(), string.c_str(), string.size() + 1);
 
     const auto &outerIterator = mObjectIdToMap.find(objectId);
     if (outerIterator != mObjectIdToMap.end())
         if (outerIterator->second.find(tagName) != outerIterator->second.end())
         {
-            std::string error = "String Storage Collector: Add(" + std::to_string(objectId) + "," + std::to_string(tagName) + "," + string
-                + ") .. tagName for objectId already exists!";
+            std::string error = "String Storage Collector: Add(" + std::to_string(objectId) + "," + AOS::TagUtil::toString(tagName) + ","
+                + string + ") .. tagName for objectId already exists!";
             throw new std::runtime_error(error);
         }
 
@@ -97,11 +96,11 @@ void StringStorageCore::FinalizeObject(const unsigned long objectId, const Objec
     mObjectIdToMap.erase(outerIterator);
 }
 
-char *StringStorageCore::Change(const Object *object, unsigned long tagName, const std::string &string)
+char *StringStorageCore::Change(const Object *object, Tag tagName, const std::string &string)
 {
 #ifdef TRACE_SSC
-    std::cout << "SSC::Change(object = " << ToString::FromDataPointer(object) << ", tag = " << tagName << ", string = \"" << string << "\")"
-              << std::endl;
+    std::cout << "SSC::Change(object = " << ToString::FromDataPointer(object) << ", tag = " << AOS::TagUtil::toString(tagName)
+              << ", string = \"" << string << "\")" << std::endl;
 #endif
 
     mGarbageStrings.clear(); // remove garbage strings

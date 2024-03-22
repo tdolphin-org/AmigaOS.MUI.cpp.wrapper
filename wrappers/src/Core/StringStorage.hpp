@@ -12,6 +12,7 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <utility/tagitem.h>
 #include <vector>
 
 /// @brief String Storage Collector (SSC), collect copies of strings as char*
@@ -33,7 +34,7 @@ class StringStorageCore
     /// @param tagName tag name/id
     /// @param string string to create copy
     /// @return pointer to string copy
-    const char *Add(unsigned long &objectId, unsigned long tagName, const std::string &string);
+    const char *Add(unsigned long &objectId, Tag tagName, const std::string &string);
     /// @brief invalidate all strings for not yet created object
     /// @param objectId id of object
     void Invalidate(const unsigned long objectId);
@@ -46,7 +47,7 @@ class StringStorageCore
     /// @param tagName tag name/id
     /// @param string new string
     /// @return pointer to string copy
-    char *Change(const Object *object, unsigned long tagName, const std::string &string);
+    char *Change(const Object *object, Tag tagName, const std::string &string);
 };
 
 typedef class td::Singleton<StringStorageCore> StringStorage;
