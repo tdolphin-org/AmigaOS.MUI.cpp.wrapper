@@ -21,6 +21,7 @@ MORE_CPP_FLAGS_X = $(shell echo $(MORE_CPP_FLAGS) | tr ',' ' ')
 
 # trace flags
 # TRACE_MUI - trace MUI (-DTRACE_MUI)
+# TRACE_SSC - trace String Storage Collector (-DTRACE_SSC)
 DEBUG_FLAGS = #-ggdb -g3 
 
 # compiler/linker flags

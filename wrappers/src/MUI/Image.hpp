@@ -98,7 +98,7 @@ namespace MUI
         /// @brief [ @b MUIA_Image_Spec, @b 5:<n> an external picture file that should be loaded with datatypes (also for sets
         /// MUIA_Image_CopySpec to TRUE) ]
         T &tagSpecPicture(const std::string &imagePath);
-        /// @brief [ @b MUIA_Image_Spec, @b 2:<RGB> RGB color (also for sets MUIA_Image_CopySpec to TRUE) ]
+        /// @brief [ @b MUIA_Image_Spec, @b 2:<RGB> RGB color (also sets MUIA_Image_CopySpec to TRUE) ]
         T &tagSpecColor(const unsigned long rgbColor);
         /// @brief [ @b MUIA_Image_State ]
         T &tagState(const long state);
@@ -169,7 +169,7 @@ namespace MUI
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagSpec(const std::string &spec)
     {
 #ifdef __MORPHOS__
-        auto copy = this->StoreString(spec);
+        auto copy = this->StoreString(MUIA_Image_Spec, spec);
         this->PushTag(MUIA_Image_Spec, copy);
 #else
         this->PushTag(MUIA_Image_CopySpec, true);
@@ -188,7 +188,7 @@ namespace MUI
     {
         spec = "5:" + imagePath;
 #ifdef __MORPHOS__
-        auto copy = this->StoreString(spec);
+        auto copy = this->StoreString(MUIA_Image_Spec, spec);
         this->PushTag(MUIA_Image_Spec, copy);
 #else
         this->PushTag(MUIA_Image_CopySpec, true);
@@ -201,7 +201,7 @@ namespace MUI
     {
         // FIXME add proper convert rgbColor to "2:RRRRRRRR,GGGGGGGG,BBBBBBBB" from rgbColor
 #ifdef __MORPHOS__
-        auto copy = this->StoreString(colorSpec);
+        auto copy = this->StoreString(MUIA_Image_Spec, colorSpec);
         this->PushTag(MUIA_Image_Spec, copy);
 #else
         this->PushTag(MUIA_Image_CopySpec, true);

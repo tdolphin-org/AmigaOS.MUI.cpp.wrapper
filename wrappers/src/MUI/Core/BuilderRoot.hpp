@@ -17,11 +17,10 @@ namespace MUI
 
     template <typename T> class BuilderRoot : public AOS::TagBuilderRoot
     {
-        static StringStorage mStringStorage;
-
         const std::string mClassName;
         /// @brief not empty if class is internal for application, created based od other MUI builtin class
         const std::string mUniqueId;
+        unsigned long mStringStorageObjectId;
 
       public:
         /// @brief
@@ -30,26 +29,31 @@ namespace MUI
         BuilderRoot(const std::string &uniqueId, const std::string &className)
           : mUniqueId(uniqueId)
           , mClassName(className)
+          , mStringStorageObjectId(0)
         {
         }
 
         T object() const
         {
-            return T(mUniqueId.empty() ? muiObject(mClassName, getTags()) : amccObject(mUniqueId, mClassName, getTags()));
+            T object = T(mUniqueId.empty() ? muiObject(mClassName, getTags()) : amccObject(mUniqueId, mClassName, getTags()));
+            if (mStringStorageObjectId != 0)
+                StringStorage::instance().FinalizeObject(mStringStorageObjectId, object);
+            return object;
         }
 
       protected:
         T object(const unsigned long dataSize, const void *pDispatcher) const
         {
-            return T(mUniqueId.empty() ? muiObject(mClassName, getTags())
-                                       : amccObject(mUniqueId, mClassName, getTags(), dataSize, pDispatcher));
+            T object = T(mUniqueId.empty() ? muiObject(mClassName, getTags())
+                                           : amccObject(mUniqueId, mClassName, getTags(), dataSize, pDispatcher));
+            if (mStringStorageObjectId != 0)
+                StringStorage::instance().FinalizeObject(mStringStorageObjectId, object);
+            return object;
         }
 
-        const char *StoreString(const std::string &string)
+        const char *StoreString(const unsigned long tagName, const std::string &string)
         {
-            return mStringStorage.Add(string);
+            return StringStorage::instance().Add(mStringStorageObjectId, tagName, string);
         }
     };
-
-    template <typename T> StringStorage BuilderRoot<T>::mStringStorage;
 }

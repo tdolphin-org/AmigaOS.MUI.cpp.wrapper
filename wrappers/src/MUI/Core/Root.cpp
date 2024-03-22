@@ -23,8 +23,6 @@ namespace MUI
         return false;
     }
 
-    StringStorage Root::mStringStorage;
-
     Root::Root()
       : mpMuiObject(nullptr)
     {

@@ -307,13 +307,13 @@ namespace MUI
 
     template <typename T, typename U> T &AreaBuilderTemplate<T, U>::tagBackground(const std::string &background)
     {
-        this->PushTag(MUIA_Background, this->StoreString(background));
+        this->PushTag(MUIA_Background, this->StoreString(MUIA_Background, background));
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagBackground(const char *background)
     {
-        this->PushTag(MUIA_Background, this->StoreString(background));
+        this->PushTag(MUIA_Background, this->StoreString(MUIA_Background, background));
         return (T &)*this;
     }
 
@@ -434,7 +434,7 @@ namespace MUI
     {
         if (!shortHelp.empty())
         {
-            auto copy = this->StoreString(shortHelp);
+            auto copy = this->StoreString(MUIA_ShortHelp, shortHelp);
             this->PushTag(MUIA_ShortHelp, copy);
         }
         return (T &)*this;
