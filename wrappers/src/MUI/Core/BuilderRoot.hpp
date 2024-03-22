@@ -36,6 +36,8 @@ namespace MUI
         T object() const
         {
             T object = T(mUniqueId.empty() ? muiObject(mClassName, getTags()) : amccObject(mUniqueId, mClassName, getTags()));
+            if (mStringStorageObjectId != 0)
+                StringStorage::instance().FinalizeObject(mStringStorageObjectId, object);
             return object;
         }
 
@@ -44,6 +46,8 @@ namespace MUI
         {
             T object = T(mUniqueId.empty() ? muiObject(mClassName, getTags())
                                            : amccObject(mUniqueId, mClassName, getTags(), dataSize, pDispatcher));
+            if (mStringStorageObjectId != 0)
+                StringStorage::instance().FinalizeObject(mStringStorageObjectId, object);
             return object;
         }
 
