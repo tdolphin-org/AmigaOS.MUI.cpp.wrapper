@@ -6,8 +6,14 @@
 
 #include "StringStorage.hpp"
 
+#include "ToString.hpp"
+
 #include <cstring>
 #include <stdexcept>
+
+#ifdef TRACE_SSC
+#include <iostream>
+#endif
 
 StringStorageCore::StringStorageCore()
   : mObjectIdCounter(0)
@@ -16,10 +22,16 @@ StringStorageCore::StringStorageCore()
 
 const char *StringStorageCore::Add(unsigned long &objectId, unsigned long tagName, const std::string &string)
 {
+#ifdef TRACE_SSC
+    std::cout << "SSC::Add(objectId = " << objectId << ", tag = " << tagName << ", string = \"" << string << "\")" << std::endl;
+#endif
     if (objectId == 0)
         objectId = ++mObjectIdCounter;
 
     auto pString = std::shared_ptr<char>(new char[string.size() + 1], std::default_delete<char[]>());
+#ifdef TRACE_SSC
+    std::cout << "pString = " << ToString::FromDataPointer(pString.get()) << std::endl;
+#endif
     std::memcpy(pString.get(), string.c_str(), string.size() + 1);
 
     const auto &outerIterator = mObjectIdToMap.find(objectId);
@@ -36,8 +48,12 @@ const char *StringStorageCore::Add(unsigned long &objectId, unsigned long tagNam
     return (char *)pString.get();
 }
 
-void StringStorageCore::Invalidate(unsigned long &objectId)
+void StringStorageCore::Invalidate(const unsigned long objectId)
 {
+#ifdef TRACE_SSC
+    std::cout << "SSC::Invalidate(objectId = " << objectId << ")" << std::endl;
+#endif
+
     if (objectId == 0)
     {
         std::string error = "String Storage Collector: Invalidate(" + std::to_string(objectId) + ") .. objectId == 0!";
@@ -54,8 +70,12 @@ void StringStorageCore::Invalidate(unsigned long &objectId)
     mObjectIdToMap.erase(outerIterator);
 }
 
-void StringStorageCore::FinalizeObject(unsigned long objectId, const Object *object)
+void StringStorageCore::FinalizeObject(const unsigned long objectId, const Object *object)
 {
+#ifdef TRACE_SSC
+    std::cout << "SSC::FinalizeObject(objectId = " << objectId << ", object = " << ToString::FromDataPointer(object) << ")" << std::endl;
+#endif
+
     if (objectId == 0 || object == nullptr)
     {
         std::string error = "String Storage Collector: FinalizeObject(" + std::to_string(objectId) + ","
@@ -77,21 +97,30 @@ void StringStorageCore::FinalizeObject(unsigned long objectId, const Object *obj
     mObjectIdToMap.erase(outerIterator);
 }
 
-char *StringStorageCore::Change(const Object *object, unsigned long tagName, const std::string &string) noexcept
+char *StringStorageCore::Change(const Object *object, unsigned long tagName, const std::string &string)
 {
+#ifdef TRACE_SSC
+    std::cout << "SSC::Change(object = " << ToString::FromDataPointer(object) << ", tag = " << tagName << ", string = \"" << string << "\")"
+              << std::endl;
+#endif
+
     mGarbageStrings.clear(); // remove garbage strings
 
     auto pString = std::shared_ptr<char>(new char[string.size() + 1], std::default_delete<char[]>());
+    std::memcpy(pString.get(), string.c_str(), string.size() + 1);
 
     const auto &outerIterator = mObjectPtrToMap.find(reinterpret_cast<uintptr_t>(object));
     if (outerIterator != mObjectPtrToMap.end())
     {
         const auto &innerIterator = outerIterator->second.find(tagName);
         if (innerIterator != outerIterator->second.end())
+        {
             mGarbageStrings.push_back(innerIterator->second); // can't be removed now, becouse still is used, move pointer to garbage
+            outerIterator->second.erase(innerIterator);
+        }
     }
 
-    mObjectIdToMap[reinterpret_cast<uintptr_t>(object)][tagName] = pString;
+    mObjectPtrToMap[reinterpret_cast<uintptr_t>(object)][tagName] = pString;
 
     return (char *)pString.get();
 }
