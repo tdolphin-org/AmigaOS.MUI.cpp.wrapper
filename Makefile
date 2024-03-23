@@ -33,6 +33,9 @@ sub_projects_mos_ppc:
 	@date
 	@echo "------------------------------------------------"
 
+clean_examples:
+	$(MAKE) clean -C examples
+
 clean:
 	@for dir in $(SUB_PROJECTS); do \
 		$(MAKE) clean -C $$dir; \

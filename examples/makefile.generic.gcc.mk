@@ -41,7 +41,7 @@ $(BINPATH)/$(APP_EXAMPLE): $(OBJS)
 	$(CPPC) $^ $(LFLAGS) -o $@_nonstripped
 	@echo "## Stripping ..."
 	$(STRIP) --remove-section=.comment $@_nonstripped -o $@
-	rm $@_nonstripped
+	$(OBJDUMP) --syms --reloc --disassemble-all $@_nonstripped > $@_disassembled
 	@echo "## Finished."
 
 obj/$(SUB_BUILD_PATH)/%.o: %.cpp %.hpp
