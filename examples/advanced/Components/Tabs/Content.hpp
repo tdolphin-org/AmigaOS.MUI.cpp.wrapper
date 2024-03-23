@@ -10,7 +10,6 @@
 
 #include "CustomClassesTab.hpp"
 #include "ListAndImageTab.hpp"
-#include "MUI/Text.hpp"
 #include "TabsContainerRegister.hpp" // version using MUI::Register for tabs/pages
 #include "TabsContainerTitles.hpp" // version using MUI::Titles for tabs/pages
 
@@ -18,11 +17,11 @@ namespace Components
 {
     class Content : public Root
     {
-        MUI::Text mRegisterInfo;
+        MUI::Group mRegisterInfoGroup;
         ListAndImageTab mListAndImageTab;
         TabsContainerRegister mLeftTabsRegister;
 
-        MUI::Text mTitleInfo;
+        MUI::Group mTitleInfoGroup;
         CustomClassesTab mCustomClassesTab;
         TabsContainerTitles mRightTabsTitles;
 
