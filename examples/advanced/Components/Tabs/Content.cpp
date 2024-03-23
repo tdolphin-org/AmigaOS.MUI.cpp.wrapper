@@ -11,9 +11,13 @@
 namespace Components
 {
     Content::Content()
-      : mListAndImageTab()
+      : mRegisterInfo(MUI::TextBuilder().tagContents("tabs created with MUI::Register (MUIC_Register)").object())
+      , mListAndImageTab()
+      , mLeftTabsRegister({ { MUIX_PH "Info", mRegisterInfo }, { "List & Image", mListAndImageTab } })
+      , mTitleInfo(MUI::TextBuilder().tagContents("tabs created with MUI::Title (MUIC_Title)").object())
       , mCustomClassesTab()
-      , mComponent({ { std::string(MUIX_PH "List & Image"), mListAndImageTab }, { "NList", mCustomClassesTab } })
+      , mRightTabsTitles({ { MUIX_PH "Info", mTitleInfo }, { "NList", mCustomClassesTab } })
+      , mComponent(MUI::GroupBuilder().horizontal().tagChild(mLeftTabsRegister).tagChild(mRightTabsTitles).object())
     {
     }
 }

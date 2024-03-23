@@ -13,7 +13,7 @@
 namespace Components
 {
     TabsContainerTitles::TabsContainerTitles(const std::vector<std::pair<std::string, MUI::Area &>> &tabs)
-      : mTabsTitle(MUI::TitleBuilder().object())
+      : mTabsTitle(MUI::TitleBuilder().tagClosable(true).tagNewable(true).object())
       , mComponent(MUI::GroupBuilder().tagCycleChain().tagPageMode().tagChild(mTabsTitle).object())
     {
         for (auto &tab : tabs)
