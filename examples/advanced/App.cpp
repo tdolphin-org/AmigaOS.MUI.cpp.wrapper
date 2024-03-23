@@ -8,7 +8,6 @@
 
 #include "App.hpp"
 
-#include "MUI/Balance.hpp"
 #include "MUI/Context/ApplicationContext.hpp"
 
 #include <iostream>
@@ -34,6 +33,8 @@ void AppCore::Run()
     auto appWindow = MUI::ApplicationContext::instance().getAppWindow();
     // open window on constructor, close on destructor
     MUI::WindowScope window(appWindow);
+
+    // appWindow.setScreenTitle();
 
     // main application loop
     ULONG signals = 0;
