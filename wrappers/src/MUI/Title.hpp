@@ -20,11 +20,6 @@ namespace MUI
         {
         }
 
-        Title(const APTR pMuiObject)
-          : Group(pMuiObject)
-        {
-        }
-
         // instanceOf
 
         const static std::string className;
@@ -83,7 +78,7 @@ namespace MUI
         /// Setting this attribute to TRUE will add a "+" button after the rightmost tab object. Clicking the "+" button will invoke the
         /// MUIM_Title_New method to let the application add a new title button object and a new page object. Title class will NOT add the
         /// new tab itself. This task remains the responsibility of the implementing class and hence also requires the developer to
-        /// implement a subclass of Title class to handle the method.Defaults to FALSE.
+        /// implement a subclass of Title class to handle the method. Defaults to FALSE.
         T &tagNewable(const bool newable);
         /// @brief [ @b MUIA_Title_OnLastClose ]
         /// This attribute defines how the object will react when the last tab is to be closed. Setting this attribute to

@@ -18,11 +18,6 @@ namespace MUI
         {
         }
 
-        Menustrip(const APTR pMuiObject)
-          : Family(pMuiObject)
-        {
-        }
-
         Menustrip(const Root &root)
           : Family(root.muiObject())
         {

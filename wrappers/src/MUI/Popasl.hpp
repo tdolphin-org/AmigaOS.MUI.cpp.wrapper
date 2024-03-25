@@ -20,11 +20,6 @@ namespace MUI
         {
         }
 
-        Popasl(const APTR pMuiObject)
-          : Popstring(pMuiObject)
-        {
-        }
-
         // instanceOf
 
         const static std::string className;

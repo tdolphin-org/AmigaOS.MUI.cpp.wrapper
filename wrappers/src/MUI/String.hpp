@@ -22,11 +22,6 @@ namespace MUI
         {
         }
 
-        String(const APTR pMuiObject)
-          : Area(pMuiObject)
-        {
-        }
-
         String(const Root &root)
           : Area(root.muiObject())
         {

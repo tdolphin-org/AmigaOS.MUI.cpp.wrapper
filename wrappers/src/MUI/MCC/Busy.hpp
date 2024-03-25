@@ -19,11 +19,6 @@ namespace MUI::MCC
         {
         }
 
-        Busy(const APTR pMuiObject)
-          : Area(pMuiObject)
-        {
-        }
-
         Busy(const Root &root)
           : Area(root.muiObject())
         {

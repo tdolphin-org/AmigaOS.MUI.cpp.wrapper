@@ -36,11 +36,6 @@ namespace MUI
         {
         }
 
-        Area(const APTR pMuiObject)
-          : Notify(pMuiObject)
-        {
-        }
-
         Area(const Root &root)
           : Notify(root.muiObject())
         {

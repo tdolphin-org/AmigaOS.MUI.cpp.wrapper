@@ -20,11 +20,6 @@ namespace MUI
         {
         }
 
-        Text(const APTR pMuiObject)
-          : Area(pMuiObject)
-        {
-        }
-
         Text(const Root &root)
           : Area(root.muiObject())
         {

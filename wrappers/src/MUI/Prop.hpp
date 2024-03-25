@@ -19,11 +19,6 @@ namespace MUI
         {
         }
 
-        Prop(const APTR pMuiObject)
-          : Gadget(pMuiObject)
-        {
-        }
-
         // instanceOf
 
         const static std::string className;

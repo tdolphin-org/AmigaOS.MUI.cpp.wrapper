@@ -18,11 +18,6 @@ namespace MUI
         {
         }
 
-        Register(const APTR pMuiObject)
-          : Group(pMuiObject)
-        {
-        }
-
         // instanceOf
 
         const static std::string className;

@@ -26,11 +26,6 @@ namespace MUI
         {
         }
 
-        Group(const APTR pMuiObject)
-          : Area(pMuiObject)
-        {
-        }
-
         // instanceOf
 
         const static std::string className;
@@ -71,13 +66,9 @@ namespace MUI
         /// @brief [ @b MUIM_Group_AddHead ]
         Group &AddHead(const Object *pChildObject);
         /// @brief [ @b MUIM_Group_AddHead ]
-        Group &AddHead(const APTR pChildObject);
-        /// @brief [ @b MUIM_Group_AddHead ]
         Group &AddHead(const Root &child);
         /// @brief [ @b MUIM_Group_AddTail ]
         Group &AddTail(const Object *pChildObject);
-        /// @brief [ @b MUIM_Group_AddTail ]
-        Group &AddTail(const APTR pChildObject);
         /// @brief [ @b MUIM_Group_AddTail ]
         Group &AddTail(const Root &child);
         /// @brief [ @b MUIM_Group_ExitChange ]
@@ -109,8 +100,6 @@ namespace MUI
         T &tagActivePage(const enum Group_ActivePage activePage);
         /// @brief [ @b MUIM_Group_Child ]
         T &tagChild(const Object *pChildObject);
-        /// @brief [ @b MUIM_Group_Child ]
-        T &tagChild(const APTR pChildObject);
         /// @brief [ @b MUIM_Group_Child ]
         T &tagChild(const Root &child);
         /// @brief [ @b MUIM_Group_Columns ]
@@ -180,13 +169,6 @@ namespace MUI
     {
         if (pChildObject)
             this->PushTag(MUIA_Group_Child, pChildObject, false, true);
-        return (T &)*this;
-    }
-
-    template <typename T, typename U> T &GroupBuilderTemplate<T, U>::tagChild(const APTR pChildObject)
-    {
-        if (pChildObject)
-            this->PushTag(MUIA_Group_Child, (const Object *)pChildObject, false, true);
         return (T &)*this;
     }
 

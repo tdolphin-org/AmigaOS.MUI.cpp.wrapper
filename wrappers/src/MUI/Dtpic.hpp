@@ -18,11 +18,6 @@ namespace MUI
         {
         }
 
-        Dtpic(const APTR pMuiObject)
-          : Area(pMuiObject)
-        {
-        }
-
         // instanceOf
 
         const static std::string className;

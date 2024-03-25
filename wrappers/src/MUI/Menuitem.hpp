@@ -19,11 +19,6 @@ namespace MUI
         {
         }
 
-        Menuitem(const APTR pMuiObject)
-          : Family(pMuiObject)
-        {
-        }
-
         Menuitem(const Root &root)
           : Family(root.muiObject())
         {

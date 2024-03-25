@@ -26,11 +26,6 @@ namespace MUI
         {
         }
 
-        Window(const APTR pMuiObject)
-          : Notify(pMuiObject)
-        {
-        }
-
         // instanceOf
 
         const static std::string className;

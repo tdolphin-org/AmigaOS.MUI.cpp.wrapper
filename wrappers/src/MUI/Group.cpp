@@ -57,13 +57,6 @@ namespace MUI
         return *this;
     }
 
-    Group &Group::AddHead(const APTR pChildObject)
-    {
-        if (pChildObject)
-            DoMethod(muiObject(), MUIM_Group_AddHead, (ULONG)pChildObject);
-        return *this;
-    }
-
     Group &Group::AddHead(const Root &child)
     {
         if (child.muiObject())
@@ -72,13 +65,6 @@ namespace MUI
     }
 
     Group &Group::AddTail(const Object *pChildObject)
-    {
-        if (pChildObject)
-            DoMethod(muiObject(), MUIM_Group_AddTail, (ULONG)pChildObject);
-        return *this;
-    }
-
-    Group &Group::AddTail(const APTR pChildObject)
     {
         if (pChildObject)
             DoMethod(muiObject(), MUIM_Group_AddTail, (ULONG)pChildObject);

@@ -21,11 +21,6 @@ namespace MUI
         {
         }
 
-        Family(const APTR pMuiObject)
-          : Notify(pMuiObject)
-        {
-        }
-
         Family(const Root &root)
           : Notify(root.muiObject())
         {

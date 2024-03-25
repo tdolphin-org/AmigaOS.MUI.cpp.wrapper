@@ -18,11 +18,6 @@ namespace MUI
         {
         }
 
-        Floattext(const APTR pMuiObject)
-          : List(pMuiObject)
-        {
-        }
-
         // instanceOf
 
         const static std::string className;

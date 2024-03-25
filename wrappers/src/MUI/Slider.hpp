@@ -20,11 +20,6 @@ namespace MUI
         {
         }
 
-        Slider(const APTR pMuiObject)
-          : Numeric(pMuiObject)
-        {
-        }
-
         // instanceOf
 
         const static std::string className;

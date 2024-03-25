@@ -23,7 +23,7 @@
 
 namespace MUI::MCC
 {
-    enum class NList_WrapCol
+    enum class NList_WrapCol // TODO should be const, not enum (?)
     {
         NoWrap = NOWRAP,
         WrapColumn0 = WRAPCOL0,
@@ -48,11 +48,6 @@ namespace MUI::MCC
       public:
         NList(const Object *pObject)
           : Area(pObject)
-        {
-        }
-
-        NList(const APTR pMuiObject)
-          : Area(pMuiObject)
         {
         }
 
@@ -634,5 +629,4 @@ namespace MUI::MCC
         this->PushTag(MUIA_NList_TitleSeparator, titleSeparator);
         return (T &)*this;
     }
-
 }

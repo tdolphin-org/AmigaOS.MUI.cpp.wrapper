@@ -20,11 +20,6 @@ namespace MUI::MCC
         {
         }
 
-        NListview(const APTR pMuiObject)
-          : Area(pMuiObject)
-        {
-        }
-
         NListview(const Root &root)
           : Area(root.muiObject())
         {

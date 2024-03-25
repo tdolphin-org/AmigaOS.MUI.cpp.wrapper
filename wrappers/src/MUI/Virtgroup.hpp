@@ -18,11 +18,6 @@ namespace MUI
         {
         }
 
-        Virtgroup(const APTR pMuiObject)
-          : Group(pMuiObject)
-        {
-        }
-
         // instanceOf
 
         const static std::string className;

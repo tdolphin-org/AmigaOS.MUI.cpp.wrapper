@@ -24,11 +24,6 @@ namespace MUI::MCC
         {
         }
 
-        TextEditor(const APTR pMuiObject)
-          : Notify(pMuiObject)
-        {
-        }
-
         TextEditor(const Root &root)
           : Notify(root.muiObject())
         {

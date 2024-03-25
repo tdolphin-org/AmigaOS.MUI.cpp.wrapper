@@ -18,11 +18,6 @@ namespace MUI
         {
         }
 
-        Numeric(const APTR pMuiObject)
-          : Area(pMuiObject)
-        {
-        }
-
         // instanceOf
 
         const static std::string className;
