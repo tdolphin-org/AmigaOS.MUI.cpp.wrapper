@@ -106,7 +106,8 @@ namespace MUI
         /// Number of columns in a two dimensional group.
         T &tagColumns(const long columns);
         /// @brief [ @b MUIA_Group_Horiz ]
-        /// Indicate whether the objects in this group shall be layouted horizontally or vertically. Defaults to FALSE.
+        /// Indicate whether the objects in this group shall be layouted horizontally or vertically.
+        /// By default is false.
         T &tagHoriz(const bool horiz);
         /// @brief [ @b MUIA_Group_HorizCenter ]
         T &tagHorizCenter(const enum Group_HorizCenter horizCenter);

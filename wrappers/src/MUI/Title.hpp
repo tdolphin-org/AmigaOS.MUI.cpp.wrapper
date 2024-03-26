@@ -61,38 +61,43 @@ namespace MUI
         }
 
         /// @brief [ @b MUIA_Title_Clickable ]
-        /// Setting this attribute to FALSE will let the Title object ignore all clicks on its tabs and hence prevent page changes. Defaults
-        /// to TRUE.
+        /// Setting this attribute to FALSE will let the Title object ignore all clicks on its tabs and hence prevent page changes.
+        /// By default is true.
         T &tagClickable(const bool clickable);
         /// @brief [ @b MUIA_Title_Closable ]
         /// Setting this attribute to TRUE will add a close button to each tab object. Clicking the close button will invoke the
         /// MUIM_Title_Close method with a pointer to the tab object the close buttons corresponds to. Title class will NOT close the tab
         /// itself. This task remains the responsibility of the implementing class and hence also requires the developer to implement a
-        /// subclass of Title class to handle the method. Defaults to FALSE.
+        /// subclass of Title class to handle the method.
+        /// By default is false.
         T &tagClosable(const bool closable);
         /// @brief [ @b MUIA_Title_EventHandlerPriority ]
         /// Defines the priority of the internal eventhandler. This attribute is of use only if you need to do something before the internal
-        /// eventhandler and eventually might eat the events you are interested in. Defaults to MUIV_Title_EventHandlerPriority_Default.
+        /// eventhandler and eventually might eat the events you are interested in.
+        /// By default is MUIV_Title_EventHandlerPriority_Default.
         T &tagEventHandlerPriority(const long eventHandlerPriority);
         /// @brief [ @b MUIA_Title_Newable ]
         /// Setting this attribute to TRUE will add a "+" button after the rightmost tab object. Clicking the "+" button will invoke the
         /// MUIM_Title_New method to let the application add a new title button object and a new page object. Title class will NOT add the
         /// new tab itself. This task remains the responsibility of the implementing class and hence also requires the developer to
-        /// implement a subclass of Title class to handle the method. Defaults to FALSE.
+        /// implement a subclass of Title class to handle the method.
+        /// By default is false.
         T &tagNewable(const bool newable);
         /// @brief [ @b MUIA_Title_OnLastClose ]
         /// This attribute defines how the object will react when the last tab is to be closed. Setting this attribute to
         /// MUIV_Title_OnLastClose_Remove will invoke the usual MUIM_Title_Close method on the object. Setting the attribute to
-        /// MUIV_Title_OnLastClose_WindowAction will trigger a close request on the object's window. Defaults to
-        /// MUIV_Title_OnLastClose_Remove.
+        /// MUIV_Title_OnLastClose_WindowAction will trigger a close request on the object's window.
+        /// By default is  MUIV_Title_OnLastClose_Remove.
         T &tagOnLastClose(const enum Title_OnLastClose onLastClose);
         /// @brief [ @b MUIA_Title_Position ]
         /// Defines the position of the tab titles. Currently only top and bottom placement is implemented. Left and right placement will
-        /// hopefully be implemented in near future. Defaults to MUIV_Title_Position_Top.
+        /// hopefully be implemented in near future.
+        /// By default is MUIV_Title_Position_Top.
         T &tagPosition(const enum Title_Position position);
         /// @brief [ @b MUIA_Title_Sortable ]
         /// Define whether the individual tabs can be rearranged by drag'n'drop operations. Title class will rearrange both the tab title
-        /// objects as well as the page objects after a drag'n'drop operation. Defaults to FALSE.
+        /// objects as well as the page objects after a drag'n'drop operation.
+        /// By default is false.
         T &tagSortable(const bool sortable);
     };
 
