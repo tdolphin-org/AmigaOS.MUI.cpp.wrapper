@@ -137,7 +137,6 @@ ___
 | [MUIC_Volumelist](https://github.com/amiga-mui/muidev/wiki/MUI_Volumelist) | - | - | - | - | - |
 | [MUIC_Window](https://github.com/amiga-mui/muidev/wiki/MUI_Window) | [MUI::Window](/wrappers/src/MUI/Window.hpp) | in progress | in progress | in progress | in progress |
 | ... | ... | - | - | - | - |
-| [MUIC_](https://github.com/amiga-mui/muidev/wiki/MUI_) | - | - | - | - | - |
 | MUIC_Busy | [MUI::Busy](/wrappers/src/MUI/MCC/Busy.hpp) | Ready | Ready | - | - |
 | ... | ... | - | - | - | - |
 ___
