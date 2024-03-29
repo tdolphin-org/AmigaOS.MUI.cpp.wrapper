@@ -82,6 +82,7 @@ namespace MUI
         /// When set to false, the contents will not be copied to a private buffer. By default is true, unless MUIA_Text_HiChar is also
         /// specified.
         T &tagCopy(const bool copy);
+#ifndef __MORPHOS__
         /// @brief [ @b MUIA_Text_Data ]
         /// This attribute specifies the object's text wrapped in a Textdata object instead of directly as a string. This allows to set
         /// arbitrarily encoded text that will be converted to the local charset on the fly. The conversion will be done by invoking the
@@ -89,6 +90,7 @@ namespace MUI
         /// via MUIA_Text_Contents will be used.
         /// By default is null.
         T &tagData(const Object *data);
+#endif
         /// @brief [ @b MUIA_Text_HiChar ]
         /// If the character given here exists in the displayed string (no matter if upper or lower case), it will be underlined. This makes
         /// it easy to create macros such as KeyButton() that specify the control char and the underline char at the same time.
@@ -155,11 +157,13 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifndef __MORPHOS__
     template <typename T, typename U> inline T &TextBuilderTemplate<T, U>::tagData(const Object *data)
     {
         this->PushTag(MUIA_Text_Data, data);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &TextBuilderTemplate<T, U>::tagHiChar(const char hiChar)
     {
