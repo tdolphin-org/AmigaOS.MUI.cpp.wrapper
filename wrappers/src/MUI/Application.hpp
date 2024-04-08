@@ -39,7 +39,7 @@ namespace MUI
         Menustrip getMenustrip() const;
 
         /// @brief [ @b MUIA_Application_WindowList ]
-        std::vector<Window> getWindowList();
+        std::vector<Window> getWindowList() const;
 
         // methods, some returns object reference
 

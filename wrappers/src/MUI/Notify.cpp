@@ -93,17 +93,17 @@ namespace MUI
         return *this;
     }
 
-    Object *Notify::FindObject(const Root &findme)
+    Object *Notify::FindObject(const Root &findme) const
     {
         return (Object *)DoMethod(muiObject(), MUIM_FindObject, findme.muiObject());
     }
 
-    Object *Notify::FindObject(const Object *findme)
+    Object *Notify::FindObject(const Object *findme) const
     {
         return (Object *)DoMethod(muiObject(), MUIM_FindObject, findme);
     }
 
-    Object *Notify::FindUData(const unsigned long udata)
+    Object *Notify::FindUData(const unsigned long udata) const
     {
         return (Object *)DoMethod(muiObject(), MUIM_FindUData, udata);
     }

@@ -74,11 +74,11 @@ namespace MUI
         // methods, some returns object reference
 
         /// @brief [ @b MUIM_FindObject ]
-        Object *FindObject(const Root &findme);
+        Object *FindObject(const Root &findme) const;
         /// @brief [ @b MUIM_FindObject ]
-        Object *FindObject(const Object *findme);
+        Object *FindObject(const Object *findme) const;
         /// @brief [ @b MUIM_FindUData ]
-        Object *FindUData(const unsigned long udata);
+        Object *FindUData(const unsigned long udata) const;
         /// @brief [ @b MUIM_GetUData ]
         Object *GetUData(const unsigned long udata, const unsigned long attr, const unsigned long *storage);
         /// @brief [ @b MUIM_KillNotify ]

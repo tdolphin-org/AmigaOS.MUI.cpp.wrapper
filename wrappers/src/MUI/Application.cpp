@@ -27,7 +27,7 @@ namespace MUI
         return Menustrip(GetValueAsObjectPtr(MUIA_Application_Menustrip));
     }
 
-    std::vector<Window> Application::getWindowList()
+    std::vector<Window> Application::getWindowList() const
     {
         struct List *list = (struct List *)GetValueAsObjectPtr(MUIA_Application_WindowList);
         if (IsListEmpty(list))
