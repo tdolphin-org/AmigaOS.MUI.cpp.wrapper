@@ -18,6 +18,16 @@ namespace MUI
         return MUI_MakeObject(MUIO_Checkmark, 0);
     }
 
+    Object *MakeObject::Checkmark(const char *label)
+    {
+        return MUI_MakeObject(MUIO_Checkmark, (unsigned long)label);
+    }
+
+    Object *MakeObject::Checkmark(const std::string &label)
+    {
+        return MUI_MakeObject(MUIO_Checkmark, (unsigned long)label.c_str());
+    }
+
     Object *MakeObject::SimpleButton(const char *label)
     {
         return MUI_MakeObject(MUIO_Button, (unsigned long)label);

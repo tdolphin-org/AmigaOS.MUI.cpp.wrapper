@@ -47,6 +47,10 @@ namespace MUI
       public:
         /// @brief [ @b MUIO_Checkmark ]
         static Object *Checkmark();
+        /// @brief [ @b MUIO_Checkmark ]
+        static Object *Checkmark(const char *label);
+        /// @brief [ @b MUIO_Checkmark ]
+        static Object *Checkmark(const std::string &label);
 
         /// @brief [ @b MUIO_Button (button is an instance of the MUIC_Text class) ]
         static Object *SimpleButton(const char *label);
