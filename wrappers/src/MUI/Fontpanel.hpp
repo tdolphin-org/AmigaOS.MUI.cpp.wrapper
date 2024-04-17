@@ -54,13 +54,14 @@ namespace MUI
         FontpanelBuilder();
     };
 
-    template <typename T, typename U> inline T &FontpanelBuilderTemplate<T, U>::tagVertCenter(const enum Fontpanel_ShowCollection showCollection)
+    template <typename T, typename U>
+    inline T &FontpanelBuilderTemplate<T, U>::tagShowCollection(const enum Fontpanel_ShowCollection showCollection)
     {
         this->PushTag(MUIA_Fontpanel_ShowCollection, (long)showCollection);
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &FontpanelBuilderTemplate<T, U>::tagVertCenter(const long showCollection)
+    template <typename T, typename U> inline T &FontpanelBuilderTemplate<T, U>::tagShowCollection(const long showCollection)
     {
         this->PushTag(MUIA_Fontpanel_ShowCollection, showCollection);
         return (T &)*this;
