@@ -10,6 +10,8 @@
 
 #include "ValueTypes/Fontpanel/ShowCollection.hpp"
 
+#include <set>
+
 namespace MUI
 {
     class Fontpanel : public Panel
@@ -44,8 +46,8 @@ namespace MUI
 
         /// @brief [ @b MUIA_Fontpanel_ShowCollection ]
         /// This attribute allows to specify the types of font families to select from.
-        /// Just pass a logical OR of the suitable MUIV_Fontpanel_ShowCollection_#? values.
-        T &tagShowCollection(const long showCollection);
+        /// Just pass set of values for logical OR of the suitable MUIV_Fontpanel_ShowCollection_#? values.
+        T &tagShowCollection(const std::set<enum Fontpanel_ShowCollection> showCollections);
     };
 
     class FontpanelBuilder : public FontpanelBuilderTemplate<FontpanelBuilder, Fontpanel>
@@ -61,8 +63,12 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &FontpanelBuilderTemplate<T, U>::tagShowCollection(const long showCollection)
+    template <typename T, typename U>
+    inline T &FontpanelBuilderTemplate<T, U>::tagShowCollection(const std::set<enum Fontpanel_ShowCollection> showCollections)
     {
+        long showCollection = 0;
+        for (auto &value : showCollections)
+            showCollection |= (long)value;
         this->PushTag(MUIA_Fontpanel_ShowCollection, showCollection);
         return (T &)*this;
     }
