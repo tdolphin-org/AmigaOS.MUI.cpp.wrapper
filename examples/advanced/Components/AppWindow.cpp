@@ -19,6 +19,13 @@ namespace Components
     AppWindow::AppWindow()
       : mCloseButton(MUI::MakeObject::SimpleButton("_Quit Application"))
       , mContent()
+      , mInfoText(MUI::TextBuilder()
+                      .tagFrame(MUI::Frame::String)
+#ifndef __MORPHOS__
+                      .tagSetMin(false)
+                      .tagShorten(MUI::Text_Shorten::ElideRight)
+#endif
+                      .object())
       , mComponent(MUI::WindowBuilder()
                        .tagTitle("Window Title")
                        .tagScreenTitle("Application Screen Title")
@@ -34,6 +41,7 @@ namespace Components
                                              .tagContents(MUIX_C "some centered text in MUI::Text\n\n" MUIX_PH " (c) 2022-2024 TDolphin")
                                              .object())
                                .tagChild(mCloseButton)
+                               .tagChild(mInfoText)
                                .tagChild(mContent)
                                .tagChild(MUI::GroupBuilder()
                                              .horizontal()
@@ -45,6 +53,11 @@ namespace Components
                        .object())
     {
         mCloseButton.setCycleChain();
+        mInfoText.setContents(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+            "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure "
+            "dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non "
+            "proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
     }
 
     void AppWindow::RegisterEvents()

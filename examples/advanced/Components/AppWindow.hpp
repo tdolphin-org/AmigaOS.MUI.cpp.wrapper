@@ -9,6 +9,7 @@
 #pragma once
 
 #include "Core/Root.hpp"
+#include "MUI/Text.hpp"
 #include "MUI/Window.hpp"
 #include "Tabs/Content.hpp"
 
@@ -18,6 +19,7 @@ namespace Components
     {
         MUI::Area mCloseButton;
         Content mContent;
+        MUI::Text mInfoText;
         MUI::Window mComponent;
 
       public:
