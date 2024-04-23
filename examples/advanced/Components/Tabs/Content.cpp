@@ -26,8 +26,8 @@ namespace Components
                                              .object())
                                .tagChild(MUI::TextBuilder()
                                              .tagFrame(MUI::Frame::String)
-#ifndef __MORPHOS__
                                              .tagSetMin(false)
+#ifndef __MORPHOS__
                                              .tagShorten(MUI::Text_Shorten::ElideRight)
 #endif
                                              .tagContents("tabs created with MUI::Register (MUIC_Register)")

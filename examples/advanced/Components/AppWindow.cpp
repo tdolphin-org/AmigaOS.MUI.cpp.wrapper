@@ -21,8 +21,8 @@ namespace Components
       , mContent()
       , mInfoText(MUI::TextBuilder()
                       .tagFrame(MUI::Frame::String)
-#ifndef __MORPHOS__
                       .tagSetMin(false)
+#ifndef __MORPHOS__
                       .tagShorten(MUI::Text_Shorten::ElideRight)
 #endif
                       .object())
