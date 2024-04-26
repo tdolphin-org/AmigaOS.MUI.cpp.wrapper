@@ -76,7 +76,7 @@ ___
 | [MUIC_Bodychunk](https://github.com/amiga-mui/muidev/wiki/MUI_Bodychunk) | - | - | - | - | - |
 | [MUIC_Boopsi](https://github.com/amiga-mui/muidev/wiki/MUI_Boopsi) | - | - | - | - | - |
 | [MUIC_Coloradjust](https://github.com/amiga-mui/muidev/wiki/MUI_Coloradjust) | - | - | - | - | - |
-| [MUIC_Colorfield](https://github.com/amiga-mui/muidev/wiki/MUI_Colorfield) | - | - | - | - | - |
+| [MUIC_Colorfield](https://github.com/amiga-mui/muidev/wiki/MUI_Colorfield) | [MUI::Colorfield](/wrappers/src/MUI/Colorfield.hpp) | Ready | Ready | - | - |
 | [MUIC_Cycle](https://github.com/amiga-mui/muidev/wiki/MUI_Cycle) | [MUI::Cycle](/wrappers/src/MUI/Cycle.hpp) | Ready | Ready | Ready | Ready |
 | [MUIC_Datamap](https://github.com/amiga-mui/muidev/wiki/MUI_Datamap) | - | - | - | - | - |
 | [MUIC_Dataspace](https://github.com/amiga-mui/muidev/wiki/MUI_Dataspace) | - | - | - | - | - |
