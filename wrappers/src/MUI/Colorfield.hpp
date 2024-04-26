@@ -8,7 +8,7 @@
 
 #include "Area.hpp"
 
-#include "ValueTypes/RGBColor.hpp"
+#include "Core/RGBColor.hpp"
 
 namespace MUI
 {
@@ -32,24 +32,26 @@ namespace MUI
         // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Colorfield_Blue ]
-        unsigned long getBlue() const;
+        unsigned char getBlue() const;
         /// @brief [ @b MUIA_Colorfield_Green ]
-        unsigned long getGreen() const;
+        unsigned char getGreen() const;
         /// @brief [ @b MUIA_Colorfield_Pen ]
         unsigned long getPen() const;
         /// @brief [ @b MUIA_Colorfield_Red ]
-        unsigned long getRed() const;
+        unsigned char getRed() const;
         /// @brief [ @b MUIA_Colorfield_RGB ]
         RGBColor getRGB() const;
 
         /// @brief [ @b MUIA_Colorfield_Blue ]
-        Colorfield &setBlue(const unsigned long blue);
+        Colorfield &setBlue(const unsigned char blue);
         /// @brief [ @b MUIA_Colorfield_Green ]
-        Colorfield &setGreen(const unsigned long green);
+        Colorfield &setGreen(const unsigned char green);
         /// @brief [ @b MUIA_Colorfield_Red ]
-        Colorfield &setRed(const unsigned long red);
+        Colorfield &setRed(const unsigned char red);
         /// @brief [ @b MUIA_Colorfield_RGB ]
-        Colorfield &setRGB(const unsigned long red, const unsigned long green, const unsigned long blue);
+        Colorfield &setRGB(const unsigned char red, const unsigned char green, const unsigned char blue);
+        /// @brief [ @b MUIA_Colorfield_RGB ]
+        Colorfield &setRGB(const RGBColor &rgbColor);
     };
 
     template <typename T, typename U> class ColorfieldBuilderTemplate : public AreaBuilderTemplate<T, U>
@@ -61,13 +63,15 @@ namespace MUI
         }
 
         /// @brief [ @b MUIA_Colorfield_Blue ]
-        T &tagBlue(const unsigned long blue);
+        T &tagBlue(const unsigned char blue);
         /// @brief [ @b MUIA_Colorfield_Green ]
-        T &tagGreen(const unsigned long green);
+        T &tagGreen(const unsigned char green);
         /// @brief [ @b MUIA_Colorfield_Red ]
-        T &tagRed(const unsigned long red);
+        T &tagRed(const unsigned char red);
         /// @brief [ @b MUIA_Colorfield_RGB ]
-        T &tagRGB(const unsigned long red, const unsigned long green, const unsigned long blue);
+        T &tagRGB(const unsigned char red, const unsigned char green, const unsigned char blue);
+        /// @brief [ @b MUIA_Colorfield_RGB ]
+        T &tagRGB(const RGBColor &rgbColor);
     };
 
     class ColorfieldBuilder : public ColorfieldBuilderTemplate<ColorfieldBuilder, Colorfield>
@@ -76,28 +80,35 @@ namespace MUI
         ColorfieldBuilder();
     };
 
-    template <typename T, typename U> inline T &ColorfieldBuilderTemplate<T, U>::tagBlue(const unsigned long blue)
+    template <typename T, typename U> inline T &ColorfieldBuilderTemplate<T, U>::tagBlue(const unsigned char blue)
     {
-        this->PushTag(MUIA_Colorfield_Blue, blue);
+        this->PushTag(MUIA_Colorfield_Blue, RGBColor::componentTo32Bit(blue));
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &ColorfieldBuilderTemplate<T, U>::tagGreen(const unsigned long green)
+    template <typename T, typename U> inline T &ColorfieldBuilderTemplate<T, U>::tagGreen(const unsigned char green)
     {
-        this->PushTag(MUIA_Colorfield_Green, green);
+        this->PushTag(MUIA_Colorfield_Green, RGBColor::componentTo32Bit(green));
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &ColorfieldBuilderTemplate<T, U>::tagRed(const unsigned long red)
+    template <typename T, typename U> inline T &ColorfieldBuilderTemplate<T, U>::tagRed(const unsigned char red)
     {
-        this->PushTag(MUIA_Colorfield_Red, red);
+        this->PushTag(MUIA_Colorfield_Red, RGBColor::componentTo32Bit(red));
         return (T &)*this;
     }
 
     template <typename T, typename U>
-    inline T &ColorfieldBuilderTemplate<T, U>::tagRGB(const unsigned long red, const unsigned long green, const unsigned long blue)
+    inline T &ColorfieldBuilderTemplate<T, U>::tagRGB(const unsigned char red, const unsigned char green, const unsigned char blue)
     {
-        unsigned long rgb[3] = { red, green, blue };
+        unsigned long rgb[3] = { RGBColor::componentTo32Bit(red), RGBColor::componentTo32Bit(green), RGBColor::componentTo32Bit(blue) };
+        this->PushTag(MUIA_Colorfield_RGB, rgb);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ColorfieldBuilderTemplate<T, U>::tagRGB(const RGBColor &rgbColor)
+    {
+        unsigned long rgb[3] = { rgbColor.red32bit(), rgbColor.green32bit(), rgbColor.blue32bit() };
         this->PushTag(MUIA_Colorfield_RGB, rgb);
         return (T &)*this;
     }
