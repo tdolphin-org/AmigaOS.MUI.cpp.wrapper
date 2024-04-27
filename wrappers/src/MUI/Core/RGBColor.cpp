@@ -8,14 +8,21 @@
 
 namespace MUI
 {
-    RGBColor::RGBColor(unsigned char red, unsigned char green, unsigned char blue)
+    RGBColor::RGBColor()
+      : red(0)
+      , green(0)
+      , blue(0)
+    {
+    }
+
+    RGBColor::RGBColor(const unsigned char red, const unsigned char green, const unsigned char blue)
       : red(red)
       , green(green)
       , blue(blue)
     {
     }
 
-    RGBColor::RGBColor(unsigned long *rgb)
+    RGBColor::RGBColor(const unsigned long *rgb)
     {
         if (rgb == nullptr)
         {
@@ -26,6 +33,13 @@ namespace MUI
         red = from32Bit(rgb[0]);
         green = from32Bit(rgb[1]);
         blue = from32Bit(rgb[2]);
+    }
+
+    RGBColor::RGBColor(const MUI_RGBColor &rgbColor)
+    {
+        red = from32Bit(rgbColor.red);
+        green = from32Bit(rgbColor.green);
+        blue = from32Bit(rgbColor.blue);
     }
 
     unsigned long RGBColor::to32Bit(const unsigned char &colorComponent)

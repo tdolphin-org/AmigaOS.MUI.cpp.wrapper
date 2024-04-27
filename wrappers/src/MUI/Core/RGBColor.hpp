@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include <libraries/mui.h>
+
 namespace MUI
 {
     struct RGBColor
@@ -14,8 +16,10 @@ namespace MUI
         unsigned char green;
         unsigned char blue;
 
-        RGBColor(unsigned char red, unsigned char green, unsigned char blue);
-        RGBColor(unsigned long *rgb);
+        RGBColor();
+        RGBColor(const unsigned char red, const unsigned char green, const unsigned char blue);
+        RGBColor(const unsigned long *rgb);
+        RGBColor(const MUI_RGBColor &rgbColor);
 
         unsigned long red32bit() const
         {
