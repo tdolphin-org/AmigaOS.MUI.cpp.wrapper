@@ -107,7 +107,7 @@ ___
 | [MUIC_Palette](https://github.com/amiga-mui/muidev/wiki/MUI_Palette) | - | - | - | - | - |
 | [MUIC_Panel](https://github.com/amiga-mui/muidev/wiki/MUI_Panel) | [MUI::Panel](/wrappers/src/MUI/Panel.hpp) | Ready | Ready | not applicable | not applicable |
 | [MUIC_Penadjust](https://github.com/amiga-mui/muidev/wiki/MUI_Penadjust) | - | - | - | - | - |
-| [MUIC_Pendisplay](https://github.com/amiga-mui/muidev/wiki/MUI_Pendisplay) | - | - | - | - | - |
+| [MUIC_Pendisplay](https://github.com/amiga-mui/muidev/wiki/MUI_Pendisplay) | [MUI::Pendisplay](/wrappers/src/MUI/Pendisplay.hpp) | Ready | Ready | - | - |
 | [MUIC_Pixmap](https://github.com/amiga-mui/muidev/wiki/MUI_Pixmap) | - | - | - | - | - |
 | [MUIC_Popasl](https://github.com/amiga-mui/muidev/wiki/MUI_Popasl) | [MUI::Popasl](/wrappers/src/MUI/Popasl.hpp) | Ready | Ready | - | - |
 | [MUIC_Poplist](https://github.com/amiga-mui/muidev/wiki/MUI_Poplist) | - | - | - | - | - |
