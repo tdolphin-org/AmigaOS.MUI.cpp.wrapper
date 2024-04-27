@@ -19,20 +19,20 @@ namespace MUI
 
         unsigned long red32bit() const
         {
-            return componentTo32Bit(red);
+            return to32Bit(red);
         }
 
         unsigned long green32bit() const
         {
-            return componentTo32Bit(green);
+            return to32Bit(green);
         }
 
         unsigned long blue32bit() const
         {
-            return componentTo32Bit(blue);
+            return to32Bit(blue);
         }
 
-        static unsigned long componentTo32Bit(const unsigned char &component);
+        static unsigned long to32Bit(const unsigned char &component);
         static unsigned char from32Bit(const unsigned long &component);
     };
 }

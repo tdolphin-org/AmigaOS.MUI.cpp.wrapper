@@ -82,26 +82,26 @@ namespace MUI
 
     template <typename T, typename U> inline T &ColorfieldBuilderTemplate<T, U>::tagBlue(const unsigned char blue)
     {
-        this->PushTag(MUIA_Colorfield_Blue, RGBColor::componentTo32Bit(blue));
+        this->PushTag(MUIA_Colorfield_Blue, RGBColor::to32Bit(blue));
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &ColorfieldBuilderTemplate<T, U>::tagGreen(const unsigned char green)
     {
-        this->PushTag(MUIA_Colorfield_Green, RGBColor::componentTo32Bit(green));
+        this->PushTag(MUIA_Colorfield_Green, RGBColor::to32Bit(green));
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &ColorfieldBuilderTemplate<T, U>::tagRed(const unsigned char red)
     {
-        this->PushTag(MUIA_Colorfield_Red, RGBColor::componentTo32Bit(red));
+        this->PushTag(MUIA_Colorfield_Red, RGBColor::to32Bit(red));
         return (T &)*this;
     }
 
     template <typename T, typename U>
     inline T &ColorfieldBuilderTemplate<T, U>::tagRGB(const unsigned char red, const unsigned char green, const unsigned char blue)
     {
-        unsigned long rgb[3] = { RGBColor::componentTo32Bit(red), RGBColor::componentTo32Bit(green), RGBColor::componentTo32Bit(blue) };
+        unsigned long rgb[3] = { RGBColor::to32Bit(red), RGBColor::to32Bit(green), RGBColor::to32Bit(blue) };
         this->PushTag(MUIA_Colorfield_RGB, rgb);
         return (T &)*this;
     }

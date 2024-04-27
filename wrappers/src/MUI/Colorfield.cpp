@@ -10,16 +10,14 @@ namespace MUI
 {
     const std::string Colorfield::className = MUIC_Colorfield;
 
-    ColorfieldBuilder::ColorfieldBuilder() { }
-
     unsigned char Colorfield::getBlue() const
     {
-        return GetValueAsULong(MUIA_Colorfield_Blue);
+        return RGBColor::from32Bit(GetValueAsULong(MUIA_Colorfield_Blue));
     }
 
     unsigned char Colorfield::getGreen() const
     {
-        return GetValueAsULong(MUIA_Colorfield_Green);
+        return RGBColor::from32Bit(GetValueAsULong(MUIA_Colorfield_Green));
     }
 
     unsigned long Colorfield::getPen() const
@@ -29,7 +27,7 @@ namespace MUI
 
     unsigned char Colorfield::getRed() const
     {
-        return GetValueAsULong(MUIA_Colorfield_Red);
+        return RGBColor::from32Bit(GetValueAsULong(MUIA_Colorfield_Red));
     }
 
     RGBColor Colorfield::getRGB() const
@@ -40,19 +38,19 @@ namespace MUI
 
     Colorfield &Colorfield::setBlue(const unsigned char blue)
     {
-        SetValue(MUIA_Colorfield_Blue, RGBColor::componentTo32Bit(blue));
+        SetValue(MUIA_Colorfield_Blue, RGBColor::to32Bit(blue));
         return *this;
     }
 
     Colorfield &Colorfield::setGreen(const unsigned char green)
     {
-        SetValue(MUIA_Colorfield_Green, RGBColor::componentTo32Bit(green));
+        SetValue(MUIA_Colorfield_Green, RGBColor::to32Bit(green));
         return *this;
     }
 
     Colorfield &Colorfield::setRed(const unsigned char red)
     {
-        SetValue(MUIA_Colorfield_Red, RGBColor::componentTo32Bit(red));
+        SetValue(MUIA_Colorfield_Red, RGBColor::to32Bit(red));
         return *this;
     }
 
@@ -69,4 +67,6 @@ namespace MUI
         SetValue(MUIA_Colorfield_RGB, (void *)rgb);
         return *this;
     }
+
+    ColorfieldBuilder::ColorfieldBuilder() { }
 }

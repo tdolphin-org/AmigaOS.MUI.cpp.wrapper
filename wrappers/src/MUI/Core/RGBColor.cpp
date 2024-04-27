@@ -18,20 +18,24 @@ namespace MUI
     RGBColor::RGBColor(unsigned long *rgb)
     {
         if (rgb == nullptr)
+        {
+            red = green = blue = 0;
             return;
+        }
 
         red = from32Bit(rgb[0]);
         green = from32Bit(rgb[1]);
         blue = from32Bit(rgb[2]);
     }
 
-    unsigned long RGBColor::componentTo32Bit(const unsigned char &component)
+    unsigned long RGBColor::to32Bit(const unsigned char &colorComponent)
     {
-        return (unsigned long)component | (unsigned long)component << 8 | (unsigned long)component << 16 | (unsigned long)component << 24;
+        return (unsigned long)colorComponent | (unsigned long)colorComponent << 8 | (unsigned long)colorComponent << 16
+            | (unsigned long)colorComponent << 24;
     }
 
-    unsigned char RGBColor::from32Bit(const unsigned long &component)
+    unsigned char RGBColor::from32Bit(const unsigned long &colorComponent)
     {
-        return component >> 24;
+        return colorComponent >> 24;
     }
 }
