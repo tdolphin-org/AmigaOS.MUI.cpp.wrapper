@@ -13,10 +13,12 @@
 #include <proto/exec.h>
 
 #include "MUI/Application.hpp"
+#include "MUI/Coloradjust.hpp"
 #include "MUI/Core/MakeObject.hpp"
 #include "MUI/Core/MuiMasterBaseScope.hpp"
 #include "MUI/Group.hpp"
 #include "MUI/Notifier/Notifier.hpp"
+#include "MUI/Poppen.hpp"
 #include "MUI/Rectangle.hpp"
 #include "MUI/Text.hpp"
 #include "MUI/Window.hpp"
@@ -44,20 +46,26 @@ int main(int argc, char **argv)
               .tagHeight(240)
               .tagAltWidth(1024)
               .tagAltHeight(600)
-              .tagRootObject(MUI::GroupBuilder()
-                                 .tagChild(MUI::TextBuilder()
-                                               .tagShortHelp("help text")
-                                               .tagContents(MUIX_C "some centered text in MUI::Text\n\n" MUIX_PH " (c) 2022-2024 TDolphin")
-                                               .object())
-                                 .tagChild(closeButton)
-                                 .tagChild(itemsList)
-                                 .tagChild(MUI::GroupBuilder()
-                                               .horizontal()
-                                               .tagChild(MUI::MakeObject::SimpleButton("_Left Button"))
-                                               .tagChild(MUI::RectangleBuilder().object())
-                                               .tagChild(MUI::MakeObject::SimpleButton("_Right Button"))
-                                               .object())
-                                 .object())
+              .tagRootObject(
+                  MUI::GroupBuilder()
+                      .tagChild(MUI::TextBuilder()
+                                    .tagShortHelp("help text")
+                                    .tagContents(MUIX_C "some centered text in MUI::Text\n\n" MUIX_PH " (c) 2022-2024 TDolphin")
+                                    .object())
+                      .tagChild(closeButton)
+                      .tagChild(MUI::GroupBuilder()
+                                    .horizontal()
+                                    .tagChild(MUI::PoppenBuilder().tagFrame(MUI::Frame::Group).tagRGBcolor({ 0xff, 0x00, 0xff }).object())
+                                    .tagChild(MUI::ColoradjustBuilder().tagRGB(0xff, 0x00, 0xff).object())
+                                    .object())
+                      .tagChild(itemsList)
+                      .tagChild(MUI::GroupBuilder()
+                                    .horizontal()
+                                    .tagChild(MUI::MakeObject::SimpleButton("_Left Button"))
+                                    .tagChild(MUI::RectangleBuilder().object())
+                                    .tagChild(MUI::MakeObject::SimpleButton("_Right Button"))
+                                    .object())
+                      .object())
               .object();
 
     auto app = MUI::ApplicationBuilder()
