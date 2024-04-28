@@ -42,6 +42,13 @@ namespace MUI
         blue = from32Bit(rgbColor.blue);
     }
 
+    RGBColor::RGBColor(const unsigned long argb)
+    {
+        red = (argb & 0x00ff0000) >> 16;
+        green = (argb & 0x0000ff00) >> 8;
+        blue = (argb & 0x000000ff);
+    }
+
     unsigned long RGBColor::to32Bit(const unsigned char &colorComponent)
     {
         return (unsigned long)colorComponent | (unsigned long)colorComponent << 8 | (unsigned long)colorComponent << 16
