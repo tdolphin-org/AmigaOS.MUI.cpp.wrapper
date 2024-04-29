@@ -25,7 +25,7 @@ namespace MUI
     RGBColor Pendisplay::getRGBcolor() const
     {
         struct MUI_RGBColor *rgbColor = (struct MUI_RGBColor *)GetValueAsPtr(MUIA_Pendisplay_RGBcolor);
-        return rgbColor ? RGBColor() : RGBColor(*rgbColor);
+        return rgbColor == nullptr ? RGBColor() : RGBColor(*rgbColor);
     }
 
     MUI_PenSpec *Pendisplay::getSpec() const

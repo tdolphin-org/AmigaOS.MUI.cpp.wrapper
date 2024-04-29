@@ -37,6 +37,8 @@ namespace MUI
             return to32Bit(blue);
         }
 
+        unsigned long rgb() const;
+
         static unsigned long to32Bit(const unsigned char &component);
         static unsigned char from32Bit(const unsigned long &component);
     };
