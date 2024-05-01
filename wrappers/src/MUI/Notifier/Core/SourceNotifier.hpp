@@ -19,6 +19,7 @@
 #include "../Dest/DestListNotifier.hpp"
 #include "../Dest/DestMenuitemNotifier.hpp"
 #include "../Dest/DestNotifyNotifier.hpp"
+#include "../Dest/DestPendisplayNotifier.hpp"
 #include "../Dest/DestPropNotifier.hpp"
 #include "../Dest/DestRegisterNotifier.hpp"
 #include "../Dest/DestStringNotifier.hpp"
@@ -42,6 +43,7 @@ namespace MUI
         DestListNotifier notifyObject(const List &list);
         DestMenuitemNotifier notifyObject(const Menuitem &menuitem);
         DestNotifyNotifier notifyObject(const Notify &notify);
+        DestPendisplayNotifier notifyObject(const Pendisplay &pendisplay);
         DestPropNotifier notifyObject(const Prop &prop);
         DestRegisterNotifier notifyObject(const Register &registerObject);
         DestStringNotifier notifyObject(const String &string);

@@ -48,6 +48,11 @@ namespace MUI
         return NotifyNotifier<>(notify);
     }
 
+    PendisplayNotifier<> Notifier::from(const Pendisplay &pendisplay)
+    {
+        return PendisplayNotifier<>(pendisplay);
+    }
+
     PropNotifier<> Notifier::from(const Prop &prop)
     {
         return PropNotifier<>(prop);

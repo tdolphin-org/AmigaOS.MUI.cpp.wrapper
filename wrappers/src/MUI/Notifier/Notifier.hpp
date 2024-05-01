@@ -14,6 +14,7 @@
 #include "Source/ListNotifier.hpp"
 #include "Source/MenuitemNotifier.hpp"
 #include "Source/NotifyNotifier.hpp"
+#include "Source/PendisplayNotifier.hpp"
 #include "Source/PropNotifier.hpp"
 #include "Source/StringNotifier.hpp"
 #include "Source/WindowNotifier.hpp"
@@ -32,6 +33,7 @@ namespace MUI
         static ListNotifier<> from(const List &list);
         static MenuitemNotifier<> from(const Menuitem &menuitem);
         static NotifyNotifier<> from(const Notify &notify);
+        static PendisplayNotifier<> from(const Pendisplay &pendisplay);
         static PropNotifier<> from(const Prop &prop);
         static StringNotifier<> from(const String &string);
         static WindowNotifier<> from(const Window &window);

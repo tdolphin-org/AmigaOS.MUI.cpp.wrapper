@@ -58,6 +58,11 @@ namespace MUI
         return DestNotifyNotifier(*this, notify);
     }
 
+    DestPendisplayNotifier SourceNotifierRoot::notifyObject(const Pendisplay &pendisplay)
+    {
+        return DestPendisplayNotifier(*this, pendisplay);
+    }
+
     DestPropNotifier SourceNotifierRoot::notifyObject(const Prop &prop)
     {
         return DestPropNotifier(*this, prop);
