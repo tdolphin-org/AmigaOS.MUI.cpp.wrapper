@@ -83,7 +83,7 @@ namespace MUI
         {
         }
 
-#ifndef __MORPHOS__
+#ifdef MUIA_Menuitem_AISSName
         /// @brief [ @b MUIA_Menuitem_AISSName ]
         T &tagAISSName(const std::string &aissName);
 #endif
@@ -105,11 +105,13 @@ namespace MUI
         T &tagEnabled(const bool enabled);
         /// @brief [ @b MUIA_Menuitem_Exclude ]
         T &tagExclude(const long exclude);
-#ifndef __MORPHOS__
+#ifdef MUIA_Menuitem_FreeImage
         /// @brief [ @b MUIA_Menuitem_FreeImage ]
         /// Define whether the image object passed to MUIA_Menuitem_Image will be disposed automatically or not. If this attribute is set to
         /// false it is the responsibility of the application to dispose the image object itself. Default is true.
         T &tagFreeImage(const bool freeImage);
+#endif
+#ifdef MUIA_Menuitem_Image
         /// @brief [ @b MUIA_Menuitem_Image ]
         T &tagImage(const Image *image);
 #endif
@@ -134,7 +136,7 @@ namespace MUI
         MenuitemBuilder();
     };
 
-#ifndef __MORPHOS__
+#ifdef MUIA_Menuitem_AISSName
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagAISSName(const std::string &aissName)
     {
         this->PushTag(MUIA_Menuitem_AISSName, aissName);
@@ -178,13 +180,15 @@ namespace MUI
         return (T &)*this;
     }
 
-#ifndef __MORPHOS__
+#ifdef MUIA_Menuitem_FreeImage
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagFreeImage(const bool freeImage)
     {
         this->PushTag(MUIA_Menuitem_FreeImage, freeImage);
         return (T &)*this;
     }
+#endif
 
+#ifdef MUIA_Menuitem_Image
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagImage(const Image *image)
     {
         this->PushTag(MUIA_Menuitem_Image, image);

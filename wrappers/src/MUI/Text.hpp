@@ -82,7 +82,7 @@ namespace MUI
         /// When set to false, the contents will not be copied to a private buffer. By default is true, unless MUIA_Text_HiChar is also
         /// specified.
         T &tagCopy(const bool copy);
-#ifndef __MORPHOS__
+#ifdef MUIA_Text_Data
         /// @brief [ @b MUIA_Text_Data ]
         /// This attribute specifies the object's text wrapped in a Textdata object instead of directly as a string. This allows to set
         /// arbitrarily encoded text that will be converted to the local charset on the fly. The conversion will be done by invoking the
@@ -157,7 +157,7 @@ namespace MUI
         return (T &)*this;
     }
 
-#ifndef __MORPHOS__
+#ifdef MUIA_Text_Data
     template <typename T, typename U> inline T &TextBuilderTemplate<T, U>::tagData(const Object *data)
     {
         this->PushTag(MUIA_Text_Data, data);

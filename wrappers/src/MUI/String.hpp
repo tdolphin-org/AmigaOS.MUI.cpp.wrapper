@@ -70,7 +70,7 @@ namespace MUI
         T &tagFormat(const enum String_Format format);
         /// @brief [ @b MUIA_String_MaxLen ]
         T &tagMaxLen(const long maxLen);
-#ifdef __MORPHOS__
+#ifdef MUIA_String_Multiline
         /// @brief [ @b MUIA_String_Multiline ]
         T &tagMultiline(const bool multiline);
 #endif
@@ -110,7 +110,7 @@ namespace MUI
         return (T &)*this;
     }
 
-#ifdef __MORPHOS__
+#ifdef MUIA_String_Multiline
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagMultiline(const bool multiline)
     {
         this->PushTag(MUIA_String_Multiline, multiline);

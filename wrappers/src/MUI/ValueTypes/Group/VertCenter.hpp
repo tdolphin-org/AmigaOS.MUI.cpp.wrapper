@@ -12,7 +12,7 @@ namespace MUI
 {
     enum class Group_VertCenter
     {
-#ifndef __MORPHOS__
+#ifdef MUIV_Group_VertCenter_Top
         Top = MUIV_Group_VertCenter_Top,
         Center = MUIV_Group_VertCenter_Center,
         Bottom = MUIV_Group_VertCenter_Bottom

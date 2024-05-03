@@ -12,7 +12,7 @@ namespace MUI
 
     ScrollbarBuilder::ScrollbarBuilder() { }
 
-#ifndef __MORPHOS__
+#ifdef MUIA_Scrollbar_IncDecSize
     unsigned long Scrollbar::getIncDecSize() const
     {
         return GetValueAsULong(MUIA_Scrollbar_IncDecSize);

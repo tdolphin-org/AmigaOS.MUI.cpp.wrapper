@@ -10,7 +10,7 @@
 
 namespace MUI
 {
-#ifndef __MORPHOS__
+#ifdef MUIV_PointerType_Parent
     enum class PointerType
     {
         Parent = MUIV_PointerType_Parent,

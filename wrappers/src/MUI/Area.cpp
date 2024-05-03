@@ -30,7 +30,7 @@ namespace MUI
         return GetValueAsObjectPtr(MUIA_ContextMenu);
     }
 
-#ifndef __MORPHOS__
+#ifdef MUIA_ContextMenuHook
     Hook *Area::getContextMenuHook() const
     {
         return GetValueAsHookPtr(MUIA_ContextMenuHook);
@@ -137,7 +137,7 @@ namespace MUI
         return GetValueAsLong(MUIA_InnerTop);
     }
 
-#ifndef __MORPHOS__
+#ifdef MUIA_KnowsDisabled
     bool Area::isKnowsDisabled() const
     {
         return GetValueAsBool(MUIA_KnowsDisabled);
@@ -149,7 +149,7 @@ namespace MUI
         return GetValueAsLong(MUIA_LeftEdge);
     }
 
-#ifndef __MORPHOS__
+#ifdef MUIA_PointerType
     enum PointerType Area::getPointerType() const
     {
         return (enum PointerType)GetValueAsLong(MUIA_PointerType);
@@ -270,7 +270,7 @@ namespace MUI
         return *this;
     }
 
-#ifndef __MORPHOS__
+#ifdef MUIA_PointerType
     Area &Area::setPointerType(const enum PointerType pointerType)
     {
         SetValue(MUIA_PointerType, (long)pointerType);
@@ -344,7 +344,7 @@ namespace MUI
         return *this;
     }
 
-#ifndef __MORPHOS__
+#ifdef MUIM_Text
     Area &Area::Text(const long left, const long top, const long width, const long height, const std::string &text, const long len,
                      const std::string &preparse, const char ulchar)
     {
@@ -352,7 +352,9 @@ namespace MUI
                  ulchar);
         return *this;
     }
+#endif
 
+#ifdef MUIM_TextDim
     Dim Area::TextDim(const std::string &text, const long len, const std::string &preparse, const long flags)
     {
         return Dim(DoMethod(muiObject(), MUIM_TextDim, text.c_str(), len, preparse.empty() ? nullptr : preparse.c_str(), flags));

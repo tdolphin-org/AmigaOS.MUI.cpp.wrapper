@@ -56,7 +56,7 @@ namespace MUI
         long getBottomEdge() const;
         /// @brief [ @b MUIA_ContextMenu ]
         Object *getContextMenu() const;
-#ifndef __MORPHOS__
+#ifdef MUIA_ContextMenuHook
         /// @brief [ @b MUIA_ContextMenuHook ]
         Hook *getContextMenuHook() const;
 #endif
@@ -100,13 +100,13 @@ namespace MUI
         long getInnerRight() const;
         /// @brief [ @b MUIA_InnerTop ]
         long getInnerTop() const;
-#ifndef __MORPHOS__
+#ifdef MUIA_KnowsDisabled
         /// @brief [ @b MUIA_KnowsDisabled ]
         bool isKnowsDisabled() const;
 #endif
         /// @brief [ @b MUIA_LeftEdge ]
         long getLeftEdge() const;
-#ifndef __MORPHOS__
+#ifdef MUIA_PointerType
         /// @brief [ @b MUIA_PointerType ]
         enum PointerType getPointerType() const;
 #endif
@@ -156,7 +156,7 @@ namespace MUI
         Area &setFont(const enum Font font);
         /// @brief [ @b MUIA_HorizWeight ]
         Area &setHorizWeight(const short horizWeight);
-#ifndef __MORPHOS__
+#ifdef MUIA_PointerType
         /// @brief [ @b MUIA_PointerType ]
         Area &setPointerType(const enum PointerType pointerType);
 #endif
@@ -190,7 +190,7 @@ namespace MUI
         /// @brief [ @b MUIM_Relayout, flags = 0 ] Perform a full relayout of the object in case it is visible. Actually the object will be
         /// completely hidden and shown again to trigger a full redraw as well.
         Area &Relayout();
-#ifndef __MORPHOS__
+#ifdef MUIM_Text
         /// @brief [ @b MUIM_Text ] This function is a preferred way to render text inside the object. It uses the object's font and it's
         /// color (if not specified in the string itself).
         /// @param left rectangle to render the text into
@@ -203,6 +203,8 @@ namespace MUI
         /// @param ulchar character to be underlined (i.e. as shortcut), pass 0 for no underlining
         Area &Text(const long left, const long top, const long width, const long height, const std::string &text, const long len,
                    const std::string &preparse, const char ulchar = 0);
+#endif
+#ifdef MUIM_TextDim
         /// @brief [ @b MUIM_TextDim ] Use this function to measure the area which will be required to render a text of the given length.
         /// All facilities of MUI's text engine are allowed for both the text and the preparse string. Refer to MUIA_Text_Contents for all
         /// possible sequences.
@@ -266,7 +268,7 @@ namespace MUI
         /// @brief [ @b MUIA_InputMode ]
         /// @param inputMode enum InputMode
         T &tagInputMode(const enum InputMode inputMode);
-#ifndef __MORPHOS__
+#ifdef MUIA_PointerType
         /// @brief [ @b MUIA_PointerType ]
         /// @param font enum PointerType
         T &tagPointerType(const enum PointerType pointerType);
@@ -405,7 +407,7 @@ namespace MUI
         return (T &)*this;
     }
 
-#ifndef __MORPHOS__
+#ifdef MUIA_PointerType
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagPointerType(const enum PointerType pointerType)
     {
         this->PushTag(MUIA_PointerType, (long)pointerType);

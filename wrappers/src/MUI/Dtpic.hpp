@@ -33,7 +33,7 @@ namespace MUI
         long getAlpha() const;
         /// @brief [ @b MUIA_Dtpic_DarkenSelState ]
         bool isDarkenSelState() const;
-#ifndef __MORPHOS__
+#ifdef MUIA_Dtpic_Fade
         /// @brief [ @b MUIA_Dtpic_Fade ]
         long getFade() const;
 #endif
@@ -66,7 +66,7 @@ namespace MUI
         /// @brief [ @b MUIA_Dtpic_DarkenSelState ]
         /// If set to TRUE the image's brightness will decreased by 50% whenever the left mouse button is pressed on the object.
         T &tagDarkenSelState(const bool darkenSelState);
-#ifndef __MORPHOS__
+#ifdef MUIA_Dtpic_Fade
         /// @brief [ @b MUIA_Dtpic_Fade ]
         /// Setting this attribute to a positive value while also changing the image's alpha value will let Dtpic class do a fade between
         /// the previous and the new alpha value. This allows images to be faded in our out. Depending on the fading direction between the
@@ -103,7 +103,7 @@ namespace MUI
         return (T &)*this;
     }
 
-#ifndef __MORPHOS__
+#ifdef MUIA_Dtpic_Fade
     template <typename T, typename U> inline T &DtpicBuilderTemplate<T, U>::tagFade(const long fade)
     {
         this->PushTag(MUIA_Dtpic_Fade, fade);

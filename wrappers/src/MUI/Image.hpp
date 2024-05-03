@@ -66,7 +66,7 @@ namespace MUI
 
         /// @brief [ @b MUIA_Image_BuiltinSpec ]
         T &tagBuiltinSpec(const unsigned long builtinSpec);
-#ifndef __MORPHOS__
+#ifdef MUIA_Image_CopySpec
         /// @brief [ @b MUIA_Image_CopySpec ]
         T &tagCopySpec(const bool copySpec);
 #endif
@@ -111,7 +111,7 @@ namespace MUI
         return (T &)*this;
     }
 
-#ifndef __MORPHOS__
+#ifdef MUIA_Image_CopySpec
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagCopySpec(const bool copySpec /* = true */)
     {
         this->PushTag(MUIA_Image_CopySpec, copySpec);

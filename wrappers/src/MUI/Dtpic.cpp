@@ -22,7 +22,7 @@ namespace MUI
         return GetValueAsLong(MUIA_Dtpic_DarkenSelState);
     }
 
-#ifndef __MORPHOS__
+#ifdef MUIA_Dtpic_Fade
     long Dtpic::getFade() const
     {
         return GetValueAsBool(MUIA_Dtpic_Fade);
@@ -45,7 +45,7 @@ namespace MUI
         return *this;
     }
 
-#ifndef __MORPHOS__
+#ifdef MUIA_Dtpic_Fade
     Dtpic &Dtpic::setFade(const long fade)
     {
         SetValue(MUIA_Dtpic_Fade, fade);

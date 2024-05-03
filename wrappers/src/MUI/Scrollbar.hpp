@@ -31,14 +31,13 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-#ifndef __MORPHOS__
+#ifdef MUIA_Scrollbar_IncDecSize
         /// @brief [ @b MUIA_Scrollbar_IncDecSize ]
         unsigned long getIncDecSize() const;
 
         /// @brief [ @b MUIA_Scrollbar_IncDecSize ]
         Scrollbar &setIncDecSize(unsigned long incDecSize);
 #endif
-
     };
 
     template <typename T, typename U> class ScrollbarBuilderTemplate : public GroupBuilderTemplate<T, U>
@@ -48,7 +47,7 @@ namespace MUI
           : GroupBuilderTemplate<T, U>(uniqueId, muiClassName)
         {
         }
-#ifndef __MORPHOS__
+#ifdef MUIA_Scrollbar_IncDecSize
         /// @brief [ @b MUIA_Scrollbar_IncDecSize ]
         T &tagIncDecSize(const unsigned long incDecSize);
 #endif
@@ -62,7 +61,7 @@ namespace MUI
         ScrollbarBuilder();
     };
 
-#ifndef __MORPHOS__
+#ifdef MUIA_Scrollbar_IncDecSize
     template <typename T, typename U> inline T &ScrollbarBuilderTemplate<T, U>::tagIncDecSize(const unsigned long incDecSize)
     {
         this->PushTag(MUIA_Scrollbar_IncDecSize, incDecSize);
