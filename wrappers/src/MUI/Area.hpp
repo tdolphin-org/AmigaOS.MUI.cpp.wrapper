@@ -204,7 +204,7 @@ namespace MUI
         Area &Text(const long left, const long top, const long width, const long height, const std::string &text, const long len,
                    const std::string &preparse, const char ulchar = 0);
 #endif
-#ifdef MUIM_TextDim
+#ifndef __MORPHOS__
         /// @brief [ @b MUIM_TextDim ] Use this function to measure the area which will be required to render a text of the given length.
         /// All facilities of MUI's text engine are allowed for both the text and the preparse string. Refer to MUIA_Text_Contents for all
         /// possible sequences.

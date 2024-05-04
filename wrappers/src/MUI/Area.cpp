@@ -354,7 +354,7 @@ namespace MUI
     }
 #endif
 
-#ifdef MUIM_TextDim
+#ifndef __MORPHOS__
     Dim Area::TextDim(const std::string &text, const long len, const std::string &preparse, const long flags)
     {
         return Dim(DoMethod(muiObject(), MUIM_TextDim, text.c_str(), len, preparse.empty() ? nullptr : preparse.c_str(), flags));
