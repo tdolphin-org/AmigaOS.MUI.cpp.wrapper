@@ -19,7 +19,6 @@
 #include "MUI/Group.hpp"
 #include "MUI/Notifier/Notifier.hpp"
 #include "MUI/Poppen.hpp"
-#include "MUI/Rectangle.hpp"
 #include "MUI/Text.hpp"
 #include "MUI/Window.hpp"
 
@@ -35,7 +34,9 @@ int main(int argc, char **argv)
     auto itemsList = MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).object();
     itemsList.InsertTop((const void **)items);
 
-    auto closeButton = MUI::MakeObject::SimpleButton("_Quit Application");
+    MUI::Area closeButton = MUI::MakeObject::SimpleButton("_Quit Application");
+    MUI::Area leftButton = MUI::MakeObject::SimpleButton("_Open subwindow");
+    MUI::Area closeSubWindowButton = MUI::MakeObject::SimpleButton("_Close Window");
 
     auto mainWindow
         = MUI::WindowBuilder()
@@ -43,7 +44,7 @@ int main(int argc, char **argv)
               .tagScreenTitle("Application Screen Title")
               .tagID("MAIN")
               .tagWidth(600)
-              .tagHeight(240)
+              .tagHeight(300)
               .tagAltWidth(1024)
               .tagAltHeight(600)
               .tagRootObject(
@@ -61,13 +62,30 @@ int main(int argc, char **argv)
                       .tagChild(itemsList)
                       .tagChild(MUI::GroupBuilder()
                                     .horizontal()
-                                    .tagChild(MUI::MakeObject::SimpleButton("_Left Button"))
-                                    .tagChild(MUI::RectangleBuilder().object())
+                                    .tagChild(leftButton)
+                                    .tagChild(MUI::MakeObject::HVSpace())
                                     .tagChild(MUI::MakeObject::SimpleButton("_Right Button"))
                                     .object())
                       .object())
               .object();
 
+    auto subWindow
+        = MUI::WindowBuilder()
+              .tagTitle("Sub Window Title")
+              .tagScreenTitle("Application Screen Title for sub window")
+              .tagID("SUBW")
+              .tagWidth(400)
+              .tagHeight(300)
+              .tagRootObject(
+                  MUI::GroupBuilder()
+                      .vertical()
+                      .tagChild(MUI::MakeObject::HVSpace())
+                      .tagChild(MUI::MakeObject::HCenter(closeSubWindowButton))
+                      .tagChild(MUI::MakeObject::HVSpace())
+                      .object())
+              .object();
+
+                                    
     auto app = MUI::ApplicationBuilder()
                    .tagAuthor("rz")
                    .tagBase("basic.example.bin")
@@ -76,14 +94,19 @@ int main(int argc, char **argv)
                    .tagTitle("Basic Example")
                    .tagVersion("$VER: 1.0")
                    .tagWindow(mainWindow)
+                   .tagWindows({subWindow})
                    .object();
 
     // do MUI_DisposeObject(..) on destructor
     MUI::ApplicationScope application(app);
 
-    // events
+    // events/notifications
     MUI::Notifier::from(mainWindow).onCloseRequest(true).notifyObject(app).returnIDQuit();
-    MUI::Notifier::from(MUI::Area(closeButton)).onPressed(false).notifyObject(app).returnIDQuit();
+    MUI::Notifier::from(closeButton).onPressed(false).notifyObject(app).returnIDQuit();
+    MUI::Notifier::from(leftButton).onPressed(false).notifyObject(subWindow).setOpen(true);
+
+    MUI::Notifier::from(subWindow).onCloseRequest(true).notifySelf().setOpen(false);
+    MUI::Notifier::from(closeSubWindowButton).onPressed(false).notifyObject(subWindow).setOpen(false);
 
     // list of application windows
     for (auto window : app.getWindowList())
