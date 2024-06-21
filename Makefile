@@ -7,6 +7,7 @@
 SUB_PROJECTS = wrappers tests examples
 
 all:
+	@echo "# Available actions:"
 	@echo "make aos_m68k - AmigaOS m68k build (cross compilation on linux)"
 	@echo "make mos_ppc - MorphOS PowerPC build"
 	@echo "make clean - remove all obj files and lib file"

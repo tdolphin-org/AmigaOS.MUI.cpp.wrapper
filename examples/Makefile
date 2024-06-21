@@ -7,9 +7,9 @@
 #
 
 all:
-	@echo "# to build Examples"
+	@echo "# Available actions:"
 	@echo "make amigaos_m68k - AmigaOS m68k build (cross compilation on linux)"
-	@echo "make morphoss_ppc - MorphOS PowerPC build"
+	@echo "make morphos_ppc - MorphOS PowerPC build"
 	@echo "make clean - remove all obj files"
 
 amigaos_m68k:
