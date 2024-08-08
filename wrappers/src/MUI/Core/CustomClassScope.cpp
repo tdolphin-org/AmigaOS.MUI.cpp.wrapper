@@ -32,7 +32,7 @@ namespace MUI
                                               dispatcher ? (APTR)dispatcher : ENTRY(Empty_Dispatcher)); // nullptr
         if (mpCustomClass == nullptr)
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + " MUI_CreateCustomClass(" + className + ") failed!";
+            auto error = std::string { __PRETTY_FUNCTION__ } + " MUI_CreateCustomClass(" + className + ") failed!";
             throw std::runtime_error(error);
         }
     }

@@ -32,7 +32,7 @@ namespace MUI
     {
         if (pMuiObject == nullptr)
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + " mui object is nullptr!";
+            auto error = std::string { __PRETTY_FUNCTION__ } + " mui object is nullptr!";
             throw std::invalid_argument(error);
         }
 

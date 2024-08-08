@@ -54,7 +54,7 @@ namespace AOS
             case ValueType::ValuePtrArray:
                 return (ULONG)mValue.pArray;
             default:
-                std::string error = (std::string) __PRETTY_FUNCTION__ + " undefined type: " + std::to_string(static_cast<int>(mType));
+                auto error = std::string { __PRETTY_FUNCTION__ } + " undefined type: " + std::to_string(static_cast<int>(mType));
                 throw std::runtime_error(error);
         }
     }

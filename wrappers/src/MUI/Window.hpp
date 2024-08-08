@@ -206,7 +206,7 @@ namespace MUI
         // So check if there is tag for RootObject (not null).
         if (!hasRootObject)
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing RootObject for Window!";
+            auto error = std::string { __PRETTY_FUNCTION__ } + ", missing RootObject for Window!";
             throw std::runtime_error(error);
         }
 
@@ -220,7 +220,7 @@ namespace MUI
         // So check if there is tag for RootObject (not null).
         if (!hasRootObject)
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing RootObject for Window!";
+            auto error = std::string { __PRETTY_FUNCTION__ } + ", missing RootObject for Window!";
             throw std::runtime_error(error);
         }
 

@@ -81,7 +81,7 @@ namespace MUI::MCC
         // So check if there is tag for NList (MUIA_NListview_NList).
         if (!hasNListObject)
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing NList object for NListview!";
+            auto error = std::string { __PRETTY_FUNCTION__ } + ", missing NList object for NListview!";
             throw std::runtime_error(error);
         }
 
@@ -94,7 +94,7 @@ namespace MUI::MCC
         // So check if there is tag for NList (MUIA_NListview_NList).
         if (!hasNListObject)
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing NList object for NListview!";
+            auto error = std::string { __PRETTY_FUNCTION__ } + ", missing NList object for NListview!";
             throw std::runtime_error(error);
         }
 

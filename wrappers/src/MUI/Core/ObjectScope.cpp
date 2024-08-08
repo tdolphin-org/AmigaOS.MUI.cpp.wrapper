@@ -24,7 +24,7 @@ namespace MUI
 #endif
         if (pObject == nullptr)
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + " nullptr Object!";
+            auto error = std::string { __PRETTY_FUNCTION__ } + " nullptr Object!";
             throw std::runtime_error(error);
         }
 

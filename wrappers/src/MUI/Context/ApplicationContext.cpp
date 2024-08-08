@@ -25,7 +25,7 @@ namespace MUI
         mpMuiApplicationObject = notify.getApplicationObject();
         if (mpMuiApplicationObject == nullptr)
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + " getApplicationObject() returns null!";
+            auto error = std::string { __PRETTY_FUNCTION__ } + " getApplicationObject() returns null!";
             throw std::runtime_error(error);
         }
     }
@@ -62,7 +62,7 @@ namespace MUI
             if (window.getID() == id)
                 return window;
 
-        std::string error = (std::string) __PRETTY_FUNCTION__ + " undefined window " + id.toString() + "!";
+        auto error = std::string { __PRETTY_FUNCTION__ } + " undefined window " + id.toString() + "!";
         throw std::runtime_error(error);
     }
 }

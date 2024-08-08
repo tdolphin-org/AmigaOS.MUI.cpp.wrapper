@@ -71,7 +71,7 @@ namespace MUI
     {
         if (!mWindow.Open().isOpen())
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + ", failed to open window!";
+            auto error = std::string { __PRETTY_FUNCTION__ } + ", failed to open window!";
             throw std::runtime_error(error);
         }
     }

@@ -160,7 +160,7 @@ namespace MUI
         // So check if there is tag for List (not null).
         if (!hasListObject)
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing List object for Listview!";
+            auto error = std::string { __PRETTY_FUNCTION__ } + ", missing List object for Listview!";
             throw std::runtime_error(error);
         }
 
@@ -174,7 +174,7 @@ namespace MUI
         // So check if there is tag for List (not null).
         if (!hasListObject)
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + ", missing List object for Listview!";
+            auto error = std::string { __PRETTY_FUNCTION__ } + ", missing List object for Listview!";
             throw std::runtime_error(error);
         }
 

@@ -37,8 +37,8 @@ const char *StringStorageCore::Add(unsigned long &objectId, Tag tagName, const s
     if (outerIterator != mObjectIdToMap.end())
         if (outerIterator->second.find(tagName) != outerIterator->second.end())
         {
-            std::string error = "String Storage Collector: Add(" + std::to_string(objectId) + "," + AOS::TagUtil::toString(tagName) + ","
-                + string + ") .. tagName for objectId already exists!";
+            auto error = "String Storage Collector: Add(" + std::to_string(objectId) + "," + AOS::TagUtil::toString(tagName) + "," + string
+                + ") .. tagName for objectId already exists!";
             throw new std::runtime_error(error);
         }
 
@@ -55,14 +55,14 @@ void StringStorageCore::Invalidate(const unsigned long objectId)
 
     if (objectId == 0)
     {
-        std::string error = "String Storage Collector: Invalidate(" + std::to_string(objectId) + ") .. objectId == 0!";
+        auto error = "String Storage Collector: Invalidate(" + std::to_string(objectId) + ") .. objectId == 0!";
         throw new std::runtime_error(error);
     }
 
     const auto &outerIterator = mObjectIdToMap.find(objectId);
     if (outerIterator == mObjectIdToMap.end())
     {
-        std::string error = "String Storage Collector: Invalidate(" + std::to_string(objectId) + ") .. map not found for objectId!";
+        auto error = "String Storage Collector: Invalidate(" + std::to_string(objectId) + ") .. map not found for objectId!";
         throw new std::runtime_error(error);
     }
 
@@ -77,7 +77,7 @@ void StringStorageCore::FinalizeObject(const unsigned long objectId, const Objec
 
     if (objectId == 0 || object == nullptr)
     {
-        std::string error = "String Storage Collector: FinalizeObject(" + std::to_string(objectId) + ","
+        auto error = "String Storage Collector: FinalizeObject(" + std::to_string(objectId) + ","
             + std::to_string(reinterpret_cast<uintptr_t>(object)) + ") .. objectId == 0 or object is nullptr!";
         throw new std::runtime_error(error);
     }
@@ -85,7 +85,7 @@ void StringStorageCore::FinalizeObject(const unsigned long objectId, const Objec
     const auto &outerIterator = mObjectIdToMap.find(objectId);
     if (outerIterator == mObjectIdToMap.end())
     {
-        std::string error = "String Storage Collector: FinalizeObject(" + std::to_string(objectId) + ") .. map not found for objectId!";
+        auto error = "String Storage Collector: FinalizeObject(" + std::to_string(objectId) + ") .. map not found for objectId!";
         throw new std::runtime_error(error);
     }
 

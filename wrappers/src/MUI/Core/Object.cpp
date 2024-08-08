@@ -36,7 +36,7 @@ namespace MUI
 #endif
         if (pObject == nullptr)
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + " MUI_NewObjectA(" + className + ") returned nullptr";
+            auto error = std::string { __PRETTY_FUNCTION__ } + " MUI_NewObjectA(" + className + ") returned nullptr";
             throw std::invalid_argument(error);
         }
 
@@ -62,7 +62,7 @@ namespace MUI
 #endif
         if (pObject == nullptr)
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + " NewObjectA(" + className + ") returned nullptr";
+            auto error = std::string { __PRETTY_FUNCTION__ } + " NewObjectA(" + className + ") returned nullptr";
             throw std::invalid_argument(error);
         }
 

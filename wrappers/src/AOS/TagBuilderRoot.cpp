@@ -20,7 +20,7 @@ namespace AOS
     {
         if (mMuiObjects.find(const_cast<void *>(pObject)) != mMuiObjects.end())
         {
-            std::string error = (std::string) __PRETTY_FUNCTION__ + " tag " + AOS::TagUtil::toString(tagName) + ", object pointer "
+            auto error = std::string { __PRETTY_FUNCTION__ } + " tag " + AOS::TagUtil::toString(tagName) + ", object pointer "
                 + ToString::FromDataPointer(pObject) + " already added by some MUI object!";
             std::cerr << error << std::endl; // FIXME remove it, after catching exceptions will start to work
             throw std::invalid_argument(error);
@@ -33,8 +33,7 @@ namespace AOS
     {
         if (mTagKeys.find(tagName) != mTagKeys.end())
         {
-            std::string error
-                = (std::string) __PRETTY_FUNCTION__ + " tag " + AOS::TagUtil::toString(tagName) + " already added by TagBuilder!";
+            auto error = std::string { __PRETTY_FUNCTION__ } + " tag " + AOS::TagUtil::toString(tagName) + " already added by TagBuilder!";
             std::cerr << error << std::endl; // FIXME remove it, after catching exceptions will start to work
             throw std::invalid_argument(error);
         }
