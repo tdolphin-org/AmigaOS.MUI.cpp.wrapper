@@ -18,17 +18,23 @@ namespace MUI
     {
         friend class NullObject;
 
-        Object *mpMuiObject;
+        Object *const mpMuiObject;
 
         /// @brief can be used only for NullObject
         Root();
 
       public:
-        Root(const Object *pMuiObject);
+        explicit Root(Object *pMuiObject);
 
-        operator Object *()
+        Root(const Root &other) = default;
+
+        ~Root() = default; // no action on pointer 'pMuiObject', object is deleted by MUI itself
+
+        Root &operator=(const Root &other) = delete;
+
+        operator Object *() const
         {
-            return mpMuiObject;
+            return muiObject();
         }
 
         Object *muiObject() const

@@ -28,15 +28,14 @@ namespace MUI
     {
     }
 
-    Root::Root(const Object *pMuiObject)
+    Root::Root(Object *pMuiObject)
+      : mpMuiObject { pMuiObject }
     {
         if (pMuiObject == nullptr)
         {
             auto error = std::string { __PRETTY_FUNCTION__ } + " mui object is nullptr!";
             throw std::invalid_argument(error);
         }
-
-        mpMuiObject = (Object *)pMuiObject;
     }
 
     std::string Root::GetValueAsString(const unsigned long tagName) const
