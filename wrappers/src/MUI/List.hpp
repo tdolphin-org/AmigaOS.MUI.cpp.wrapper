@@ -23,7 +23,7 @@ namespace MUI
     class List : public Area
     {
       public:
-        List(const Object *pMuiObject)
+        List(Object *pMuiObject)
           : Area(pMuiObject)
         {
         }

@@ -13,7 +13,7 @@ namespace MUI
     class Virtgroup : public Group
     {
       public:
-        Virtgroup(const Object *pMuiObject)
+        Virtgroup(Object *pMuiObject)
           : Group(pMuiObject)
         {
         }

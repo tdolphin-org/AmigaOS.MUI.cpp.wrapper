@@ -13,7 +13,7 @@ namespace MUI
     class Menustrip : public Family
     {
       public:
-        Menustrip(const Object *pMuiObject)
+        Menustrip(Object *pMuiObject)
           : Family(pMuiObject)
         {
         }

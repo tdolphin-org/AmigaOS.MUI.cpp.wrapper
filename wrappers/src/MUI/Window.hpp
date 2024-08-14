@@ -21,7 +21,7 @@ namespace MUI
     class Window : public Notify
     {
       public:
-        Window(const Object *pMuiObject)
+        Window(Object *pMuiObject)
           : Notify(pMuiObject)
         {
         }

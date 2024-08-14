@@ -13,7 +13,7 @@ namespace MUI
     class Floattext : public List
     {
       public:
-        Floattext(const Object *pMuiObject)
+        Floattext(Object *pMuiObject)
           : List(pMuiObject)
         {
         }

@@ -13,7 +13,7 @@ namespace MUI
     class Popstring : public Group
     {
       public:
-        Popstring(const Object *pMuiObject)
+        Popstring(Object *pMuiObject)
           : Group(pMuiObject)
         {
         }

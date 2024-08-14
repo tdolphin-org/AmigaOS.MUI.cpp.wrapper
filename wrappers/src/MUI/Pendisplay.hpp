@@ -15,7 +15,7 @@ namespace MUI
     class Pendisplay : public Area
     {
       public:
-        Pendisplay(const Object *pMuiObject)
+        Pendisplay(Object *pMuiObject)
           : Area(pMuiObject)
         {
         }

@@ -13,7 +13,7 @@ namespace MUI
     class Rectangle : public Area
     {
       public:
-        Rectangle(const Object *pMuiObject)
+        Rectangle(Object *pMuiObject)
           : Area(pMuiObject)
         {
         }

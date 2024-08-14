@@ -15,7 +15,7 @@ namespace MUI
     class Radio : public Group
     {
       public:
-        Radio(const Object *pMuiObject)
+        Radio(Object *pMuiObject)
           : Group(pMuiObject)
         {
         }

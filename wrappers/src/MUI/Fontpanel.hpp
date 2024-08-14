@@ -17,7 +17,7 @@ namespace MUI
     class Fontpanel : public Panel
     {
       public:
-        Fontpanel(const Object *pMuiObject)
+        Fontpanel(Object *pMuiObject)
           : Panel(pMuiObject)
         {
         }

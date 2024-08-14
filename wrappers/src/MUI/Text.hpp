@@ -15,7 +15,7 @@ namespace MUI
     class Text : public Area
     {
       public:
-        Text(const Object *pMuiObject)
+        Text(Object *pMuiObject)
           : Area(pMuiObject)
         {
         }

@@ -15,7 +15,7 @@ namespace MUI
     class Popasl : public Popstring
     {
       public:
-        Popasl(const Object *pMuiObject)
+        Popasl(Object *pMuiObject)
           : Popstring(pMuiObject)
         {
         }

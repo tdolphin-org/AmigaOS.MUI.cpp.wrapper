@@ -13,7 +13,7 @@ namespace MUI
     class Image : public Area
     {
       public:
-        Image(const Object *pMuiObject)
+        Image(Object *pMuiObject)
           : Area(pMuiObject)
         {
         }

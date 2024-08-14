@@ -13,7 +13,7 @@ namespace MUI
     class Scrollgroup : public Group
     {
       public:
-        Scrollgroup(const Object *pMuiObject)
+        Scrollgroup(Object *pMuiObject)
           : Group(pMuiObject)
         {
         }

@@ -14,7 +14,7 @@ namespace MUI
     class Prop : public Gadget
     {
       public:
-        Prop(const Object *pMuiObject)
+        Prop(Object *pMuiObject)
           : Gadget(pMuiObject)
         {
         }

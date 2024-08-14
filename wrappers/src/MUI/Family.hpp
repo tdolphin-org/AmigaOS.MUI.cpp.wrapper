@@ -16,7 +16,7 @@ namespace MUI
     class Family : public Notify
     {
       public:
-        Family(const Object *pMuiObject)
+        Family(Object *pMuiObject)
           : Notify(pMuiObject)
         {
         }

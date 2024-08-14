@@ -13,7 +13,7 @@ namespace MUI
     class Numeric : public Area
     {
       public:
-        Numeric(const Object *pMuiObject)
+        Numeric(Object *pMuiObject)
           : Area(pMuiObject)
         {
         }

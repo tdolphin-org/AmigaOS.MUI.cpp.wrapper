@@ -17,7 +17,7 @@ namespace MUI
     class Cycle : public Group
     {
       public:
-        Cycle(const Object *pMuiObject)
+        Cycle(Object *pMuiObject)
           : Group(pMuiObject)
         {
         }

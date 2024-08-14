@@ -15,7 +15,7 @@ namespace MUI
     class Scrollbar : public Group
     {
       public:
-        Scrollbar(const Object *pMuiObject)
+        Scrollbar(Object *pMuiObject)
           : Group(pMuiObject)
         {
         }

@@ -13,7 +13,7 @@ namespace MUI
     class Menu : public Family
     {
       public:
-        Menu(const Object *pMuiObject)
+        Menu(Object *pMuiObject)
           : Family(pMuiObject)
         {
         }

@@ -15,7 +15,7 @@ namespace MUI
     class Coloradjust : public Group
     {
       public:
-        Coloradjust(const Object *pMuiObject)
+        Coloradjust(Object *pMuiObject)
           : Group(pMuiObject)
         {
         }

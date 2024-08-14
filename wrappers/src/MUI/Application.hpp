@@ -17,7 +17,7 @@ namespace MUI
     class Application : public Notify
     {
       public:
-        Application(const Object *pMuiObject)
+        Application(Object *pMuiObject)
           : Notify(pMuiObject)
         {
         }
