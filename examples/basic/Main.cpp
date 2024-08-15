@@ -34,9 +34,9 @@ int main(int argc, char **argv)
     auto itemsList = MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).object();
     itemsList.InsertTop((const void **)items);
 
-    MUI::Area closeButton = MUI::MakeObject::SimpleButton("_Quit Application");
-    MUI::Area leftButton = MUI::MakeObject::SimpleButton("_Open subwindow");
-    MUI::Area closeSubWindowButton = MUI::MakeObject::SimpleButton("_Close Window");
+    MUI::Area closeButton { MUI::MakeObject::SimpleButton("_Quit Application") };
+    MUI::Area leftButton { MUI::MakeObject::SimpleButton("_Open subwindow") };
+    MUI::Area closeSubWindowButton { MUI::MakeObject::SimpleButton("_Close Window") };
 
     auto mainWindow
         = MUI::WindowBuilder()
@@ -69,23 +69,20 @@ int main(int argc, char **argv)
                       .object())
               .object();
 
-    auto subWindow
-        = MUI::WindowBuilder()
-              .tagTitle("Sub Window Title")
-              .tagScreenTitle("Application Screen Title for sub window")
-              .tagID("SUBW")
-              .tagWidth(400)
-              .tagHeight(300)
-              .tagRootObject(
-                  MUI::GroupBuilder()
-                      .vertical()
-                      .tagChild(MUI::MakeObject::HVSpace())
-                      .tagChild(MUI::MakeObject::HCenter(closeSubWindowButton))
-                      .tagChild(MUI::MakeObject::HVSpace())
-                      .object())
-              .object();
+    auto subWindow = MUI::WindowBuilder()
+                         .tagTitle("Sub Window Title")
+                         .tagScreenTitle("Application Screen Title for sub window")
+                         .tagID("SUBW")
+                         .tagWidth(400)
+                         .tagHeight(300)
+                         .tagRootObject(MUI::GroupBuilder()
+                                            .vertical()
+                                            .tagChild(MUI::MakeObject::HVSpace())
+                                            .tagChild(MUI::MakeObject::HCenter(closeSubWindowButton))
+                                            .tagChild(MUI::MakeObject::HVSpace())
+                                            .object())
+                         .object();
 
-                                    
     auto app = MUI::ApplicationBuilder()
                    .tagAuthor("rz")
                    .tagBase("basic.example.bin")
@@ -94,7 +91,7 @@ int main(int argc, char **argv)
                    .tagTitle("Basic Example")
                    .tagVersion("$VER: 1.0")
                    .tagWindow(mainWindow)
-                   .tagWindows({subWindow})
+                   .tagWindows({ subWindow })
                    .object();
 
     // do MUI_DisposeObject(..) on destructor
