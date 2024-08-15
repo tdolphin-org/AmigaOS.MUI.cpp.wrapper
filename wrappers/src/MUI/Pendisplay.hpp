@@ -15,7 +15,7 @@ namespace MUI
     class Pendisplay : public Area
     {
       public:
-        Pendisplay(Object *pMuiObject)
+        explicit Pendisplay(Object *pMuiObject)
           : Area(pMuiObject)
         {
         }

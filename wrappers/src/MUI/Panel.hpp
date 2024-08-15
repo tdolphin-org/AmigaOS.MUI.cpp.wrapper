@@ -13,7 +13,7 @@ namespace MUI
     class Panel : public Group
     {
       public:
-        Panel(Object *pMuiObject)
+        explicit Panel(Object *pMuiObject)
           : Group(pMuiObject)
         {
         }

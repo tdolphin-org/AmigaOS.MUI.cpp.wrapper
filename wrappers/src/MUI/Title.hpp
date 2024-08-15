@@ -15,7 +15,7 @@ namespace MUI
     class Title : public Group
     {
       public:
-        Title(Object *pMuiObject)
+        explicit Title(Object *pMuiObject)
           : Group(pMuiObject)
         {
         }

@@ -13,7 +13,7 @@ namespace MUI
     class Menu : public Family
     {
       public:
-        Menu(Object *pMuiObject)
+        explicit Menu(Object *pMuiObject)
           : Family(pMuiObject)
         {
         }

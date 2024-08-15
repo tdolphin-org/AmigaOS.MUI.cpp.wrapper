@@ -21,7 +21,7 @@ namespace MUI
     class Window : public Notify
     {
       public:
-        Window(Object *pMuiObject)
+        explicit Window(Object *pMuiObject)
           : Notify(pMuiObject)
         {
         }

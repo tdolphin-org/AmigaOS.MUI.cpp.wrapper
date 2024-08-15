@@ -13,7 +13,7 @@ namespace MUI
     class Balance : public Area
     {
       public:
-        Balance(Object *pMuiObject)
+        explicit Balance(Object *pMuiObject)
           : Area(pMuiObject)
         {
         }

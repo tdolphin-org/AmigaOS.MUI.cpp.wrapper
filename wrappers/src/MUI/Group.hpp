@@ -21,7 +21,7 @@ namespace MUI
     class Group : public Area
     {
       public:
-        Group(Object *pMuiObject)
+        explicit Group(Object *pMuiObject)
           : Area(pMuiObject)
         {
         }

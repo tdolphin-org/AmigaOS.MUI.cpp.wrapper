@@ -13,7 +13,7 @@ namespace MUI
     class Numeric : public Area
     {
       public:
-        Numeric(Object *pMuiObject)
+        explicit Numeric(Object *pMuiObject)
           : Area(pMuiObject)
         {
         }

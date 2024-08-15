@@ -18,7 +18,7 @@ namespace MUI
     class Notify : public Root
     {
       public:
-        Notify(Object *pMuiObject)
+        explicit Notify(Object *pMuiObject)
           : Root(pMuiObject)
         {
         }

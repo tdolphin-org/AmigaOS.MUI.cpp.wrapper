@@ -46,7 +46,7 @@ namespace MUI::MCC
     class NList : public MUI::Area
     {
       public:
-        NList(Object *pObject)
+        explicit NList(Object *pObject)
           : Area(pObject)
         {
         }

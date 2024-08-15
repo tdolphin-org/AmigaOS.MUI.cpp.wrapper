@@ -17,7 +17,7 @@ namespace MUI
     class Cycle : public Group
     {
       public:
-        Cycle(Object *pMuiObject)
+        explicit Cycle(Object *pMuiObject)
           : Group(pMuiObject)
         {
         }

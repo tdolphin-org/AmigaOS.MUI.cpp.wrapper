@@ -14,7 +14,7 @@ namespace MUI::MCC
     class Busy : public MUI::Area
     {
       public:
-        Busy(Object *pObject)
+        explicit Busy(Object *pObject)
           : Area(pObject)
         {
         }

@@ -14,7 +14,7 @@ namespace MUI
     class Prop : public Gadget
     {
       public:
-        Prop(Object *pMuiObject)
+        explicit Prop(Object *pMuiObject)
           : Gadget(pMuiObject)
         {
         }

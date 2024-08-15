@@ -13,7 +13,7 @@ namespace MUI
     class Gadget : public Area
     {
       public:
-        Gadget(Object *pMuiObject)
+        explicit Gadget(Object *pMuiObject)
           : Area(pMuiObject)
         {
         }

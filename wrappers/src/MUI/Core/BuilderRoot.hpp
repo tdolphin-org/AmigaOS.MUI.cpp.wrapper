@@ -35,17 +35,17 @@ namespace MUI
 
         T object() const
         {
-            T object = T(mUniqueId.empty() ? muiObject(mClassName, getTags()) : amccObject(mUniqueId, mClassName, getTags()));
+            T object { T(mUniqueId.empty() ? muiObject(mClassName, getTags()) : amccObject(mUniqueId, mClassName, getTags())) };
             if (mStringStorageObjectId != 0)
-                StringStorage::instance().FinalizeObject(mStringStorageObjectId, object);
+                StringStorage::instance().FinalizeObject(mStringStorageObjectId, static_cast<Object *>(object));
             return object;
         }
 
       protected:
         T object(const unsigned long dataSize, const void *pDispatcher) const
         {
-            T object = T(mUniqueId.empty() ? muiObject(mClassName, getTags())
-                                           : amccObject(mUniqueId, mClassName, getTags(), dataSize, pDispatcher));
+            T object { T(mUniqueId.empty() ? muiObject(mClassName, getTags())
+                                           : amccObject(mUniqueId, mClassName, getTags(), dataSize, pDispatcher)) };
             if (mStringStorageObjectId != 0)
                 StringStorage::instance().FinalizeObject(mStringStorageObjectId, object);
             return object;

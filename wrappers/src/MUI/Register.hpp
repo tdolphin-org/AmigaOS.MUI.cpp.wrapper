@@ -13,7 +13,7 @@ namespace MUI
     class Register : public Group
     {
       public:
-        Register(Object *pMuiObject)
+        explicit Register(Object *pMuiObject)
           : Group(pMuiObject)
         {
         }

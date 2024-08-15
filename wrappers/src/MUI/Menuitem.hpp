@@ -14,7 +14,7 @@ namespace MUI
     class Menuitem : public Family
     {
       public:
-        Menuitem(Object *pMuiObject)
+        explicit Menuitem(Object *pMuiObject)
           : Family(pMuiObject)
         {
         }

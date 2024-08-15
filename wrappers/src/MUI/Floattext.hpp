@@ -13,7 +13,7 @@ namespace MUI
     class Floattext : public List
     {
       public:
-        Floattext(Object *pMuiObject)
+        explicit Floattext(Object *pMuiObject)
           : List(pMuiObject)
         {
         }

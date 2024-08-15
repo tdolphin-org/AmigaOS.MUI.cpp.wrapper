@@ -13,7 +13,7 @@ namespace MUI
     class Scrollgroup : public Group
     {
       public:
-        Scrollgroup(Object *pMuiObject)
+        explicit Scrollgroup(Object *pMuiObject)
           : Group(pMuiObject)
         {
         }

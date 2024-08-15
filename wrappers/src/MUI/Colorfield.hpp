@@ -15,7 +15,7 @@ namespace MUI
     class Colorfield : public Area
     {
       public:
-        Colorfield(Object *pMuiObject)
+        explicit Colorfield(Object *pMuiObject)
           : Area(pMuiObject)
         {
         }

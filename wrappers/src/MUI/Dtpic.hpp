@@ -13,7 +13,7 @@ namespace MUI
     class Dtpic : public Area
     {
       public:
-        Dtpic(Object *pMuiObject)
+        explicit Dtpic(Object *pMuiObject)
           : Area(pMuiObject)
         {
         }

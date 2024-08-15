@@ -16,7 +16,7 @@ namespace MUI
     class Family : public Notify
     {
       public:
-        Family(Object *pMuiObject)
+        explicit Family(Object *pMuiObject)
           : Notify(pMuiObject)
         {
         }

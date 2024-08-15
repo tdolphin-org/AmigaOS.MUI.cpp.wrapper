@@ -26,13 +26,13 @@ namespace MUI
       public:
         explicit Root(Object *pMuiObject);
 
-        Root(const Root &other) = delete;
+        Root(const Root &other) = default;
 
         ~Root() = default; // no action on pointer 'pMuiObject', object is deleted by MUI itself
 
         Root &operator=(const Root &other) = delete;
 
-        operator Object *() const
+        explicit operator Object *() const
         {
             return muiObject();
         }

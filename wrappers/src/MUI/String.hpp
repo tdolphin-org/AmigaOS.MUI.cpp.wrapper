@@ -17,7 +17,7 @@ namespace MUI
     class String : public Area
     {
       public:
-        String(Object *pMuiObject)
+        explicit String(Object *pMuiObject)
           : Area(pMuiObject)
         {
         }

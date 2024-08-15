@@ -31,7 +31,7 @@ namespace MUI
     class Area : public Notify
     {
       public:
-        Area(Object *pMuiObject)
+        explicit Area(Object *pMuiObject)
           : Notify(pMuiObject)
         {
         }

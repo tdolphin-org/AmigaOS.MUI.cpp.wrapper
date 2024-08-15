@@ -15,7 +15,7 @@ namespace MUI
     class Coloradjust : public Group
     {
       public:
-        Coloradjust(Object *pMuiObject)
+        explicit Coloradjust(Object *pMuiObject)
           : Group(pMuiObject)
         {
         }

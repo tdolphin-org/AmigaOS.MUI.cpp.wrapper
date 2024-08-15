@@ -20,7 +20,7 @@ namespace MUI
     class Listview : public Group
     {
       public:
-        Listview(Object *pMuiObject)
+        explicit Listview(Object *pMuiObject)
           : Group(pMuiObject)
         {
         }

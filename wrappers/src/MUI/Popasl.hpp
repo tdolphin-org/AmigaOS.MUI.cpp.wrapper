@@ -15,7 +15,7 @@ namespace MUI
     class Popasl : public Popstring
     {
       public:
-        Popasl(Object *pMuiObject)
+        explicit Popasl(Object *pMuiObject)
           : Popstring(pMuiObject)
         {
         }

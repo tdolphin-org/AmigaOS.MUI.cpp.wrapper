@@ -13,7 +13,7 @@ namespace MUI
     class Poppen : public Pendisplay
     {
       public:
-        Poppen(Object *pMuiObject)
+        explicit Poppen(Object *pMuiObject)
           : Pendisplay(pMuiObject)
         {
         }

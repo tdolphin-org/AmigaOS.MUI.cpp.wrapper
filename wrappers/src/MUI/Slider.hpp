@@ -15,7 +15,7 @@ namespace MUI
     class Slider : public Numeric
     {
       public:
-        Slider(Object *pMuiObject)
+        explicit Slider(Object *pMuiObject)
           : Numeric(pMuiObject)
         {
         }

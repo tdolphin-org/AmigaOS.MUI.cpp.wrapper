@@ -19,7 +19,7 @@ namespace MUI::MCC
     {
 
       public:
-        TextEditor(Object *pObject)
+        explicit TextEditor(Object *pObject)
           : Notify(pObject)
         {
         }

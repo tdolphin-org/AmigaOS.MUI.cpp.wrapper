@@ -17,7 +17,7 @@ namespace MUI
     class Application : public Notify
     {
       public:
-        Application(Object *pMuiObject)
+        explicit Application(Object *pMuiObject)
           : Notify(pMuiObject)
         {
         }

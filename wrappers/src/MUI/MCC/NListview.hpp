@@ -15,7 +15,7 @@ namespace MUI::MCC
     class NListview : public MUI::Area
     {
       public:
-        NListview(Object *pObject)
+        explicit NListview(Object *pObject)
           : Area(pObject)
         {
         }
