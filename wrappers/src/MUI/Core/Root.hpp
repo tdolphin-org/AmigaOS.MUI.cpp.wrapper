@@ -32,7 +32,7 @@ namespace MUI
 
         Root &operator=(const Root &other) = delete;
 
-        explicit operator Object *() const
+        operator Object *() const
         {
             return muiObject();
         }

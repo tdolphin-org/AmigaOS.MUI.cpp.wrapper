@@ -8,6 +8,8 @@
 
 #include <intuition/classusr.h> // Object
 
+#include "Root.hpp"
+
 namespace MUI
 {
     /// @brief scope for MUI object, calls @b MUI_DisposeObject on destructor
@@ -17,6 +19,7 @@ namespace MUI
 
       public:
         /// @param pObject pointer to MUI Object
+        ObjectScope(const Root &root);
         ObjectScope(Object *pObject);
         ~ObjectScope();
 

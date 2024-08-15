@@ -17,6 +17,11 @@
 
 namespace MUI
 {
+    ObjectScope::ObjectScope(const Root &root)
+      : mpObject { root }
+    {
+    }
+
     ObjectScope::ObjectScope(Object *pObject)
     {
 #ifdef TRACE_MUI
