@@ -393,45 +393,33 @@ namespace AOS
         auto tag = mNames.find(tagItem.ti_Tag);
         if (tag != mNames.end())
         {
-            auto result = tag->second.tagName + "=";
-            switch (tag->second.valueType)
-            {
-                case ValueType::String:
-                    result += TagDataSTRPTR(tagItem.ti_Data);
-                    break;
-                case ValueType::StringArray:
-                    result += ToString::FromHexValue(tagItem.ti_Tag); // TODO show list of strings
-                    break;
-                case ValueType::Bool:
-                    result += TagDataBool(tagItem.ti_Data);
-                    break;
-                case ValueType::Byte:
-                    result += std::to_string((signed char)tagItem.ti_Data);
-                    break;
-                case ValueType::Char:
-                    result += TagDataChar(tagItem.ti_Data);
-                    break;
-                case ValueType::Word:
-                    result += std::to_string((short)tagItem.ti_Data);
-                    break;
-                case ValueType::Long:
-                    result += std::to_string((long)tagItem.ti_Data);
-                    break;
-                case ValueType::ULong:
-                    result += std::to_string(tagItem.ti_Data);
-                    break;
-                case ValueType::Pointer:
-                    result += ToString::FromHexValue(tagItem.ti_Data);
-                    break;
-                case ValueType::Int64Pointer:
-                    result += ToString::FromHexValue(tagItem.ti_Data); // TODO show hex value of 64bit int
-                    break;
-                default:
-                    result += std::to_string(tagItem.ti_Data);
-                    break;
-            }
-
-            return result;
+            return tag->second.tagName + "=" + [&]() {
+                switch (tag->second.valueType)
+                {
+                    case ValueType::String:
+                        return TagDataSTRPTR(tagItem.ti_Data);
+                    case ValueType::StringArray:
+                        return ToString::FromHexValue(tagItem.ti_Tag); // TODO show list of strings
+                    case ValueType::Bool:
+                        return TagDataBool(tagItem.ti_Data);
+                    case ValueType::Byte:
+                        return std::to_string((signed char)tagItem.ti_Data);
+                    case ValueType::Char:
+                        return TagDataChar(tagItem.ti_Data);
+                    case ValueType::Word:
+                        return std::to_string((short)tagItem.ti_Data);
+                    case ValueType::Long:
+                        return std::to_string((long)tagItem.ti_Data);
+                    case ValueType::ULong:
+                        return std::to_string(tagItem.ti_Data);
+                    case ValueType::Pointer:
+                        return ToString::FromHexValue(tagItem.ti_Data);
+                    case ValueType::Int64Pointer:
+                        return ToString::FromHexValue(tagItem.ti_Data); // TODO show hex value of 64bit int
+                    default:
+                        return std::to_string(tagItem.ti_Data);
+                }
+            }();
         }
 
         return ToString::FromHexValue(tagItem.ti_Tag) + "=" + std::to_string(tagItem.ti_Data);
