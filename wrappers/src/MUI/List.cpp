@@ -247,6 +247,27 @@ namespace MUI
         return *this;
     }
 
+    List &List::InsertTop(const std::vector<const char *> &entries)
+    {
+        for (auto entry : entries)
+            InsertSingleTop(entry);
+        return *this;
+    }
+
+    List &List::InsertBottom(const std::vector<const char *> &entries)
+    {
+        for (auto entry : entries)
+            InsertSingleBottom(entry);
+        return *this;
+    }
+
+    List &List::InsertSorted(const std::vector<const char *> &entries)
+    {
+        for (auto entry : entries)
+            InsertSingleSorted(entry);
+        return *this;
+    }
+
     List &List::InsertTop(const std::vector<std::string> &entries)
     {
         for (const auto &entry : entries)
