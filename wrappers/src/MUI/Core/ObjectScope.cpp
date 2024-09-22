@@ -17,11 +17,6 @@
 
 namespace MUI
 {
-    ObjectScope::ObjectScope(const Root &root)
-      : mpObject { root }
-    {
-    }
-
     ObjectScope::ObjectScope(Object *pObject)
     {
 #ifdef TRACE_MUI
@@ -42,6 +37,34 @@ namespace MUI
         std::cout << __PRETTY_FUNCTION__ << " MUI_DisposeObject(" << mpObject << ")" << std::endl;
 #endif
 
-        MUI_DisposeObject(mpObject);
+        if (mpObject)
+            MUI_DisposeObject(mpObject);
+    }
+
+    ObjectScope::ObjectScope(const Root &root)
+      : mpObject { root }
+    {
+    }
+
+    ObjectScope &ObjectScope::operator=(const ObjectScope &other)
+    {
+        mpObject = other.mpObject;
+    }
+
+    ObjectScope::ObjectScope(ObjectScope &&other) noexcept
+      : mpObject(other.mpObject)
+    {
+        other.mpObject = nullptr;
+    }
+
+    ObjectScope &ObjectScope::operator=(ObjectScope &&other) noexcept
+    {
+        if (this != &other)
+        {
+            mpObject = other.mpObject;
+            other.mpObject = nullptr;
+        }
+
+        return *this;
     }
 }
