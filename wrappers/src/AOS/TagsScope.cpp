@@ -10,6 +10,7 @@
 #include "TagUtil.hpp"
 
 #include <sstream>
+#include <cstring>
 
 #include <libraries/asl.h>
 #include <libraries/mui.h>
@@ -36,13 +37,13 @@ namespace AOS
       : mSize(other.mSize)
     {
         mpTagItems = new TagItem[mSize];
-        memcpy(mpTagItems, other.mpTagItems, sizeof(TagItem));
+        std::memcpy(mpTagItems, other.mpTagItems, sizeof(TagItem));
     }
 
     TagsScope &TagsScope::operator=(const TagsScope &other) noexcept
     {
         mpTagItems = new TagItem[mSize];
-        memcpy(mpTagItems, other.mpTagItems, sizeof(TagItem));
+        std::memcpy(mpTagItems, other.mpTagItems, sizeof(TagItem));
 
         return *this;
     }
