@@ -255,7 +255,11 @@ namespace MUI
     template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::groupFrame(const std::string &title)
     {
         this->PushTag(MUIA_Frame, (long)MUI::Frame::Group);
-        this->PushTag(MUIA_FrameTitle, title);
+        if (!title.empty())
+        {
+            auto copy = this->StoreString(MUIA_FrameTitle, title);
+            this->PushTag(MUIA_FrameTitle, copy);
+        }
         this->PushTag(MUIA_Background, (long)MUI::ImageOrBackground::GroupBack);
         return (T &)*this;
     }
