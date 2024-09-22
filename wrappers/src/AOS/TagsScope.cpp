@@ -18,6 +18,7 @@
 namespace AOS
 {
     TagsScope::TagsScope(const std::vector<TagItemObject> &tags)
+      : mSize(tags.size() + 1)
     {
         mpTagItems = new TagItem[tags.size() + 1];
         for (int i = 0; i < tags.size(); i++)
@@ -27,11 +28,52 @@ namespace AOS
 
     TagsScope::~TagsScope()
     {
-        delete[] mpTagItems;
+        if (mpTagItems)
+            delete[] mpTagItems;
+    }
+
+    TagsScope::TagsScope(const TagsScope &other) noexcept
+      : mSize(other.mSize)
+    {
+        mpTagItems = new TagItem[mSize];
+        memcpy(mpTagItems, other.mpTagItems, sizeof(TagItem));
+    }
+
+    TagsScope &TagsScope::operator=(const TagsScope &other) noexcept
+    {
+        mpTagItems = new TagItem[mSize];
+        memcpy(mpTagItems, other.mpTagItems, sizeof(TagItem));
+
+        return *this;
+    }
+
+    TagsScope::TagsScope(TagsScope &&other) noexcept
+      : mpTagItems(other.mpTagItems)
+    {
+        other.mpTagItems = nullptr;
+        mSize = 0;
+    }
+
+    TagsScope &TagsScope::operator=(TagsScope &&other) noexcept
+    {
+        if (this != &other)
+        {
+            mpTagItems = other.mpTagItems;
+            other.mpTagItems = nullptr;
+            mSize = 0;
+        }
+
+        return *this;
     }
 
     std::string TagsScope::toString() const
     {
+        if (mpTagItems)
+        {
+            auto error = std::string { __PRETTY_FUNCTION__ } + " mpTagItems is null, object probably in undefined state!";
+            throw new std::runtime_error(error);
+        }
+
         std::stringstream result;
 
         result << "(";
