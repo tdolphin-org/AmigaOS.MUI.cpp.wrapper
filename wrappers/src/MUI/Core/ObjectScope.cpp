@@ -17,6 +17,11 @@
 
 namespace MUI
 {
+    ObjectScope::ObjectScope(const Root &root)
+      : mpObject { root }
+    {
+    }
+
     ObjectScope::ObjectScope(Object *pObject)
     {
 #ifdef TRACE_MUI
@@ -41,8 +46,8 @@ namespace MUI
             MUI_DisposeObject(mpObject);
     }
 
-    ObjectScope::ObjectScope(const Root &root)
-      : mpObject { root }
+    ObjectScope::ObjectScope(const ObjectScope &other)
+      : mpObject(other.mpObject)
     {
     }
 

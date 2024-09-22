@@ -19,10 +19,11 @@ namespace MUI
 
       public:
         /// @param pObject pointer to MUI Object
+        ObjectScope(const Root &root);
         ObjectScope(Object *pObject);
         ~ObjectScope();
 
-        ObjectScope(const Root &root);
+        ObjectScope(const ObjectScope &other);
         ObjectScope &operator=(const ObjectScope &other);
 
         ObjectScope(ObjectScope &&other) noexcept;
