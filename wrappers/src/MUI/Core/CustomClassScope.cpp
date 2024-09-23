@@ -45,4 +45,23 @@ namespace MUI
         if (mpCustomClass != nullptr)
             MUI_DeleteCustomClass(mpCustomClass);
     }
+
+    CustomClassScope::CustomClassScope(CustomClassScope &&other) noexcept
+      : mClassName(std::move(other.mClassName))
+      , mpCustomClass(other.mpCustomClass)
+    {
+        other.mpCustomClass = nullptr;
+    }
+
+    CustomClassScope &CustomClassScope::operator=(CustomClassScope &&other) noexcept
+    {
+        if (this != &other)
+        {
+            mClassName = std::move(other.mClassName);
+            mpCustomClass = other.mpCustomClass;
+            other.mpCustomClass = nullptr;
+        }
+
+        return *this;
+    }
 }

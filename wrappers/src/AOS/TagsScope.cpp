@@ -18,6 +18,7 @@
 namespace AOS
 {
     TagsScope::TagsScope(const std::vector<TagItemObject> &tags)
+      : mSize(tags.size() + 1)
     {
         mpTagItems = new TagItem[tags.size() + 1];
         for (int i = 0; i < tags.size(); i++)

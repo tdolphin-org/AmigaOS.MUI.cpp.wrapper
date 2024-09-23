@@ -14,12 +14,19 @@ namespace MUI
 {
     class CustomClassScope
     {
-        const std::string mClassName;
+        std::string mClassName;
         struct MUI_CustomClass *mpCustomClass;
 
       public:
         CustomClassScope(const std::string &className, const unsigned long dataSize = 0, const void *dispatcher = nullptr);
         ~CustomClassScope();
+
+        // explicitly no copy
+        CustomClassScope(const CustomClassScope &) = delete;
+        CustomClassScope &operator=(const CustomClassScope &) = delete;
+
+        CustomClassScope(CustomClassScope &&other) noexcept;
+        CustomClassScope &operator=(CustomClassScope &&other) noexcept;
 
         struct MUI_CustomClass *mcc() const
         {

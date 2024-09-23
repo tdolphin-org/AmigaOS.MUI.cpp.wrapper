@@ -36,3 +36,8 @@ MuiMasterBaseScope::~MuiMasterBaseScope()
         MUIMasterBase = nullptr;
     }
 }
+
+Library *MuiMasterBaseScope::library() const
+{
+    return MUIMasterBase;
+}
