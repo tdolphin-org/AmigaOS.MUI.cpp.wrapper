@@ -21,7 +21,7 @@ namespace MUI
         CustomClassScope(const std::string &className, const unsigned long dataSize = 0, const void *dispatcher = nullptr);
         ~CustomClassScope();
 
-        // copy is forbidden
+        // explicitly no copy
         CustomClassScope(const CustomClassScope &) = delete;
         CustomClassScope &operator=(const CustomClassScope &) = delete;
 

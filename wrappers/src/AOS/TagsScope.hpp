@@ -35,6 +35,11 @@ namespace AOS
         TagsScope(TagsScope &&) = delete;
         TagsScope &operator=(TagsScope &&) = delete;
 
+        size_t size() const
+        {
+            return mSize;
+        }
+
         /// @brief return tag list with names and values; only part of tags are detected and converted to "name=vale"
         /// @return string like `(MUIA_Application_Author, "author", TAG_END)`
         std::string toString() const;
