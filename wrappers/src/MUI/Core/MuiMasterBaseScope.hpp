@@ -12,13 +12,13 @@ class MuiMasterBaseScope
     MuiMasterBaseScope();
     ~MuiMasterBaseScope();
 
-    // copy is forbidden
+    // explicitly no copy
     MuiMasterBaseScope(const MuiMasterBaseScope &) = delete;
     MuiMasterBaseScope &operator=(const MuiMasterBaseScope &) = delete;
 
-    // move is default
-    MuiMasterBaseScope(MuiMasterBaseScope &&other) noexcept = default;
-    MuiMasterBaseScope &operator=(MuiMasterBaseScope &&other) noexcept = default;
+    // explicitly no move
+    MuiMasterBaseScope(MuiMasterBaseScope &&) noexcept = delete;
+    MuiMasterBaseScope &operator=(MuiMasterBaseScope &&) noexcept = delete;
 
     Library *library() const;
 };
