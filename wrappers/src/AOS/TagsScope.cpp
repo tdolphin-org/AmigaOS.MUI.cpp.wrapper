@@ -9,7 +9,6 @@
 #include "Core/ToString.hpp"
 #include "TagUtil.hpp"
 
-#include <cstring>
 #include <sstream>
 
 #include <libraries/asl.h>
@@ -29,54 +28,11 @@ namespace AOS
 
     TagsScope::~TagsScope()
     {
-        if (mpTagItems != nullptr)
-            delete[] mpTagItems;
-    }
-
-    TagsScope::TagsScope(const TagsScope &other) noexcept
-      : mSize(other.mSize)
-    {
-        mpTagItems = new TagItem[mSize];
-        std::memcpy(mpTagItems, other.mpTagItems, sizeof(TagItem) * mSize);
-    }
-
-    TagsScope &TagsScope::operator=(const TagsScope &other) noexcept
-    {
-        mpTagItems = new TagItem[mSize];
-        std::memcpy(mpTagItems, other.mpTagItems, sizeof(TagItem) * mSize);
-
-        return *this;
-    }
-
-    TagsScope::TagsScope(TagsScope &&other) noexcept
-      : mpTagItems(other.mpTagItems)
-      , mSize(other.mSize)
-    {
-        other.mpTagItems = nullptr;
-        mSize = 0;
-    }
-
-    TagsScope &TagsScope::operator=(TagsScope &&other) noexcept
-    {
-        if (this != &other)
-        {
-            mpTagItems = other.mpTagItems;
-            mSize = other.mSize;
-            other.mpTagItems = nullptr;
-            mSize = 0;
-        }
-
-        return *this;
+        delete[] mpTagItems;
     }
 
     std::string TagsScope::toString() const
     {
-        if (mpTagItems == nullptr)
-        {
-            auto error = std::string { __PRETTY_FUNCTION__ } + " mpTagItems is null, object probably in undefined state!";
-            throw new std::runtime_error(error);
-        }
-
         std::stringstream result;
 
         result << "(";

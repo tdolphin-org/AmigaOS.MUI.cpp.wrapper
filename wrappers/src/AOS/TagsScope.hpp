@@ -27,11 +27,13 @@ namespace AOS
             return mpTagItems;
         }
 
-        TagsScope(const TagsScope &other) noexcept;
-        TagsScope &operator=(const TagsScope &other) noexcept;
+        // explicitly no copy
+        TagsScope(const TagsScope &) = delete;
+        TagsScope &operator=(const TagsScope &) = delete;
 
-        TagsScope(TagsScope &&other) noexcept;
-        TagsScope &operator=(TagsScope &&other) noexcept;
+        // explicitly no move
+        TagsScope(TagsScope &&) = delete;
+        TagsScope &operator=(TagsScope &&) = delete;
 
         /// @brief return tag list with names and values; only part of tags are detected and converted to "name=vale"
         /// @return string like `(MUIA_Application_Author, "author", TAG_END)`
