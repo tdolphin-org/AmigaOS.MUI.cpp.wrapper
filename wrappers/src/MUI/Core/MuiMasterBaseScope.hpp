@@ -17,8 +17,8 @@ class MuiMasterBaseScope
     MuiMasterBaseScope &operator=(const MuiMasterBaseScope &) = delete;
 
     // explicitly no move
-    MuiMasterBaseScope(MuiMasterBaseScope &&) noexcept = delete;
-    MuiMasterBaseScope &operator=(MuiMasterBaseScope &&) noexcept = delete;
+    MuiMasterBaseScope(MuiMasterBaseScope &&) = delete;
+    MuiMasterBaseScope &operator=(MuiMasterBaseScope &&) = delete;
 
     Library *library() const;
 };
