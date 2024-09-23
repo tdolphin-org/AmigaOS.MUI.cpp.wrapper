@@ -42,34 +42,6 @@ namespace MUI
         std::cout << __PRETTY_FUNCTION__ << " MUI_DisposeObject(" << mpObject << ")" << std::endl;
 #endif
 
-        if (mpObject)
-            MUI_DisposeObject(mpObject);
-    }
-
-    ObjectScope::ObjectScope(const ObjectScope &other)
-      : mpObject(other.mpObject)
-    {
-    }
-
-    ObjectScope &ObjectScope::operator=(const ObjectScope &other)
-    {
-        mpObject = other.mpObject;
-    }
-
-    ObjectScope::ObjectScope(ObjectScope &&other) noexcept
-      : mpObject(other.mpObject)
-    {
-        other.mpObject = nullptr;
-    }
-
-    ObjectScope &ObjectScope::operator=(ObjectScope &&other) noexcept
-    {
-        if (this != &other)
-        {
-            mpObject = other.mpObject;
-            other.mpObject = nullptr;
-        }
-
-        return *this;
+        MUI_DisposeObject(mpObject);
     }
 }

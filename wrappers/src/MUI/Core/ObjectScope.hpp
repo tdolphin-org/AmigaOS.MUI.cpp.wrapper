@@ -23,11 +23,13 @@ namespace MUI
         ObjectScope(Object *pObject);
         ~ObjectScope();
 
-        ObjectScope(const ObjectScope &other);
-        ObjectScope &operator=(const ObjectScope &other);
+        // explicitly no copy
+        ObjectScope(const ObjectScope &) = delete;
+        ObjectScope &operator=(const ObjectScope &) = delete;
 
-        ObjectScope(ObjectScope &&other) noexcept;
-        ObjectScope &operator=(ObjectScope &&other) noexcept;
+        // explicitly no move
+        ObjectScope(ObjectScope &&) = delete;
+        ObjectScope &operator=(ObjectScope &&) = delete;
 
         Object *muiObject() const
         {
