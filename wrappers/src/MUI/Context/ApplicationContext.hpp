@@ -20,7 +20,8 @@ namespace MUI
     class Window;
 
     /// @brief application context facade class to get application object and related objects
-    /// NOTICE: to use it application have to be scoped by @b ApplicationScope
+    /// NOTICE: to use it application have to be scoped by @b ApplicationScope which initialise
+    // ApplicationContext by Init(const Application &);
     class ApplicationContextCore
     {
         friend class td::Singleton<ApplicationContextCore>;
