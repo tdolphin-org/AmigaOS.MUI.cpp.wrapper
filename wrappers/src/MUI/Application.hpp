@@ -101,6 +101,14 @@ namespace MUI
       public:
         ApplicationScope(const Application &application);
         ~ApplicationScope();
+
+        // explicitly no copy
+        ApplicationScope(const ApplicationScope &) = delete;
+        ApplicationScope &operator=(const ApplicationScope &) = delete;
+
+        // explicitly no move
+        ApplicationScope(ApplicationScope &&) = delete;
+        ApplicationScope &operator=(ApplicationScope &&) = delete;
     };
 
     class ApplicationSleepScope
@@ -108,5 +116,13 @@ namespace MUI
       public:
         ApplicationSleepScope();
         ~ApplicationSleepScope();
+
+        // explicitly no copy
+        ApplicationSleepScope(const ApplicationSleepScope &) = delete;
+        ApplicationSleepScope &operator=(const ApplicationSleepScope &) = delete;
+
+        // explicitly no move
+        ApplicationSleepScope(ApplicationSleepScope &&) = delete;
+        ApplicationSleepScope &operator=(ApplicationSleepScope &&) = delete;
     };
 }

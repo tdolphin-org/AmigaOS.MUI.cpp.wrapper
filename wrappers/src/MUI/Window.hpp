@@ -234,5 +234,13 @@ namespace MUI
       public:
         WindowScope(Window &window);
         ~WindowScope();
+
+        // explicitly no copy
+        WindowScope(const WindowScope &) = delete;
+        WindowScope &operator=(const WindowScope &) = delete;
+
+        // explicitly no move
+        WindowScope(WindowScope &&) = delete;
+        WindowScope &operator=(WindowScope &&) = delete;
     };
 }
