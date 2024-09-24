@@ -37,21 +37,18 @@ namespace MUI
         std::cout << __PRETTY_FUNCTION__ << std::endl;
 #endif
 
-        for (auto item : mCustomClassesMap)
-            delete item.second;
         mCustomClassesMap.clear();
     }
 
-    CustomClassScope *CustomClassManagerCore::get(const std::string &uniqueId, const std::string &superClassName,
+    CustomClassScope &CustomClassManagerCore::get(const std::string &uniqueId, const std::string &superClassName,
                                                   const unsigned long dataSize, const void *dispatcher)
     {
         auto result = mCustomClassesMap.find(uniqueId);
         if (result != mCustomClassesMap.end()) // class scope exists
             return result->second;
 
-        auto classScope = new CustomClassScope(superClassName, dataSize, dispatcher);
-        mCustomClassesMap.insert({ uniqueId, classScope });
+        auto emplace = mCustomClassesMap.emplace(uniqueId, CustomClassScope { superClassName, dataSize, dispatcher });
 
-        return classScope;
+        return emplace.first->second;
     }
 }

@@ -51,12 +51,12 @@ namespace MUI
         std::cout << className << ": " << std::endl;
 #endif
         AOS::TagsScope tagsScope(tags);
-        auto mccScope = CustomClassManager::instance().get(uniqueId, className, dataSize, dispatcher);
+        auto &mccScope = CustomClassManager::instance().get(uniqueId, className, dataSize, dispatcher);
 #ifdef TRACE_MUI
         std::cout << "# tags [" << tags.size() << "]: " << tagsScope.toString() << std::endl;
 #endif
         // TODO? for #?.mcc MUI_NewObject could be used (see muimaster doc)
-        auto *pObject = (Object *)NewObjectA(mccScope->mcc()->mcc_Class, nullptr, tagsScope.tagItems());
+        auto *pObject = (Object *)NewObjectA(mccScope.mcc()->mcc_Class, nullptr, tagsScope.tagItems());
 #ifdef TRACE_MUI
         std::cout << "==> " << pObject << std::endl;
 #endif

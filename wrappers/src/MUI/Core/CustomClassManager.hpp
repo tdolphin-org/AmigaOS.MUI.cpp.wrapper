@@ -19,7 +19,16 @@ namespace MUI
     class CustomClassesLifeTimeScope
     {
       public:
+        CustomClassesLifeTimeScope() = default;
         ~CustomClassesLifeTimeScope();
+
+        // explicitly no copy
+        CustomClassesLifeTimeScope(const CustomClassesLifeTimeScope &) = delete;
+        CustomClassesLifeTimeScope &operator=(const CustomClassesLifeTimeScope &) = delete;
+
+        // explicitly no move
+        CustomClassesLifeTimeScope(CustomClassesLifeTimeScope &&) = delete;
+        CustomClassesLifeTimeScope &operator=(CustomClassScope &&) = delete;
     };
 
     class CustomClassManagerCore
@@ -27,7 +36,7 @@ namespace MUI
         friend class td::Singleton<CustomClassManagerCore>;
         friend class CustomClassesLifeTimeScope;
 
-        std::map<std::string, CustomClassScope *> mCustomClassesMap;
+        std::map<std::string, CustomClassScope> mCustomClassesMap;
 
         CustomClassManagerCore();
         ~CustomClassManagerCore();
@@ -36,12 +45,13 @@ namespace MUI
 
       public:
         /// @brief get or create&get if not exists custom class
-        /// @param uniqueId unique id used by manager to identify internal (app) class, for external classes (#?.mcc) use method without this id
+        /// @param uniqueId unique id used by manager to identify internal (app) class, for external classes (#?.mcc) use method without
+        /// this id
         /// @param superClassName name of MUI class (#?.mui)
         /// @param dataSize data size for object
         /// @param dispatcher dispatcher function
         /// @return pointer to CustomClassScope
-        CustomClassScope *get(const std::string &uniqueId, const std::string &superClassName, const unsigned long dataSize = 0,
+        CustomClassScope &get(const std::string &uniqueId, const std::string &superClassName, const unsigned long dataSize = 0,
                               const void *dispatcher = nullptr);
     };
 
