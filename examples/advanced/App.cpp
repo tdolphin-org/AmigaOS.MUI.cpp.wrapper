@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  Application Template Example
+//  Advanced Example
 //
 //  (c) 2022-2024 TDolphin
 //

@@ -31,7 +31,7 @@ namespace Components
 #else
         auto flags = MUIV_Requester_Image_Warning;
 #endif
-        MUI_Request(appObject, nullptr, 0, nullptr, (char *)"_Ok", (char *)message.c_str(), TAG_END);
+        MUI_Request(appObject, nullptr, flags, nullptr, (char *)"_Ok", (char *)message.c_str(), TAG_END);
     }
 
     void Root::MuiInfo(const std::string &message, const std::string &gadgets) const
