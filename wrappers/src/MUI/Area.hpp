@@ -154,6 +154,8 @@ namespace MUI
         Area &setFloating(const bool floating);
         /// @brief [ @b MUIA_Font ] - seems that setting font doesn't work (at least for MUI::Floattext)
         Area &setFont(const enum Font font);
+        /// @brief [ @b MUIA_FrameTitle ]
+        Area &setFrameTitle(const std::string &frameTitle);
         /// @brief [ @b MUIA_HorizWeight ]
         Area &setHorizWeight(const short horizWeight);
 #ifdef MUIA_PointerType
@@ -390,7 +392,12 @@ namespace MUI
 
     template <typename T, typename U> T &AreaBuilderTemplate<T, U>::tagFrameTitle(const std::string &frameTitle)
     {
-        this->PushTag(MUIA_FrameTitle, frameTitle);
+        if (!frameTitle.empty())
+        {
+            auto copy = this->StoreString(MUIA_FrameTitle, frameTitle);
+            this->PushTag(MUIA_FrameTitle, copy);
+        }
+
         return (T &)*this;
     }
 

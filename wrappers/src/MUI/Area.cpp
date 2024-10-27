@@ -263,6 +263,12 @@ namespace MUI
         return *this;
     }
 
+    Area &Area::setFrameTitle(const std::string &frameTitle)
+    {
+        SetValue(MUIA_FrameTitle, StoreString(MUIA_FrameTitle, frameTitle));
+        return *this;
+    }
+
     Area &Area::setHorizWeight(const short horizWeight)
     {
         if (horizWeight >= 0)
