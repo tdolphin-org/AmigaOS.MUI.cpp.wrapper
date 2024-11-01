@@ -234,6 +234,10 @@ namespace MUI
         T &tagSourceArray(const void *sourceArray[]);
         /// @brief [ @b MUIA_List_SourceArray ]
         T &tagSourceArray(const char *sourceArray[]);
+        /// @brief [ @b MUIA_List_Title pass true when custom display hook ]
+        T &tagTitle(const bool title = true);
+        /// @brief [ @b MUIA_List_Title ]
+        T &tagTitle(const std::string &title);
     };
 
     class ListBuilder : public ListBuilderTemplate<ListBuilder, List>
@@ -391,8 +395,19 @@ namespace MUI
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagSourceArray(const char *sourceArray[])
     {
         if (sourceArray)
-
             this->PushTag(MUIA_List_SourceArray, sourceArray);
+        return (T &)*this;
+    }
+    
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagTitle(const bool title)
+    {
+        this->PushTag(MUIA_List_Title, title);
+        return (T &)*this;
+    }
+    
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagTitle(const std::string &title)
+    {
+        this->PushTag(MUIA_List_Title, title);
         return (T &)*this;
     }
 }
