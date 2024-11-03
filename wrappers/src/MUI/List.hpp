@@ -193,6 +193,8 @@ namespace MUI
         T &tagAgainClick(const bool againClick);
         /// @brief [ @b MUIA_List_AutoLineHeight ]
         T &tagAutoLineHeight(const bool autoLineHeight);
+        /// @brief [ @b MUIA_List_MaxColumns ]
+        T &tagMaxColumns(const long maxColumns);
         /// @brief [ @b MUIA_List_AutoVisible ]
         T &tagAutoVisible(const bool autoVisible);
         /// @brief [ @b MUIA_List_CompareHook ]
@@ -203,10 +205,14 @@ namespace MUI
         T &tagConstructHook(const struct Hook *constructHook);
         /// @brief [ @b MUIA_List_ConstructHook, @b MUIV_List_ConstructHook_String ]
         T &tagConstructHookString();
+        /// @brief [ @b MUIA_List_ConstructHook, @b MUIV_List_ConstructHook_StringArray ]
+        T &tagConstructHookStringArray();
         /// @brief [ @b MUIA_List_DestructHook ]
         T &tagDestructHook(const struct Hook *destructHook);
         /// @brief [ @b MUIA_List_DestructHook, @b MUIV_List_DestructHook_String ]
         T &tagDestructHookString();
+        /// @brief [ @b MUIA_List_DestructHook, @b MUIV_List_DestructHook_StringArray ]
+        T &tagDestructHookStringArray();
         /// @brief [ @b MUIA_List_DisplayHook ]
         T &tagDisplayHook(const struct Hook *displayHook);
         /// @brief [ @b MUIA_List_DragType ]
@@ -238,6 +244,8 @@ namespace MUI
         T &tagTitle(const bool title = true);
         /// @brief [ @b MUIA_List_Title ]
         T &tagTitle(const std::string &title);
+        /// @brief [ @b MUIA_List_TitleArray ]
+        T &tagTitleArray(const char *titleArray[]);
     };
 
     class ListBuilder : public ListBuilderTemplate<ListBuilder, List>
@@ -282,6 +290,12 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagMaxColumns(const long maxColumns)
+    {
+        this->PushTag(MUIA_List_MaxColumns, maxColumns);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagAutoVisible(const bool autoVisible)
     {
         this->PushTag(MUIA_List_AutoVisible, autoVisible);
@@ -312,6 +326,12 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagConstructHookStringArray()
+    {
+        this->PushTag(MUIA_List_ConstructHook, (const Hook *)MUIV_List_ConstructHook_StringArray);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDestructHook(const struct Hook *destructHook)
     {
         this->PushTag(MUIA_List_DestructHook, destructHook);
@@ -321,6 +341,12 @@ namespace MUI
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDestructHookString()
     {
         this->PushTag(MUIA_List_DestructHook, (const Hook *)MUIV_List_DestructHook_String);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDestructHookStringArray()
+    {
+        this->PushTag(MUIA_List_DestructHook, (const Hook *)MUIV_List_DestructHook_StringArray);
         return (T &)*this;
     }
 
@@ -398,16 +424,23 @@ namespace MUI
             this->PushTag(MUIA_List_SourceArray, sourceArray);
         return (T &)*this;
     }
-    
+
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagTitle(const bool title)
     {
         this->PushTag(MUIA_List_Title, title);
         return (T &)*this;
     }
-    
+
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagTitle(const std::string &title)
     {
         this->PushTag(MUIA_List_Title, title);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagTitleArray(const char *titleArray[])
+    {
+        if (titleArray)
+            this->PushTag(MUIA_List_TitleArray, titleArray);
         return (T &)*this;
     }
 }
