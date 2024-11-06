@@ -82,8 +82,10 @@ namespace MUI
         ApplicationBuilder &tagTitle(const char *title);
         /// @brief [ @b MUIA_Application_Title ]
         ApplicationBuilder &tagTitle(const std::string &title);
+#ifdef MUIA_Application_UsedClasses
         /// @brief [ @b MUIA_Application_UsedClasses ]
         ApplicationBuilder &tagUsedClasses(char *usedClasses[]);
+#endif
         /// @brief [ @b MUIA_Application_Version ]
         /// @param version version text with $VER !!!!
         ApplicationBuilder &tagVersion(const char *version);

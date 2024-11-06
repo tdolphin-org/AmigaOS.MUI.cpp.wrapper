@@ -20,6 +20,7 @@ namespace MUI
         Title = MUIV_Font_Title, // the font configured for group titles
         Big = MUIV_Font_Big, // the big font
         Button = MUIV_Font_Button, // the font configured for buttons
+#ifdef MUIV_Font_Slider
         Slider = MUIV_Font_Slider, // the font configured for sliders
         Gauge = MUIV_Font_Gauge, // the font configured for gauges
         Menu = MUIV_Font_Menu, // the font configured for menus
@@ -27,6 +28,7 @@ namespace MUI
         Bubble = MUIV_Font_Bubble, // the font configured for bubble help
         Huge = MUIV_Font_Huge, // the huge font
         Last = MUIV_Font_Last,
-        Count = MUIV_Font_Count
+        Count = MUIV_Font_Count,
+#endif
     };
 }

@@ -25,6 +25,7 @@ namespace MUI
         PopUp = MUIV_Frame_PopUp,
         Virtual = MUIV_Frame_Virtual,
         Slider = MUIV_Frame_Slider,
+#ifdef MUIV_Frame_SliderKnob
         SliderKnob = MUIV_Frame_SliderKnob,
         GaugeInner = MUIV_Frame_GaugeInner,
         Menudisplay = MUIV_Frame_Menudisplay,
@@ -36,6 +37,7 @@ namespace MUI
         Register = MUIV_Frame_Register,
         GroupTitle = MUIV_Frame_GroupTitle,
         RegisterTitle = MUIV_Frame_RegisterTitle,
-        Count = MUIV_Frame_Count
+#endif
+        Count = MUIV_Frame_Count,
     };
 }

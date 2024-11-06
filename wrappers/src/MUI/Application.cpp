@@ -145,11 +145,13 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIA_Application_UsedClasses
     ApplicationBuilder &ApplicationBuilder::tagUsedClasses(char *usedClasses[])
     {
         this->PushTag(MUIA_Application_UsedClasses, (const char **)usedClasses);
         return *this;
     }
+#endif
 
     ApplicationBuilder &ApplicationBuilder::tagVersion(const char *version)
     {

@@ -8,9 +8,14 @@
 
 #include <proto/alib.h>
 
+#ifdef MUIM_TextDim
+#define DIM2WIDTH(dim) (((LONG)(dim)) & 0xffff)
+#define DIM2HEIGHT(dim) (((LONG)(dim)) >> 16)
+#endif
+
 namespace MUI
 {
-#ifndef __MORPHOS__
+#ifdef MUIM_TextDim
     Dim::Dim(const unsigned long value)
     {
         width = DIM2WIDTH(value);
@@ -57,15 +62,19 @@ namespace MUI
         return GetValueAsBool(MUIA_Disabled);
     }
 
+#ifdef MUIA_DoubleBuffer
     bool Area::isDoubleBuffer() const
     {
         return GetValueAsBool(MUIA_DoubleBuffer);
     }
+#endif
 
+#ifdef MUIA_DoubleClick
     bool Area::isDoubleClick() const
     {
         return GetValueAsBool(MUIA_DoubleClick);
     }
+#endif
 
     bool Area::isDraggable() const
     {
@@ -77,30 +86,36 @@ namespace MUI
         return GetValueAsBool(MUIA_Dropable);
     }
 
+#ifdef MUIA_Floating
     bool Area::isFloating() const
     {
         return GetValueAsBool(MUIA_Floating);
     }
+#endif
 
     TextFont *Area::getFont() const
     {
         return (TextFont *)GetValueAsPtr(MUIA_Font);
     }
 
+#ifdef MUIA_FrameDynamic
     bool Area::isFrameDynamic() const
     {
         return GetValueAsBool(MUIA_FrameDynamic);
     }
+#endif
 
     std::string Area::getFrameTitle() const
     {
         return GetValueAsString(MUIA_FrameTitle);
     }
 
+#ifdef MUIA_FrameVisible
     bool Area::isFrameVisible() const
     {
         return GetValueAsBool(MUIA_FrameVisible);
     }
+#endif
 
     long Area::getHeight() const
     {
@@ -181,10 +196,12 @@ namespace MUI
         return GetValueAsBool(MUIA_ShowMe);
     }
 
+#ifdef MUIA_TextColor
     unsigned long Area::getTextColor() const
     {
         return GetValueAsULong(MUIA_TextColor);
     }
+#endif
 
     long Area::getTimer() const
     {
@@ -251,11 +268,13 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIA_Floating
     Area &Area::setFloating(const bool floating)
     {
         SetValue(MUIA_Floating, floating);
         return *this;
     }
+#endif
 
     Area &Area::setFont(const enum Font font)
     {
@@ -344,11 +363,13 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIM_Relayout
     Area &Area::Relayout()
     {
         DoMethod(muiObject(), MUIM_Relayout, 0);
         return *this;
     }
+#endif
 
 #ifdef MUIM_Text
     Area &Area::Text(const long left, const long top, const long width, const long height, const std::string &text, const long len,
@@ -360,7 +381,7 @@ namespace MUI
     }
 #endif
 
-#ifndef __MORPHOS__
+#ifdef MUIM_TextDim
     Dim Area::TextDim(const std::string &text, const long len, const std::string &preparse, const long flags)
     {
         return Dim(DoMethod(muiObject(), MUIM_TextDim, text.c_str(), len, preparse.empty() ? nullptr : preparse.c_str(), flags));

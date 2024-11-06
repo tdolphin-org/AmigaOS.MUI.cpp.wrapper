@@ -18,7 +18,7 @@
 
 namespace MUI
 {
-#ifndef __MORPHOS__
+#ifdef MUIM_TextDim
     struct Dim
     {
         long width;
@@ -68,24 +68,34 @@ namespace MUI
         long getCycleChain() const;
         /// @brief [ @b MUIA_Disabled ]
         bool isDisabled() const;
+#ifdef MUIA_DoubleBuffer
         /// @brief [ @b MUIA_DoubleBuffer ]
         bool isDoubleBuffer() const;
+#endif
+#ifdef MUIA_DoubleClick
         /// @brief [ @b MUIA_DoubleClick ]
         bool isDoubleClick() const;
+#endif
         /// @brief [ @b MUIA_Draggable ]
         bool isDraggable() const;
         /// @brief [ @b MUIA_Dropable ]
         bool isDropable() const;
+#ifdef MUIA_Floating
         /// @brief [ @b MUIA_Floating ]
         bool isFloating() const;
+#endif
         /// @brief [ @b MUIA_Font ]
         TextFont *getFont() const;
+#ifdef MUIA_FrameDynamic
         /// @brief [ @b MUIA_FrameDynamic ]
         bool isFrameDynamic() const;
+#endif
         /// @brief [ @b MUIA_FrameTitle ]
         std::string getFrameTitle() const;
+#ifdef MUIA_FrameVisible
         /// @brief [ @b MUIA_FrameVisible ]
         bool isFrameVisible() const;
+#endif
         /// @brief [ @b MUIA_Height ]
         long getHeight() const;
         /// @brief [ @b MUIA_HorizDisappear ]
@@ -120,8 +130,10 @@ namespace MUI
         std::string getShortHelp() const;
         /// @brief [ @b MUIA_ShowMe ]
         bool isShowMe() const;
+#ifdef MUIA_TextColor
         /// @brief [ @b MUIA_TextColor ]
         unsigned long getTextColor() const;
+#endif
         /// @brief [ @b MUIA_Timer ]
         long getTimer() const;
         /// @brief [ @b MUIA_TopEdge ]
@@ -150,8 +162,10 @@ namespace MUI
         Area &setDisabled(const bool disabled);
         /// @brief [ @b MUIA_FillArea ]
         Area &setFillArea(const bool fillArea);
+#ifdef MUIA_Floating
         /// @brief [ @b MUIA_Floating ]
         Area &setFloating(const bool floating);
+#endif
         /// @brief [ @b MUIA_Font ] - seems that setting font doesn't work (at least for MUI::Floattext)
         Area &setFont(const enum Font font);
         /// @brief [ @b MUIA_FrameTitle ]
@@ -206,7 +220,7 @@ namespace MUI
         Area &Text(const long left, const long top, const long width, const long height, const std::string &text, const long len,
                    const std::string &preparse, const char ulchar = 0);
 #endif
-#ifndef __MORPHOS__
+#ifdef MUIM_TextDim
         /// @brief [ @b MUIM_TextDim ] Use this function to measure the area which will be required to render a text of the given length.
         /// All facilities of MUI's text engine are allowed for both the text and the preparse string. Refer to MUIA_Text_Contents for all
         /// possible sequences.
@@ -251,16 +265,20 @@ namespace MUI
         T &tagFixWidth(const long fixWidth);
         /// @brief [ @b MUIA_FixWidthTxt ]
         T &tagFixWidthTxt(const std::string &fixWidthTxt);
+#ifdef MUIA_Floating
         /// @brief [ @b MUIA_Floating ]
         T &tagFloating(const bool floating);
+#endif
         /// @brief [ @b MUIA_Font] (for "struct TextFont *" should be separate method)
         /// @param font enum Font
         T &tagFont(const enum Font font);
         /// @brief [ @b MUIA_Frame ]
         /// @param frame enum Frame
         T &tagFrame(const enum Frame frame);
+#ifdef MUIA_FrameDynamic
         /// @brief [ @b MUIA_FrameDynamic ]
         T &tagDynamic(const bool dynamic);
+#endif
         /// @brief [ @b MUIA_FramePhantomHoriz ]
         T &tagPhantomHoriz(const bool phantomHoriz);
         /// @brief [ @b MUIA_FrameTitle ]
@@ -360,11 +378,13 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_Floating
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFloating(const bool floating)
     {
         this->PushTag(MUIA_Floating, floating);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFont(const enum Font font)
     {
@@ -378,11 +398,13 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_FrameDynamic
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagDynamic(const bool dynamic)
     {
         this->PushTag(MUIA_FrameDynamic, dynamic);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagPhantomHoriz(const bool phantomHoriz)
     {
