@@ -74,10 +74,12 @@ namespace MUI
         /// @brief [ @b MUIA_String_Multiline ]
         T &tagMultiline(const bool multiline);
 #endif
+#ifdef MUIA_String_Placeholder
         /// @brief [ @b MUIA_String_Placeholder ]
         T &tagPlaceholder(const char *placeholder);
         /// @brief [ @b MUIA_String_Placeholder ]
         T &tagPlaceholder(const std::string &placeholder);
+#endif
     };
 
     class StringBuilder : public StringBuilderTemplate<StringBuilder, String>
@@ -118,6 +120,7 @@ namespace MUI
     }
 #endif
 
+#ifdef MUIA_String_Placeholder
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagPlaceholder(const char *placeholder)
     {
         this->PushTag(MUIA_String_Placeholder, placeholder);
@@ -129,4 +132,5 @@ namespace MUI
         this->PushTag(MUIA_String_Placeholder, placeholder);
         return (T &)*this;
     }
+#endif
 }

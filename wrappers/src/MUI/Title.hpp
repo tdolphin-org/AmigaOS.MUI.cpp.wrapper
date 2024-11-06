@@ -6,6 +6,10 @@
 
 #pragma once
 
+#include <libraries/mui.h>
+
+#ifdef MUIC_Title
+
 #include "Group.hpp"
 #include "ValueTypes/Title/OnLastClose.hpp"
 #include "ValueTypes/Title/Position.hpp"
@@ -149,3 +153,5 @@ namespace MUI
         return (T &)*this;
     }
 }
+
+#endif

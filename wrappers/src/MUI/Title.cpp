@@ -6,6 +6,8 @@
 
 #include "Title.hpp"
 
+#ifdef MUIC_Title
+
 namespace MUI
 {
     const std::string Title::className = MUIC_Title;
@@ -62,3 +64,5 @@ namespace MUI
         return *this;
     }
 }
+
+#endif

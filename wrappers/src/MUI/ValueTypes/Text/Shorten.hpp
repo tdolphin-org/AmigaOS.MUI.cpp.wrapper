@@ -8,6 +8,8 @@
 
 #include <libraries/mui.h>
 
+#ifdef MUIA_Text_Shorten
+
 namespace MUI
 {
     enum class Text_Shorten
@@ -26,3 +28,5 @@ namespace MUI
 #endif
     };
 }
+
+#endif

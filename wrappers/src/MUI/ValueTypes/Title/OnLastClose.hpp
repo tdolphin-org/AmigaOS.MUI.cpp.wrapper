@@ -8,6 +8,8 @@
 
 #include <libraries/mui.h>
 
+#ifdef MUIC_Title
+
 namespace MUI
 {
     enum class Title_OnLastClose
@@ -16,3 +18,5 @@ namespace MUI
         WindowAction = MUIV_Title_OnLastClose_WindowAction,
     };
 }
+
+#endif

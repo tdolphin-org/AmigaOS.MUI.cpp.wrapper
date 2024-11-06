@@ -76,12 +76,16 @@ namespace MUI
         /// @b MUIA_Text_Copy is set to @b FALSE), you can destroy the original string after using this tag. Contest may contain some
         /// special character sequences defining format, color and style of the text.
         T &tagContents(const std::string &contents);
+#ifdef MUIA_Text_ControlChar
         /// @brief [ @b MUIA_Text_ControlChar ]
         T &tagControlChar(const char controlChar);
+#endif
+#ifdef MUIA_Text_Copy
         /// @brief [ @b MUIA_Text_Copy ]
         /// When set to false, the contents will not be copied to a private buffer. By default is true, unless MUIA_Text_HiChar is also
         /// specified.
         T &tagCopy(const bool copy);
+#endif
 #ifdef MUIA_Text_Data
         /// @brief [ @b MUIA_Text_Data ]
         /// This attribute specifies the object's text wrapped in a Textdata object instead of directly as a string. This allows to set
@@ -95,10 +99,12 @@ namespace MUI
         /// If the character given here exists in the displayed string (no matter if upper or lower case), it will be underlined. This makes
         /// it easy to create macros such as KeyButton() that specify the control char and the underline char at the same time.
         T &tagHiChar(const char hiChar);
+#ifdef MUIA_Text_Marking
         /// @brief [ @b MUIA_Text_Marking ]
         /// This attribute controls whether it is possible to mark the object's text contents using the mouse and copy them to the clipboard
         /// By default is false.
         T &tagMarking(const bool marking);
+#endif
         /// @brief [ @b MUIA_Text_PreParse ]
         /// format definitions to be parsed before the text from MUIA_Text_Contents is printed
         T &tagPreParse(const char *preParse);
@@ -122,9 +128,11 @@ namespace MUI
         /// Settings this to false makes a TextObjects y-size unlimited.
         /// By default is true, which means the objects height is fixed.
         T &tagSetVMax(const bool setVMax);
+#ifdef MUIA_Text_Shorten
         /// @brief [ @b MUIA_Text_Shorten ]
         /// controls whether MUI is allowed to shorten the text to be displayed and how this shortening process will be done
         T &tagShorten(const enum Text_Shorten shorten);
+#endif
     };
 
     class TextBuilder : public TextBuilderTemplate<TextBuilder, Text>
@@ -145,17 +153,21 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_Text_ControlChar
     template <typename T, typename U> inline T &TextBuilderTemplate<T, U>::tagControlChar(const char controlChar)
     {
         this->PushTag(MUIA_Text_ControlChar, controlChar);
         return (T &)*this;
     }
+#endif
 
+#ifdef MUIA_Text_Copy
     template <typename T, typename U> inline T &TextBuilderTemplate<T, U>::tagCopy(const bool copy)
     {
         this->PushTag(MUIA_Text_Copy, copy);
         return (T &)*this;
     }
+#endif
 
 #ifdef MUIA_Text_Data
     template <typename T, typename U> inline T &TextBuilderTemplate<T, U>::tagData(const Object *data)
@@ -171,11 +183,13 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_Text_Marking
     template <typename T, typename U> inline T &TextBuilderTemplate<T, U>::tagMarking(const bool marking)
     {
         this->PushTag(MUIA_Text_Marking, marking);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &TextBuilderTemplate<T, U>::tagPreParse(const char *preParse)
     {
@@ -207,9 +221,11 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_Text_Shorten
     template <typename T, typename U> inline T &TextBuilderTemplate<T, U>::tagShorten(const enum Text_Shorten shorten)
     {
         this->PushTag(MUIA_Text_Shorten, (long)shorten);
         return (T &)*this;
     }
+#endif
 }
