@@ -30,8 +30,10 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
+#ifdef MUIA_Prop_DeltaFactor
         /// @brief [ @b MUIA_Prop_DeltaFactor ]
         long getDeltaFactor() const;
+#endif
         /// @brief [ @b MUIA_Prop_Entries ]
         long getEntries() const;
         /// @brief [ @b MUIA_Prop_First ]
@@ -41,8 +43,10 @@ namespace MUI
         /// @brief [ @b MUIA_Prop_Visible ]
         long getVisible() const;
 
+#ifdef MUIA_Prop_DeltaFactor
         /// @brief [ @b MUIA_Prop_DeltaFactor ]
         Prop &setDeltaFactor(const long deltaFactor);
+#endif
         /// @brief [ @b MUIA_Prop_Entries ]
         Prop &setEntries(const long entries);
         /// @brief [ @b MUIA_Prop_First ]
@@ -66,9 +70,11 @@ namespace MUI
         {
         }
 
+#ifdef MUIA_Prop_DeltaFactor
         /// @brief [ @b MUIA_Prop_DeltaFactor additional delta factor to speed up keyboard navigation.
         // All "fast" movements, like "alt+cursor up", will be multiplied by this factor. Default is 1.]
         T &tagDeltaFactor(const long deltaFactor);
+#endif
         /// @brief [ @b MUIA_Prop_Entries total number of entries ]
         T &tagEntries(const long entries);
         /// @brief [ @b MUIA_Prop_First the number of the first entry ]
@@ -87,11 +93,13 @@ namespace MUI
         PropBuilder();
     };
 
+#ifdef MUIA_Prop_DeltaFactor
     template <typename T, typename U> inline T &PropBuilderTemplate<T, U>::tagDeltaFactor(const long deltaFactor)
     {
         this->PushTag(MUIA_Prop_DeltaFactor, deltaFactor);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &PropBuilderTemplate<T, U>::tagEntries(const long entries)
     {

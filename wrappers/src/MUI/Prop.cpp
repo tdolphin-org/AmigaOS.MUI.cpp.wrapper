@@ -14,10 +14,12 @@ namespace MUI
 
     PropBuilder::PropBuilder() { }
 
+#ifdef MUIA_Prop_DeltaFactor
     long Prop::getDeltaFactor() const
     {
         return GetValueAsLong(MUIA_Prop_DeltaFactor);
     }
+#endif
 
     long Prop::getEntries() const
     {
@@ -39,11 +41,13 @@ namespace MUI
         return GetValueAsLong(MUIA_Prop_Visible);
     }
 
+#ifdef MUIA_Prop_DeltaFactor
     Prop &Prop::setDeltaFactor(const long deltaFactor)
     {
         SetValue(MUIA_Prop_DeltaFactor, deltaFactor);
         return *this;
     }
+#endif
 
     Prop &Prop::setEntries(const long entries)
     {

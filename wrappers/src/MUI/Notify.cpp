@@ -75,11 +75,13 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIA_NoNotifyMethod
     Notify &Notify::setNoNotifyMethod(const unsigned long noNotifyMethod)
     {
         SetValue(MUIA_NoNotifyMethod, noNotifyMethod);
         return *this;
     }
+#endif
 
     Notify &Notify::setObjectID(const AOS::Identifier &objectID)
     {
@@ -93,6 +95,7 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIM_FindObject
     Object *Notify::FindObject(const Root &findme) const
     {
         return (Object *)DoMethod(muiObject(), MUIM_FindObject, findme.muiObject());
@@ -102,6 +105,7 @@ namespace MUI
     {
         return (Object *)DoMethod(muiObject(), MUIM_FindObject, findme);
     }
+#endif
 
     Object *Notify::FindUData(const unsigned long udata) const
     {

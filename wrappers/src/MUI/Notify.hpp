@@ -64,8 +64,10 @@ namespace MUI
         Notify &setHelpNode(const std::string &helpNode);
         /// @brief [ @b MUIA_NoNotify ]
         Notify &setNoNotify(const bool noNotify);
+#ifdef MUIA_NoNotifyMethod
         /// @brief [ @b MUIA_NoNotifyMethod ]
         Notify &setNoNotifyMethod(const unsigned long noNotifyMethod);
+#endif
         /// @brief [ @b MUIA_ObjectID ]
         Notify &setObjectID(const AOS::Identifier &objectID);
         /// @brief [ @b MUIA_UserData ]
@@ -73,10 +75,12 @@ namespace MUI
 
         // methods, some returns object reference
 
+#ifdef MUIM_FindObject
         /// @brief [ @b MUIM_FindObject ]
         Object *FindObject(const Root &findme) const;
         /// @brief [ @b MUIM_FindObject ]
         Object *FindObject(const Object *findme) const;
+#endif
         /// @brief [ @b MUIM_FindUData ]
         Object *FindUData(const unsigned long udata) const;
         /// @brief [ @b MUIM_GetUData ]
@@ -129,7 +133,8 @@ namespace MUI
         /// @brief [ @b MUIA_HelpNode ]
         T &tagHelpNode(const std::string &helpNode);
         /// @brief [ @b MUIA_ObjectID ]
-        /// Objects with a non NULL MUIA_ObjectID export their contents during MUIM_Application_Save and import them during MUIM_Application_Load.
+        /// Objects with a non NULL MUIA_ObjectID export their contents during MUIM_Application_Save and import them during
+        /// MUIM_Application_Load.
         T &tagObjectID(const AOS::Identifier &idobjectID);
         /// @brief [ @b MUIA_UserData ]
         /// A general purpose value to fill in any kind of information.

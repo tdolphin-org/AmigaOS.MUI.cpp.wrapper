@@ -44,8 +44,10 @@ namespace MUI
         T &tagLeft(const long left);
         /// @brief [ @b MUIA_Virtgroup_Top ]
         T &tagTop(const long top);
+#ifdef MUIA_Virtgroup_TryFit
         /// @brief [ @b MUIA_Virtgroup_TryFit ]
         T &tagTryFit(const bool tryFit);
+#endif
     };
 
     class VirtgroupBuilder : public VirtgroupBuilderTemplate<VirtgroupBuilder, Virtgroup>
@@ -72,9 +74,11 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_Virtgroup_TryFit
     template <typename T, typename U> inline T &VirtgroupBuilderTemplate<T, U>::tagTryFit(const bool tryFit)
     {
         this->PushTag(MUIA_Virtgroup_TryFit, tryFit);
         return (T &)*this;
     }
+#endif
 }
