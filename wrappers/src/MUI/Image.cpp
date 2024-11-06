@@ -24,11 +24,13 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIA_Image_FontMatchString
     Image &Image::setFontMatchString(const std::string &fontMatchString)
     {
         SetValue(MUIA_Image_FontMatchString, fontMatchString);
         return *this;
     }
+#endif
 
     Image &Image::setFontMatchWidth(const bool fontMatchWidth)
     {

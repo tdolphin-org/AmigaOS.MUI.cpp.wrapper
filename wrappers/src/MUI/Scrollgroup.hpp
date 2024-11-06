@@ -38,8 +38,10 @@ namespace MUI
         {
         }
 
+#ifdef MUIA_Scrollgroup_AutoBars
         /// @brief [ @b MUIA_Scrollgroup_AutoBars ]
         T &tagAutoBars(const bool autoBars);
+#endif
         /// @brief [ @b MUIA_Scrollgroup_Contents ]
         /// You have to specify an object of Virtgroup class here.
         T &tagContents(const Object *contents);
@@ -49,10 +51,14 @@ namespace MUI
         T &tagFreeHoriz(const bool freeHoriz);
         /// @brief [ @b MUIA_Scrollgroup_FreeVert ]
         T &tagFreeVert(const bool freeVert);
+#ifdef MUIA_Scrollgroup_NoHorizBar
         /// @brief [ @b MUIA_Scrollgroup_NoHorizBar ]
         T &tagNoHorizBar(const bool noHorizBar);
+#endif
+#ifdef MUIA_Scrollgroup_NoVertBar
         /// @brief [ @b MUIA_Scrollgroup_NoVertBar ]
         T &tagNoVertBar(const bool noVertBar);
+#endif
         /// @brief [ @b MUIA_Scrollgroup_UseWinBorder ]
         T &tagUseWinBorder(const bool useWinBorder);
     };
@@ -63,11 +69,13 @@ namespace MUI
         ScrollgroupBuilder();
     };
 
+#ifdef MUIA_Scrollgroup_AutoBars
     template <typename T, typename U> inline T &ScrollgroupBuilderTemplate<T, U>::tagAutoBars(const bool autoBars)
     {
         this->PushTag(MUIA_Scrollgroup_AutoBars, autoBars);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &ScrollgroupBuilderTemplate<T, U>::tagContents(const Object *contents)
     {
@@ -94,17 +102,21 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_Scrollgroup_NoHorizBar
     template <typename T, typename U> inline T &ScrollgroupBuilderTemplate<T, U>::tagNoHorizBar(const bool noHorizBar)
     {
         this->PushTag(MUIA_Scrollgroup_NoHorizBar, noHorizBar);
         return (T &)*this;
     }
+#endif
 
+#ifdef MUIA_Scrollgroup_NoVertBar
     template <typename T, typename U> inline T &ScrollgroupBuilderTemplate<T, U>::tagNoVertBar(const bool noVertBar)
     {
         this->PushTag(MUIA_Scrollgroup_NoVertBar, noVertBar);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &ScrollgroupBuilderTemplate<T, U>::tagUseWinBorder(const bool useWinBorder)
     {

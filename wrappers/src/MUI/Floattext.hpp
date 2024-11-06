@@ -51,9 +51,11 @@ namespace MUI
 
         // methods, some returns object reference
 
+#ifdef MUIM_Floattext_Append
         /// @brief [ @b MUIM_Floattext_Append ]
         /// Appends the given text to the already existing text. The additional text will be copied to a private buffer.
         Floattext &Append(const std::string &text);
+#endif
     };
 
     template <typename T, typename U> class FloattextBuilderTemplate : public ListBuilderTemplate<T, U>

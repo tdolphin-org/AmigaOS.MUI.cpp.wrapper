@@ -33,8 +33,10 @@ namespace MUI
         Image &setFontMatch(const bool fontMatch);
         /// @brief [ @b MUIA_Image_FontMatchHeight ]
         Image &setFontMatchHeight(const bool fontMatchHeight);
+#ifdef MUIA_Image_FontMatchString
         /// @brief [ @b MUIA_Image_FontMatchString ]
         Image &setFontMatchString(const std::string &fontMatchString);
+#endif
         /// @brief [ @b MUIA_Image_FontMatchWidth ]
         Image &setFontMatchWidth(const bool fontMatchWidth);
         /// @brief [ @b MUIA_Image_FreeHoriz ]
@@ -64,8 +66,10 @@ namespace MUI
         {
         }
 
+#ifdef MUIA_Image_BuiltinSpec
         /// @brief [ @b MUIA_Image_BuiltinSpec ]
         T &tagBuiltinSpec(const unsigned long builtinSpec);
+#endif
 #ifdef MUIA_Image_CopySpec
         /// @brief [ @b MUIA_Image_CopySpec ]
         T &tagCopySpec(const bool copySpec);
@@ -74,8 +78,10 @@ namespace MUI
         T &tagFontMatch(const bool fontMatch);
         /// @brief [ @b MUIA_Image_FontMatchHeight ]
         T &tagFontMatchHeight(const bool fontMatchHeight);
+#ifdef MUIA_Image_FontMatchString
         /// @brief [ @b MUIA_Image_FontMatchString ]
         T &tagFontMatchString(const std::string &fontMatchString);
+#endif
         /// @brief [ @b MUIA_Image_FontMatchWidth ]
         T &tagFontMatchWidth(const bool fontMatchWidth);
         /// @brief [ @b MUIA_Image_FreeHoriz ]
@@ -105,11 +111,13 @@ namespace MUI
         ImageBuilder();
     };
 
+#ifdef MUIA_Image_BuiltinSpec
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagBuiltinSpec(const unsigned long builtinSpec)
     {
         this->PushTag(MUIA_Image_BuiltinSpec, builtinSpec);
         return (T &)*this;
     }
+#endif
 
 #ifdef MUIA_Image_CopySpec
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagCopySpec(const bool copySpec /* = true */)
@@ -131,11 +139,13 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_Image_FontMatchString
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagFontMatchString(const std::string &fontMatchString)
     {
         this->PushTag(MUIA_Image_FontMatchString, fontMatchString);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagFontMatchWidth(const bool fontMatchWidth)
     {
@@ -163,12 +173,12 @@ namespace MUI
 
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagSpec(const std::string &spec)
     {
-#ifdef __MORPHOS__
-        auto copy = this->StoreString(MUIA_Image_Spec, spec);
-        this->PushTag(MUIA_Image_Spec, copy);
-#else
+#ifdef MUIA_Image_CopySpec
         this->PushTag(MUIA_Image_CopySpec, true);
         this->PushTag(MUIA_Image_Spec, spec);
+#else
+        auto copy = this->StoreString(MUIA_Image_Spec, spec);
+        this->PushTag(MUIA_Image_Spec, copy);
 #endif
         return (T &)*this;
     }
@@ -182,12 +192,12 @@ namespace MUI
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagSpecPicture(const std::string &imagePath)
     {
         spec = "5:" + imagePath;
-#ifdef __MORPHOS__
-        auto copy = this->StoreString(MUIA_Image_Spec, spec);
-        this->PushTag(MUIA_Image_Spec, copy);
-#else
+#ifdef MUIA_Image_CopySpec
         this->PushTag(MUIA_Image_CopySpec, true);
         this->PushTag(MUIA_Image_Spec, spec);
+#else
+        auto copy = this->StoreString(MUIA_Image_Spec, spec);
+        this->PushTag(MUIA_Image_Spec, copy);
 #endif
         return (T &)*this;
     }
@@ -195,12 +205,12 @@ namespace MUI
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagSpecColor(const unsigned long rgbColor)
     {
         // FIXME add proper convert rgbColor to "2:RRRRRRRR,GGGGGGGG,BBBBBBBB" from rgbColor
-#ifdef __MORPHOS__
-        auto copy = this->StoreString(MUIA_Image_Spec, colorSpec);
-        this->PushTag(MUIA_Image_Spec, copy);
-#else
+#ifdef MUIA_Image_CopySpec
         this->PushTag(MUIA_Image_CopySpec, true);
         this->PushTag(MUIA_Image_Spec, colorSpec);
+#else
+        auto copy = this->StoreString(MUIA_Image_Spec, colorSpec);
+        this->PushTag(MUIA_Image_Spec, copy);
 #endif
         return (T &)*this;
     }

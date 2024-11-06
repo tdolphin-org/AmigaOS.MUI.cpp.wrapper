@@ -8,6 +8,8 @@
 
 #include <libraries/mui.h>
 
+#ifdef MUIC_Fontpanel
+
 namespace MUI
 {
     enum class Fontpanel_ShowCollection
@@ -19,3 +21,5 @@ namespace MUI
         User = MUIV_Fontpanel_ShowCollection_User
     };
 }
+
+#endif
