@@ -50,6 +50,7 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIM_Group_AddHead
     Group &Group::AddHead(const Object *pChildObject)
     {
         if (pChildObject)
@@ -63,7 +64,9 @@ namespace MUI
             DoMethod(muiObject(), MUIM_Group_AddHead, (ULONG)child.muiObject());
         return *this;
     }
+#endif
 
+#ifdef MUIM_Group_AddTail
     Group &Group::AddTail(const Object *pChildObject)
     {
         if (pChildObject)
@@ -77,6 +80,7 @@ namespace MUI
             DoMethod(muiObject(), MUIM_Group_AddTail, (ULONG)child.muiObject());
         return *this;
     }
+#endif
 
     Group &Group::ExitChange()
     {
@@ -84,11 +88,13 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIM_Group_ExitChange2
     Group &Group::ExitChange2()
     {
         DoMethod(muiObject(), MUIM_Group_ExitChange2);
         return *this;
     }
+#endif
 
     Group &Group::InitChange()
     {
@@ -96,11 +102,13 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIM_Group_Remove
     Group &Group::Remove(const Object *pChildObject)
     {
         DoMethod(muiObject(), MUIM_Group_Remove, (ULONG)pChildObject);
         return *this;
     }
+#endif
 
     GroupBuilder::GroupBuilder() { }
 }

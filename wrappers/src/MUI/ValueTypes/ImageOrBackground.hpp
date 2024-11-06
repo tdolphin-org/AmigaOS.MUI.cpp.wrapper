@@ -54,6 +54,7 @@ namespace MUI
         TapeDown = MUII_TapeDown,
         PageBack = MUII_PageBack,
         ReadListBack = MUII_ReadListBack,
+#ifdef MUII_PopFont
         PopFont = MUII_PopFont,
         ImageButtonBack = MUII_ImageButtonBack,
         ImageSelectedBack = MUII_ImageSelectedBack,
@@ -67,6 +68,7 @@ namespace MUI
         GroupTitle = MUII_GroupTitle,
         RegisterTitle = MUII_RegisterTitle,
         Close = MUII_Close,
+#endif
         Count = MUII_Count,
 
         Background = MUII_BACKGROUND,
@@ -87,8 +89,10 @@ namespace MUI
         Markshine = MUII_MARKSHINE,
         Markhalfshine = MUII_MARKHALFSHINE,
         Markbackground = MUII_MARKBACKGROUND,
+#ifdef MUII_BARBLOCK
         Barblock = MUII_BARBLOCK,
         Bardetail = MUII_BARDETAIL,
+#endif
         Lastpat = MUII_LASTPAT,
     };
 }
