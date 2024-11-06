@@ -35,7 +35,11 @@ namespace MUI
         blue = from32Bit(rgb[2]);
     }
 
+#if MUIMASTER_VMIN >= 20 // MUI5
     RGBColor::RGBColor(const MUI_RGBColor &rgbColor)
+#else
+    RGBColor::RGBColor(const MUI_RGBcolor &rgbColor)
+#endif
     {
         red = from32Bit(rgbColor.red);
         green = from32Bit(rgbColor.green);

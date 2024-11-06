@@ -19,7 +19,11 @@ namespace MUI
         RGBColor();
         RGBColor(const unsigned char red, const unsigned char green, const unsigned char blue);
         RGBColor(const unsigned long *rgb);
+#if MUIMASTER_VMIN >= 20 // MUI5
         RGBColor(const MUI_RGBColor &rgbColor);
+#else
+        RGBColor(const MUI_RGBcolor &rgbColor);
+#endif
         RGBColor(const unsigned long argb); // 0xAARRGGBB alpha red green blue .. alpha is ignored
 
         unsigned long red32bit() const
