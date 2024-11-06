@@ -8,6 +8,8 @@
 
 #include <libraries/mui.h>
 
+#ifdef MUIA_List_MultiSelect
+
 namespace MUI
 {
     enum class List_MultiSelect
@@ -22,3 +24,5 @@ namespace MUI
         Always = MUIV_List_MultiSelect_Always,
     };
 }
+
+#endif

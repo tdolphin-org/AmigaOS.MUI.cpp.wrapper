@@ -10,10 +10,12 @@ namespace MUI
 {
     const std::string Listview::className = MUIC_Listview;
 
+#ifdef MUIA_Listview_AgainClick
     bool Listview::isAgainClick() const
     {
         return GetValueAsBool(MUIA_Listview_AgainClick);
     }
+#endif
 
     long Listview::getClickColumn() const
     {

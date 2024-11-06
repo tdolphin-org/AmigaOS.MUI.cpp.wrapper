@@ -27,25 +27,31 @@ namespace MUI
         return GetValueAsLong(MUIA_List_Entries);
     }
 
+#ifdef MUIA_List_TopPixel
     long List::getTopPixel() const
     {
         return GetValueAsLong(MUIA_List_TopPixel);
     }
+#endif
 
+#ifdef MUIA_List_TotalPixel
     long List::getTotalPixel() const
     {
         return GetValueAsLong(MUIA_List_TotalPixel);
     }
+#endif
 
     long List::getVisible() const
     {
         return GetValueAsLong(MUIA_List_Visible);
     }
 
+#ifdef MUIA_List_VisiblePixel
     long List::getVisiblePixel() const
     {
         return GetValueAsLong(MUIA_List_VisiblePixel);
     }
+#endif
 
     bool List::isQuiet() const
     {
@@ -118,17 +124,21 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIA_List_SortColumn
     List &List::setSortColumn(const long sortColumn)
     {
         SetValue(MUIA_List_SortColumn, sortColumn);
         return *this;
     }
+#endif
 
+#ifdef MUIA_List_TopPixel
     List &List::setTopPixel(const long topPixel)
     {
         SetValue(MUIA_List_TopPixel, topPixel);
         return *this;
     }
+#endif
 
     List &List::setQuiet(const bool quiet)
     {
@@ -307,11 +317,13 @@ namespace MUI
         return (List &)*this;
     }
 
+#ifdef MUIV_List_Redraw_Entry
     List &List::RedrawEntry(const void *entry) const
     {
         DoMethod(muiObject(), MUIM_List_Redraw, MUIV_List_Redraw_Entry, entry);
         return (List &)*this;
     }
+#endif
 
     List &List::RedrawAll() const
     {

@@ -8,6 +8,8 @@
 
 #include <libraries/mui.h>
 
+#ifdef MUIA_List_ScrollerPos
+
 namespace MUI
 {
     enum class List_ScrollerPos
@@ -18,3 +20,5 @@ namespace MUI
         None = MUIV_List_ScrollerPos_None,
     };
 }
+
+#endif

@@ -36,8 +36,10 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
+#ifdef MUIA_Listview_AgainClick
         /// @brief [ @b MUIA_Listview_AgainClick ]
         bool isAgainClick() const;
+#endif
         /// @brief [ @b MUIA_Listview_ClickColumn ]
         long getClickColumn() const;
         /// @brief [ @b MUIA_Listview_DefClickColumn ]
@@ -69,8 +71,10 @@ namespace MUI
         {
         }
 
+#ifdef MUIA_Listview_AgainClick
         /// @brief [ @b MUIA_Listview_AgainClick ]
         T &tagAgainClick(const bool againClick);
+#endif
         /// @brief [ @b MUIA_Listview_DefClickColumn ]
         T &tagDefClickColumn(const long defClickColumn);
         /// @brief [ @b MUIA_Listview_DoubleClick ]
@@ -98,11 +102,13 @@ namespace MUI
         ListviewBuilder();
     };
 
+#ifdef MUIA_Listview_AgainClick
     template <typename T, typename U> inline T &ListviewBuilderTemplate<T, U>::tagAgainClick(const bool againClick)
     {
         this->PushTag(MUIA_Listview_AgainClick, againClick);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &ListviewBuilderTemplate<T, U>::tagDefClickColumn(const long defClickColumn)
     {

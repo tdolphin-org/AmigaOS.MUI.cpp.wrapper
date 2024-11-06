@@ -51,14 +51,20 @@ namespace MUI
         long getEntries() const;
         /// @brief [ @b MUIA_List_Quiet ]
         bool isQuiet() const;
+#ifdef MUIA_List_TopPixel
         /// @brief [ @b MUIA_List_TopPixel ]
         long getTopPixel() const;
+#endif
+#ifdef MUIA_List_TotalPixel
         /// @brief [ @b MUIA_List_TotalPixel ]
         long getTotalPixel() const;
+#endif
         /// @brief [ @b MUIA_List_Visible ]
         long getVisible() const;
+#ifdef MUIA_List_VisiblePixel
         /// @brief [ @b MUIA_List_VisiblePixel ]
         long getVisiblePixel() const;
+#endif
 
         /// @brief [ @b MUIA_List_Active ]
         List &setActive(const long active);
@@ -82,10 +88,14 @@ namespace MUI
         List &setFormat(const char *format);
         /// @brief [ @b MUIA_List_Format ]
         List &setFormat(const std::string &format);
+#ifdef MUIA_List_SortColumn
         /// @brief [ @b MUIA_List_SortColumn ]
         List &setSortColumn(const long sortColumn);
+#endif
+#ifdef MUIA_List_TopPixel
         /// @brief [ @b MUIA_List_TopPixel ]
         List &setTopPixel(const long topPixel);
+#endif
         /// @brief [ @b MUIA_List_Quiet ]
         List &setQuiet(const bool quiet);
 
@@ -167,8 +177,10 @@ namespace MUI
         List &Redraw(long pos) const;
         /// @brief [ @b MUIM_List_Redraw, @b MUIV_List_Redraw_Active ]
         List &RedrawActive() const;
+#ifdef MUIV_List_Redraw_Entry
         /// @brief [ @b MUIM_List_Redraw, @b MUIV_List_Redraw_Entry ]
         List &RedrawEntry(const void *entry) const;
+#endif
         /// @brief [ @b MUIM_List_Redraw, @b MUIV_List_Redraw_All ]
         List &RedrawAll() const;
     };
@@ -189,53 +201,77 @@ namespace MUI
         T &tagAdjustHeight(const bool adjustHeight);
         /// @brief [ @b MUIA_List_AdjustWidth ]
         T &tagAdjustWidth(const bool adjustWidth);
+#ifdef MUIA_List_AgainClick
         /// @brief [ @b MUIA_List_AgainClick ]
         T &tagAgainClick(const bool againClick);
+#endif
+#ifdef MUIA_List_AutoLineHeight
         /// @brief [ @b MUIA_List_AutoLineHeight ]
         T &tagAutoLineHeight(const bool autoLineHeight);
+#endif
+#ifdef MUIA_List_MaxColumns
         /// @brief [ @b MUIA_List_MaxColumns ]
         T &tagMaxColumns(const long maxColumns);
+#endif
         /// @brief [ @b MUIA_List_AutoVisible ]
         T &tagAutoVisible(const bool autoVisible);
         /// @brief [ @b MUIA_List_CompareHook ]
         T &tagCompareHook(const struct Hook *compareHook);
+#ifdef MUIV_List_CompareHook_String
         /// @brief [ @b MUIA_List_CompareHook, @b MUIV_List_CompareHook_String ]
         T &tagCompareHookString();
+#endif
         /// @brief [ @b MUIA_List_ConstructHook ]
         T &tagConstructHook(const struct Hook *constructHook);
         /// @brief [ @b MUIA_List_ConstructHook, @b MUIV_List_ConstructHook_String ]
         T &tagConstructHookString();
+#ifdef MUIV_List_ConstructHook_StringArray
         /// @brief [ @b MUIA_List_ConstructHook, @b MUIV_List_ConstructHook_StringArray ]
         T &tagConstructHookStringArray();
+#endif
         /// @brief [ @b MUIA_List_DestructHook ]
         T &tagDestructHook(const struct Hook *destructHook);
         /// @brief [ @b MUIA_List_DestructHook, @b MUIV_List_DestructHook_String ]
         T &tagDestructHookString();
+#ifdef MUIV_List_DestructHook_StringArray
         /// @brief [ @b MUIA_List_DestructHook, @b MUIV_List_DestructHook_StringArray ]
         T &tagDestructHookStringArray();
+#endif
         /// @brief [ @b MUIA_List_DisplayHook ]
         T &tagDisplayHook(const struct Hook *displayHook);
+#ifdef MUIA_List_DragType
         /// @brief [ @b MUIA_List_DragType ]
         T &tagDragType(const enum List_DragType dragType);
+#endif
         /// @brief [ @b MUIA_List_DragSortable ]
         T &tagDragSortable(const bool dragSortable);
         /// @brief [ @b MUIA_List_Format ]
         T &tagFormat(const char *format);
         /// @brief [ @b MUIA_List_Format ]
         T &tagFormat(const std::string &format);
+#ifdef MUIA_List_HScrollerVisibility
         /// @brief [ @b MUIA_List_HScrollerVisibility set possibilities for the list's horizontal scroll bar:
         /// Please do NOT override the user's prefs unless you have a good reason!]
         T &tagHScrollerVisibility(const enum List_HScrollerVisibility hScrollerVisibility);
+#endif
+#ifdef MUIA_List_Input
         /// @brief [ @b MUIA_List_Input ]
         T &tagInput(const bool input);
+#endif
+#ifdef MUIA_List_MultiSelect
         /// @brief [ @b MUIA_List_MultiSelect listviews multi select capabilities.
         /// Do NOT override the user's prefs unless you have a good reason!]
         T &tagMultiSelect(const enum List_MultiSelect multiSelect);
+#endif
+#ifdef MUIA_List_ScrollerPos
         /// @brief [ @b MUIA_List_ScrollerPos specifies the position of a listviews scrollbar.
         /// Don't use this tag unless it is absolutely required!]
         T &tagScrollerPos(const enum List_ScrollerPos scrollerPos);
+#endif
+#ifdef MUIA_List_SortColumn
         /// @brief [ @b MUIA_List_SortColumn ]
         T &tagSortColumn(const long sortColumn);
+#endif
         /// @brief [ @b MUIA_List_SourceArray ]
         T &tagSourceArray(const void *sourceArray[]);
         /// @brief [ @b MUIA_List_SourceArray ]
@@ -244,8 +280,10 @@ namespace MUI
         T &tagTitle(const bool title = true);
         /// @brief [ @b MUIA_List_Title ]
         T &tagTitle(const std::string &title);
+#ifdef MUIA_List_TitleArray
         /// @brief [ @b MUIA_List_TitleArray ]
         T &tagTitleArray(const char *titleArray[]);
+#endif
     };
 
     class ListBuilder : public ListBuilderTemplate<ListBuilder, List>
@@ -278,23 +316,29 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_List_AgainClick
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagAgainClick(const bool againClick)
     {
         this->PushTag(MUIA_List_AgainClick, againClick);
         return (T &)*this;
     }
+#endif
 
+#ifdef MUIA_List_AutoLineHeight
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagAutoLineHeight(const bool autoLineHeight)
     {
         this->PushTag(MUIA_List_AutoLineHeight, autoLineHeight);
         return (T &)*this;
     }
+#endif
 
+#ifdef MUIA_List_MaxColumns
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagMaxColumns(const long maxColumns)
     {
         this->PushTag(MUIA_List_MaxColumns, maxColumns);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagAutoVisible(const bool autoVisible)
     {
@@ -308,11 +352,13 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIV_List_CompareHook_String
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagCompareHookString()
     {
         this->PushTag(MUIA_List_CompareHook, (const Hook *)MUIV_List_CompareHook_String);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagConstructHook(const struct Hook *constructHook)
     {
@@ -326,11 +372,13 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIV_List_ConstructHook_StringArray
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagConstructHookStringArray()
     {
         this->PushTag(MUIA_List_ConstructHook, (const Hook *)MUIV_List_ConstructHook_StringArray);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDestructHook(const struct Hook *destructHook)
     {
@@ -344,11 +392,13 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIV_List_DestructHook_StringArray
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDestructHookStringArray()
     {
         this->PushTag(MUIA_List_DestructHook, (const Hook *)MUIV_List_DestructHook_StringArray);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDisplayHook(const struct Hook *displayHook)
     {
@@ -356,11 +406,13 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_List_DragType
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDragType(const enum List_DragType dragType)
     {
         this->PushTag(MUIA_List_DragType, (long)dragType);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDragSortable(const bool dragSortable)
     {
@@ -380,36 +432,46 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_List_HScrollerVisibility
     template <typename T, typename U>
     inline T &ListBuilderTemplate<T, U>::tagHScrollerVisibility(const enum List_HScrollerVisibility hScrollerVisibility)
     {
         this->PushTag(MUIA_List_HScrollerVisibility, (long)hScrollerVisibility);
         return (T &)*this;
     }
+#endif
 
+#ifdef MUIA_List_Input
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagInput(const bool input)
     {
         this->PushTag(MUIA_List_Input, input);
         return (T &)*this;
     }
+#endif
 
+#ifdef MUIA_List_MultiSelect
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagMultiSelect(const enum List_MultiSelect multiSelect)
     {
         this->PushTag(MUIA_List_MultiSelect, (long)multiSelect);
         return (T &)*this;
     }
+#endif
 
+#ifdef MUIA_List_ScrollerPos
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagScrollerPos(const enum List_ScrollerPos scrollerPos)
     {
         this->PushTag(MUIA_List_ScrollerPos, (long)scrollerPos);
         return (T &)*this;
     }
+#endif
 
+#ifdef MUIA_List_SortColumn
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagSortColumn(const long sortColumn)
     {
         this->PushTag(MUIA_List_SortColumn, sortColumn);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagSourceArray(const void *sourceArray[])
     {
@@ -437,10 +499,12 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_List_TitleArray
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagTitleArray(const char *titleArray[])
     {
         if (titleArray)
             this->PushTag(MUIA_List_TitleArray, titleArray);
         return (T &)*this;
     }
+#endif
 }

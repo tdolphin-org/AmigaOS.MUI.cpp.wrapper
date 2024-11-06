@@ -8,6 +8,8 @@
 
 #include <libraries/mui.h>
 
+#ifdef MUIA_List_HScrollerVisibility
+
 namespace MUI
 {
     enum class List_HScrollerVisibility
@@ -17,3 +19,5 @@ namespace MUI
         Auto = MUIV_List_HScrollerVisibility_Auto,
     };
 }
+
+#endif
