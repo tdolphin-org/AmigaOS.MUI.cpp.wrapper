@@ -29,6 +29,7 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIA_List_TopPixel
     DestListNotifier &DestListNotifier::setTopPixel(const long topPixel, bool notify)
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
@@ -42,4 +43,5 @@ namespace MUI
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_List_TopPixel, MUIV_TriggerValue);
         return *this;
     }
+#endif
 }

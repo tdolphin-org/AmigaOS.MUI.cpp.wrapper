@@ -22,10 +22,12 @@ namespace MUI
 
         // notification methods
 
+#ifdef MUIA_Prop_DeltaFactor
         /// @brief [ @b MUIM_Notify, @b MUIA_Prop_DeltaFactor ]
         SourceNotifier<T, U> onDeltaFactor(const long deltaFactor);
         /// @brief [ @b MUIM_Notify, @b MUIA_Prop_DeltaFactor == @b MUIV_EveryTime ]
         SourceNotifier<T, U> onDeltaFactorEveryTime();
+#endif
         /// @brief [ @b MUIM_Notify, @b MUIA_Prop_Entries ]
         SourceNotifier<T, U> onEntries(const long entries);
         /// @brief [ @b MUIM_Notify, @b MUIA_Prop_Entries == @b MUIV_EveryTime ]
@@ -40,6 +42,7 @@ namespace MUI
         SourceNotifier<T, U> onVisibleEveryTime();
     };
 
+#ifdef MUIA_Prop_DeltaFactor
     template <typename T, typename U> SourceNotifier<T, U> inline PropNotifier<T, U>::onDeltaFactor(const long deltaFactor)
     {
         return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Prop_DeltaFactor, deltaFactor);
@@ -49,6 +52,7 @@ namespace MUI
     {
         return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Prop_DeltaFactor, (long)MUIV_EveryTime);
     }
+#endif
 
     template <typename T, typename U> SourceNotifier<T, U> inline PropNotifier<T, U>::onEntries(const long entries)
     {

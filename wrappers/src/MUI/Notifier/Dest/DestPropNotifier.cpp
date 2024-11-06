@@ -15,6 +15,7 @@ namespace MUI
     {
     }
 
+#ifdef MUIA_Prop_DeltaFactor
     DestPropNotifier &DestPropNotifier::setDeltaFactor(const long deltaFactor, bool notify)
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
@@ -28,6 +29,7 @@ namespace MUI
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Prop_DeltaFactor, MUIV_TriggerValue);
         return *this;
     }
+#endif
 
     DestPropNotifier &DestPropNotifier::setEntries(const long entries, bool notify)
     {

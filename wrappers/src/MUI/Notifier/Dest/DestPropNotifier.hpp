@@ -21,10 +21,12 @@ namespace MUI
         DestPropNotifier(const NotifierObject &notifierObject, const Prop &prop);
 
       public:
+#ifdef MUIA_Prop_DeltaFactor
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Prop_DeltaFactor ]
         DestPropNotifier &setDeltaFactor(const long deltaFactor, bool notify = true);
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Prop_DeltaFactor = @b MUIV_TriggerValue ]
         DestPropNotifier &setDeltaFactorTriggerValue(bool notify = true);
+#endif
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Prop_Entries ]
         DestPropNotifier &setEntries(const long entries, bool notify = true);
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Prop_Entries = @b MUIV_TriggerValue ]

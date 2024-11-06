@@ -27,9 +27,11 @@ namespace MUI
         DestListNotifier &setActive(const long active, bool notify = true);
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_List_Active = @b MUIV_TriggerValue ]
         DestListNotifier &setActiveTriggerValue(bool notify = true);
+#ifdef MUIA_List_TopPixel
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_List_TopPixel ]
         DestListNotifier &setTopPixel(const long topPixel, bool notify = true);
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_List_TopPixel = @b MUIV_TriggerValue ]
         DestListNotifier &setTopPixelTriggerValue(bool notify = true);
+#endif
     };
 }
