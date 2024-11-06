@@ -8,6 +8,8 @@
 
 #include "Group.hpp"
 
+#ifdef MUIC_Panel
+
 namespace MUI
 {
     class Panel : public Group
@@ -52,3 +54,5 @@ namespace MUI
         PanelBuilder();
     };
 }
+
+#endif

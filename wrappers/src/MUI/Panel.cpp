@@ -6,6 +6,8 @@
 
 #include "Panel.hpp"
 
+#ifdef MUIC_Panel
+
 #include <proto/alib.h>
 
 namespace MUI
@@ -20,3 +22,5 @@ namespace MUI
         return *this;
     }
 }
+
+#endif

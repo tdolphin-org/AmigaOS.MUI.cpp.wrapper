@@ -6,6 +6,8 @@
 
 #include "Fontpanel.hpp"
 
+#ifdef MUIC_Fontpanel
+
 #include <proto/alib.h>
 
 namespace MUI
@@ -14,3 +16,5 @@ namespace MUI
 
     FontpanelBuilder::FontpanelBuilder() { }
 }
+
+#endif

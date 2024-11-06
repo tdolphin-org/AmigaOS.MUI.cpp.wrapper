@@ -8,6 +8,8 @@
 
 #include "Panel.hpp"
 
+#ifdef MUIC_Fontpanel
+
 #include "ValueTypes/Fontpanel/ShowCollection.hpp"
 
 #include <set>
@@ -73,3 +75,5 @@ namespace MUI
         return (T &)*this;
     }
 }
+
+#endif
