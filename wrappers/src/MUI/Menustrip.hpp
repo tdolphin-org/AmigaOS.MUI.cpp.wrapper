@@ -34,8 +34,10 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
+#ifdef MUIA_Menustrip_CaseSensitive
         /// @brief [ @b MUIA_Menustrip_CaseSensitive ]
         bool isCaseSensitive() const;
+#endif
         /// @brief [ @b MUIA_Menustrip_Enabled ]
         bool isEnabled() const;
 
@@ -53,8 +55,10 @@ namespace MUI
         {
         }
 
+#ifdef MUIA_Menustrip_CaseSensitive
         /// @brief [ @b MUIA_Menustrip_CaseSensitive ]
         T &tagCaseSensitive(const bool caseSensitive);
+#endif
         /// @brief [ @b MUIA_Menustrip_Enabled ]
         T &tagEnabled(const bool enabled);
     };
@@ -65,11 +69,13 @@ namespace MUI
         MenustripBuilder();
     };
 
+#ifdef MUIA_Menustrip_CaseSensitive
     template <typename T, typename U> inline T &MenustripBuilderTemplate<T, U>::tagCaseSensitive(const bool caseSensitive)
     {
         this->PushTag(MUIA_Menustrip_CaseSensitive, caseSensitive);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &MenustripBuilderTemplate<T, U>::tagEnabled(const bool enabled)
     {

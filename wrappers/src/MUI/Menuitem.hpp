@@ -97,10 +97,12 @@ namespace MUI
         /// Set to true if MUIA_Menuitem_Shortcut points to a command string (e.g. "shift alt q") instead of a simple letter. Note that MUI
         /// won't check if these keys are pressed (just like intuition), you'll have to do this yourself.
         T &tagCommandString(const long commandString = true);
+#ifdef MUIA_Menuitem_CopyStrings
         /// @brief [ @b MUIA_Menuitem_CopyStrings ]
         /// Set to true if the title string defined by MUIA_Menuitem_Title is to be copied. Otherwise the title will be used directly and
         /// must remain valid throughout the object's life time. By default is false (no copy).
         T &tagCopyStrings(const bool copyStrings = true);
+#endif
         /// @brief [ @b MUIA_Menuitem_Enabled ]
         T &tagEnabled(const bool enabled);
         /// @brief [ @b MUIA_Menuitem_Exclude ]
@@ -115,8 +117,10 @@ namespace MUI
         /// @brief [ @b MUIA_Menuitem_Image ]
         T &tagImage(const Image *image);
 #endif
+#ifdef MUIA_Menuitem_Menuitem
         /// @brief [ @b MUIA_Menuitem_Menuitem ]
         T &tagMenuitem(const Object *menuitem);
+#endif
         /// @brief [ @b MUIA_Menuitem_Shortcut ]
         T &tagShortcut(const std::string &shortcut);
         /// @brief [ @b MUIA_Menuitem_Shortcut ]
@@ -162,11 +166,13 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_Menuitem_CopyStrings
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagCopyStrings(const bool copyStrings)
     {
         this->PushTag(MUIA_Menuitem_CopyStrings, copyStrings);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagEnabled(const bool enabled)
     {
@@ -196,11 +202,13 @@ namespace MUI
     }
 #endif
 
+#ifdef MUIA_Menuitem_Menuitem
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagMenuitem(const Object *menuitem)
     {
         this->PushTag(MUIA_Menuitem_Menuitem, menuitem);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagShortcut(const std::string &shortcut)
     {

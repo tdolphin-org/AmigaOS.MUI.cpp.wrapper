@@ -10,10 +10,12 @@ namespace MUI
 {
     const std::string Menustrip::className = MUIC_Menustrip;
 
+#ifdef MUIA_Menustrip_CaseSensitive
     bool Menustrip::isCaseSensitive() const
     {
         return GetValueAsBool(MUIA_Menustrip_CaseSensitive);
     }
+#endif
 
     bool Menustrip::isEnabled() const
     {

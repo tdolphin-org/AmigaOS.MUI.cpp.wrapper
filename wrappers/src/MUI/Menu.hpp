@@ -55,10 +55,12 @@ namespace MUI
         {
         }
 
+#ifdef MUIA_Menu_CopyStrings
         /// @brief [ @b MUIA_Menu_CopyStrings ]
         /// Set to true if the title string defined by MUIA_Menu_Title is to be copied. Otherwise the title will be used directly and must
         /// remain valid throughout the object's life time. By default is false.
         T &tagCopyStrings(const bool copyStrings);
+#endif
         /// @brief [ @b MUIA_Menu_Enabled ]
         T &tagEnabled(const bool enabled);
         /// @brief [ @b MUIA_Menu_Title ]
@@ -73,11 +75,13 @@ namespace MUI
         MenuBuilder();
     };
 
+#ifdef MUIA_Menu_CopyStrings
     template <typename T, typename U> inline T &MenuBuilderTemplate<T, U>::tagCopyStrings(const bool copyStrings)
     {
         this->PushTag(MUIA_Menu_CopyStrings, copyStrings);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &MenuBuilderTemplate<T, U>::tagEnabled(const bool enabled)
     {
