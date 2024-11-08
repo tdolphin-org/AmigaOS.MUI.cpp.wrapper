@@ -1,5 +1,5 @@
 # AmigaOS.MUI.cpp.wrapper
-AmigaOS/MorphOS MUI C++ wrapper classes
+AmigaOS/MorphOS MUI C++ Wrapper Classes is a modern C++17 library that provides wrapper classes for the Magic User Interface (MUI) on AmigaOS and MorphOS. These classes simplify interaction with the MUI API, enabling developers to use C++ idioms and abstractions to build robust and maintainable user interfaces. The library encapsulates MUI elements within object-oriented classes, improving code readability and reducing the need for low-level MUI calls, thus allowing developers to focus on higher-level design and functionality.
 
 **Not all MUI classes/attributes/methods are implemented! (work in progress)**
 ___
