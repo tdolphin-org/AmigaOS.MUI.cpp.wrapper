@@ -32,6 +32,16 @@ std::string ToString::Concatenate(const std::vector<std::string> &array, const s
                                                [&separator](const std::string &a, const std::string &b) { return a + " " + b; });
 }
 
+std::string ToString::FromBytesValue(const unsigned long value)
+{
+    if (value % (1024 * 1024) == 0)
+        return std::to_string(value / (1024 * 1024)) + " MiB";
+    else if (value % 1024 == 0)
+        return std::to_string(value / 1024) + " KiB";
+
+    return std::to_string(value) + " Bytes";
+}
+
 std::string ToString::Replace(std::string input, const std::string &source, const std::string &replacement)
 {
     std::size_t pos = 0;

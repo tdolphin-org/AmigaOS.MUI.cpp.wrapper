@@ -15,6 +15,7 @@ class ToString
     static std::string FromDataPointer(const void *value);
     static std::string FromHexValue(const unsigned long value);
     static std::string Concatenate(const std::vector<std::string> &array, const std::string &separator);
+    static std::string FromBytesValue(const unsigned long value);
 
     static std::string Replace(std::string input, const std::string &source, const std::string &replacement);
 
