@@ -28,26 +28,8 @@ namespace MUI
         DestNotifyNotifier &method(const unsigned long methodId);
         /// @brief [ @b MUIM_CallHook, no parameters ]
         DestNotifyNotifier &callHook(const void *hook);
-        /// @brief [ @b MUIM_CallHook, one parameter ]
-        DestNotifyNotifier &callHook(const void *hook, const void *arg0);
-        /// @brief [ @b MUIM_CallHook, two parameters ]
-        DestNotifyNotifier &callHook(const void *hook, const void *arg0, const void *arg1);
-        /// @brief [ @b MUIM_CallHook, three parameters ]
-        DestNotifyNotifier &callHook(const void *hook, const void *arg0, const void *arg1, const void *arg2);
-        /// @brief [ @b MUIM_CallHook, four parameters ]
-        DestNotifyNotifier &callHook(const void *hook, const void *arg0, const void *arg1, const void *arg2, const void *arg3);
-        /// @brief [ @b MUIM_CallHook, five parameters ]
-        DestNotifyNotifier &callHook(const void *hook, const void *arg0, const void *arg1, const void *arg2, const void *arg3,
-                                     const void *arg4);
-        /// @brief [ @b MUIM_CallHook, six parameters ]
-        DestNotifyNotifier &callHook(const void *hook, const void *arg0, const void *arg1, const void *arg2, const void *arg3,
-                                     const void *arg4, const void *arg5);
-        /// @brief [ @b MUIM_CallHook, seven parameters ]
-        DestNotifyNotifier &callHook(const void *hook, const void *arg0, const void *arg1, const void *arg2, const void *arg3,
-                                     const void *arg4, const void *arg5, const void *arg6);
-        /// @brief [ @b MUIM_CallHook, eight parameters ]
-        DestNotifyNotifier &callHook(const void *hook, const void *arg0, const void *arg1, const void *arg2, const void *arg3,
-                                     const void *arg4, const void *arg5, const void *arg6, const void *arg7);
+        /// @brief [ @b MUIM_CallHook, one and more parameters ]
+        DestNotifyNotifier &callHook(const void *hook, const std::initializer_list<const void *> &args);
         /// @brief [ @b MUIM_WriteLong ]
         DestNotifyNotifier &writeLong(const unsigned long val, unsigned long *memory);
         /// @brief [ @b MUIM_WriteLong, @b MUIV_TriggerValue ]
