@@ -22,10 +22,12 @@ namespace MUI
         return GetValueAsULong(MUIA_Gauge_Divide);
     }
 
+#ifdef MUIA_Gauge_InfoRate
     long Gauge::getInfoRate() const
     {
         return GetValueAsLong(MUIA_Gauge_InfoRate);
     }
+#endif
 
     std::string Gauge::getInfoText() const
     {
@@ -49,11 +51,13 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIA_Gauge_InfoRate
     Gauge &Gauge::setInfoRate(const long horiz)
     {
         SetValue(MUIA_Gauge_InfoRate, horiz);
         return *this;
     }
+#endif
 
     Gauge &Gauge::setInfoText(const std::string &infoText)
     {

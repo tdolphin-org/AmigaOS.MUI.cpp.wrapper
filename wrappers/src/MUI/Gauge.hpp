@@ -33,8 +33,10 @@ namespace MUI
         long getCurrent() const;
         /// @brief [ @b MUIA_Gauge_Divide ]
         unsigned long getDivide() const;
+#ifdef MUIA_Gauge_InfoRate
         /// @brief [ @b MUIA_Gauge_InfoRate ]
         long getInfoRate() const;
+#endif
         /// @brief [ @b MUIA_Gauge_InfoText ]
         std::string getInfoText() const;
         /// @brief [ @b MUIA_Gauge_Max ]
@@ -44,8 +46,10 @@ namespace MUI
         Gauge &setCurrent(const long current);
         /// @brief [ @b MUIA_Gauge_Divide ]
         Gauge &setDivide(const unsigned long divide);
+#ifdef MUIA_Gauge_InfoRate
         /// @brief [ @b MUIA_Gauge_InfoRate ]
         Gauge &setInfoRate(const long InfoRate);
+#endif
         /// @brief [ @b MUIA_Gauge_InfoText ]
         Gauge &setInfoText(const std::string &infoText);
         /// @brief [ @b MUIA_Gauge_Max ]
@@ -98,11 +102,13 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_Gauge_InfoRate
     template <typename T, typename U> inline T &GaugeBuilderTemplate<T, U>::tagInfoRate(const long infoRate)
     {
         this->PushTag(MUIA_Gauge_InfoRate, infoRate);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &GaugeBuilderTemplate<T, U>::tagInfoText(const std::string &infoText)
     {
