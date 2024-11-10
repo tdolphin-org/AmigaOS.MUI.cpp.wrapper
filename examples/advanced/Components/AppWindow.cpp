@@ -22,7 +22,7 @@ namespace Components
       , mInfoText(MUI::TextBuilder()
                       .tagFrame(MUI::Frame::String)
                       .tagSetMin(false)
-#ifndef __MORPHOS__
+#ifdef MUIA_Text_Shorten
                       .tagShorten(MUI::Text_Shorten::ElideRight)
 #endif
                       .object())

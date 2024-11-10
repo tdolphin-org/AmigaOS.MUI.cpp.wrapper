@@ -25,7 +25,13 @@ namespace Components
         mComponent.setTitles(mpPageTitlesArray);
 
         for (auto &tab : tabs)
+        {
+#ifdef MUIM_Group_AddTail
             mComponent.AddTail(tab.second);
+#else
+            mComponent.AddMember(tab.second);
+#endif
+        }
     }
 
     TabsContainerRegister::~TabsContainerRegister()

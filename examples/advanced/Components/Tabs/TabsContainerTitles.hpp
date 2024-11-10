@@ -12,6 +12,7 @@
 
 #include "MUI/Group.hpp"
 #include "MUI/Title.hpp"
+#include "MUI/Text.hpp"
 
 #include <string>
 #include <vector>
@@ -21,7 +22,11 @@ namespace Components
     /// @brief Tabs/Pages with usage of MUI::Titles
     class TabsContainerTitles : public Root
     {
+#ifdef ifdef MUIC_Title
         MUI::Title mTabsTitle;
+#else
+        MUI::Text mTitleNotSupportedText;
+#endif
         MUI::Group mComponent;
 
       public:

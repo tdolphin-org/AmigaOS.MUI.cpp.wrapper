@@ -27,7 +27,7 @@ namespace Components
                                .tagChild(MUI::TextBuilder()
                                              .tagFrame(MUI::Frame::String)
                                              .tagSetMin(false)
-#ifndef __MORPHOS__
+#ifdef MUIA_Text_Shorten
                                              .tagShorten(MUI::Text_Shorten::ElideRight)
 #endif
                                              .tagContents("tabs created with MUI::Register (MUIC_Register)")
@@ -41,8 +41,8 @@ namespace Components
                             .tagChild(MUI::MakeObject::HVSpace())
                             .tagChild(MUI::TextBuilder()
                                           .tagFrame(MUI::Frame::String)
-#ifndef __MORPHOS__
                                           .tagSetMin(false)
+#ifdef MUIA_Text_Shorten
                                           .tagShorten(MUI::Text_Shorten::ElideRight)
 #endif
                                           .tagContents("tabs created with MUI::Title (MUIC_Title)")

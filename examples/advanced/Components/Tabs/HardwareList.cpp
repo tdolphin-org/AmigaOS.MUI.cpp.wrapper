@@ -19,7 +19,9 @@ namespace Components
     {
         mComponent.InsertSingleBottom("Walker");
 
+#ifdef MUIA_List_DoubleClick
         MUI::Notifier::from(mComponent).onDoubleClick(true).notifySelf().setActive(0);
+#endif
         MUI::Notifier::from(mComponent).onSelected(true).notifySelf().setActive(0);
     }
 }
