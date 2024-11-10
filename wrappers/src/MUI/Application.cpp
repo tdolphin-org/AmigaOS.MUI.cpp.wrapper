@@ -68,6 +68,18 @@ namespace MUI
         return *this;
     }
 
+    Application &Application::AddMember(const Window &window)
+    {
+        DoMethod(muiObject(), OM_ADDMEMBER, window.muiObject());
+        return *this;
+    }
+
+    Application &Application::RemMember(const Window &window)
+    {
+        DoMethod(muiObject(), OM_REMMEMBER, window.muiObject());
+        return *this;
+    }
+
     ApplicationBuilder::ApplicationBuilder()
       : NotifyBuilderTemplate(MUI::EmptyUniqueId, MUIC_Application)
     {

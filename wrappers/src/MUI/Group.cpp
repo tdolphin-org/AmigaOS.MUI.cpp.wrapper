@@ -110,5 +110,17 @@ namespace MUI
     }
 #endif
 
+    Group &Group::AddMember(const Root &child)
+    {
+        DoMethod(muiObject(), OM_ADDMEMBER, child.muiObject());
+        return *this;
+    }
+
+    Group &Group::RemMember(const Root &child)
+    {
+        DoMethod(muiObject(), OM_REMMEMBER, child.muiObject());
+        return *this;
+    }
+
     GroupBuilder::GroupBuilder() { }
 }

@@ -87,6 +87,11 @@ namespace MUI
         /// @brief [ @b MUIM_Group_Remove ]
         Group &Remove(const Object *pChildObject);
 #endif
+
+        /// @brief [ @b OM_ADDMEMBER ]
+        Group &AddMember(const Root &child);
+        /// @brief [ @b OM_REMMEMBER ]
+        Group &RemMember(const Root &child);
     };
 
     template <typename T, typename U> class GroupBuilderTemplate : public AreaBuilderTemplate<T, U>

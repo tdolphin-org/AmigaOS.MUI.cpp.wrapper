@@ -51,6 +51,11 @@ namespace MUI
         Application &Sleep();
         /// @brief [ @b MUIA_Application_Sleep, @b FALSE ]
         Application &WakeUp();
+
+        /// @brief [ @b OM_ADDMEMBER ]
+        Application &AddMember(const Window &window);
+        /// @brief [ @b OM_REMMEMBER ]
+        Application &RemMember(const Window &window);
     };
 
     class ApplicationBuilder : public NotifyBuilderTemplate<ApplicationBuilder, Application>
