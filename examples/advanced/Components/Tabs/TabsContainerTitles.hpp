@@ -22,7 +22,7 @@ namespace Components
     /// @brief Tabs/Pages with usage of MUI::Titles
     class TabsContainerTitles : public Root
     {
-#ifdef ifdef MUIC_Title
+#ifdef MUIC_Title
         MUI::Title mTabsTitle;
 #else
         MUI::Text mTitleNotSupportedText;
