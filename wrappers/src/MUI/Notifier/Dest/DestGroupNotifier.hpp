@@ -21,6 +21,7 @@ namespace MUI
       protected:
         DestGroupNotifier() = delete;
         DestGroupNotifier(const NotifierObject &notifierObject, const Group &group);
+        DestGroupNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
 
       public:
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Group_ActivePage ]

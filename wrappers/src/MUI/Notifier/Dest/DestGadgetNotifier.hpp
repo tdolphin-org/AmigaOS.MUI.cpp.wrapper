@@ -19,5 +19,6 @@ namespace MUI
       protected:
         DestGadgetNotifier() = delete;
         DestGadgetNotifier(const NotifierObject &notifierObject, const Gadget &gadget);
+        DestGadgetNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
     };
 }

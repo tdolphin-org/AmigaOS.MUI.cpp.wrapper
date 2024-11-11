@@ -21,5 +21,6 @@ namespace MUI
       protected:
         DestStringNotifier() = delete;
         DestStringNotifier(const NotifierObject &notifierObject, const String &string);
+        DestStringNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
     };
 }

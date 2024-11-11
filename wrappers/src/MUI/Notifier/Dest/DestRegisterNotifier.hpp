@@ -19,6 +19,7 @@ namespace MUI
       protected:
         DestRegisterNotifier() = delete;
         DestRegisterNotifier(const NotifierObject &notifierObject, const Register &registerObject);
+        DestRegisterNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
 
       public:
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Register_Titles ]

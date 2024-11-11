@@ -15,9 +15,14 @@ namespace MUI
     {
     }
 
+    DestWindowNotifier::DestWindowNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType)
+      : DestNotifyNotifier(notifierObject, notifyDestType)
+    {
+    }
+
     DestWindowNotifier &DestWindowNotifier::setOpen(const bool open, bool notify)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), muiDestObject(), 3,
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Window_Open, (unsigned long)open);
         return *this;
     }

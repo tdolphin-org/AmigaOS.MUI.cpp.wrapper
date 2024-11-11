@@ -21,6 +21,7 @@ namespace MUI
       protected:
         DestListNotifier() = delete;
         DestListNotifier(const NotifierObject &notifierObject, const List &list);
+        DestListNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
 
       public:
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_List_Active ]

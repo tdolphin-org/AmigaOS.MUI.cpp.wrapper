@@ -21,6 +21,7 @@ namespace MUI
       protected:
         DestNotifyNotifier() = delete;
         DestNotifyNotifier(const NotifierObject &notifierObject, const Notify &notify);
+        DestNotifyNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
 
       public:
         /// @brief call any MUI method

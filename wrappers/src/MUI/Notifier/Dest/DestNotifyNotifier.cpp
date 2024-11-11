@@ -15,48 +15,54 @@ namespace MUI
     {
     }
 
+    DestNotifyNotifier::DestNotifyNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType)
+      : DestNotifierRoot(notifierObject, notifyDestType)
+    {
+    }
+
     DestNotifyNotifier &DestNotifyNotifier::method(const unsigned long methodId)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 1, methodId);
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), muiDestObject(), 1, methodId);
         return *this;
     }
 
     DestNotifyNotifier &DestNotifyNotifier::callHook(const void *hook)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 2, MUIM_CallHook, hook);
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), muiDestObject(), 2, MUIM_CallHook, hook);
         return *this;
     }
 
     DestNotifyNotifier &DestNotifyNotifier::callHook(const void *hook, const std::initializer_list<const void *> &args)
     {
         std::vector<const void *> vec(args);
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), vec.size(), MUIM_CallHook, hook, vec.data());
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), muiDestObject(), vec.size(), MUIM_CallHook, hook,
+                 vec.data());
         return *this;
     }
 
     DestNotifyNotifier &DestNotifyNotifier::writeLong(const unsigned long val, unsigned long *memory)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3, MUIM_WriteLong, val, memory);
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), muiDestObject(), 3, MUIM_WriteLong, val, memory);
         return *this;
     }
 
     DestNotifyNotifier &DestNotifyNotifier::writeLongTriggerValue(unsigned long *memory)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3, MUIM_WriteLong,
-                 MUIV_TriggerValue, memory);
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), muiDestObject(), 3, MUIM_WriteLong, MUIV_TriggerValue,
+                 memory);
         return *this;
     }
 
     DestNotifyNotifier &DestNotifyNotifier::writeString(const char *str, char *memory)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3, MUIM_WriteString, str, memory);
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), muiDestObject(), 3, MUIM_WriteString, str, memory);
         return *this;
     }
 
     DestNotifyNotifier &DestNotifyNotifier::writeStringTriggerValue(char *memory)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3, MUIM_WriteString,
-                 MUIV_TriggerValue, memory);
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), muiDestObject(), 3, MUIM_WriteString, MUIV_TriggerValue,
+                 memory);
         return *this;
     }
 }

@@ -19,6 +19,7 @@ namespace MUI
       protected:
         DestWindowNotifier() = delete;
         DestWindowNotifier(const NotifierObject &notifierObject, const Window &window);
+        DestWindowNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
 
       public:
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Window_Open ]

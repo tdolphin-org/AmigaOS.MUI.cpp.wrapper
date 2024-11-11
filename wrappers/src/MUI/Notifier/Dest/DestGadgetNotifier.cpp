@@ -14,4 +14,9 @@ namespace MUI
       : DestAreaNotifier(notifierObject, gadget)
     {
     }
+
+    DestGadgetNotifier::DestGadgetNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType)
+      : DestAreaNotifier(notifierObject, notifyDestType)
+    {
+    }
 }

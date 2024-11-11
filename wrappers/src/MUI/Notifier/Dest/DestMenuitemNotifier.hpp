@@ -21,6 +21,7 @@ namespace MUI
       protected:
         DestMenuitemNotifier() = delete;
         DestMenuitemNotifier(const NotifierObject &notifierObject, const Menuitem &menuitem);
+        DestMenuitemNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
 
       public:
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Menuitem_Checked ]

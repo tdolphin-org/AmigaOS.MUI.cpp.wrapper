@@ -19,5 +19,6 @@ namespace MUI
       protected:
         DestFamilyNotifier() = delete;
         DestFamilyNotifier(const NotifierObject &notifierObject, const Family &family);
+        DestFamilyNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
     };
 }

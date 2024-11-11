@@ -21,6 +21,7 @@ namespace MUI
       protected:
         DestApplicationNotifier() = delete;
         DestApplicationNotifier(const NotifierObject &notifierObject, const Application &application);
+        DestApplicationNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
 
       public:
         /// @brief [ @b MUIM_Application_AboutMUI ]

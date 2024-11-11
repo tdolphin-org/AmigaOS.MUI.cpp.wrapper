@@ -19,6 +19,7 @@ namespace MUI
       protected:
         DestPropNotifier() = delete;
         DestPropNotifier(const NotifierObject &notifierObject, const Prop &prop);
+        DestPropNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
 
       public:
 #ifdef MUIA_Prop_DeltaFactor

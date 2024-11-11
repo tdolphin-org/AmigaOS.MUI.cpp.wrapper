@@ -21,6 +21,7 @@ namespace MUI
       protected:
         DestCycleNotifier() = delete;
         DestCycleNotifier(const NotifierObject &notifierObject, const Cycle &cycle);
+        DestCycleNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
 
       public:
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Cycle_Active ]

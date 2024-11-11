@@ -21,5 +21,6 @@ namespace MUI
       protected:
         DestPendisplayNotifier() = delete;
         DestPendisplayNotifier(const NotifierObject &notifierObject, const Pendisplay &pendisplay);
+        DestPendisplayNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
     };
 }

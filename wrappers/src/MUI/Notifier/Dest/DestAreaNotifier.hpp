@@ -20,6 +20,7 @@ namespace MUI
       protected:
         DestAreaNotifier() = delete;
         DestAreaNotifier(const NotifierObject &notifierObject, const Area &area);
+        DestAreaNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
 
       public:
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Disabled ]

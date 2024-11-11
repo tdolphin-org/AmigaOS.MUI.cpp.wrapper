@@ -14,4 +14,9 @@ namespace MUI
       : DestNotifyNotifier(notifierObject, family)
     {
     }
+
+    DestFamilyNotifier::DestFamilyNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType)
+      : DestNotifyNotifier(notifierObject, notifyDestType)
+    {
+    }
 }

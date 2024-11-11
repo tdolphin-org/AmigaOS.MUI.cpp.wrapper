@@ -14,17 +14,22 @@ namespace MUI
       : DestFamilyNotifier(notifierObject, menuitem)
     {
     }
-    
+
+    DestMenuitemNotifier::DestMenuitemNotifier(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType)
+      : DestFamilyNotifier(notifierObject, notifyDestType)
+    {
+    }
+
     DestMenuitemNotifier &DestMenuitemNotifier::setChecked(const bool checked, bool notify)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), muiDestObject(), 3,
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Menuitem_Checked, (unsigned long)checked);
         return *this;
     }
-    
+
     DestMenuitemNotifier &DestMenuitemNotifier::setCheckedTriggerValue(bool notify)
     {
-        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), mObject.muiObject(), 3,
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), muiDestObject(), 3,
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Menuitem_Checked, MUIV_TriggerValue);
         return *this;
     }
