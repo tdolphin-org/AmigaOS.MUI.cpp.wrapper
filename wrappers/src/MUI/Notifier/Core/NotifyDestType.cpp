@@ -27,12 +27,16 @@ std::ostream &operator<<(std::ostream &os, const MUI::NotifyDestType notifyDestT
         case MUI::NotifyDestType::Parent:
             os << "Parent";
             break;
+#ifdef MUIV_Notify_ParentParent
         case MUI::NotifyDestType::ParentParent:
             os << "ParentParent";
             break;
+#endif
+#ifdef MUIV_Notify_ParentParentParent
         case MUI::NotifyDestType::ParentParentParent:
             os << "ParentParentParent";
             break;
+#endif
         default:
             os << "UNKNOWN";
     }

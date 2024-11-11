@@ -18,8 +18,12 @@ namespace MUI
         Window = MUIV_Notify_Window,
         Application = MUIV_Notify_Application,
         Parent = MUIV_Notify_Parent,
+#ifdef MUIV_Notify_ParentParent
         ParentParent = MUIV_Notify_ParentParent,
+#endif
+#ifdef MUIV_Notify_ParentParentParent
         ParentParentParent = MUIV_Notify_ParentParentParent,
+#endif
     };
 }
 
