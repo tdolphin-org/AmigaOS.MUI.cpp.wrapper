@@ -103,7 +103,7 @@ int main(int argc, char **argv)
     MUI::Notifier::from(leftButton).onPressed(false).notifyObject(subWindow).setOpen(true);
 
     MUI::Notifier::from(subWindow).onCloseRequest(true).notifySelf().setOpen(false);
-    MUI::Notifier::from(closeSubWindowButton).onPressed(false).notifyObject(subWindow).setOpen(false);
+    MUI::Notifier::from(closeSubWindowButton).onPressed(false).notifyWindow().setOpen(false);
 
     // list of application windows
     for (auto window : app.getWindowList())

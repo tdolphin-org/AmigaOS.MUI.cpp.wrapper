@@ -8,7 +8,6 @@
 
 #include "AppWindow.hpp"
 
-#include "MUI/Context/ApplicationContext.hpp"
 #include "MUI/Core/MakeObject.hpp"
 #include "MUI/Group.hpp"
 #include "MUI/Notifier/Notifier.hpp"
@@ -62,8 +61,6 @@ namespace Components
 
     void AppWindow::RegisterEvents()
     {
-        auto app = MUI::ApplicationContext::instance().getApplication();
-
-        MUI::Notifier::from(MUI::Area(mCloseButton)).onPressed(false).notifyObject(app).returnIDQuit();
+        MUI::Notifier::from(MUI::Area(mCloseButton)).onPressed(false).notifyApplication().returnIDQuit();
     }
 }
