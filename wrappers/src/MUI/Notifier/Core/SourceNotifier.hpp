@@ -9,6 +9,7 @@
 #include "AOS/ValueObject.hpp"
 #include "MUI/Core/Root.hpp"
 #include "NotifierObject.hpp"
+#include "NotifyDestType.hpp"
 
 #include "../Dest/DestApplicationNotifier.hpp"
 #include "../Dest/DestAreaNotifier.hpp"
@@ -48,6 +49,9 @@ namespace MUI
         DestRegisterNotifier notifyObject(const Register &registerObject);
         DestStringNotifier notifyObject(const String &string);
         DestWindowNotifier notifyObject(const Window &window);
+
+        DestApplicationNotifier notifyApplication();
+        DestWindowNotifier notifyWindow();
     };
 
     /// @brief
@@ -69,10 +73,10 @@ namespace MUI
     {
     }
 
-    /// @tparam T mui class
+    /// @tparam T mui source class
     /// @tparam U dest notifier class
     template <typename T, typename U> inline U SourceNotifier<T, U>::notifySelf()
     {
-        return U(*this, mObject);
+        return U(*this, NotifyDestType::Self);
     }
 }

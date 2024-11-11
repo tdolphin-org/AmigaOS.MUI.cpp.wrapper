@@ -82,4 +82,14 @@ namespace MUI
     {
         return DestWindowNotifier(*this, window);
     }
+
+    DestApplicationNotifier SourceNotifierRoot::notifyApplication()
+    {
+        return DestApplicationNotifier(*this, NotifyDestType::Application);
+    }
+
+    DestWindowNotifier SourceNotifierRoot::notifyWindow()
+    {
+        return DestWindowNotifier(*this, NotifyDestType::Window);
+    }
 }

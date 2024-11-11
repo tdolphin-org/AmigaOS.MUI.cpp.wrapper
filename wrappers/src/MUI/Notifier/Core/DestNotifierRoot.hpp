@@ -8,30 +8,37 @@
 
 #include "NotifierObject.hpp"
 
+#include <libraries/mui.h>
+
 namespace MUI
 {
+    enum class NotifyDestType;
+
     class DestNotifierRoot
     {
-      protected:
         NotifierObject mNotifierObject;
+        enum NotifyDestType notifyDestType;
         Root mObject;
 
       protected:
         DestNotifierRoot() = delete;
 
         DestNotifierRoot(const NotifierObject &notifierObject, const Root &root);
+        DestNotifierRoot(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType);
 
-        Object *muiSourceObject()
+        void *muiDestObject() const;
+
+        Object *muiSourceObject() const
         {
             return mNotifierObject.getObject().muiObject();
         }
 
-        unsigned long getAttribute()
+        unsigned long getAttribute() const
         {
             return mNotifierObject.getAttribute();
         }
 
-        unsigned long getTriggerValue()
+        unsigned long getTriggerValue() const
         {
             return mNotifierObject.getTriggerValue().value();
         }
