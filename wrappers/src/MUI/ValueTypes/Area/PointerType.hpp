@@ -10,7 +10,7 @@
 
 namespace MUI
 {
-#ifdef MUIV_PointerType_Parent
+#ifdef MUIA_PointerType
     enum class PointerType
     {
         Parent = MUIV_PointerType_Parent,
