@@ -86,11 +86,21 @@ namespace MUI
 #ifdef MUIM_Group_Remove
         /// @brief [ @b MUIM_Group_Remove ]
         Group &Remove(const Object *pChildObject);
+        /// @brief [ @b MUIM_Group_Remove ]
+        Group &Remove(const Root &child);
 #endif
 
         /// @brief [ @b OM_ADDMEMBER ]
+        Group &AddMember(const Object *pChildObject);
+        /// @brief [ @b OM_ADDMEMBER ]
         Group &AddMember(const Root &child);
         /// @brief [ @b OM_REMMEMBER ]
+        // After disconnecting an object from Group we must call explicitly DiposeObject() on the disconnected child
+        // object, otherwise the memory will not be released
+        Group &RemMember(const Object *pChildObject);
+        /// @brief [ @b OM_REMMEMBER ]
+        // After disconnecting an object from Group we must call explicitly DiposeObject() on the disconnected child
+        // object, otherwise the memory will not be released
         Group &RemMember(const Root &child);
     };
 

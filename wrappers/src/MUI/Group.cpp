@@ -108,11 +108,29 @@ namespace MUI
         DoMethod(muiObject(), MUIM_Group_Remove, (ULONG)pChildObject);
         return *this;
     }
+
+    Group &Group::Remove(const Root &child)
+    {
+        DoMethod(muiObject(), MUIM_Group_Remove, (ULONG)child.muiObject());
+        return *this;
+    }
 #endif
+
+    Group &Group::AddMember(const Object *pChildObject)
+    {
+        DoMethod(muiObject(), OM_ADDMEMBER, (ULONG)pChildObject);
+        return *this;
+    }
 
     Group &Group::AddMember(const Root &child)
     {
         DoMethod(muiObject(), OM_ADDMEMBER, child.muiObject());
+        return *this;
+    }
+
+    Group &Group::RemMember(const Object *pChildObject)
+    {
+        DoMethod(muiObject(), OM_REMMEMBER, (ULONG)pChildObject);
         return *this;
     }
 
