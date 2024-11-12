@@ -203,9 +203,11 @@ namespace MUI
         /// @brief [ @b MUIM_Show /* Custom Class */ ]
         Area &Show(struct LongRect *clip);
 
+#ifdef MUIM_Relayout
         /// @brief [ @b MUIM_Relayout, flags = 0 ] Perform a full relayout of the object in case it is visible. Actually the object will be
         /// completely hidden and shown again to trigger a full redraw as well.
         Area &Relayout();
+#endif
 #ifdef MUIM_Text
         /// @brief [ @b MUIM_Text ] This function is a preferred way to render text inside the object. It uses the object's font and it's
         /// color (if not specified in the string itself).

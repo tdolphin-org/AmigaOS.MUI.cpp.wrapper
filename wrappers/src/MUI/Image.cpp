@@ -50,6 +50,7 @@ namespace MUI
         return *this;
     }
 
+#if MUIMASTER_VMIN >= 20 // MUI5
     Image &Image::setSpec(const std::string &spec)
     {
         SetValue(MUIA_Image_Spec, spec);
@@ -75,6 +76,7 @@ namespace MUI
         SetValue(MUIA_Image_Spec, colorSpec);
         return *this;
     }
+#endif
 
     Image &Image::setState(const long state)
     {

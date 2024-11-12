@@ -43,6 +43,7 @@ namespace MUI
         Image &setFreeHoriz(const bool freeHoriz);
         /// @brief [ @b MUIA_Image_FreeVert ]
         Image &setFreeVert(const bool freeVert);
+#if MUIMASTER_VMIN >= 20 // MUI5
         /// @brief [ @b MUIA_Image_Spec ]
         Image &setSpec(const std::string &spec);
         /// @brief [ @b MUIA_Image_Spec with predefined images (like MUI::ImageOrBackground::ArrowUp) ]
@@ -51,6 +52,7 @@ namespace MUI
         Image &setSpecPicture(const std::string &imagePath);
         /// @brief [ @b MUIA_Image_Spec, @b 2:<RGB> RGB color ]
         Image &setSpecColor(const unsigned long rgbColor);
+#endif
         /// @brief [ @b MUIA_Image_State ]
         Image &setState(const long state);
     };
