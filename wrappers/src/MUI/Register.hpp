@@ -32,8 +32,10 @@ namespace MUI
         /// @brief [ @b MUIA_Register_Titles ]
         char **getTitles() const;
 
+#if MUIMASTER_VMIN >= 20 // MUI5
         /// @brief [ @b MUIA_Register_Titles ]
         Register &setTitles(const char *titles[]);
+#endif
     };
 
     template <typename T, typename U> class RegisterBuilderTemplate : public GroupBuilderTemplate<T, U>

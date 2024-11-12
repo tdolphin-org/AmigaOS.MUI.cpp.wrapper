@@ -17,9 +17,11 @@ namespace MUI
         return GetValueAsCharArrayPtr(MUIA_Register_Titles);
     }
 
+#if MUIMASTER_VMIN >= 20 // MUI5
     Register &Register::setTitles(const char *titles[])
     {
         SetValue(MUIA_Register_Titles, titles);
         return *this;
     }
+#endif
 }
