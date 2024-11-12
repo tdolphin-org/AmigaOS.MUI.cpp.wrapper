@@ -15,10 +15,10 @@ namespace Components
     void AbstractRoot::MuiAlert(const std::string &message) const
     {
         auto appObject = MUI::Notify(muiObject()).getApplicationObject();
-#ifdef __MORPHOS__
-        auto flags = 0;
-#else
+#ifdef MUIV_Requester_Image_Error
         auto flags = MUIV_Requester_Image_Error;
+#else
+        auto flags = 0;
 #endif
         MUI_Request(appObject, nullptr, flags, nullptr, (char *)"_Ok", (char *)message.c_str(), TAG_END);
     }
@@ -26,10 +26,10 @@ namespace Components
     void AbstractRoot::MuiWarning(const std::string &message) const
     {
         auto appObject = MUI::Notify(muiObject()).getApplicationObject();
-#ifdef __MORPHOS__
-        auto flags = 0;
-#else
+#ifdef MUIV_Requester_Image_Warning
         auto flags = MUIV_Requester_Image_Warning;
+#else
+        auto flags = 0;
 #endif
         MUI_Request(appObject, nullptr, flags, nullptr, (char *)"_Ok", (char *)message.c_str(), TAG_END);
     }
