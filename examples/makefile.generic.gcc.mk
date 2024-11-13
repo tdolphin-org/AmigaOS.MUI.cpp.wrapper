@@ -15,15 +15,15 @@
 #
 # cross compilation setup from -> https://github.com/bebbo/amiga-gcc
 #
-#  	  requires: MUI5 dev
+#    requires: MUI3.8 or MUI5 dev
 #
 
 # replace , => space
 MORE_CPP_FLAGS_X = $(shell echo $(MORE_CPP_FLAGS) | tr ',' ' ')
 MORE_LFLAGS_X = $(shell echo $(MORE_LFLAGS) | tr ',' ' ')
 
-CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS_X) -std=c++17 -I$(PROJECT) -I../wrappers/src -O1
-LFLAGS = -L../wrappers/lib/$(SUB_BUILD_PATH) -lMUIcpp $(MORE_LFLAGS_X) -lstdc++ -noixemul
+CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS_X) -I${AOSCPP_PATH}/wrappers/src -I$(PROJECT) -I../wrappers/src -O1
+LFLAGS = -L../wrappers/lib/$(SUB_BUILD_PATH) -lMUIcpp $(MORE_LFLAGS_X) -lstdc++ -noixemul -Os
 
 dir_guard = mkdir -p $(@D)
 

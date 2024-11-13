@@ -15,16 +15,20 @@ all:
 amigaos_m68k:
 	@echo "# Build for AmigaOS m68k"
 	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=basic.example.bin PROJECT=basic MODULES= \
+	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	SUB_BUILD_PATH=amigaos/m68k CPPC=m68k-amigaos-g++ AR=m68k-amigaos-ar STRIP=m68k-amigaos-strip OBJDUMP=m68k-amigaos-objdump all
 	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=advanced.example.bin PROJECT=advanced MODULES=Components,Components/Core,Components/Tabs \
+	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	SUB_BUILD_PATH=amigaos/m68k CPPC=m68k-amigaos-g++ AR=m68k-amigaos-ar STRIP=m68k-amigaos-strip OBJDUMP=m68k-amigaos-objdump all
 	cp advanced/img/* out/amigaos/m68k
 
 morphos_ppc:
 	@echo "# Build for MorphOS PowerPC"
 	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=basic.example.bin PROJECT=basic MODULES= \
+	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar STRIP=strip MORE_CPP_FLAGS=-noixemul OBJDUMP=objdump all
 	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=advanced.example.bin PROJECT=advanced MODULES=Components,Components/Core,Components/Tabs \
+	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar STRIP=strip MORE_CPP_FLAGS=-noixemul OBJDUMP=objdump all
 	cp advanced/img/* out/morphos/ppc
 

@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "Singleton.hpp"
+#include "Core/Singleton.hpp"
 
 #include <intuition/classusr.h>
 #include <map>

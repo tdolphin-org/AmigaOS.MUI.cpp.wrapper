@@ -13,7 +13,7 @@
 #
 # cross compilation setup from -> https://github.com/bebbo/amiga-gcc
 #
-#  	  requires: MUI5 dev
+#    requires: MUI3.8 or MUI5 dev
 #
 
 # replace , => space
@@ -26,7 +26,7 @@ DEBUG_FLAGS = #-ggdb -g3
 
 # compiler/linker flags
 # WARNING: use the same -Ox option for this lib and Your application, differnet values can case linking errors
-CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS_X) -std=c++17 -Isrc -O1
+CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS_X) -I${AOSCPP_PATH}/wrappers/src -Isrc -O1
 AFLAGS = rcs
 
 dir_guard = mkdir -p $(@D)

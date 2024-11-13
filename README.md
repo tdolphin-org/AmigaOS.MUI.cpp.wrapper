@@ -7,14 +7,16 @@ ___
 
 ### MorphOS compilation
 
+- AmigaOS.cpp.wrapper (https://github.com/tdolphin-org/AmigaOS.cpp.wrapper) located in path *../AmigaOS.cpp.wrapper*
 - MorphOS SDK3.18+
 - [TextEditor developer files](https://github.com/amiga-mui/texteditor)
 - [NList developer files](https://github.com/amiga-mui/nlist)
 
 ### Linux cross compilation for AmigaOS
 
+- AmigaOS.cpp.wrapper (https://github.com/tdolphin-org/AmigaOS.cpp.wrapper) located in path *../AmigaOS.cpp.wrapper*
 - [bebbo/amiga-gcc](https://github.com/bebbo/amiga-gcc)
-- [AmigaOS MUI5+ developer files](https://github.com/amiga-mui/muidev)
+- [AmigaOS MUI5 developer files](https://github.com/amiga-mui/muidev) or [AmigaOS MUI3.8 developer files](https://aminet.net/package/dev/mui/mui38dev)
 - [TextEditor developer files](https://github.com/amiga-mui/texteditor)
 - [NList developer files](https://github.com/amiga-mui/nlist)
 ___
