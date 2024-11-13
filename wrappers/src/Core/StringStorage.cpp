@@ -7,7 +7,7 @@
 #include "StringStorage.hpp"
 
 #include "AOS/TagUtil.hpp"
-#include "ToString.hpp"
+#include "Core/ToString.hpp"
 
 #include <cstring>
 #include <stdexcept>
