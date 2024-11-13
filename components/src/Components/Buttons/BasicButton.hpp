@@ -23,7 +23,6 @@ namespace Components
 
         void setLabel(const std::string &label);
 
-      public:
         MUI::Text &muiRoot() const
         {
             return (MUI::Text &)mComponent;

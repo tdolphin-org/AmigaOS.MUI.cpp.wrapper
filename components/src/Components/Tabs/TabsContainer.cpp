@@ -8,11 +8,13 @@
 
 #include "TabsContainer.hpp"
 
+#include "MUI/Text.hpp"
+
 namespace Components
 {
     TabsContainer::TabsContainer(const std::vector<std::pair<std::string, MUI::Area &>> &tabs)
 #ifdef MUIC_Title
-      : mTabsTitle(MUI::TitleBuilder().tagClosable(true).tagNewable(true).object())
+      : mTabsTitle(MUI::TitleBuilder().object())
       , mComponent(MUI::GroupBuilder()
                        .tagCycleChain()
                        .tagChild(mTabsTitle)
@@ -21,7 +23,7 @@ namespace Components
                        .tagBackground(MUI::ImageOrBackground::RegisterBack)
                        .tagFrame(MUI::Frame::Register)
 #endif
-                       .object()))
+                       .object())
 #else
       : mPageTitles(tabs.size())
       , mpPageTitlesArray(new const char *[tabs.size()])

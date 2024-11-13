@@ -10,6 +10,7 @@
 
 #include "Components/Core/Root.hpp"
 #include "MUI/Register.hpp"
+#include "MUI/Title.hpp"
 
 #include <string>
 #include <vector>
