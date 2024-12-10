@@ -40,4 +40,6 @@ std::ostream &operator<<(std::ostream &os, const MUI::NotifyDestType notifyDestT
         default:
             os << "UNKNOWN";
     }
+
+    return os;
 }
