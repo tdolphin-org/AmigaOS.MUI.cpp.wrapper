@@ -17,9 +17,9 @@ namespace MUI
 
     template <typename T> class BuilderRoot : public AOS::TagBuilderRoot
     {
-        const std::string mClassName;
         /// @brief not empty if class is internal for application, created based od other MUI builtin class
         const std::string mUniqueId;
+        const std::string mClassName;
         unsigned long mStringStorageObjectId;
 
       public:

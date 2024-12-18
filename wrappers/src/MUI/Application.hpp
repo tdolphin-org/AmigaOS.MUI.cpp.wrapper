@@ -55,6 +55,8 @@ namespace MUI
         /// @brief [ @b OM_ADDMEMBER ]
         Application &AddMember(const Window &window);
         /// @brief [ @b OM_REMMEMBER ]
+        // After disconnecting an Window from Application we obviously must call explicitly DiposeObject() on the disconnected child object,
+        // otherwise the memory will not be released:
         Application &RemMember(const Window &window);
     };
 

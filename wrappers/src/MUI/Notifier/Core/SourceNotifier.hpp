@@ -68,8 +68,8 @@ namespace MUI
 
     template <typename T, typename U>
     inline SourceNotifier<T, U>::SourceNotifier(const T &object, const unsigned long attribute, const AOS::ValueObject &triggerValue)
-      : mObject(object)
-      , SourceNotifierRoot(object, attribute, triggerValue)
+      : SourceNotifierRoot(object, attribute, triggerValue)
+      , mObject(object)
     {
     }
 
