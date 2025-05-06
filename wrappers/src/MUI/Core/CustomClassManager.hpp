@@ -55,5 +55,5 @@ namespace MUI
                               const void *dispatcher = nullptr);
     };
 
-    typedef class td::Singleton<CustomClassManagerCore> CustomClassManager;
+    using CustomClassManager = td::Singleton<CustomClassManagerCore>;
 }

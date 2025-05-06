@@ -33,4 +33,4 @@ class AppCore
 };
 
 /// @brief main Application (singleton) object
-typedef class td::Singleton<AppCore> App;
+using App = td::Singleton<AppCore>;

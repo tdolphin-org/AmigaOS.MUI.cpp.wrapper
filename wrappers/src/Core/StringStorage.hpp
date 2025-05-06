@@ -50,4 +50,4 @@ class StringStorageCore
     char *Change(const Object *object, Tag tagName, const std::string &string);
 };
 
-typedef class td::Singleton<StringStorageCore> StringStorage;
+using StringStorage = td::Singleton<StringStorageCore>;

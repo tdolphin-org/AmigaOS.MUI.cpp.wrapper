@@ -53,5 +53,5 @@ namespace MUI
         Window getWindow(const AOS::Identifier &id);
     };
 
-    typedef class td::Singleton<ApplicationContextCore> ApplicationContext;
+    using ApplicationContext = td::Singleton<ApplicationContextCore>;
 }
