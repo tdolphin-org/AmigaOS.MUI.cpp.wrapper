@@ -25,8 +25,9 @@ MORE_CPP_FLAGS_X = $(shell echo $(MORE_CPP_FLAGS) | tr ',' ' ')
 DEBUG_FLAGS = #-ggdb -g3 
 
 # compiler/linker flags
-# WARNING: use the same -Ox option for this lib and Your application, differnet values can case linking errors
-CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS_X) -I${AOSCPP_PATH}/wrappers/src -Isrc -O1
+# WARNING: use the same -Ox option for this lib and Your application, diffrent values can cause linking errors
+# -fno-rtti disables RTTI (Run-Time Type Information) support, which is not needed for MUI C++ wrapper
+CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS_X) -I${AOSCPP_PATH}/wrappers/src -Isrc -fno-rtti -ffunction-sections -fdata-sections -Os
 AFLAGS = rcs
 
 dir_guard = mkdir -p $(@D)
