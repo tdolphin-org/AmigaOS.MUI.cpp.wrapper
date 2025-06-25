@@ -39,7 +39,7 @@ AOS_WRAPPER_MODULES = Core AOS
 AOS_WRAPPER_SRC_DIRS = $(addprefix $(AOS_WRAPPER_PATH)/src/,$(AOS_WRAPPER_MODULES))
 AOS_WRAPPER_SRCS = $(foreach sdir,$(AOS_WRAPPER_SRC_DIRS),$(wildcard $(sdir)/*.cpp))
 
-MODULES = AOS Core MUI MUI/Context MUI/Core MUI/MCC MUI/Notifier MUI/Notifier/Core MUI/Notifier/Dest MUI/Notifier/Source
+MODULES = Core MUI MUI/Context MUI/Core MUI/MCC MUI/Notifier MUI/Notifier/Core MUI/Notifier/Dest MUI/Notifier/Source
 SRC_DIRS = src $(addprefix src/,$(MODULES))
 SRCS = $(foreach sdir,$(SRC_DIRS),$(wildcard $(sdir)/*.cpp))
 OBJS = $(patsubst src/%.cpp,obj/$(SUB_BUILD_PATH)/%.o,$(SRCS))\
@@ -61,9 +61,3 @@ $(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)/%.o: $(AOS_WRAPPER_PATH)/src/%.cpp $(A
 $(LIB_MUICPP): $(OBJS) 
 	$(dir_guard)
 	$(AR) $(AFLAGS) $@ $^
-
-clean :
-	rm -f obj/$(SUB_BUILD_PATH)/*.o
-	rm -f lib/$(SUB_BUILD_PATH)/*.a
-
-rebuild : clean all

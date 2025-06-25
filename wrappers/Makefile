@@ -21,6 +21,10 @@ morphos_ppc:
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar MORE_CPP_FLAGS=-noixemul all
 
-clean:
+clean.obj:
+	rm -f -R ../../AmigaOS.cpp.wrapper/wrappers/obj/*
+	rm -f -R obj/*
+
+clean: clean.obj
 	rm -f -R obj/*
 	rm -f -R lib/*
