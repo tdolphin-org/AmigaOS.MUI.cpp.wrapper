@@ -1,7 +1,7 @@
 #
 #  AmigaOS MUI C++ wrapper
 #
-#  (c) 2022-2024 TDolphin
+#  (c) 2022-2025 TDolphin
 #
 #  generic makefile for gcc
 #
@@ -38,26 +38,39 @@ AOS_WRAPPER_PATH = ${AOSCPP_PATH}/wrappers
 AOS_WRAPPER_MODULES = Core AOS
 AOS_WRAPPER_SRC_DIRS = $(addprefix $(AOS_WRAPPER_PATH)/src/,$(AOS_WRAPPER_MODULES))
 AOS_WRAPPER_SRCS = $(foreach sdir,$(AOS_WRAPPER_SRC_DIRS),$(wildcard $(sdir)/*.cpp))
+AOS_WRAPPER_CPP_FLAGS = $(CPP_FLAGS) -DDEBUG_TAG_SYMBOLS
+AOS_WRAPPER_CPP_FLAGS_LIGHT = $(CPP_FLAGS)
 
 MODULES = Core MUI MUI/Context MUI/Core MUI/MCC MUI/Notifier MUI/Notifier/Core MUI/Notifier/Dest MUI/Notifier/Source
 SRC_DIRS = src $(addprefix src/,$(MODULES))
 SRCS = $(foreach sdir,$(SRC_DIRS),$(wildcard $(sdir)/*.cpp))
 OBJS = $(patsubst src/%.cpp,obj/$(SUB_BUILD_PATH)/%.o,$(SRCS))\
-	$(patsubst $(AOS_WRAPPER_PATH)/src/%.cpp,$(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)/%.o,$(AOS_WRAPPER_SRCS))
+	$(patsubst $(AOS_WRAPPER_PATH)/src/%.cpp,$(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)/normal/%.o,$(AOS_WRAPPER_SRCS))
+OBJS_LIGHT = $(patsubst src/%.cpp,obj/$(SUB_BUILD_PATH)/%.o,$(SRCS))\
+	$(patsubst $(AOS_WRAPPER_PATH)/src/%.cpp,$(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)/light/%.o,$(AOS_WRAPPER_SRCS))
 
-# target lib
+# target libs
 LIB_MUICPP = lib/$(SUB_BUILD_PATH)/libMUIcpp.a
+LIB_MUICPP_LIGHT = lib/$(SUB_BUILD_PATH)/libMUIcpp.light.a
 
-all: $(LIB_MUICPP)
+all: $(LIB_MUICPP) $(LIB_MUICPP_LIGHT)
 
 obj/$(SUB_BUILD_PATH)/%.o: src/%.cpp src/%.hpp
 	$(dir_guard)
 	$(CPPC) $(CPP_FLAGS) -c $< -o $@
 
-$(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)/%.o: $(AOS_WRAPPER_PATH)/src/%.cpp $(AOS_WRAPPER_PATH)/src/%.hpp
+$(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)/normal/%.o: $(AOS_WRAPPER_PATH)/src/%.cpp $(AOS_WRAPPER_PATH)/src/%.hpp
 	$(dir_guard)
-	$(CPPC) $(CPP_FLAGS) -c $< -o $@
+	$(CPPC) $(AOS_WRAPPER_CPP_FLAGS) -c $< -o $@
+
+$(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)/light/%.o: $(AOS_WRAPPER_PATH)/src/%.cpp $(AOS_WRAPPER_PATH)/src/%.hpp
+	$(dir_guard)
+	$(CPPC) $(AOS_WRAPPER_CPP_FLAGS_LIGHT) -c $< -o $@
 
 $(LIB_MUICPP): $(OBJS) 
+	$(dir_guard)
+	$(AR) $(AFLAGS) $@ $^
+
+$(LIB_MUICPP_LIGHT): $(OBJS_LIGHT) 
 	$(dir_guard)
 	$(AR) $(AFLAGS) $@ $^
