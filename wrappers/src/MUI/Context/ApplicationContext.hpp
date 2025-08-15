@@ -6,11 +6,11 @@
 
 #pragma once
 
-#include <intuition/classusr.h>
-#include <vector>
-
 #include "AOS/Identifier.hpp"
 #include "Core/Singleton.hpp"
+
+#include <vector>
+#include <intuition/classusr.h>
 
 namespace MUI
 {

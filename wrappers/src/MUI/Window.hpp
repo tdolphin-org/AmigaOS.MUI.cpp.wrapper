@@ -14,6 +14,9 @@
 
 #include <proto/muimaster.h>
 
+#undef Open
+#undef Close
+
 namespace MUI
 {
     struct NewMenu;
