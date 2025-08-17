@@ -10,6 +10,7 @@ all:
 	@echo "# Available actions:"
 	@echo "make amigaos_m68k - AmigaOS m68k build (cross compilation on linux)"
 	@echo "make morphos_ppc - MorphOS PowerPC build"
+	@echo "make cross_morphos_ppc - MorphOS PowerPC build (cross compilation on linux)"
 	@echo "make clean - remove all obj files"
 
 amigaos_m68k:
@@ -30,6 +31,16 @@ morphos_ppc:
 	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=advanced.example.bin PROJECT=advanced MODULES=Components,Components/Core,Components/Tabs \
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar STRIP=strip MORE_CPP_FLAGS=-noixemul OBJDUMP=objdump all
+	cp advanced/img/* out/morphos/ppc
+
+cross_morphos_ppc:
+	@echo "# Cross Build for MorphOS PowerPC"
+	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=basic.example.bin PROJECT=basic MODULES= \
+	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
+	SUB_BUILD_PATH=morphos/ppc CPPC=ppc-morphos-g++ AR=ppc-morphos-ar MORE_CPP_FLAGS=-noixemul OBJDUMP=ppc-morphos-objdump all
+	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=advanced.example.bin PROJECT=advanced MODULES=Components,Components/Core,Components/Tabs \
+	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
+	SUB_BUILD_PATH=morphos/ppc CPPC=ppc-morphos-g++ AR=ppc-morphos-ar MORE_CPP_FLAGS=-noixemul OBJDUMP=ppc-morphos-objdump all
 	cp advanced/img/* out/morphos/ppc
 
 clean:

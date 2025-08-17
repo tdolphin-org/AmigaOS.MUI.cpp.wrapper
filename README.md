@@ -19,15 +19,23 @@ ___
 - [AmigaOS MUI5 developer files](https://github.com/amiga-mui/muidev) or [AmigaOS MUI3.8 developer files](https://aminet.net/package/dev/mui/mui38dev)
 - [TextEditor developer files](https://github.com/amiga-mui/texteditor)
 - [NList developer files](https://github.com/amiga-mui/nlist)
+
+### Linux cross compilation for MorphOS
+
+- AmigaOS.cpp.wrapper (https://github.com/tdolphin-org/AmigaOS.cpp.wrapper) located in path *../AmigaOS.cpp.wrapper*
+- [MorphOS SDK deb](https://bigfoot.morphos-team.net/test/morphos-sdk_20230510-1_amd64.deb)
+- [setup-cross-sdk.sh script](https://bigfoot.morphos-team.net/files/setup-cross-sdk.sh)
+- [TextEditor developer files](https://github.com/amiga-mui/texteditor)
+- [NList developer files](https://github.com/amiga-mui/nlist)
 ___
 ## Build
 
-*Linux cross compilation for AmigaOS3 m68k*
+*AmigaOS3 m68k (Linux cross compilation)*
 ```
 $ make aos_m68k
 ```
 
-*Linux rebuild (parallel on 4 threads/cores) for AmigaOS3 m68k*
+*AmigaOS3 m68k rebuild, parallel on 4 threads/cores (Linux cross compilation) *
 ```
 $ make clean ; make aos_m68k -j 4
 ```
@@ -40,6 +48,16 @@ $ make mos_ppc
 *MorphOS rebuild*
 ```
 $ make clean ; make mos_ppc
+```
+
+*MorphOS PowerPC (Linux cross compilation)*
+```
+$ make cross_mos_ppc
+```
+
+*MorphOS PowerPC rebuild, parallel on 4 threads/cores (Linux cross compilation)*
+```
+$ make clean ; make cross_mos_ppc -j 4
 ```
 
 ### build structure in *wrappers* folder

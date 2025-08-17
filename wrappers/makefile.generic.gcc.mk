@@ -7,13 +7,17 @@
 #
 #  for MorphOS (host) (ppc)
 #
-#    requires: MUI dev (MorphOS SDK)
+#    requires: MUI dev (MorphOS SDK) + NList Dev, TextEditor Dev 
 #
 #  for Linux (host) x86_64 (64-bit)
 #
-# cross compilation setup from -> https://github.com/bebbo/amiga-gcc
+#  1. AmigaOS m68k cross compilation setup from -> https://github.com/bebbo/amiga-gcc
 #
-#    requires: MUI3.8 or MUI5 dev
+#    requires: MUI3.8 or MUI5 dev + NList Dev, TextEditor Dev
+#
+#  2. MorphOS cross compilation setup from -> https://morph.zone/modules/newbb_plus/viewtopic.php?topic_id=13308&forum=12
+#
+#    requires: MUI dev (MorphOS SDK) + NList Dev, TextEditor Dev
 #
 
 # replace , => space
