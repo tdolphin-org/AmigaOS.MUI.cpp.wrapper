@@ -21,7 +21,7 @@ namespace Components
       , mInfoText(MUI::TextBuilder()
                       .tagFrame(MUI::Frame::String)
                       .tagSetMin(false)
-#ifdef MUIA_Text_Shorten
+#ifdef MUIA_Text_Shorten_ElideRight
                       .tagShorten(MUI::Text_Shorten::ElideRight)
 #endif
                       .object())
