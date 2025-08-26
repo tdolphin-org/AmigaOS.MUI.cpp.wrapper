@@ -5,12 +5,12 @@
 #
 
 all:
-	@echo "make amigaos_m68k - cross compilation on linux"
+	@echo "make cross_amigaos_m68k - cross compilation on linux"
 	@echo "make morphos_ppc - build on MorphOS"
 	@echo "make cross_morphos_ppc - cross compilation on linux"
 	@echo "make clean - remove all .o and .lib files"
 
-amigaos_m68k:
+cross_amigaos_m68k:
 	@echo "# Build for AmigaOS m68k"
 	$(MAKE) -f makefile.generic.gcc.mk \
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \

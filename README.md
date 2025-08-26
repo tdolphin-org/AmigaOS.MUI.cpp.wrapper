@@ -32,12 +32,12 @@ ___
 
 *AmigaOS3 m68k (Linux cross compilation)*
 ```
-$ make aos_m68k
+$ make cross_aos_m68k
 ```
 
 *AmigaOS3 m68k rebuild, parallel on 4 threads/cores (Linux cross compilation) *
 ```
-$ make clean ; make aos_m68k -j 4
+$ make clean ; make cross_aos_m68k -j 4
 ```
 
 *MorphOS PowerPC compilation*

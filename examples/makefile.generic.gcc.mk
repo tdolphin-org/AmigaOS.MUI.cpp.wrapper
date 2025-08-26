@@ -3,19 +3,9 @@
 #
 #  Examples
 #
-#  (c) 2022-2024 TDolphin
+#  (c) 2022-2025 TDolphin
 #
 #  generic makefile for gcc
-#
-#  for MorphOS (host) (ppc)
-#
-#    requires: MUI dev (MorphOS SDK)
-#
-#  for Linux (host) x86_64 (64-bit)
-#
-# cross compilation setup from -> https://github.com/bebbo/amiga-gcc
-#
-#    requires: MUI3.8 or MUI5 dev
 #
 
 # replace , => space
@@ -23,9 +13,8 @@ MORE_CPP_FLAGS_X = $(shell echo $(MORE_CPP_FLAGS) | tr ',' ' ')
 MORE_LFLAGS_X = $(shell echo $(MORE_LFLAGS) | tr ',' ' ')
 
 CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS_X) -I${AOSCPP_PATH}/wrappers/src -I$(PROJECT) -I../wrappers/src\
-	-DSTD_LIGHT\
 	-fno-rtti -ffunction-sections -fdata-sections -O3
-LFLAGS = -L../wrappers/lib/$(SUB_BUILD_PATH) -lMUIcpp.light $(MORE_LFLAGS_X) -lstdc++ -noixemul -Os -Wl,--gc-sections
+LFLAGS = -L../wrappers/lib/$(SUB_BUILD_PATH) $(MORE_LFLAGS_X) -lstdc++ -noixemul -Os -Wl,--gc-sections
 
 dir_guard = mkdir -p $(@D)
 
