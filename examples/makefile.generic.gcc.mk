@@ -8,13 +8,8 @@
 #  generic makefile for gcc
 #
 
-# replace , => space
-MORE_CPP_FLAGS_X = $(shell echo $(MORE_CPP_FLAGS) | tr ',' ' ')
-MORE_LFLAGS_X = $(shell echo $(MORE_LFLAGS) | tr ',' ' ')
-
-CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS_X) -I${AOSCPP_PATH}/wrappers/src -I$(PROJECT) -I../wrappers/src\
-	-fno-rtti -ffunction-sections -fdata-sections -O3
-LFLAGS = -L../wrappers/lib/$(SUB_BUILD_PATH) $(MORE_LFLAGS_X) -lstdc++ -noixemul -Os -Wl,--gc-sections
+CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS) -I${AOSCPP_PATH}/wrappers/src -I$(PROJECT) -I../wrappers/src -O3
+LFLAGS = -L../wrappers/lib/$(SUB_BUILD_PATH) $(MORE_LFLAGS) -lstdc++ -noixemul -Os
 
 dir_guard = mkdir -p $(@D)
 

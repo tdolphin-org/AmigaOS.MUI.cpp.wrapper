@@ -3,7 +3,7 @@
 #
 #  Examples
 #
-#  (c) 2022-2024 TDolphin
+#  (c) 2022-2025 TDolphin
 #
 
 all:
@@ -19,12 +19,12 @@ cross_amigaos_m68k:
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	SUB_BUILD_PATH=amigaos/m68k \
 	CPPC=m68k-amigaos-g++ AR=m68k-amigaos-ar STRIP=m68k-amigaos-strip OBJDUMP=m68k-amigaos-objdump \
-	MORE_CPP_FLAGS=-DSTD_LIGHT MORE_LFLAGS=-lMUIcpp.light all
+	MORE_CPP_FLAGS="-DSTD_LIGHT -fno-rtti -ffunction-sections -fdata-sections" MORE_LFLAGS="-lMUIcpp.light -Wl,--gc-sections" all
 	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=advanced.example.bin PROJECT=advanced MODULES=Components,Components/Core,Components/Tabs \
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	SUB_BUILD_PATH=amigaos/m68k \
 	CPPC=m68k-amigaos-g++ AR=m68k-amigaos-ar STRIP=m68k-amigaos-strip OBJDUMP=m68k-amigaos-objdump \
-	MORE_CPP_FLAGS=-DSTD_LIGHT MORE_LFLAGS=-lMUIcpp.light all
+	MORE_CPP_FLAGS="-DSTD_LIGHT -fno-rtti -ffunction-sections -fdata-sections" MORE_LFLAGS="-lMUIcpp.light -Wl,--gc-sections" all
 	cp advanced/img/* out/amigaos/m68k
 
 morphos_ppc:
@@ -32,11 +32,11 @@ morphos_ppc:
 	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=basic.example.bin PROJECT=basic MODULES= \
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar STRIP=strip OBJDUMP=objdump \
-	MORE_CPP_FLAGS=-noixemul MORE_LFLAGS=-lMUIcpp all
+	MORE_CPP_FLAGS="-noixemul" MORE_LFLAGS="-lMUIcpp" all
 	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=advanced.example.bin PROJECT=advanced MODULES=Components,Components/Core,Components/Tabs \
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar STRIP=strip OBJDUMP=objdump \
-	MORE_CPP_FLAGS=-noixemul MORE_LFLAGS=-lMUIcpp all
+	MORE_CPP_FLAGS="-noixemul" MORE_LFLAGS="-lMUIcpp" all
 	cp advanced/img/* out/morphos/ppc
 
 cross_morphos_ppc:
@@ -45,12 +45,12 @@ cross_morphos_ppc:
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	SUB_BUILD_PATH=morphos/ppc \
 	CPPC=ppc-morphos-g++ AR=ppc-morphos-ar STRIP=ppc-morphos-strip OBJDUMP=ppc-morphos-objdump \
-	MORE_CPP_FLAGS=-noixemul MORE_LFLAGS=-lMUIcpp all
+	MORE_CPP_FLAGS="-noixemul" MORE_LFLAGS="-lMUIcpp" all
 	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=advanced.example.bin PROJECT=advanced MODULES=Components,Components/Core,Components/Tabs \
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	SUB_BUILD_PATH=morphos/ppc \
 	CPPC=ppc-morphos-g++ AR=ppc-morphos-ar STRIP=ppc-morphos-strip OBJDUMP=ppc-morphos-objdump \
-	MORE_CPP_FLAGS=-noixemul MORE_LFLAGS=-lMUIcpp all
+	MORE_CPP_FLAGS="-noixemul" MORE_LFLAGS="-lMUIcpp" all
 	cp advanced/img/* out/morphos/ppc
 
 clean:

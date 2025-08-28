@@ -20,9 +20,6 @@
 #    requires: MUI dev (MorphOS SDK) + NList Dev, TextEditor Dev
 #
 
-# replace , => space
-MORE_CPP_FLAGS_X = $(shell echo $(MORE_CPP_FLAGS) | tr ',' ' ')
-
 # trace flags
 # TRACE_MUI - trace MUI (-DTRACE_MUI)
 # TRACE_SSC - trace String Storage Collector (-DTRACE_SSC)
@@ -31,8 +28,7 @@ DEBUG_FLAGS = #-ggdb -g3
 # compiler/linker flags
 # WARNING: use the same -Ox option for this lib and Your application, diffrent values can cause linking errors
 # -fno-rtti disables RTTI (Run-Time Type Information) support, which is not needed for MUI C++ wrapper
-CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS_X) -I${AOSCPP_PATH}/wrappers/src -Isrc\
-	-fno-rtti -ffunction-sections -fdata-sections -Os
+CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS) -I${AOSCPP_PATH}/wrappers/src -Isrc -Os
 CPP_FLAGS_LIGHT = $(CPP_FLAGS) -DSTD_LIGHT
 AFLAGS = rcs
 

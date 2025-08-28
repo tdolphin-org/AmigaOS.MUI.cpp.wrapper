@@ -14,19 +14,25 @@ cross_amigaos_m68k:
 	@echo "# Build for AmigaOS m68k"
 	$(MAKE) -f makefile.generic.gcc.mk \
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
-	SUB_BUILD_PATH=amigaos/m68k CPPC=m68k-amigaos-g++ AR=m68k-amigaos-ar all
+	SUB_BUILD_PATH=amigaos/m68k CPPC=m68k-amigaos-g++ AR=m68k-amigaos-ar \
+	MORE_CPP_FLAGS="-fno-rtti -ffunction-sections -fdata-sections" \
+	all
 
 morphos_ppc:
 	@echo "# Build for MorphOS PowerPC"
 	$(MAKE) -f makefile.generic.gcc.mk \
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
-	SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar MORE_CPP_FLAGS=-noixemul all
+	SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar \
+	MORE_CPP_FLAGS="-noixemul" \
+	all
 
 cross_morphos_ppc:
 	@echo "# Cross Build for MorphOS PowerPC"
 	$(MAKE) -f makefile.generic.gcc.mk \
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
-	SUB_BUILD_PATH=morphos/ppc CPPC=ppc-morphos-g++ AR=ppc-morphos-ar MORE_CPP_FLAGS=-noixemul all
+	SUB_BUILD_PATH=morphos/ppc CPPC=ppc-morphos-g++ AR=ppc-morphos-ar \
+	MORE_CPP_FLAGS="-noixemul" \
+	all
 
 clean.obj:
 	rm -f -R ../../AmigaOS.cpp.wrapper/wrappers/obj/*
