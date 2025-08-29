@@ -13,44 +13,48 @@ all:
 	@echo "make cross_morphos_ppc - MorphOS PowerPC build (cross compilation on linux)"
 	@echo "make clean - remove all obj files"
 
-cross_amigaos_m68k:
-	@echo "# Build for AmigaOS m68k"
-	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=basic.example.bin PROJECT=basic MODULES= \
-	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
-	SUB_BUILD_PATH=amigaos/m68k \
-	CPPC=m68k-amigaos-g++ AR=m68k-amigaos-ar STRIP=m68k-amigaos-strip OBJDUMP=m68k-amigaos-objdump \
-	MORE_CPP_FLAGS="-DSTD_LIGHT -fno-rtti -ffunction-sections -fdata-sections" MORE_LFLAGS="-lMUIcpp.light -Wl,--gc-sections" all
-	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=advanced.example.bin PROJECT=advanced MODULES=Components,Components/Core,Components/Tabs \
-	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
-	SUB_BUILD_PATH=amigaos/m68k \
-	CPPC=m68k-amigaos-g++ AR=m68k-amigaos-ar STRIP=m68k-amigaos-strip OBJDUMP=m68k-amigaos-objdump \
-	MORE_CPP_FLAGS="-DSTD_LIGHT -fno-rtti -ffunction-sections -fdata-sections" MORE_LFLAGS="-lMUIcpp.light -Wl,--gc-sections" all
-	cp advanced/img/* out/amigaos/m68k
+cross_amigaos_m68k: TARGET="Cross AmigaOS m68k"
+cross_amigaos_m68k: SUB_BUILD_PATH=amigaos/m68k
+cross_amigaos_m68k: CPPC=m68k-amigaos-g++
+cross_amigaos_m68k: AR=m68k-amigaos-ar
+cross_amigaos_m68k: STRIP=m68k-amigaos-strip
+cross_amigaos_m68k: OBJDUMP=m68k-amigaos-objdump
+cross_amigaos_m68k: MORE_CPP_FLAGS="-DSTD_LIGHT -fno-rtti -ffunction-sections -fdata-sections"
+cross_amigaos_m68k: MORE_LFLAGS="-lMUIcpp.light -Wl,--gc-sections"
+cross_amigaos_m68k: build
 
-morphos_ppc:
-	@echo "# Build for MorphOS PowerPC"
-	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=basic.example.bin PROJECT=basic MODULES= \
-	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
-	SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar STRIP=strip OBJDUMP=objdump \
-	MORE_CPP_FLAGS="-noixemul" MORE_LFLAGS="-lMUIcpp" all
-	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=advanced.example.bin PROJECT=advanced MODULES=Components,Components/Core,Components/Tabs \
-	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
-	SUB_BUILD_PATH=morphos/ppc CPPC=g++ AR=ar STRIP=strip OBJDUMP=objdump \
-	MORE_CPP_FLAGS="-noixemul" MORE_LFLAGS="-lMUIcpp" all
-	cp advanced/img/* out/morphos/ppc
+morphos_ppc: TARGET="MorphOS PPC"
+morphos_ppc: SUB_BUILD_PATH=morphos/ppc
+morphos_ppc: CPPC=g++
+morphos_ppc: AR=ar
+morphos_ppc: STRIP=strip
+morphos_ppc: OBJDUMP=objdump
+morphos_ppc: MORE_CPP_FLAGS="-noixemul"
+morphos_ppc: MORE_LFLAGS="-lMUIcpp"
+morphos_ppc: build
 
-cross_morphos_ppc:
-	@echo "# Cross Build for MorphOS PowerPC"
+cross_morphos_ppc: TARGET="Cross MorphOS PPC"
+cross_morphos_ppc: SUB_BUILD_PATH=morphos/ppc
+cross_morphos_ppc: CPPC=ppc-morphos-g++
+cross_morphos_ppc: AR=ppc-morphos-ar
+cross_morphos_ppc: STRIP=ppc-morphos-strip
+cross_morphos_ppc: OBJDUMP=ppc-morphos-objdump
+cross_morphos_ppc: MORE_CPP_FLAGS="-noixemul"
+cross_morphos_ppc: MORE_LFLAGS="-lMUIcpp"
+cross_morphos_ppc: build
+
+build:
+	@echo "# Build ... $(TARGET) ... $(SUB_BUILD_PATH)"
 	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=basic.example.bin PROJECT=basic MODULES= \
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
-	SUB_BUILD_PATH=morphos/ppc \
-	CPPC=ppc-morphos-g++ AR=ppc-morphos-ar STRIP=ppc-morphos-strip OBJDUMP=ppc-morphos-objdump \
-	MORE_CPP_FLAGS="-noixemul" MORE_LFLAGS="-lMUIcpp" all
+	SUB_BUILD_PATH=$(SUB_BUILD_PATH) \
+	CPPC=$(CPPC) AR=$(AR) STRIP=$(STRIP) OBJDUMP=$(OBJDUMP) \
+	MORE_CPP_FLAGS=$(MORE_CPP_FLAGS) MORE_LFLAGS=$(MORE_LFLAGS) all
 	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=advanced.example.bin PROJECT=advanced MODULES=Components,Components/Core,Components/Tabs \
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
-	SUB_BUILD_PATH=morphos/ppc \
-	CPPC=ppc-morphos-g++ AR=ppc-morphos-ar STRIP=ppc-morphos-strip OBJDUMP=ppc-morphos-objdump \
-	MORE_CPP_FLAGS="-noixemul" MORE_LFLAGS="-lMUIcpp" all
+	SUB_BUILD_PATH=$(SUB_BUILD_PATH) \
+	CPPC=$(CPPC) AR=$(AR) STRIP=$(STRIP) OBJDUMP=$(OBJDUMP) \
+	MORE_CPP_FLAGS=$(MORE_CPP_FLAGS) MORE_LFLAGS=$(MORE_LFLAGS) all
 	cp advanced/img/* out/morphos/ppc
 
 clean:
