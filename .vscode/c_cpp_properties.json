@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "amiga",
+            "name": "cross_amiga",
             "includePath": [
                 "../AmigaOS.cpp.wrapper/wrappers/src/",
                 "${workspaceFolder}/wrappers/src/**",
@@ -10,7 +10,6 @@
                 "/opt/amiga/m68k-amigaos/ndk-include/",
                 "/opt/amiga/m68k-amigaos/include/"
             ],
-            "defines": [],
             "compilerPath": "/opt/amiga/bin/m68k-amigaos-g++",
             "cStandard": "c17",
             "cppStandard": "c++17",
@@ -20,6 +19,31 @@
                 "-noixemul"
             ],
             "configurationProvider": "ms-vscode.makefile-tools"
+        },
+        {
+            "name": "cross_morphos",
+            "includePath": [
+                "../AmigaOS.cpp.wrapper/wrappers/src/",
+                "${workspaceFolder}/wrappers/src/**",
+                "${workspaceFolder}/examples/advanced/**",
+                "${workspaceFolder}/components/src/**",
+                "/gg/include/",
+                "/gg/os-include/",
+                "/gg/includestd/"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/ppc-morphos-g++",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "compilerArgs": [
+                "-noixemul"
+            ],
+            "compilerPathInCppPropertiesJson": "/usr/bin/ppc-morphos-g++",
+            "mergeConfigurations": false,
+            "recursiveIncludes": {},
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true
+            }
         }
     ],
     "version": 4
