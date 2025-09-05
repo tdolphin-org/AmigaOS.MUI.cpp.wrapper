@@ -45,5 +45,12 @@ namespace MUI
         return *this;
     }
 
+    Cycle &Cycle::setEntries(const std::vector<std::string> &entries)
+    {
+        auto copy = StoreStringArray(MUIA_Cycle_Entries, entries);
+        SetValue(MUIA_Cycle_Entries, copy);
+        return *this;
+    }
+
     CycleBuilder::CycleBuilder() { }
 }

@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
@@ -46,6 +46,9 @@ namespace MUI
         Cycle &setActive(const unsigned long active);
         /// @brief [ @b MUIA_Cycle_Entries ]
         Cycle &setEntries(const char *entries[]);
+        /// @brief [ @b MUIA_Cycle_Entries ]
+        /// The string copies are stored internally by this C++ wrapper!
+        Cycle &setEntries(const std::vector<std::string> &entries);
     };
 
     template <typename T, typename U> class CycleBuilderTemplate : public GroupBuilderTemplate<T, U>
@@ -64,6 +67,11 @@ namespace MUI
         /// Define what entries shall be displayed in your cycle gadget. You must supply a pointer to a string array, containing one entry
         /// for each item and terminated with a NULL.
         T &tagEntries(const char *entries[]);
+
+        /// @brief [ @b MUIA_Cycle_Entries ]
+        /// Define what entries shall be displayed in your cycle gadget. You must supply a vector of strings, containing one entry
+        /// for each item. The string copies are stored internally by this C++ wrapper!
+        T &tagEntries(const std::vector<std::string> &entries);
     };
 
     class CycleBuilder : public CycleBuilderTemplate<CycleBuilder, Cycle>
@@ -81,6 +89,13 @@ namespace MUI
     template <typename T, typename U> inline T &CycleBuilderTemplate<T, U>::tagEntries(const char *entries[])
     {
         this->PushTag(MUIA_Cycle_Entries, entries);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &CycleBuilderTemplate<T, U>::tagEntries(const std::vector<std::string> &entries)
+    {
+        auto copy = this->StoreStringArray(MUIA_Cycle_Entries, entries);
+        this->PushTag(MUIA_Cycle_Entries, copy);
         return (T &)*this;
     }
 }
