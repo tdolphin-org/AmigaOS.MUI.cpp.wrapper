@@ -54,6 +54,11 @@ namespace MUI
             return StringStorage::instance().Change(mpMuiObject, tagName, string);
         }
 
+        const char **StoreStringArray(const unsigned long tagName, const std::vector<std::string> &strings)
+        {
+            return StringStorage::instance().Change(mpMuiObject, tagName, strings);
+        }
+
         std::string GetValueAsString(const unsigned long tagName) const;
         char GetValueAsChar(const unsigned long tagName) const;
         unsigned long GetValueAsULong(const unsigned long tagName) const;

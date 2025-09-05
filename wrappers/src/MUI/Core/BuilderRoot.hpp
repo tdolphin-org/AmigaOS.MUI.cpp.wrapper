@@ -55,5 +55,10 @@ namespace MUI
         {
             return StringStorage::instance().Add(mStringStorageObjectId, tagName, string);
         }
+
+        const char **StoreStringArray(const unsigned long tagName, const std::vector<std::string> &strings)
+        {
+            return StringStorage::instance().Add(mStringStorageObjectId, tagName, strings);
+        }
     };
 }
