@@ -3,7 +3,7 @@
 //
 //  Basic Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #include "Main.hpp"
@@ -16,6 +16,7 @@
 #include "MUI/Coloradjust.hpp"
 #include "MUI/Core/MakeObject.hpp"
 #include "MUI/Core/MuiMasterBaseScope.hpp"
+#include "MUI/Cycle.hpp"
 #include "MUI/Group.hpp"
 #include "MUI/Notifier/Notifier.hpp"
 #include "MUI/Poppen.hpp"
@@ -34,6 +35,9 @@ int main(int argc, char **argv)
     auto itemsList = MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).object();
     itemsList.InsertTop((const void **)items);
 
+    std::vector<std::string> cycleItems = { "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth" };
+    auto cycleList = MUI::CycleBuilder().tagShortHelp("Example Cycle").tagEntries(cycleItems).object();
+
     MUI::Area closeButton { MUI::MakeObject::SimpleButton("_Quit Application") };
     MUI::Area leftButton { MUI::MakeObject::SimpleButton("_Open subwindow") };
     MUI::Area closeSubWindowButton { MUI::MakeObject::SimpleButton("_Close Window") };
@@ -51,8 +55,9 @@ int main(int argc, char **argv)
                   MUI::GroupBuilder()
                       .tagChild(MUI::TextBuilder()
                                     .tagShortHelp("help text")
-                                    .tagContents(MUIX_C "some centered text in MUI::Text\n\n" MUIX_PH " (c) 2022-2024 TDolphin")
+                                    .tagContents(MUIX_C "some centered text in MUI::Text\n\n" MUIX_PH " (c) 2022-2025 TDolphin")
                                     .object())
+                      .tagChild(cycleList)
                       .tagChild(closeButton)
                       .tagChild(MUI::GroupBuilder()
                                     .horizontal()
