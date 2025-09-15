@@ -93,7 +93,7 @@ namespace MUI
         /// The image if its allowed to get scaled vertically. Default is false.
         T &tagFreeVert(const bool freeVert);
         /// @brief [ @b MUIA_Image_OldImage ]
-        T &tagOldImage(const struct Image *oldImage);
+        T &tagOldImage(const ::Image *oldImage);
         /// @brief [ @b MUIA_Image_Spec (also sets MUIA_Image_CopySpec to TRUE) ]
         T &tagSpec(const std::string &spec);
         /// @brief [ @b MUIA_Image_Spec with predefined images (like MUI::ImageOrBackground::ArrowUp) ]
@@ -167,7 +167,7 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagOldImage(const Image *oldImage)
+    template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagOldImage(const ::Image *oldImage)
     {
         this->PushTag(MUIA_Image_OldImage, oldImage);
         return (T &)*this;
