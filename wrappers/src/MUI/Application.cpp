@@ -17,6 +17,11 @@ namespace MUI
 {
     const std::string Application::className = MUIC_Application;
 
+    const DiskObject *Application::getDiskObject() const
+    {
+        return (const DiskObject *)GetValueAsPtr(MUIA_Application_DiskObject);
+    }
+
     Object *Application::getMenustripObject() const
     {
         return GetValueAsObjectPtr(MUIA_Application_Menustrip);
@@ -42,6 +47,12 @@ namespace MUI
         }
 
         return result;
+    }
+
+    Application &Application::setDiskObject(const DiskObject &diskObject)
+    {
+        SetValue(MUIA_Application_DiskObject, (long)&diskObject);
+        return *this;
     }
 
     Application &Application::LoadEnvArc()
@@ -130,6 +141,12 @@ namespace MUI
     ApplicationBuilder &ApplicationBuilder::tagDescription(const std::string &description)
     {
         tagDescription((char *)description.c_str());
+        return *this;
+    }
+
+    ApplicationBuilder &ApplicationBuilder::tagDiskObject(const DiskObject &diskObject)
+    {
+        this->PushTag(MUIA_Application_DiskObject, (long)&diskObject);
         return *this;
     }
 

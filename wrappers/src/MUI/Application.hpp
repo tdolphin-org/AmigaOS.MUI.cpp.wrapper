@@ -33,13 +33,17 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
+        /// @brief [ @b MUIA_Application_DiskObject ]
+        const DiskObject *getDiskObject() const;
         /// @brief [ @b MUIA_Application_Menustrip ]
         Object *getMenustripObject() const;
         /// @brief [ @b MUIA_Application_Menustrip ]
         Menustrip getMenustrip() const;
-
         /// @brief [ @b MUIA_Application_WindowList ]
         std::vector<Window> getWindowList() const;
+
+        /// @brief [ @b MUIA_Application_DiskObject ]
+        Application &setDiskObject(const DiskObject &diskObject);
 
         // methods, some returns object reference
 
@@ -81,6 +85,8 @@ namespace MUI
         ApplicationBuilder &tagDescription(const char *description);
         /// @brief [ @b MUIA_Application_Description ]
         ApplicationBuilder &tagDescription(const std::string &description);
+        /// @brief [ @b MUIA_Application_DiskObject ]
+        ApplicationBuilder &tagDiskObject(const DiskObject &diskObject);
         /// @brief [ @b MUIA_Application_Menustrip ]
         ApplicationBuilder &tagMenustrip(const Menustrip &menustrip);
         /// @brief [ @b MUIA_Application_SingleTask ]
@@ -120,6 +126,8 @@ namespace MUI
         ApplicationScope &operator=(ApplicationScope &&) = delete;
     };
 
+    /// @brief Scope for temporarily sleeping the application
+    /// set MUIA_Application_Sleep TRUE, and set to MUIA_Application_Sleep FALSE on destruction
     class ApplicationSleepScope
     {
       public:
