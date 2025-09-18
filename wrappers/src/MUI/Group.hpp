@@ -40,6 +40,29 @@ namespace MUI
         /// @brief [ @b MUIA_Group_ActivePage ]
         /// @return active page (index).
         long getActivePage() const;
+#ifdef MUIA_Group_ChildCount
+        /// @brief [ @b MUIA_Group_ChildCount ]
+        long getChildCount() const;
+#endif
+        /// @brief [ @b MUIA_Group_ChildList ]
+        /// @return list of child objects.
+        struct List *getChildList() const;
+#ifdef MUIA_Group_HorizCenter
+        /// @brief [ @b MUIA_Group_HorizCenter ]
+        /// @return horizontal center alignment.
+        enum Group_HorizCenter getHorizCenter() const;
+#endif
+        /// @brief [ @b MUIA_Group_HorizSpacing ]
+        /// @return Number of pixels inserted between horizontal elements of a group.
+        long getHorizSpacing() const;
+#ifdef MUIA_Group_VertCenter
+        /// @brief [ @b MUIA_Group_VertCenter ]
+        /// @return vertical center alignment.
+        enum Group_VertCenter getVertCenter() const;
+#endif
+        /// @brief [ @b MUIA_Group_VertSpacing ]
+        /// @return Number of pixels inserted between vertical elements of a group.
+        long getVertSpacing() const;
 
         /// @brief [ @b MUIA_Group_ActivePage ]
         /// Activate given page.

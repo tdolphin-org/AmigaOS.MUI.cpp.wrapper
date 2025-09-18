@@ -17,6 +17,42 @@ namespace MUI
         return GetValueAsLong(MUIA_Group_ActivePage);
     }
 
+#ifdef MUIA_Group_ChildCount
+    long Group::getChildCount() const
+    {
+        return GetValueAsLong(MUIA_Group_ChildCount);
+    }
+#endif
+
+    List *Group::getChildList() const
+    {
+        return (List *)GetValueAsPtr(MUIA_Group_ChildList);
+    }
+
+#ifdef MUIA_Group_HorizCenter
+    Group_HorizCenter Group::getHorizCenter() const
+    {
+        return (enum Group_HorizCenter)GetValueAsLong(MUIA_Group_HorizCenter);
+    }
+#endif
+
+    long Group::getHorizSpacing() const
+    {
+        return GetValueAsLong(MUIA_Group_HorizSpacing);
+    }
+
+#ifdef MUIA_Group_VertCenter
+    Group_VertCenter Group::getVertCenter() const
+    {
+        return (enum Group_VertCenter)GetValueAsLong(MUIA_Group_VertCenter);
+    }
+#endif
+
+    long Group::getVertSpacing() const
+    {
+        return GetValueAsLong(MUIA_Group_VertSpacing);
+    }
+
     Group &Group::setActivePage(const unsigned long activePage)
     {
         SetValue(MUIA_Group_ActivePage, activePage);
