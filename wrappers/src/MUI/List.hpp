@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
@@ -16,7 +16,13 @@
 #include "ValueTypes/List/NextSelected.hpp"
 #include "ValueTypes/List/ScrollerPos.hpp"
 
+#include <stdexcept>
+
 #undef Remove
+
+#ifdef MUIV_List_ConstructHook_StringArray
+#define ListHookStringArrayModeAvailable
+#endif
 
 namespace MUI
 {
@@ -187,11 +193,23 @@ namespace MUI
 
     template <typename T, typename U> class ListBuilderTemplate : public AreaBuilderTemplate<T, U>
     {
+#ifdef ListHookStringArrayModeAvailable
+        bool isStringArray { false };
+#endif
+
       public:
         ListBuilderTemplate(const std::string &uniqueId = MUI::EmptyUniqueId, const std::string &muiClassName = MUIC_List)
           : AreaBuilderTemplate<T, U>(uniqueId, muiClassName)
         {
         }
+
+        T &stringHooks();
+
+#ifdef ListHookStringArrayModeAvailable
+        /// @brief [ all hooks ( @b MUIA_List_ConstructHook, @b MUIA_List_DestructHook, @b MUIA_List_CompareHook, @b MUIA_List_DisplayHook )
+        /// set to string array mode ]
+        T &stringArrayHooks(unsigned long columns);
+#endif
 
         /// @brief [ @b MUIA_List_Active ]
         T &tagActive(const enum List_Active active);
@@ -215,30 +233,48 @@ namespace MUI
 #endif
         /// @brief [ @b MUIA_List_AutoVisible ]
         T &tagAutoVisible(const bool autoVisible);
-        /// @brief [ @b MUIA_List_CompareHook ]
-        T &tagCompareHook(const struct Hook *compareHook);
-#ifdef MUIV_List_CompareHook_String
-        /// @brief [ @b MUIA_List_CompareHook, @b MUIV_List_CompareHook_String ]
-        T &tagCompareHookString();
-#endif
+
+        // hooks
+
         /// @brief [ @b MUIA_List_ConstructHook ]
         T &tagConstructHook(const struct Hook *constructHook);
+        /// @brief [ @b MUIA_List_DestructHook ]
+        T &tagDestructHook(const struct Hook *destructHook);
+        /// @brief [ @b MUIA_List_CompareHook ]
+        T &tagCompareHook(const struct Hook *compareHook);
+        /// @brief [ @b MUIA_List_DisplayHook, @b MUIV_List_DisplayHook_String ]
+        T &tagDisplayHookString();
+
+        // string hooks
+
         /// @brief [ @b MUIA_List_ConstructHook, @b MUIV_List_ConstructHook_String ]
         T &tagConstructHookString();
+        /// @brief [ @b MUIA_List_DestructHook, @b MUIV_List_DestructHook_String ]
+        T &tagDestructHookString();
+        /// @brief [ @b MUIA_List_CompareHook, @b MUIV_List_CompareHook_String ]
+        T &tagCompareHookString();
+        /// @brief [ @b MUIA_List_DisplayHook ]
+        T &tagDisplayHook(const struct Hook *displayHook);
+
+        // string array hooks
+
 #ifdef MUIV_List_ConstructHook_StringArray
         /// @brief [ @b MUIA_List_ConstructHook, @b MUIV_List_ConstructHook_StringArray ]
         T &tagConstructHookStringArray();
 #endif
-        /// @brief [ @b MUIA_List_DestructHook ]
-        T &tagDestructHook(const struct Hook *destructHook);
-        /// @brief [ @b MUIA_List_DestructHook, @b MUIV_List_DestructHook_String ]
-        T &tagDestructHookString();
 #ifdef MUIV_List_DestructHook_StringArray
         /// @brief [ @b MUIA_List_DestructHook, @b MUIV_List_DestructHook_StringArray ]
         T &tagDestructHookStringArray();
 #endif
-        /// @brief [ @b MUIA_List_DisplayHook ]
-        T &tagDisplayHook(const struct Hook *displayHook);
+#ifdef MUIV_List_CompareHook_StringArray
+        /// @brief [ @b MUIA_List_CompareHook, @b MUIV_List_CompareHook_StringArray ]
+        T &tagCompareHookStringArray();
+#endif
+#ifdef MUIV_List_DisplayHook_StringArray
+        /// @brief [ @b MUIA_List_DisplayHook, @b MUIV_List_DisplayHook_StringArray ]
+        T &tagDisplayHookStringArray();
+#endif
+
 #ifdef MUIA_List_DragType
         /// @brief [ @b MUIA_List_DragType ]
         T &tagDragType(const enum List_DragType dragType);
@@ -284,6 +320,15 @@ namespace MUI
         /// @brief [ @b MUIA_List_TitleArray ]
         T &tagTitleArray(const char *titleArray[]);
 #endif
+
+#ifdef MUIA_List_MaxColumns
+      private:
+        void validateObject() const;
+
+      public:
+        U object() const;
+        U object(const unsigned long dataSize, const void *pDispatcher) const;
+#endif
     };
 
     class ListBuilder : public ListBuilderTemplate<ListBuilder, List>
@@ -291,6 +336,32 @@ namespace MUI
       public:
         ListBuilder();
     };
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::stringHooks()
+    {
+        this->PushTag(MUIA_List_ConstructHook, (const Hook *)MUIV_List_ConstructHook_String);
+        this->PushTag(MUIA_List_DestructHook, (const Hook *)MUIV_List_DestructHook_String);
+#ifdef MUIV_List_CompareHook_String
+        this->PushTag(MUIA_List_CompareHook, (const Hook *)MUIV_List_CompareHook_String);
+#endif
+#ifdef MUIV_List_DisplayHook_String
+        this->PushTag(MUIA_List_DisplayHook, (const Hook *)MUIV_List_DisplayHook_String);
+#endif
+        return (T &)*this;
+    }
+
+#ifdef ListHookStringArrayModeAvailable
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::stringArrayHooks(unsigned long columns)
+    {
+        isStringArray = true;
+        this->PushTag(MUIA_List_ConstructHook, (const Hook *)MUIV_List_ConstructHook_StringArray);
+        this->PushTag(MUIA_List_DestructHook, (const Hook *)MUIV_List_DestructHook_StringArray);
+        this->PushTag(MUIA_List_CompareHook, (const Hook *)MUIV_List_CompareHook_StringArray);
+        this->PushTag(MUIA_List_DisplayHook, (const Hook *)MUIV_List_DisplayHook_StringArray);
+        this->PushTag(MUIA_List_MaxColumns, columns);
+        return (T &)*this;
+    }
+#endif
 
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagActive(const enum List_Active active)
     {
@@ -346,9 +417,39 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagConstructHook(const struct Hook *constructHook)
+    {
+        this->PushTag(MUIA_List_ConstructHook, constructHook);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDestructHook(const struct Hook *destructHook)
+    {
+        this->PushTag(MUIA_List_DestructHook, destructHook);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagCompareHook(const struct Hook *compareHook)
     {
         this->PushTag(MUIA_List_CompareHook, compareHook);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDisplayHook(const struct Hook *displayHook)
+    {
+        this->PushTag(MUIA_List_DisplayHook, displayHook);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagConstructHookString()
+    {
+        this->PushTag(MUIA_List_ConstructHook, (const Hook *)MUIV_List_ConstructHook_String);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDestructHookString()
+    {
+        this->PushTag(MUIA_List_DestructHook, (const Hook *)MUIV_List_DestructHook_String);
         return (T &)*this;
     }
 
@@ -360,51 +461,49 @@ namespace MUI
     }
 #endif
 
-    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagConstructHook(const struct Hook *constructHook)
+#ifdef MUIV_List_DisplayHook_String
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDisplayHookString()
     {
-        this->PushTag(MUIA_List_ConstructHook, constructHook);
+        this->PushTag(MUIA_List_DisplayHook, (const Hook *)MUIV_List_DisplayHook_String);
         return (T &)*this;
     }
-
-    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagConstructHookString()
-    {
-        this->PushTag(MUIA_List_ConstructHook, (const Hook *)MUIV_List_ConstructHook_String);
-        return (T &)*this;
-    }
+#endif
 
 #ifdef MUIV_List_ConstructHook_StringArray
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagConstructHookStringArray()
     {
+        isStringArray = true;
         this->PushTag(MUIA_List_ConstructHook, (const Hook *)MUIV_List_ConstructHook_StringArray);
         return (T &)*this;
     }
 #endif
 
-    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDestructHook(const struct Hook *destructHook)
-    {
-        this->PushTag(MUIA_List_DestructHook, destructHook);
-        return (T &)*this;
-    }
-
-    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDestructHookString()
-    {
-        this->PushTag(MUIA_List_DestructHook, (const Hook *)MUIV_List_DestructHook_String);
-        return (T &)*this;
-    }
-
 #ifdef MUIV_List_DestructHook_StringArray
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDestructHookStringArray()
     {
+        isStringArray = true;
         this->PushTag(MUIA_List_DestructHook, (const Hook *)MUIV_List_DestructHook_StringArray);
         return (T &)*this;
     }
 #endif
 
-    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDisplayHook(const struct Hook *displayHook)
+#ifdef MUIV_List_CompareHook_StringArray
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagCompareHookStringArray()
     {
-        this->PushTag(MUIA_List_DisplayHook, displayHook);
+        isStringArray = true;
+        this->PushTag(MUIA_List_CompareHook, (const Hook *)MUIV_List_CompareHook_StringArray);
         return (T &)*this;
     }
+#endif
+
+#ifdef MUIV_List_DisplayHook_StringArray
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDisplayHookStringArray()
+    {
+        isStringArray = true;
+        this->PushTag(MUIA_List_DisplayHook, (const Hook *)MUIV_List_DisplayHook_StringArray);
+        return (T &)*this;
+    }
+#endif
 
 #ifdef MUIA_List_DragType
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDragType(const enum List_DragType dragType)
@@ -505,6 +604,33 @@ namespace MUI
         if (titleArray)
             this->PushTag(MUIA_List_TitleArray, titleArray);
         return (T &)*this;
+    }
+#endif
+
+#ifdef ListHookStringArrayModeAvailable
+    template <typename T, typename U> inline void ListBuilderTemplate<T, U>::validateObject() const
+    {
+        if (isStringArray)
+        {
+            if (!this->ContainsTag(MUIA_List_MaxColumns))
+            {
+                auto error = std::string { __PRETTY_FUNCTION__ } + ", missing MaxColumns for List with StringArray hooks!";
+                throw std::runtime_error(error);
+            }
+        }
+    }
+
+    template <typename T, typename U> inline U ListBuilderTemplate<T, U>::object() const
+    {
+        validateObject();
+        return AreaBuilderTemplate<T, U>::object();
+    }
+
+    template <typename T, typename U>
+    inline U ListBuilderTemplate<T, U>::object(const unsigned long dataSize, const void *pDispatcher) const
+    {
+        validateObject();
+        return AreaBuilderTemplate<T, U>::object(dataSize, pDispatcher);
     }
 #endif
 }
