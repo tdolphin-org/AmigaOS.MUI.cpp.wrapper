@@ -10,8 +10,6 @@
 #include "Menustrip.hpp"
 #include "Notify.hpp"
 
-#include <stdexcept>
-
 #include <proto/muimaster.h>
 
 #undef Open
@@ -69,12 +67,11 @@ namespace MUI
 
     template <typename T, typename U> class WindowBuilderTemplate : public NotifyBuilderTemplate<T, U>
     {
-        bool hasRootObject;
+        bool hasRootObject { false };
 
       public:
         WindowBuilderTemplate(const std::string &uniqueId = MUI::EmptyUniqueId, const std::string &muiClassName = MUIC_Window)
           : NotifyBuilderTemplate<T, U>(uniqueId, muiClassName)
-          , hasRootObject(false)
         {
         }
 
@@ -107,8 +104,8 @@ namespace MUI
         /// @brief [ @b MUIA_Window_Width ]
         T &tagWidth(const long width);
 
-        U object() const;
-        U object(const unsigned long dataSize, const void *pDispatcher) const;
+      protected:
+        bool Validate() const override;
     };
 
     class WindowBuilder : public WindowBuilderTemplate<WindowBuilder, Window>
@@ -203,31 +200,19 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline U WindowBuilderTemplate<T, U>::object() const
+    template <typename T, typename U> inline bool WindowBuilderTemplate<T, U>::Validate() const
     {
+        auto result = NotifyBuilderTemplate<T, U>::Validate();
+
         // The root object is mandatory during window creation and trying to create a window without a root object will fail.
         // So check if there is tag for RootObject (not null).
         if (!hasRootObject)
         {
-            auto error = std::string { __PRETTY_FUNCTION__ } + ", missing RootObject for Window!";
-            throw std::runtime_error(error);
+            std::cerr << __PRETTY_FUNCTION__ << ", missing RootObject for Window!" << std::endl;
+            result = false;
         }
 
-        return NotifyBuilderTemplate<T, U>::object();
-    }
-
-    template <typename T, typename U>
-    inline U WindowBuilderTemplate<T, U>::object(const unsigned long dataSize, const void *pDispatcher) const
-    {
-        // The root object is mandatory during window creation and trying to create a window without a root object will fail.
-        // So check if there is tag for RootObject (not null).
-        if (!hasRootObject)
-        {
-            auto error = std::string { __PRETTY_FUNCTION__ } + ", missing RootObject for Window!";
-            throw std::runtime_error(error);
-        }
-
-        return NotifyBuilderTemplate<T, U>::object(dataSize, pDispatcher);
+        return result;
     }
 
     class WindowScope

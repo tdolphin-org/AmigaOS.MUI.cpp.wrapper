@@ -62,7 +62,7 @@ namespace MUI::MCC
 
     class NListviewBuilder : public AreaBuilderTemplate<NListviewBuilder, NListview>
     {
-        bool hasNListObject;
+        bool hasNListObject { false };
 
       public:
         NListviewBuilder();
@@ -74,7 +74,7 @@ namespace MUI::MCC
         /// @brief [ @b MUIA_NListview_Horiz_ScrollBar ]
         NListviewBuilder &tagHoriz_ScrollBar(const enum NListview_HSB horiz_ScrollBar);
 
-        NListview object() const;
-        NListview object(const unsigned long dataSize, const void *pDispatcher) const;
+      protected:
+        bool Validate() const override;
     };
 }

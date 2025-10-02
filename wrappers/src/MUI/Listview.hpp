@@ -13,8 +13,6 @@
 #include "ValueTypes/Listview/MultiSelect.hpp"
 #include "ValueTypes/Listview/ScrollerPos.hpp"
 
-#include <stdexcept>
-
 namespace MUI
 {
     class Listview : public Group
@@ -62,12 +60,11 @@ namespace MUI
 
     template <typename T, typename U> class ListviewBuilderTemplate : public GroupBuilderTemplate<T, U>
     {
-        bool hasListObject;
+        bool hasListObject { false };
 
       public:
         ListviewBuilderTemplate(const std::string &uniqueId = MUI::EmptyUniqueId, const std::string &muiClassName = MUIC_Listview)
           : GroupBuilderTemplate<T, U>(uniqueId, muiClassName)
-          , hasListObject(false)
         {
         }
 
@@ -92,8 +89,8 @@ namespace MUI
         /// @brief [ @b MUIA_Listview_ScrollerPos ]
         T &tagScrollerPos(const enum Listview_ScrollerPos scrollerPos);
 
-        U object() const;
-        U object(const unsigned long dataSize, const void *pDispatcher) const;
+      protected:
+        bool Validate() const override;
     };
 
     class ListviewBuilder : public ListviewBuilderTemplate<ListviewBuilder, Listview>
@@ -160,30 +157,18 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline U ListviewBuilderTemplate<T, U>::object() const
+    template <typename T, typename U> inline bool ListviewBuilderTemplate<T, U>::Validate() const
     {
+        auto result = GroupBuilderTemplate<T, U>::Validate();
+
         // Each listview needs a list object as child. The list object is mandatory for listview, without it object will fail on creation.
         // So check if there is tag for List (not null).
         if (!hasListObject)
         {
-            auto error = std::string { __PRETTY_FUNCTION__ } + ", missing List object for Listview!";
-            throw std::runtime_error(error);
+            std::cerr << __PRETTY_FUNCTION__ << ", missing List object for Listview!" << std::endl;
+            result = false;
         }
 
-        return GroupBuilderTemplate<T, U>::object();
-    }
-
-    template <typename T, typename U>
-    inline U ListviewBuilderTemplate<T, U>::object(const unsigned long dataSize, const void *pDispatcher) const
-    {
-        // Each listview needs a list object as child. The list object is mandatory for listview, without it object will fail on creation.
-        // So check if there is tag for List (not null).
-        if (!hasListObject)
-        {
-            auto error = std::string { __PRETTY_FUNCTION__ } + ", missing List object for Listview!";
-            throw std::runtime_error(error);
-        }
-
-        return GroupBuilderTemplate<T, U>::object(dataSize, pDispatcher);
+        return result;
     }
 }

@@ -16,8 +16,6 @@
 #include "ValueTypes/List/NextSelected.hpp"
 #include "ValueTypes/List/ScrollerPos.hpp"
 
-#include <stdexcept>
-
 #undef Remove
 
 #ifdef MUIV_List_ConstructHook_StringArray
@@ -322,12 +320,8 @@ namespace MUI
 #endif
 
 #ifdef MUIA_List_MaxColumns
-      private:
-        void validateObject() const;
-
-      public:
-        U object() const;
-        U object(const unsigned long dataSize, const void *pDispatcher) const;
+      protected:
+        bool Validate() const override;
 #endif
     };
 
@@ -608,29 +602,20 @@ namespace MUI
 #endif
 
 #ifdef ListHookStringArrayModeAvailable
-    template <typename T, typename U> inline void ListBuilderTemplate<T, U>::validateObject() const
+    template <typename T, typename U> inline bool ListBuilderTemplate<T, U>::Validate() const
     {
+        auto result = AreaBuilderTemplate<T, U>::Validate();
+
         if (isStringArray)
         {
             if (!this->ContainsTag(MUIA_List_MaxColumns))
             {
-                auto error = std::string { __PRETTY_FUNCTION__ } + ", missing MaxColumns for List with StringArray hooks!";
-                throw std::runtime_error(error);
+                std::cerr << __PRETTY_FUNCTION__ << ", missing MaxColumns for List with StringArray hooks!" << std::endl;
+                result = false;
             }
         }
-    }
 
-    template <typename T, typename U> inline U ListBuilderTemplate<T, U>::object() const
-    {
-        validateObject();
-        return AreaBuilderTemplate<T, U>::object();
-    }
-
-    template <typename T, typename U>
-    inline U ListBuilderTemplate<T, U>::object(const unsigned long dataSize, const void *pDispatcher) const
-    {
-        validateObject();
-        return AreaBuilderTemplate<T, U>::object(dataSize, pDispatcher);
+        return result;
     }
 #endif
 }

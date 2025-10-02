@@ -52,7 +52,6 @@ namespace MUI::MCC
 
     NListviewBuilder::NListviewBuilder()
       : AreaBuilderTemplate(MUI::EmptyUniqueId, NListview::className)
-      , hasNListObject(false)
     {
     }
 
@@ -75,29 +74,18 @@ namespace MUI::MCC
         return *this;
     }
 
-    NListview NListviewBuilder::object() const
+    bool NListviewBuilder::Validate() const
     {
-        // Each listview needs a list object as child. The list object is mandatory for NListview, without it object will fail on creation.
+        auto result = AreaBuilderTemplate::Validate();
+
+        // Each nlistview needs a list object as child. The list object is mandatory for NListview, without it object will fail on creation.
         // So check if there is tag for NList (MUIA_NListview_NList).
         if (!hasNListObject)
         {
-            auto error = std::string { __PRETTY_FUNCTION__ } + ", missing NList object for NListview!";
-            throw std::runtime_error(error);
+            std::cerr << __PRETTY_FUNCTION__ << ", missing NList object for NListview!";
+            result = false;
         }
 
-        return AreaBuilderTemplate::object();
-    }
-
-    NListview NListviewBuilder::object(const unsigned long dataSize, const void *pDispatcher) const
-    {
-        // Each listview needs a list object as child. The list object is mandatory for NListview, without it object will fail on creation.
-        // So check if there is tag for NList (MUIA_NListview_NList).
-        if (!hasNListObject)
-        {
-            auto error = std::string { __PRETTY_FUNCTION__ } + ", missing NList object for NListview!";
-            throw std::runtime_error(error);
-        }
-
-        return AreaBuilderTemplate::object();
+        return result;
     }
 }

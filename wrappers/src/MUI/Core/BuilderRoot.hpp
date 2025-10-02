@@ -11,6 +11,9 @@
 #include "Core/ToString.hpp"
 #include "Object.hpp"
 
+#include <iostream>
+#include <stdexcept>
+
 namespace MUI
 {
     static std::string EmptyUniqueId = "";
@@ -35,6 +38,12 @@ namespace MUI
 
         T object() const
         {
+            if (!Validate())
+            {
+                auto error = std::string { __PRETTY_FUNCTION__ } + ", validation of tags failed!";
+                throw std::runtime_error(error);
+            }
+
             T object { T(mUniqueId.empty() ? muiObject(mClassName, getTags()) : amccObject(mUniqueId, mClassName, getTags())) };
             if (mStringStorageObjectId != 0)
                 StringStorage::instance().FinalizeObject(mStringStorageObjectId, static_cast<Object *>(object));
@@ -42,13 +51,25 @@ namespace MUI
         }
 
       protected:
-        T object(const unsigned long dataSize, const void *pDispatcher) const
+        T object(const unsigned long dataSize, const void *pDispatcher = nullptr) const
         {
+            if (!Validate())
+            {
+                auto error = std::string { __PRETTY_FUNCTION__ } + ", validation of tags failed!";
+                throw std::runtime_error(error);
+            }
+
             T object { T(mUniqueId.empty() ? muiObject(mClassName, getTags())
                                            : amccObject(mUniqueId, mClassName, getTags(), dataSize, pDispatcher)) };
             if (mStringStorageObjectId != 0)
                 StringStorage::instance().FinalizeObject(mStringStorageObjectId, object);
             return object;
+        }
+
+        /// @brief override to Validate tags before object creation, default implementation returns true
+        virtual bool Validate() const
+        {
+            return true;
         }
 
         const char *StoreString(const unsigned long tagName, const std::string &string)
