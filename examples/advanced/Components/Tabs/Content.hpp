@@ -3,11 +3,12 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
 
+#include "BoardsList.hpp"
 #include "CustomClassesTab.hpp"
 #include "ListAndImageTab.hpp"
 #include "TabsContainerRegister.hpp" // version using MUI::Register for tabs/pages
@@ -22,6 +23,7 @@ namespace Components
         TabsContainerRegister mLeftTabsRegister;
 
         MUI::Group mTitleInfoGroup;
+        BoardsList mBoardsList;
         CustomClassesTab mCustomClassesTab;
         TabsContainerTitles mRightTabsTitles;
 

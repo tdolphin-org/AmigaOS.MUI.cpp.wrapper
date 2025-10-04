@@ -3,12 +3,13 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #include "App.hpp"
 
 #include "MUI/Context/ApplicationContext.hpp"
+#include "MUI/Core/CustomClassManager.hpp"
 
 #include <iostream>
 #include <proto/alib.h>
@@ -20,6 +21,8 @@ AppCore::AppCore() { }
 
 void AppCore::Run()
 {
+    MUI::CustomClassesLifeTimeScope customClassesLifeTimeScope;
+
     // application scope
     // do MUI_DisposeObject(..) on destructor
     MUI::ApplicationScope application(mApplication);

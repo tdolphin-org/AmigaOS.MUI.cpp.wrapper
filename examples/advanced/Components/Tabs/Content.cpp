@@ -3,11 +3,12 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #include "Content.hpp"
 
+#include "Components/MCC/BoardsList.hpp"
 #include "MUI/Balance.hpp"
 #include "MUI/Core/MakeObject.hpp"
 #include "MUI/Text.hpp"
@@ -49,8 +50,9 @@ namespace Components
                                           .object())
                             .tagChild(MUI::MakeObject::HVSpace())
                             .object())
+      , mBoardsList()
       , mCustomClassesTab()
-      , mRightTabsTitles({ { MUIX_PH "Info", mTitleInfoGroup }, { "NList", mCustomClassesTab } })
+      , mRightTabsTitles({ { MUIX_PH "Info", mTitleInfoGroup }, { "MCCList", mBoardsList }, { "NList", mCustomClassesTab } })
       , mComponent(MUI::GroupBuilder()
                        .horizontal()
                        .tagChild(mLeftTabsRegister)
