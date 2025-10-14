@@ -43,6 +43,11 @@ namespace MUI
         return MUI_MakeObject(MUIO_PopButton, img);
     }
 
+    Object *MakeObject::PopButton(const MUI::ImageOrBackground img)
+    {
+        return MUI_MakeObject(MUIO_PopButton, (unsigned long)img);
+    }
+
     Object *MakeObject::Label(const char *label)
     {
         return MUI_MakeObject(MUIO_Label, (unsigned long)label, 0);

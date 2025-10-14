@@ -8,6 +8,7 @@
 
 #include <proto/muimaster.h>
 
+#include "MUI/ValueTypes/ImageOrBackground.hpp"
 #include "Root.hpp"
 
 #include <string>
@@ -59,6 +60,8 @@ namespace MUI
 
         /// @brief [ @b MUIO_Button (button is an instance of the MUIC_Text class) ]
         static Object *PopButton(unsigned long img);
+        /// @brief [ @b MUIO_Button (button is an instance of the MUIC_Text class) ]
+        static Object *PopButton(const MUI::ImageOrBackground img);
 
         /// @brief [ @b MUIO_Label ] For use with objects without a frame. Right justify. [ like MUI macro @b Label() ]
         static Object *Label(const char *label);
