@@ -20,14 +20,14 @@ namespace MUI
 
     template <typename T> class BuilderRoot : public AOS::TagBuilderRoot
     {
-        /// @brief not empty if class is internal for application, created based od other MUI builtin class
+        /// @brief not empty if class is internal for application (mcc) and created based on other MUI builtin class
         const std::string mUniqueId;
         const std::string mClassName;
         unsigned long mStringStorageObjectId;
 
       public:
         /// @brief
-        /// @param uniqueId be default set to empty "", only for internal app class is set
+        /// @param uniqueId be default set to empty "" (EmptyUniqueId), not empty for internal mcc (MUI custom class)
         /// @param className class name: #?.mui, #?.mcc
         BuilderRoot(const std::string &uniqueId, const std::string &className)
           : mUniqueId(uniqueId)

@@ -3,7 +3,7 @@
 //
 //  Components
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #include "ActionRoot.hpp"
@@ -12,6 +12,10 @@
 #include "Dispatcher/OnClickDispatcher.hpp"
 #include "Dispatcher/OnDoubleClickEntryDispatcher.hpp"
 #include "Dispatcher/OnTimerDispatcher.hpp"
+
+#ifdef TRACE_CUSTOM_COMPONENTS
+#include <iostream>
+#endif
 
 namespace Components::MCC
 {
@@ -23,27 +27,51 @@ namespace Components::MCC
         switch (method)
         {
             case OM_NEW:
+#ifdef TRACE_CUSTOM_COMPONENTS
+                std::cout << __PRETTY_FUNCTION__ << "::OM_NEW" << std::endl;
+#endif
                 result.methodResult = methodNew(cl, obj, msg);
                 break;
             case OM_DISPOSE:
+#ifdef TRACE_CUSTOM_COMPONENTS
+                std::cout << __PRETTY_FUNCTION__ << "::OM_DISPOSE" << std::endl;
+#endif
                 result.methodResult = methodDispose(cl, obj, msg);
                 break;
             case MUIM_Setup:
+#ifdef TRACE_CUSTOM_COMPONENTS
+                std::cout << __PRETTY_FUNCTION__ << "::MUIM_Setup" << std::endl;
+#endif
                 result.methodResult = methodSetup(cl, obj, msg);
                 break;
             case MUIM_Cleanup:
+#ifdef TRACE_CUSTOM_COMPONENTS
+                std::cout << __PRETTY_FUNCTION__ << "::MUIM_Cleanup" << std::endl;
+#endif
                 result.methodResult = methodCleanup(cl, obj, msg);
                 break;
             case MUIM_ActionOnClick:
+#ifdef TRACE_CUSTOM_COMPONENTS
+                std::cout << __PRETTY_FUNCTION__ << "::MUIM_ActionOnClick" << std::endl;
+#endif
                 result.methodResult = methodOnClick(cl, obj, msg);
                 break;
             case MUIM_ActionOnTimer:
+#ifdef TRACE_CUSTOM_COMPONENTS
+                std::cout << __PRETTY_FUNCTION__ << "::MUIM_ActionOnTimer" << std::endl;
+#endif
                 result.methodResult = methodOnTimer(cl, obj, msg);
                 break;
             case MUIM_ActionOnActiveEntry:
+#ifdef TRACE_CUSTOM_COMPONENTS
+                std::cout << __PRETTY_FUNCTION__ << "::MUIM_ActionOnActiveEntry" << std::endl;
+#endif
                 result.methodResult = methodOnActiveEntry(cl, obj, msg);
                 break;
             case MUIM_ActionOnDoubleClickEntry:
+#ifdef TRACE_CUSTOM_COMPONENTS
+                std::cout << __PRETTY_FUNCTION__ << "::MUIM_ActionOnDoubleClickEntry" << std::endl;
+#endif
                 result.methodResult = methodOnDoubleClickEntry(cl, obj, msg);
                 break;
             default:

@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
@@ -260,10 +260,14 @@ namespace MUI
         /// @brief [ @b MUIA_FillArea ]
         T &tagFillArea(const bool fillArea);
         /// @brief [ @b MUIA_FixHeight ]
+        /// Give your object a fixed pixel height. This tag is absolutely not needed in a general MUI application and only present for
+        /// emergency situations.
         T &tagFixHeight(const long fixHeight);
         /// @brief [ @b MUIA_FixHeightTxt ]
         T &tagFixHeightTxt(const std::string &fixHeightTxt);
         /// @brief [ @b MUIA_FixWidth ]
+        /// Give your object a fixed pixel width. This tag is absolutely not needed in a general MUI application and only present for
+        /// emergency situations.
         T &tagFixWidth(const long fixWidth);
         /// @brief [ @b MUIA_FixWidthTxt ]
         T &tagFixWidthTxt(const std::string &fixWidthTxt);
