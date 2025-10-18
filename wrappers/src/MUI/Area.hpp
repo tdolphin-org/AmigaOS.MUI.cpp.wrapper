@@ -283,10 +283,10 @@ namespace MUI
         T &tagFrame(const enum Frame frame);
 #ifdef MUIA_FrameDynamic
         /// @brief [ @b MUIA_FrameDynamic ]
-        T &tagDynamic(const bool dynamic);
+        T &tagFrameDynamic(const bool dynamic);
 #endif
         /// @brief [ @b MUIA_FramePhantomHoriz ]
-        T &tagPhantomHoriz(const bool phantomHoriz);
+        T &tagFramePhantomHoriz(const bool phantomHoriz);
         /// @brief [ @b MUIA_FrameTitle ]
         T &tagFrameTitle(const std::string &frameTitle);
         /// @brief [ @b MUIA_HorizWeight ]
@@ -405,14 +405,14 @@ namespace MUI
     }
 
 #ifdef MUIA_FrameDynamic
-    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagDynamic(const bool dynamic)
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFrameDynamic(const bool dynamic)
     {
         this->PushTag(MUIA_FrameDynamic, dynamic);
         return (T &)*this;
     }
 #endif
 
-    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagPhantomHoriz(const bool phantomHoriz)
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFramePhantomHoriz(const bool phantomHoriz)
     {
         this->PushTag(MUIA_FramePhantomHoriz, phantomHoriz);
         return (T &)*this;
