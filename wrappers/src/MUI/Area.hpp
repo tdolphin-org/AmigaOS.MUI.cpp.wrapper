@@ -283,11 +283,21 @@ namespace MUI
         T &tagFrame(const enum Frame frame);
 #ifdef MUIA_FrameDynamic
         /// @brief [ @b MUIA_FrameDynamic ]
+        /// Defines whether the object's frame will be dynamically visible or not. If set to `true` the frame will be made visible as soon
+        /// as the mouse pointer is over the object and made invisible when the mouse leaves the object. Best use the attribute together
+        /// with attribute `MUIA_FrameVisible` set to `false` to make the frame invisible by default.
         T &tagFrameDynamic(const bool dynamic);
 #endif
         /// @brief [ @b MUIA_FramePhantomHoriz ]
+        /// Setting this to `true` causes the specified frame to be a horizontal phantom frame. The frame will not appear but its vertical
+        /// components (frame height, inner top and inner bottom spacing) will be used to calculate positions and dimensions (horizontal
+        /// components are treated as 0). This is extremely useful for a correct labeling of objects. You would e.g. label a string gadget
+        /// by using a text object with a phantom string frame. Thus, the label text will be always on the same vertical position as the
+        /// string gadget text, no matter what spacing values the user configured.
         T &tagFramePhantomHoriz(const bool phantomHoriz);
         /// @brief [ @b MUIA_FrameTitle ]
+        /// This tag identifies a text string that will be displayed in the top line of a frame. This can come in handy if you want to name
+        /// groups of objects. You may not use `MUIA_FrameTitle` without defining a `MUIA_Frame`.
         T &tagFrameTitle(const std::string &frameTitle);
         /// @brief [ @b MUIA_HorizWeight ]
         T &tagHorizWeight(const short horizWeight);
