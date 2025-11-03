@@ -324,6 +324,9 @@ namespace MUI
         /// An object with a weight of 0 will always stay at its minimum size. By default, all objects have a weight of 100.
         /// @param weight short weight of object, for negative value is ignored
         T &tagWeight(const short weight);
+
+      protected:
+        bool Validate() const override;
     };
 
     class AreaBuilder : public AreaBuilderTemplate<AreaBuilder, Area>
@@ -500,5 +503,20 @@ namespace MUI
         if (weight >= 0)
             this->PushTag(MUIA_Weight, (long)weight);
         return (T &)*this;
+    }
+
+    template <typename T, typename U> inline bool AreaBuilderTemplate<T, U>::Validate() const
+    {
+        auto result = NotifyBuilderTemplate<T, U>::Validate();
+        if (this->ContainsTag(MUIA_FrameTitle))
+        {
+            if (!this->ContainsTag(MUIA_Frame))
+            {
+                std::cerr << __PRETTY_FUNCTION__ << ", missing Frame attribute for Area with FrameTitle attribute!" << std::endl;
+                return false;
+            }
+        }
+
+        return result;
     }
 }

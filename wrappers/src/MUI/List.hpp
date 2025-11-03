@@ -319,7 +319,7 @@ namespace MUI
         T &tagTitleArray(const char *titleArray[]);
 #endif
 
-#ifdef MUIA_List_MaxColumns
+#ifdef ListHookStringArrayModeAvailable
       protected:
         bool Validate() const override;
 #endif
@@ -610,7 +610,7 @@ namespace MUI
         {
             if (!this->ContainsTag(MUIA_List_MaxColumns))
             {
-                std::cerr << __PRETTY_FUNCTION__ << ", missing MaxColumns for List with StringArray hooks!" << std::endl;
+                std::cerr << __PRETTY_FUNCTION__ << ", missing MaxColumns attribute for List with StringArray hooks!" << std::endl;
                 result = false;
             }
         }
