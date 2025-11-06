@@ -61,6 +61,9 @@ namespace MUI
 #endif
         /// @brief [ @b MUIA_Scrollgroup_UseWinBorder ]
         T &tagUseWinBorder(const bool useWinBorder);
+
+      protected:
+        bool Validate() const override;
     };
 
     class ScrollgroupBuilder : public ScrollgroupBuilderTemplate<ScrollgroupBuilder, Scrollgroup>
@@ -122,5 +125,18 @@ namespace MUI
     {
         this->PushTag(MUIA_Scrollgroup_UseWinBorder, useWinBorder);
         return (T &)*this;
+    }
+
+    template <typename T, typename U> inline bool ScrollgroupBuilderTemplate<T, U>::Validate() const
+    {
+        auto result = GroupBuilderTemplate<T, U>::Validate();
+
+        if (!this->ContainsTag(MUIA_Scrollgroup_Contents))
+        {
+            std::cerr << __PRETTY_FUNCTION__ << ", missing Contents attribute for Scrollgroup!" << std::endl;
+            result = false;
+        }
+
+        return result;
     }
 }
