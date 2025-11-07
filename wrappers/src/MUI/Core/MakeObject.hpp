@@ -128,14 +128,21 @@ namespace MUI
         static Object *FreeCLabel2(const std::string &label);
 
         /// @brief [ @b HVSpace --> MUI_NewObject(MUIC_Rectangle, TAG_DONE) ]
+        /// @return A flexible space that expands both horizontally and vertically (fill up whatever space is available).
         static Object *HVSpace();
         /// @brief [ @b MUIO_HSpace --> MUI_MakeObject(MUIO_HSpace,(space)) ]
+        /// @param space space height in pixels, 0 for default (adds spacing on height if possible)
+        /// @return A flexible space that expands horizontally (fill up whatever space is available).
         static Object *HSpace(const unsigned long space);
         /// @brief [ @b MUIO_VSpace --> MUI_MakeObject(MUIO_VSpace,(space)) ]
+        /// @param space space width in pixels, 0 for default (adds spacing on width if possible)
+        /// @return A flexible space that expands vertically (fill up whatever space is available).
         static Object *VSpace(const unsigned long space);
-        /// @brief [ @b MUIO_HBar ]
+        /// @brief [ @b MUIO_HBar ] Horizontal bar separator
+        /// @param space height of the bar, 0 for default (adds spacing on height if possible)
         static Object *HBar(const unsigned long space);
-        /// @brief [ @b MUIO_VBar ]
+        /// @brief [ @b MUIO_VBar ] Vertical bar separator
+        /// @param space width of the bar, 0 for default (adds spacing on width if possible)
         static Object *VBar(const unsigned long space);
 
         /// @brief [ @b HCenter --> (HGroup, GroupSpacing(0), Child, HSpace(0), Child, (obj), Child, HSpace(0), End) ]
