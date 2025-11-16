@@ -1,15 +1,18 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #include "Root.hpp"
 
-#include <stdexcept>
-
 #include <proto/intuition.h>
 #include <proto/muimaster.h>
+
+#ifdef TRACE_MUI
+#include <iostream>
+#endif
+#include <stdexcept>
 
 namespace MUI
 {
@@ -26,6 +29,9 @@ namespace MUI
     Root::Root()
       : mpMuiObject(nullptr)
     {
+#ifdef TRACE_MUI
+        std::cout << __PRETTY_FUNCTION__ << std::endl;
+#endif
     }
 
     Root::Root(Object *pMuiObject)
