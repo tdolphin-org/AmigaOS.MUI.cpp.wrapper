@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
@@ -145,9 +145,15 @@ namespace MUI
         /// @brief [ @b MUIA_Group_ActivePage ]
         T &tagActivePage(const enum Group_ActivePage activePage);
         /// @brief [ @b MUIM_Group_Child ]
-        T &tagChild(const Object *pChildObject);
+        /// Add child object to group.
+        /// @param pChildObject pointer to child object, if nullptr, object is not added
+        /// @param condition if false, tag is not added
+        T &tagChild(const Object *pChildObject, bool condition = true);
         /// @brief [ @b MUIM_Group_Child ]
-        T &tagChild(const Root &child);
+        /// Add child object to group.
+        /// @param child Root wrapper of child object, if null object, object is not added
+        /// @param condition if false, tag is not added
+        T &tagChild(const Root &child, bool condition = true);
         /// @brief [ @b MUIM_Group_Columns ]
         /// Number of columns in a two dimensional group.
         T &tagColumns(const long columns);
@@ -216,16 +222,16 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> T &GroupBuilderTemplate<T, U>::tagChild(const Object *pChildObject)
+    template <typename T, typename U> T &GroupBuilderTemplate<T, U>::tagChild(const Object *pChildObject, bool condition)
     {
-        if (pChildObject)
+        if (condition && pChildObject)
             this->PushTag(MUIA_Group_Child, pChildObject, false, true);
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::tagChild(const Root &child)
+    template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::tagChild(const Root &child, bool condition)
     {
-        if (child.muiObject())
+        if (condition && child.muiObject())
             this->PushTag(MUIA_Group_Child, child.muiObject(), false, true);
         return (T &)*this;
     }
