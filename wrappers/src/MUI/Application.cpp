@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #include "Application.hpp"
@@ -58,6 +58,12 @@ namespace MUI
     Application &Application::LoadEnvArc()
     {
         DoMethod(muiObject(), MUIM_Application_Load, MUIV_Application_Load_ENVARC);
+        return *this;
+    }
+
+    Application &Application::OpenConfigWindow()
+    {
+        DoMethod(muiObject(), MUIM_Application_OpenConfigWindow, 0);
         return *this;
     }
 

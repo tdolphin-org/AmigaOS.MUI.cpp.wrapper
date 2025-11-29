@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
@@ -63,6 +63,8 @@ namespace MUI
         Window &Open();
         /// @brief [ @b MUIA_Window_Open, @b FALSE ]
         Window &Close();
+        /// @brief [ @b MUIM_Window_ToFront ]
+        Window &ToFront();
     };
 
     template <typename T, typename U> class WindowBuilderTemplate : public NotifyBuilderTemplate<T, U>

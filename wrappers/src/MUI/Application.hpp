@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
@@ -49,6 +49,8 @@ namespace MUI
 
         /// @brief [ @b MUIM_Application_Load, @b MUIV_Application_Load_ENVARC ]
         Application &LoadEnvArc();
+        /// @brief [ @b MUIM_Application_OpenConfigWindow ]
+        Application &OpenConfigWindow();
         /// @brief [ @b MUIM_Application_Save, @b MUIV_Application_Save_ENVARC ]
         Application &SaveEnvArc();
         /// @brief [ @b MUIA_Application_Sleep, @b TRUE ]

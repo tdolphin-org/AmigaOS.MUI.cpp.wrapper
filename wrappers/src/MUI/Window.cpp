@@ -1,13 +1,14 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #include "Window.hpp"
 
 #include <libraries/gadtools.h>
 #include <libraries/iffparse.h>
+#include <proto/alib.h>
 #include <proto/intuition.h>
 
 namespace MUI
@@ -61,6 +62,12 @@ namespace MUI
     Window &Window::Close()
     {
         SetValue(MUIA_Window_Open, false);
+        return *this;
+    }
+
+    Window &Window::ToFront()
+    {
+        DoMethod(muiObject(), MUIM_Window_ToFront);
         return *this;
     }
 
