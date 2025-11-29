@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
@@ -9,8 +9,8 @@
 #include "AOS/Identifier.hpp"
 #include "Core/Singleton.hpp"
 
-#include <vector>
 #include <intuition/classusr.h>
+#include <vector>
 
 namespace MUI
 {
@@ -43,6 +43,8 @@ namespace MUI
         /// @brief return current menu strip of application
         /// @return Menustrip object
         Menustrip getMenustrip();
+        /// @brief return list of current application windows
+        /// @return vector of Window objects
         std::vector<Window> getWindows();
         /// @brief return current main application window (first window)
         /// @return Window object
