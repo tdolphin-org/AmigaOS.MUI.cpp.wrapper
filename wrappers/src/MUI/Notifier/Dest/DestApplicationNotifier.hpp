@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
@@ -26,6 +26,8 @@ namespace MUI
       public:
         /// @brief [ @b MUIM_Application_AboutMUI ]
         DestApplicationNotifier &aboutMUI(const Window &window);
+        /// @brief [ @b MUIM_Application_OpenConfigWindow ]
+        DestApplicationNotifier &openConfigWindow();
         /// @brief [ @b MUIM_Application_ReturnID, @b MUIV_Application_ReturnID_Quit ]
         DestApplicationNotifier &returnIDQuit();
         /// @brief [ @b MUIM_Application_ReturnID ]

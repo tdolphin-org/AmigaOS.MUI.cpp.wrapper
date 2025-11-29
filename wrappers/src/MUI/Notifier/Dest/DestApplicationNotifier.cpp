@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #include "DestApplicationNotifier.hpp"
@@ -26,6 +26,12 @@ namespace MUI
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), muiDestObject(), 2, MUIM_Application_AboutMUI,
                  window.muiObject());
+        return *this;
+    }
+
+    DestApplicationNotifier &DestApplicationNotifier::openConfigWindow()
+    {
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), muiDestObject(), 1, MUIM_Application_OpenConfigWindow);
         return *this;
     }
 

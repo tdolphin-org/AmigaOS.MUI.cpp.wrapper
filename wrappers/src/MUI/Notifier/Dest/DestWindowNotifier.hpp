@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
@@ -24,5 +24,7 @@ namespace MUI
       public:
         /// @brief [ @b MUIM_Set / @b MUIM_NoNotifySet, @b MUIA_Window_Open ]
         DestWindowNotifier &setOpen(const bool open, bool notify = true);
+        /// @brief [ @b MUIM_Set / @b @b MUIM_Window_ToFront ]
+        DestWindowNotifier &toFront();
     };
 }

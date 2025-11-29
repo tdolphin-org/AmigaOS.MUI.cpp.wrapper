@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #include "DestWindowNotifier.hpp"
@@ -24,6 +24,13 @@ namespace MUI
     {
         DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), muiDestObject(), 3,
                  notify ? MUIM_Set : MUIM_NoNotifySet, MUIA_Window_Open, (unsigned long)open);
+        return *this;
+    }
+
+    DestWindowNotifier &DestWindowNotifier::toFront()
+    {
+        DoMethod(muiSourceObject(), MUIM_Notify, getAttribute(), getTriggerValue(), muiDestObject(), 1,
+                 MUIM_Window_ToFront);
         return *this;
     }
 }
