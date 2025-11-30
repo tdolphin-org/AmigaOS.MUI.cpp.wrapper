@@ -50,7 +50,7 @@ build:
 	SUB_BUILD_PATH=$(SUB_BUILD_PATH) \
 	CPPC=$(CPPC) AR=$(AR) STRIP=$(STRIP) OBJDUMP=$(OBJDUMP) \
 	MORE_CPP_FLAGS=$(MORE_CPP_FLAGS) MORE_LFLAGS=$(MORE_LFLAGS) all
-	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=advanced.example.bin PROJECT=advanced MODULES=Components,Components/Core,Components/Tabs,Components/MCC \
+	$(MAKE) -f makefile.generic.gcc.mk APP_EXAMPLE=advanced.example.bin PROJECT=advanced MODULES=Components,Components/Core,Components/Tabs,Components/MCC,Components/Menus \
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	SUB_BUILD_PATH=$(SUB_BUILD_PATH) \
 	CPPC=$(CPPC) AR=$(AR) STRIP=$(STRIP) OBJDUMP=$(OBJDUMP) \

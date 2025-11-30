@@ -3,12 +3,13 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #include "Application.hpp"
 
 #include "MUI/Notifier/Notifier.hpp"
+#include "Events/AppEventType.hpp"
 
 namespace Components
 {
@@ -16,10 +17,10 @@ namespace Components
       : mComponent(MUI::ApplicationBuilder()
                        .tagAuthor("rz")
                        .tagBase("advanced.example.bin")
-                       .tagCopyright("(c) 2022-2024 TDolphin")
+                       .tagCopyright("(c) 2022-2025 TDolphin")
                        .tagDescription("Advanced Example of usage MUI C++ wrapper")
                        .tagTitle("Advanced Example")
-                       .tagVersion("$VER: 1.0")
+                       .tagVersion("$VER: 1.1")
                        .tagWindow(mAppWindow)
                        .object())
     {
@@ -27,7 +28,13 @@ namespace Components
 
     void Application::RegisterEvents()
     {
-        MUI::Notifier::from(mAppWindow.muiRoot()).onCloseRequest(true).notifyObject(mComponent).returnIDQuit();
+        MUI::Notifier::from(mAppWindow).onCloseRequest(true).notifyObject(mComponent).returnIDQuit();
+
+        // open MUI settings on action (OnMenuMUISettings) from main menu
+        MUI::Notifier::from(mAppWindow)
+            .onMenuAction(static_cast<unsigned long>(AppEventType::OnMenuMUISettings))
+            .notifyObject(mComponent)
+            .openConfigWindow();
 
         mAppWindow.RegisterEvents();
     }

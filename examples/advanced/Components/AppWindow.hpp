@@ -11,6 +11,7 @@
 #include "Components/Core/Root.hpp"
 #include "MUI/Text.hpp"
 #include "MUI/Window.hpp"
+#include "Menus/MainMenu.hpp"
 #include "Tabs/Content.hpp"
 
 namespace Components
@@ -20,6 +21,8 @@ namespace Components
         MUI::Area mCloseButton;
         Content mContent;
         MUI::Text mInfoText;
+        MainMenu mMainMenu;
+
         MUI::Window mComponent;
 
       public:

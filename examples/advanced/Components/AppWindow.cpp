@@ -49,6 +49,7 @@ namespace Components
                                              .tagChild(MUI::MakeObject::SimpleButton("_Right Button"))
                                              .object())
                                .object())
+                       .tagMenustrip(mMainMenu)
                        .object())
     {
         mCloseButton.setCycleChain();
