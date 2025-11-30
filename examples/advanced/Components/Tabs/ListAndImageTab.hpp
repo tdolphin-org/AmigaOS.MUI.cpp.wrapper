@@ -3,7 +3,7 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
@@ -15,7 +15,7 @@
 
 namespace Components
 {
-    class ListAndImageTab : public Root
+    class ListAndImageTab : public Root<MUI::Group>
     {
         MUI::Image mExampleImage;
         HardwareList mHardwareList;
@@ -31,9 +31,9 @@ namespace Components
         }
 
       protected:
-        const MUI::Notify &muiNotify() const
+        MUI::Group &muiRoot() const
         {
-            return mComponent;
+            return (MUI::Group &)mComponent;
         }
     };
 }

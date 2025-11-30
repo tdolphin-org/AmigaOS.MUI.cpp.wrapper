@@ -3,7 +3,7 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
@@ -13,7 +13,7 @@
 
 namespace Components
 {
-    class HardwareList : public Root
+    class HardwareList : public Root<MUI::List>
     {
         MUI::List mComponent;
 
@@ -21,9 +21,9 @@ namespace Components
         HardwareList();
 
       protected:
-        const MUI::Notify &muiNotify() const
+        MUI::List &muiRoot() const
         {
-            return mComponent;
+            return (MUI::List &)mComponent;
         }
     };
 }

@@ -3,16 +3,15 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
 
 #include "Components/Core/Root.hpp"
-
 #include "MUI/Group.hpp"
-#include "MUI/Title.hpp"
 #include "MUI/Text.hpp"
+#include "MUI/Title.hpp"
 
 #include <string>
 #include <vector>
@@ -20,7 +19,7 @@
 namespace Components
 {
     /// @brief Tabs/Pages with usage of MUI::Titles
-    class TabsContainerTitles : public Root
+    class TabsContainerTitles : public Root<MUI::Group>
     {
 #ifdef MUIC_Title
         MUI::Title mTabsTitle;
@@ -32,9 +31,9 @@ namespace Components
       public:
         TabsContainerTitles(const std::vector<std::pair<std::string, MUI::Area &>> &tabs);
 
-        const MUI::Notify &muiNotify() const
+        MUI::Group &muiRoot() const
         {
-            return mComponent;
+            return (MUI::Group &)mComponent;
         }
     };
 }

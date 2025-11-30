@@ -16,7 +16,7 @@
 
 namespace Components
 {
-    class Content : public Root
+    class Content : public Root<MUI::Group>
     {
         MUI::Group mRegisterInfoGroup;
         ListAndImageTab mListAndImageTab;
@@ -33,9 +33,9 @@ namespace Components
         Content();
 
       protected:
-        const MUI::Notify &muiNotify() const
+        MUI::Group &muiRoot() const
         {
-            return mComponent;
+            return (MUI::Group &)mComponent;
         }
     };
 }

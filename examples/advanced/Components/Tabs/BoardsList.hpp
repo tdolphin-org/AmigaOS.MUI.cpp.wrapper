@@ -9,13 +9,12 @@
 #pragma once
 
 #include "Components/Core/Root.hpp"
-
 #include "MUI/Group.hpp"
 #include "MUI/Listview.hpp"
 
 namespace Components
 {
-    class BoardsList : public Root
+    class BoardsList : public Root<MUI::Listview>
     {
         MUI::List mList;
 
@@ -30,9 +29,9 @@ namespace Components
         }
 
       protected:
-        const MUI::Notify &muiNotify() const
+        MUI::Listview &muiRoot() const
         {
-            return mComponent;
+            return (MUI::Listview &)mComponent;
         }
     };
 }

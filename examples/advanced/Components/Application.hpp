@@ -3,7 +3,7 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
@@ -14,7 +14,7 @@
 
 namespace Components
 {
-    class Application : public Root
+    class Application : public Root<MUI::Application>
     {
         AppWindow mAppWindow;
         MUI::Application mComponent;
@@ -32,12 +32,6 @@ namespace Components
         MUI::Application &muiRoot() const
         {
             return (MUI::Application &)mComponent;
-        }
-
-      protected:
-        const MUI::Notify &muiNotify() const
-        {
-            return mComponent;
         }
     };
 }

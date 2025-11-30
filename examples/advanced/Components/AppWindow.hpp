@@ -3,19 +3,19 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
 
-#include "Core/Root.hpp"
+#include "Components/Core/Root.hpp"
 #include "MUI/Text.hpp"
 #include "MUI/Window.hpp"
 #include "Tabs/Content.hpp"
 
 namespace Components
 {
-    class AppWindow : public Root
+    class AppWindow : public Root<MUI::Window>
     {
         MUI::Area mCloseButton;
         Content mContent;
@@ -32,15 +32,9 @@ namespace Components
             return (MUI::Window &)mComponent;
         }
 
-        MUI::Window &muiRoot()
+        MUI::Window &muiRoot() const
         {
-            return mComponent;
-        }
-
-      protected:
-        const MUI::Notify &muiNotify() const
-        {
-            return mComponent;
+            return (MUI::Window &)mComponent;
         }
     };
 }

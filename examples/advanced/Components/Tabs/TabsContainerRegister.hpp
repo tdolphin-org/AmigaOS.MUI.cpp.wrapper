@@ -3,13 +3,12 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
 
 #include "Components/Core/Root.hpp"
-
 #include "MUI/Register.hpp"
 
 #include <string>
@@ -18,7 +17,7 @@
 namespace Components
 {
     /// @brief Tabs/Pages with usage of MUI::Register
-    class TabsContainerRegister : public Root
+    class TabsContainerRegister : public Root<MUI::Register>
     {
         std::vector<std::string> mPageTitles;
         const char **mpPageTitlesArray;
@@ -28,9 +27,9 @@ namespace Components
         TabsContainerRegister(const std::vector<std::pair<std::string, MUI::Area &>> &tabs);
         ~TabsContainerRegister();
 
-        const MUI::Notify &muiNotify() const
+        MUI::Register &muiRoot() const
         {
-            return mComponent;
+            return (MUI::Register &)mComponent;
         }
     };
 }

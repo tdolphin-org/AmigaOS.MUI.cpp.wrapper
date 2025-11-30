@@ -3,7 +3,7 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #pragma once
@@ -14,7 +14,7 @@
 
 namespace Components
 {
-    class CustomClassesTab : public Root
+    class CustomClassesTab : public Root<MUI::Group>
     {
         MUI::MCC::NList mItemsNList;
         MUI::MCC::NListview mItemsNListview;
@@ -30,9 +30,9 @@ namespace Components
         }
 
       protected:
-        const MUI::Notify &muiNotify() const
+        MUI::Group &muiRoot() const
         {
-            return mComponent;
+            return (MUI::Group &)mComponent;
         }
     };
 }

@@ -3,7 +3,7 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2025 TDolphin
 //
 
 #include "AppWindow.hpp"
@@ -37,7 +37,7 @@ namespace Components
                            MUI::GroupBuilder()
                                .tagChild(MUI::TextBuilder()
                                              .tagShortHelp("some help text")
-                                             .tagContents(MUIX_C "some centered text in MUI::Text\n\n" MUIX_PH " (c) 2022-2024 TDolphin")
+                                             .tagContents(MUIX_C "some centered text in MUI::Text\n\n" MUIX_PH " (c) 2022-2025 TDolphin")
                                              .object())
                                .tagChild(mCloseButton)
                                .tagChild(mInfoText)
