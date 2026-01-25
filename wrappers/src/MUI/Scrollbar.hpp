@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -60,18 +60,8 @@ namespace MUI
       public:
         ScrollbarBuilder();
     };
-
-#ifdef MUIA_Scrollbar_IncDecSize
-    template <typename T, typename U> inline T &ScrollbarBuilderTemplate<T, U>::tagIncDecSize(const unsigned long incDecSize)
-    {
-        this->PushTag(MUIA_Scrollbar_IncDecSize, incDecSize);
-        return (T &)*this;
-    }
-#endif
-
-    template <typename T, typename U> inline T &ScrollbarBuilderTemplate<T, U>::tagType(const enum Scrollbar_Type type)
-    {
-        this->PushTag(MUIA_Scrollbar_Type, (long)type);
-        return (T &)*this;
-    }
 }
+
+#define MUI_SCROLLBAR_TPP_INCLUDE
+#include "Scrollbar.tpp"
+#undef MUI_SCROLLBAR_TPP_INCLUDE

@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -57,12 +57,8 @@ namespace MUI
       public:
         ScaleBuilder();
     };
-
-#ifdef MUIA_Scale_Horiz
-    template <typename T, typename U> inline T &ScaleBuilderTemplate<T, U>::tagHoriz(const bool horiz)
-    {
-        this->PushTag(MUIA_Scale_Horiz, horiz);
-        return (T &)*this;
-    }
-#endif
 }
+
+#define MUI_SCALE_TPP_INCLUDE
+#include "Scale.tpp"
+#undef MUI_SCALE_TPP_INCLUDE
