@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -56,10 +56,8 @@ namespace MUI
       public:
         RegisterBuilder();
     };
-
-    template <typename T, typename U> inline T &RegisterBuilderTemplate<T, U>::tagTitles(const char *titles[])
-    {
-        this->PushTag(MUIA_Register_Titles, (const char **)titles);
-        return (T &)*this;
-    }
 }
+
+#define MUI_REGISTER_TPP_INCLUDE
+#include "Register.tpp"
+#undef MUI_REGISTER_TPP_INCLUDE

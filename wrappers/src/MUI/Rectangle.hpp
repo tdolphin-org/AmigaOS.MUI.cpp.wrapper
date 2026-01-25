@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -58,22 +58,8 @@ namespace MUI
       public:
         RectangleBuilder();
     };
-
-    template <typename T, typename U> inline T &RectangleBuilderTemplate<T, U>::tagBarTitle(const char *barTitle)
-    {
-        this->PushTag(MUIA_Rectangle_BarTitle, barTitle);
-        return (T &)*this;
-    }
-
-    template <typename T, typename U> inline T &RectangleBuilderTemplate<T, U>::tagHBar(const bool hBar)
-    {
-        this->PushTag(MUIA_Rectangle_HBar, hBar);
-        return (T &)*this;
-    }
-
-    template <typename T, typename U> inline T &RectangleBuilderTemplate<T, U>::tagVBar(const bool vBar)
-    {
-        this->PushTag(MUIA_Rectangle_VBar, vBar);
-        return (T &)*this;
-    }
 }
+
+#define MUI_RECTANGLE_TPP_INCLUDE
+#include "Rectangle.tpp"
+#undef MUI_RECTANGLE_TPP_INCLUDE
