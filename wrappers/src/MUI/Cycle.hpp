@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -79,23 +79,8 @@ namespace MUI
       public:
         CycleBuilder();
     };
-
-    template <typename T, typename U> inline T &CycleBuilderTemplate<T, U>::tagActive(const long active)
-    {
-        this->PushTag(MUIA_Cycle_Active, active);
-        return (T &)*this;
-    }
-
-    template <typename T, typename U> inline T &CycleBuilderTemplate<T, U>::tagEntries(const char *entries[])
-    {
-        this->PushTag(MUIA_Cycle_Entries, entries);
-        return (T &)*this;
-    }
-
-    template <typename T, typename U> inline T &CycleBuilderTemplate<T, U>::tagEntries(const std::vector<std::string> &entries)
-    {
-        auto copy = this->StoreStringArray(MUIA_Cycle_Entries, entries);
-        this->PushTag(MUIA_Cycle_Entries, copy);
-        return (T &)*this;
-    }
 }
+
+#define MUI_CYCLE_TPP_INCLUDE
+#include "Cycle.tpp"
+#undef MUI_CYCLE_TPP_INCLUDE

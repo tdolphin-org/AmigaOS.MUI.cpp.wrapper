@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -49,12 +49,8 @@ namespace MUI
       public:
         BalanceBuilder();
     };
-
-#ifdef MUIA_Balance_Quiet
-    template <typename T, typename U> inline T &BalanceBuilderTemplate<T, U>::tagQuiet(const bool quiet)
-    {
-        this->PushTag(MUIA_Balance_Quiet, quiet);
-        return (T &)*this;
-    }
-#endif
 }
+
+#define MUI_BALANCE_TPP_INCLUDE
+#include "Balance.tpp"
+#undef MUI_BALANCE_TPP_INCLUDE
