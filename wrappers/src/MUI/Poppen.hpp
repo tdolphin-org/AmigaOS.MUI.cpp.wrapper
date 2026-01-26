@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -47,11 +47,8 @@ namespace MUI
       public:
         PoppenBuilder();
     };
-
-    template <typename T, typename U> inline T &PoppenBuilderTemplate<T, U>::tagWindowTitle(const std::string &title)
-    {
-        auto copy = this->StoreString(MUIA_ShortHelp, title);
-        this->PushTag(MUIA_Window_Title, copy);
-        return (T &)*this;
-    }
 }
+
+#define MUI_POPPEN_TPP_INCLUDE
+#include "Poppen.tpp"
+#undef MUI_POPPEN_TPP_INCLUDE
