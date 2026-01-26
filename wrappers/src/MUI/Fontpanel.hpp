@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -57,23 +57,10 @@ namespace MUI
       public:
         FontpanelBuilder();
     };
-
-    template <typename T, typename U>
-    inline T &FontpanelBuilderTemplate<T, U>::tagShowCollection(const enum Fontpanel_ShowCollection showCollection)
-    {
-        this->PushTag(MUIA_Fontpanel_ShowCollection, (long)showCollection);
-        return (T &)*this;
-    }
-
-    template <typename T, typename U>
-    inline T &FontpanelBuilderTemplate<T, U>::tagShowCollection(const std::set<enum Fontpanel_ShowCollection> showCollections)
-    {
-        long showCollection = 0;
-        for (auto &value : showCollections)
-            showCollection |= (long)value;
-        this->PushTag(MUIA_Fontpanel_ShowCollection, showCollection);
-        return (T &)*this;
-    }
 }
+
+#define MUI_FONTPANEL_TPP_INCLUDE
+#include "Fontpanel.tpp"
+#undef MUI_FONTPANEL_TPP_INCLUDE
 
 #endif

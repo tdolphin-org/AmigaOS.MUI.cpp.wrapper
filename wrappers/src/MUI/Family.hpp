@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -64,17 +64,8 @@ namespace MUI
       public:
         FamilyBuilder();
     };
-
-    template <typename T, typename U> inline T &FamilyBuilderTemplate<T, U>::tagChild(const MUI::Root &child)
-    {
-        this->PushTag(MUIA_Family_Child, child.muiObject(), false);
-        return (T &)*this;
-    }
-
-    template <typename T, typename U> inline T &FamilyBuilderTemplate<T, U>::tagChild(const Object *child)
-    {
-        if (child)
-            this->PushTag(MUIA_Family_Child, child, false);
-        return (T &)*this;
-    }
 }
+
+#define MUI_FAMILY_TPP_INCLUDE
+#include "Family.tpp"
+#undef MUI_FAMILY_TPP_INCLUDE
