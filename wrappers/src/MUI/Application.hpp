@@ -47,6 +47,12 @@ namespace MUI
 
         // methods, some returns object reference
 
+        /// @brief [ @b MUIM_Application_AboutMUI ]
+        Application &AboutMUI(const MUIWindow *muiWindow = nullptr);
+        /// @brief [ @b MUIM_Application_BuildSettingsPanel ]
+        Application &BuildSettingsPanel(const unsigned long number);
+        /// @brief [ @b MUIM_Application_CheckRefresh ]
+        Application &CheckRefresh();
         /// @brief [ @b MUIM_Application_Load, @b MUIV_Application_Load_ENVARC ]
         Application &LoadEnvArc();
         /// @brief [ @b MUIM_Application_OpenConfigWindow ]

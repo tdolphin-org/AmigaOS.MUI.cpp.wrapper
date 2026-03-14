@@ -55,6 +55,24 @@ namespace MUI
         return *this;
     }
 
+    Application &Application::AboutMUI(const MUIWindow *muiWindow)
+    {
+        DoMethod(muiObject(), MUIM_Application_AboutMUI, muiWindow);
+        return *this;
+    }
+
+    Application &Application::BuildSettingsPanel(const unsigned long number)
+    {
+        DoMethod(muiObject(), MUIM_Application_BuildSettingsPanel, number);
+        return *this;
+    }
+
+    Application &Application::CheckRefresh()
+    {
+        DoMethod(muiObject(), MUIM_Application_CheckRefresh);
+        return *this;
+    }
+
     Application &Application::LoadEnvArc()
     {
         DoMethod(muiObject(), MUIM_Application_Load, MUIV_Application_Load_ENVARC);
