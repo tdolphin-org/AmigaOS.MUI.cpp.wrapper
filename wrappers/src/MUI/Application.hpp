@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -53,6 +53,12 @@ namespace MUI
         Application &BuildSettingsPanel(const unsigned long number);
         /// @brief [ @b MUIM_Application_CheckRefresh ]
         Application &CheckRefresh();
+        /// @brief [ @b MUIM_Application_DefaultConfigItem ]
+        Application &DefaultConfigItem(const unsigned long cfgid);
+        /// @brief [ @b MUIM_Application_Input ]
+        Application &Input(const unsigned long *signal);
+        /// @brief [ @b MUIM_Application_InputBuffered ]
+        Application &InputBuffered();
         /// @brief [ @b MUIM_Application_Load, @b MUIV_Application_Load_ENVARC ]
         Application &LoadEnvArc();
         /// @brief [ @b MUIM_Application_OpenConfigWindow ]

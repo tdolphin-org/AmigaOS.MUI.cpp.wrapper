@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Application.hpp"
@@ -70,6 +70,24 @@ namespace MUI
     Application &Application::CheckRefresh()
     {
         DoMethod(muiObject(), MUIM_Application_CheckRefresh);
+        return *this;
+    }
+
+    Application &Application::DefaultConfigItem(const unsigned long cfgid)
+    {
+        DoMethod(muiObject(), MUIM_Application_DefaultConfigItem, cfgid);
+        return *this;
+    }
+
+    Application &Application::Input(const unsigned long *signal)
+    {
+        DoMethod(muiObject(), MUIM_Application_Input, signal);
+        return *this;
+    }
+
+    Application &Application::InputBuffered()
+    {
+        DoMethod(muiObject(), MUIM_Application_InputBuffered);
         return *this;
     }
 
