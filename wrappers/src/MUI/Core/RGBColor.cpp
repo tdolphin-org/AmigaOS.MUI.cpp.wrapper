@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "RGBColor.hpp"
@@ -35,7 +35,7 @@ namespace MUI
         blue = from32Bit(rgb[2]);
     }
 
-#if MUIMASTER_VMIN >= 20 // MUI5
+#ifdef MUI_RGBColor
     RGBColor::RGBColor(const MUI_RGBColor &rgbColor)
 #else
     RGBColor::RGBColor(const MUI_RGBcolor &rgbColor)

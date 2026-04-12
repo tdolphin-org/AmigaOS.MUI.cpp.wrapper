@@ -1,12 +1,23 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
 
 #include <libraries/mui.h>
+
+#if !defined(MUI_RGBcolor) && !defined(MUI_RGBColor)
+// force to define MUI_RGBcolor if neither MUI_RGBColor nor MUI_RGBcolor is defined
+// that struct definition is missed in MUI3.8!!! (but is used)
+struct MUI_RGBcolor
+{
+    unsigned long red;
+    unsigned long green;
+    unsigned long blue;
+};
+#endif
 
 namespace MUI
 {
@@ -19,7 +30,7 @@ namespace MUI
         RGBColor();
         RGBColor(const unsigned char red, const unsigned char green, const unsigned char blue);
         RGBColor(const unsigned long *rgb);
-#if MUIMASTER_VMIN >= 20 // MUI5
+#ifdef MUI_RGBColor
         RGBColor(const MUI_RGBColor &rgbColor);
 #else
         RGBColor(const MUI_RGBcolor &rgbColor);

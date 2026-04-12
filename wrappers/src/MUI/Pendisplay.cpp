@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Pendisplay.hpp"
@@ -24,7 +24,7 @@ namespace MUI
 
     RGBColor Pendisplay::getRGBcolor() const
     {
-#if MUIMASTER_VMIN >= 20 // MUI5
+#ifdef MUI_RGBColor
         auto *rgbColor = (MUI_RGBColor *)GetValueAsPtr(MUIA_Pendisplay_RGBcolor);
 #else
         auto *rgbColor = (MUI_RGBcolor *)GetValueAsPtr(MUIA_Pendisplay_RGBcolor);

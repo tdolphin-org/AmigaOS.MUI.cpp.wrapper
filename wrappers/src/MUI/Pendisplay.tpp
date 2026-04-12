@@ -18,7 +18,7 @@ namespace MUI
 
     template <typename T, typename U> inline T &PendisplayBuilderTemplate<T, U>::tagRGBcolor(const RGBColor &rgbColor)
     {
-#if MUIMASTER_VMIN >= 20 // MUI5
+#ifdef MUI_RGBColor
         MUI_RGBColor rgb { rgbColor.red32bit(), rgbColor.green32bit(), rgbColor.blue32bit() };
 #else
         MUI_RGBcolor rgb { rgbColor.red32bit(), rgbColor.green32bit(), rgbColor.blue32bit() };
