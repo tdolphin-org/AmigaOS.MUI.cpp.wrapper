@@ -48,7 +48,11 @@ namespace MUI
         // methods, some returns object reference
 
         /// @brief [ @b MUIM_Application_AboutMUI ]
-        Application &AboutMUI(const MUIWindow *muiWindow = nullptr);
+#ifdef MUIWindow
+        Application &AboutMUI(const MUIWindow *refwindow = nullptr);
+#else
+        Application &AboutMUI(const Object *refwindow = nullptr);
+#endif
         /// @brief [ @b MUIM_Application_BuildSettingsPanel ]
         Application &BuildSettingsPanel(const unsigned long number);
         /// @brief [ @b MUIM_Application_CheckRefresh ]

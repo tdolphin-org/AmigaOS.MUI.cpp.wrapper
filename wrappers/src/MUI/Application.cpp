@@ -55,9 +55,13 @@ namespace MUI
         return *this;
     }
 
-    Application &Application::AboutMUI(const MUIWindow *muiWindow)
+#ifdef MUIWindow
+    Application &Application::AboutMUI(const MUIWindow *refwindow)
+#else
+    Application &Application::AboutMUI(const Object *refwindow)
+#endif
     {
-        DoMethod(muiObject(), MUIM_Application_AboutMUI, muiWindow);
+        DoMethod(muiObject(), MUIM_Application_AboutMUI, refwindow);
         return *this;
     }
 
