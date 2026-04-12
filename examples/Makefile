@@ -3,7 +3,7 @@
 #
 #  Examples
 #
-#  (c) 2022-2025 TDolphin
+#  (c) 2022-2026 TDolphin
 #
 
 all:
@@ -56,8 +56,6 @@ build:
 	CPPC=$(CPPC) AR=$(AR) STRIP=$(STRIP) OBJDUMP=$(OBJDUMP) \
 	MORE_CPP_FLAGS=$(MORE_CPP_FLAGS) MORE_LFLAGS=$(MORE_LFLAGS) all
 	cp advanced/img/* out/morphos/ppc
-
-
 
 clean.obj:
 	rm -f -R obj/*

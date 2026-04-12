@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "MuiMasterBaseScope.hpp"
@@ -10,6 +10,9 @@
 
 #include <proto/exec.h>
 #include <proto/muimaster.h>
+#ifndef MUIMASTER_NAME
+#include <libraries/mui.h>
+#endif
 
 struct Library *MUIMasterBase = nullptr;
 
