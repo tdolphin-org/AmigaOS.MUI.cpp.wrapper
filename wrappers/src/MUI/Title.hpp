@@ -46,8 +46,10 @@ namespace MUI
 
         /// @brief [ @b MUIA_Title_Closable ]
         Title &setClosable(const bool closable);
+#ifdef MUI_Title_Newable
         /// @brief [ @b MUIA_Title_Newable ]
         Title &setNewable(const bool newable);
+#endif
         /// @brief [ @b MUIA_Title_OnLastClose ]
         Title &setOnLastClose(const enum Title_OnLastClose onLastClose);
         /// @brief [ @b MUIA_Title_Position ]
@@ -80,12 +82,16 @@ namespace MUI
         /// eventhandler and eventually might eat the events you are interested in.
         /// By default is MUIV_Title_EventHandlerPriority_Default.
         T &tagEventHandlerPriority(const long eventHandlerPriority);
+
+#ifdef MUI_Title_Newable
         /// @brief [ @b MUIA_Title_Newable ]
         /// Setting this attribute to TRUE will add a "+" button after the rightmost tab object. Clicking the "+" button will invoke the
         /// MUIM_Title_New method to let the application add a new title button object and a new page object. Title class will NOT add the
         /// new tab itself. This task remains the responsibility of the implementing class and hence also requires the developer to
         /// implement a subclass of Title class to handle the method.
         /// By default is false.
+#endif
+
         T &tagNewable(const bool newable);
         /// @brief [ @b MUIA_Title_OnLastClose ]
         /// This attribute defines how the object will react when the last tab is to be closed. Setting this attribute to

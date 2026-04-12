@@ -28,11 +28,13 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUI_Title_Newable
     template <typename T, typename U> inline T &TitleBuilderTemplate<T, U>::tagNewable(const bool newable)
     {
         this->PushTag(MUIA_Title_Newable, newable);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &TitleBuilderTemplate<T, U>::tagOnLastClose(const enum Title_OnLastClose onLastClose)
     {

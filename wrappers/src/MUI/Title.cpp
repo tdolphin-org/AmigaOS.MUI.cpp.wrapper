@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Title.hpp"
@@ -19,10 +19,12 @@ namespace MUI
         return GetValueAsBool(MUIA_Title_Closable);
     }
 
+#ifdef MUI_Title_Newable
     bool Title::getNewable() const
     {
         return GetValueAsBool(MUIA_Title_Newable);
     }
+#endif
 
     enum Title_Position Title::getPosition() const
     {
@@ -40,11 +42,13 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUI_Title_Newable
     Title &Title::setNewable(const bool newable)
     {
         SetValue(MUIA_Title_Newable, newable);
         return *this;
     }
+#endif
 
     Title &Title::setOnLastClose(const enum Title_OnLastClose onLastClose)
     {
