@@ -20,7 +20,7 @@ cross_amigaos_m68k: AR=m68k-amigaos-ar
 cross_amigaos_m68k: STRIP=m68k-amigaos-strip
 cross_amigaos_m68k: OBJDUMP=m68k-amigaos-objdump
 cross_amigaos_m68k: MORE_CPP_FLAGS="-DSTD_LIGHT -fno-rtti -ffunction-sections -fdata-sections"
-cross_amigaos_m68k: MORE_LFLAGS="-lMUIcpp.light -Wl,--gc-sections"
+cross_amigaos_m68k: MORE_LFLAGS="-lMUIcpp.light -Wl,--gc-sections -lmui"
 cross_amigaos_m68k: build
 
 morphos_ppc: TARGET="MorphOS PPC"
@@ -55,7 +55,8 @@ build:
 	SUB_BUILD_PATH=$(SUB_BUILD_PATH) \
 	CPPC=$(CPPC) AR=$(AR) STRIP=$(STRIP) OBJDUMP=$(OBJDUMP) \
 	MORE_CPP_FLAGS=$(MORE_CPP_FLAGS) MORE_LFLAGS=$(MORE_LFLAGS) all
-	cp advanced/img/* out/morphos/ppc
+	mkdir -p out/$(SUB_BUILD_PATH)
+	cp advanced/img/* out/$(SUB_BUILD_PATH)
 
 clean.obj:
 	rm -f -R obj/*
