@@ -21,10 +21,10 @@ static ULONG Name##_Dispatcher(void) { struct IClass *cl=(struct IClass*)REG_A0;
 
 #else
 
-#define REG(x) register __ ## x
+#define REG(x)
 
-#define DISPATCHER(Name) ULONG ASM SAVEDS Name##Dispatcher(REG(a0) struct IClass *cl,REG(a2),REG(a1) Msg msg)
-#define DISPATCHER_REF(Name) Name##Dispatcher
+#define DISPATCHER(Name) ULONG ASM SAVEDS Name##Dispatcher(struct IClass *cl, Msg msg, Object *obj)
+#define DISPATCHER_REF(Name) ((const void*)Name##Dispatcher)
 #define DISPATCHER_END
 
 #endif
