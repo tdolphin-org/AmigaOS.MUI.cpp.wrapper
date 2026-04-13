@@ -3,7 +3,7 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -21,7 +21,7 @@ namespace Components
     /// @brief Tabs/Pages with usage of MUI::Titles
     class TabsContainerTitles : public Root<MUI::Group>
     {
-#ifdef MUIC_Title
+#ifdef AOS_MUI_VERSION_5
         MUI::Title mTabsTitle;
 #else
         MUI::Text mTitleNotSupportedText;

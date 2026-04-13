@@ -3,7 +3,7 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "TabsContainerTitles.hpp"
@@ -13,14 +13,14 @@
 namespace Components
 {
     TabsContainerTitles::TabsContainerTitles(const std::vector<std::pair<std::string, MUI::Area &>> &tabs)
-#ifdef MUIC_Title
+#ifdef AOS_MUI_VERSION_5
       : mTabsTitle(MUI::TitleBuilder().tagClosable(true).tagNewable(true).object())
 #else
       : mTitleNotSupportedText(MUI::TextBuilder().tagContents("MUI::Title not supported (compiled) by this MUI version").object())
 #endif
       , mComponent(MUI::GroupBuilder()
                        .tagCycleChain()
-#ifdef MUIC_Title
+#ifdef AOS_MUI_VERSION_5
                        .tagChild(mTabsTitle)
 #else
                        .tagChild(mTitleNotSupportedText)
@@ -32,7 +32,7 @@ namespace Components
 #endif
                        .object())
     {
-#ifdef MUIC_Title
+#ifdef AOS_MUI_VERSION_5
         for (auto &tab : tabs)
             mTabsTitle.AddTail(MUI::TextBuilder().tagContents(tab.first).object());
 #endif
