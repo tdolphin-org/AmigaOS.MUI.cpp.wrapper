@@ -10,6 +10,9 @@
 
 #include <intuition/classusr.h>
 
+// declaration for AmigaOS
+typedef ULONG Boopsiobject;
+
 namespace MUI
 {
     bool instanceOf(Object *object, const char *className);

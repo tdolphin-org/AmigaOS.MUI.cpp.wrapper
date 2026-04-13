@@ -24,7 +24,7 @@ namespace MUI
 
     RGBColor Pendisplay::getRGBcolor() const
     {
-#ifdef MUI_RGBColor
+#ifdef MOS_MUI_VERSION_5
         auto *rgbColor = (MUI_RGBColor *)GetValueAsPtr(MUIA_Pendisplay_RGBcolor);
 #else
         auto *rgbColor = (MUI_RGBcolor *)GetValueAsPtr(MUIA_Pendisplay_RGBcolor);
@@ -45,7 +45,7 @@ namespace MUI
 
     Pendisplay &Pendisplay::setRGBcolor(const RGBColor &rgbColor)
     {
-#if MUIMASTER_VMIN >= 20 // MUI5
+#ifdef MOS_MUI_VERSION_5
         MUI_RGBColor rgb { rgbColor.red32bit(), rgbColor.green32bit(), rgbColor.blue32bit() };
 #else
         MUI_RGBcolor rgb { rgbColor.red32bit(), rgbColor.green32bit(), rgbColor.blue32bit() };

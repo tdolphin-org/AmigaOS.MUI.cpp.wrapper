@@ -18,7 +18,7 @@ namespace MUI
 
     template <typename T, typename U> inline T &PendisplayBuilderTemplate<T, U>::tagRGBcolor(const RGBColor &rgbColor)
     {
-#ifdef MUI_RGBColor
+#ifdef MOS_MUI_VERSION_5
         MUI_RGBColor rgb { rgbColor.red32bit(), rgbColor.green32bit(), rgbColor.blue32bit() };
 #else
         MUI_RGBcolor rgb { rgbColor.red32bit(), rgbColor.green32bit(), rgbColor.blue32bit() };

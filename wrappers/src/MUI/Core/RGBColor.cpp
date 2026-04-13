@@ -35,7 +35,7 @@ namespace MUI
         blue = from32Bit(rgb[2]);
     }
 
-#ifdef MUI_RGBColor
+#ifdef MOS_MUI_VERSION_5
     RGBColor::RGBColor(const MUI_RGBColor &rgbColor)
 #else
     RGBColor::RGBColor(const MUI_RGBcolor &rgbColor)

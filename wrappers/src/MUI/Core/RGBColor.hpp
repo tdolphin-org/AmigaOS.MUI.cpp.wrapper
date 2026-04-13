@@ -6,11 +6,10 @@
 
 #pragma once
 
-#include <libraries/mui.h>
+#include "MUICompileConfig.hpp"
 
-#if !defined(MUI_RGBcolor) && !defined(MUI_RGBColor)
-// force to define MUI_RGBcolor if neither MUI_RGBColor nor MUI_RGBcolor is defined
-// that struct definition is missed in MUI3.8!!! (but is used)
+#ifdef AOS_MUI_VERSION_3_8
+// force to define MUI_RGBcolor, that struct definition is missed in MUI3.8!!! (but is used)
 struct MUI_RGBcolor
 {
     unsigned long red;
@@ -30,7 +29,7 @@ namespace MUI
         RGBColor();
         RGBColor(const unsigned char red, const unsigned char green, const unsigned char blue);
         RGBColor(const unsigned long *rgb);
-#ifdef MUI_RGBColor
+#ifdef MOS_MUI_VERSION_5
         RGBColor(const MUI_RGBColor &rgbColor);
 #else
         RGBColor(const MUI_RGBcolor &rgbColor);
