@@ -10,16 +10,17 @@
 
 namespace MUI
 {
-    template <typename T, typename U> inline T &FamilyBuilderTemplate<T, U>::tagChild(const MUI::Root &child)
+    template <typename T, typename U> inline T &FamilyBuilderTemplate<T, U>::tagChild(const MUI::Root &child, bool condition)
     {
-        this->PushTag(MUIA_Family_Child, child.muiObject(), false);
+        if (condition && child.muiObject())
+            this->PushTag(MUIA_Family_Child, child.muiObject(), false);
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &FamilyBuilderTemplate<T, U>::tagChild(const Object *child)
+    template <typename T, typename U> inline T &FamilyBuilderTemplate<T, U>::tagChild(const Object *pChildObject, bool condition)
     {
-        if (child)
-            this->PushTag(MUIA_Family_Child, child, false);
+        if (condition && pChildObject)
+            this->PushTag(MUIA_Family_Child, pChildObject, false);
         return (T &)*this;
     }
 }
