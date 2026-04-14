@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Floattext.hpp"
@@ -28,6 +28,12 @@ namespace MUI
         return *this;
     }
 
+    Floattext &Floattext::setSkipChars(const char *skipChars)
+    {
+        SetValue(MUIA_Floattext_SkipChars, skipChars);
+        return *this;
+    }
+
     Floattext &Floattext::setSkipChars(const std::string &skipChars)
     {
         SetValue(MUIA_Floattext_SkipChars, skipChars);
@@ -40,9 +46,21 @@ namespace MUI
         return *this;
     }
 
+    Floattext &Floattext::setText(const char *text)
+    {
+        SetValue(MUIA_Floattext_Text, text);
+        return *this;
+    }
+
     Floattext &Floattext::setText(const std::string &text)
     {
         SetValue(MUIA_Floattext_Text, text);
+        return *this;
+    }
+
+    Floattext &Floattext::Clear()
+    {
+        SetValue(MUIA_Floattext_Text, nullptr);
         return *this;
     }
 
