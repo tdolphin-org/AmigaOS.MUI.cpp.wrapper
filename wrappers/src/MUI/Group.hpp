@@ -144,17 +144,17 @@ namespace MUI
         T &tagActivePage(const unsigned long activePage);
         /// @brief [ @b MUIA_Group_ActivePage ]
         T &tagActivePage(const enum Group_ActivePage activePage);
-        /// @brief [ @b MUIM_Group_Child ]
+        /// @brief [ @b MUIA_Group_Child ]
         /// Add child object to group.
         /// @param pChildObject pointer to child object, if nullptr, object is not added
         /// @param condition if false, tag is not added
         T &tagChild(const Object *pChildObject, bool condition = true);
-        /// @brief [ @b MUIM_Group_Child ]
+        /// @brief [ @b MUIA_Group_Child ]
         /// Add child object to group.
         /// @param child Root wrapper of child object, if null object, object is not added
         /// @param condition if false, tag is not added
         T &tagChild(const Root &child, bool condition = true);
-        /// @brief [ @b MUIM_Group_Columns ]
+        /// @brief [ @b MUIA_Group_Columns ]
         /// Number of columns in a two dimensional group.
         T &tagColumns(const long columns);
         /// @brief [ @b MUIA_Group_Horiz ]
