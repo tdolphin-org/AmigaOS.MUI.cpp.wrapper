@@ -28,10 +28,12 @@ namespace MUI
 
     const std::string Family::className = MUIC_Family;
 
+#ifdef MUIA_Family_ChildCount
     long Family::getChildCount() const
     {
         return GetValueAsLong(MUIA_Family_ChildCount);
     }
+#endif
 
     MinList *Family::getChildList() const
     {
@@ -66,6 +68,7 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIM_Family_GetChild
     Object *Family::GetChild(const long nr, const Object *ref) const
     {
         return (Object *)DoMethod(muiObject(), MUIM_Family_GetChild, nr, ref);
@@ -110,6 +113,7 @@ namespace MUI
     {
         return (Object *)DoMethod(muiObject(), MUIM_Family_GetChild, MUIV_Family_GetChild_Iterate, iteratorRef);
     }
+#endif
 
     Family &Family::Insert(const Object *pChildObject, const Object *pPredecessorObject)
     {
@@ -139,6 +143,7 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIM_Family_Reorder
     Family &Family::Reorder(const Object *after, const std::vector<const Object *> &objects)
     {
         auto orderedObjects = makeNullTerminatedObjectVector(objects);
@@ -170,6 +175,7 @@ namespace MUI
     {
         return ReorderBack(std::vector<const Object *>(objects));
     }
+#endif
 
     Family &Family::Sort(const std::vector<const Object *> &objects)
     {

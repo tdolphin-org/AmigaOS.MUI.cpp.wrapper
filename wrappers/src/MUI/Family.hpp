@@ -13,6 +13,8 @@
 
 #undef Insert
 #undef Remove
+#undef AddHead
+#undef AddTail
 
 namespace MUI
 {
@@ -40,10 +42,13 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
+#ifdef MUIA_Family_ChildCount
         /// @brief [ @b MUIA_Family_ChildCount ]
         /// Returns the number of family members of a family object.
         /// @return number of child objects.
         long getChildCount() const;
+#endif
+
         /// @brief [ @b MUIA_Family_List ]
         /// Returns a pointer to a struct MinList which contains the children of a family object. You must parse this list with
         /// intuition.library/NextObject().
@@ -64,6 +69,8 @@ namespace MUI
         /// @brief [ @b MUIM_Family_AddTail ]
         /// Add an object as last object to the family.
         Family &AddTail(const Root &child);
+
+#ifdef MUIM_Family_DoChildMethods
         /// @brief [ @b MUIM_Family_DoChildMethods ]
         /// Invoke a method on all children of a family.
         template <typename... Args> Family &DoChildMethods(Args... args)
@@ -71,7 +78,9 @@ namespace MUI
             DoMethod(muiObject(), MUIM_Family_DoChildMethods, args...);
             return *this;
         }
+#endif
 
+#ifdef MUIM_Family_GetChild
         /// @brief [ @b MUIM_Family_GetChild ]
         /// Obtain a child of a family.
         Object *GetChild(const long nr, const Object *ref = nullptr) const;
@@ -99,6 +108,7 @@ namespace MUI
         /// @brief [ @b MUIM_Family_GetChild, @b MUIV_Family_GetChild_Iterate ]
         /// Iterate over all children of the family using an iterator reference array.
         Object *GetChildIterate(void *iteratorRef) const;
+#endif
 
         /// @brief [ @b MUIM_Family_Insert ]
         /// Add an object after another object to the family.
@@ -113,6 +123,7 @@ namespace MUI
         /// Remove an object from a family.
         Family &Remove(const MUI::Root &obj);
 
+#ifdef MUIM_Family_Reorder
         /// @brief [ @b MUIM_Family_Reorder ]
         /// Reorder the children of a family.
         /// Object *after the object to reorder the children after. Special values are
@@ -139,6 +150,7 @@ namespace MUI
         /// @brief [ @b MUIM_Family_Reorder, after = -1 ]
         /// Reorder the given children to the end of the family child list.
         Family &ReorderBack(const std::initializer_list<const Object *> &objects);
+#endif
 
         /// @brief [ @b MUIM_Family_Sort ]
         /// Sort the children of a family.

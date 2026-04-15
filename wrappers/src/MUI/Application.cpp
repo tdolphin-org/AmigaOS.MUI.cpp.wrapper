@@ -65,11 +65,13 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIM_Application_BuildSettingsPanel
     Application &Application::BuildSettingsPanel(const unsigned long number)
     {
         DoMethod(muiObject(), MUIM_Application_BuildSettingsPanel, number);
         return *this;
     }
+#endif
 
     Application &Application::CheckRefresh()
     {
@@ -77,11 +79,13 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIM_Application_DefaultConfigItem
     Application &Application::DefaultConfigItem(const unsigned long cfgid)
     {
         DoMethod(muiObject(), MUIM_Application_DefaultConfigItem, cfgid);
         return *this;
     }
+#endif
 
     Application &Application::Input(const unsigned long *signal)
     {

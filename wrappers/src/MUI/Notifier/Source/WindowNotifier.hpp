@@ -56,10 +56,12 @@ namespace MUI
         return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Window_NoMenus, noMenus);
     }
 
+#ifdef MUIA_Window_Opacity    
     template <typename T, typename U> inline SourceNotifier<T, U> WindowNotifier<T, U>::onOpacity(const long opacity)
     {
         return SourceNotifier<T, U>(NotifyNotifier<T, U>::mObject, MUIA_Window_Opacity, opacity);
     }
+#endif
 
     template <typename T, typename U> SourceNotifier<T, U> inline WindowNotifier<T, U>::onOpen(const bool open)
     {
