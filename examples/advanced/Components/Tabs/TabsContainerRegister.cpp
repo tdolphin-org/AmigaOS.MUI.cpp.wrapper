@@ -3,7 +3,7 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "TabsContainerRegister.hpp"
@@ -11,17 +11,18 @@
 namespace Components
 {
     TabsContainerRegister::TabsContainerRegister(const std::vector<std::pair<std::string, MUI::Area &>> &tabs)
-      : mPageTitles(tabs.size())
-      , mpPageTitlesArray(new const char *[tabs.size()])
+      : mPageTitles()
+      , mpPageTitlesArray(new const char *[tabs.size() + 1])
       , mComponent(MUI::RegisterBuilder()
                        .tagTitles([&]() {
                            unsigned int index = 0;
-                           for (auto &tab : tabs)
+                           mPageTitles.reserve(tabs.size());
+                           for (const auto &tab : tabs)
                            {
-                               mPageTitles.push_back(tab.first);
-                               mpPageTitlesArray[index++] = (char *)mPageTitles.back().c_str();
+                               mPageTitles.emplace_back(tab.first);
+                               mpPageTitlesArray[index++] = mPageTitles.back().c_str();
                            }
-                           mpPageTitlesArray[index++] = (char *)nullptr;
+                           mpPageTitlesArray[index] = nullptr;
                            return mpPageTitlesArray;
                        }())
                        .object())
