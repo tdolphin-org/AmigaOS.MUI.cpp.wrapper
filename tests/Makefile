@@ -3,10 +3,10 @@
 #
 #  Tests
 #
-#  (c) 2022-2025 TDolphin
+#  (c) 2022-2026 TDolphin
 #
 
-amigaos_m68k:
+cross_amigaos_m68k:
 	@echo "TODO tests"
 
 morphos_ppc:
