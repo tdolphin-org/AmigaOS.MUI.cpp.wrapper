@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Register.hpp"
@@ -12,9 +12,9 @@ namespace MUI
 
     RegisterBuilder::RegisterBuilder() { }
 
-    char **Register::getTitles() const
+    const char **Register::getTitles() const
     {
-        return GetValueAsCharArrayPtr(MUIA_Register_Titles);
+        return GetValueAsConstCharArrayPtr(MUIA_Register_Titles);
     }
 
 #if MUIMASTER_VMIN >= 20 // MUI5

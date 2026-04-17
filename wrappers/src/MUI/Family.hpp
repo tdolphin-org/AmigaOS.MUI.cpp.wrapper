@@ -53,7 +53,7 @@ namespace MUI
         /// Returns a pointer to a struct MinList which contains the children of a family object. You must parse this list with
         /// intuition.library/NextObject().
         /// @return list of child objects.
-        struct MinList *getChildList() const;
+        const struct MinList *getChildList() const;
 
         // methods, some returns object reference
 

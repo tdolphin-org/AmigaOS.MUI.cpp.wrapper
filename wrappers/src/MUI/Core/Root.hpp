@@ -84,6 +84,7 @@ namespace MUI
         bool GetValueAsBool(const unsigned long tagName) const;
         void *GetValueAsPtr(const unsigned long tagName) const;
         char *GetValueAsCharPtr(const unsigned long tagName) const;
+        const char *GetValueAsConstCharPtr(const unsigned long tagName) const;
         char **GetValueAsCharArrayPtr(const unsigned long tagName) const;
         const char **GetValueAsConstCharArrayPtr(const unsigned long tagName) const;
         unsigned long *GetValueAsULongPtr(const unsigned long tagName) const;
@@ -99,8 +100,11 @@ namespace MUI
         ::Window *GetValueAsWindowPtr(const unsigned long tagName) const;
         ::Gadget *GetValueAsGadgetPtr(const unsigned long tagName) const;
         struct MUI_PenSpec *GetValueAsPenSpecPtr(const unsigned long tagName) const;
+        const struct MUI_PenSpec *GetValueAsConstPenSpecPtr(const unsigned long tagName) const;
         struct List *GetValueAsListPtr(const unsigned long tagName) const;
+        const struct List *GetValueAsConstListPtr(const unsigned long tagName) const;
         struct MinList *GetValueAsMinListPtr(const unsigned long tagName) const;
+        const struct MinList *GetValueAsConstMinListPtr(const unsigned long tagName) const;
 
         void SetValue(const unsigned long tagName, const std::nullptr_t &null) const;
         void SetValue(const unsigned long tagName, const std::string &string) const;

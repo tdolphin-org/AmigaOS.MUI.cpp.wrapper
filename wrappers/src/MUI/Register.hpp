@@ -30,7 +30,7 @@ namespace MUI
         // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Register_Titles ]
-        char **getTitles() const;
+        const char **getTitles() const;
 
 #if MUIMASTER_VMIN >= 20 // MUI5
         /// @brief [ @b MUIA_Register_Titles ]

@@ -35,9 +35,9 @@ namespace MUI
     }
 #endif
 
-    MinList *Family::getChildList() const
+    const MinList *Family::getChildList() const
     {
-        return GetValueAsMinListPtr(MUIA_Family_List);
+        return GetValueAsConstMinListPtr(MUIA_Family_List);
     }
 
     Family &Family::AddHead(const Object *pChildObject)

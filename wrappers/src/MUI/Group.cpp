@@ -24,9 +24,9 @@ namespace MUI
     }
 #endif
 
-    List *Group::getChildList() const
+    const List *Group::getChildList() const
     {
-        return GetValueAsListPtr(MUIA_Group_ChildList);
+        return GetValueAsConstListPtr(MUIA_Group_ChildList);
     }
 
 #ifdef MUIA_Group_HorizCenter

@@ -46,7 +46,7 @@ namespace MUI
 #endif
         /// @brief [ @b MUIA_Group_ChildList ]
         /// @return list of child objects.
-        struct List *getChildList() const;
+        const struct List *getChildList() const;
 #ifdef MUIA_Group_HorizCenter
         /// @brief [ @b MUIA_Group_HorizCenter ]
         /// @return horizontal center alignment.

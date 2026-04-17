@@ -91,6 +91,11 @@ namespace MUI
         return static_cast<char *>(GetValueAsPtr(tagName));
     }
 
+    const char *Root::GetValueAsConstCharPtr(const unsigned long tagName) const
+    {
+        return static_cast<const char *>(GetValueAsPtr(tagName));
+    }
+
     char **Root::GetValueAsCharArrayPtr(const unsigned long tagName) const
     {
         return static_cast<char **>(GetValueAsPtr(tagName));
@@ -166,14 +171,29 @@ namespace MUI
         return static_cast<struct MUI_PenSpec *>(GetValueAsPtr(tagName));
     }
 
+    const struct MUI_PenSpec *Root::GetValueAsConstPenSpecPtr(const unsigned long tagName) const
+    {
+        return static_cast<const struct MUI_PenSpec *>(GetValueAsPtr(tagName));
+    }
+
     struct List *Root::GetValueAsListPtr(const unsigned long tagName) const
     {
         return static_cast<struct List *>(GetValueAsPtr(tagName));
     }
 
+    const struct List *Root::GetValueAsConstListPtr(const unsigned long tagName) const
+    {
+        return static_cast<const struct List *>(GetValueAsPtr(tagName));
+    }
+
     struct MinList *Root::GetValueAsMinListPtr(const unsigned long tagName) const
     {
         return static_cast<struct MinList *>(GetValueAsPtr(tagName));
+    }
+
+    const struct MinList *Root::GetValueAsConstMinListPtr(const unsigned long tagName) const
+    {
+        return static_cast<const struct MinList *>(GetValueAsPtr(tagName));
     }
 
     void Root::SetValue(const unsigned long tagName, const std::nullptr_t &null) const

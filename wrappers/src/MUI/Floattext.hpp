@@ -34,7 +34,7 @@ namespace MUI
         bool isJustify() const;
         /// @brief [ @b MUIA_Floattext_Text ]
         /// Returns pointer to the internal text buffer. May return NULL if memory was low when the text was set.
-        char *getText() const;
+        const char *getText() const;
 
         /// @brief [ @b MUIA_Floattext_Justify ]
         /// Indicate whether you want your the text aligned to the left and right border.
