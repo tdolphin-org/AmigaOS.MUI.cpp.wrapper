@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -12,6 +12,19 @@
 
 // declaration for AmigaOS
 typedef ULONG Boopsiobject;
+
+struct MsgPort;
+struct DiskObject;
+struct NewMenu;
+struct RexxMsg;
+struct MUI_Command;
+struct List;
+struct MinList;
+struct AppMessage;
+struct TextFont;
+struct MUI_PenSpec;
+struct Window;
+struct Gadget;
 
 namespace MUI
 {
@@ -70,9 +83,24 @@ namespace MUI
         long GetValueAsLong(const unsigned long tagName) const;
         bool GetValueAsBool(const unsigned long tagName) const;
         void *GetValueAsPtr(const unsigned long tagName) const;
+        char *GetValueAsCharPtr(const unsigned long tagName) const;
         char **GetValueAsCharArrayPtr(const unsigned long tagName) const;
+        const char **GetValueAsConstCharArrayPtr(const unsigned long tagName) const;
+        unsigned long *GetValueAsULongPtr(const unsigned long tagName) const;
         Object *GetValueAsObjectPtr(const unsigned long tagName) const;
         Hook *GetValueAsHookPtr(const unsigned long tagName) const;
+        MsgPort *GetValueAsMsgPortPtr(const unsigned long tagName) const;
+        const DiskObject *GetValueAsDiskObjectPtr(const unsigned long tagName) const;
+        const struct MUI_Command *GetValueAsCommandPtr(const unsigned long tagName) const;
+        const ::NewMenu *GetValueAsNewMenuPtr(const unsigned long tagName) const;
+        RexxMsg *GetValueAsRexxMsgPtr(const unsigned long tagName) const;
+        AppMessage *GetValueAsAppMessagePtr(const unsigned long tagName) const;
+        TextFont *GetValueAsTextFontPtr(const unsigned long tagName) const;
+        ::Window *GetValueAsWindowPtr(const unsigned long tagName) const;
+        ::Gadget *GetValueAsGadgetPtr(const unsigned long tagName) const;
+        struct MUI_PenSpec *GetValueAsPenSpecPtr(const unsigned long tagName) const;
+        struct List *GetValueAsListPtr(const unsigned long tagName) const;
+        struct MinList *GetValueAsMinListPtr(const unsigned long tagName) const;
 
         void SetValue(const unsigned long tagName, const std::nullptr_t &null) const;
         void SetValue(const unsigned long tagName, const std::string &string) const;

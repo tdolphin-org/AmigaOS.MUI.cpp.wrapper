@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Root.hpp"
@@ -86,19 +86,94 @@ namespace MUI
         return value;
     }
 
+    char *Root::GetValueAsCharPtr(const unsigned long tagName) const
+    {
+        return static_cast<char *>(GetValueAsPtr(tagName));
+    }
+
     char **Root::GetValueAsCharArrayPtr(const unsigned long tagName) const
     {
-        return (char **)GetValueAsPtr(tagName);
+        return static_cast<char **>(GetValueAsPtr(tagName));
+    }
+
+    const char **Root::GetValueAsConstCharArrayPtr(const unsigned long tagName) const
+    {
+        return static_cast<const char **>(GetValueAsPtr(tagName));
+    }
+
+    unsigned long *Root::GetValueAsULongPtr(const unsigned long tagName) const
+    {
+        return static_cast<unsigned long *>(GetValueAsPtr(tagName));
     }
 
     Object *Root::GetValueAsObjectPtr(const unsigned long tagName) const
     {
-        return (Object *)GetValueAsPtr(tagName);
+        return static_cast<Object *>(GetValueAsPtr(tagName));
     }
 
     Hook *Root::GetValueAsHookPtr(const unsigned long tagName) const
     {
-        return (Hook *)GetValueAsPtr(tagName);
+        return static_cast<Hook *>(GetValueAsPtr(tagName));
+    }
+
+    MsgPort *Root::GetValueAsMsgPortPtr(const unsigned long tagName) const
+    {
+        return static_cast<MsgPort *>(GetValueAsPtr(tagName));
+    }
+
+    const DiskObject *Root::GetValueAsDiskObjectPtr(const unsigned long tagName) const
+    {
+        return static_cast<const DiskObject *>(GetValueAsPtr(tagName));
+    }
+
+    const struct MUI_Command *Root::GetValueAsCommandPtr(const unsigned long tagName) const
+    {
+        return static_cast<const struct MUI_Command *>(GetValueAsPtr(tagName));
+    }
+
+    const ::NewMenu *Root::GetValueAsNewMenuPtr(const unsigned long tagName) const
+    {
+        return static_cast<const ::NewMenu *>(GetValueAsPtr(tagName));
+    }
+
+    RexxMsg *Root::GetValueAsRexxMsgPtr(const unsigned long tagName) const
+    {
+        return static_cast<RexxMsg *>(GetValueAsPtr(tagName));
+    }
+
+    AppMessage *Root::GetValueAsAppMessagePtr(const unsigned long tagName) const
+    {
+        return static_cast<AppMessage *>(GetValueAsPtr(tagName));
+    }
+
+    TextFont *Root::GetValueAsTextFontPtr(const unsigned long tagName) const
+    {
+        return static_cast<TextFont *>(GetValueAsPtr(tagName));
+    }
+
+    ::Window *Root::GetValueAsWindowPtr(const unsigned long tagName) const
+    {
+        return static_cast<::Window *>(GetValueAsPtr(tagName));
+    }
+
+    ::Gadget *Root::GetValueAsGadgetPtr(const unsigned long tagName) const
+    {
+        return static_cast<::Gadget *>(GetValueAsPtr(tagName));
+    }
+
+    struct MUI_PenSpec *Root::GetValueAsPenSpecPtr(const unsigned long tagName) const
+    {
+        return static_cast<struct MUI_PenSpec *>(GetValueAsPtr(tagName));
+    }
+
+    struct List *Root::GetValueAsListPtr(const unsigned long tagName) const
+    {
+        return static_cast<struct List *>(GetValueAsPtr(tagName));
+    }
+
+    struct MinList *Root::GetValueAsMinListPtr(const unsigned long tagName) const
+    {
+        return static_cast<struct MinList *>(GetValueAsPtr(tagName));
     }
 
     void Root::SetValue(const unsigned long tagName, const std::nullptr_t &null) const
