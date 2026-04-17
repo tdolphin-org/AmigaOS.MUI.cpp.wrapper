@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Group.hpp"
@@ -26,7 +26,7 @@ namespace MUI
 
     List *Group::getChildList() const
     {
-        return (List *)GetValueAsPtr(MUIA_Group_ChildList);
+        return GetValueAsListPtr(MUIA_Group_ChildList);
     }
 
 #ifdef MUIA_Group_HorizCenter

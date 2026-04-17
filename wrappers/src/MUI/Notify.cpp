@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Notify.hpp"
@@ -19,7 +19,7 @@ namespace MUI
 
     AppMessage *Notify::getAppMessage() const
     {
-        return (AppMessage *)GetValueAsPtr(MUIA_AppMessage);
+        return GetValueAsAppMessagePtr(MUIA_AppMessage);
     }
 
     long Notify::getHelpLine() const

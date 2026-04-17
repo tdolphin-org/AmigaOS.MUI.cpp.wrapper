@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Coloradjust.hpp"
@@ -32,7 +32,7 @@ namespace MUI
 
     RGBColor Coloradjust::getRGB() const
     {
-        auto *rgb = (unsigned long *)GetValueAsPtr(MUIA_Coloradjust_RGB);
+        auto *rgb = GetValueAsULongPtr(MUIA_Coloradjust_RGB);
         return RGBColor(rgb);
     }
 

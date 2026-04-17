@@ -19,7 +19,7 @@ namespace MUI
 
     char *Floattext::getText() const
     {
-        return (char *)GetValueAsPtr(MUIA_Floattext_Text);
+        return GetValueAsCharPtr(MUIA_Floattext_Text);
     }
 
     Floattext &Floattext::setJustify(const bool justify)

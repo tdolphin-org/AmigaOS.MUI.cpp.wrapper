@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Area.hpp"
@@ -95,7 +95,7 @@ namespace MUI
 
     TextFont *Area::getFont() const
     {
-        return (TextFont *)GetValueAsPtr(MUIA_Font);
+        return GetValueAsTextFontPtr(MUIA_Font);
     }
 
 #ifdef MUIA_FrameDynamic
@@ -230,7 +230,7 @@ namespace MUI
 
     Window *Area::getWindow() const
     {
-        return (Window *)GetValueAsPtr(MUIA_Window);
+        return GetValueAsWindowPtr(MUIA_Window);
     }
 
     Object *Area::getWindowObject() const

@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Gadget.hpp"
@@ -14,6 +14,6 @@ namespace MUI
 
     ::Gadget *Gadget::getGadget() const
     {
-        return (::Gadget *)GetValueAsPtr(MUIA_Gadget_Gadget);
+        return GetValueAsGadgetPtr(MUIA_Gadget_Gadget);
     }
 }

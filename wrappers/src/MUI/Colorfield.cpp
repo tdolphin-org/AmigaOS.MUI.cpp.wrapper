@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Colorfield.hpp"
@@ -32,7 +32,7 @@ namespace MUI
 
     RGBColor Colorfield::getRGB() const
     {
-        auto *rgb = (unsigned long *)GetValueAsPtr(MUIA_Colorfield_RGB);
+        auto *rgb = GetValueAsULongPtr(MUIA_Colorfield_RGB);
         return RGBColor(rgb);
     }
 
