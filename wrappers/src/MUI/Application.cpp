@@ -32,6 +32,31 @@ namespace MUI
         return GetValueAsString(MUIA_Application_Base);
     }
 
+    void *Application::getBroker() const
+    {
+        return GetValueAsPtr(MUIA_Application_Broker);
+    }
+
+    Hook *Application::getBrokerHook() const
+    {
+        return GetValueAsHookPtr(MUIA_Application_BrokerHook);
+    }
+
+    MsgPort *Application::getBrokerPort() const
+    {
+        return GetValueAsMsgPortPtr(MUIA_Application_BrokerPort);
+    }
+
+    long Application::getBrokerPri() const
+    {
+        return GetValueAsLong(MUIA_Application_BrokerPri);
+    }
+
+    const struct MUI_Command *Application::getCommands() const
+    {
+        return GetValueAsCommandPtr(MUIA_Application_Commands);
+    }
+
     std::string Application::getCopyright() const
     {
         return GetValueAsString(MUIA_Application_Copyright);
@@ -44,12 +69,17 @@ namespace MUI
 
     const DiskObject *Application::getDiskObject() const
     {
-        return (const DiskObject *)GetValueAsPtr(MUIA_Application_DiskObject);
+        return GetValueAsDiskObjectPtr(MUIA_Application_DiskObject);
     }
 
     bool Application::isDoubleStart() const
     {
         return GetValueAsBool(MUIA_Application_DoubleStart);
+    }
+
+    Object *Application::getDropObject() const
+    {
+        return GetValueAsObjectPtr(MUIA_Application_DropObject);
     }
 
     bool Application::isForceQuit() const
@@ -77,6 +107,11 @@ namespace MUI
         return GetValueAsULong(MUIA_Application_MenuAction);
     }
 
+    const ::NewMenu *Application::getMenu() const
+    {
+        return GetValueAsNewMenuPtr(MUIA_Application_Menu);
+    }
+
     unsigned long Application::getMenuHelp() const
     {
         return GetValueAsULong(MUIA_Application_MenuHelp);
@@ -92,9 +127,19 @@ namespace MUI
         return Menustrip(GetValueAsObjectPtr(MUIA_Application_Menustrip));
     }
 
+    Hook *Application::getRexxHook() const
+    {
+        return GetValueAsHookPtr(MUIA_Application_RexxHook);
+    }
+
+    RexxMsg *Application::getRexxMsg() const
+    {
+        return GetValueAsRexxMsgPtr(MUIA_Application_RexxMsg);
+    }
+
     std::vector<Window> Application::getWindowList() const
     {
-        struct List *list = (struct List *)GetValueAsObjectPtr(MUIA_Application_WindowList);
+        struct List *list = GetValueAsListPtr(MUIA_Application_WindowList);
         if (!list || IsListEmpty(list))
             return std::vector<Window>();
 
@@ -122,7 +167,7 @@ namespace MUI
 #ifdef MUIA_Application_UsedClasses
     std::vector<std::string> Application::getUsedClasses() const
     {
-        const char **usedClasses = (const char **)GetValueAsPtr(MUIA_Application_UsedClasses);
+        const char **usedClasses = GetValueAsConstCharArrayPtr(MUIA_Application_UsedClasses);
         if (!usedClasses)
             return { };
 
@@ -142,6 +187,24 @@ namespace MUI
     Application &Application::setDiskObject(const DiskObject &diskObject)
     {
         SetValue(MUIA_Application_DiskObject, (long)&diskObject);
+        return *this;
+    }
+
+    Application &Application::setBrokerHook(const Hook *brokerHook)
+    {
+        SetValue(MUIA_Application_BrokerHook, brokerHook);
+        return *this;
+    }
+
+    Application &Application::setCommands(const struct MUI_Command *commands)
+    {
+        SetValue(MUIA_Application_Commands, commands);
+        return *this;
+    }
+
+    Application &Application::setDropObject(const Object *dropObject)
+    {
+        SetValue(MUIA_Application_DropObject, dropObject);
         return *this;
     }
 
@@ -187,6 +250,12 @@ namespace MUI
         return *this;
     }
 
+    Application &Application::setRexxHook(const Hook *rexxHook)
+    {
+        SetValue(MUIA_Application_RexxHook, rexxHook);
+        return *this;
+    }
+
 #ifdef MUIWindow
     Application &Application::AboutMUI(const MUIWindow *refwindow)
 #else
@@ -225,9 +294,21 @@ namespace MUI
     }
 #endif
 
+#ifdef MUIM_Application_Execute
     long Application::Execute() const
     {
         return DoMethod(muiObject(), MUIM_Application_Execute);
+    }
+#endif
+
+    bool Application::GetMenuCheck(const unsigned long menuId) const
+    {
+        return DoMethod(muiObject(), MUIM_Application_GetMenuCheck, menuId);
+    }
+
+    bool Application::GetMenuState(const unsigned long menuId) const
+    {
+        return DoMethod(muiObject(), MUIM_Application_GetMenuState, menuId);
     }
 
     Application &Application::Input(const unsigned long *signal)
@@ -306,6 +387,24 @@ namespace MUI
         return *this;
     }
 
+    Application &Application::SetConfigItem(const unsigned long item, const void *data)
+    {
+        DoMethod(muiObject(), MUIM_Application_SetConfigItem, item, data);
+        return *this;
+    }
+
+    Application &Application::SetMenuCheck(const unsigned long menuId, const bool stat)
+    {
+        DoMethod(muiObject(), MUIM_Application_SetMenuCheck, menuId, stat);
+        return *this;
+    }
+
+    Application &Application::SetMenuState(const unsigned long menuId, const bool stat)
+    {
+        DoMethod(muiObject(), MUIM_Application_SetMenuState, menuId, stat);
+        return *this;
+    }
+
     Application &Application::SaveEnvArc()
     {
         DoMethod(muiObject(), MUIM_Application_Save, MUIV_Application_Save_ENVARC);
@@ -376,6 +475,24 @@ namespace MUI
         return *this;
     }
 
+    ApplicationBuilder &ApplicationBuilder::tagBrokerHook(const Hook *brokerHook)
+    {
+        this->PushTag(MUIA_Application_BrokerHook, brokerHook);
+        return *this;
+    }
+
+    ApplicationBuilder &ApplicationBuilder::tagBrokerPri(const long brokerPri)
+    {
+        this->PushTag(MUIA_Application_BrokerPri, brokerPri);
+        return *this;
+    }
+
+    ApplicationBuilder &ApplicationBuilder::tagCommands(const struct MUI_Command *commands)
+    {
+        this->PushTag(MUIA_Application_Commands, commands);
+        return *this;
+    }
+
     ApplicationBuilder &ApplicationBuilder::tagCopyright(const char *copyright)
     {
         this->PushTag(MUIA_Application_Copyright, copyright);
@@ -406,6 +523,12 @@ namespace MUI
         return *this;
     }
 
+    ApplicationBuilder &ApplicationBuilder::tagDropObject(const Object *dropObject)
+    {
+        this->PushTag(MUIA_Application_DropObject, dropObject);
+        return *this;
+    }
+
     ApplicationBuilder &ApplicationBuilder::tagHelpFile(const char *helpFile)
     {
         this->PushTag(MUIA_Application_HelpFile, helpFile);
@@ -430,9 +553,21 @@ namespace MUI
         return *this;
     }
 
+    ApplicationBuilder &ApplicationBuilder::tagMenu(const ::NewMenu *menu)
+    {
+        this->PushTag(MUIA_Application_Menu, menu);
+        return *this;
+    }
+
     ApplicationBuilder &ApplicationBuilder::tagMenustrip(const Menustrip &menustrip)
     {
         this->PushTag(MUIA_Application_Menustrip, menustrip.muiObject());
+        return *this;
+    }
+
+    ApplicationBuilder &ApplicationBuilder::tagRexxHook(const Hook *rexxHook)
+    {
+        this->PushTag(MUIA_Application_RexxHook, rexxHook);
         return *this;
     }
 
