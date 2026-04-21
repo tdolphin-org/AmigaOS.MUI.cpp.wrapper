@@ -86,9 +86,16 @@ Code extended and divided in many files (Components), see: [advanced](/examples/
 ___
 ## Implementation status
 
+### Version tags
+
+- `3.8` = MUI 3.8
+- `AOS5` = AmigaOS MUI5
+- `MOS5` = MorphOS MUI5
+- `n/a` = class/element is not available in that version
+
 | MUI class | C++ class | Wrapper | Builder | Source Notifier | Dest Notifier |
 |-|-|:-:|:-:|:-:|:-:|
-| [MUIC_Application](https://github.com/amiga-mui/muidev/wiki/MUI_Application) | [MUI::Application](/wrappers/src/MUI/Application.hpp) | in progress | in progress | - | in progress |
+| [MUIC_Application](https://github.com/amiga-mui/muidev/wiki/MUI_Application) | [MUI::Application](/wrappers/src/MUI/Application.hpp) | in progress (3.8/AOS5/MOS5) | in progress | - | in progress |
 | [MUIC_Area](https://github.com/amiga-mui/muidev/wiki/MUI_Area) | [MUI::Area](/wrappers/src/MUI/Area.hpp) | in progress | in progress | in progress | in progress |
 | [MUIC_Argstring](https://github.com/amiga-mui/muidev/wiki/MUI_Argstring) | - | - | - | - | - |
 | [MUIC_Balance](https://github.com/amiga-mui/muidev/wiki/MUI_Balance) | [MUI::Balance](/wrappers/src/MUI/Balance.hpp) | Ready | Ready | not applicable | not applicable |
@@ -101,10 +108,10 @@ ___
 | [MUIC_Datamap](https://github.com/amiga-mui/muidev/wiki/MUI_Datamap) | - | - | - | - | - |
 | [MUIC_Dataspace](https://github.com/amiga-mui/muidev/wiki/MUI_Dataspace) | - | - | - | - | - |
 | [MUIC_Dirlist](https://github.com/amiga-mui/muidev/wiki/MUI_Dirlist) | - | - | - | - | - |
-| [MUIC_Dtpic](https://github.com/amiga-mui/muidev/wiki/MUI_Dtpic) | [MUI::Dtpict](/wrappers/src/MUI/Dtpict.hpp) | Ready | Ready | - | - |
-| [MUIC_Family](https://github.com/amiga-mui/muidev/wiki/MUI_Family) | [MUI::Family](/wrappers/src/MUI/Family.hpp) | Ready | Ready | in progress | in progress |
+| [MUIC_Dtpic](https://github.com/amiga-mui/muidev/wiki/MUI_Dtpic) | [MUI::Dtpic](/wrappers/src/MUI/Dtpic.hpp) | Ready | Ready | - | - |
+| [MUIC_Family](https://github.com/amiga-mui/muidev/wiki/MUI_Family) | [MUI::Family](/wrappers/src/MUI/Family.hpp) | Ready (3.8/AOS5/MOS5) | Ready | in progress | in progress |
 | [MUIC_Filepanel](https://github.com/amiga-mui/muidev/wiki/MUI_Filepanel) | - | - | - | - | - |
-| [MUIC_Floattext](https://github.com/amiga-mui/muidev/wiki/MUI_Floattext) | [MUI::Floattext](/wrappers/src/MUI/Floattext.hpp) | Ready | Ready | - | - |
+| [MUIC_Floattext](https://github.com/amiga-mui/muidev/wiki/MUI_Floattext) | [MUI::Floattext](/wrappers/src/MUI/Floattext.hpp) | Ready (3.8/AOS5/MOS5) | Ready | - | - |
 | [MUIC_Fontdisplay](https://github.com/amiga-mui/muidev/wiki/MUI_Fontdisplay) | - | - | - | - | - |
 | [MUIC_Fontpanel](https://github.com/amiga-mui/muidev/wiki/MUI_Fontpanel) | [MUI::Fontpanel](/wrappers/src/MUI/Fontpanel.hpp) | Ready | Ready | - | - |
 | [MUIC_Gadget](https://github.com/amiga-mui/muidev/wiki/MUI_Gadget) | [MUI::Gadget](/wrappers/src/MUI/Gadget.hpp) | Ready | Ready | not applicable | not applicable |
@@ -149,10 +156,10 @@ ___
 | [MUIC_Semaphore](https://github.com/amiga-mui/muidev/wiki/MUI_Semaphore) | - | - | - | - | - |
 | [MUIC_Slave](https://github.com/amiga-mui/muidev/wiki/MUI_Slave) | - | - | - | - | - |
 | [MUIC_Slider](https://github.com/amiga-mui/muidev/wiki/MUI_Slider) | [MUI::Slider](/wrappers/src/MUI/Slider.hpp) | Ready | Ready | - | - |
-| [MUIC_String](https://github.com/amiga-mui/muidev/wiki/MUI_Sting) | [MUI::String](/wrappers/src/MUI/String.hpp) | in progress | in progress | in progress | in progress |
+| [MUIC_String](https://github.com/amiga-mui/muidev/wiki/MUI_String) | [MUI::String](/wrappers/src/MUI/String.hpp) | in progress | in progress | in progress | in progress |
 | [MUIC_Textdata](https://github.com/amiga-mui/muidev/wiki/MUI_Textdata) | - | - | - | - | - |
 | [MUIC_Text](https://github.com/amiga-mui/muidev/wiki/MUI_Text) | [MUI::Text](/wrappers/src/MUI/Text.hpp) | in progress | in progress | - | - |
-| [MUIC_Title](https://github.com/amiga-mui/muidev/wiki/MUI_Title) | [MUI::Title](/wrappers/src/MUI/Title.hpp) | in progress | Ready | - | - |
+| [MUIC_Title](https://github.com/amiga-mui/muidev/wiki/MUI_Title) | [MUI::Title](/wrappers/src/MUI/Title.hpp) | Ready (AOS5/MOS5, 3.8 n/a) | Ready | - | - |
 | [MUIC_Virtgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Virtgroup) | [MUI::Virtgroup](/wrappers/src/MUI/Virtgroup.hpp) | in progress | Ready | - | - |
 | [MUIC_Volumelist](https://github.com/amiga-mui/muidev/wiki/MUI_Volumelist) | - | - | - | - | - |
 | [MUIC_Window](https://github.com/amiga-mui/muidev/wiki/MUI_Window) | [MUI::Window](/wrappers/src/MUI/Window.hpp) | in progress | in progress | in progress | in progress |
