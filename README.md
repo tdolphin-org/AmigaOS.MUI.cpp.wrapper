@@ -116,12 +116,12 @@ ___
 | [MUIC_Fontpanel](https://github.com/amiga-mui/muidev/wiki/MUI_Fontpanel) | [MUI::Fontpanel](/wrappers/src/MUI/Fontpanel.hpp) | Ready | Ready | - | - |
 | [MUIC_Gadget](https://github.com/amiga-mui/muidev/wiki/MUI_Gadget) | [MUI::Gadget](/wrappers/src/MUI/Gadget.hpp) | Ready | Ready | not applicable | not applicable |
 | [MUIC_Gauge](https://github.com/amiga-mui/muidev/wiki/MUI_Gauge) | [MUI::Gauge](/wrappers/src/MUI/Gauge.hpp) | Ready | Ready | - | - |
-| [MUIC_Group](https://github.com/amiga-mui/muidev/wiki/MUI_Group) | [MUI::Group](/wrappers/src/MUI/Group.hpp) | in progress | in progress | in progress | in progress |
+| [MUIC_Group](https://github.com/amiga-mui/muidev/wiki/MUI_Group) | [MUI::Group](/wrappers/src/MUI/Group.hpp) | Ready (3.8/AOS5/MOS5) | in progress | in progress | in progress |
 | [MUIC_Image](https://github.com/amiga-mui/muidev/wiki/MUI_Image) | [MUI::Image](/wrappers/src/MUI/Image.hpp) | in progress | in progress | - | - |
 | [MUIC_Keyadjust](https://github.com/amiga-mui/muidev/wiki/MUI_Keyadjust) | - | - | - | - | - |
 | [MUIC_Knob](https://github.com/amiga-mui/muidev/wiki/MUI_Knob) | - | - | - | - | - |
 | [MUIC_Levelmeter](https://github.com/amiga-mui/muidev/wiki/MUI_Levelmeter) | - | - | - | - | - |
-| [MUIC_List](https://github.com/amiga-mui/muidev/wiki/MUI_List) | [MUI::List](/wrappers/src/MUI/List.hpp) | in progress | in progress | in progress | in progress |
+| [MUIC_List](https://github.com/amiga-mui/muidev/wiki/MUI_List) | [MUI::List](/wrappers/src/MUI/List.hpp) | Ready (3.8/AOS5/MOS5) | in progress | in progress | in progress |
 | [MUIC_Listview](https://github.com/amiga-mui/muidev/wiki/MUI_Listview) | [MUI::Listview](/wrappers/src/MUI/Listview.hpp) | in progress | in progress | - | - |
 | [MUIC_Mccprefs](https://github.com/amiga-mui/muidev/wiki/MUI_Mccprefs) | - | - | - | - | - |
 | [MUIC_Menu](https://github.com/amiga-mui/muidev/wiki/MUI_Menu) | [MUI::Menu](/wrappers/src/MUI/Menu.hpp) | Ready | Ready | in progress | in progress |
