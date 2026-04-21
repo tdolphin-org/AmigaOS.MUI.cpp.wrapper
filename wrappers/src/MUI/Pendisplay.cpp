@@ -25,16 +25,16 @@ namespace MUI
     RGBColor Pendisplay::getRGBcolor() const
     {
 #ifdef MOS_MUI_VERSION_5
-        auto *rgbColor = (MUI_RGBColor *)GetValueAsPtr(MUIA_Pendisplay_RGBcolor);
+        auto *rgbColor = reinterpret_cast<MUI_RGBColor *>(GetValueAsULongPtr(MUIA_Pendisplay_RGBcolor));
 #else
-        auto *rgbColor = (MUI_RGBcolor *)GetValueAsPtr(MUIA_Pendisplay_RGBcolor);
+        auto *rgbColor = reinterpret_cast<MUI_RGBcolor *>(GetValueAsULongPtr(MUIA_Pendisplay_RGBcolor));
 #endif
         return rgbColor == nullptr ? RGBColor() : RGBColor(*rgbColor);
     }
 
-    MUI_PenSpec *Pendisplay::getSpec() const
+    const MUI_PenSpec *Pendisplay::getSpec() const
     {
-        return (MUI_PenSpec *)GetValueAsPtr(MUIA_Pendisplay_Spec);
+        return GetValueAsConstPenSpecPtr(MUIA_Pendisplay_Spec);
     }
 
     Pendisplay &Pendisplay::setReference(const Object *reference)

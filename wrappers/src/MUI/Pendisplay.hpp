@@ -38,7 +38,7 @@ namespace MUI
         /// @brief [ @b MUIA_Pendisplay_RGBcolor ]
         RGBColor getRGBcolor() const;
         /// @brief [ @b MUIA_Pendisplay_Spec ]
-        struct MUI_PenSpec *getSpec() const;
+        const struct MUI_PenSpec *getSpec() const;
 
         /// @brief [ @b MUIA_Pendisplay_Reference ]
         Pendisplay &setReference(const Object *reference);
