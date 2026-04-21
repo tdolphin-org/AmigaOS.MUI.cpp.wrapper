@@ -40,6 +40,11 @@ namespace MUI
         /// @brief [ @b MUIA_Group_ActivePage ]
         /// @return active page (index).
         long getActivePage() const;
+#ifdef MUIA_Group_Columns
+        /// @brief [ @b MUIA_Group_Columns ]
+        /// @return number of columns in a two dimensional group.
+        long getColumns() const;
+#endif
 #ifdef MUIA_Group_ChildCount
         /// @brief [ @b MUIA_Group_ChildCount ]
         long getChildCount() const;
@@ -47,6 +52,21 @@ namespace MUI
         /// @brief [ @b MUIA_Group_ChildList ]
         /// @return list of child objects.
         const struct List *getChildList() const;
+#ifdef MUIA_Group_Forward
+        /// @brief [ @b MUIA_Group_Forward ]
+        /// @return whether forward keyboard focus traversal is enabled.
+        bool getForward() const;
+#endif
+#ifdef MUIA_Group_ForwardDepth
+        /// @brief [ @b MUIA_Group_ForwardDepth ]
+        /// @return depth used for forward focus handling.
+        unsigned long getForwardDepth() const;
+#endif
+#ifdef MUIA_Group_Horiz
+        /// @brief [ @b MUIA_Group_Horiz ]
+        /// @return whether the group layout is horizontal.
+        bool getHoriz() const;
+#endif
 #ifdef MUIA_Group_HorizCenter
         /// @brief [ @b MUIA_Group_HorizCenter ]
         /// @return horizontal center alignment.
@@ -55,6 +75,41 @@ namespace MUI
         /// @brief [ @b MUIA_Group_HorizSpacing ]
         /// @return Number of pixels inserted between horizontal elements of a group.
         long getHorizSpacing() const;
+#ifdef MUIA_Group_LayoutHook
+        /// @brief [ @b MUIA_Group_LayoutHook ]
+        /// @return pointer to custom layout hook.
+        Hook *getLayoutHook() const;
+#endif
+#ifdef MUIA_Group_PageMode
+        /// @brief [ @b MUIA_Group_PageMode ]
+        /// @return whether this group behaves as a page group.
+        bool getPageMode() const;
+#endif
+#ifdef MUIA_Group_Rows
+        /// @brief [ @b MUIA_Group_Rows ]
+        /// @return number of rows in a two dimensional group.
+        long getRows() const;
+#endif
+#ifdef MUIA_Group_SameHeight
+        /// @brief [ @b MUIA_Group_SameHeight ]
+        /// @return whether all children should have the same height.
+        bool getSameHeight() const;
+#endif
+#ifdef MUIA_Group_SameSize
+        /// @brief [ @b MUIA_Group_SameSize ]
+        /// @return whether all children should have the same size.
+        bool getSameSize() const;
+#endif
+#ifdef MUIA_Group_SameWidth
+        /// @brief [ @b MUIA_Group_SameWidth ]
+        /// @return whether all children should have the same width.
+        bool getSameWidth() const;
+#endif
+#ifdef MUIA_Group_Spacing
+        /// @brief [ @b MUIA_Group_Spacing ]
+        /// @return spacing used between children.
+        long getSpacing() const;
+#endif
 #ifdef MUIA_Group_VertCenter
         /// @brief [ @b MUIA_Group_VertCenter ]
         /// @return vertical center alignment.
@@ -83,6 +138,72 @@ namespace MUI
         /// @brief [ @b MUIA_Group_Columns ]
         /// Set number of columns in a two dimensional group.
         Group &setColumns(const long columns);
+#ifdef MUIA_Group_Forward
+        /// @brief [ @b MUIA_Group_Forward ]
+        /// Enable/disable forward keyboard focus traversal.
+        Group &setForward(const bool forward);
+#endif
+#ifdef MUIA_Group_ForwardDepth
+        /// @brief [ @b MUIA_Group_ForwardDepth ]
+        /// Set depth used for forward focus handling.
+        Group &setForwardDepth(const unsigned long forwardDepth);
+#endif
+#ifdef MUIA_Group_Horiz
+        /// @brief [ @b MUIA_Group_Horiz ]
+        /// Set horizontal/vertical group layout.
+        Group &setHoriz(const bool horiz);
+#endif
+#ifdef MUIA_Group_HorizCenter
+        /// @brief [ @b MUIA_Group_HorizCenter ]
+        /// Set horizontal center alignment.
+        Group &setHorizCenter(const enum Group_HorizCenter horizCenter);
+#endif
+        /// @brief [ @b MUIA_Group_HorizSpacing ]
+        /// Set number of pixels inserted between horizontal elements.
+        Group &setHorizSpacing(const long horizSpacing);
+#ifdef MUIA_Group_LayoutHook
+        /// @brief [ @b MUIA_Group_LayoutHook ]
+        /// Set custom layout hook.
+        Group &setLayoutHook(const Hook *pLayoutHook);
+#endif
+#ifdef MUIA_Group_PageMode
+        /// @brief [ @b MUIA_Group_PageMode ]
+        /// Enable/disable page mode.
+        Group &setPageMode(const bool pageMode);
+#endif
+#ifdef MUIA_Group_Rows
+        /// @brief [ @b MUIA_Group_Rows ]
+        /// Set number of rows in a two dimensional group.
+        Group &setRows(const long rows);
+#endif
+#ifdef MUIA_Group_SameHeight
+        /// @brief [ @b MUIA_Group_SameHeight ]
+        /// Enable/disable same height for all children.
+        Group &setSameHeight(const bool sameHeight);
+#endif
+#ifdef MUIA_Group_SameSize
+        /// @brief [ @b MUIA_Group_SameSize ]
+        /// Enable/disable same size for all children.
+        Group &setSameSize(const bool sameSize);
+#endif
+#ifdef MUIA_Group_SameWidth
+        /// @brief [ @b MUIA_Group_SameWidth ]
+        /// Enable/disable same width for all children.
+        Group &setSameWidth(const bool sameWidth);
+#endif
+#ifdef MUIA_Group_Spacing
+        /// @brief [ @b MUIA_Group_Spacing ]
+        /// Set spacing used between children.
+        Group &setSpacing(const long spacing);
+#endif
+#ifdef MUIA_Group_VertCenter
+        /// @brief [ @b MUIA_Group_VertCenter ]
+        /// Set vertical center alignment.
+        Group &setVertCenter(const enum Group_VertCenter vertCenter);
+#endif
+        /// @brief [ @b MUIA_Group_VertSpacing ]
+        /// Set number of pixels inserted between vertical elements.
+        Group &setVertSpacing(const long vertSpacing);
 
         // methods, some returns object reference
 
@@ -102,16 +223,50 @@ namespace MUI
         Group &ExitChange();
 #ifdef MUIM_Group_ExitChange2
         /// @brief [ @b MUIM_Group_ExitChange2 ]
-        Group &ExitChange2();
+        Group &ExitChange2(const unsigned long flags = 0);
 #endif
         /// @brief [ @b MUIM_Group_InitChange ]
         Group &InitChange();
+#ifdef MUIM_Group_MoveMember
+        /// @brief [ @b MUIM_Group_MoveMember ]
+        Group &MoveMember(const Object *pChildObject, const long pos);
+        /// @brief [ @b MUIM_Group_MoveMember ]
+        Group &MoveMember(const Root &child, const long pos);
+#endif
 #ifdef MUIM_Group_Remove
         /// @brief [ @b MUIM_Group_Remove ]
         Group &Remove(const Object *pChildObject);
         /// @brief [ @b MUIM_Group_Remove ]
         Group &Remove(const Root &child);
 #endif
+
+#ifdef MUIM_Group_Reorder
+        /// @brief [ @b MUIM_Group_Reorder ]
+        /// Reorder the children of a group.
+        Group &Reorder(const Object *after, const std::vector<const Object *> &objects);
+        /// @brief [ @b MUIM_Group_Reorder ]
+        /// Reorder the children of a group.
+        Group &Reorder(const Object *after, const std::initializer_list<const Object *> &objects);
+        /// @brief [ @b MUIM_Group_Reorder, after = 0 ]
+        /// Reorder the given children to the front of the group child list.
+        Group &ReorderFront(const std::vector<const Object *> &objects);
+        /// @brief [ @b MUIM_Group_Reorder, after = 0 ]
+        /// Reorder the given children to the front of the group child list.
+        Group &ReorderFront(const std::initializer_list<const Object *> &objects);
+        /// @brief [ @b MUIM_Group_Reorder, after = -1 ]
+        /// Reorder the given children to the end of the group child list.
+        Group &ReorderBack(const std::vector<const Object *> &objects);
+        /// @brief [ @b MUIM_Group_Reorder, after = -1 ]
+        /// Reorder the given children to the end of the group child list.
+        Group &ReorderBack(const std::initializer_list<const Object *> &objects);
+#endif
+
+        /// @brief [ @b MUIM_Group_Sort ]
+        /// Sort the children of a group.
+        Group &Sort(const std::vector<const Object *> &objects);
+        /// @brief [ @b MUIM_Group_Sort ]
+        /// Sort the children of a group.
+        Group &Sort(const std::initializer_list<const Object *> &objects);
 
         /// @brief [ @b OM_ADDMEMBER ]
         Group &AddMember(const Object *pChildObject);
@@ -167,6 +322,10 @@ namespace MUI
 #endif
         /// @brief [ @b MUIA_Group_HorizSpacing ]
         T &tagHorizSpacing(const long horizSpacing);
+#ifdef MUIA_Group_LayoutHook
+        /// @brief [ @b MUIA_Group_LayoutHook ]
+        T &tagLayoutHook(const Hook *pLayoutHook);
+#endif
         /// @brief [ @b MUIA_Group_PageMode ]
         /// This attribute makes the current group a page group. Page groups always display only one of their children.
         /// Which one can be adjusted with the MUIA_Group_ActivePage attribute.
@@ -187,6 +346,14 @@ namespace MUI
 #endif
         /// @brief [ @b MUIA_Group_VertSpacing ]
         T &tagVertSpacing(const long vertSpacing);
+#ifdef MUIA_Group_Forward
+        /// @brief [ @b MUIA_Group_Forward ]
+        T &tagForward(const bool forward);
+#endif
+#ifdef MUIA_Group_ForwardDepth
+        /// @brief [ @b MUIA_Group_ForwardDepth ]
+        T &tagForwardDepth(const unsigned long forwardDepth);
+#endif
 
         /// @brief replaces mui macro GroupFrameT
         T &groupFrame(const std::string &title);
