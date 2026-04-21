@@ -6,6 +6,8 @@
 
 #include "Title.hpp"
 
+#include <proto/alib.h>
+
 #ifdef MUIC_Title
 
 namespace MUI
@@ -19,21 +21,42 @@ namespace MUI
         return GetValueAsBool(MUIA_Title_Closable);
     }
 
-#ifdef MUI_Title_Newable
+    bool Title::getClickable() const
+    {
+        return GetValueAsBool(MUIA_Title_Clickable);
+    }
+
+    long Title::getEventHandlerPriority() const
+    {
+        return GetValueAsLong(MUIA_Title_EventHandlerPriority);
+    }
+
+#ifdef MUIA_Title_Newable
     bool Title::getNewable() const
     {
         return GetValueAsBool(MUIA_Title_Newable);
     }
 #endif
 
+    enum Title_OnLastClose Title::getOnLastClose() const
+    {
+        return (Title_OnLastClose)GetValueAsLong(MUIA_Title_OnLastClose);
+    }
+
     enum Title_Position Title::getPosition() const
     {
         return (Title_Position)GetValueAsLong(MUIA_Title_Position);
     }
 
-    long Title::getSortable() const
+    bool Title::getSortable() const
     {
-        return GetValueAsLong(MUIA_Title_Sortable);
+        return GetValueAsBool(MUIA_Title_Sortable);
+    }
+
+    Title &Title::setClickable(const bool clickable)
+    {
+        SetValue(MUIA_Title_Clickable, clickable);
+        return *this;
     }
 
     Title &Title::setClosable(const bool closable)
@@ -42,7 +65,13 @@ namespace MUI
         return *this;
     }
 
-#ifdef MUI_Title_Newable
+    Title &Title::setEventHandlerPriority(const long eventHandlerPriority)
+    {
+        SetValue(MUIA_Title_EventHandlerPriority, eventHandlerPriority);
+        return *this;
+    }
+
+#ifdef MUIA_Title_Newable
     Title &Title::setNewable(const bool newable)
     {
         SetValue(MUIA_Title_Newable, newable);
@@ -67,6 +96,25 @@ namespace MUI
         SetValue(MUIA_Title_Sortable, sortable);
         return *this;
     }
+
+    Title &Title::Close(Object *pTitleObject)
+    {
+        DoMethod(muiObject(), MUIM_Title_Close, pTitleObject);
+        return *this;
+    }
+
+#ifdef MUIM_Title_FindPage
+    long Title::FindPage(Boopsiobject *pTitleButton)
+    {
+        return (long)DoMethod(muiObject(), MUIM_Title_FindPage, pTitleButton);
+    }
+
+    Title &Title::New()
+    {
+        DoMethod(muiObject(), MUIM_Title_New);
+        return *this;
+    }
+#endif
 }
 
 #endif
