@@ -5,27 +5,12 @@
 //
 
 #include "Family.hpp"
+#include "Core/ObjectVectorUtils.hpp"
 
 #include <clib/alib_protos.h>
 
 namespace MUI
 {
-    namespace
-    {
-        std::vector<const Object *> makeNullTerminatedObjectVector(const std::vector<const Object *> &objects)
-        {
-            std::vector<const Object *> orderedObjects;
-            orderedObjects.reserve(objects.size() + 1);
-            for (auto object : objects)
-            {
-                if (object)
-                    orderedObjects.push_back(object);
-            }
-            orderedObjects.push_back(nullptr);
-            return orderedObjects;
-        }
-    }
-
     const std::string Family::className = MUIC_Family;
 
 #ifdef MUIA_Family_ChildCount
@@ -146,7 +131,7 @@ namespace MUI
 #ifdef MUIM_Family_Reorder
     Family &Family::Reorder(const Object *after, const std::vector<const Object *> &objects)
     {
-        auto orderedObjects = makeNullTerminatedObjectVector(objects);
+        auto orderedObjects = Detail::makeNullTerminatedObjectVector(objects);
         DoMethod(muiObject(), MUIM_Family_Reorder, after, orderedObjects.data());
         return *this;
     }
@@ -179,7 +164,7 @@ namespace MUI
 
     Family &Family::Sort(const std::vector<const Object *> &objects)
     {
-        auto orderedObjects = makeNullTerminatedObjectVector(objects);
+        auto orderedObjects = Detail::makeNullTerminatedObjectVector(objects);
         DoMethod(muiObject(), MUIM_Family_Sort, orderedObjects.data());
         return *this;
     }
