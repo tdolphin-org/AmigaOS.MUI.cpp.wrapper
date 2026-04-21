@@ -130,7 +130,7 @@ namespace MUI
         /// @brief [ @b MUIM_List_NextSelected ]
         /// @param position index in list, by default it is start
         /// @return id of next selected
-        long GetNextSelected(const long position) const;
+        long GetNextSelected(long position) const;
 
         /// @brief Return indexes/positions of all selected elements in list.
         /// @return vector with indexes/positions of all selected
@@ -187,6 +187,36 @@ namespace MUI
 #endif
         /// @brief [ @b MUIM_List_Redraw, @b MUIV_List_Redraw_All ]
         List &RedrawAll() const;
+
+        /// @brief [ @b MUIM_List_Exchange ]
+        /// Exchange two entries by their positions.
+        List &Exchange(const long pos1, const long pos2);
+
+        /// @brief [ @b MUIM_List_Move ]
+        /// Move one entry from source position to destination position.
+        List &Move(const long from, const long to);
+
+        /// @brief [ @b MUIM_List_Select ]
+        /// Select/unselect entries.
+        /// @param position list index or special values (e.g. @b MUIV_List_Select_Active, @b MUIV_List_Select_All)
+        /// @param selectType one of @b MUIV_List_Select_Off, @b MUIV_List_Select_On, @b MUIV_List_Select_Toggle, @b MUIV_List_Select_Ask
+        /// @param pState optional output pointer for current state
+        List &Select(const long position, const long selectType, long *pState = nullptr);
+
+        /// @brief [ @b MUIM_List_Sort ]
+        /// Sort all entries using the currently configured compare hook/column.
+        List &Sort();
+
+        /// @brief [ @b MUIM_List_TestPos ]
+        /// Query list entry information for given coordinates.
+        /// @return true if entry information has been returned in @p pResult.
+        bool TestPos(const long x, const long y, struct MUI_List_TestPos_Result *pResult) const;
+
+#ifdef MUIM_List_QueryColumnWidth
+        /// @brief [ @b MUIM_List_QueryColumnWidth ]
+        /// Return pixel width of a column.
+        long QueryColumnWidth(const long column) const;
+#endif
     };
 
     template <typename T, typename U> class ListBuilderTemplate : public AreaBuilderTemplate<T, U>

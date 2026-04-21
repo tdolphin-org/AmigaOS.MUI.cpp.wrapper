@@ -178,10 +178,10 @@ namespace MUI
 
     long List::GetFirstSelected() const
     {
-        return GetNextSelected(MUIM_List_NextSelected);
+        return GetNextSelected(MUIV_List_NextSelected_Start);
     }
 
-    long List::GetNextSelected(const long position) const
+    long List::GetNextSelected(long position) const
     {
         DoMethod(muiObject(), MUIM_List_NextSelected, &position);
         return position;
@@ -241,7 +241,7 @@ namespace MUI
 
     List &List::InsertTop(const void *entries[])
     {
-        DoMethod(muiObject(), MUIM_List_Insert, (ULONG)entries, -1, MUIV_List_Insert_Bottom);
+        DoMethod(muiObject(), MUIM_List_Insert, (ULONG)entries, -1, MUIV_List_Insert_Top);
         return *this;
     }
 
@@ -330,6 +330,42 @@ namespace MUI
         DoMethod(muiObject(), MUIM_List_Redraw, MUIV_List_Redraw_All, NULL);
         return (List &)*this;
     }
+
+    List &List::Exchange(const long pos1, const long pos2)
+    {
+        DoMethod(muiObject(), MUIM_List_Exchange, pos1, pos2);
+        return *this;
+    }
+
+    List &List::Move(const long from, const long to)
+    {
+        DoMethod(muiObject(), MUIM_List_Move, from, to);
+        return *this;
+    }
+
+    List &List::Select(const long position, const long selectType, long *pState)
+    {
+        DoMethod(muiObject(), MUIM_List_Select, position, selectType, pState);
+        return *this;
+    }
+
+    List &List::Sort()
+    {
+        DoMethod(muiObject(), MUIM_List_Sort);
+        return *this;
+    }
+
+    bool List::TestPos(const long x, const long y, struct MUI_List_TestPos_Result *pResult) const
+    {
+        return (bool)DoMethod(muiObject(), MUIM_List_TestPos, x, y, pResult);
+    }
+
+#ifdef MUIM_List_QueryColumnWidth
+    long List::QueryColumnWidth(const long column) const
+    {
+        return (long)DoMethod(muiObject(), MUIM_List_QueryColumnWidth, column);
+    }
+#endif
 
     ListBuilder::ListBuilder() { }
 }
