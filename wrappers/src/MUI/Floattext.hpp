@@ -95,7 +95,7 @@ namespace MUI
 #ifdef MUIA_Floattext_KeepStyles
         /// @brief [ @b MUIA_Floattext_KeepStyles ]
         /// If set to true any active text styles at the end of a paragraph will be kept instead of being reset
-        /// back to plain text. Defaults to @b FALSE.
+        /// back to plain text. Defaults to false.
         T &tagKeepStyles(const bool keepStyles);
 #endif
         /// @brief [ @b MUIA_Floattext_SkipChars ]

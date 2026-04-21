@@ -80,7 +80,7 @@ namespace MUI
 #endif
 #ifdef MUIA_Dtpic_DarkenSelState
         /// @brief [ @b MUIA_Dtpic_DarkenSelState ]
-        /// If set to TRUE the image's brightness will decreased by 50% whenever the left mouse button is pressed on the object.
+        /// If set to true the image's brightness will decreased by 50% whenever the left mouse button is pressed on the object.
         T &tagDarkenSelState(const bool darkenSelState);
 #endif
 #ifdef MUIA_Dtpic_Fade
@@ -94,7 +94,7 @@ namespace MUI
 #endif
 #ifdef MUIA_Dtpic_LightenOnMouse
         /// @brief [ @b MUIA_Dtpic_LightenOnMouse ]
-        /// If set to TRUE the image's brightness will increased by 20% whenever the mouse is moved over the object.
+        /// If set to true the image's brightness will increased by 20% whenever the mouse is moved over the object.
         T &tagLightenOnMouse(const bool lightenOnMouse);
 #endif
 #ifdef MUIA_Dtpic_Name
