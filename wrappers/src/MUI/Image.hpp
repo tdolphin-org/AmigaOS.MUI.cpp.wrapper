@@ -7,6 +7,7 @@
 #pragma once
 
 #include "Area.hpp"
+#include "Core/MUICompileConfig.hpp"
 
 namespace MUI
 {
@@ -29,6 +30,15 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
+#ifdef MOS_MUI_VERSION_5
+        // MUIA_Image_Spec is isg (gettable) only on MorphOS MUI 5.0; on AOS it is i.. (init-only)
+        /// @brief [ @b MUIA_Image_Spec ]
+        std::string getSpec() const;
+        // MUIA_Image_BuiltinSpec is isg (gettable) only on MorphOS MUI 5.0; on AOS V21 it is i..
+        /// @brief [ @b MUIA_Image_BuiltinSpec ]
+        unsigned long getBuiltinSpec() const;
+#endif
+
         /// @brief [ @b MUIA_Image_FontMatch ]
         Image &setFontMatch(const bool fontMatch);
         /// @brief [ @b MUIA_Image_FontMatchHeight ]
@@ -43,8 +53,8 @@ namespace MUI
         Image &setFreeHoriz(const bool freeHoriz);
         /// @brief [ @b MUIA_Image_FreeVert ]
         Image &setFreeVert(const bool freeVert);
-#if MUIMASTER_VMIN >= 20 // MUI5
-        /// @brief [ @b MUIA_Image_Spec ]
+#if defined(AOS_MUI_VERSION_5) || defined(MOS_MUI_VERSION_5) // MUI5: AmigaOS or MorphOS
+        /// @brief [ @b MUIA_Image_Spec (settable on AmigaOS and MorphOS MUI 5.0) ]
         Image &setSpec(const std::string &spec);
         /// @brief [ @b MUIA_Image_Spec with predefined images (like MUI::ImageOrBackground::ArrowUp) ]
         Image &setSpec(const enum ImageOrBackground spec);

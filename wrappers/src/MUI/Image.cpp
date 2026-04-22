@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Image.hpp"
@@ -11,6 +11,20 @@ namespace MUI
     const std::string Image::className = MUIC_Image;
 
     ImageBuilder::ImageBuilder() { }
+
+#ifdef MOS_MUI_VERSION_5
+    // MUIA_Image_Spec is isg (gettable) only on MorphOS MUI 5.0
+    std::string Image::getSpec() const
+    {
+        return GetValueAsString(MUIA_Image_Spec);
+    }
+
+    // MUIA_Image_BuiltinSpec is isg (gettable) only on MorphOS MUI 5.0
+    unsigned long Image::getBuiltinSpec() const
+    {
+        return GetValueAsULong(MUIA_Image_BuiltinSpec);
+    }
+#endif // MOS_MUI_VERSION_5
 
     Image &Image::setFontMatch(const bool fontMatch)
     {
@@ -50,7 +64,7 @@ namespace MUI
         return *this;
     }
 
-#if MUIMASTER_VMIN >= 20 // MUI5
+#if defined(AOS_MUI_VERSION_5) || defined(MOS_MUI_VERSION_5)  // MUI5: AmigaOS or MorphOS
     Image &Image::setSpec(const std::string &spec)
     {
         SetValue(MUIA_Image_Spec, spec);
