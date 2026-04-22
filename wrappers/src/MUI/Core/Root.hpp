@@ -77,6 +77,11 @@ namespace MUI
             return StringStorage::instance().Change(mpMuiObject, tagName, strings);
         }
 
+        void ClearStoredString(const unsigned long tagName)
+        {
+            StringStorage::instance().Remove(mpMuiObject, tagName);
+        }
+
         std::string GetValueAsString(const unsigned long tagName) const;
         char GetValueAsChar(const unsigned long tagName) const;
         unsigned long GetValueAsULong(const unsigned long tagName) const;

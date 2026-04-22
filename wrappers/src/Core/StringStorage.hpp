@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -14,6 +14,8 @@
 #include <string>
 #include <utility/tagitem.h>
 #include <vector>
+
+#undef Remove
 
 /// @brief String Storage Collector (SSC), collect copies of strings as char*, also copies arrays of strings as char**
 class StringStorageCore
@@ -74,6 +76,16 @@ class StringStorageCore
     /// @param strings new strings
     /// @return pointer to array of string copies (string array where last element pointer is nullptr)
     const char **Change(const Object *object, Tag tagName, const std::vector<std::string> &strings);
+
+    /// @brief remove stored string/string-array for given runtime object and tag
+    /// @param object object ptr
+    /// @param tagName tag name/id
+    void Remove(const Object *object, Tag tagName);
+
+    /// @brief remove stored string/string-array for given not-yet-created objectId and tag
+    /// @param objectId object id
+    /// @param tagName tag name/id
+    void Remove(const unsigned long objectId, Tag tagName);
 
   private:
     void ClearGarbage(); // clear garbage strings and string arrays

@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "StringStorage.hpp"
@@ -220,6 +220,74 @@ const char **StringStorageCore::Change(const Object *object, Tag tagName, const 
     mObjectPtrToArrayMap[reinterpret_cast<uintptr_t>(object)][tagName] = (const char **)pArray;
 
     return (const char **)pArray;
+}
+
+void StringStorageCore::Remove(const Object *object, Tag tagName)
+{
+#ifdef TRACE_SSC
+    std::cout << "SSC::Remove(object = " << ToString::FromDataPointer(object) << ", tag = " << AOS::TagUtil::toString(tagName) << ")"
+              << std::endl;
+#endif
+
+    ClearGarbage();
+
+    const auto objectKey = reinterpret_cast<uintptr_t>(object);
+
+    const auto &stringOuterIterator = mObjectPtrToMap.find(objectKey);
+    if (stringOuterIterator != mObjectPtrToMap.end())
+    {
+        const auto &stringInnerIterator = stringOuterIterator->second.find(tagName);
+        if (stringInnerIterator != stringOuterIterator->second.end())
+        {
+            mGarbageStrings.push_back(stringInnerIterator->second);
+            stringOuterIterator->second.erase(stringInnerIterator);
+        }
+    }
+
+    const auto &arrayOuterIterator = mObjectPtrToArrayMap.find(objectKey);
+    if (arrayOuterIterator != mObjectPtrToArrayMap.end())
+    {
+        const auto &arrayInnerIterator = arrayOuterIterator->second.find(tagName);
+        if (arrayInnerIterator != arrayOuterIterator->second.end())
+        {
+            mGarbageStringArrays.push_back(arrayInnerIterator->second);
+            arrayOuterIterator->second.erase(arrayInnerIterator);
+        }
+    }
+}
+
+void StringStorageCore::Remove(const unsigned long objectId, Tag tagName)
+{
+#ifdef TRACE_SSC
+    std::cout << "SSC::Remove(objectId = " << objectId << ", tag = " << AOS::TagUtil::toString(tagName) << ")" << std::endl;
+#endif
+
+    if (objectId == 0)
+        return;
+
+    ClearGarbage();
+
+    const auto &stringOuterIterator = mObjectIdToMap.find(objectId);
+    if (stringOuterIterator != mObjectIdToMap.end())
+    {
+        const auto &stringInnerIterator = stringOuterIterator->second.find(tagName);
+        if (stringInnerIterator != stringOuterIterator->second.end())
+        {
+            mGarbageStrings.push_back(stringInnerIterator->second);
+            stringOuterIterator->second.erase(stringInnerIterator);
+        }
+    }
+
+    const auto &arrayOuterIterator = mObjectIdToArrayMap.find(objectId);
+    if (arrayOuterIterator != mObjectIdToArrayMap.end())
+    {
+        const auto &arrayInnerIterator = arrayOuterIterator->second.find(tagName);
+        if (arrayInnerIterator != arrayOuterIterator->second.end())
+        {
+            mGarbageStringArrays.push_back(arrayInnerIterator->second);
+            arrayOuterIterator->second.erase(arrayInnerIterator);
+        }
+    }
 }
 
 void StringStorageCore::ClearGarbage()
