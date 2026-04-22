@@ -65,7 +65,7 @@ namespace MUI
 #endif
 
 #ifdef MUIA_Menuitem_Image
-    template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagImage(const Image *image)
+    template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagImage(const ::Image *image)
     {
         this->PushTag(MUIA_Menuitem_Image, image);
         return (T &)*this;

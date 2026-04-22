@@ -47,6 +47,24 @@ namespace MUI
         std::string getTitle() const;
         /// @brief [ @b MUIA_Menuitem_Toggle ]
         bool isToggle() const;
+        /// @brief [ @b MUIA_Menuitem_Shortcut ]
+        std::string getShortcut() const;
+        /// @brief [ @b MUIA_Menuitem_Trigger ]
+        const MenuItem *getTrigger() const;
+#ifdef MUIA_Menuitem_AISSName
+        /// @brief [ @b MUIA_Menuitem_AISSName ]
+        std::string getAISSName() const;
+#endif
+#ifdef MUIA_Menuitem_Image
+        /// @brief [ @b MUIA_Menuitem_Image ]
+        const ::Image *getImage() const;
+#endif
+#ifdef MUIA_Menuitem_Menuitem
+        /// @brief [ @b MUIA_Menuitem_Menuitem ]
+        Object *getMenuitemObject() const;
+        /// @brief [ @b MUIA_Menuitem_Menuitem ]
+        Menuitem getMenuitem() const;
+#endif
 
         /// @brief [ @b MUIA_Menuitem_Checked ]
         Menuitem &setChecked(const bool checked);
@@ -115,7 +133,7 @@ namespace MUI
 #endif
 #ifdef MUIA_Menuitem_Image
         /// @brief [ @b MUIA_Menuitem_Image ]
-        T &tagImage(const Image *image);
+        T &tagImage(const ::Image *image);
 #endif
 #ifdef MUIA_Menuitem_Menuitem
         /// @brief [ @b MUIA_Menuitem_Menuitem ]

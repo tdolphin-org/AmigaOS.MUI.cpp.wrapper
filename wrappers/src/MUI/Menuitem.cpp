@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Menuitem.hpp"
@@ -10,7 +10,7 @@
 
 namespace MUI
 {
-    const std::string Menuitem::className = MUIC_Balance;
+    const std::string Menuitem::className = MUIC_Menuitem;
 
     bool Menuitem::isChecked() const
     {
@@ -41,6 +41,42 @@ namespace MUI
     {
         return GetValueAsBool(MUIA_Menuitem_Toggle);
     }
+
+    std::string Menuitem::getShortcut() const
+    {
+        return GetValueAsString(MUIA_Menuitem_Shortcut);
+    }
+
+    const MenuItem *Menuitem::getTrigger() const
+    {
+        return (const MenuItem *)GetValueAsULong(MUIA_Menuitem_Trigger);
+    }
+
+#ifdef MUIA_Menuitem_AISSName
+    std::string Menuitem::getAISSName() const
+    {
+        return GetValueAsString(MUIA_Menuitem_AISSName);
+    }
+#endif
+
+#ifdef MUIA_Menuitem_Image
+    const ::Image *Menuitem::getImage() const
+    {
+        return (const ::Image *)GetValueAsULong(MUIA_Menuitem_Image);
+    }
+#endif
+
+#ifdef MUIA_Menuitem_Menuitem
+    Object *Menuitem::getMenuitemObject() const
+    {
+        return GetValueAsObjectPtr(MUIA_Menuitem_Menuitem);
+    }
+
+    Menuitem Menuitem::getMenuitem() const
+    {
+        return Menuitem(getMenuitemObject());
+    }
+#endif
 
     Menuitem &Menuitem::setChecked(const bool checked)
     {

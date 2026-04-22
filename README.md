@@ -125,7 +125,7 @@ ___
 | [MUIC_Listview](https://github.com/amiga-mui/muidev/wiki/MUI_Listview) | [MUI::Listview](/wrappers/src/MUI/Listview.hpp) | in progress | in progress | - | - |
 | [MUIC_Mccprefs](https://github.com/amiga-mui/muidev/wiki/MUI_Mccprefs) | - | - | - | - | - |
 | [MUIC_Menu](https://github.com/amiga-mui/muidev/wiki/MUI_Menu) | [MUI::Menu](/wrappers/src/MUI/Menu.hpp) | Ready | Ready | in progress | in progress |
-| [MUIC_Menuitem](https://github.com/amiga-mui/muidev/wiki/MUI_Menuitem) | [MUI::Menuitem](/wrappers/src/MUI/Menuitem.hpp) | in progress | Ready | in progress | in progress |
+| [MUIC_Menuitem](https://github.com/amiga-mui/muidev/wiki/MUI_Menuitem) | [MUI::Menuitem](/wrappers/src/MUI/Menuitem.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready | in progress | in progress |
 | [MUIC_Menustrip](https://github.com/amiga-mui/muidev/wiki/MUI_Menustrip) | [MUI::Menustrip](/wrappers/src/MUI/Menustrip.hpp) | in progress | Ready | - | - |
 | [MUIC_Notify](https://github.com/amiga-mui/muidev/wiki/MUI_Notify) | [MUI::Notify](/wrappers/src/MUI/Notify.hpp) | in progress | Ready | in progress | in progress |
 | [MUIC_Numericbutton](https://github.com/amiga-mui/muidev/wiki/MUI_Numericbutton) | - | - | - | - | - |
