@@ -36,15 +36,42 @@ namespace MUI
 
 #ifdef MUIA_Menustrip_CaseSensitive
         /// @brief [ @b MUIA_Menustrip_CaseSensitive ]
+        /// Query whether keyboard shortcut matching is case sensitive.
         bool isCaseSensitive() const;
 #endif
         /// @brief [ @b MUIA_Menustrip_Enabled ]
+        /// Query whether this menustrip is currently enabled.
         bool isEnabled() const;
 
         /// @brief [ @b MUIA_Menustrip_Enabled ]
+        /// Enable or disable this menustrip.
         Menustrip &setEnabled(const bool enabled);
 
         // methods, some returns object reference
+
+#ifdef MUIM_Menustrip_ExitChange
+        /// @brief [ @b MUIM_Menustrip_ExitChange ]
+        /// End a menustrip change session and apply pending updates.
+        Menustrip &ExitChange();
+#endif
+#ifdef MUIM_Menustrip_InitChange
+        /// @brief [ @b MUIM_Menustrip_InitChange ]
+        /// Begin a menustrip change session.
+        Menustrip &InitChange();
+#endif
+#ifdef MUIM_Menustrip_Popup
+        /// @brief [ @b MUIM_Menustrip_Popup ]
+        /// Open this menustrip as a popup menu with a native parent object.
+        unsigned long Popup(const Object *parent = nullptr, const unsigned long flags = 0, const long x = 0, const long y = 0);
+        /// @brief [ @b MUIM_Menustrip_Popup ]
+        /// Open this menustrip as a popup menu with a wrapper parent object.
+        unsigned long Popup(const Root &parent, const unsigned long flags = 0, const long x = 0, const long y = 0);
+#endif
+#ifdef MUIM_Menustrip_WillOpen
+        /// @brief [ @b MUIM_Menustrip_WillOpen ]
+        /// Notify the menustrip that it is about to open.
+        unsigned long WillOpen();
+#endif
     };
 
     template <typename T, typename U> class MenustripBuilderTemplate : public FamilyBuilderTemplate<T, U>
@@ -57,9 +84,11 @@ namespace MUI
 
 #ifdef MUIA_Menustrip_CaseSensitive
         /// @brief [ @b MUIA_Menustrip_CaseSensitive ]
+        /// Set the initial case sensitivity for shortcut matching.
         T &tagCaseSensitive(const bool caseSensitive);
 #endif
         /// @brief [ @b MUIA_Menustrip_Enabled ]
+        /// Set the initial enabled state for this menustrip.
         T &tagEnabled(const bool enabled);
     };
 

@@ -35,13 +35,17 @@ namespace MUI
         // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Menu_Enabled ]
+        /// Query whether this menu is currently enabled.
         bool isEnabled() const;
         /// @brief [ @b MUIA_Menu_Title ]
+        /// Return the current title text of this menu.
         std::string getTitle() const;
 
         /// @brief [ @b MUIA_Menu_Enabled ]
+        /// Enable or disable this menu.
         Menu &setEnabled(const bool enabled);
         /// @brief [ @b MUIA_Menu_Title ]
+        /// Set the visible title text of this menu.
         Menu &setTitle(const std::string &title);
 
         // methods, some returns object reference
@@ -62,10 +66,13 @@ namespace MUI
         T &tagCopyStrings(const bool copyStrings);
 #endif
         /// @brief [ @b MUIA_Menu_Enabled ]
+        /// Set the initial enabled state for this menu.
         T &tagEnabled(const bool enabled);
         /// @brief [ @b MUIA_Menu_Title ]
+        /// Set the initial title text from a C string.
         T &tagTitle(const char *title);
         /// @brief [ @b MUIA_Menu_Title ]
+        /// Set the initial title text from a std::string.
         T &tagTitle(const std::string &title);
     };
 
