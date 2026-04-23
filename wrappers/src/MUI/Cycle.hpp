@@ -33,23 +33,23 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-        /// @brief [ @b MUIA_Cycle_Active ]
+        /// @brief [ @b MUIA_Cycle_Active ] Get the index of the currently active cycle entry.
         long getActive() const;
 
-        /// @brief [ @b MUIA_Cycle_Active ]
+        /// @brief [ @b MUIA_Cycle_Active ] Set the active cycle entry using predefined Cycle_Active values.
         Cycle &setActive(const enum Cycle_Active active);
-        /// @brief [ @b MUIA_Cycle_Active, @b MUIV_Cycle_Active_Next ]
+        /// @brief [ @b MUIA_Cycle_Active, @b MUIV_Cycle_Active_Next ] Select the next cycle entry.
         Cycle &setActiveNext();
-        /// @brief [ @b MUIA_Cycle_Active, @b MUIV_Cycle_Active_Prev ]
+        /// @brief [ @b MUIA_Cycle_Active, @b MUIV_Cycle_Active_Prev ] Select the previous cycle entry.
         Cycle &setActivePrev();
-        /// @brief [ @b MUIA_Cycle_Active ]
+        /// @brief [ @b MUIA_Cycle_Active ] Set the active cycle entry by zero-based index.
         Cycle &setActive(const unsigned long active);
-        /// @brief [ @b MUIA_Cycle_Entries ]
+        /// @brief [ @b MUIA_Cycle_Entries ] Set displayed cycle entries using a NULL-terminated C string array.
         Cycle &setEntries(const char *entries[]);
         /// @brief [ @b MUIA_Cycle_Entries ]
         /// The string copies are stored internally by this C++ wrapper!
         Cycle &setEntries(const std::vector<std::string> &entries);
-        /// @brief [ @b MUIA_Cycle_Entries ] explicitly set to nullptr (clear entries)
+        /// @brief [ @b MUIA_Cycle_Entries ] Clear entries by explicitly setting the attribute to nullptr.
         Cycle &setEntriesNull();
     };
 
@@ -75,7 +75,7 @@ namespace MUI
         /// for each item. The string copies are stored internally by this C++ wrapper!
         T &tagEntries(const std::vector<std::string> &entries);
 
-        /// @brief [ @b MUIA_Cycle_Entries ] explicitly set to nullptr
+        /// @brief [ @b MUIA_Cycle_Entries ] Clear entries by explicitly setting the builder tag to nullptr.
         T &tagEntriesNull();
     };
 
