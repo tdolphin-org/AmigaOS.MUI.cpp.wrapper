@@ -8,24 +8,14 @@
 
 #include "Area.hpp"
 
-#include "ValueTypes/String/Format.hpp"
+#include "Core/Optional.hpp"
 
-#ifdef __MORPHOS__
-#include <optional>
-#else
-#include <experimental/optional>
-#endif
+#include "ValueTypes/String/Format.hpp"
 
 #undef String // undef macro from mui.h
 
 namespace MUI
 {
-#ifdef __MORPHOS__
-    template <typename T> using Optional = std::optional<T>;
-#else
-    template <typename T> using Optional = std::experimental::optional<T>;
-#endif
-
     class String : public Area
     {
       public:
