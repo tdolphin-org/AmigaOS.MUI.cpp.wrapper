@@ -69,18 +69,18 @@ namespace MUI
 
         // methods, some returns object reference
 
-        /// @brief [ @b MUIM_Numeric_Decrease ]
+        /// @brief [ @b MUIM_Numeric_Decrease ] Decrease the value of a numeric class object.
         Numeric &Decrease(const long amount);
-        /// @brief [ @b MUIM_Numeric_Increase ]
+        /// @brief [ @b MUIM_Numeric_Increase ] Increase the value of a numeric class object.
         Numeric &Increase(const long amount);
-        /// @brief [ @b MUIM_Numeric_ScaleToValue ]
-        Numeric &ScaleToValue(const long scalemin, const long scalemax, const long scale);
-        /// @brief [ @b MUIM_Numeric_SetDefault ]
+        /// @brief [ @b MUIM_Numeric_ScaleToValue ] Transform a scale value to the numeric object's min/max range.
+        long ScaleToValue(const long scalemin, const long scalemax, const long scale) const;
+        /// @brief [ @b MUIM_Numeric_SetDefault ] Reset the current value to the configured default.
         Numeric &SetDefault();
-        /// @brief [ @b MUIM_Numeric_Stringify ]
-        Numeric &Stringify(const long value);
-        /// @brief [ @b MUIM_Numeric_ValueToScale ]
-        Numeric &ValueToScale(const long scalemin, const long scalemax);
+        /// @brief [ @b MUIM_Numeric_Stringify ] Translate a numeric value into its string representation.
+        std::string Stringify(const long value) const;
+        /// @brief [ @b MUIM_Numeric_ValueToScale ] Transform the current numeric value to the requested scale.
+        long ValueToScale(const long scalemin, const long scalemax) const;
     };
 
     template <typename T, typename U> class NumericBuilderTemplate : public AreaBuilderTemplate<T, U>

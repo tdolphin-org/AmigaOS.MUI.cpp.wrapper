@@ -125,10 +125,9 @@ namespace MUI
         return *this;
     }
 
-    Numeric &Numeric::ScaleToValue(const long scalemin, const long scalemax, const long scale)
+    long Numeric::ScaleToValue(const long scalemin, const long scalemax, const long scale) const
     {
-        DoMethod(muiObject(), MUIM_Numeric_ScaleToValue, scalemin, scalemax, scale);
-        return *this;
+        return (long)DoMethod(muiObject(), MUIM_Numeric_ScaleToValue, scalemin, scalemax, scale);
     }
 
     Numeric &Numeric::SetDefault()
@@ -137,16 +136,15 @@ namespace MUI
         return *this;
     }
 
-    Numeric &Numeric::Stringify(const long value)
+    std::string Numeric::Stringify(const long value) const
     {
-        DoMethod(muiObject(), MUIM_Numeric_Stringify, value);
-        return *this;
+        const char *result = (const char *)DoMethod(muiObject(), MUIM_Numeric_Stringify, value);
+        return result ? std::string(result) : std::string();
     }
 
-    Numeric &Numeric::ValueToScale(const long scalemin, const long scalemax)
+    long Numeric::ValueToScale(const long scalemin, const long scalemax) const
     {
-        DoMethod(muiObject(), MUIM_Numeric_ValueToScale, scalemin, scalemax);
-        return *this;
+        return (long)DoMethod(muiObject(), MUIM_Numeric_ValueToScale, scalemin, scalemax);
     }
 
 }
