@@ -40,6 +40,9 @@ namespace MUI
         /// @brief [ @b MUIA_Application_Active ]
         /// This attribute reflects the state that the user adjusted with commodities Exchange.
         bool isActive() const;
+        /// @brief [ @b MUIA_Application_Active ]
+        /// Set current active state as adjusted by commodities Exchange.
+        Application &setActive(const bool active);
         /// @brief [ @b MUIA_Application_Author ]
         /// Name of the application's author.
         std::string getAuthor() const;
@@ -78,13 +81,13 @@ namespace MUI
         /// @brief [ @b MUIA_Application_DoubleStart ]
         /// True if the user tried to start a single task application twice.
         bool isDoubleStart() const;
-        /// @brief [ @b MUIA_Application_DropObject ]
-        /// Object that receives AppMessages when icons are dropped onto the AppIcon while iconified.
-        Object *getDropObject() const;
         /// @brief [ @b MUIA_Application_ForceQuit ]
         /// True if the application should exit quietly without additional safety requesters.
         /// MUI sets this e.g. for a QUIT FORCE ARexx command.
         bool isForceQuit() const;
+        /// @brief [ @b MUIA_Application_ForceQuit ]
+        /// Set whether the application should quit quietly without additional safety requesters.
+        Application &setForceQuit(const bool forceQuit);
         /// @brief [ @b MUIA_Application_HelpFile ]
         /// AmigaGuide style help file used for online help.
         /// MUI resolves help nodes and lines by walking from the current object up to the application.
@@ -136,6 +139,9 @@ namespace MUI
         /// NULL terminated list of external custom classes used by the application.
         /// Only external classes ending in .mcc should be listed here.
         std::vector<std::string> getUsedClasses() const;
+        /// @brief [ @b MUIA_Application_UsedClasses ]
+        /// NULL terminated list of external custom classes used by the application.
+        Application &setUsedClasses(const char *usedClasses[]);
 #endif
         /// @brief [ @b MUIA_Application_Version ]
         /// Version string of the application.
@@ -319,6 +325,9 @@ namespace MUI
       public:
         ApplicationBuilder();
 
+        /// @brief [ @b MUIA_Application_Active ]
+        /// Define initial active state as adjusted by commodities Exchange.
+        ApplicationBuilder &tagActive(const bool active);
         /// @brief [ @b MUIA_Application_Author ]
         /// Name of the application's author.
         ApplicationBuilder &tagAuthor(const char *author);

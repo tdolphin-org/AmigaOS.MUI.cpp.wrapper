@@ -22,6 +22,12 @@ namespace MUI
         return GetValueAsBool(MUIA_Application_Active);
     }
 
+    Application &Application::setActive(const bool active)
+    {
+        SetValue(MUIA_Application_Active, active);
+        return *this;
+    }
+
     std::string Application::getAuthor() const
     {
         return GetValueAsString(MUIA_Application_Author);
@@ -77,14 +83,15 @@ namespace MUI
         return GetValueAsBool(MUIA_Application_DoubleStart);
     }
 
-    Object *Application::getDropObject() const
-    {
-        return GetValueAsObjectPtr(MUIA_Application_DropObject);
-    }
-
     bool Application::isForceQuit() const
     {
         return GetValueAsBool(MUIA_Application_ForceQuit);
+    }
+
+    Application &Application::setForceQuit(const bool forceQuit)
+    {
+        SetValue(MUIA_Application_ForceQuit, forceQuit);
+        return *this;
     }
 
     std::string Application::getHelpFile() const
@@ -176,6 +183,12 @@ namespace MUI
             result.emplace_back(*entry);
 
         return result;
+    }
+
+    Application &Application::setUsedClasses(const char *usedClasses[])
+    {
+        SetValue(MUIA_Application_UsedClasses, usedClasses);
+        return *this;
     }
 #endif
 
@@ -449,6 +462,12 @@ namespace MUI
     ApplicationBuilder::ApplicationBuilder()
       : NotifyBuilderTemplate(MUI::EmptyUniqueId, MUIC_Application)
     {
+    }
+
+    ApplicationBuilder &ApplicationBuilder::tagActive(const bool active)
+    {
+        this->PushTag(MUIA_Application_Active, active);
+        return *this;
     }
 
     ApplicationBuilder &ApplicationBuilder::tagAuthor(const char *author)
