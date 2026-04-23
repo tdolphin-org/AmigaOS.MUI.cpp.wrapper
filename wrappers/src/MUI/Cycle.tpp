@@ -28,4 +28,10 @@ namespace MUI
         this->PushTag(MUIA_Cycle_Entries, copy);
         return (T &)*this;
     }
+
+    template <typename T, typename U> inline T &CycleBuilderTemplate<T, U>::tagEntriesNull()
+    {
+        this->PushTag(MUIA_Cycle_Entries, nullptr);
+        return (T &)*this;
+    }
 }

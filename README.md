@@ -104,7 +104,7 @@ ___
 | [MUIC_Boopsi](https://github.com/amiga-mui/muidev/wiki/MUI_Boopsi) | - | - | - | - | - |
 | [MUIC_Coloradjust](https://github.com/amiga-mui/muidev/wiki/MUI_Coloradjust) | [MUI::Coloradjust](/wrappers/src/MUI/Coloradjust.hpp) | Ready | Ready | - | - |
 | [MUIC_Colorfield](https://github.com/amiga-mui/muidev/wiki/MUI_Colorfield) | [MUI::Colorfield](/wrappers/src/MUI/Colorfield.hpp) | Ready | Ready | - | - |
-| [MUIC_Cycle](https://github.com/amiga-mui/muidev/wiki/MUI_Cycle) | [MUI::Cycle](/wrappers/src/MUI/Cycle.hpp) | Ready | Ready | Ready | Ready |
+| [MUIC_Cycle](https://github.com/amiga-mui/muidev/wiki/MUI_Cycle) | [MUI::Cycle](/wrappers/src/MUI/Cycle.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | Ready | Ready |
 | [MUIC_Datamap](https://github.com/amiga-mui/muidev/wiki/MUI_Datamap) | - | - | - | - | - |
 | [MUIC_Dataspace](https://github.com/amiga-mui/muidev/wiki/MUI_Dataspace) | - | - | - | - | - |
 | [MUIC_Dirlist](https://github.com/amiga-mui/muidev/wiki/MUI_Dirlist) | - | - | - | - | - |

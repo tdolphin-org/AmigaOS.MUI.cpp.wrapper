@@ -52,5 +52,12 @@ namespace MUI
         return *this;
     }
 
+    Cycle &Cycle::setEntriesNull()
+    {
+        ClearStoredString(MUIA_Cycle_Entries);
+        SetValue(MUIA_Cycle_Entries, nullptr);
+        return *this;
+    }
+
     CycleBuilder::CycleBuilder() { }
 }

@@ -49,6 +49,8 @@ namespace MUI
         /// @brief [ @b MUIA_Cycle_Entries ]
         /// The string copies are stored internally by this C++ wrapper!
         Cycle &setEntries(const std::vector<std::string> &entries);
+        /// @brief [ @b MUIA_Cycle_Entries ] explicitly set to nullptr (clear entries)
+        Cycle &setEntriesNull();
     };
 
     template <typename T, typename U> class CycleBuilderTemplate : public GroupBuilderTemplate<T, U>
@@ -72,6 +74,9 @@ namespace MUI
         /// Define what entries shall be displayed in your cycle gadget. You must supply a vector of strings, containing one entry
         /// for each item. The string copies are stored internally by this C++ wrapper!
         T &tagEntries(const std::vector<std::string> &entries);
+
+        /// @brief [ @b MUIA_Cycle_Entries ] explicitly set to nullptr
+        T &tagEntriesNull();
     };
 
     class CycleBuilder : public CycleBuilderTemplate<CycleBuilder, Cycle>
