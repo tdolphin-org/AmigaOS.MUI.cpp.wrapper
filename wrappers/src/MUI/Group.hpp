@@ -18,6 +18,7 @@
 
 namespace MUI
 {
+    /// @brief Group class manages layout and child objects inside MUI windows.
     class Group : public Area
     {
       public:
@@ -40,33 +41,13 @@ namespace MUI
         /// @brief [ @b MUIA_Group_ActivePage ]
         /// @return active page (index).
         long getActivePage() const;
-#ifdef MUIA_Group_Columns
-        /// @brief [ @b MUIA_Group_Columns ]
-        /// @return number of columns in a two dimensional group.
-        long getColumns() const;
-#endif
 #ifdef MUIA_Group_ChildCount
-        /// @brief [ @b MUIA_Group_ChildCount ]
+        /// @brief [ @b MUIA_Group_ChildCount ] Read number of child objects in this group.
         long getChildCount() const;
 #endif
         /// @brief [ @b MUIA_Group_ChildList ]
         /// @return list of child objects.
         const struct List *getChildList() const;
-#ifdef MUIA_Group_Forward
-        /// @brief [ @b MUIA_Group_Forward ]
-        /// @return whether forward keyboard focus traversal is enabled.
-        bool getForward() const;
-#endif
-#ifdef MUIA_Group_ForwardDepth
-        /// @brief [ @b MUIA_Group_ForwardDepth ]
-        /// @return depth used for forward focus handling.
-        unsigned long getForwardDepth() const;
-#endif
-#ifdef MUIA_Group_Horiz
-        /// @brief [ @b MUIA_Group_Horiz ]
-        /// @return whether the group layout is horizontal.
-        bool getHoriz() const;
-#endif
 #ifdef MUIA_Group_HorizCenter
         /// @brief [ @b MUIA_Group_HorizCenter ]
         /// @return horizontal center alignment.
@@ -75,41 +56,6 @@ namespace MUI
         /// @brief [ @b MUIA_Group_HorizSpacing ]
         /// @return Number of pixels inserted between horizontal elements of a group.
         long getHorizSpacing() const;
-#ifdef MUIA_Group_LayoutHook
-        /// @brief [ @b MUIA_Group_LayoutHook ]
-        /// @return pointer to custom layout hook.
-        Hook *getLayoutHook() const;
-#endif
-#ifdef MUIA_Group_PageMode
-        /// @brief [ @b MUIA_Group_PageMode ]
-        /// @return whether this group behaves as a page group.
-        bool getPageMode() const;
-#endif
-#ifdef MUIA_Group_Rows
-        /// @brief [ @b MUIA_Group_Rows ]
-        /// @return number of rows in a two dimensional group.
-        long getRows() const;
-#endif
-#ifdef MUIA_Group_SameHeight
-        /// @brief [ @b MUIA_Group_SameHeight ]
-        /// @return whether all children should have the same height.
-        bool getSameHeight() const;
-#endif
-#ifdef MUIA_Group_SameSize
-        /// @brief [ @b MUIA_Group_SameSize ]
-        /// @return whether all children should have the same size.
-        bool getSameSize() const;
-#endif
-#ifdef MUIA_Group_SameWidth
-        /// @brief [ @b MUIA_Group_SameWidth ]
-        /// @return whether all children should have the same width.
-        bool getSameWidth() const;
-#endif
-#ifdef MUIA_Group_Spacing
-        /// @brief [ @b MUIA_Group_Spacing ]
-        /// @return spacing used between children.
-        long getSpacing() const;
-#endif
 #ifdef MUIA_Group_VertCenter
         /// @brief [ @b MUIA_Group_VertCenter ]
         /// @return vertical center alignment.
@@ -148,11 +94,6 @@ namespace MUI
         /// Set depth used for forward focus handling.
         Group &setForwardDepth(const unsigned long forwardDepth);
 #endif
-#ifdef MUIA_Group_Horiz
-        /// @brief [ @b MUIA_Group_Horiz ]
-        /// Set horizontal/vertical group layout.
-        Group &setHoriz(const bool horiz);
-#endif
 #ifdef MUIA_Group_HorizCenter
         /// @brief [ @b MUIA_Group_HorizCenter ]
         /// Set horizontal center alignment.
@@ -161,35 +102,10 @@ namespace MUI
         /// @brief [ @b MUIA_Group_HorizSpacing ]
         /// Set number of pixels inserted between horizontal elements.
         Group &setHorizSpacing(const long horizSpacing);
-#ifdef MUIA_Group_LayoutHook
-        /// @brief [ @b MUIA_Group_LayoutHook ]
-        /// Set custom layout hook.
-        Group &setLayoutHook(const Hook *pLayoutHook);
-#endif
-#ifdef MUIA_Group_PageMode
-        /// @brief [ @b MUIA_Group_PageMode ]
-        /// Enable/disable page mode.
-        Group &setPageMode(const bool pageMode);
-#endif
 #ifdef MUIA_Group_Rows
         /// @brief [ @b MUIA_Group_Rows ]
         /// Set number of rows in a two dimensional group.
         Group &setRows(const long rows);
-#endif
-#ifdef MUIA_Group_SameHeight
-        /// @brief [ @b MUIA_Group_SameHeight ]
-        /// Enable/disable same height for all children.
-        Group &setSameHeight(const bool sameHeight);
-#endif
-#ifdef MUIA_Group_SameSize
-        /// @brief [ @b MUIA_Group_SameSize ]
-        /// Enable/disable same size for all children.
-        Group &setSameSize(const bool sameSize);
-#endif
-#ifdef MUIA_Group_SameWidth
-        /// @brief [ @b MUIA_Group_SameWidth ]
-        /// Enable/disable same width for all children.
-        Group &setSameWidth(const bool sameWidth);
 #endif
 #ifdef MUIA_Group_Spacing
         /// @brief [ @b MUIA_Group_Spacing ]
@@ -208,44 +124,59 @@ namespace MUI
         // methods, some returns object reference
 
 #ifdef MUIM_Group_AddHead
-        /// @brief [ @b MUIM_Group_AddHead ]
+        /// @brief [ @b MUIM_Group_AddHead ] Add child object at the beginning of the group child list.
+        /// @param pChildObject child object to insert, ignored when nullptr
         Group &AddHead(const Object *pChildObject);
-        /// @brief [ @b MUIM_Group_AddHead ]
+        /// @brief [ @b MUIM_Group_AddHead ] Add child object at the beginning of the group child list.
+        /// @param child child wrapper to insert, ignored when it wraps a null object
         Group &AddHead(const Root &child);
 #endif
 #ifdef MUIM_Group_AddTail
-        /// @brief [ @b MUIM_Group_AddTail ]
+        /// @brief [ @b MUIM_Group_AddTail ] Add child object at the end of the group child list.
+        /// @param pChildObject child object to insert, ignored when nullptr
         Group &AddTail(const Object *pChildObject);
-        /// @brief [ @b MUIM_Group_AddTail ]
+        /// @brief [ @b MUIM_Group_AddTail ] Add child object at the end of the group child list.
+        /// @param child child wrapper to insert, ignored when it wraps a null object
         Group &AddTail(const Root &child);
 #endif
-        /// @brief [ @b MUIM_Group_ExitChange ]
+        /// @brief [ @b MUIM_Group_ExitChange ] Leave dynamic child-list modification mode and trigger relayout.
         Group &ExitChange();
 #ifdef MUIM_Group_ExitChange2
-        /// @brief [ @b MUIM_Group_ExitChange2 ]
+        /// @brief [ @b MUIM_Group_ExitChange2 ] Leave dynamic child-list modification mode with flags.
+        /// @param flags set to 0 to suppress automatic relayout
         Group &ExitChange2(const unsigned long flags = 0);
 #endif
-        /// @brief [ @b MUIM_Group_InitChange ]
+        /// @brief [ @b MUIM_Group_InitChange ] Enter dynamic child-list modification mode.
         Group &InitChange();
 #ifdef MUIM_Group_MoveMember
-        /// @brief [ @b MUIM_Group_MoveMember ]
+        /// @brief [ @b MUIM_Group_MoveMember ] Move existing child to a new position in the group.
+        /// @param pChildObject child object to move
+        /// @param pos target position (0 first, -1 last, other values per MUIM_Group_MoveMember rules)
         Group &MoveMember(const Object *pChildObject, const long pos);
-        /// @brief [ @b MUIM_Group_MoveMember ]
+        /// @brief [ @b MUIM_Group_MoveMember ] Move existing child to a new position in the group.
+        /// @param child child wrapper to move
+        /// @param pos target position (0 first, -1 last, other values per MUIM_Group_MoveMember rules)
         Group &MoveMember(const Root &child, const long pos);
 #endif
 #ifdef MUIM_Group_Remove
-        /// @brief [ @b MUIM_Group_Remove ]
+        /// @brief [ @b MUIM_Group_Remove ] Remove child object from the group child list.
+        /// @param pChildObject child object to remove, ignored when nullptr
         Group &Remove(const Object *pChildObject);
-        /// @brief [ @b MUIM_Group_Remove ]
+        /// @brief [ @b MUIM_Group_Remove ] Remove child object from the group child list.
+        /// @param child child wrapper to remove, ignored when it wraps a null object
         Group &Remove(const Root &child);
 #endif
 
 #ifdef MUIM_Group_Reorder
         /// @brief [ @b MUIM_Group_Reorder ]
         /// Reorder the children of a group.
+        /// @param after anchor object; nullptr moves objects to front, (Object *)-1 moves to back
+        /// @param objects null-terminated order source converted internally from vector
         Group &Reorder(const Object *after, const std::vector<const Object *> &objects);
         /// @brief [ @b MUIM_Group_Reorder ]
         /// Reorder the children of a group.
+        /// @param after anchor object; nullptr moves objects to front, (Object *)-1 moves to back
+        /// @param objects objects to reorder
         Group &Reorder(const Object *after, const std::initializer_list<const Object *> &objects);
         /// @brief [ @b MUIM_Group_Reorder, after = 0 ]
         /// Reorder the given children to the front of the group child list.
@@ -263,20 +194,26 @@ namespace MUI
 
         /// @brief [ @b MUIM_Group_Sort ]
         /// Sort the children of a group.
+        /// @param objects full child order (must contain all children)
         Group &Sort(const std::vector<const Object *> &objects);
         /// @brief [ @b MUIM_Group_Sort ]
         /// Sort the children of a group.
+        /// @param objects full child order (must contain all children)
         Group &Sort(const std::initializer_list<const Object *> &objects);
 
-        /// @brief [ @b OM_ADDMEMBER ]
+        /// @brief [ @b OM_ADDMEMBER ] Add child object to group.
+        /// @param pChildObject child object to add, ignored when nullptr
         Group &AddMember(const Object *pChildObject);
-        /// @brief [ @b OM_ADDMEMBER ]
+        /// @brief [ @b OM_ADDMEMBER ] Add child object to group.
+        /// @param child child wrapper to add
         Group &AddMember(const Root &child);
-        /// @brief [ @b OM_REMMEMBER ]
+        /// @brief [ @b OM_REMMEMBER ] Remove child object from group.
+        /// @param pChildObject child object to remove, ignored when nullptr
         // After disconnecting an object from Group we must call explicitly DiposeObject() on the disconnected child
         // object, otherwise the memory will not be released
         Group &RemMember(const Object *pChildObject);
-        /// @brief [ @b OM_REMMEMBER ]
+        /// @brief [ @b OM_REMMEMBER ] Remove child object from group.
+        /// @param child child wrapper to remove
         // After disconnecting an object from Group we must call explicitly DiposeObject() on the disconnected child
         // object, otherwise the memory will not be released
         Group &RemMember(const Root &child);
@@ -346,15 +283,6 @@ namespace MUI
 #endif
         /// @brief [ @b MUIA_Group_VertSpacing ]
         T &tagVertSpacing(const long vertSpacing);
-#ifdef MUIA_Group_Forward
-        /// @brief [ @b MUIA_Group_Forward ]
-        T &tagForward(const bool forward);
-#endif
-#ifdef MUIA_Group_ForwardDepth
-        /// @brief [ @b MUIA_Group_ForwardDepth ]
-        T &tagForwardDepth(const unsigned long forwardDepth);
-#endif
-
         /// @brief replaces mui macro GroupFrameT
         T &groupFrame(const std::string &title);
     };

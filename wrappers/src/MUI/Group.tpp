@@ -132,22 +132,6 @@ namespace MUI
         return (T &)*this;
     }
 
-#ifdef MUIA_Group_Forward
-    template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::tagForward(const bool forward)
-    {
-        this->PushTag(MUIA_Group_Forward, forward);
-        return (T &)*this;
-    }
-#endif
-
-#ifdef MUIA_Group_ForwardDepth
-    template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::tagForwardDepth(const unsigned long forwardDepth)
-    {
-        this->PushTag(MUIA_Group_ForwardDepth, forwardDepth);
-        return (T &)*this;
-    }
-#endif
-
     template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::groupFrame(const std::string &title)
     {
         this->PushTag(MUIA_Frame, (long)MUI::Frame::Group);

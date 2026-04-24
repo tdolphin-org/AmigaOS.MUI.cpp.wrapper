@@ -18,13 +18,6 @@ namespace MUI
         return GetValueAsLong(MUIA_Group_ActivePage);
     }
 
-#ifdef MUIA_Group_Columns
-    long Group::getColumns() const
-    {
-        return GetValueAsLong(MUIA_Group_Columns);
-    }
-#endif
-
 #ifdef MUIA_Group_ChildCount
     long Group::getChildCount() const
     {
@@ -37,27 +30,6 @@ namespace MUI
         return GetValueAsConstListPtr(MUIA_Group_ChildList);
     }
 
-#ifdef MUIA_Group_Forward
-    bool Group::getForward() const
-    {
-        return GetValueAsBool(MUIA_Group_Forward);
-    }
-#endif
-
-#ifdef MUIA_Group_ForwardDepth
-    unsigned long Group::getForwardDepth() const
-    {
-        return GetValueAsULong(MUIA_Group_ForwardDepth);
-    }
-#endif
-
-#ifdef MUIA_Group_Horiz
-    bool Group::getHoriz() const
-    {
-        return GetValueAsBool(MUIA_Group_Horiz);
-    }
-#endif
-
 #ifdef MUIA_Group_HorizCenter
     Group_HorizCenter Group::getHorizCenter() const
     {
@@ -69,55 +41,6 @@ namespace MUI
     {
         return GetValueAsLong(MUIA_Group_HorizSpacing);
     }
-
-#ifdef MUIA_Group_LayoutHook
-    Hook *Group::getLayoutHook() const
-    {
-        return GetValueAsHookPtr(MUIA_Group_LayoutHook);
-    }
-#endif
-
-#ifdef MUIA_Group_PageMode
-    bool Group::getPageMode() const
-    {
-        return GetValueAsBool(MUIA_Group_PageMode);
-    }
-#endif
-
-#ifdef MUIA_Group_Rows
-    long Group::getRows() const
-    {
-        return GetValueAsLong(MUIA_Group_Rows);
-    }
-#endif
-
-#ifdef MUIA_Group_SameHeight
-    bool Group::getSameHeight() const
-    {
-        return GetValueAsBool(MUIA_Group_SameHeight);
-    }
-#endif
-
-#ifdef MUIA_Group_SameSize
-    bool Group::getSameSize() const
-    {
-        return GetValueAsBool(MUIA_Group_SameSize);
-    }
-#endif
-
-#ifdef MUIA_Group_SameWidth
-    bool Group::getSameWidth() const
-    {
-        return GetValueAsBool(MUIA_Group_SameWidth);
-    }
-#endif
-
-#ifdef MUIA_Group_Spacing
-    long Group::getSpacing() const
-    {
-        return GetValueAsLong(MUIA_Group_Spacing);
-    }
-#endif
 
 #ifdef MUIA_Group_VertCenter
     Group_VertCenter Group::getVertCenter() const
@@ -180,14 +103,6 @@ namespace MUI
     }
 #endif
 
-#ifdef MUIA_Group_Horiz
-    Group &Group::setHoriz(const bool horiz)
-    {
-        SetValue(MUIA_Group_Horiz, horiz);
-        return *this;
-    }
-#endif
-
 #ifdef MUIA_Group_HorizCenter
     Group &Group::setHorizCenter(const enum Group_HorizCenter horizCenter)
     {
@@ -202,50 +117,10 @@ namespace MUI
         return *this;
     }
 
-#ifdef MUIA_Group_LayoutHook
-    Group &Group::setLayoutHook(const Hook *pLayoutHook)
-    {
-        SetValue(MUIA_Group_LayoutHook, pLayoutHook);
-        return *this;
-    }
-#endif
-
-#ifdef MUIA_Group_PageMode
-    Group &Group::setPageMode(const bool pageMode)
-    {
-        SetValue(MUIA_Group_PageMode, pageMode);
-        return *this;
-    }
-#endif
-
 #ifdef MUIA_Group_Rows
     Group &Group::setRows(const long rows)
     {
         SetValue(MUIA_Group_Rows, rows);
-        return *this;
-    }
-#endif
-
-#ifdef MUIA_Group_SameHeight
-    Group &Group::setSameHeight(const bool sameHeight)
-    {
-        SetValue(MUIA_Group_SameHeight, sameHeight);
-        return *this;
-    }
-#endif
-
-#ifdef MUIA_Group_SameSize
-    Group &Group::setSameSize(const bool sameSize)
-    {
-        SetValue(MUIA_Group_SameSize, sameSize);
-        return *this;
-    }
-#endif
-
-#ifdef MUIA_Group_SameWidth
-    Group &Group::setSameWidth(const bool sameWidth)
-    {
-        SetValue(MUIA_Group_SameWidth, sameWidth);
         return *this;
     }
 #endif
