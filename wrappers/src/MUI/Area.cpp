@@ -5,6 +5,8 @@
 //
 
 #include "Area.hpp"
+#include "Menuitem.hpp"
+#include "Menustrip.hpp"
 
 #include <proto/alib.h>
 
@@ -30,9 +32,18 @@ namespace MUI
         return GetValueAsLong(MUIA_BottomEdge);
     }
 
-    Object *Area::getContextMenu() const
+    Optional<Menustrip> Area::getContextMenu() const
     {
-        return GetValueAsObjectPtr(MUIA_ContextMenu);
+        Object *obj = GetValueAsObjectPtr(MUIA_ContextMenu);
+        if (!obj)
+            return { };
+        return Menustrip(obj);
+    }
+
+    Area &Area::setContextMenu(const Menustrip &contextMenu)
+    {
+        SetValue(MUIA_ContextMenu, contextMenu.muiObject());
+        return *this;
     }
 
 #ifdef MUIA_ContextMenuHook
@@ -40,16 +51,31 @@ namespace MUI
     {
         return GetValueAsHookPtr(MUIA_ContextMenuHook);
     }
+
+    Area &Area::setContextMenuHook(const Hook *contextMenuHook)
+    {
+        SetValue(MUIA_ContextMenuHook, contextMenuHook);
+        return *this;
+    }
 #endif
 
-    Object *Area::getContextMenuTrigger() const
+    Optional<Menuitem> Area::getContextMenuTrigger() const
     {
-        return GetValueAsObjectPtr(MUIA_ContextMenuTrigger);
+        Object *obj = GetValueAsObjectPtr(MUIA_ContextMenuTrigger);
+        if (!obj)
+            return { };
+        return Menuitem(obj);
     }
 
     char Area::getControlChar() const
     {
         return GetValueAsChar(MUIA_ControlChar);
+    }
+
+    Area &Area::setControlChar(const char controlChar)
+    {
+        SetValue(MUIA_ControlChar, (long)controlChar);
+        return *this;
     }
 
     long Area::getCycleChain() const
@@ -67,6 +93,12 @@ namespace MUI
     {
         return GetValueAsBool(MUIA_DoubleBuffer);
     }
+
+    Area &Area::setDoubleBuffer(const bool doubleBuffer)
+    {
+        SetValue(MUIA_DoubleBuffer, doubleBuffer);
+        return *this;
+    }
 #endif
 
 #ifdef MUIA_DoubleClick
@@ -81,9 +113,21 @@ namespace MUI
         return GetValueAsBool(MUIA_Draggable);
     }
 
+    Area &Area::setDraggable(const bool draggable)
+    {
+        SetValue(MUIA_Draggable, draggable);
+        return *this;
+    }
+
     bool Area::isDropable() const
     {
         return GetValueAsBool(MUIA_Dropable);
+    }
+
+    Area &Area::setDropable(const bool dropable)
+    {
+        SetValue(MUIA_Dropable, dropable);
+        return *this;
     }
 
 #ifdef MUIA_Floating
@@ -103,6 +147,12 @@ namespace MUI
     {
         return GetValueAsBool(MUIA_FrameDynamic);
     }
+
+    Area &Area::setFrameDynamic(const bool frameDynamic)
+    {
+        SetValue(MUIA_FrameDynamic, frameDynamic);
+        return *this;
+    }
 #endif
 
     std::string Area::getFrameTitle() const
@@ -115,6 +165,12 @@ namespace MUI
     {
         return GetValueAsBool(MUIA_FrameVisible);
     }
+
+    Area &Area::setFrameVisible(const bool frameVisible)
+    {
+        SetValue(MUIA_FrameVisible, frameVisible);
+        return *this;
+    }
 #endif
 
     long Area::getHeight() const
@@ -125,6 +181,12 @@ namespace MUI
     long Area::getHorizDisappear() const
     {
         return GetValueAsLong(MUIA_HorizDisappear);
+    }
+
+    Area &Area::setHorizDisappear(const long horizDisappear)
+    {
+        SetValue(MUIA_HorizDisappear, horizDisappear);
+        return *this;
     }
 
     short Area::getHorizWeight() const
@@ -157,6 +219,12 @@ namespace MUI
     {
         return GetValueAsBool(MUIA_KnowsDisabled);
     }
+
+    Area &Area::setKnowsDisabled(const bool knowsDisabled)
+    {
+        SetValue(MUIA_KnowsDisabled, knowsDisabled);
+        return *this;
+    }
 #endif
 
     long Area::getLeftEdge() const
@@ -167,7 +235,7 @@ namespace MUI
 #ifdef MUIA_PointerType
     enum PointerType Area::getPointerType() const
     {
-        return (enum PointerType)GetValueAsLong(MUIA_PointerType);
+        return static_cast<enum PointerType>(GetValueAsLong(MUIA_PointerType));
     }
 #endif
 
@@ -201,6 +269,12 @@ namespace MUI
     {
         return GetValueAsULong(MUIA_TextColor);
     }
+
+    Area &Area::setTextColor(const struct MUI_PenSpec *textColor)
+    {
+        SetValue(MUIA_TextColor, textColor);
+        return *this;
+    }
 #endif
 
     long Area::getTimer() const
@@ -216,6 +290,12 @@ namespace MUI
     long Area::getVertDisappear() const
     {
         return GetValueAsLong(MUIA_VertDisappear);
+    }
+
+    Area &Area::setVertDisappear(const long vertDisappear)
+    {
+        SetValue(MUIA_VertDisappear, vertDisappear);
+        return *this;
     }
 
     short Area::getVertWeight() const
@@ -363,11 +443,172 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIM_ContextMenuBuild
+    Optional<Menustrip> Area::ContextMenuBuild(const long mx, const long my)
+    {
+        Object *obj = reinterpret_cast<Object *>(DoMethod(muiObject(), MUIM_ContextMenuBuild, mx, my));
+        if (!obj)
+            return { };
+        return Menustrip(obj);
+    }
+#endif
+
+#ifdef MUIM_ContextMenuAdd
+    unsigned long Area::ContextMenuAdd(const Menustrip &menustrip, const long mx, const long my, long *mxp, long *myp)
+    {
+        return DoMethod(muiObject(), MUIM_ContextMenuAdd, menustrip.muiObject(), mx, my, mxp, myp);
+    }
+#endif
+
+#ifdef MUIM_ContextMenuChoice
+    unsigned long Area::ContextMenuChoice(const Menuitem &item)
+    {
+        return DoMethod(muiObject(), MUIM_ContextMenuChoice, item.muiObject());
+    }
+#endif
+
+#ifdef MUIM_CreateBubble
+    APTR Area::CreateBubble(const long x, const long y, const char *txt, const unsigned long flags)
+    {
+        return reinterpret_cast<APTR>(DoMethod(muiObject(), MUIM_CreateBubble, x, y, txt, flags));
+    }
+#endif
+
+#ifdef MUIM_CreateDragImage
+    struct MUI_DragImage *Area::CreateDragImage(const long touchx, const long touchy, const unsigned long flags)
+    {
+        return reinterpret_cast<struct MUI_DragImage *>(DoMethod(muiObject(), MUIM_CreateDragImage, touchx, touchy, flags));
+    }
+#endif
+
+#ifdef MUIM_CreateShortHelp
+    char *Area::CreateShortHelp(const long mx, const long my)
+    {
+        return reinterpret_cast<char *>(DoMethod(muiObject(), MUIM_CreateShortHelp, mx, my));
+    }
+#endif
+
+#ifdef MUIM_DeleteBubble
+    Area &Area::DeleteBubble(APTR bubble)
+    {
+        DoMethod(muiObject(), MUIM_DeleteBubble, bubble);
+        return *this;
+    }
+#endif
+
+#ifdef MUIM_DeleteDragImage
+    Area &Area::DeleteDragImage(struct MUI_DragImage *di)
+    {
+        DoMethod(muiObject(), MUIM_DeleteDragImage, di);
+        return *this;
+    }
+#endif
+
+#ifdef MUIM_DeleteShortHelp
+    Area &Area::DeleteShortHelp(char *help)
+    {
+        DoMethod(muiObject(), MUIM_DeleteShortHelp, help);
+        return *this;
+    }
+#endif
+
+#ifdef MUIM_DoDrag
+    unsigned long Area::DoDrag(const long touchx, const long touchy, const unsigned long flags)
+    {
+        return DoMethod(muiObject(), MUIM_DoDrag, touchx, touchy, flags);
+    }
+#endif
+
+#ifdef MUIM_DragQuery
+    unsigned long Area::DragQuery(const Object *obj)
+    {
+        return DoMethod(muiObject(), MUIM_DragQuery, obj);
+    }
+
+    unsigned long Area::DragQuery(const Root &obj)
+    {
+        return DragQuery(obj.muiObject());
+    }
+#endif
+
+#ifdef MUIM_DragBegin
+    unsigned long Area::DragBegin(const Object *obj)
+    {
+        return DoMethod(muiObject(), MUIM_DragBegin, obj);
+    }
+
+    unsigned long Area::DragBegin(const Root &obj)
+    {
+        return DragBegin(obj.muiObject());
+    }
+#endif
+
+#ifdef MUIM_DragDrop
+    unsigned long Area::DragDrop(const Object *obj, const long x, const long y, const unsigned long qualifier)
+    {
+        return DoMethod(muiObject(), MUIM_DragDrop, obj, x, y, qualifier);
+    }
+
+    unsigned long Area::DragDrop(const Root &obj, const long x, const long y, const unsigned long qualifier)
+    {
+        return DragDrop(obj.muiObject(), x, y, qualifier);
+    }
+#endif
+
+#ifdef MUIM_DragFinish
+    unsigned long Area::DragFinish(const Object *obj, const long dropfollows)
+    {
+        return DoMethod(muiObject(), MUIM_DragFinish, obj, dropfollows);
+    }
+
+    unsigned long Area::DragFinish(const Root &obj, const long dropfollows)
+    {
+        return DragFinish(obj.muiObject(), dropfollows);
+    }
+#endif
+
+#ifdef MUIM_DragReport
+    unsigned long Area::DragReport(const Object *obj, const long x, const long y, const long update, const unsigned long qualifier)
+    {
+        return DoMethod(muiObject(), MUIM_DragReport, obj, x, y, update, qualifier);
+    }
+
+    unsigned long Area::DragReport(const Root &obj, const long x, const long y, const long update, const unsigned long qualifier)
+    {
+        return DragReport(obj.muiObject(), x, y, update, qualifier);
+    }
+#endif
+
+#ifdef MUIM_DrawBackground
+    Area &Area::DrawBackground(const long left, const long top, const long width, const long height, const long xoffset, const long yoffset,
+                               const long flags)
+    {
+        DoMethod(muiObject(), MUIM_DrawBackground, left, top, width, height, xoffset, yoffset, flags);
+        return *this;
+    }
+#endif
+
+#ifdef MUIM_DrawBackgroundParent
+    Area &Area::DrawBackgroundParent(const long left, const long top, const long width, const long height, const long brightness,
+                                     const long xoffset, const long yoffset, const long flags)
+    {
+        DoMethod(muiObject(), MUIM_DrawBackgroundParent, left, top, width, height, brightness, xoffset, yoffset, flags);
+        return *this;
+    }
+#endif
+
 #ifdef MUIM_Relayout
     Area &Area::Relayout()
     {
         DoMethod(muiObject(), MUIM_Relayout, 0);
         return *this;
+    }
+#endif
+
+#ifdef MUIM_WhichPointerType
+    enum PointerType Area::WhichPointerType(const long mx, const long my)
+    {
+        return static_cast<enum PointerType>(DoMethod(muiObject(), MUIM_WhichPointerType, mx, my));
     }
 #endif
 

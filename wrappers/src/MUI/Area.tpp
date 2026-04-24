@@ -8,6 +8,8 @@
 #error "File Area.tpp can not be included directly, include file Area.hpp instead!"
 #endif
 
+#include "Menustrip.hpp"
+
 namespace MUI
 {
     template <typename T, typename U> T &AreaBuilderTemplate<T, U>::tagBackground(const enum ImageOrBackground background)
@@ -28,6 +30,26 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagContextMenu(const Menustrip &contextMenu)
+    {
+        this->PushTag(MUIA_ContextMenu, contextMenu.muiObject());
+        return (T &)*this;
+    }
+
+#ifdef MUIA_ContextMenuHook
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagContextMenuHook(const Hook *contextMenuHook)
+    {
+        this->PushTag(MUIA_ContextMenuHook, contextMenuHook);
+        return (T &)*this;
+    }
+#endif
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagControlChar(const char controlChar)
+    {
+        this->PushTag(MUIA_ControlChar, (long)controlChar);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagCycleChain(const long cycleChain)
     {
         this->PushTag(MUIA_CycleChain, cycleChain);
@@ -37,6 +59,18 @@ namespace MUI
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagDisabled(const bool disabled)
     {
         this->PushTag(MUIA_Disabled, disabled);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagDraggable(const bool draggable)
+    {
+        this->PushTag(MUIA_Draggable, draggable);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagDropable(const bool dropable)
+    {
+        this->PushTag(MUIA_Dropable, dropable);
         return (T &)*this;
     }
 
@@ -78,6 +112,30 @@ namespace MUI
     }
 #endif
 
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagMaxHeight(const long maxHeight)
+    {
+        this->PushTag(MUIA_MaxHeight, maxHeight);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagMaxWidth(const long maxWidth)
+    {
+        this->PushTag(MUIA_MaxWidth, maxWidth);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagMinHeight(const long minHeight)
+    {
+        this->PushTag(MUIA_MinHeight, minHeight);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagMinWidth(const long minWidth)
+    {
+        this->PushTag(MUIA_MinWidth, minWidth);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFont(const enum Font font)
     {
         this->PushTag(MUIA_Font, (long)font);
@@ -115,6 +173,20 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_FrameVisible
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFrameVisible(const bool frameVisible)
+    {
+        this->PushTag(MUIA_FrameVisible, frameVisible);
+        return (T &)*this;
+    }
+#endif
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagHorizDisappear(const long horizDisappear)
+    {
+        this->PushTag(MUIA_HorizDisappear, horizDisappear);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagHorizWeight(const short horizWeight)
     {
         if (horizWeight >= 0)
@@ -122,10 +194,59 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagInnerBottom(const long innerBottom)
+    {
+        this->PushTag(MUIA_InnerBottom, innerBottom);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagInnerLeft(const long innerLeft)
+    {
+        this->PushTag(MUIA_InnerLeft, innerLeft);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagInnerRight(const long innerRight)
+    {
+        this->PushTag(MUIA_InnerRight, innerRight);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagInnerTop(const long innerTop)
+    {
+        this->PushTag(MUIA_InnerTop, innerTop);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagInnerSpacing(const long horiz, const long vert)
+    {
+        this->PushTag(MUIA_InnerLeft, horiz);
+        this->PushTag(MUIA_InnerRight, horiz);
+        this->PushTag(MUIA_InnerTop, vert);
+        this->PushTag(MUIA_InnerBottom, vert);
+        return (T &)*this;
+    }
+
 #ifdef MUIA_InputMode
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagInputMode(const enum InputMode inputMode)
     {
         this->PushTag(MUIA_InputMode, (long)inputMode);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_KnowsDisabled
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagKnowsDisabled(const bool knowsDisabled)
+    {
+        this->PushTag(MUIA_KnowsDisabled, knowsDisabled);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_DoubleBuffer
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagDoubleBuffer(const bool doubleBuffer)
+    {
+        this->PushTag(MUIA_DoubleBuffer, doubleBuffer);
         return (T &)*this;
     }
 #endif
@@ -165,6 +286,20 @@ namespace MUI
         this->PushTag(MUIA_ShowSelState, showSelState);
         return (T &)*this;
     }
+
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagVertDisappear(const long vertDisappear)
+    {
+        this->PushTag(MUIA_VertDisappear, vertDisappear);
+        return (T &)*this;
+    }
+
+#ifdef MUIA_TextColor
+    template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagTextColor(const struct MUI_PenSpec *textColor)
+    {
+        this->PushTag(MUIA_TextColor, textColor);
+        return (T &)*this;
+    }
+#endif
 
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagVertWeight(const short vertWeight)
     {
