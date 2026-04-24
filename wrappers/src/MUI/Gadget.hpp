@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -10,6 +10,7 @@
 
 namespace MUI
 {
+    /// @brief Gadget class is the direct common base for many interactive controls.
     class Gadget : public Area
     {
       public:
@@ -29,7 +30,7 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-        /// @brief [ @b MUIA_Gadget_Gadget ]
+        /// @brief [ @b MUIA_Gadget_Gadget ] Read underlying Intuition gadget pointer.
         ::Gadget *getGadget() const;
     };
 
