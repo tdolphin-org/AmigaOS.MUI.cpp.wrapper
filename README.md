@@ -97,7 +97,7 @@ ___
 |-|-|:-:|:-:|:-:|:-:|
 | [MUIC_Application](https://github.com/amiga-mui/muidev/wiki/MUI_Application) | [MUI::Application](/wrappers/src/MUI/Application.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | in progress |
 | [MUIC_Area](https://github.com/amiga-mui/muidev/wiki/MUI_Area) | [MUI::Area](/wrappers/src/MUI/Area.hpp) | in progress | in progress | in progress | in progress |
-| [MUIC_Argstring](https://github.com/amiga-mui/muidev/wiki/MUI_Argstring) | - | - | - | - | - |
+| [MUIC_Argstring](https://github.com/amiga-mui/muidev/wiki/MUI_Argstring) | [MUI::Argstring](/wrappers/src/MUI/Argstring.hpp) | Ready (AMUI5/MMUI5, 3.8 n/a) | Ready (AMUI5/MMUI5, 3.8 n/a) | - | - |
 | [MUIC_Balance](https://github.com/amiga-mui/muidev/wiki/MUI_Balance) | [MUI::Balance](/wrappers/src/MUI/Balance.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | not applicable | not applicable |
 | [MUIC_Bitmap](https://github.com/amiga-mui/muidev/wiki/MUI_Bitmap) | - | - | - | - | - |
 | [MUIC_Bodychunk](https://github.com/amiga-mui/muidev/wiki/MUI_Bodychunk) | - | - | - | - | - |
