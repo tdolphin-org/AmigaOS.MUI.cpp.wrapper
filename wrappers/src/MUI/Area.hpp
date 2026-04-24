@@ -32,6 +32,7 @@ namespace MUI
     };
 #endif
 
+    /// @brief Area class is the common base for visible MUI objects and gadgets.
     class Area : public Notify
     {
       public:
