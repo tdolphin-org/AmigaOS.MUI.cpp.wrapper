@@ -69,6 +69,12 @@ namespace MUI
         return *this;
     }
 
+    Notify &Notify::setHelpNode(const char *helpNode)
+    {
+        SetValue(MUIA_HelpNode, helpNode);
+        return *this;
+    }
+
     Notify &Notify::setNoNotify(const bool noNotify)
     {
         SetValue(MUIA_NoNotify, noNotify);
@@ -112,9 +118,14 @@ namespace MUI
         return (Object *)DoMethod(muiObject(), MUIM_FindUData, udata);
     }
 
-    Object *Notify::GetUData(const unsigned long udata, const unsigned long attr, const unsigned long *storage)
+    Object *Notify::GetUData(const unsigned long udata, const unsigned long attr, unsigned long *storage)
     {
         return (Object *)DoMethod(muiObject(), MUIM_GetUData, udata, attr, storage);
+    }
+
+    unsigned long Notify::GetConfigItem(const unsigned long id, unsigned long *storage) const
+    {
+        return DoMethod(muiObject(), MUIM_GetConfigItem, id, storage);
     }
 
     Notify &Notify::KillNotify(const unsigned long trigAttr)
@@ -135,65 +146,9 @@ namespace MUI
         return *this;
     }
 
-    Notify &Notify::MultiSet(const unsigned long attr, const unsigned long val, const Root &obj0)
-    {
-        DoMethod(muiObject(), MUIM_MultiSet, attr, val, obj0.muiObject());
-        return *this;
-    }
-
-    Notify &Notify::MultiSet(const unsigned long attr, const unsigned long val, const Root &obj0, const Root &obj1)
-    {
-        DoMethod(muiObject(), MUIM_MultiSet, attr, val, obj0.muiObject(), obj1.muiObject());
-        return *this;
-    }
-
-    Notify &Notify::MultiSet(const unsigned long attr, const unsigned long val, const Root &obj0, const Root &obj1, const Root &obj2)
-    {
-        DoMethod(muiObject(), MUIM_MultiSet, attr, val, obj0.muiObject(), obj1.muiObject(), obj2.muiObject());
-        return *this;
-    }
-
-    Notify &Notify::MultiSet(const unsigned long attr, const unsigned long val, const Root &obj0, const Root &obj1, const Root &obj2,
-                             const Root &obj3)
-    {
-        DoMethod(muiObject(), MUIM_MultiSet, attr, val, obj0.muiObject(), obj1.muiObject(), obj2.muiObject(), obj3.muiObject());
-        return *this;
-    }
-
-    Notify &Notify::NoNotifySet(const unsigned long attr, const unsigned long val)
-    {
-        DoMethod(muiObject(), MUIM_NoNotifySet, attr, val);
-        return *this;
-    }
-
-    Notify &Notify::doNotify(const unsigned long attr, const unsigned long val, const Root destObj)
-    {
-        DoMethod(muiObject(), MUIM_Notify, attr, val, destObj);
-        return *this;
-    }
-
     Notify &Notify::Set(const unsigned long attr, const unsigned long val)
     {
         DoMethod(muiObject(), MUIM_Set, attr, val);
-        return *this;
-    }
-
-    Notify &Notify::SetAsString(const unsigned long attr, const std::string &format, const unsigned long val0)
-    {
-        DoMethod(muiObject(), MUIM_SetAsString, attr, format, val0);
-        return *this;
-    }
-
-    Notify &Notify::SetAsString(const unsigned long attr, const std::string &format, const unsigned long val0, const unsigned long val1)
-    {
-        DoMethod(muiObject(), MUIM_SetAsString, attr, format, val0, val1);
-        return *this;
-    }
-
-    Notify &Notify::SetAsString(const unsigned long attr, const std::string &format, const unsigned long val0, const unsigned long val1,
-                                const unsigned long val2)
-    {
-        DoMethod(muiObject(), MUIM_SetAsString, attr, format, val0, val1, val2);
         return *this;
     }
 
@@ -207,6 +162,33 @@ namespace MUI
     {
         DoMethod(muiObject(), MUIM_SetUDataOnce, udata, attr, val);
         return *this;
+    }
+
+    unsigned long Notify::Export(const Root &dataspace)
+    {
+        return DoMethod(muiObject(), MUIM_Export, dataspace.muiObject());
+    }
+
+    unsigned long Notify::Import(const Root &dataspace)
+    {
+        return DoMethod(muiObject(), MUIM_Import, dataspace.muiObject());
+    }
+
+    Notify &Notify::WriteLong(const unsigned long value, unsigned long *memory)
+    {
+        DoMethod(muiObject(), MUIM_WriteLong, value, memory);
+        return *this;
+    }
+
+    Notify &Notify::WriteString(const char *value, char *memory)
+    {
+        DoMethod(muiObject(), MUIM_WriteString, value, memory);
+        return *this;
+    }
+
+    Notify &Notify::WriteString(const std::string &value, char *memory)
+    {
+        return WriteString(value.c_str(), memory);
     }
 
     NotifyBuilder::NotifyBuilder() { }

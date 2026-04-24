@@ -22,6 +22,12 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U> inline T &NotifyBuilderTemplate<T, U>::tagHelpNode(const char *helpNode)
+    {
+        this->PushTag(MUIA_HelpNode, helpNode);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> inline T &NotifyBuilderTemplate<T, U>::tagObjectID(const AOS::Identifier &objectID)
     {
         this->PushTag(MUIA_ObjectID, objectID.value());
