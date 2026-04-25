@@ -8,10 +8,9 @@
 #error "File Fontpanel.tpp can not be included directly, include file Fontpanel.hpp instead!"
 #endif
 
-#ifdef MUIC_Fontpanel
-
 namespace MUI
 {
+#ifdef MUIA_Fontpanel_ShowCollection
     template <typename T, typename U>
     inline T &FontpanelBuilderTemplate<T, U>::tagShowCollection(const enum Fontpanel_ShowCollection showCollection)
     {
@@ -28,6 +27,5 @@ namespace MUI
         this->PushTag(MUIA_Fontpanel_ShowCollection, showCollection);
         return (T &)*this;
     }
-}
-
 #endif
+}

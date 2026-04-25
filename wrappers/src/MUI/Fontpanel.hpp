@@ -10,12 +10,16 @@
 
 #ifdef MUIC_Fontpanel
 
+#ifdef MUIA_Fontpanel_ShowCollection
 #include "ValueTypes/Fontpanel/ShowCollection.hpp"
+#endif
 
 #include <set>
 
 namespace MUI
 {
+    /// @brief MUI Fontpanel class wrapper.
+    /// MUI replacement for ASL font requesters with extended style, size, color and family selection.
     class Fontpanel : public Panel
     {
       public:
@@ -42,14 +46,15 @@ namespace MUI
         {
         }
 
-        /// @brief [ @b MUIA_Fontpanel_ShowCollection ]
-        /// This attribute allows to specify the types of font families to select from. Just pass a value.
+#ifdef MUIA_Fontpanel_ShowCollection
+        /// @brief [ @b MUIA_Fontpanel_ShowCollection ] Restricts selectable font family types in the font panel.
+        /// @param showCollection Single collection filter value.
         T &tagShowCollection(const enum Fontpanel_ShowCollection showCollection);
 
-        /// @brief [ @b MUIA_Fontpanel_ShowCollection ]
-        /// This attribute allows to specify the types of font families to select from.
-        /// Just pass set of values for logical OR of the suitable MUIV_Fontpanel_ShowCollection_#? values.
+        /// @brief [ @b MUIA_Fontpanel_ShowCollection ] Restricts selectable font family types in the font panel.
+        /// @param showCollections Set of filter flags combined with logical OR.
         T &tagShowCollection(const std::set<enum Fontpanel_ShowCollection> showCollections);
+#endif
     };
 
     class FontpanelBuilder : public FontpanelBuilderTemplate<FontpanelBuilder, Fontpanel>
