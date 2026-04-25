@@ -48,6 +48,13 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U> inline T &GroupBuilderTemplate<T, U>::tagChildNull(bool condition)
+    {
+        if (condition)
+            this->PushTag(MUIA_Group_Child, nullptr, false, true);
+        return (T &)*this;
+    }
+
     template <typename T, typename U> T &GroupBuilderTemplate<T, U>::tagColumns(const long columns)
     {
         this->PushTag(MUIA_Group_Columns, columns);

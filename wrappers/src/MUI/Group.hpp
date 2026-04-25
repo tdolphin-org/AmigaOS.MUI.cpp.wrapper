@@ -238,14 +238,18 @@ namespace MUI
         T &tagActivePage(const enum Group_ActivePage activePage);
         /// @brief [ @b MUIA_Group_Child ]
         /// Add child object to group.
-        /// @param pChildObject pointer to child object, if nullptr, object is not added
+        /// @param pChildObject pointer to child object; nullptr is ignored by this convenience overload
         /// @param condition if false, tag is not added
         T &tagChild(const Object *pChildObject, bool condition = true);
         /// @brief [ @b MUIA_Group_Child ]
         /// Add child object to group.
-        /// @param child Root wrapper of child object, if null object, object is not added
+        /// @param child Root wrapper of child object; null wrapped objects are ignored by this convenience overload
         /// @param condition if false, tag is not added
         T &tagChild(const Root &child, bool condition = true);
+        /// @brief [ @b MUIA_Group_Child ] Add an explicit nullptr child tag.
+        /// This preserves the original MUI semantics where a NULL child causes group creation to fail.
+        /// @param condition if false, tag is not added
+        T &tagChildNull(bool condition = true);
         /// @brief [ @b MUIA_Group_Columns ]
         /// Number of columns in a two dimensional group.
         T &tagColumns(const long columns);
