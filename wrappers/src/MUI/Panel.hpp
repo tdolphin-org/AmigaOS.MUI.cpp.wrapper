@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -12,6 +12,11 @@
 
 namespace MUI
 {
+    class Application;
+    class Window;
+
+    /// @brief MUI Panel class wrapper.
+    /// Abstract base class for ASL-like selector panels.
     class Panel : public Group
     {
       public:
@@ -31,12 +36,14 @@ namespace MUI
 
         // methods, some returns object reference
 
+#ifdef MUIM_Panel_Run
         /// @brief [ @b MUIM_Panel_Run ]
-        /// This method opens the panel window and eventually "runs" the panel asynchronously to the main MUI application in a separate
-        /// process.
-        /// @param app the application object to let the panel run asynchronously to the main application
-        /// @param win the window object containing the panel object
-        Panel &Run(Object *app, Object *win);
+        /// Opens the panel window and runs the panel asynchronously to the main MUI application in a separate process.
+        /// @param app Application wrapper used as async context.
+        /// @param win Window wrapper containing this panel.
+        /// @return Reference to this panel.
+        Panel &Run(Application &app, Window &win);
+#endif
     };
 
     template <typename T, typename U> class PanelBuilderTemplate : public GroupBuilderTemplate<T, U>
