@@ -149,7 +149,7 @@ ___
 | [MUIC_Rectangle](https://github.com/amiga-mui/muidev/wiki/MUI_Rectangle) | [MUI::Rectangle](/wrappers/src/MUI/Rectangle.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | not applicable | - |
 | [MUIC_Register](https://github.com/amiga-mui/muidev/wiki/MUI_Register) | [MUI::Register](/wrappers/src/MUI/Register.hpp) | Ready | Ready | not applicable | Ready |
 | [MUIC_Scale](https://github.com/amiga-mui/muidev/wiki/MUI_Scale) | [MUI::Scale](/wrappers/src/MUI/Scale.hpp) | Ready | Ready | - | - | - |
-| [MUIC_Screenmodepanel](https://github.com/amiga-mui/muidev/wiki/MUI_Screenmodepanel) | - | - | - | - | - |
+| [MUIC_Screenmodepanel](https://github.com/amiga-mui/muidev/wiki/MUI_Screenmodepanel) | [MUI::Screenmodepanel](/wrappers/src/MUI/Screenmodepanel.hpp) | Ready (AMUI5/MMUI5, 3.8 n/a) | Ready (AMUI5/MMUI5, 3.8 n/a) | - | - |
 | [MUIC_Scrmodelist](https://github.com/amiga-mui/muidev/wiki/MUI_Scrmodelist) | - | - | - | - | - |
 | [MUIC_Scrollbar](https://github.com/amiga-mui/muidev/wiki/MUI_Scrollbar) | [MUI::Scrollbar](/wrappers/src/MUI/Scrollbar.hpp) | Ready | Ready | - | - |
 | [MUIC_Scrollgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Scrollgroup) | [MUI::Scrollgroup](/wrappers/src/MUI/Scrollgroup.hpp) | in progress | Ready | - | - |
