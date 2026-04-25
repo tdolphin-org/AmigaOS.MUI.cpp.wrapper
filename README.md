@@ -109,7 +109,7 @@ ___
 | [MUIC_Datamap](https://github.com/amiga-mui/muidev/wiki/MUI_Datamap) | - | - | - | - | - |
 | [MUIC_Dataspace](https://github.com/amiga-mui/muidev/wiki/MUI_Dataspace) | - | - | - | - | - |
 | [MUIC_Dirlist](https://github.com/amiga-mui/muidev/wiki/MUI_Dirlist) | - | - | - | - | - |
-| [MUIC_Dtpic](https://github.com/amiga-mui/muidev/wiki/MUI_Dtpic) | [MUI::Dtpic](/wrappers/src/MUI/Dtpic.hpp) | Ready | Ready | - | - |
+| [MUIC_Dtpic](https://github.com/amiga-mui/muidev/wiki/MUI_Dtpic) | [MUI::Dtpic](/wrappers/src/MUI/Dtpic.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Family](https://github.com/amiga-mui/muidev/wiki/MUI_Family) | [MUI::Family](/wrappers/src/MUI/Family.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready | in progress | in progress |
 | [MUIC_Filepanel](https://github.com/amiga-mui/muidev/wiki/MUI_Filepanel) | - | - | - | - | - |
 | [MUIC_Floattext](https://github.com/amiga-mui/muidev/wiki/MUI_Floattext) | [MUI::Floattext](/wrappers/src/MUI/Floattext.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready | - | - |

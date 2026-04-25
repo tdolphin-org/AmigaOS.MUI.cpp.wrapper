@@ -26,6 +26,22 @@ namespace MUI
     }
 #endif
 
+#ifdef MUIA_Dtpic_FreeHoriz
+    template <typename T, typename U> inline T &DtpicBuilderTemplate<T, U>::tagFreeHoriz(const bool freeHoriz)
+    {
+        this->PushTag(MUIA_Dtpic_FreeHoriz, freeHoriz);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_Dtpic_FreeVert
+    template <typename T, typename U> inline T &DtpicBuilderTemplate<T, U>::tagFreeVert(const bool freeVert)
+    {
+        this->PushTag(MUIA_Dtpic_FreeVert, freeVert);
+        return (T &)*this;
+    }
+#endif
+
 #ifdef MUIA_Dtpic_Fade
     template <typename T, typename U> inline T &DtpicBuilderTemplate<T, U>::tagFade(const long fade)
     {
@@ -38,6 +54,22 @@ namespace MUI
     template <typename T, typename U> inline T &DtpicBuilderTemplate<T, U>::tagLightenOnMouse(const bool lightenOnMouse)
     {
         this->PushTag(MUIA_Dtpic_LightenOnMouse, lightenOnMouse);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_Dtpic_MinHeight
+    template <typename T, typename U> inline T &DtpicBuilderTemplate<T, U>::tagMinHeight(const bool minHeight)
+    {
+        this->PushTag(MUIA_Dtpic_MinHeight, minHeight);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_Dtpic_MinWidth
+    template <typename T, typename U> inline T &DtpicBuilderTemplate<T, U>::tagMinWidth(const bool minWidth)
+    {
+        this->PushTag(MUIA_Dtpic_MinWidth, minWidth);
         return (T &)*this;
     }
 #endif

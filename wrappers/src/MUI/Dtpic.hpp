@@ -10,6 +10,8 @@
 
 namespace MUI
 {
+    /// @brief MUI Dtpic class wrapper.
+    /// Displays an arbitrary image loaded via datatypes.library. Supports full transparency and alpha channel.
     class Dtpic : public Area
     {
       public:
@@ -30,35 +32,54 @@ namespace MUI
         // is/get/set (attributes), all setters return object reference
 
 #ifdef MUIA_Dtpic_Alpha
-        /// @brief [ @b MUIA_Dtpic_Alpha ]
+        /// @brief [ @b MUIA_Dtpic_Alpha ] Returns the current alpha blending value (0..255) applied when blitting the image.
         long getAlpha() const;
 #endif
 #ifdef MUIA_Dtpic_DarkenSelState
-        /// @brief [ @b MUIA_Dtpic_DarkenSelState ]
+        /// @brief [ @b MUIA_Dtpic_DarkenSelState ] Returns whether the image brightness is decreased by 50% when the left mouse button is
+        /// pressed.
         bool isDarkenSelState() const;
 #endif
+#ifdef MUIA_Dtpic_FreeHoriz
+        /// @brief [ @b MUIA_Dtpic_FreeHoriz ] Returns whether the image may scale freely in horizontal direction.
+        bool isFreeHoriz() const;
+#endif
+#ifdef MUIA_Dtpic_FreeVert
+        /// @brief [ @b MUIA_Dtpic_FreeVert ] Returns whether the image may scale freely in vertical direction.
+        bool isFreeVert() const;
+#endif
 #ifdef MUIA_Dtpic_Fade
-        /// @brief [ @b MUIA_Dtpic_Fade ]
+        /// @brief [ @b MUIA_Dtpic_Fade ] Returns the current fade step value used for alpha transitions.
         long getFade() const;
 #endif
 #ifdef MUIA_Dtpic_LightenOnMouse
-        /// @brief [ @b MUIA_Dtpic_LightenOnMouse ]
-        long isLightenOnMouse() const;
+        /// @brief [ @b MUIA_Dtpic_LightenOnMouse ] Returns whether image brightness is increased by 20% when the mouse is over the object.
+        bool isLightenOnMouse() const;
+#endif
+#ifdef MUIA_Dtpic_MinHeight
+        /// @brief [ @b MUIA_Dtpic_MinHeight ] Returns whether the image's minimum height limit is enabled.
+        bool isMinHeight() const;
+#endif
+#ifdef MUIA_Dtpic_MinWidth
+        /// @brief [ @b MUIA_Dtpic_MinWidth ] Returns whether the image's minimum width limit is enabled.
+        bool isMinWidth() const;
 #endif
 #ifdef MUIA_Dtpic_Name
-        /// @brief [ @b MUIA_Dtpic_Name ]
+        /// @brief [ @b MUIA_Dtpic_Name ] Returns the file name of the currently loaded image.
         std::string getName() const;
 #endif
 #ifdef MUIA_Dtpic_Alpha
-        /// @brief [ @b MUIA_Dtpic_Alpha ]
+        /// @brief [ @b MUIA_Dtpic_Alpha ] Sets the alpha blending value (0..255) applied when blitting the image. Has no effect on CLUT
+        /// (<=8 bit) screens.
         Dtpic &setAlpha(const long alpha);
 #endif
 #ifdef MUIA_Dtpic_Fade
-        /// @brief [ @b MUIA_Dtpic_Fade ]
+        /// @brief [ @b MUIA_Dtpic_Fade ] Sets the fade step for alpha transitions. Positive = step size (applied every 20ms); negative =
+        /// stop fade and apply final alpha immediately.
         Dtpic &setFade(const long fade);
 #endif
 #ifdef MUIA_Dtpic_Name
-        /// @brief [ @b MUIA_Dtpic_Name ]
+        /// @brief [ @b MUIA_Dtpic_Name ] Sets the file name of the image to load via datatypes.library. The string is copied internally.
         Dtpic &setName(const std::string &name);
 #endif
     };
@@ -83,6 +104,16 @@ namespace MUI
         /// If set to true the image's brightness will decreased by 50% whenever the left mouse button is pressed on the object.
         T &tagDarkenSelState(const bool darkenSelState);
 #endif
+#ifdef MUIA_Dtpic_FreeHoriz
+        /// @brief [ @b MUIA_Dtpic_FreeHoriz ]
+        /// If set to true the image is allowed to scale freely in horizontal direction.
+        T &tagFreeHoriz(const bool freeHoriz);
+#endif
+#ifdef MUIA_Dtpic_FreeVert
+        /// @brief [ @b MUIA_Dtpic_FreeVert ]
+        /// If set to true the image is allowed to scale freely in vertical direction.
+        T &tagFreeVert(const bool freeVert);
+#endif
 #ifdef MUIA_Dtpic_Fade
         /// @brief [ @b MUIA_Dtpic_Fade ]
         /// Setting this attribute to a positive value while also changing the image's alpha value will let Dtpic class do a fade between
@@ -96,6 +127,16 @@ namespace MUI
         /// @brief [ @b MUIA_Dtpic_LightenOnMouse ]
         /// If set to true the image's brightness will increased by 20% whenever the mouse is moved over the object.
         T &tagLightenOnMouse(const bool lightenOnMouse);
+#endif
+#ifdef MUIA_Dtpic_MinHeight
+        /// @brief [ @b MUIA_Dtpic_MinHeight ]
+        /// If set to true the image's minimum height limit is enabled.
+        T &tagMinHeight(const bool minHeight);
+#endif
+#ifdef MUIA_Dtpic_MinWidth
+        /// @brief [ @b MUIA_Dtpic_MinWidth ]
+        /// If set to true the image's minimum width limit is enabled.
+        T &tagMinWidth(const bool minWidth);
 #endif
 #ifdef MUIA_Dtpic_Name
         /// @brief [ @b MUIA_Dtpic_Name ]

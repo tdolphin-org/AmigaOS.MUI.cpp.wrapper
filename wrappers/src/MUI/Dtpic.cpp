@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Dtpic.hpp"
@@ -15,28 +15,56 @@ namespace MUI
 #ifdef MUIA_Dtpic_Alpha
     long Dtpic::getAlpha() const
     {
-        return GetValueAsBool(MUIA_Dtpic_Alpha);
+        return GetValueAsLong(MUIA_Dtpic_Alpha);
     }
 #endif
 
 #ifdef MUIA_Dtpic_DarkenSelState
     bool Dtpic::isDarkenSelState() const
     {
-        return GetValueAsLong(MUIA_Dtpic_DarkenSelState);
+        return GetValueAsBool(MUIA_Dtpic_DarkenSelState);
+    }
+#endif
+
+#ifdef MUIA_Dtpic_FreeHoriz
+    bool Dtpic::isFreeHoriz() const
+    {
+        return GetValueAsBool(MUIA_Dtpic_FreeHoriz);
+    }
+#endif
+
+#ifdef MUIA_Dtpic_FreeVert
+    bool Dtpic::isFreeVert() const
+    {
+        return GetValueAsBool(MUIA_Dtpic_FreeVert);
     }
 #endif
 
 #ifdef MUIA_Dtpic_Fade
     long Dtpic::getFade() const
     {
-        return GetValueAsBool(MUIA_Dtpic_Fade);
+        return GetValueAsLong(MUIA_Dtpic_Fade);
     }
 #endif
 
 #ifdef MUIA_Dtpic_LightenOnMouse
-    long Dtpic::isLightenOnMouse() const
+    bool Dtpic::isLightenOnMouse() const
     {
-        return GetValueAsLong(MUIA_Dtpic_LightenOnMouse);
+        return GetValueAsBool(MUIA_Dtpic_LightenOnMouse);
+    }
+#endif
+
+#ifdef MUIA_Dtpic_MinHeight
+    bool Dtpic::isMinHeight() const
+    {
+        return GetValueAsBool(MUIA_Dtpic_MinHeight);
+    }
+#endif
+
+#ifdef MUIA_Dtpic_MinWidth
+    bool Dtpic::isMinWidth() const
+    {
+        return GetValueAsBool(MUIA_Dtpic_MinWidth);
     }
 #endif
 
