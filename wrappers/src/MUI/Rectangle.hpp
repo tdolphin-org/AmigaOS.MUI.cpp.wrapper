@@ -10,6 +10,8 @@
 
 namespace MUI
 {
+    /// @brief MUI Rectangle class wrapper.
+    /// A lightweight spacer/separator object used to influence MUI layout, optionally as horizontal/vertical bar.
     class Rectangle : public Area
     {
       public:
@@ -29,11 +31,11 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-        /// @brief [ @b MUIA_Rectangle_BarTitle ]
+        /// @brief [ @b MUIA_Rectangle_BarTitle ] Returns the title text drawn centered in group-title style on horizontal bar rectangles.
         std::string getBarTitle() const;
-        /// @brief [ @b MUIA_Rectangle_HBar ]
+        /// @brief [ @b MUIA_Rectangle_HBar ] Returns whether this rectangle is configured to draw a horizontal bar.
         bool isHBar() const;
-        /// @brief [ @b MUIA_Rectangle_VBar ]
+        /// @brief [ @b MUIA_Rectangle_VBar ] Returns whether this rectangle is configured to draw a vertical bar.
         bool isVBar() const;
     };
 
@@ -45,11 +47,11 @@ namespace MUI
         {
         }
 
-        /// @brief [ @b MUIA_Rectangle_BarTitle ]
+        /// @brief [ @b MUIA_Rectangle_BarTitle ] Sets the title text drawn in group-title style (primarily meaningful for horizontal bars).
         T &tagBarTitle(const char *barTitle);
-        /// @brief [ @b MUIA_Rectangle_HBar ]
+        /// @brief [ @b MUIA_Rectangle_HBar ] Enables or disables drawing a horizontal bar in the middle of the rectangle.
         T &tagHBar(const bool hBar);
-        /// @brief [ @b MUIA_Rectangle_VBar ]
+        /// @brief [ @b MUIA_Rectangle_VBar ] Enables or disables drawing a vertical bar in the middle of the rectangle.
         T &tagVBar(const bool vBar);
     };
 

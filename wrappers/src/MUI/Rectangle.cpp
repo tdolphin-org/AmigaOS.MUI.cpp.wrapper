@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Rectangle.hpp"
@@ -14,7 +14,7 @@ namespace MUI
 
     std::string Rectangle::getBarTitle() const
     {
-        return GetValueAsString(MUIA_Rectangle_HBar);
+        return GetValueAsString(MUIA_Rectangle_BarTitle);
     }
 
     bool Rectangle::isHBar() const
