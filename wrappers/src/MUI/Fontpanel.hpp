@@ -48,12 +48,14 @@ namespace MUI
 
 #ifdef MUIA_Fontpanel_ShowCollection
         /// @brief [ @b MUIA_Fontpanel_ShowCollection ] Restricts selectable font family types in the font panel.
+        /// Pass a single filter flag from Fontpanel_ShowCollection.
         /// @param showCollection Single collection filter value.
         T &tagShowCollection(const enum Fontpanel_ShowCollection showCollection);
 
         /// @brief [ @b MUIA_Fontpanel_ShowCollection ] Restricts selectable font family types in the font panel.
+        /// Pass multiple filter flags combined by logical OR.
         /// @param showCollections Set of filter flags combined with logical OR.
-        T &tagShowCollection(const std::set<enum Fontpanel_ShowCollection> showCollections);
+        T &tagShowCollection(const std::set<enum Fontpanel_ShowCollection> &showCollections);
 #endif
     };
 

@@ -14,16 +14,16 @@ namespace MUI
     template <typename T, typename U>
     inline T &FontpanelBuilderTemplate<T, U>::tagShowCollection(const enum Fontpanel_ShowCollection showCollection)
     {
-        this->PushTag(MUIA_Fontpanel_ShowCollection, (long)showCollection);
+        this->PushTag(MUIA_Fontpanel_ShowCollection, static_cast<long>(showCollection));
         return (T &)*this;
     }
 
     template <typename T, typename U>
-    inline T &FontpanelBuilderTemplate<T, U>::tagShowCollection(const std::set<enum Fontpanel_ShowCollection> showCollections)
+    inline T &FontpanelBuilderTemplate<T, U>::tagShowCollection(const std::set<enum Fontpanel_ShowCollection> &showCollections)
     {
         long showCollection = 0;
         for (auto &value : showCollections)
-            showCollection |= (long)value;
+            showCollection |= static_cast<long>(value);
         this->PushTag(MUIA_Fontpanel_ShowCollection, showCollection);
         return (T &)*this;
     }
