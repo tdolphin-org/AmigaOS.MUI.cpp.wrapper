@@ -23,4 +23,11 @@ namespace MUI
             this->PushTag(MUIA_Family_Child, pChildObject, false);
         return (T &)*this;
     }
+
+    template <typename T, typename U> inline T &FamilyBuilderTemplate<T, U>::tagChildNull(bool condition)
+    {
+        if (condition)
+            this->PushTag(MUIA_Family_Child, nullptr, false);
+        return (T &)*this;
+    }
 }
