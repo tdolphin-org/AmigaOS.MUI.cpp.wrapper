@@ -119,7 +119,7 @@ ___
 | [MUIC_Gauge](https://github.com/amiga-mui/muidev/wiki/MUI_Gauge) | [MUI::Gauge](/wrappers/src/MUI/Gauge.hpp) | Ready | Ready | - | - |
 | [MUIC_Group](https://github.com/amiga-mui/muidev/wiki/MUI_Group) | [MUI::Group](/wrappers/src/MUI/Group.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | in progress | in progress |
 | [MUIC_Image](https://github.com/amiga-mui/muidev/wiki/MUI_Image) | [MUI::Image](/wrappers/src/MUI/Image.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
-| [MUIC_Keyadjust](https://github.com/amiga-mui/muidev/wiki/MUI_Keyadjust) | - | - | - | - | - |
+| [MUIC_Keyadjust](https://github.com/amiga-mui/muidev/wiki/MUI_Keyadjust) | [MUI::Keyadjust](/wrappers/src/MUI/Keyadjust.hpp) | Ready (AMUI5/MMUI5, 3.8 n/a) | Ready (AMUI5/MMUI5, 3.8 n/a) | - | - |
 | [MUIC_Knob](https://github.com/amiga-mui/muidev/wiki/MUI_Knob) | [MUI::Knob](/wrappers/src/MUI/Knob.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Levelmeter](https://github.com/amiga-mui/muidev/wiki/MUI_Levelmeter) | [MUI::Levelmeter](/wrappers/src/MUI/Levelmeter.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_List](https://github.com/amiga-mui/muidev/wiki/MUI_List) | [MUI::List](/wrappers/src/MUI/List.hpp) | Ready (3.8/AMUI5/MMUI5) | in progress | in progress | in progress |
