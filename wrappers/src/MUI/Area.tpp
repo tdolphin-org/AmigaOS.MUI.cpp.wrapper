@@ -124,17 +124,21 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_MinHeight
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagMinHeight(const long minHeight)
     {
         this->PushTag(MUIA_MinHeight, minHeight);
         return (T &)*this;
     }
+#endif
 
+#ifdef MUIA_MinWidth
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagMinWidth(const long minWidth)
     {
         this->PushTag(MUIA_MinWidth, minWidth);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &AreaBuilderTemplate<T, U>::tagFont(const enum Font font)
     {

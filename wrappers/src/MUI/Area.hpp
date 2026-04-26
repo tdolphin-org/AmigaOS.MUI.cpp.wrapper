@@ -489,10 +489,14 @@ namespace MUI
         T &tagMaxHeight(const long maxHeight);
         /// @brief [ @b MUIA_MaxWidth ]
         T &tagMaxWidth(const long maxWidth);
+#ifdef MUIA_MinHeight
         /// @brief [ @b MUIA_MinHeight ]
         T &tagMinHeight(const long minHeight);
+#endif
+#ifdef MUIA_MinWidth
         /// @brief [ @b MUIA_MinWidth ]
         T &tagMinWidth(const long minWidth);
+#endif
         /// @brief [ @b MUIA_Font] (for "struct TextFont *" should be separate method)
         /// @param font enum Font
         T &tagFont(const enum Font font);
