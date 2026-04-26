@@ -48,4 +48,36 @@ namespace MUI
         this->PushTag(MUIA_Coloradjust_RGB, rgb);
         return (T &)*this;
     }
+
+#ifdef MUIA_Coloradjust_Alpha
+    template <typename T, typename U> inline T &ColoradjustBuilderTemplate<T, U>::tagAlpha(const unsigned char alpha)
+    {
+        this->PushTag(MUIA_Coloradjust_Alpha, static_cast<unsigned long>(alpha));
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_Coloradjust_ARGB
+    template <typename T, typename U> inline T &ColoradjustBuilderTemplate<T, U>::tagARGB(const unsigned long argb)
+    {
+        this->PushTag(MUIA_Coloradjust_ARGB, argb);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_Coloradjust_ShowAlpha
+    template <typename T, typename U> inline T &ColoradjustBuilderTemplate<T, U>::tagShowAlpha(const bool showAlpha)
+    {
+        this->PushTag(MUIA_Coloradjust_ShowAlpha, (ULONG)showAlpha);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_Coloradjust_XRGB
+    template <typename T, typename U> inline T &ColoradjustBuilderTemplate<T, U>::tagXRGB(const unsigned long xrgb)
+    {
+        this->PushTag(MUIA_Coloradjust_XRGB, xrgb);
+        return (T &)*this;
+    }
+#endif
 }

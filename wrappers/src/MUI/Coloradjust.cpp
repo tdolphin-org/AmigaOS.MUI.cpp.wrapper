@@ -36,6 +36,34 @@ namespace MUI
         return RGBColor(rgb);
     }
 
+#ifdef MUIA_Coloradjust_Alpha
+    unsigned char Coloradjust::getAlpha() const
+    {
+        return static_cast<unsigned char>(GetValueAsULong(MUIA_Coloradjust_Alpha));
+    }
+#endif
+
+#ifdef MUIA_Coloradjust_ARGB
+    unsigned long Coloradjust::getARGB() const
+    {
+        return GetValueAsULong(MUIA_Coloradjust_ARGB);
+    }
+#endif
+
+#ifdef MUIA_Coloradjust_ShowAlpha
+    bool Coloradjust::getShowAlpha() const
+    {
+        return GetValueAsBool(MUIA_Coloradjust_ShowAlpha);
+    }
+#endif
+
+#ifdef MUIA_Coloradjust_XRGB
+    unsigned long Coloradjust::getXRGB() const
+    {
+        return GetValueAsULong(MUIA_Coloradjust_XRGB);
+    }
+#endif
+
     Coloradjust &Coloradjust::setBlue(const unsigned char blue)
     {
         SetValue(MUIA_Coloradjust_Blue, RGBColor::to32Bit(blue));
@@ -62,7 +90,7 @@ namespace MUI
 
     Coloradjust &Coloradjust::setRGB(const unsigned char red, const unsigned char green, const unsigned char blue)
     {
-        unsigned long rgb[3] = { red, green, blue };
+        unsigned long rgb[3] = { RGBColor::to32Bit(red), RGBColor::to32Bit(green), RGBColor::to32Bit(blue) };
         SetValue(MUIA_Coloradjust_RGB, (void *)rgb);
         return *this;
     }
@@ -73,6 +101,38 @@ namespace MUI
         SetValue(MUIA_Coloradjust_RGB, (void *)rgb);
         return *this;
     }
+
+#ifdef MUIA_Coloradjust_Alpha
+    Coloradjust &Coloradjust::setAlpha(const unsigned char alpha)
+    {
+        SetValue(MUIA_Coloradjust_Alpha, static_cast<unsigned long>(alpha));
+        return *this;
+    }
+#endif
+
+#ifdef MUIA_Coloradjust_ARGB
+    Coloradjust &Coloradjust::setARGB(const unsigned long argb)
+    {
+        SetValue(MUIA_Coloradjust_ARGB, argb);
+        return *this;
+    }
+#endif
+
+#ifdef MUIA_Coloradjust_ShowAlpha
+    Coloradjust &Coloradjust::setShowAlpha(const bool showAlpha)
+    {
+        SetValue(MUIA_Coloradjust_ShowAlpha, showAlpha);
+        return *this;
+    }
+#endif
+
+#ifdef MUIA_Coloradjust_XRGB
+    Coloradjust &Coloradjust::setXRGB(const unsigned long xrgb)
+    {
+        SetValue(MUIA_Coloradjust_XRGB, xrgb);
+        return *this;
+    }
+#endif
 
     ColoradjustBuilder::ColoradjustBuilder() { }
 }
