@@ -32,4 +32,20 @@ namespace MUI
         this->PushTag(MUIA_Pendisplay_Spec, spec);
         return (T &)*this;
     }
+
+#ifdef MUIA_Pendisplay_ARGB
+    template <typename T, typename U> inline T &PendisplayBuilderTemplate<T, U>::tagARGB(const unsigned long argb)
+    {
+        this->PushTag(MUIA_Pendisplay_ARGB, argb);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_Pendisplay_XRGB
+    template <typename T, typename U> inline T &PendisplayBuilderTemplate<T, U>::tagXRGB(const unsigned long xrgb)
+    {
+        this->PushTag(MUIA_Pendisplay_XRGB, xrgb);
+        return (T &)*this;
+    }
+#endif
 }

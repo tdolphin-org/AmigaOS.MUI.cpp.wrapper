@@ -37,6 +37,20 @@ namespace MUI
         return GetValueAsConstPenSpecPtr(MUIA_Pendisplay_Spec);
     }
 
+#ifdef MUIA_Pendisplay_ARGB
+    unsigned long Pendisplay::getARGB() const
+    {
+        return GetValueAsULong(MUIA_Pendisplay_ARGB);
+    }
+#endif
+
+#ifdef MUIA_Pendisplay_XRGB
+    unsigned long Pendisplay::getXRGB() const
+    {
+        return GetValueAsULong(MUIA_Pendisplay_XRGB);
+    }
+#endif
+
     Pendisplay &Pendisplay::setReference(const Object *reference)
     {
         SetValue(MUIA_Pendisplay_Reference, reference);
@@ -59,6 +73,22 @@ namespace MUI
         SetValue(MUIA_Pendisplay_Spec, spec);
         return *this;
     }
+
+#ifdef MUIA_Pendisplay_ARGB
+    Pendisplay &Pendisplay::setARGB(const unsigned long argb)
+    {
+        SetValue(MUIA_Pendisplay_ARGB, argb);
+        return *this;
+    }
+#endif
+
+#ifdef MUIA_Pendisplay_XRGB
+    Pendisplay &Pendisplay::setXRGB(const unsigned long xrgb)
+    {
+        SetValue(MUIA_Pendisplay_XRGB, xrgb);
+        return *this;
+    }
+#endif
 
     Pendisplay &Pendisplay::SetColormap(const long colormap)
     {
