@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Gauge.hpp"
@@ -52,9 +52,9 @@ namespace MUI
     }
 
 #ifdef MUIA_Gauge_InfoRate
-    Gauge &Gauge::setInfoRate(const long horiz)
+    Gauge &Gauge::setInfoRate(const long infoRate)
     {
-        SetValue(MUIA_Gauge_InfoRate, horiz);
+        SetValue(MUIA_Gauge_InfoRate, infoRate);
         return *this;
     }
 #endif
