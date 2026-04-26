@@ -10,6 +10,8 @@
 
 namespace MUI
 {
+    /// @brief MUI Popstring class wrapper.
+    /// Popstring is a base class for popup objects composed of a string-like gadget and a popup button.
     class Popstring : public Group
     {
       public:
@@ -29,29 +31,30 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-        /// [ @b MUIA_Popstring_Button ]
+        /// @brief [ @b MUIA_Popstring_Button ] Get popup button object used by this popstring.
         Object *getButton() const;
-        /// [ @b MUIA_Popstring_CloseHook ]
+        /// @brief [ @b MUIA_Popstring_CloseHook ] Get hook called when popup is closed.
         Hook *getCloseHook() const;
-        /// [ @b MUIA_Popstring_OpenHook ]
+        /// @brief [ @b MUIA_Popstring_OpenHook ] Get hook called when popup is opened.
         Hook *getOpenHook() const;
-        /// [ @b MUIA_Popstring_String ]
+        /// @brief [ @b MUIA_Popstring_String ] Get string object associated with this popup.
         Object *getString() const;
-        /// [ @b MUIA_Popstring_Toggle ]
+        /// @brief [ @b MUIA_Popstring_Toggle ] Query whether toggle mode is enabled.
         bool isToggle() const;
 
-        /// [ @b MUIA_Popstring_CloseHook ]
+        /// @brief [ @b MUIA_Popstring_CloseHook ] Set hook called when popup is closed.
         Popstring &setCloseHook(const Hook *closeHook);
-        /// [ @b MUIA_Popstring_OpenHook ]
+        /// @brief [ @b MUIA_Popstring_OpenHook ] Set hook called when popup is opened.
         Popstring &setOpenHook(const Hook *openHook);
-        /// [ @b MUIA_Popstring_Toggle ]
+        /// @brief [ @b MUIA_Popstring_Toggle ] Enable or disable toggle mode for popup button behavior.
         Popstring &setToggle(const bool toggle);
 
         // methods, some returns object reference
 
-        /// @brief [ @b MUIM_Popstring_Close ]
+        /// @brief [ @b MUIM_Popstring_Close ] Close the popup by invoking the configured close hook.
+        /// @param result Success flag passed to close hook (typically `true` for accept, `false` for cancel).
         Popstring &Close(long result);
-        /// @brief [ @b MUIM_Popstring_Open ]
+        /// @brief [ @b MUIM_Popstring_Open ] Open the popup by invoking the configured open hook.
         Popstring &Open();
     };
 
@@ -63,15 +66,15 @@ namespace MUI
         {
         }
 
-        /// @brief [ @b MUIA_Popstring_Button ]
+        /// @brief [ @b MUIA_Popstring_Button ] Set popup button object at initialization.
         T &tagButton(const Object *button);
-        /// @brief [ @b MUIA_Popstring_CloseHook ]
+        /// @brief [ @b MUIA_Popstring_CloseHook ] Set close hook at initialization.
         T &tagCloseHook(const Hook *closeHook);
-        /// @brief [ @b MUIA_Popstring_OpenHook ]
+        /// @brief [ @b MUIA_Popstring_OpenHook ] Set open hook at initialization.
         T &tagOpenHook(const Hook *openHook);
-        /// @brief [ @b MUIA_Popstring_String ]
+        /// @brief [ @b MUIA_Popstring_String ] Set popup string object at initialization.
         T &tagString(const Object *string);
-        /// @brief [ @b MUIA_Popstring_Toggle ]
+        /// @brief [ @b MUIA_Popstring_Toggle ] Enable or disable toggle mode at initialization.
         T &tagToggle(const bool toggle);
     };
 
