@@ -35,6 +35,8 @@ namespace MUI
 #if MUIMASTER_VMIN >= 20 // MUI5
         /// @brief [ @b MUIA_Register_Titles ]
         Register &setTitles(const char *titles[]);
+        /// @brief [ @b MUIA_Register_Titles ]
+        Register &setTitles(const std::vector<std::string> &titles);
 #endif
     };
 
@@ -49,6 +51,9 @@ namespace MUI
         /// @brief [ @b MUIA_Register_Titles ]
         /// @param pTitles pointer to array (array of char *)
         T &tagTitles(const char *pTitles[]);
+        /// @brief [ @b MUIA_Register_Titles ]
+        /// @param pTitles vector of titles copied and stored by this wrapper
+        T &tagTitles(const std::vector<std::string> &pTitles);
     };
 
     class RegisterBuilder : public RegisterBuilderTemplate<RegisterBuilder, Register>

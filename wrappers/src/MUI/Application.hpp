@@ -142,6 +142,9 @@ namespace MUI
         /// @brief [ @b MUIA_Application_UsedClasses ]
         /// NULL terminated list of external custom classes used by the application.
         Application &setUsedClasses(const char *usedClasses[]);
+        /// @brief [ @b MUIA_Application_UsedClasses ]
+        /// External custom classes used by the application.
+        Application &setUsedClasses(const std::vector<std::string> &usedClasses);
 #endif
         /// @brief [ @b MUIA_Application_Version ]
         /// Version string of the application.
@@ -411,6 +414,9 @@ namespace MUI
         /// NULL terminated array listing external custom classes used by the application.
         /// List only external .mcc classes, not default .mui classes or .mcp preference classes.
         ApplicationBuilder &tagUsedClasses(char *usedClasses[]);
+        /// @brief [ @b MUIA_Application_UsedClasses ]
+        /// List only external .mcc classes, not default .mui classes or .mcp preference classes.
+        ApplicationBuilder &tagUsedClasses(const std::vector<std::string> &usedClasses);
 #endif
         /// @brief [ @b MUIA_Application_UseRexx ]
         /// When false, the application runs without an ARexx interface.

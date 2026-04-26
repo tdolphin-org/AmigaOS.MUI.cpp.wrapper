@@ -18,7 +18,8 @@ namespace MUI
 
     template <typename T, typename U> inline T &CycleBuilderTemplate<T, U>::tagEntries(const char *entries[])
     {
-        this->PushTag(MUIA_Cycle_Entries, entries);
+        auto copy = this->StoreStringArray(MUIA_Cycle_Entries, entries);
+        this->PushTag(MUIA_Cycle_Entries, copy);
         return (T &)*this;
     }
 

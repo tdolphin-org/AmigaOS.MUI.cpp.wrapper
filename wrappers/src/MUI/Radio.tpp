@@ -18,7 +18,15 @@ namespace MUI
 
     template <typename T, typename U> inline T &RadioBuilderTemplate<T, U>::tagEntries(const char *entries[])
     {
-        this->PushTag(MUIA_Radio_Entries, entries);
+        auto copy = this->StoreStringArray(MUIA_Radio_Entries, entries);
+        this->PushTag(MUIA_Radio_Entries, copy);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &RadioBuilderTemplate<T, U>::tagEntries(const std::vector<std::string> &entries)
+    {
+        auto copy = this->StoreStringArray(MUIA_Radio_Entries, entries);
+        this->PushTag(MUIA_Radio_Entries, copy);
         return (T &)*this;
     }
 }

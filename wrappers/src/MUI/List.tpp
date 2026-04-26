@@ -255,7 +255,17 @@ namespace MUI
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagSourceArray(const char *sourceArray[])
     {
         if (sourceArray)
-            this->PushTag(MUIA_List_SourceArray, sourceArray);
+        {
+            auto copy = this->StoreStringArray(MUIA_List_SourceArray, sourceArray);
+            this->PushTag(MUIA_List_SourceArray, copy);
+        }
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagSourceArray(const std::vector<std::string> &sourceArray)
+    {
+        auto copy = this->StoreStringArray(MUIA_List_SourceArray, sourceArray);
+        this->PushTag(MUIA_List_SourceArray, copy);
         return (T &)*this;
     }
 
@@ -275,7 +285,17 @@ namespace MUI
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagTitleArray(const char *titleArray[])
     {
         if (titleArray)
-            this->PushTag(MUIA_List_TitleArray, titleArray);
+        {
+            auto copy = this->StoreStringArray(MUIA_List_TitleArray, titleArray);
+            this->PushTag(MUIA_List_TitleArray, copy);
+        }
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagTitleArray(const std::vector<std::string> &titleArray)
+    {
+        auto copy = this->StoreStringArray(MUIA_List_TitleArray, titleArray);
+        this->PushTag(MUIA_List_TitleArray, copy);
         return (T &)*this;
     }
 #endif

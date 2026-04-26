@@ -23,5 +23,12 @@ namespace MUI
         SetValue(MUIA_Register_Titles, titles);
         return *this;
     }
+
+    Register &Register::setTitles(const std::vector<std::string> &titles)
+    {
+        auto copy = StoreStringArray(MUIA_Register_Titles, titles);
+        SetValue(MUIA_Register_Titles, copy);
+        return *this;
+    }
 #endif
 }

@@ -190,6 +190,13 @@ namespace MUI
         SetValue(MUIA_Application_UsedClasses, usedClasses);
         return *this;
     }
+
+    Application &Application::setUsedClasses(const std::vector<std::string> &usedClasses)
+    {
+        auto copy = StoreStringArray(MUIA_Application_UsedClasses, usedClasses);
+        SetValue(MUIA_Application_UsedClasses, copy);
+        return *this;
+    }
 #endif
 
     std::string Application::getVersion() const
@@ -617,7 +624,15 @@ namespace MUI
 #ifdef MUIA_Application_UsedClasses
     ApplicationBuilder &ApplicationBuilder::tagUsedClasses(char *usedClasses[])
     {
-        this->PushTag(MUIA_Application_UsedClasses, (const char **)usedClasses);
+        auto copy = this->StoreStringArray(MUIA_Application_UsedClasses, (const char **)usedClasses);
+        this->PushTag(MUIA_Application_UsedClasses, copy);
+        return *this;
+    }
+
+    ApplicationBuilder &ApplicationBuilder::tagUsedClasses(const std::vector<std::string> &usedClasses)
+    {
+        auto copy = this->StoreStringArray(MUIA_Application_UsedClasses, usedClasses);
+        this->PushTag(MUIA_Application_UsedClasses, copy);
         return *this;
     }
 #endif

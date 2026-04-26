@@ -340,6 +340,8 @@ namespace MUI
         T &tagSourceArray(const void *sourceArray[]);
         /// @brief [ @b MUIA_List_SourceArray ]
         T &tagSourceArray(const char *sourceArray[]);
+        /// @brief [ @b MUIA_List_SourceArray ]
+        T &tagSourceArray(const std::vector<std::string> &sourceArray);
         /// @brief [ @b MUIA_List_Title pass true when custom display hook ]
         T &tagTitle(const bool title = true);
         /// @brief [ @b MUIA_List_Title ]
@@ -347,6 +349,8 @@ namespace MUI
 #ifdef MUIA_List_TitleArray
         /// @brief [ @b MUIA_List_TitleArray ]
         T &tagTitleArray(const char *titleArray[]);
+        /// @brief [ @b MUIA_List_TitleArray ]
+        T &tagTitleArray(const std::vector<std::string> &titleArray);
 #endif
 
 #ifdef ListHookStringArrayModeAvailable

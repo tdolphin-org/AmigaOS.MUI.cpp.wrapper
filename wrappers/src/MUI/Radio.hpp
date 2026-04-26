@@ -54,6 +54,9 @@ namespace MUI
         /// Define what entries shall be displayed in your Radio gadget. You must supply a pointer to a string array, containing one entry
         /// for each item and terminated with a NULL.
         T &tagEntries(const char *entries[]);
+        /// @brief [ @b MUIA_Radio_Entries ]
+        /// Define what entries shall be displayed in your Radio gadget. The string copies are stored internally by this C++ wrapper.
+        T &tagEntries(const std::vector<std::string> &entries);
     };
 
     class RadioBuilder : public RadioBuilderTemplate<RadioBuilder, Radio>
