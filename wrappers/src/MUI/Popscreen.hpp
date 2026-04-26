@@ -1,0 +1,51 @@
+//
+//  AmigaOS MUI C++ wrapper
+//
+//  (c) 2022-2026 TDolphin
+//
+
+#pragma once
+
+#include "Popobject.hpp"
+
+namespace MUI
+{
+    /// @brief MUI Popscreen class wrapper.
+    /// Private class that provides a popup selector for public screens.
+    class Popscreen : public Popobject
+    {
+      public:
+        explicit Popscreen(Object *pMuiObject)
+          : Popobject(pMuiObject)
+        {
+        }
+
+        // instanceOf
+
+        const static std::string className;
+
+        static inline bool instanceOf(Object *pMuiObject)
+        {
+            return MUI::instanceOf(pMuiObject, className.c_str());
+        }
+    };
+
+    template <typename T, typename U> class PopscreenBuilderTemplate : public PopobjectBuilderTemplate<T, U>
+    {
+      public:
+        PopscreenBuilderTemplate(const std::string &uniqueId = MUI::EmptyUniqueId, const std::string &muiClassName = MUIC_Popscreen)
+          : PopobjectBuilderTemplate<T, U>(uniqueId, muiClassName)
+        {
+        }
+    };
+
+    class PopscreenBuilder : public PopscreenBuilderTemplate<PopscreenBuilder, Popscreen>
+    {
+      public:
+        PopscreenBuilder();
+    };
+}
+
+#define MUI_POPSCREEN_TPP_INCLUDE
+#include "Popscreen.tpp"
+#undef MUI_POPSCREEN_TPP_INCLUDE

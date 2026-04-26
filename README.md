@@ -141,7 +141,7 @@ ___
 | [MUIC_Poplist](https://github.com/amiga-mui/muidev/wiki/MUI_Poplist) | - | - | - | - | - |
 | [MUIC_Popobject](https://github.com/amiga-mui/muidev/wiki/MUI_Popobject) | [MUI::Popobject](/wrappers/src/MUI/Popobject.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Poppen](https://github.com/amiga-mui/muidev/wiki/MUI_Poppen) | [MUI::Poppen](/wrappers/src/MUI/Poppen.hpp) | Ready | Ready | not applicable | not applicable |
-| [MUIC_Popscreen](https://github.com/amiga-mui/muidev/wiki/MUI_Popscreen) | - | - | - | - | - |
+| [MUIC_Popscreen](https://github.com/amiga-mui/muidev/wiki/MUI_Popscreen) | [MUI::Popscreen](/wrappers/src/MUI/Popscreen.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Popstring](https://github.com/amiga-mui/muidev/wiki/MUI_Popstring) | [MUI::Popstring](/wrappers/src/MUI/Popstring.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Process](https://github.com/amiga-mui/muidev/wiki/MUI_Process) | - | - | - | - | - |
 | [MUIC_Prop](https://github.com/amiga-mui/muidev/wiki/MUI_Prop) | [MUI::Prop](/wrappers/src/MUI/Prop.hpp) | Ready | Ready | Ready | Ready |
