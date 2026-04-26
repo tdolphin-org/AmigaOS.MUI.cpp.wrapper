@@ -92,6 +92,18 @@ const char **StringStorageCore::Add(unsigned long &objectId, Tag tagName, const 
     return (const char **)(pArray);
 }
 
+const char **StringStorageCore::Add(unsigned long &objectId, Tag tagName, const char *strings[])
+{
+    if (strings == nullptr)
+        return nullptr;
+
+    std::vector<std::string> copy;
+    for (const char **entry = strings; *entry != nullptr; ++entry)
+        copy.emplace_back(*entry);
+
+    return Add(objectId, tagName, copy);
+}
+
 void StringStorageCore::Invalidate(const unsigned long objectId)
 {
 #ifdef TRACE_SSC
@@ -220,6 +232,18 @@ const char **StringStorageCore::Change(const Object *object, Tag tagName, const 
     mObjectPtrToArrayMap[reinterpret_cast<uintptr_t>(object)][tagName] = (const char **)pArray;
 
     return (const char **)pArray;
+}
+
+const char **StringStorageCore::Change(const Object *object, Tag tagName, const char *strings[])
+{
+    if (strings == nullptr)
+        return nullptr;
+
+    std::vector<std::string> copy;
+    for (const char **entry = strings; *entry != nullptr; ++entry)
+        copy.emplace_back(*entry);
+
+    return Change(object, tagName, copy);
 }
 
 void StringStorageCore::Remove(const Object *object, Tag tagName)

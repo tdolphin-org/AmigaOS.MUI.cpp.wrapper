@@ -67,17 +67,22 @@ namespace MUI
 
         // methods
 
-        const char *StoreString(const unsigned long tagName, const std::string &string)
+        const char *StoreString(const unsigned long tagName, const std::string &string) const
         {
             return StringStorage::instance().Change(mpMuiObject, tagName, string);
         }
 
-        const char **StoreStringArray(const unsigned long tagName, const std::vector<std::string> &strings)
+        const char **StoreStringArray(const unsigned long tagName, const std::vector<std::string> &strings) const
         {
             return StringStorage::instance().Change(mpMuiObject, tagName, strings);
         }
 
-        void ClearStoredString(const unsigned long tagName)
+        const char **StoreStringArray(const unsigned long tagName, const char *strings[]) const
+        {
+            return StringStorage::instance().Change(mpMuiObject, tagName, strings);
+        }
+
+        void ClearStoredString(const unsigned long tagName) const
         {
             StringStorage::instance().Remove(mpMuiObject, tagName);
         }

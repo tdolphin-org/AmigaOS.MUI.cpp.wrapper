@@ -81,5 +81,10 @@ namespace MUI
         {
             return StringStorage::instance().Add(mStringStorageObjectId, tagName, strings);
         }
+
+        const char **StoreStringArray(const unsigned long tagName, const char *strings[])
+        {
+            return StringStorage::instance().Add(mStringStorageObjectId, tagName, strings);
+        }
     };
 }

@@ -53,6 +53,14 @@ class StringStorageCore
     /// @return pointer to array of string copies (string array where last element pointer is nullptr)
     const char **Add(unsigned long &objectId, Tag tagName, const std::vector<std::string> &strings);
 
+    /// @brief add NULL-terminated C string array to SSC for not yet created object for given object id (> 0), or for 0 to generate new id
+    /// if strings for objectId and tagName already exits, method throws exception
+    /// @param objectId object id or 0
+    /// @param tagName tag name/id
+    /// @param strings NULL-terminated C string array to create copies
+    /// @return pointer to array of string copies (string array where last element pointer is nullptr)
+    const char **Add(unsigned long &objectId, Tag tagName, const char *strings[]);
+
     /// @brief invalidate (erase) all strings for not yet created object
     /// @param objectId id of object
     void Invalidate(const unsigned long objectId);
@@ -77,6 +85,14 @@ class StringStorageCore
     /// @return pointer to array of string copies (string array where last element pointer is nullptr)
     const char **Change(const Object *object, Tag tagName, const std::vector<std::string> &strings);
 
+    /// @brief change NULL-terminated C string array for given object and for given tag, old strings are removed (if exists), created new
+    /// copies for new strings
+    /// @param object object ptr
+    /// @param tagName tag name/id
+    /// @param strings new NULL-terminated C string array
+    /// @return pointer to array of string copies (string array where last element pointer is nullptr)
+    const char **Change(const Object *object, Tag tagName, const char *strings[]);
+
     /// @brief remove stored string/string-array for given runtime object and tag
     /// @param object object ptr
     /// @param tagName tag name/id
@@ -89,7 +105,7 @@ class StringStorageCore
 
   private:
     void ClearGarbage(); // clear garbage strings and string arrays
-    void ClearAll();     // clear all strings and string arrays
+    void ClearAll(); // clear all strings and string arrays
 };
 
 using StringStorage = td::Singleton<StringStorageCore>;

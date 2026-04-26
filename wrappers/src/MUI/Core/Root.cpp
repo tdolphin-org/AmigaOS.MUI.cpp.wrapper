@@ -228,7 +228,15 @@ namespace MUI
 
     void Root::SetValue(const unsigned long tagName, const char *array[]) const
     {
-        SetAttrs(muiObject(), tagName, (unsigned long)array, TAG_END);
+        if (array == nullptr)
+        {
+            ClearStoredString(tagName);
+            SetAttrs(muiObject(), tagName, (unsigned long)nullptr, TAG_END);
+            return;
+        }
+
+        auto copy = StoreStringArray(tagName, array);
+        SetAttrs(muiObject(), tagName, (unsigned long)copy, TAG_END);
     }
 
     void Root::SetValue(const unsigned long tagName, const Object *pObject) const
