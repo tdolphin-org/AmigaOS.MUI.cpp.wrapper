@@ -56,7 +56,7 @@ namespace MUI
 
     Colorfield &Colorfield::setRGB(const unsigned char red, const unsigned char green, const unsigned char blue)
     {
-        unsigned long rgb[3] = { red, green, blue };
+        unsigned long rgb[3] = { RGBColor::to32Bit(red), RGBColor::to32Bit(green), RGBColor::to32Bit(blue) };
         SetValue(MUIA_Colorfield_RGB, (void *)rgb);
         return *this;
     }
