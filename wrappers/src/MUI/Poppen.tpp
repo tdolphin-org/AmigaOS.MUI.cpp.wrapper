@@ -12,7 +12,7 @@ namespace MUI
 {
     template <typename T, typename U> inline T &PoppenBuilderTemplate<T, U>::tagWindowTitle(const std::string &title)
     {
-        auto copy = this->StoreString(MUIA_ShortHelp, title);
+        auto copy = this->StoreString(MUIA_Window_Title, title);
         this->PushTag(MUIA_Window_Title, copy);
         return (T &)*this;
     }
