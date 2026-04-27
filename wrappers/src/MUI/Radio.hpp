@@ -12,6 +12,9 @@
 
 namespace MUI
 {
+    /// @brief Wrapper for MUIC_Radio - a group-based radio button gadget.
+    /// Radio gadgets offer cycle-like selection using one button per entry and can be laid out
+    /// vertically, horizontally or in more complex group arrangements through inherited Group attributes.
     class Radio : public Group
     {
       public:
@@ -31,10 +34,10 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-        /// @brief [ @b MUIA_Radio_Active ]
+        /// @brief [ @b MUIA_Radio_Active ] Get the index of the currently active radio entry.
         long getActive() const;
 
-        /// @brief [ @b MUIA_Radio_Active ]
+        /// @brief [ @b MUIA_Radio_Active ] Set the active radio entry by zero-based index.
         Radio &setActive(const unsigned long active);
     };
 
@@ -56,6 +59,7 @@ namespace MUI
         T &tagEntries(const char *entries[]);
         /// @brief [ @b MUIA_Radio_Entries ]
         /// Define what entries shall be displayed in your Radio gadget. The string copies are stored internally by this C++ wrapper.
+        /// Radio entries may contain MUI text formatting codes.
         T &tagEntries(const std::vector<std::string> &entries);
     };
 
