@@ -12,6 +12,9 @@
 
 namespace MUI
 {
+    /// @brief Wrapper for MUIC_Scrollbar - a group combining a prop gadget with arrow buttons.
+    /// Scrollbar forwards attributes and methods to its child gadgets so it can be used like a
+    /// single proportional gadget, while Group layout attributes still control horizontal or vertical layout.
     class Scrollbar : public Group
     {
       public:
@@ -32,10 +35,10 @@ namespace MUI
         // is/get/set (attributes), all setters return object reference
 
 #ifdef MUIA_Scrollbar_IncDecSize
-        /// @brief [ @b MUIA_Scrollbar_IncDecSize ]
+        /// @brief [ @b MUIA_Scrollbar_IncDecSize ] Get the amount by which arrow button clicks change the scrollbar position.
         unsigned long getIncDecSize() const;
 
-        /// @brief [ @b MUIA_Scrollbar_IncDecSize ]
+        /// @brief [ @b MUIA_Scrollbar_IncDecSize ] Set the amount by which arrow button clicks change the scrollbar position.
         Scrollbar &setIncDecSize(unsigned long incDecSize);
 #endif
     };
@@ -48,10 +51,11 @@ namespace MUI
         {
         }
 #ifdef MUIA_Scrollbar_IncDecSize
-        /// @brief [ @b MUIA_Scrollbar_IncDecSize ]
+        /// @brief [ @b MUIA_Scrollbar_IncDecSize ] Set the initial amount by which arrow button clicks change the scrollbar position.
         T &tagIncDecSize(const unsigned long incDecSize);
 #endif
-        /// @brief [ @b MUIA_Scrollbar_Type ]
+        /// @brief [ @b MUIA_Scrollbar_Type ] Specify a certain scrollbar type.
+        /// Normally the user's configured scrollbar style should be respected.
         T &tagType(const enum Scrollbar_Type type);
     };
 
