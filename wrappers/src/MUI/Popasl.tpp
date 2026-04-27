@@ -28,6 +28,14 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_Popasl_MUIFontStyles
+    template <typename T, typename U> inline T &PopaslBuilderTemplate<T, U>::tagMUIFontStyles(const bool muiFontStyles)
+    {
+        this->PushTag(MUIA_Popasl_MUIFontStyles, muiFontStyles);
+        return (T &)*this;
+    }
+#endif
+
     template <typename T, typename U> inline T &PopaslBuilderTemplate<T, U>::tagAslFrTitleText(const char *titleText)
     {
         this->PushTag(ASLFR_TitleText, titleText);

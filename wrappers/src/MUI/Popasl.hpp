@@ -39,11 +39,19 @@ namespace MUI
         Hook *getStopHook() const;
         /// @brief [ @b MUIA_Popasl_Type ]
         unsigned long getType() const;
+#ifdef MUIA_Popasl_MUIFontStyles
+        /// @brief [ @b MUIA_Popasl_MUIFontStyles ]
+        bool isMUIFontStyles() const;
+#endif
 
         /// @brief [ @b MUIA_Popasl_StartHook ]
         Popasl &setStartHook(const Hook *startHook);
         /// @brief [ @b MUIA_Popasl_StopHook ]
         Popasl &setStopHook(const Hook *stopHook);
+#ifdef MUIA_Popasl_MUIFontStyles
+        /// @brief [ @b MUIA_Popasl_MUIFontStyles ]
+        Popasl &setMUIFontStyles(const bool muiFontStyles);
+#endif
     };
 
     template <typename T, typename U> class PopaslBuilderTemplate : public PopstringBuilderTemplate<T, U>
@@ -60,6 +68,10 @@ namespace MUI
         T &tagStopHook(const Hook *stopHook);
         /// @brief [ @b MUIA_Popasl_Type ]
         T &tagType(const unsigned long type);
+#ifdef MUIA_Popasl_MUIFontStyles
+        /// @brief [ @b MUIA_Popasl_MUIFontStyles ]
+        T &tagMUIFontStyles(const bool muiFontStyles = true);
+#endif
 
         // File requester tags
 

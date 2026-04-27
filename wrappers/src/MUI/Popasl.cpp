@@ -32,6 +32,13 @@ namespace MUI
         return GetValueAsULong(MUIA_Popasl_Type);
     }
 
+#ifdef MUIA_Popasl_MUIFontStyles
+    bool Popasl::isMUIFontStyles() const
+    {
+        return GetValueAsBool(MUIA_Popasl_MUIFontStyles);
+    }
+#endif
+
     Popasl &Popasl::setStartHook(const Hook *startHook)
     {
         SetValue(MUIA_Popasl_StartHook, startHook);
@@ -43,4 +50,12 @@ namespace MUI
         SetValue(MUIA_Popasl_StopHook, stopHook);
         return *this;
     }
+
+#ifdef MUIA_Popasl_MUIFontStyles
+    Popasl &Popasl::setMUIFontStyles(const bool muiFontStyles)
+    {
+        SetValue(MUIA_Popasl_MUIFontStyles, muiFontStyles);
+        return *this;
+    }
+#endif
 }
