@@ -45,6 +45,14 @@ class StringStorageCore
     /// @return pointer to string copy
     const char *Add(unsigned long &objectId, Tag tagName, const std::string &string);
 
+    /// @brief add C string to SSC for not yet created object for given object id (> 0), or for 0 to generate new id
+    /// if string for objectId and tagName already exits, method throws exception
+    /// @param objectId object id or 0
+    /// @param tagName tag name/id
+    /// @param string C string to create copy (nullptr keeps tag value as nullptr)
+    /// @return pointer to string copy or nullptr
+    const char *Add(unsigned long &objectId, Tag tagName, const char *string);
+
     /// @brief add array of strings to SSC for not yet created object for given object id (> 0), or for 0 to generate new id
     /// if strings for objectId and tagName already exits, method throws exception
     /// @param objectId object id or 0
@@ -76,6 +84,13 @@ class StringStorageCore
     /// @param string new string
     /// @return pointer to string copy
     const char *Change(const Object *object, Tag tagName, const std::string &string);
+
+    /// @brief change C string for given object and for given tag, old string is removed (if exists), created new copy for new string
+    /// @param object object ptr
+    /// @param tagName tag name/id
+    /// @param string new C string, nullptr removes stored value for this tag
+    /// @return pointer to string copy or nullptr
+    const char *Change(const Object *object, Tag tagName, const char *string);
 
     /// @brief change array of strings for given object and for given tag, old strings are removed (if exists), created new copies for new
     /// strings

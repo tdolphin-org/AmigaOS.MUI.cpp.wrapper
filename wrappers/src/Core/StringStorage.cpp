@@ -28,10 +28,24 @@ StringStorageCore::~StringStorageCore()
 
 const char *StringStorageCore::Add(unsigned long &objectId, Tag tagName, const std::string &string)
 {
+    return Add(objectId, tagName, string.c_str());
+}
+
+const char *StringStorageCore::Add(unsigned long &objectId, Tag tagName, const char *string)
+{
 #ifdef TRACE_SSC
-    std::cout << "SSC::Add(objectId = " << objectId << ", tag = " << AOS::TagUtil::toString(tagName) << ", string = \"" << string << "\")"
+    std::cout << "SSC::Add(objectId = " << objectId << ", tag = " << AOS::TagUtil::toString(tagName)
+              << ", c-string = " << (string != nullptr ? std::string { "\"" } + string + "\"" : std::string { "nullptr" }) << ")"
               << std::endl;
 #endif
+
+    if (string == nullptr)
+    {
+        if (objectId != 0)
+            Remove(objectId, tagName);
+        return nullptr;
+    }
+
     if (objectId == 0)
         objectId = ++mObjectIdCounter;
 
@@ -40,18 +54,19 @@ const char *StringStorageCore::Add(unsigned long &objectId, Tag tagName, const s
     if (outerIterator != mObjectIdToMap.end())
         if (outerIterator->second.find(tagName) != outerIterator->second.end())
         {
-            auto error = "String Storage Collector: Add(" + std::to_string(objectId) + "," + AOS::TagUtil::toString(tagName) + "," + string
-                + ") .. tagName for objectId already exists!";
+            auto error = "String Storage Collector: Add(" + std::to_string(objectId) + "," + AOS::TagUtil::toString(tagName)
+                + ",const char*) .. tagName for objectId already exists!";
             throw std::runtime_error(error);
         }
 
     // Create copy of string
-    auto pString = new char[string.size() + 1];
-    std::memcpy(pString, string.c_str(), string.size() + 1);
+    const size_t stringLength = std::strlen(string);
+    auto pString = new char[stringLength + 1];
+    std::memcpy(pString, string, stringLength + 1);
 
-    mObjectIdToMap[objectId][tagName] = (const char *)pString; // map objectId and tagName to string copy
+    mObjectIdToMap[objectId][tagName] = pString; // map objectId and tagName to string copy
 
-    return (const char *)pString;
+    return pString;
 }
 
 const char **StringStorageCore::Add(unsigned long &objectId, Tag tagName, const std::vector<std::string> &strings)
@@ -60,6 +75,26 @@ const char **StringStorageCore::Add(unsigned long &objectId, Tag tagName, const 
     std::cout << "SSC::AddArray(objectId = " << objectId << ", tag = " << AOS::TagUtil::toString(tagName)
               << ", strings.size() = " << strings.size() << ")" << std::endl;
 #endif
+
+    auto pStrings = new const char *[strings.size() + 1];
+    for (size_t i = 0; i < strings.size(); ++i)
+        pStrings[i] = strings[i].c_str();
+    pStrings[strings.size()] = nullptr;
+
+    const char **result = Add(objectId, tagName, pStrings);
+    delete[] pStrings;
+
+    return result;
+}
+
+const char **StringStorageCore::Add(unsigned long &objectId, Tag tagName, const char *strings[])
+{
+    if (strings == nullptr)
+    {
+        if (objectId != 0)
+            Remove(objectId, tagName);
+        return nullptr;
+    }
 
     if (objectId == 0)
         objectId = ++mObjectIdCounter;
@@ -74,34 +109,28 @@ const char **StringStorageCore::Add(unsigned long &objectId, Tag tagName, const 
             throw std::runtime_error(error);
         }
 
+    size_t stringsCount = 0;
+    for (const char **entry = strings; *entry != nullptr; ++entry)
+        ++stringsCount;
+
     // Create array of char* pointers (with null terminator)
-    auto pArray = new char *[strings.size() + 1];
+    auto pArray = new char *[stringsCount + 1];
 
     // Create copies of individual strings and store pointers
-    for (size_t i = 0; i < strings.size(); i++)
+    size_t i = 0;
+    for (const char **entry = strings; *entry != nullptr; ++entry, ++i)
     {
-        auto pString = new char[strings[i].size() + 1];
-        std::memcpy(pString, strings[i].c_str(), strings[i].size() + 1);
+        const size_t stringLength = std::strlen(*entry);
+        auto pString = new char[stringLength + 1];
+        std::memcpy(pString, *entry, stringLength + 1);
 
         pArray[i] = pString;
     }
-    pArray[strings.size()] = nullptr; // Null-terminate the array
+    pArray[stringsCount] = nullptr; // Null-terminate the array
 
     mObjectIdToArrayMap[objectId][tagName] = (const char **)pArray; // map objectId and tagName to array of string copies
 
-    return (const char **)(pArray);
-}
-
-const char **StringStorageCore::Add(unsigned long &objectId, Tag tagName, const char *strings[])
-{
-    if (strings == nullptr)
-        return nullptr;
-
-    std::vector<std::string> copy;
-    for (const char **entry = strings; *entry != nullptr; ++entry)
-        copy.emplace_back(*entry);
-
-    return Add(objectId, tagName, copy);
+    return (const char **)pArray;
 }
 
 void StringStorageCore::Invalidate(const unsigned long objectId)
@@ -169,16 +198,29 @@ void StringStorageCore::FinalizeObject(const unsigned long objectId, const Objec
 
 const char *StringStorageCore::Change(const Object *object, Tag tagName, const std::string &string)
 {
+    return Change(object, tagName, string.c_str());
+}
+
+const char *StringStorageCore::Change(const Object *object, Tag tagName, const char *string)
+{
 #ifdef TRACE_SSC
     std::cout << "SSC::Change(object = " << ToString::FromDataPointer(object) << ", tag = " << AOS::TagUtil::toString(tagName)
-              << ", string = \"" << string << "\")" << std::endl;
+              << ", c-string = " << (string != nullptr ? std::string { "\"" } + string + "\"" : std::string { "nullptr" }) << ")"
+              << std::endl;
 #endif
+
+    if (string == nullptr)
+    {
+        Remove(object, tagName);
+        return nullptr;
+    }
 
     ClearGarbage(); // remove garbage strings and string arrays
 
     // Create copy of string
-    auto pString = new char[string.size() + 1];
-    std::memcpy(pString, string.c_str(), string.size() + 1);
+    const size_t stringLength = std::strlen(string);
+    auto pString = new char[stringLength + 1];
+    std::memcpy(pString, string, stringLength + 1);
 
     const auto &outerIterator = mObjectPtrToMap.find(reinterpret_cast<uintptr_t>(object));
     if (outerIterator != mObjectPtrToMap.end())
@@ -193,7 +235,7 @@ const char *StringStorageCore::Change(const Object *object, Tag tagName, const s
 
     mObjectPtrToMap[reinterpret_cast<uintptr_t>(object)][tagName] = pString;
 
-    return (const char *)pString;
+    return pString;
 }
 
 const char **StringStorageCore::Change(const Object *object, Tag tagName, const std::vector<std::string> &strings)
@@ -203,20 +245,45 @@ const char **StringStorageCore::Change(const Object *object, Tag tagName, const 
               << ", strings.size() = " << strings.size() << ")" << std::endl;
 #endif
 
+    auto pStrings = new const char *[strings.size() + 1];
+    for (size_t i = 0; i < strings.size(); ++i)
+        pStrings[i] = strings[i].c_str();
+    pStrings[strings.size()] = nullptr;
+
+    const char **result = Change(object, tagName, pStrings);
+    delete[] pStrings;
+
+    return result;
+}
+
+const char **StringStorageCore::Change(const Object *object, Tag tagName, const char *strings[])
+{
+    if (strings == nullptr)
+    {
+        Remove(object, tagName);
+        return nullptr;
+    }
+
     ClearGarbage(); // remove garbage strings and string arrays
 
+    size_t stringsCount = 0;
+    for (const char **entry = strings; *entry != nullptr; ++entry)
+        ++stringsCount;
+
     // Create array of char* pointers (with null terminator)
-    auto pArray = new char *[strings.size() + 1];
+    auto pArray = new char *[stringsCount + 1];
 
     // Create copies of individual strings and store pointers
-    for (size_t i = 0; i < strings.size(); i++)
+    size_t i = 0;
+    for (const char **entry = strings; *entry != nullptr; ++entry, ++i)
     {
-        auto pString = new char[strings[i].size() + 1];
-        std::memcpy(pString, strings[i].c_str(), strings[i].size() + 1);
+        const size_t stringLength = std::strlen(*entry);
+        auto pString = new char[stringLength + 1];
+        std::memcpy(pString, *entry, stringLength + 1);
 
         pArray[i] = pString;
     }
-    pArray[strings.size()] = nullptr; // Null-terminate the array
+    pArray[stringsCount] = nullptr; // Null-terminate the array
 
     const auto &outerIterator = mObjectPtrToArrayMap.find(reinterpret_cast<uintptr_t>(object));
     if (outerIterator != mObjectPtrToArrayMap.end())
@@ -232,18 +299,6 @@ const char **StringStorageCore::Change(const Object *object, Tag tagName, const 
     mObjectPtrToArrayMap[reinterpret_cast<uintptr_t>(object)][tagName] = (const char **)pArray;
 
     return (const char **)pArray;
-}
-
-const char **StringStorageCore::Change(const Object *object, Tag tagName, const char *strings[])
-{
-    if (strings == nullptr)
-        return nullptr;
-
-    std::vector<std::string> copy;
-    for (const char **entry = strings; *entry != nullptr; ++entry)
-        copy.emplace_back(*entry);
-
-    return Change(object, tagName, copy);
 }
 
 void StringStorageCore::Remove(const Object *object, Tag tagName)
