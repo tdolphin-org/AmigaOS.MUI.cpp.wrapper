@@ -96,10 +96,12 @@ namespace MUI
         /// True if the application is currently iconified.
         /// While iconified, windows are closed and reopened automatically when the application is restored.
         bool isIconified() const;
+#ifdef MUIA_Application_IconifyTitle
         /// @brief [ @b MUIA_Application_IconifyTitle ]
         /// Alternative title used for the iconification icon and/or menu.
         /// Defaults to the normal application title.
         std::string getIconifyTitle() const;
+#endif
         /// @brief [ @b MUIA_Application_MenuAction ]
         /// Returns UserData of the selected menu item.
         unsigned long getMenuAction() const;
@@ -179,12 +181,14 @@ namespace MUI
         /// Set whether the application is iconified.
         /// Iconifying closes all open windows and shows an AppIcon.
         Application &setIconified(const bool iconified);
+#ifdef MUIA_Application_IconifyTitle
         /// @brief [ @b MUIA_Application_IconifyTitle ]
         /// Use a different name than the application title for the iconification icon and/or menu.
         Application &setIconifyTitle(const char *iconifyTitle);
         /// @brief [ @b MUIA_Application_IconifyTitle ]
         /// Use a different name than the application title for the iconification icon and/or menu.
         Application &setIconifyTitle(const std::string &iconifyTitle);
+#endif
         /// @brief [ @b MUIA_Application_RexxString ]
         /// Return an ARexx result string from within an ARexx callback hook.
         Application &setRexxString(const char *rexxString);
@@ -274,9 +278,11 @@ namespace MUI
         /// Queue a return id for the next non-buffered input call.
         /// MUI stores return ids in a private FIFO and feeds them back through the input methods.
         Application &ReturnID(const unsigned long retid);
+#ifdef MUIM_Application_Run
         /// @brief [ @b MUIM_Application_Run ]
         /// Execute the ideal main loop of a MUI application.
         long Run() const;
+#endif
         /// @brief [ @b MUIM_Application_Save ]
         /// Save application settings to the given file or magic cookie.
         /// Objects with non-NULL @b MUIA_ObjectID export their state during this call.
@@ -302,10 +308,12 @@ namespace MUI
         /// Display an AmigaGuide help file and optionally jump to a node and line.
         /// The application is put to sleep until the help file is shown.
         Application &ShowHelp(const Object *window, const char *name, const char *node, const long line);
+#ifdef MUIM_Application_UnpushMethod
         /// @brief [ @b MUIM_Application_UnpushMethod ]
         /// Remove queued methods previously scheduled with MUIM_Application_PushMethod.
         /// If all filters are zero or NULL, the whole queue is cleared.
         unsigned long UnpushMethod(const Object *targetobj = nullptr, const unsigned long methodid = 0, const unsigned long method = 0);
+#endif
         /// @brief [ @b MUIA_Application_Sleep, @b TRUE ]
         /// Put the whole application to sleep. Open windows are disabled and a busy pointer appears.
         /// Because this attribute nests, each sleep should be matched with one wake-up.
@@ -378,6 +386,7 @@ namespace MUI
         /// @brief [ @b MUIA_Application_HelpFile ]
         /// Define an AmigaGuide style file to be displayed when the user requests online help.
         ApplicationBuilder &tagHelpFile(const std::string &helpFile);
+#ifdef MUIA_Application_IconifyTitle
         /// @brief [ @b MUIA_Application_IconifyTitle ]
         /// Alternative name used for the iconification icon and/or menu.
         /// Defaults to the application title if not specified.
@@ -385,6 +394,7 @@ namespace MUI
         /// @brief [ @b MUIA_Application_IconifyTitle ]
         /// Alternative name used for the iconification icon and/or menu.
         ApplicationBuilder &tagIconifyTitle(const std::string &iconifyTitle);
+#endif
         /// @brief [ @b MUIA_Application_Menu ]
         /// Obsolete gadtools NewMenu definition for the application.
         /// Prefer @b MUIA_Application_Menustrip.
@@ -422,9 +432,11 @@ namespace MUI
         /// When false, the application runs without an ARexx interface.
         /// Think carefully before disabling it.
         ApplicationBuilder &tagUseRexx(const bool useRexx);
+#ifdef MUIA_Application_UseScreenNotify
         /// @brief [ @b MUIA_Application_UseScreenNotify ]
         /// When false, windows are not automatically closed and reopened while the Workbench screen is closing.
         ApplicationBuilder &tagUseScreenNotify(const bool useScreenNotify);
+#endif
         /// @brief [ @b MUIA_Application_Version ]
         /// Define application version string. It should follow standard version string conventions.
         /// @param version version text with $VER !!!!

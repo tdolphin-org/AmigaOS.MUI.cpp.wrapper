@@ -104,10 +104,12 @@ namespace MUI
         return GetValueAsBool(MUIA_Application_Iconified);
     }
 
+#ifdef MUIA_Application_IconifyTitle
     std::string Application::getIconifyTitle() const
     {
         return GetValueAsString(MUIA_Application_IconifyTitle);
     }
+#endif
 
     unsigned long Application::getMenuAction() const
     {
@@ -246,6 +248,7 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIA_Application_IconifyTitle
     Application &Application::setIconifyTitle(const char *iconifyTitle)
     {
         SetValue(MUIA_Application_IconifyTitle, iconifyTitle);
@@ -257,6 +260,7 @@ namespace MUI
         SetValue(MUIA_Application_IconifyTitle, iconifyTitle);
         return *this;
     }
+#endif
 
     Application &Application::setRexxString(const char *rexxString)
     {
@@ -390,10 +394,12 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIM_Application_Run
     long Application::Run() const
     {
         return DoMethod(muiObject(), MUIM_Application_Run);
     }
+#endif
 
     Application &Application::Save(const char *name)
     {
@@ -437,10 +443,12 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIM_Application_UnpushMethod
     unsigned long Application::UnpushMethod(const Object *targetobj, const unsigned long methodid, const unsigned long method)
     {
         return (unsigned long)DoMethod(muiObject(), MUIM_Application_UnpushMethod, targetobj, methodid, method);
     }
+#endif
 
     Application &Application::Sleep()
     {
@@ -567,6 +575,7 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIA_Application_IconifyTitle
     ApplicationBuilder &ApplicationBuilder::tagIconifyTitle(const char *iconifyTitle)
     {
         this->PushTag(MUIA_Application_IconifyTitle, iconifyTitle);
@@ -578,6 +587,7 @@ namespace MUI
         tagIconifyTitle(iconifyTitle.c_str());
         return *this;
     }
+#endif
 
     ApplicationBuilder &ApplicationBuilder::tagMenu(const ::NewMenu *menu)
     {
@@ -643,11 +653,13 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIA_Application_UseScreenNotify
     ApplicationBuilder &ApplicationBuilder::tagUseScreenNotify(const bool useScreenNotify)
     {
         this->PushTag(MUIA_Application_UseScreenNotify, useScreenNotify);
         return *this;
     }
+#endif
 
     ApplicationBuilder &ApplicationBuilder::tagVersion(const char *version)
     {
