@@ -11,6 +11,8 @@
 
 namespace MUI
 {
+    // Prop class generates the well known proportional gadgets. It offers the same attributes as a usual boopsi gadget of propgclass.
+    // However, MUI's prop gadgets allow using any imagery for the knob and for the background.
     class Prop : public Gadget
     {
       public:
@@ -31,34 +33,36 @@ namespace MUI
         // is/get/set (attributes), all setters return object reference
 
 #ifdef MUIA_Prop_DeltaFactor
-        /// @brief [ @b MUIA_Prop_DeltaFactor ]
+        /// @brief [ @b MUIA_Prop_DeltaFactor ] Speed factor for keyboard navigation (fast movements multiplied by this).
         long getDeltaFactor() const;
 #endif
-        /// @brief [ @b MUIA_Prop_Entries ]
+        /// @brief [ @b MUIA_Prop_Entries ] Total number of entries in the proportional gadget range.
         long getEntries() const;
-        /// @brief [ @b MUIA_Prop_First ]
+        /// @brief [ @b MUIA_Prop_First ] Number of the first visible entry.
         long getFirst() const;
-        /// @brief [ @b MUIA_Prop_Horiz ]
+        /// @brief [ @b MUIA_Prop_Horiz ] Orientation (true for horizontal, false for vertical).
         bool isHoriz() const;
-        /// @brief [ @b MUIA_Prop_Visible ]
+        /// @brief [ @b MUIA_Prop_Visible ] Number of visible entries.
         long getVisible() const;
 
 #ifdef MUIA_Prop_DeltaFactor
-        /// @brief [ @b MUIA_Prop_DeltaFactor ]
+        /// @brief [ @b MUIA_Prop_DeltaFactor ] Set speed factor for keyboard navigation.
         Prop &setDeltaFactor(const long deltaFactor);
 #endif
-        /// @brief [ @b MUIA_Prop_Entries ]
+        /// @brief [ @b MUIA_Prop_Entries ] Set total number of entries.
         Prop &setEntries(const long entries);
-        /// @brief [ @b MUIA_Prop_First ]
+        /// @brief [ @b MUIA_Prop_First ] Set number of the first visible entry.
         Prop &setFirst(const long first);
-        /// @brief [ @b MUIA_Prop_Visible ]
+        /// @brief [ @b MUIA_Prop_Visible ] Set number of visible entries.
         Prop &setVisible(const long visible);
 
         // methods, some returns object reference
 
-        /// @brief [ @b MUIM_Prop_Decrease ]
+        /// @brief [ @b MUIM_Prop_Decrease ] Decrease gadget value by specified amount.
+        /// @param amount value to subtract from current position.
         Notify &Decrease(const long amount);
-        /// @brief [ @b MUIM_Prop_Increase ]
+        /// @brief [ @b MUIM_Prop_Increase ] Increase gadget value by specified amount.
+        /// @param amount value to add to current position.
         Notify &Increase(const long amount);
     };
 
@@ -71,19 +75,18 @@ namespace MUI
         }
 
 #ifdef MUIA_Prop_DeltaFactor
-        /// @brief [ @b MUIA_Prop_DeltaFactor additional delta factor to speed up keyboard navigation.
-        // All "fast" movements, like "alt+cursor up", will be multiplied by this factor. Default is 1.]
+        /// @brief [ @b MUIA_Prop_DeltaFactor ] Speed factor for keyboard navigation.
         T &tagDeltaFactor(const long deltaFactor);
 #endif
-        /// @brief [ @b MUIA_Prop_Entries total number of entries ]
+        /// @brief [ @b MUIA_Prop_Entries ] Total number of entries.
         T &tagEntries(const long entries);
-        /// @brief [ @b MUIA_Prop_First the number of the first entry ]
+        /// @brief [ @b MUIA_Prop_First ] Number of the first visible entry.
         T &tagFirst(const long first);
-        /// @brief [ @b MUIA_Prop_Horiz horizontal or a vertical prop gadget, default is false]
+        /// @brief [ @b MUIA_Prop_Horiz ] Orientation: true for horizontal, false for vertical.
         T &tagHoriz(const bool horiz);
-        /// @brief [ @b MUIA_Prop_UseWinBorder ]
+        /// @brief [ @b MUIA_Prop_UseWinBorder ] Link to window border scroller (None/Left/Right/Bottom).
         T &tagUseWinBorder(const enum Prop_UseWinBorder useWinBorder);
-        /// @brief [ @b MUIA_Prop_Visible number of visible entries ]
+        /// @brief [ @b MUIA_Prop_Visible ] Number of visible entries.
         T &tagVisible(const long visible);
     };
 
