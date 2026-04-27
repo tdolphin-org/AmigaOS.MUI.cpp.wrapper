@@ -10,6 +10,9 @@
 
 namespace MUI
 {
+    /// @brief Wrapper for MUIC_Scale - a percentage scale running from 0% to 100%.
+    /// The scale is typically used below another object such as a gauge and adapts its detail
+    /// automatically to the available layout space.
     class Scale : public Area
     {
       public:
@@ -29,13 +32,11 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-#ifdef MUIA_Scale_Horiz
-        /// @brief [ @b MUIA_Scale_Horiz ]
+        /// @brief [ @b MUIA_Scale_Horiz ] Get whether the scale is horizontal.
         bool getHoriz() const;
 
-        /// @brief [ @b MUIA_Scale_Horiz ]
+        /// @brief [ @b MUIA_Scale_Horiz ] Set whether the scale is horizontal or vertical.
         Scale &setHoriz(const bool horiz);
-#endif
     };
 
     template <typename T, typename U> class ScaleBuilderTemplate : public AreaBuilderTemplate<T, U>
@@ -46,10 +47,8 @@ namespace MUI
         {
         }
 
-#ifdef MUIA_Scale_Horiz
-        /// @brief [ @b MUIA_Scale_Horiz ]
+        /// @brief [ @b MUIA_Scale_Horiz ] Set whether the initial scale is horizontal or vertical.
         T &tagHoriz(const bool horiz);
-#endif
     };
 
     class ScaleBuilder : public ScaleBuilderTemplate<ScaleBuilder, Scale>

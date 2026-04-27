@@ -10,11 +10,9 @@
 
 namespace MUI
 {
-#ifdef MUIA_Scale_Horiz
     template <typename T, typename U> inline T &ScaleBuilderTemplate<T, U>::tagHoriz(const bool horiz)
     {
         this->PushTag(MUIA_Scale_Horiz, horiz);
         return (T &)*this;
     }
-#endif
 }

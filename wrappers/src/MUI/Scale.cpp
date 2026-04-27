@@ -12,7 +12,6 @@ namespace MUI
 
     ScaleBuilder::ScaleBuilder() { }
 
-#ifdef MUIA_Scale_Horiz
     bool Scale::getHoriz() const
     {
         return GetValueAsBool(MUIA_Scale_Horiz);
@@ -23,5 +22,4 @@ namespace MUI
         SetValue(MUIA_Scale_Horiz, horiz);
         return *this;
     }
-#endif
 }
