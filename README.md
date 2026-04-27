@@ -101,7 +101,7 @@ ___
 | [MUIC_Argstring](https://github.com/amiga-mui/muidev/wiki/MUI_Argstring) | [MUI::Argstring](/wrappers/src/MUI/Argstring.hpp) | Ready (AMUI5/MMUI5, 3.8 n/a) | Ready (AMUI5/MMUI5, 3.8 n/a) | - | - |
 | [MUIC_Balance](https://github.com/amiga-mui/muidev/wiki/MUI_Balance) | [MUI::Balance](/wrappers/src/MUI/Balance.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | not applicable | not applicable |
 | [MUIC_Bitmap](https://github.com/amiga-mui/muidev/wiki/MUI_Bitmap) | [MUI::Bitmap](/wrappers/src/MUI/Bitmap.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
-| [MUIC_Bodychunk](https://github.com/amiga-mui/muidev/wiki/MUI_Bodychunk) | - | - | - | - | - |
+| [MUIC_Bodychunk](https://github.com/amiga-mui/muidev/wiki/MUI_Bodychunk) | [MUI::Bodychunk](/wrappers/src/MUI/Bodychunk.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Boopsi](https://github.com/amiga-mui/muidev/wiki/MUI_Boopsi) | [MUI::Coloradjust](/wrappers/src/MUI/Boopsi.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Coloradjust](https://github.com/amiga-mui/muidev/wiki/MUI_Coloradjust) | [MUI::Coloradjust](/wrappers/src/MUI/Coloradjust.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Colorfield](https://github.com/amiga-mui/muidev/wiki/MUI_Colorfield) | [MUI::Colorfield](/wrappers/src/MUI/Colorfield.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
