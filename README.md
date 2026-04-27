@@ -102,7 +102,7 @@ ___
 | [MUIC_Balance](https://github.com/amiga-mui/muidev/wiki/MUI_Balance) | [MUI::Balance](/wrappers/src/MUI/Balance.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | not applicable | not applicable |
 | [MUIC_Bitmap](https://github.com/amiga-mui/muidev/wiki/MUI_Bitmap) | - | - | - | - | - |
 | [MUIC_Bodychunk](https://github.com/amiga-mui/muidev/wiki/MUI_Bodychunk) | - | - | - | - | - |
-| [MUIC_Boopsi](https://github.com/amiga-mui/muidev/wiki/MUI_Boopsi) | - | - | - | - | - |
+| [MUIC_Boopsi](https://github.com/amiga-mui/muidev/wiki/MUI_Boopsi) | [MUI::Coloradjust](/wrappers/src/MUI/Boopsi.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Coloradjust](https://github.com/amiga-mui/muidev/wiki/MUI_Coloradjust) | [MUI::Coloradjust](/wrappers/src/MUI/Coloradjust.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Colorfield](https://github.com/amiga-mui/muidev/wiki/MUI_Colorfield) | [MUI::Colorfield](/wrappers/src/MUI/Colorfield.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Cycle](https://github.com/amiga-mui/muidev/wiki/MUI_Cycle) | [MUI::Cycle](/wrappers/src/MUI/Cycle.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | Ready | Ready |
