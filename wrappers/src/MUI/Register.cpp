@@ -17,10 +17,11 @@ namespace MUI
         return GetValueAsConstCharArrayPtr(MUIA_Register_Titles);
     }
 
-#if MUIMASTER_VMIN >= 20 // MUI5
+#if defined(AOS_MUI_VERSION_5) && defined(MUIA_Register_Titles)
     Register &Register::setTitles(const char *titles[])
     {
-        SetValue(MUIA_Register_Titles, titles);
+        auto copy = StoreStringArray(MUIA_Register_Titles, titles);
+        SetValue(MUIA_Register_Titles, copy);
         return *this;
     }
 
@@ -30,5 +31,13 @@ namespace MUI
         SetValue(MUIA_Register_Titles, copy);
         return *this;
     }
+
+#if defined(MUIV_Register_Titles_UData) && defined(MUIV_Register_Titles_Frame)
+    Register &Register::setTitles(const enum Register_Titles titles)
+    {
+        SetValue(MUIA_Register_Titles, (long)titles);
+        return *this;
+    }
+#endif
 #endif
 }
