@@ -40,12 +40,9 @@ namespace MUI
         }
 
         /// @brief [ @b MUIA_Selectgroup_Active ]
-        T &tagActive(long active);
+        T &tagActive(const long active);
         /// @brief [ @b MUIA_Selectgroup_Active ] (typed)
-        T &tagActive(ValueTypes::Selectgroup::Active active);
-
-      protected:
-        bool Validate() const override;
+        T &tagActive(const Selectgroup_Active active);
     };
 
     class SelectgroupBuilder : public SelectgroupBuilderTemplate<SelectgroupBuilder, Selectgroup>
