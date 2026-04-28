@@ -152,8 +152,8 @@ ___
 | [MUIC_Screenmodepanel](https://github.com/amiga-mui/muidev/wiki/MUI_Screenmodepanel) | [MUI::Screenmodepanel](/wrappers/src/MUI/Screenmodepanel.hpp) | Ready (AMUI5/MMUI5, 3.8 n/a) | Ready (AMUI5/MMUI5, 3.8 n/a) | - | - |
 | [MUIC_Scrmodelist](https://github.com/amiga-mui/muidev/wiki/MUI_Scrmodelist) | [MUI::Scrmodelist](/wrappers/src/MUI/Scrmodelist.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Scrollbar](https://github.com/amiga-mui/muidev/wiki/MUI_Scrollbar) | [MUI::Scrollbar](/wrappers/src/MUI/Scrollbar.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
-| [MUIC_Scrollgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Scrollgroup) | [MUI::Scrollgroup](/wrappers/src/MUI/Scrollgroup.hpp) | in progress | Ready | - | - |
-| [MUIC_Selectgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Selectgroup) | - | - | - | - | - |
+| [MUIC_Scrollgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Scrollgroup) | [MUI::Scrollgroup](/wrappers/src/MUI/Scrollgroup.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
+| [MUIC_Selectgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Selectgroup) | [MUI::Selectgroup](/wrappers/src/MUI/Selectgroup.hpp) | Ready (AMUI5 only) | Ready (AMUI5 only) | - | - |
 | [MUIC_Semaphore](https://github.com/amiga-mui/muidev/wiki/MUI_Semaphore) | - | - | - | - | - |
 | [MUIC_Slave](https://github.com/amiga-mui/muidev/wiki/MUI_Slave) | - | - | - | - | - |
 | [MUIC_Slider](https://github.com/amiga-mui/muidev/wiki/MUI_Slider) | [MUI::Slider](/wrappers/src/MUI/Slider.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
