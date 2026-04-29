@@ -6,8 +6,9 @@
 
 #pragma once
 
-#include "Core/Optional.hpp"
 #include "Notify.hpp"
+
+#include "Core/Optional.hpp"
 #include "ValueTypes/Area/Font.hpp"
 #include "ValueTypes/Area/Frame.hpp"
 #include "ValueTypes/Area/InputMode.hpp"

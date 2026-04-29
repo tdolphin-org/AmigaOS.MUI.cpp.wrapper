@@ -1,12 +1,13 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
 
 #include "MUI/Notify.hpp"
+
 #include "ValueTypes/TextEditor/InsertText.hpp"
 #include "ValueTypes/TextEditor/MarkText.hpp"
 #include "ValueTypes/TextEditor/SetBlock.hpp"

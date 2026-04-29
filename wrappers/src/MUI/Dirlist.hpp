@@ -8,6 +8,7 @@
 
 #include "List.hpp"
 
+#include "Core/MUICompileConfig.hpp"
 #include "ValueTypes/Dirlist/SortDirs.hpp"
 #include "ValueTypes/Dirlist/SortType.hpp"
 #include "ValueTypes/Dirlist/Status.hpp"

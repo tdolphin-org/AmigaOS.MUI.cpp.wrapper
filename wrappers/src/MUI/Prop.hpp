@@ -7,6 +7,7 @@
 #pragma once
 
 #include "Gadget.hpp"
+
 #include "ValueTypes/Prop/UseWinBorder.hpp"
 
 namespace MUI

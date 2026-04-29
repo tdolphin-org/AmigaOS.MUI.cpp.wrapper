@@ -7,6 +7,7 @@
 #pragma once
 
 #include "Family.hpp"
+
 #include "ValueTypes/Menuitem/Shortcut.hpp"
 
 namespace MUI

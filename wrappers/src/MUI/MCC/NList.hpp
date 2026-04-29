@@ -1,12 +1,13 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
 
 #include "MUI/Area.hpp"
+
 #include "ValueTypes/NList/Active.hpp"
 #include "ValueTypes/NList/DragType.hpp"
 #include "ValueTypes/NList/Exchange.hpp"

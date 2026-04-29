@@ -7,6 +7,8 @@
 #pragma once
 
 #include "Group.hpp"
+
+#include "Core/MUICompileConfig.hpp"
 #include "ValueTypes/Register/Titles.hpp"
 
 namespace MUI

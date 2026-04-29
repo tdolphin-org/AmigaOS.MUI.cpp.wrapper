@@ -9,7 +9,6 @@
 #include "Area.hpp"
 
 #include "Core/Optional.hpp"
-
 #include "ValueTypes/String/Format.hpp"
 
 #undef String // undef macro from mui.h
