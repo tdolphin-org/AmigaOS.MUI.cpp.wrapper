@@ -136,7 +136,7 @@ ___
 | [MUIC_Panel](https://github.com/amiga-mui/muidev/wiki/MUI_Panel) | [MUI::Panel](/wrappers/src/MUI/Panel.hpp) | Ready (AMUI5/MMUI5, 3.8 n/a) | Ready (AMUI5/MMUI5, 3.8 n/a) | not applicable | not applicable |
 | [MUIC_Penadjust](https://github.com/amiga-mui/muidev/wiki/MUI_Penadjust) | [MUI::Penadjust](/wrappers/src/MUI/Penadjust.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Pendisplay](https://github.com/amiga-mui/muidev/wiki/MUI_Pendisplay) | [MUI::Pendisplay](/wrappers/src/MUI/Pendisplay.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | in progress | in progress |
-| [MUIC_Pixmap](https://github.com/amiga-mui/muidev/wiki/MUI_Pixmap) | - | - | - | - | - |
+| [MUIC_Pixmap](https://github.com/amiga-mui/muidev/wiki/MUI_Pixmap) | [MUI::Popasl](/wrappers/src/MUI/Pixmap.hpp) | Ready (AMUI5 only) | Ready (AMUI5 only) | - | - |
 | [MUIC_Popasl](https://github.com/amiga-mui/muidev/wiki/MUI_Popasl) | [MUI::Popasl](/wrappers/src/MUI/Popasl.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Poplist](https://github.com/amiga-mui/muidev/wiki/MUI_Poplist) | [MUI::Poplist](/wrappers/src/MUI/Poplist.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
 | [MUIC_Popobject](https://github.com/amiga-mui/muidev/wiki/MUI_Popobject) | [MUI::Popobject](/wrappers/src/MUI/Popobject.hpp) | Ready (3.8/AMUI5/MMUI5) | Ready (3.8/AMUI5/MMUI5) | - | - |
