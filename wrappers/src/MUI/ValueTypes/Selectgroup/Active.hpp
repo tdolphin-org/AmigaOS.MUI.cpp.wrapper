@@ -6,16 +6,15 @@
 
 #pragma once
 
-#ifdef AOS_MUI_VERSION_5
+#ifdef MUIA_Selectgroup_Active
+
 namespace MUI
 {
-    namespace ValueTypes
+    enum class Selectgroup_Active : long
     {
-        enum class Selectgroup_Active : long
-        {
-            Next = MUIV_Selectgroup_Active_Next,
-            Prev = MUIV_Selectgroup_Active_Prev
-        };
-    }
+        Next = MUIV_Selectgroup_Active_Next,
+        Prev = MUIV_Selectgroup_Active_Prev
+    };
 }
-#endif // AOS_MUI_VERSION_5
+
+#endif // MUIA_Selectgroup_Active

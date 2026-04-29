@@ -1,14 +1,14 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2026 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
 
-#ifdef AOS_MUI_VERSION_5
-
 #include "Group.hpp"
+
+#ifdef MUIC_Selectgroup
 
 #include "ValueTypes/Selectgroup/Active.hpp"
 
@@ -42,7 +42,7 @@ namespace MUI
         /// @brief [ @b MUIA_Selectgroup_Active ]
         T &tagActive(const long active);
         /// @brief [ @b MUIA_Selectgroup_Active ] (typed)
-        T &tagActive(const Selectgroup_Active active);
+        T &tagActive(const enum Selectgroup_Active active);
     };
 
     class SelectgroupBuilder : public SelectgroupBuilderTemplate<SelectgroupBuilder, Selectgroup>
@@ -56,4 +56,4 @@ namespace MUI
 #include "Selectgroup.tpp"
 #undef MUI_SELECTGROUP_TPP_INCLUDE
 
-#endif // AOS_MUI_VERSION_5
+#endif // MUIC_Selectgroup

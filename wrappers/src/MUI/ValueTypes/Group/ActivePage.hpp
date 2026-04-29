@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -17,6 +17,11 @@ namespace MUI
         Third,
         Fourth,
         Fifth,
+        Sixth,
+        Seventh,
+        Eighth,
+        Ninth,
+        Tenth,
         Last = MUIV_Group_ActivePage_Last,
         Prev = MUIV_Group_ActivePage_Prev,
         Next = MUIV_Group_ActivePage_Next,
