@@ -8,6 +8,7 @@
 
 #include "TabsContainerTitles.hpp"
 
+#include "MUI/Core/MUICompileConfig.hpp"
 #include "MUI/Text.hpp"
 
 namespace Components

@@ -9,6 +9,7 @@
 #pragma once
 
 #include "Components/Core/Root.hpp"
+#include "MUI/Core/MUICompileConfig.hpp"
 #include "MUI/Group.hpp"
 #include "MUI/Text.hpp"
 #include "MUI/Title.hpp"
