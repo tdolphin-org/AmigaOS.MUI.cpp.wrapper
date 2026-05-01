@@ -156,6 +156,21 @@ namespace MUI
         return static_cast<TextFont *>(GetValueAsPtr(tagName));
     }
 
+    const ::DrawInfo *Root::GetValueAsDrawInfoPtr(const unsigned long tagName) const
+    {
+        return static_cast<const ::DrawInfo *>(GetValueAsPtr(tagName));
+    }
+
+    ::InputEvent *Root::GetValueAsInputEventPtr(const unsigned long tagName) const
+    {
+        return static_cast<::InputEvent *>(GetValueAsPtr(tagName));
+    }
+
+    ::Screen *Root::GetValueAsScreenPtr(const unsigned long tagName) const
+    {
+        return static_cast<::Screen *>(GetValueAsPtr(tagName));
+    }
+
     ::Window *Root::GetValueAsWindowPtr(const unsigned long tagName) const
     {
         return static_cast<::Window *>(GetValueAsPtr(tagName));

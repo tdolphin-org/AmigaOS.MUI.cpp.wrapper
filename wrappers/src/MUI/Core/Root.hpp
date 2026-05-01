@@ -23,6 +23,9 @@ struct MinList;
 struct AppMessage;
 struct TextFont;
 struct MUI_PenSpec;
+struct DrawInfo;
+struct InputEvent;
+struct Screen;
 struct Window;
 struct Gadget;
 
@@ -112,6 +115,9 @@ namespace MUI
         RexxMsg *GetValueAsRexxMsgPtr(const unsigned long tagName) const;
         AppMessage *GetValueAsAppMessagePtr(const unsigned long tagName) const;
         TextFont *GetValueAsTextFontPtr(const unsigned long tagName) const;
+        const ::DrawInfo *GetValueAsDrawInfoPtr(const unsigned long tagName) const;
+        ::InputEvent *GetValueAsInputEventPtr(const unsigned long tagName) const;
+        ::Screen *GetValueAsScreenPtr(const unsigned long tagName) const;
         ::Window *GetValueAsWindowPtr(const unsigned long tagName) const;
         ::Gadget *GetValueAsGadgetPtr(const unsigned long tagName) const;
         struct MUI_PenSpec *GetValueAsPenSpecPtr(const unsigned long tagName) const;
