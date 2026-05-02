@@ -15,6 +15,10 @@
 
 namespace MUI
 {
+    /// @brief MUI Title class wrapper.
+    /// Title class is the replacement for the old Register class. It offers much more flexibility regarding dynamic
+    /// page adding/removal as well as improved handling of many tabs and possibilities for the tab titles itself.
+    /// The title class object always must be the very first object within the surrounding group.
     class Title : public Group
     {
       public:
@@ -34,23 +38,14 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-        /// @brief [ @b MUIA_Title_Clickable ]
-        /// Returns whether the title object reacts to clicks on its tabs.
-        bool getClosable() const;
         /// @brief [ @b MUIA_Title_Closable ]
         /// Returns whether each tab has a close button.
-        bool getClickable() const;
-        /// @brief [ @b MUIA_Title_EventHandlerPriority ]
-        /// Returns the priority of the internal event handler.
-        long getEventHandlerPriority() const;
+        bool getClosable() const;
 #ifdef MUIA_Title_Newable
         /// @brief [ @b MUIA_Title_Newable ]
         /// Returns whether a "+" new-tab button is visible.
         bool getNewable() const;
 #endif
-        /// @brief [ @b MUIA_Title_OnLastClose ]
-        /// Returns the action taken when the last tab is closed.
-        enum Title_OnLastClose getOnLastClose() const;
         /// @brief [ @b MUIA_Title_Position ]
         /// Returns the position of the tab titles (top/bottom/left/right).
         enum Title_Position getPosition() const;
@@ -58,20 +53,9 @@ namespace MUI
         /// Returns whether tabs can be rearranged via drag-and-drop.
         bool getSortable() const;
 
-        /// @brief [ @b MUIA_Title_Clickable ]
-        /// Setting this to false disables tab clicks and prevents page changes. By default true.
-        Title &setClickable(const bool clickable);
         /// @brief [ @b MUIA_Title_Closable ]
         /// Setting this to true adds a close button to each tab. By default false.
         Title &setClosable(const bool closable);
-        /// @brief [ @b MUIA_Title_EventHandlerPriority ]
-        /// Sets the priority of the internal event handler.
-        Title &setEventHandlerPriority(const long eventHandlerPriority);
-#ifdef MUIA_Title_Newable
-        /// @brief [ @b MUIA_Title_Newable ]
-        /// Setting this to true adds a "+" new-tab button. By default false.
-        Title &setNewable(const bool newable);
-#endif
         /// @brief [ @b MUIA_Title_OnLastClose ]
         /// Defines behaviour when the last tab is closed (@ref Title_OnLastClose).
         Title &setOnLastClose(const enum Title_OnLastClose onLastClose);
@@ -81,6 +65,11 @@ namespace MUI
         /// @brief [ @b MUIA_Title_Sortable ]
         /// Setting this to true allows tabs to be rearranged via drag-and-drop. By default false.
         Title &setSortable(const bool sortable);
+#ifdef MUIA_Title_Newable
+        /// @brief [ @b MUIA_Title_Newable ]
+        /// Setting this to true adds a "+" new-tab button. By default false.
+        Title &setNewable(const bool newable);
+#endif
 
         // methods, return object reference
 
@@ -89,8 +78,9 @@ namespace MUI
         Title &Close(Object *pTitleObject);
 #ifdef MUIM_Title_FindPage
         /// @brief [ @b MUIM_Title_FindPage ]
-        /// Returns the page index corresponding to the given title button object.
-        long FindPage(Boopsiobject *pTitleButton);
+        /// Returns the page object corresponding to the given title button object, or NULL if none found.
+        /// @param pTitleButton a pointer to a valid title button object
+        Object *FindPage(Boopsiobject *pTitleButton);
         /// @brief [ @b MUIM_Title_New ]
         /// Invoked when the "+" button is clicked; the application subclass must add the new tab and page.
         Title &New();

@@ -21,27 +21,12 @@ namespace MUI
         return GetValueAsBool(MUIA_Title_Closable);
     }
 
-    bool Title::getClickable() const
-    {
-        return GetValueAsBool(MUIA_Title_Clickable);
-    }
-
-    long Title::getEventHandlerPriority() const
-    {
-        return GetValueAsLong(MUIA_Title_EventHandlerPriority);
-    }
-
 #ifdef MUIA_Title_Newable
     bool Title::getNewable() const
     {
         return GetValueAsBool(MUIA_Title_Newable);
     }
 #endif
-
-    enum Title_OnLastClose Title::getOnLastClose() const
-    {
-        return (Title_OnLastClose)GetValueAsLong(MUIA_Title_OnLastClose);
-    }
 
     enum Title_Position Title::getPosition() const
     {
@@ -53,21 +38,9 @@ namespace MUI
         return GetValueAsBool(MUIA_Title_Sortable);
     }
 
-    Title &Title::setClickable(const bool clickable)
-    {
-        SetValue(MUIA_Title_Clickable, clickable);
-        return *this;
-    }
-
     Title &Title::setClosable(const bool closable)
     {
         SetValue(MUIA_Title_Closable, closable);
-        return *this;
-    }
-
-    Title &Title::setEventHandlerPriority(const long eventHandlerPriority)
-    {
-        SetValue(MUIA_Title_EventHandlerPriority, eventHandlerPriority);
         return *this;
     }
 
@@ -104,9 +77,9 @@ namespace MUI
     }
 
 #ifdef MUIM_Title_FindPage
-    long Title::FindPage(Boopsiobject *pTitleButton)
+    Object *Title::FindPage(Boopsiobject *pTitleButton)
     {
-        return (long)DoMethod(muiObject(), MUIM_Title_FindPage, pTitleButton);
+        return reinterpret_cast<Object *>(DoMethod(muiObject(), MUIM_Title_FindPage, pTitleButton));
     }
 
     Title &Title::New()
