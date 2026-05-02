@@ -6,9 +6,6 @@
 
 #include "Bodychunk.hpp"
 
-#include <libraries/mui.h>
-#include <proto/muimaster.h>
-
 namespace MUI
 {
     const std::string Bodychunk::className = MUIC_Bodychunk;

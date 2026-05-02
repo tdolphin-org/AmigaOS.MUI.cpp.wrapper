@@ -6,9 +6,6 @@
 
 #include "Scrmodelist.hpp"
 
-#include <libraries/mui.h>
-#include <proto/muimaster.h>
-
 namespace MUI
 {
     const std::string Scrmodelist::className = MUIC_Scrmodelist;
