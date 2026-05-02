@@ -171,7 +171,7 @@ ___
 | [MUIC_Text](https://github.com/amiga-mui/muidev/wiki/MUI_Text) | [MUI::Text](/wrappers/src/MUI/Text.hpp) | in progress | in progress | in progress | in progress | in progress | in progress | - | - |
 | [MUIC_Title](https://github.com/amiga-mui/muidev/wiki/MUI_Title) | [MUI::Title](/wrappers/src/MUI/Title.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |
 | [MUIC_Virtgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Virtgroup) | [MUI::Virtgroup](/wrappers/src/MUI/Virtgroup.hpp) | in progress | in progress | in progress | Ready | in progress | in progress | - | - |
-| [MUIC_Volumelist](https://github.com/amiga-mui/muidev/wiki/MUI_Volumelist) |  - | - | - | - | - | - | - | - | - |
+| [MUIC_Volumelist](https://github.com/amiga-mui/muidev/wiki/MUI_Volumelist) | [MUI::Volumelist](/wrappers/src/MUI/Volumelist.hpp) | Ready | - | - | Ready | Ready | Ready | - | - |
 | [MUIC_Window](https://github.com/amiga-mui/muidev/wiki/MUI_Window) | [MUI::Window](/wrappers/src/MUI/Window.hpp) | Ready | Ready | Ready | Ready | Ready | Ready | in progress | in progress |
 | ... | ... | - | - | - | - | - | - | - | - |
 
