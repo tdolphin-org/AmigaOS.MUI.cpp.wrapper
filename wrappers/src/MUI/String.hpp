@@ -15,6 +15,7 @@
 
 namespace MUI
 {
+    /// @brief String class generates standard string gadgets with all editing facilities (clear, undo, etc.) enabled.
     class String : public Area
     {
       public:
@@ -263,18 +264,12 @@ namespace MUI
         /// @brief [ @b MUIA_String_AttachedList ]
         /// Attach list object used for string/list interaction.
         T &tagAttachedList(const Root &attachedList);
-        /// @brief [ @b MUIA_String_BufferPos ]
-        /// Set initial cursor position inside the edit buffer.
-        T &tagBufferPos(const long bufferPos);
         /// @brief [ @b MUIA_String_Contents ]
         /// Set initial string contents.
         T &tagContents(const char *contents);
         /// @brief [ @b MUIA_String_Contents ]
         /// Set initial string contents.
         T &tagContents(const std::string &contents);
-        /// @brief [ @b MUIA_String_DisplayPos ]
-        /// Set initial first visible character position.
-        T &tagDisplayPos(const long displayPos);
         /// @brief [ @b MUIA_String_EditHook ]
         /// Set edit hook used to validate or transform user input.
         T &tagEditHook(const Hook *editHook);

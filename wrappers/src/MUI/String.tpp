@@ -49,12 +49,6 @@ namespace MUI
         return tagAttachedList(attachedList.muiObject());
     }
 
-    template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagBufferPos(const long bufferPos)
-    {
-        this->PushTag(MUIA_String_BufferPos, bufferPos);
-        return (T &)*this;
-    }
-
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagContents(const char *contents)
     {
         if (contents == nullptr)
@@ -68,12 +62,6 @@ namespace MUI
     {
         auto copy = this->StoreString(MUIA_String_Contents, contents);
         this->PushTag(MUIA_String_Contents, copy);
-        return (T &)*this;
-    }
-
-    template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagDisplayPos(const long displayPos)
-    {
-        this->PushTag(MUIA_String_DisplayPos, displayPos);
         return (T &)*this;
     }
 

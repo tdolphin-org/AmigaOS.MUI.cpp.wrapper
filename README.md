@@ -166,7 +166,7 @@ ___
 | [MUIC_Semaphore](https://github.com/amiga-mui/muidev/wiki/MUI_Semaphore) |  - | - | - | - | - | - | - | - | - |
 | [MUIC_Slave](https://github.com/amiga-mui/muidev/wiki/MUI_Slave) |  - | - | - | - | - | - | - | - | - |
 | [MUIC_Slider](https://github.com/amiga-mui/muidev/wiki/MUI_Slider) | [MUI::Slider](/wrappers/src/MUI/Slider.hpp) | Ready | - | - | Ready | - | - | - | - |
-| [MUIC_String](https://github.com/amiga-mui/muidev/wiki/MUI_String) | [MUI::String](/wrappers/src/MUI/String.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | in progress | in progress |
+| [MUIC_String](https://github.com/amiga-mui/muidev/wiki/MUI_String) | [MUI::String](/wrappers/src/MUI/String.hpp) | Ready | Ready | Ready | Ready | Ready | Ready | in progress | in progress |
 | [MUIC_Textdata](https://github.com/amiga-mui/muidev/wiki/MUI_Textdata) | [MUI::Textdata](/wrappers/src/MUI/Textdata.hpp) | n/a | Ready | n/a | n/a | Ready | n/a | - | - |
 | [MUIC_Text](https://github.com/amiga-mui/muidev/wiki/MUI_Text) | [MUI::Text](/wrappers/src/MUI/Text.hpp) | Ready | Ready | Ready | Ready | Ready | Ready | - | - |
 | [MUIC_Title](https://github.com/amiga-mui/muidev/wiki/MUI_Title) | [MUI::Title](/wrappers/src/MUI/Title.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |
