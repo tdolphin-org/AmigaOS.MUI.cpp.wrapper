@@ -23,11 +23,21 @@ namespace MUI
         {
         }
 
+        Selectgroup(const Root &root)
+          : Group(root.muiObject())
+        {
+        }
+
         const static std::string className;
 
         static inline bool instanceOf(Object *pMuiObject)
         {
             return MUI::instanceOf(pMuiObject, className.c_str());
+        }
+
+        static inline bool instanceOf(const Root &object)
+        {
+            return MUI::instanceOf(object.muiObject(), className.c_str());
         }
     };
 

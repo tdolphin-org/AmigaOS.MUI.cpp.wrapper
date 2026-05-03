@@ -56,6 +56,11 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, className.c_str());
         }
 
+        static inline bool instanceOf(const Root &object)
+        {
+            return MUI::instanceOf(object.muiObject(), className.c_str());
+        }
+
         // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_BottomEdge ] Read current bottom edge coordinate of this object.
