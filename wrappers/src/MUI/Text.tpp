@@ -10,6 +10,7 @@
 
 namespace MUI
 {
+    // Intentionally no StoreString for contents. If MUIA_Text_Copy is FALSE, caller must ensure text lifetime.
     template <typename T, typename U> inline T &TextBuilderTemplate<T, U>::tagContents(const char *contents)
     {
         this->PushTag(MUIA_Text_Contents, contents);
@@ -62,13 +63,13 @@ namespace MUI
 
     template <typename T, typename U> inline T &TextBuilderTemplate<T, U>::tagPreParse(const char *preParse)
     {
-        this->PushTag(MUIA_Text_PreParse, preParse);
+        this->PushTag(MUIA_Text_PreParse, this->StoreString(MUIA_Text_PreParse, preParse));
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &TextBuilderTemplate<T, U>::tagPreParse(const std::string &preParse)
     {
-        this->PushTag(MUIA_Text_PreParse, preParse);
+        this->PushTag(MUIA_Text_PreParse, this->StoreString(MUIA_Text_PreParse, preParse));
         return (T &)*this;
     }
 

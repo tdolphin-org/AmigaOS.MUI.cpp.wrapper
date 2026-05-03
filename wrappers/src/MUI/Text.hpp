@@ -12,6 +12,9 @@
 
 namespace MUI
 {
+    /// @brief MUI Text class wrapper.
+    /// Text class allows generating objects that contain styled text. It supports control sequences
+    /// for formatting, color, style and alignment, and can handle multiline text fields.
     class Text : public Area
     {
       public:
@@ -43,13 +46,76 @@ namespace MUI
 
         /// @brief [ @b MUIA_Text_Contents ]
         std::string getContents() const;
+#ifdef MUIA_Text_ControlChar
+        /// @brief [ @b MUIA_Text_ControlChar ]
+        /// Returns the control character that is underlined in the displayed text.
+        char getControlChar() const;
+#endif
+#ifdef MUIA_Text_Copy
+        /// @brief [ @b MUIA_Text_Copy ]
+        /// Returns whether text contents are copied to a private buffer.
+        bool getCopy() const;
+#endif
+#ifdef MUIA_Text_Data
+        /// @brief [ @b MUIA_Text_Data ]
+        /// Returns the Textdata object used as source text, or NULL if plain string contents are used.
+        Object *getDataObject() const;
+#endif
+#ifdef MUIA_Text_Marking
+        /// @brief [ @b MUIA_Text_Marking ]
+        /// Returns whether text marking with mouse and clipboard copy is enabled.
+        bool getMarking() const;
+#endif
+        /// @brief [ @b MUIA_Text_PreParse ]
+        /// Returns format definitions parsed before MUIA_Text_Contents is printed.
+        std::string getPreParse() const;
+#ifdef MUIA_Text_Shorten
+        /// @brief [ @b MUIA_Text_Shorten ]
+        /// Returns how text shortening is configured.
+        enum Text_Shorten getShorten() const;
+#endif
+#ifdef MUIA_Text_Shortened
+        /// @brief [ @b MUIA_Text_Shortened ]
+        /// Returns whether text was actually shortened to fit current layout.
+        bool getShortened() const;
+#endif
 
         /// @brief [ @b MUIA_Text_Contents ]
         /// String to be displayed. If the string is larger than available display space, it will be clipped. Setting
         /// @b MUIA_Text_Contents to @b NULL results in an empty text object. The string is copied into a private buffer (unless
         /// @b MUIA_Text_Copy is set to @b FALSE), you can destroy the original string after using this tag. Contest may contain some
         /// special character sequences defining format, color and style of the text.
+        /// Wrapper note: this setter does not store its own copy. If @b MUIA_Text_Copy is set to @b FALSE, caller must keep source text
+        /// valid.
         Text &setContents(const std::string &contents);
+#ifdef MUIA_Text_ControlChar
+        /// @brief [ @b MUIA_Text_ControlChar ]
+        /// Sets the character to underline in the displayed text.
+        Text &setControlChar(const char controlChar);
+#endif
+#ifdef MUIA_Text_Copy
+        /// @brief [ @b MUIA_Text_Copy ]
+        /// Enables or disables copying contents to a private buffer.
+        Text &setCopy(const bool copy);
+#endif
+#ifdef MUIA_Text_Data
+        /// @brief [ @b MUIA_Text_Data ]
+        /// Sets a Textdata object as source text. Passing NULL uses MUIA_Text_Contents.
+        Text &setData(const Object *data);
+#endif
+        /// @brief [ @b MUIA_Text_PreParse ]
+        /// Sets format definitions parsed before MUIA_Text_Contents is printed.
+        Text &setPreParse(const std::string &preParse);
+#if defined(AOS_MUI_VERSION_5) || defined(MOS_MUI_VERSION_5)
+        /// @brief [ @b MUIA_Text_SetVMax ]
+        /// Setting this to false makes a Text object's y-size unlimited.
+        Text &setSetVMax(const bool setVMax);
+#endif
+#ifdef MUIA_Text_Shorten
+        /// @brief [ @b MUIA_Text_Shorten ]
+        /// Controls whether and how MUI may shorten text to fit available space.
+        Text &setShorten(const enum Text_Shorten shorten);
+#endif
 
         // methods, some returns object reference
 
@@ -69,12 +135,14 @@ namespace MUI
         /// @b MUIA_Text_Contents to @b NULL results in an empty text object. The string is copied into a private buffer (unless
         /// @b MUIA_Text_Copy is set to @b FALSE), you can destroy the original string after using this tag. Contest may contain some
         /// special character sequences defining format, color and style of the text.
+        /// Wrapper note: builder does not store its own copy. If @b MUIA_Text_Copy is set to @b FALSE, caller must keep source text valid.
         T &tagContents(const char *contents);
         /// @brief [ @b MUIA_Text_Contents ]
         /// String to be displayed. If the string is larger than available display space, it will be clipped. Setting
         /// @b MUIA_Text_Contents to @b NULL results in an empty text object. The string is copied into a private buffer (unless
         /// @b MUIA_Text_Copy is set to @b FALSE), you can destroy the original string after using this tag. Contest may contain some
         /// special character sequences defining format, color and style of the text.
+        /// Wrapper note: builder does not store its own copy. If @b MUIA_Text_Copy is set to @b FALSE, caller must keep source text valid.
         T &tagContents(const std::string &contents);
 #ifdef MUIA_Text_ControlChar
         /// @brief [ @b MUIA_Text_ControlChar ]
