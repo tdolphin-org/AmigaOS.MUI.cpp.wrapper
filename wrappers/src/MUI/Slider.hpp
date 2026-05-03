@@ -12,11 +12,19 @@
 
 namespace MUI
 {
+    /// @brief The slider class generates a GU element that allows a user to adjust a numeric value.
+    /// The class offers only a small amount of slider-specific API and relies on its Numeric base for
+    /// the active numeric range and value interface.
     class Slider : public Numeric
     {
       public:
         explicit Slider(Object *pMuiObject)
           : Numeric(pMuiObject)
+        {
+        }
+
+        Slider(const Root &root)
+          : Numeric(root.muiObject())
         {
         }
 
@@ -29,14 +37,19 @@ namespace MUI
             return MUI::instanceOf(pMuiObject, className.c_str());
         }
 
+        static inline bool instanceOf(const Root &object)
+        {
+            return MUI::instanceOf(object.muiObject(), className.c_str());
+        }
+
         // is/get/set (attributes), all setters return object reference
 
-        /// @brief [ @b MUIA_Slider_Horiz ] Get the slider orientation flag.
-        /// Returns true for a horizontal slider and false for a vertical slider.
+        /// @brief [ @b MUIA_Slider_Horiz ] Return whether the slider is horizontal or vertical.
+        /// This attribute also understands MUIA_Group_Horiz for compatibility with older MUI versions.
         bool getHoriz() const;
 
-        /// @brief [ @b MUIA_Slider_Horiz ] Set the slider orientation flag.
-        /// Set to true for a horizontal slider and false for a vertical slider.
+        /// @brief [ @b MUIA_Slider_Horiz ] Specify whether the slider is horizontal or vertical.
+        /// This attribute also understands MUIA_Group_Horiz for compatibility with older MUI versions.
         Slider &setHoriz(const bool horiz);
     };
 
@@ -48,11 +61,11 @@ namespace MUI
         {
         }
 
-        /// @brief [ @b MUIA_Slider_Horiz ] Set the initial slider orientation.
-        /// Set to true for a horizontal slider and false for a vertical slider.
+        /// @brief [ @b MUIA_Slider_Horiz ] Specify whether the initial slider is horizontal or vertical.
+        /// This attribute also understands MUIA_Group_Horiz for compatibility with older MUI versions.
         T &tagHoriz(const bool horiz);
-        /// @brief [ @b MUIA_Slider_Quiet ] Set quiet mode during object creation.
-        /// If true, the slider remains visually quiet while being dragged.
+        /// @brief [ @b MUIA_Slider_Quiet ] Configure whether the slider hides its current level text.
+        /// When set to true, the slider does not display its current level in a text object.
         T &tagQuiet(const bool quiet);
     };
 
