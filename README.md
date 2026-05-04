@@ -152,7 +152,7 @@ ___
 | [MUIC_Poppen](https://github.com/amiga-mui/muidev/wiki/MUI_Poppen) | [MUI::Poppen](/wrappers/src/MUI/Poppen.hpp) | Ready | - | - | Ready | - | - | not applicable | not applicable |
 | [MUIC_Popscreen](https://github.com/amiga-mui/muidev/wiki/MUI_Popscreen) | [MUI::Popscreen](/wrappers/src/MUI/Popscreen.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Popstring](https://github.com/amiga-mui/muidev/wiki/MUI_Popstring) | [MUI::Popstring](/wrappers/src/MUI/Popstring.hpp) | Ready | - | - | Ready | - | - | - | - |
-| [MUIC_Process](https://github.com/amiga-mui/muidev/wiki/MUI_Process) |  - | - | - | - | - | - | - | - | - |
+| [MUIC_Process](https://github.com/amiga-mui/muidev/wiki/MUI_Process) | [MUI::Process](/wrappers/src/MUI/Process.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | not applicable | not applicable |
 | [MUIC_Prop](https://github.com/amiga-mui/muidev/wiki/MUI_Prop) | [MUI::Prop](/wrappers/src/MUI/Prop.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | Ready | Ready |
 | [MUIC_Radio](https://github.com/amiga-mui/muidev/wiki/MUI_Radio) | [MUI::Radio](/wrappers/src/MUI/Radio.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Rectangle](https://github.com/amiga-mui/muidev/wiki/MUI_Rectangle) | [MUI::Rectangle](/wrappers/src/MUI/Rectangle.hpp) | Ready | - | - | Ready | - | - | not applicable | - |
@@ -163,8 +163,8 @@ ___
 | [MUIC_Scrollbar](https://github.com/amiga-mui/muidev/wiki/MUI_Scrollbar) | [MUI::Scrollbar](/wrappers/src/MUI/Scrollbar.hpp) | Ready | in progress | - | Ready | in progress | - | - | - |
 | [MUIC_Scrollgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Scrollgroup) | [MUI::Scrollgroup](/wrappers/src/MUI/Scrollgroup.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | - | - |
 | [MUIC_Selectgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Selectgroup) | [MUI::Selectgroup](/wrappers/src/MUI/Selectgroup.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |
-| [MUIC_Semaphore](https://github.com/amiga-mui/muidev/wiki/MUI_Semaphore) |  - | - | - | - | - | - | - | - | - |
-| [MUIC_Slave](https://github.com/amiga-mui/muidev/wiki/MUI_Slave) |  - | - | - | - | - | - | - | - | - |
+| [MUIC_Semaphore](https://github.com/amiga-mui/muidev/wiki/MUI_Semaphore) | [MUI::Semaphore](/wrappers/src/MUI/Semaphore.hpp) | Ready | - | - | Ready | - | - | not applicable | not applicable |
+| [MUIC_Slave](https://github.com/amiga-mui/muidev/wiki/MUI_Slave) | [MUI::Slave](/wrappers/src/MUI/Slave.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | not applicable | not applicable |
 | [MUIC_Slider](https://github.com/amiga-mui/muidev/wiki/MUI_Slider) | [MUI::Slider](/wrappers/src/MUI/Slider.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_String](https://github.com/amiga-mui/muidev/wiki/MUI_String) | [MUI::String](/wrappers/src/MUI/String.hpp) | Ready | Ready | Ready | Ready | Ready | Ready | in progress | in progress |
 | [MUIC_Textdata](https://github.com/amiga-mui/muidev/wiki/MUI_Textdata) | [MUI::Textdata](/wrappers/src/MUI/Textdata.hpp) | n/a | Ready | n/a | n/a | Ready | n/a | - | - |
