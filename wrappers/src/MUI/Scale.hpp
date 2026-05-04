@@ -10,9 +10,9 @@
 
 namespace MUI
 {
-    /// @brief Wrapper for MUIC_Scale - a percentage scale running from 0% to 100%.
-    /// The scale is typically used below another object such as a gauge and adapts its detail
-    /// automatically to the available layout space.
+    /// @brief A Scale object generates a percentage scale running from 0% to 100%.
+    /// A good place for such an object is e.g. below a fuel gauge. Depending on how much
+    /// space is available, the scale will be more or less detailed.
     class Scale : public Area
     {
       public:
@@ -42,10 +42,12 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-        /// @brief [ @b MUIA_Scale_Horiz ] Get whether the scale is horizontal.
+        /// @brief [ @b MUIA_Scale_Horiz ] Indicate whether you want a horizontal or a vertical scale.
+        /// Defaults to horizontal.
         bool getHoriz() const;
 
-        /// @brief [ @b MUIA_Scale_Horiz ] Set whether the scale is horizontal or vertical.
+        /// @brief [ @b MUIA_Scale_Horiz ] Indicate whether you want a horizontal or a vertical scale.
+        /// Defaults to horizontal.
         Scale &setHoriz(const bool horiz);
     };
 
@@ -57,7 +59,8 @@ namespace MUI
         {
         }
 
-        /// @brief [ @b MUIA_Scale_Horiz ] Set whether the initial scale is horizontal or vertical.
+        /// @brief [ @b MUIA_Scale_Horiz ] Indicate whether you want a horizontal or a vertical scale.
+        /// Defaults to horizontal.
         T &tagHoriz(const bool horiz);
     };
 
