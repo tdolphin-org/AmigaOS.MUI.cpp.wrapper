@@ -39,6 +39,19 @@ namespace MUI
         {
             return MUI::instanceOf(object.muiObject(), className.c_str());
         }
+
+        // is/get/set (attributes), all setters return object reference
+
+        /// @brief [ @b MUIA_Selectgroup_Active ]
+        /// Returns the number of the currently active entry (0-based index).
+        long getActive() const;
+
+        /// @brief [ @b MUIA_Selectgroup_Active ]
+        /// Set the number of the active entry. Valid range is 0 to NumEntries-1.
+        Selectgroup &setActive(const long active);
+        /// @brief [ @b MUIA_Selectgroup_Active ] (typed)
+        /// Set the active entry using special values (Next, Prev).
+        Selectgroup &setActive(const enum Selectgroup_Active active);
     };
 
     template <typename T, typename U> class SelectgroupBuilderTemplate : public GroupBuilderTemplate<T, U>
@@ -50,8 +63,10 @@ namespace MUI
         }
 
         /// @brief [ @b MUIA_Selectgroup_Active ]
+        /// Set the number of the initially active entry. Valid range is 0 to NumEntries-1.
         T &tagActive(const long active);
         /// @brief [ @b MUIA_Selectgroup_Active ] (typed)
+        /// Set the initially active entry using special values (Next, Prev).
         T &tagActive(const enum Selectgroup_Active active);
     };
 
