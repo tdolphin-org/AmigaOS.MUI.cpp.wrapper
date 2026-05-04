@@ -14,14 +14,14 @@ namespace MUI
 
     SemaphoreBuilder::SemaphoreBuilder() { }
 
-    unsigned long Semaphore::Attempt()
+    bool Semaphore::Attempt()
     {
-        return DoMethod(muiObject(), MUIM_Semaphore_Attempt);
+        return (bool)DoMethod(muiObject(), MUIM_Semaphore_Attempt);
     }
 
-    unsigned long Semaphore::AttemptShared()
+    bool Semaphore::AttemptShared()
     {
-        return DoMethod(muiObject(), MUIM_Semaphore_AttemptShared);
+        return (bool)DoMethod(muiObject(), MUIM_Semaphore_AttemptShared);
     }
 
     Semaphore &Semaphore::Obtain()

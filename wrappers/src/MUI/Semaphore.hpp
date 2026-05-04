@@ -48,14 +48,14 @@ namespace MUI
 
         /// @brief [ @b MUIM_Semaphore_Attempt ]
         /// Emulates exec.library/AttemptSemaphore. Tries to obtain the semaphore without blocking.
-        /// @return Non-zero if the semaphore was obtained, zero if it was already locked.
-        unsigned long Attempt();
+        /// @return true if the semaphore was obtained, false if it was already locked.
+        bool Attempt();
 
         /// @brief [ @b MUIM_Semaphore_AttemptShared ]
         /// Emulates exec.library/AttemptSemaphoreShared. Tries to obtain the semaphore in shared
         /// mode without blocking. The pre-V39 autodocs fixes are already implemented.
-        /// @return Non-zero if the shared semaphore was obtained, zero if it was already exclusively locked.
-        unsigned long AttemptShared();
+        /// @return true if the shared semaphore was obtained, false if it was already exclusively locked.
+        bool AttemptShared();
 
         /// @brief [ @b MUIM_Semaphore_Obtain ]
         /// Emulates exec.library/ObtainSemaphore. Blocks until the semaphore can be obtained exclusively.
