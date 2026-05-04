@@ -153,7 +153,7 @@ ___
 | [MUIC_Popscreen](https://github.com/amiga-mui/muidev/wiki/MUI_Popscreen) | [MUI::Popscreen](/wrappers/src/MUI/Popscreen.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Popstring](https://github.com/amiga-mui/muidev/wiki/MUI_Popstring) | [MUI::Popstring](/wrappers/src/MUI/Popstring.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Process](https://github.com/amiga-mui/muidev/wiki/MUI_Process) | [MUI::Process](/wrappers/src/MUI/Process.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | not applicable | not applicable |
-| [MUIC_Prop](https://github.com/amiga-mui/muidev/wiki/MUI_Prop) | [MUI::Prop](/wrappers/src/MUI/Prop.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | Ready | Ready |
+| [MUIC_Prop](https://github.com/amiga-mui/muidev/wiki/MUI_Prop) | [MUI::Prop](/wrappers/src/MUI/Prop.hpp) | Ready | Ready | Ready | Ready | Ready | Ready | Ready | Ready |
 | [MUIC_Radio](https://github.com/amiga-mui/muidev/wiki/MUI_Radio) | [MUI::Radio](/wrappers/src/MUI/Radio.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Rectangle](https://github.com/amiga-mui/muidev/wiki/MUI_Rectangle) | [MUI::Rectangle](/wrappers/src/MUI/Rectangle.hpp) | Ready | - | - | Ready | - | - | not applicable | - |
 | [MUIC_Register](https://github.com/amiga-mui/muidev/wiki/MUI_Register) | [MUI::Register](/wrappers/src/MUI/Register.hpp) | Ready | Ready | - | Ready | Ready | Ready | not applicable | Ready |

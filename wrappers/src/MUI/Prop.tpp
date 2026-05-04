@@ -36,6 +36,14 @@ namespace MUI
         return (T &)*this;
     }
 
+#ifdef MUIA_Prop_Slider
+    template <typename T, typename U> inline T &PropBuilderTemplate<T, U>::tagSlider(const bool slider)
+    {
+        this->PushTag(MUIA_Prop_Slider, slider);
+        return (T &)*this;
+    }
+#endif
+
     template <typename T, typename U> inline T &PropBuilderTemplate<T, U>::tagUseWinBorder(const enum Prop_UseWinBorder useWinBorder)
     {
         this->PushTag(MUIA_Prop_UseWinBorder, useWinBorder);

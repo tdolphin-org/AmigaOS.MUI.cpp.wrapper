@@ -36,6 +36,13 @@ namespace MUI
         return GetValueAsBool(MUIA_Prop_Horiz);
     }
 
+#ifdef MUIA_Prop_Slider
+    bool Prop::isSlider() const
+    {
+        return GetValueAsBool(MUIA_Prop_Slider);
+    }
+#endif
+
     long Prop::getVisible() const
     {
         return GetValueAsLong(MUIA_Prop_Visible);
@@ -61,19 +68,27 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIA_Prop_Slider
+    Prop &Prop::setSlider(const bool slider)
+    {
+        SetValue(MUIA_Prop_Slider, slider);
+        return *this;
+    }
+#endif
+
     Prop &Prop::setVisible(const long visible)
     {
         SetValue(MUIA_Prop_Visible, visible);
         return *this;
     }
 
-    Notify &Prop::Decrease(const long amount)
+    Prop &Prop::Decrease(const long amount)
     {
         DoMethod(muiObject(), MUIM_Prop_Decrease, amount);
         return *this;
     }
 
-    Notify &Prop::Increase(const long amount)
+    Prop &Prop::Increase(const long amount)
     {
         DoMethod(muiObject(), MUIM_Prop_Increase, amount);
         return *this;
