@@ -160,8 +160,8 @@ ___
 | [MUIC_Scale](https://github.com/amiga-mui/muidev/wiki/MUI_Scale) | [MUI::Scale](/wrappers/src/MUI/Scale.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Screenmodepanel](https://github.com/amiga-mui/muidev/wiki/MUI_Screenmodepanel) | [MUI::Screenmodepanel](/wrappers/src/MUI/Screenmodepanel.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |
 | [MUIC_Scrmodelist](https://github.com/amiga-mui/muidev/wiki/MUI_Scrmodelist) | [MUI::Scrmodelist](/wrappers/src/MUI/Scrmodelist.hpp) | Ready | - | - | Ready | - | - | - | - |
-| [MUIC_Scrollbar](https://github.com/amiga-mui/muidev/wiki/MUI_Scrollbar) | [MUI::Scrollbar](/wrappers/src/MUI/Scrollbar.hpp) | Ready | in progress | - | Ready | in progress | - | - | - |
-| [MUIC_Scrollgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Scrollgroup) | [MUI::Scrollgroup](/wrappers/src/MUI/Scrollgroup.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | - | - |
+| [MUIC_Scrollbar](https://github.com/amiga-mui/muidev/wiki/MUI_Scrollbar) | [MUI::Scrollbar](/wrappers/src/MUI/Scrollbar.hpp) | Ready | Ready | - | Ready | Ready | - | - | - |
+| [MUIC_Scrollgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Scrollgroup) | [MUI::Scrollgroup](/wrappers/src/MUI/Scrollgroup.hpp) | Ready | Ready | Ready | Ready | Ready | Ready | - | - |
 | [MUIC_Selectgroup](https://github.com/amiga-mui/muidev/wiki/MUI_Selectgroup) | [MUI::Selectgroup](/wrappers/src/MUI/Selectgroup.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |
 | [MUIC_Semaphore](https://github.com/amiga-mui/muidev/wiki/MUI_Semaphore) | [MUI::Semaphore](/wrappers/src/MUI/Semaphore.hpp) | Ready | - | - | Ready | - | - | not applicable | not applicable |
 | [MUIC_Slave](https://github.com/amiga-mui/muidev/wiki/MUI_Slave) | [MUI::Slave](/wrappers/src/MUI/Slave.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | not applicable | not applicable |
