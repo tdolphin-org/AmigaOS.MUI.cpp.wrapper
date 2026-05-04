@@ -10,9 +10,9 @@
 
 namespace MUI
 {
-    /// @brief MUI Scrmodelist class wrapper.
-    /// A special List subclass that automatically populates itself with all available screen modes.
-    /// It has no own attributes; all configuration is done through the inherited List and Area attributes.
+    /// @brief Private List subclass that populates itself with all available screen modes.
+    /// This is a private class used only by the MUI preferences program. It has no own
+    /// attributes or methods; all configuration is done through inherited List attributes.
     class Scrmodelist : public List
     {
       public:
