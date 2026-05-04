@@ -12,8 +12,9 @@
 
 namespace MUI
 {
-    /// @brief MUI Screenmodepanel class wrapper.
-    /// Full-featured replacement for ASL screen mode requesters.
+    /// @brief Screenmodepanel class offers a full featured replacement for ASL screenmode requesters.
+    /// As a replacement it understands most of ASL's screenmode requester tags.
+    /// It has no own attributes or methods; all configuration is done through inherited Panel attributes.
     class Screenmodepanel : public Panel
     {
       public:
