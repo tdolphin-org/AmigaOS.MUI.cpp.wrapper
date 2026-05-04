@@ -12,9 +12,9 @@
 
 namespace MUI
 {
-    /// @brief Wrapper for MUIC_Radio - a group-based radio button gadget.
-    /// Radio gadgets offer cycle-like selection using one button per entry and can be laid out
-    /// vertically, horizontally or in more complex group arrangements through inherited Group attributes.
+    /// @brief Radio class generates radio button gadgets. They do the same job as cycle gadgets and
+    /// eat up more window space. Since Radio class is a subclass of Group, you can use group layout
+    /// attributes to adjust the layout to your needs.
     class Radio : public Group
     {
       public:
@@ -44,11 +44,13 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-        /// @brief [ @b MUIA_Radio_Active ] Get the index of the currently active radio entry.
+        /// @brief [ @b MUIA_Radio_Active ] The number of the active entry in the radio gadget.
+        /// Valid range is from 0 for the first entry to NumEntries-1 for the last.
         long getActive() const;
 
-        /// @brief [ @b MUIA_Radio_Active ] Set the active radio entry by zero-based index.
-        Radio &setActive(const unsigned long active);
+        /// @brief [ @b MUIA_Radio_Active ] The number of the active entry in the radio gadget.
+        /// Setting this causes the gadget to be updated. Valid range is from 0 to NumEntries-1.
+        Radio &setActive(const long active);
     };
 
     template <typename T, typename U> class RadioBuilderTemplate : public GroupBuilderTemplate<T, U>
@@ -59,17 +61,16 @@ namespace MUI
         {
         }
 
-        /// @brief [ @b MUIA_Radio_Active ]
-        /// Defines the number of the active entry in the Radio gadget. Valid range is from 0 for the first entry to NumEntries-1 for the
-        /// last.
+        /// @brief [ @b MUIA_Radio_Active ] The number of the active entry in the radio gadget.
+        /// Defines the number of the active entry. Valid range is from 0 for the first entry to NumEntries-1 for the last.
         T &tagActive(const long active);
-        /// @brief [ @b MUIA_Radio_Entries ]
-        /// Define what entries shall be displayed in your Radio gadget. You must supply a pointer to a string array, containing one entry
-        /// for each item and terminated with a NULL.
+        /// @brief [ @b MUIA_Radio_Entries ] Define what entries shall be displayed in your radio gadget.
+        /// You must supply a pointer to a string array, containing one entry for each item and terminated with a NULL.
+        /// Radio entries may contain any MUI text formatting codes such as bold, italic or underlined characters.
         T &tagEntries(const char *entries[]);
-        /// @brief [ @b MUIA_Radio_Entries ]
-        /// Define what entries shall be displayed in your Radio gadget. The string copies are stored internally by this C++ wrapper.
-        /// Radio entries may contain MUI text formatting codes.
+        /// @brief [ @b MUIA_Radio_Entries ] Define what entries shall be displayed in your radio gadget.
+        /// The string copies are stored internally by this C++ wrapper.
+        /// Radio entries may contain any MUI text formatting codes such as bold, italic or underlined characters.
         T &tagEntries(const std::vector<std::string> &entries);
     };
 
