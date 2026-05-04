@@ -13,9 +13,10 @@
 
 namespace MUI
 {
-    /// @brief Wrapper for MUIC_Register - a multi-page group with user-selectable page titles.
-    /// The titles are provided as a NULL-terminated string array describing the group's children,
-    /// while the user decides whether they are visualized as a cycle gadget or register tabs.
+    /// @brief Register class is a special class for handling multi page groups.
+    /// Using this class, you only have to supply an array of strings describing the children's
+    /// titles. How these titles are visualized, either with a cycle gadget or with a register-like
+    /// group, is the choice of the user.
     class Register : public Group
     {
       public:
@@ -45,16 +46,19 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-        /// @brief [ @b MUIA_Register_Titles ] Get the NULL-terminated array of page titles.
+        /// @brief [ @b MUIA_Register_Titles ] NULL terminated array of strings describing the titles
+        /// of your groups children. This array must contain exactly as many entries as your group has children.
         const char **getTitles() const;
 
 #if defined(AOS_MUI_VERSION_5) && defined(MUIA_Register_Titles)
-        /// @brief [ @b MUIA_Register_Titles ] Set page titles from a NULL-terminated C string array.
+        /// @brief [ @b MUIA_Register_Titles ] NULL terminated array of strings describing the titles
+        /// of your groups children. This array must contain exactly as many entries as your group has children.
         Register &setTitles(const char *titles[]);
-        /// @brief [ @b MUIA_Register_Titles ] Set page titles from a vector of strings copied by this wrapper.
+        /// @brief [ @b MUIA_Register_Titles ] NULL terminated array of strings describing the titles
+        /// of your groups children. This array must contain exactly as many entries as your group has children.
         Register &setTitles(const std::vector<std::string> &titles);
 #if defined(MUIV_Register_Titles_UData) && defined(MUIV_Register_Titles_Frame)
-        /// @brief [ @b MUIA_Register_Titles ] Set special title source for MUI5-compatible targets.
+        /// @brief [ @b MUIA_Register_Titles ] Set special title source using a MUIV_Register_Titles_* value.
         Register &setTitles(const enum Register_Titles titles);
 #endif
 #endif
@@ -68,14 +72,16 @@ namespace MUI
         {
         }
 
-        /// @brief [ @b MUIA_Register_Titles ] Set page titles from a NULL-terminated C string array.
+        /// @brief [ @b MUIA_Register_Titles ] NULL terminated array of strings describing the titles
+        /// of your groups children. This array must contain exactly as many entries as your group has children.
         /// @param pTitles pointer to NULL-terminated array of titles
         T &tagTitles(const char *pTitles[]);
-        /// @brief [ @b MUIA_Register_Titles ] Set page titles from a vector of strings copied by this wrapper.
+        /// @brief [ @b MUIA_Register_Titles ] NULL terminated array of strings describing the titles
+        /// of your groups children. This array must contain exactly as many entries as your group has children.
         /// @param pTitles vector of titles copied and stored by this wrapper
         T &tagTitles(const std::vector<std::string> &pTitles);
 #if defined(MUIV_Register_Titles_UData) && defined(MUIV_Register_Titles_Frame)
-        /// @brief [ @b MUIA_Register_Titles ] Set special title source for targets that support MUIV_Register_Titles_* values.
+        /// @brief [ @b MUIA_Register_Titles ] Set special title source using a MUIV_Register_Titles_* value.
         T &tagTitles(const enum Register_Titles pTitles);
 #endif
     };
