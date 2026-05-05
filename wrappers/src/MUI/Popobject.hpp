@@ -10,10 +10,10 @@
 
 namespace MUI
 {
-    /// @brief MUI Popobject class wrapper.
-    /// Popobject takes any MUI object as a popup. It creates a borderless popup window around the
-    /// given object and displays it when the user activates the popup button. Hooks allow
-    /// synchronisation between the embedded string gadget and the popup object.
+    /// @brief Popobject class takes a MUI object as parameter and uses it as popup. It creates
+    /// a borderless popup window around the given object and displays it when the user hits the
+    /// popup button. Using this class instead of creating the popup windows yourself prevents
+    /// you from having lots of problems.
     class Popobject : public Popstring
     {
       public:
@@ -43,33 +43,52 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-        /// @brief [ @b MUIA_Popobject_Follow ] Query whether popup window follows its parent when moved.
+        /// @brief [ @b MUIA_Popobject_Follow ] Setting this attribute causes the popup window to
+        /// follow its parent window when its moved. Defaults to true.
         bool isFollow() const;
-        /// @brief [ @b MUIA_Popobject_Light ] Query whether popup window is displayed without border and title.
+        /// @brief [ @b MUIA_Popobject_Light ] This attribute causes the popup window to be border
+        /// and titleless. Defaults to true.
         bool isLight() const;
-        /// @brief [ @b MUIA_Popobject_Volatile ] Query whether popup disappears when the popobject is hidden.
+        /// @brief [ @b MUIA_Popobject_Volatile ] Setting this attribute causes the popup window to
+        /// disappear when the corresponding popobject disappears, e.g. because its in a page group
+        /// and the user toggled the page. Defaults to true.
         bool isVolatile() const;
 
-        /// @brief [ @b MUIA_Popobject_Object ] Get the popup object.
+        /// @brief [ @b MUIA_Popobject_Object ] Specify the object to pop up. Usually this is a
+        /// relatively simple thing like a single listview, but you can of course use group class here
+        /// and make rather complex popups.
         Object *getObject() const;
-        /// @brief [ @b MUIA_Popobject_ObjStrHook ] Get hook called when the popup is closed (object → string transfer).
+        /// @brief [ @b MUIA_Popobject_ObjStrHook ] When a popup is closed, this hook is called.
+        /// You can examine the state of your MUIA_Popobject_Object and set the contents of the string
+        /// gadget respectively. Only called when popup is closed with success value TRUE.
         Hook *getObjStrHook() const;
-        /// @brief [ @b MUIA_Popobject_StrObjHook ] Get hook called before the popup opens (string → object transfer).
+        /// @brief [ @b MUIA_Popobject_StrObjHook ] Before the popup opens, this hook is called.
+        /// You can use it to prepare your MUIA_Popobject_Object according to the contents of the
+        /// string gadget. Return TRUE if you want the popup to appear, FALSE otherwise.
         Hook *getStrObjHook() const;
-        /// @brief [ @b MUIA_Popobject_WindowHook ] Get hook called after the popup window is created but before it opens.
+        /// @brief [ @b MUIA_Popobject_WindowHook ] If specified, this hook is called immediately
+        /// after the popup's window object has been created but before the window is opened.
         Hook *getWindowHook() const;
 
-        /// @brief [ @b MUIA_Popobject_Follow ] Set whether popup window follows its parent window when moved.
+        /// @brief [ @b MUIA_Popobject_Follow ] Setting this attribute causes the popup window to
+        /// follow its parent window when its moved. Defaults to true.
         Popobject &setFollow(const bool follow);
-        /// @brief [ @b MUIA_Popobject_Light ] Set whether popup window is displayed without border and title.
+        /// @brief [ @b MUIA_Popobject_Light ] This attribute causes the popup window to be border
+        /// and titleless. Defaults to true.
         Popobject &setLight(const bool light);
-        /// @brief [ @b MUIA_Popobject_Volatile ] Set whether popup disappears when the popobject is hidden.
+        /// @brief [ @b MUIA_Popobject_Volatile ] Setting this attribute causes the popup window to
+        /// disappear when the corresponding popobject disappears. Defaults to true.
         Popobject &setVolatile(const bool vol);
-        /// @brief [ @b MUIA_Popobject_ObjStrHook ] Set hook called when the popup is closed (object → string transfer).
+        /// @brief [ @b MUIA_Popobject_ObjStrHook ] When a popup is closed, this hook is called.
+        /// You can examine the state of your MUIA_Popobject_Object and set the contents of the string
+        /// gadget respectively. Only called when popup is closed with success value TRUE.
         Popobject &setObjStrHook(const Hook *objStrHook);
-        /// @brief [ @b MUIA_Popobject_StrObjHook ] Set hook called before the popup opens (string → object transfer).
+        /// @brief [ @b MUIA_Popobject_StrObjHook ] Before the popup opens, this hook is called.
+        /// You can use it to prepare your MUIA_Popobject_Object according to the contents of the
+        /// string gadget. Return TRUE if you want the popup to appear, FALSE otherwise.
         Popobject &setStrObjHook(const Hook *strObjHook);
-        /// @brief [ @b MUIA_Popobject_WindowHook ] Set hook called after the popup window is created but before it opens.
+        /// @brief [ @b MUIA_Popobject_WindowHook ] If specified, this hook is called immediately
+        /// after the popup's window object has been created but before the window is opened.
         Popobject &setWindowHook(const Hook *windowHook);
     };
 
@@ -81,19 +100,29 @@ namespace MUI
         {
         }
 
-        /// @brief [ @b MUIA_Popobject_Follow ] Set whether popup window follows parent window at initialization. Defaults to TRUE.
+        /// @brief [ @b MUIA_Popobject_Follow ] Setting this attribute causes the popup window to
+        /// follow its parent window when its moved. Defaults to true.
         T &tagFollow(const bool follow);
-        /// @brief [ @b MUIA_Popobject_Light ] Set whether popup window is borderless and titleless at initialization. Defaults to TRUE.
+        /// @brief [ @b MUIA_Popobject_Light ] This attribute causes the popup window to be border
+        /// and titleless. Defaults to true.
         T &tagLight(const bool light);
-        /// @brief [ @b MUIA_Popobject_Object ] Set the popup object at initialization.
+        /// @brief [ @b MUIA_Popobject_Object ] Specify the object to pop up. Usually this is a
+        /// relatively simple thing like a single listview, but you can of course use group class here
+        /// and make rather complex popups.
         T &tagObject(const Object *object);
-        /// @brief [ @b MUIA_Popobject_ObjStrHook ] Set close hook (object → string transfer) at initialization.
+        /// @brief [ @b MUIA_Popobject_ObjStrHook ] When a popup is closed, this hook is called.
+        /// You can examine the state of your MUIA_Popobject_Object and set the contents of the string
+        /// gadget respectively. Only called when popup is closed with success value TRUE.
         T &tagObjStrHook(const Hook *objStrHook);
-        /// @brief [ @b MUIA_Popobject_StrObjHook ] Set open hook (string → object transfer) at initialization.
+        /// @brief [ @b MUIA_Popobject_StrObjHook ] Before the popup opens, this hook is called.
+        /// You can use it to prepare your MUIA_Popobject_Object according to the contents of the
+        /// string gadget. Return TRUE if you want the popup to appear, FALSE otherwise.
         T &tagStrObjHook(const Hook *strObjHook);
-        /// @brief [ @b MUIA_Popobject_Volatile ] Set volatile mode at initialization. Defaults to TRUE.
+        /// @brief [ @b MUIA_Popobject_Volatile ] Setting this attribute causes the popup window to
+        /// disappear when the corresponding popobject disappears. Defaults to true.
         T &tagVolatile(const bool vol);
-        /// @brief [ @b MUIA_Popobject_WindowHook ] Set window hook at initialization.
+        /// @brief [ @b MUIA_Popobject_WindowHook ] If specified, this hook is called immediately
+        /// after the popup's window object has been created but before the window is opened.
         T &tagWindowHook(const Hook *windowHook);
     };
 

@@ -10,8 +10,7 @@
 
 namespace MUI
 {
-    /// @brief MUI Popscreen class wrapper.
-    /// Private class that provides a popup selector for public screens.
+    /// @brief This is a private class.
     class Popscreen : public Popobject
     {
       public:

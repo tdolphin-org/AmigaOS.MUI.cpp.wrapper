@@ -10,6 +10,11 @@
 
 namespace MUI
 {
+    /// @brief Poppen class adds input capabilities to its super class Pendisplay. It should be
+    /// used if your application allows users to configure some custom pens for rendering. A Poppen
+    /// object will appear as kind of a button which displays the currently selected color. When the
+    /// user hits the button, a Popup window containing a Penadjust object opens up and lets the
+    /// user change the color.
     class Poppen : public Pendisplay
     {
       public:
@@ -46,9 +51,8 @@ namespace MUI
         {
         }
 
-        /// @brief [ @b MUIA_Window_Title ]
-        /// You can control the window title of the popup window using the MUIA_Window_Title on the Poppen object. It will remember its
-        /// value and use it when creating the popup window.
+        /// @brief [ @b MUIA_Window_Title ] Control the window title of the popup window.
+        /// The Poppen object will remember its value and use it when creating the popup window.
         T &tagWindowTitle(const std::string &title);
     };
 

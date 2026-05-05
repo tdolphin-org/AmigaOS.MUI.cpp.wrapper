@@ -10,8 +10,8 @@
 
 namespace MUI
 {
-    /// @brief MUI Poplist class wrapper.
-    /// Poplist simplifies creation of popups that contain only a simple list of predefined string entries.
+    /// @brief Poplist class simplifies creation of popups that contain just a simple list of
+    /// predefined gadget contents.
     class Poplist : public Popobject
     {
       public:
@@ -48,11 +48,12 @@ namespace MUI
         {
         }
 
-        /// @brief [ @b MUIA_Poplist_Array ] Set popup list entries using a NULL-terminated C string array.
+        /// @brief [ @b MUIA_Poplist_Array ] A NULL terminated list of strings defining the
+        /// contents of the poplist object.
         T &tagArray(const char *array[]);
 
-        /// @brief [ @b MUIA_Poplist_Array ]
-        /// Set popup list entries from a vector of strings. The string copies are stored internally by this C++ wrapper.
+        /// @brief [ @b MUIA_Poplist_Array ] A NULL terminated list of strings defining the
+        /// contents of the poplist object. The string copies are stored internally by this C++ wrapper.
         T &tagArray(const std::vector<std::string> &array);
 
         /// @brief [ @b MUIA_Poplist_Array ] Explicitly set popup list array to nullptr.
