@@ -47,85 +47,88 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-        /// @brief [ @b MUIA_Pixmap_Alpha ]
-        /// Specifies an additional alpha value to be applied to the image data being drawn.
+        /// @brief [ @b MUIA_Pixmap_Alpha ] This attribute specifies an additional alpha value to
+        /// be applied to the image data being drawn. The default value is 0xffffffff which will draw
+        /// the image with full intensity. Alpha blitting won't work on CLUT screens or with CLUT
+        /// image data.
         unsigned long getAlpha() const;
-        /// @brief [ @b MUIA_Pixmap_CLUT ]
-        /// Define the color map to be used for CLUT8 raw image data.
+        /// @brief [ @b MUIA_Pixmap_CLUT ] Define the color map to be used for CLUT8 raw image data.
+        /// If no color map is given an internal default color map will be used instead.
         const unsigned long *getCLUT() const;
-        /// @brief [ @b MUIA_Pixmap_CLUTSize ]
-        /// Define the number of colors in the color map.
+        /// @brief [ @b MUIA_Pixmap_CLUTSize ] Define the number of colors in the color map given
+        /// by MUIA_Pixmap_CLUT. Defaults to 256.
         unsigned long getCLUTSize() const;
-        /// @brief [ @b MUIA_Pixmap_CompressedSize ]
-        /// Specifies the size of the compressed raw image data.
+        /// @brief [ @b MUIA_Pixmap_CompressedSize ] This attribute specifies the size of the
+        /// compressed raw image data. It is only required if the raw image data are compressed at all.
         unsigned long getCompressedSize() const;
-        /// @brief [ @b MUIA_Pixmap_Compression ]
-        /// Specifies the compression method being used for the raw image data.
+        /// @brief [ @b MUIA_Pixmap_Compression ] This attribute specifies the compression method
+        /// being used for the raw image data. Defaults to MUIV_Pixmap_Compression_None.
         Pixmap_Compression getCompression() const;
-        /// @brief [ @b MUIA_Pixmap_Data ]
-        /// Specifies a pointer to an array of the raw image data.
+        /// @brief [ @b MUIA_Pixmap_Data ] This attribute specifies a pointer to an array of the raw
+        /// image data. You also need to specify MUIA_Pixmap_Width, MUIA_Pixmap_Height and
+        /// MUIA_Pixmap_Format. For color mapped data the palette must be given with MUIA_Pixmap_CLUT.
         const void *getData() const;
-        /// @brief [ @b MUIA_Pixmap_Format ]
-        /// Specifies the format of the raw image data.
+        /// @brief [ @b MUIA_Pixmap_Format ] This attribute specifies the format of the raw image
+        /// data. It is possible to use color mapped (CLUT8), 24bit RGB and 32bit ARGB image data.
+        /// For CLUT8 images the palette can be specified with MUIA_Pixmap_CLUT.
         Pixmap_Format getFormat() const;
-        /// @brief [ @b MUIA_Pixmap_Height ]
-        /// Define the pixel height of the raw image data.
+        /// @brief [ @b MUIA_Pixmap_Height ] Define the pixel height of the raw image data.
         long getHeight() const;
-        /// @brief [ @b MUIA_Pixmap_TransparencyThreshold ]
-        /// Define the transparency threshold when dithering ARGB data.
+        /// @brief [ @b MUIA_Pixmap_TransparencyThreshold ] Define the transparency threshold when
+        /// dithering ARGB data. Pixels with an alpha value larger than the threshold will be treated
+        /// as non-transparent. No effect on hi/truecolor screens. Defaults to 0x7f (50%).
         unsigned char getTransparencyThreshold() const;
-        /// @brief [ @b MUIA_Pixmap_Width ]
-        /// Define the pixel width of the raw image data.
+        /// @brief [ @b MUIA_Pixmap_Width ] Define the pixel width of the raw image data.
         long getWidth() const;
-        /// @brief [ @b MUIA_Pixmap_UncompressedData ]
-        /// A pointer to the uncompressed data is returned, or NULL if decompression failed. The returned data are strictly read-only!
+        /// @brief [ @b MUIA_Pixmap_UncompressedData ] A pointer to the uncompressed data is
+        /// returned, or NULL if decompression failed. The returned data are strictly read-only!
         const void *getUncompressedData() const;
 
-        /// @brief [ @b MUIA_Pixmap_Alpha ]
-        /// Set additional alpha value to be applied to the image data being drawn.
+        /// @brief [ @b MUIA_Pixmap_Alpha ] This attribute specifies an additional alpha value to
+        /// be applied to the image data being drawn. The default value is 0xffffffff (full intensity).
         Pixmap &setAlpha(unsigned long value);
-        /// @brief [ @b MUIA_Pixmap_CLUT ]
-        /// Set the color map to be used for CLUT8 raw image data.
+        /// @brief [ @b MUIA_Pixmap_CLUT ] Define the color map to be used for CLUT8 raw image data.
+        /// If no color map is given an internal default color map will be used instead.
         Pixmap &setCLUT(const unsigned long *clut);
-        /// @brief [ @b MUIA_Pixmap_CLUTSize ]
-        /// Set the number of colors in the color map.
+        /// @brief [ @b MUIA_Pixmap_CLUTSize ] Define the number of colors in the color map given
+        /// by MUIA_Pixmap_CLUT. Defaults to 256.
         Pixmap &setCLUTSize(const unsigned long value);
-        /// @brief [ @b MUIA_Pixmap_CompressedSize ]
-        /// Set the size of the compressed raw image data.
+        /// @brief [ @b MUIA_Pixmap_CompressedSize ] This attribute specifies the size of the
+        /// compressed raw image data. It is only required if the raw image data are compressed at all.
         Pixmap &setCompressedSize(const unsigned long value);
-        /// @brief [ @b MUIA_Pixmap_Compression ]
-        /// Set the compression method being used for the raw image data.
+        /// @brief [ @b MUIA_Pixmap_Compression ] This attribute specifies the compression method
+        /// being used for the raw image data. Defaults to MUIV_Pixmap_Compression_None.
         Pixmap &setCompression(const Pixmap_Compression value);
-        /// @brief [ @b MUIA_Pixmap_Compression ]
-        /// Set the compression method using raw value.
+        /// @brief [ @b MUIA_Pixmap_Compression ] This attribute specifies the compression method
+        /// being used for the raw image data (raw value overload).
         Pixmap &setCompression(const unsigned long value);
-        /// @brief [ @b MUIA_Pixmap_Data ]
-        /// Set pointer to an array of the raw image data.
+        /// @brief [ @b MUIA_Pixmap_Data ] This attribute specifies a pointer to an array of the raw
+        /// image data. Also specify MUIA_Pixmap_Width, MUIA_Pixmap_Height and MUIA_Pixmap_Format.
         Pixmap &setData(const void *data);
-        /// @brief [ @b MUIA_Pixmap_Format ]
-        /// Set the format of the raw image data.
+        /// @brief [ @b MUIA_Pixmap_Format ] This attribute specifies the format of the raw image
+        /// data. It is possible to use color mapped (CLUT8), 24bit RGB and 32bit ARGB image data.
         Pixmap &setFormat(const Pixmap_Format value);
-        /// @brief [ @b MUIA_Pixmap_Format ]
-        /// Set the format using raw value.
+        /// @brief [ @b MUIA_Pixmap_Format ] This attribute specifies the format of the raw image
+        /// data (raw value overload).
         Pixmap &setFormat(const unsigned long value);
-        /// @brief [ @b MUIA_Pixmap_Height ]
-        /// Set the pixel height of the raw image data.
+        /// @brief [ @b MUIA_Pixmap_Height ] Define the pixel height of the raw image data.
         Pixmap &setHeight(const long value);
-        /// @brief [ @b MUIA_Pixmap_TransparencyThreshold ]
-        /// Set the transparency threshold when dithering ARGB data.
+        /// @brief [ @b MUIA_Pixmap_TransparencyThreshold ] Define the transparency threshold when
+        /// dithering ARGB data. Pixels with an alpha value larger than the threshold will be treated
+        /// as non-transparent. No effect on hi/truecolor screens. Defaults to 0x7f (50%).
         Pixmap &setTransparencyThreshold(const unsigned char value);
-        /// @brief [ @b MUIA_Pixmap_Width ]
-        /// Set the pixel width of the raw image data.
+        /// @brief [ @b MUIA_Pixmap_Width ] Define the pixel width of the raw image data.
         Pixmap &setWidth(const long value);
 
         // methods, some returns object reference
 
-        /// @brief [ @b MUIM_Pixmap_DrawSection ]
-        /// Draw just a section of the complete pixmap with a definite alpha transparency.
-        /// @param sx Source left coordinate
-        /// @param sy Source top coordinate
-        /// @param sw Source width
-        /// @param sh Source height
+        /// @brief [ @b MUIM_Pixmap_DrawSection ] Call this method instead of MUI_Redraw() to draw
+        /// just a section of the complete pixmap with a definite alpha transparency which might be
+        /// different from the globally set alpha transparency.
+        /// @param sx Source left coordinate of the section
+        /// @param sy Source top coordinate of the section
+        /// @param sw Source width of the section
+        /// @param sh Source height of the section
         /// @param mri MUI_RenderInfo structure to draw the pixmap section to
         /// @param dx Destination left coordinate
         /// @param dy Destination top coordinate
@@ -142,34 +145,43 @@ namespace MUI
         {
         }
 
-        /// @brief [ @b MUIA_Pixmap_Alpha ]
+        /// @brief [ @b MUIA_Pixmap_Alpha ] Additional alpha value to be applied to the image data
+        /// being drawn. The default value is 0xffffffff (full intensity).
         T &tagAlpha(const unsigned long alpha);
 
-        /// @brief [ @b MUIA_Pixmap_CLUT ]
+        /// @brief [ @b MUIA_Pixmap_CLUT ] Color map to be used for CLUT8 raw image data. If not
+        /// given, an internal default color map will be used instead.
         T &tagCLUT(const unsigned long *clut);
 
-        /// @brief [ @b MUIA_Pixmap_CLUTSize ]
+        /// @brief [ @b MUIA_Pixmap_CLUTSize ] Number of colors in the color map given by
+        /// MUIA_Pixmap_CLUT. Defaults to 256.
         T &tagCLUTSize(const unsigned long clutSize);
 
-        /// @brief [ @b MUIA_Pixmap_CompressedSize ]
+        /// @brief [ @b MUIA_Pixmap_CompressedSize ] Size of the compressed raw image data. Only
+        /// required if the raw image data are compressed at all.
         T &tagCompressedSize(const unsigned long compressedSize);
 
-        /// @brief [ @b MUIA_Pixmap_Compression ]
+        /// @brief [ @b MUIA_Pixmap_Compression ] Compression method being used for the raw image
+        /// data. Defaults to MUIV_Pixmap_Compression_None (uncompressed data).
         T &tagCompression(const Pixmap_Compression compression);
 
-        /// @brief [ @b MUIA_Pixmap_Data ]
+        /// @brief [ @b MUIA_Pixmap_Data ] Pointer to an array of the raw image data. Also specify
+        /// MUIA_Pixmap_Width, MUIA_Pixmap_Height and MUIA_Pixmap_Format.
         T &tagData(const void *data);
 
-        /// @brief [ @b MUIA_Pixmap_Format ]
+        /// @brief [ @b MUIA_Pixmap_Format ] Format of the raw image data: color mapped (CLUT8),
+        /// 24bit RGB or 32bit ARGB. For CLUT8 images specify the palette with MUIA_Pixmap_CLUT.
         T &tagFormat(const Pixmap_Format format);
 
-        /// @brief [ @b MUIA_Pixmap_Height ]
+        /// @brief [ @b MUIA_Pixmap_Height ] Pixel height of the raw image data.
         T &tagHeight(const long height);
 
-        /// @brief [ @b MUIA_Pixmap_TransparencyThreshold ]
+        /// @brief [ @b MUIA_Pixmap_TransparencyThreshold ] Transparency threshold when dithering
+        /// ARGB data. Pixels with alpha larger than the threshold are non-transparent. Defaults to
+        /// 0x7f (50%). No effect on hi/truecolor screens.
         T &tagTransparencyThreshold(const unsigned char transparencyThreshold);
 
-        /// @brief [ @b MUIA_Pixmap_Width ]
+        /// @brief [ @b MUIA_Pixmap_Width ] Pixel width of the raw image data.
         T &tagWidth(const long width);
     };
 

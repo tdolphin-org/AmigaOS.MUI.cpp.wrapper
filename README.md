@@ -145,7 +145,7 @@ ___
 | [MUIC_Panel](https://github.com/amiga-mui/muidev/wiki/MUI_Panel) | [MUI::Panel](/wrappers/src/MUI/Panel.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | not applicable | not applicable |
 | [MUIC_Penadjust](https://github.com/amiga-mui/muidev/wiki/MUI_Penadjust) | [MUI::Penadjust](/wrappers/src/MUI/Penadjust.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Pendisplay](https://github.com/amiga-mui/muidev/wiki/MUI_Pendisplay) | [MUI::Pendisplay](/wrappers/src/MUI/Pendisplay.hpp) | Ready | - | Ready | Ready | - | Ready | in progress | in progress |
-| [MUIC_Pixmap](https://github.com/amiga-mui/muidev/wiki/MUI_Pixmap) | [MUI::Popasl](/wrappers/src/MUI/Pixmap.hpp) | n/a | Ready | n/a | n/a | Ready | n/a | - | - |
+| [MUIC_Pixmap](https://github.com/amiga-mui/muidev/wiki/MUI_Pixmap) | [MUI::Pixmap](/wrappers/src/MUI/Pixmap.hpp) | n/a | Ready | n/a | n/a | Ready | n/a | - | - |
 | [MUIC_Popasl](https://github.com/amiga-mui/muidev/wiki/MUI_Popasl) | [MUI::Popasl](/wrappers/src/MUI/Popasl.hpp) | Ready | - | Ready | Ready | - | Ready | - | - |
 | [MUIC_Poplist](https://github.com/amiga-mui/muidev/wiki/MUI_Poplist) | [MUI::Poplist](/wrappers/src/MUI/Poplist.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Popobject](https://github.com/amiga-mui/muidev/wiki/MUI_Popobject) | [MUI::Popobject](/wrappers/src/MUI/Popobject.hpp) | Ready | - | n/a | Ready | - | n/a | - | - |

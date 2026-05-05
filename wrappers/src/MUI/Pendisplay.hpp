@@ -12,8 +12,10 @@
 
 namespace MUI
 {
-    /// @brief MUI Pendisplay class wrapper.
-    /// Pendisplay displays a MUI pen specification and is commonly used as a base for Poppen.
+    /// @brief Pendisplay class takes a struct MUI_PenSpec and displays it. Its main use is to
+    /// be sub-classed by Poppen class which adds a popup window to adjust the MUI_PenSpec.
+    /// Poppen class should be used by every application that allows users to configure custom
+    /// drawing pens.
     class Pendisplay : public Area
     {
       public:
@@ -43,47 +45,63 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
-        /// @brief [ @b MUIA_Pendisplay_Pen ] Get the currently used pen number for this object.
+        /// @brief [ @b MUIA_Pendisplay_Pen ] Between MUIM_Setup and MUIM_Cleanup, this attribute
+        /// returns the pen number MUI uses for color representation of the current pendisplay object.
+        /// Returns -1 when outside of MUIM_Setup/MUIM_Cleanup or when the Pendisplay object didn't
+        /// allocate a color on its own, e.g. because of MUIA_Pendisplay_Reference.
         unsigned long getPen() const;
-        /// @brief [ @b MUIA_Pendisplay_Reference ] Get referenced pendisplay object used as pen source.
+        /// @brief [ @b MUIA_Pendisplay_Reference ] Display exactly this pen, don't allocate one
+        /// on your own.
         Object *getReference() const;
-        /// @brief [ @b MUIA_Pendisplay_RGBcolor ] Get current pen color as RGB components.
+        /// @brief [ @b MUIA_Pendisplay_RGBcolor ] Get the RGB values of the currently set pen.
         RGBColor getRGBcolor() const;
-        /// @brief [ @b MUIA_Pendisplay_Spec ] Get current pen specification structure.
+        /// @brief [ @b MUIA_Pendisplay_Spec ] The black box structure MUI_PenSpec specifies a
+        /// drawing pen which should be displayed by Pendisplay class. If you use Poppen class to
+        /// allow your users to configure custom drawing pens, its this attribute that you need to
+        /// get() and save in your preferences.
         const struct MUI_PenSpec *getSpec() const;
 
 #ifdef MUIA_Pendisplay_ARGB
-        /// @brief [ @b MUIA_Pendisplay_ARGB ] Get packed 32-bit ARGB value (MorphOS MUI5 only).
+        /// @brief [ @b MUIA_Pendisplay_ARGB ] Get packed 32-bit ARGB value (MorphOS MUI5 V22 only).
         unsigned long getARGB() const;
 #endif
 #ifdef MUIA_Pendisplay_XRGB
-        /// @brief [ @b MUIA_Pendisplay_XRGB ] Get packed 32-bit XRGB value (MorphOS MUI5 only).
+        /// @brief [ @b MUIA_Pendisplay_XRGB ] Get packed 32-bit XRGB value (MorphOS MUI5 V22 only).
         unsigned long getXRGB() const;
 #endif
 
-        /// @brief [ @b MUIA_Pendisplay_Reference ] Display exactly this reference pen, do not allocate a new one.
+        /// @brief [ @b MUIA_Pendisplay_Reference ] Display exactly this pen, don't allocate one
+        /// on your own.
         Pendisplay &setReference(const Object *reference);
-        /// @brief [ @b MUIA_Pendisplay_RGBcolor ] Set pen color via RGB components.
+        /// @brief [ @b MUIA_Pendisplay_RGBcolor ] Set a pen spec via RGB values.
         Pendisplay &setRGBcolor(const RGBColor &rgbColor);
-        /// @brief [ @b MUIA_Pendisplay_Spec ] Set pen specification structure.
+        /// @brief [ @b MUIA_Pendisplay_Spec ] The black box structure MUI_PenSpec specifies a
+        /// drawing pen which should be displayed by Pendisplay class.
         Pendisplay &setSpec(const struct MUI_PenSpec *spec);
 
 #ifdef MUIA_Pendisplay_ARGB
-        /// @brief [ @b MUIA_Pendisplay_ARGB ] Set packed 32-bit ARGB value (MorphOS MUI5 only).
+        /// @brief [ @b MUIA_Pendisplay_ARGB ] Set packed 32-bit ARGB value (MorphOS MUI5 V22 only).
         Pendisplay &setARGB(const unsigned long argb);
 #endif
 #ifdef MUIA_Pendisplay_XRGB
-        /// @brief [ @b MUIA_Pendisplay_XRGB ] Set packed 32-bit XRGB value (MorphOS MUI5 only).
+        /// @brief [ @b MUIA_Pendisplay_XRGB ] Set packed 32-bit XRGB value (MorphOS MUI5 V22 only).
         Pendisplay &setXRGB(const unsigned long xrgb);
 #endif
 
         // methods, some returns object reference
 
-        /// @brief [ @b MUIM_Pendisplay_SetColormap ] Switch object to a specific colormap entry.
+        /// @brief [ @b MUIM_Pendisplay_SetColormap ] Switch the pendisplay object to a specific
+        /// colormap entry.
+        /// @param colormap colormap number
         Pendisplay &SetColormap(const long colormap);
-        /// @brief [ @b MUIM_Pendisplay_SetMUIPen ] Switch object to a specific MUI pen (e.g. MPEN_SHINE).
+        /// @brief [ @b MUIM_Pendisplay_SetMUIPen ] Switch the pendisplay object to a specific MUI
+        /// pen (MPEN_SHINE, MPEN_SHADOW, ...)
+        /// @param muipen MUI pen number
         Pendisplay &SetMUIPen(const long muipen);
-        /// @brief [ @b MUIM_Pendisplay_SetRGB ] Switch object to an RGB color value.
+        /// @brief [ @b MUIM_Pendisplay_SetRGB ] Switch the pendisplay object to an RGB value.
+        /// @param red red color value
+        /// @param green green color value
+        /// @param blue blue color value
         Pendisplay &SetRGB(const unsigned char red, const unsigned char green, const unsigned char blue);
     };
 
@@ -95,19 +113,23 @@ namespace MUI
         {
         }
 
-        /// @brief [ @b MUIA_Pendisplay_Reference ] Set initial reference object used as pen source.
+        /// @brief [ @b MUIA_Pendisplay_Reference ] Display exactly this pen, don't allocate one
+        /// on your own.
         T &tagReference(const Object *reference);
-        /// @brief [ @b MUIA_Pendisplay_RGBcolor ] Set initial pen color via RGB values.
+        /// @brief [ @b MUIA_Pendisplay_RGBcolor ] Set a pen spec via RGB values.
         T &tagRGBcolor(const RGBColor &rgbColor);
-        /// @brief [ @b MUIA_Pendisplay_Spec ] Set initial pen specification structure.
+        /// @brief [ @b MUIA_Pendisplay_Spec ] The black box structure MUI_PenSpec specifies a
+        /// drawing pen which should be displayed by Pendisplay class.
         T &tagSpec(const struct MUI_PenSpec *spec);
 
 #ifdef MUIA_Pendisplay_ARGB
-        /// @brief [ @b MUIA_Pendisplay_ARGB ] Set initial packed ARGB value (MorphOS MUI5 only).
+        /// @brief [ @b MUIA_Pendisplay_ARGB ] Set initial packed 32-bit ARGB value (MorphOS MUI5
+        /// V22 only).
         T &tagARGB(const unsigned long argb);
 #endif
 #ifdef MUIA_Pendisplay_XRGB
-        /// @brief [ @b MUIA_Pendisplay_XRGB ] Set initial packed XRGB value (MorphOS MUI5 only).
+        /// @brief [ @b MUIA_Pendisplay_XRGB ] Set initial packed 32-bit XRGB value (MorphOS MUI5
+        /// V22 only).
         T &tagXRGB(const unsigned long xrgb);
 #endif
     };

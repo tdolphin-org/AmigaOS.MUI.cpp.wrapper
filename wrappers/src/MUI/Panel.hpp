@@ -48,11 +48,12 @@ namespace MUI
 
 #ifdef MUIM_Panel_Run
         /// @brief [ @b MUIM_Panel_Run ]
-        /// Opens the panel window and runs the panel asynchronously to the main MUI application in a separate process.
-        /// @param app Application wrapper used as async context.
-        /// @param win Window wrapper containing this panel.
-        /// @return Reference to this panel.
-        Panel &Run(Application &app, Window &win);
+        /// Opens the panel window and "runs" the panel asynchronously to the main MUI application in a separate process.
+        /// If your panel needs some special setup then do that before passing the method to Panel class.
+        /// @param app The application object to let the panel run asynchronously to the main application.
+        /// @param win The window object containing the panel object.
+        /// @return true if "running" the panel succeeded, false otherwise.
+        bool Run(Application &app, Window &win);
 #endif
     };
 
