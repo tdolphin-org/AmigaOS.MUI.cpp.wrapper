@@ -22,6 +22,7 @@ struct List;
 struct MinList;
 struct AppMessage;
 struct TextFont;
+struct MUI_Palette_Entry;
 struct MUI_PenSpec;
 struct DrawInfo;
 struct InputEvent;
@@ -120,6 +121,7 @@ namespace MUI
         ::Screen *GetValueAsScreenPtr(const unsigned long tagName) const;
         ::Window *GetValueAsWindowPtr(const unsigned long tagName) const;
         ::Gadget *GetValueAsGadgetPtr(const unsigned long tagName) const;
+        struct MUI_Palette_Entry *GetValueAsPaletteEntryPtr(const unsigned long tagName) const;
         struct MUI_PenSpec *GetValueAsPenSpecPtr(const unsigned long tagName) const;
         const struct MUI_PenSpec *GetValueAsConstPenSpecPtr(const unsigned long tagName) const;
         struct List *GetValueAsListPtr(const unsigned long tagName) const;

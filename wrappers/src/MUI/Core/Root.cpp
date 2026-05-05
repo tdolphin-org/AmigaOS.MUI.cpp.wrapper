@@ -181,6 +181,11 @@ namespace MUI
         return static_cast<::Gadget *>(GetValueAsPtr(tagName));
     }
 
+    struct MUI_Palette_Entry *Root::GetValueAsPaletteEntryPtr(const unsigned long tagName) const
+    {
+        return static_cast<struct MUI_Palette_Entry *>(GetValueAsPtr(tagName));
+    }
+
     struct MUI_PenSpec *Root::GetValueAsPenSpecPtr(const unsigned long tagName) const
     {
         return static_cast<struct MUI_PenSpec *>(GetValueAsPtr(tagName));
