@@ -116,24 +116,24 @@ namespace MUI
         return static_cast<Object *>(GetValueAsPtr(tagName));
     }
 
-    Hook *Root::GetValueAsHookPtr(const unsigned long tagName) const
+    ::Hook *Root::GetValueAsHookPtr(const unsigned long tagName) const
     {
-        return static_cast<Hook *>(GetValueAsPtr(tagName));
+        return static_cast<::Hook *>(GetValueAsPtr(tagName));
     }
 
-    MsgPort *Root::GetValueAsMsgPortPtr(const unsigned long tagName) const
+    ::MsgPort *Root::GetValueAsMsgPortPtr(const unsigned long tagName) const
     {
-        return static_cast<MsgPort *>(GetValueAsPtr(tagName));
+        return static_cast<::MsgPort *>(GetValueAsPtr(tagName));
     }
 
-    const DiskObject *Root::GetValueAsDiskObjectPtr(const unsigned long tagName) const
+    const ::DiskObject *Root::GetValueAsDiskObjectPtr(const unsigned long tagName) const
     {
-        return static_cast<const DiskObject *>(GetValueAsPtr(tagName));
+        return static_cast<const ::DiskObject *>(GetValueAsPtr(tagName));
     }
 
-    const struct MUI_Command *Root::GetValueAsCommandPtr(const unsigned long tagName) const
+    const ::MUI_Command *Root::GetValueAsCommandPtr(const unsigned long tagName) const
     {
-        return static_cast<const struct MUI_Command *>(GetValueAsPtr(tagName));
+        return static_cast<const ::MUI_Command *>(GetValueAsPtr(tagName));
     }
 
     const ::NewMenu *Root::GetValueAsNewMenuPtr(const unsigned long tagName) const
@@ -141,19 +141,19 @@ namespace MUI
         return static_cast<const ::NewMenu *>(GetValueAsPtr(tagName));
     }
 
-    RexxMsg *Root::GetValueAsRexxMsgPtr(const unsigned long tagName) const
+    ::RexxMsg *Root::GetValueAsRexxMsgPtr(const unsigned long tagName) const
     {
-        return static_cast<RexxMsg *>(GetValueAsPtr(tagName));
+        return static_cast<::RexxMsg *>(GetValueAsPtr(tagName));
     }
 
-    AppMessage *Root::GetValueAsAppMessagePtr(const unsigned long tagName) const
+    ::AppMessage *Root::GetValueAsAppMessagePtr(const unsigned long tagName) const
     {
-        return static_cast<AppMessage *>(GetValueAsPtr(tagName));
+        return static_cast<::AppMessage *>(GetValueAsPtr(tagName));
     }
 
-    TextFont *Root::GetValueAsTextFontPtr(const unsigned long tagName) const
+    ::TextFont *Root::GetValueAsTextFontPtr(const unsigned long tagName) const
     {
-        return static_cast<TextFont *>(GetValueAsPtr(tagName));
+        return static_cast<::TextFont *>(GetValueAsPtr(tagName));
     }
 
     const ::DrawInfo *Root::GetValueAsDrawInfoPtr(const unsigned long tagName) const
@@ -181,39 +181,39 @@ namespace MUI
         return static_cast<::Gadget *>(GetValueAsPtr(tagName));
     }
 
-    struct MUI_Palette_Entry *Root::GetValueAsPaletteEntryPtr(const unsigned long tagName) const
+    ::MUI_Palette_Entry *Root::GetValueAsPaletteEntryPtr(const unsigned long tagName) const
     {
-        return static_cast<struct MUI_Palette_Entry *>(GetValueAsPtr(tagName));
+        return static_cast<::MUI_Palette_Entry *>(GetValueAsPtr(tagName));
     }
 
-    struct MUI_PenSpec *Root::GetValueAsPenSpecPtr(const unsigned long tagName) const
+    ::MUI_PenSpec *Root::GetValueAsPenSpecPtr(const unsigned long tagName) const
     {
-        return static_cast<struct MUI_PenSpec *>(GetValueAsPtr(tagName));
+        return static_cast<::MUI_PenSpec *>(GetValueAsPtr(tagName));
     }
 
-    const struct MUI_PenSpec *Root::GetValueAsConstPenSpecPtr(const unsigned long tagName) const
+    const ::MUI_PenSpec *Root::GetValueAsConstPenSpecPtr(const unsigned long tagName) const
     {
-        return static_cast<const struct MUI_PenSpec *>(GetValueAsPtr(tagName));
+        return static_cast<const ::MUI_PenSpec *>(GetValueAsPtr(tagName));
     }
 
-    struct List *Root::GetValueAsListPtr(const unsigned long tagName) const
+    ::List *Root::GetValueAsListPtr(const unsigned long tagName) const
     {
-        return static_cast<struct List *>(GetValueAsPtr(tagName));
+        return static_cast<::List *>(GetValueAsPtr(tagName));
     }
 
-    const struct List *Root::GetValueAsConstListPtr(const unsigned long tagName) const
+    const ::List *Root::GetValueAsConstListPtr(const unsigned long tagName) const
     {
-        return static_cast<const struct List *>(GetValueAsPtr(tagName));
+        return static_cast<const ::List *>(GetValueAsPtr(tagName));
     }
 
-    struct MinList *Root::GetValueAsMinListPtr(const unsigned long tagName) const
+    ::MinList *Root::GetValueAsMinListPtr(const unsigned long tagName) const
     {
-        return static_cast<struct MinList *>(GetValueAsPtr(tagName));
+        return static_cast<::MinList *>(GetValueAsPtr(tagName));
     }
 
-    const struct MinList *Root::GetValueAsConstMinListPtr(const unsigned long tagName) const
+    const ::MinList *Root::GetValueAsConstMinListPtr(const unsigned long tagName) const
     {
-        return static_cast<const struct MinList *>(GetValueAsPtr(tagName));
+        return static_cast<const ::MinList *>(GetValueAsPtr(tagName));
     }
 
     void Root::SetValue(const unsigned long tagName, const std::nullptr_t &null) const
