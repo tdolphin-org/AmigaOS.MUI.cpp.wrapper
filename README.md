@@ -140,7 +140,7 @@ ___
 | [MUIC_Notify](https://github.com/amiga-mui/muidev/wiki/MUI_Notify) | [MUI::Notify](/wrappers/src/MUI/Notify.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | in progress | in progress |
 | [MUIC_Numericbutton](https://github.com/amiga-mui/muidev/wiki/MUI_Numericbutton) | [MUI::Numericbutton](/wrappers/src/MUI/Numericbutton.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Numeric](https://github.com/amiga-mui/muidev/wiki/MUI_Numeric) | [MUI::Numeric](/wrappers/src/MUI/Numeric.hpp) | Ready | - | - | Ready | - | - | - | - |
-| [MUIC_Objectmap](https://github.com/amiga-mui/muidev/wiki/MUI_Objectmap) |  - | - | - | - | - | - | - | - | - |
+| [MUIC_Objectmap](https://github.com/amiga-mui/muidev/wiki/MUI_Objectmap) | [MUI::Objectmap](/wrappers/src/MUI/Objectmap.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |
 | [MUIC_Palette](https://github.com/amiga-mui/muidev/wiki/MUI_Palette) | [MUI::Palette](/wrappers/src/MUI/Palette.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Panel](https://github.com/amiga-mui/muidev/wiki/MUI_Panel) | [MUI::Panel](/wrappers/src/MUI/Panel.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | not applicable | not applicable |
 | [MUIC_Penadjust](https://github.com/amiga-mui/muidev/wiki/MUI_Penadjust) | [MUI::Penadjust](/wrappers/src/MUI/Penadjust.hpp) | Ready | - | - | Ready | - | - | - | - |
