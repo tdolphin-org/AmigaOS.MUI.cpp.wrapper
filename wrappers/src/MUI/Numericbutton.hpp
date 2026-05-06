@@ -10,8 +10,9 @@
 
 namespace MUI
 {
-    /// @brief This class is some kind of space-saving slider. No more need for extra attributes, simply use Numeric class options for this
-    /// one.
+    /// @brief Numericbutton class wrapper.
+    /// Space-saving slider variant with no extra class-specific API. Use Numeric class
+    /// attributes and methods to configure and control its value behaviour.
     class Numericbutton : public Slider
     {
       public:
