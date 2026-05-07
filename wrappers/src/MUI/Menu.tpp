@@ -30,9 +30,16 @@ namespace MUI
         return (T &)*this;
     }
 
-    template <typename T, typename U> inline T &MenuBuilderTemplate<T, U>::tagTitle(const std::string &title)
+    template <typename T, typename U> inline T &MenuBuilderTemplate<T, U>::tagTitle(const std::string &title, bool storeCopy)
     {
-        this->PushTag(MUIA_Menu_Title, title);
+        if (storeCopy)
+            this->PushTag(MUIA_Menu_Title, title.c_str());
+        else
+        {
+            auto copy = this->StoreString(MUIA_Menu_Title, title);
+            this->PushTag(MUIA_Menu_Title, copy);
+        }
+
         return (T &)*this;
     }
 }

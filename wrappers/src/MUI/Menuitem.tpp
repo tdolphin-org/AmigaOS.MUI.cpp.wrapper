@@ -13,7 +13,8 @@ namespace MUI
 #ifdef MUIA_Menuitem_AISSName
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagAISSName(const std::string &aissName)
     {
-        this->PushTag(MUIA_Menuitem_AISSName, aissName);
+        auto copy = this->StoreString(MUIA_Menuitem_AISSName, aissName);
+        this->PushTag(MUIA_Menuitem_AISSName, copy);
         return (T &)*this;
     }
 #endif
@@ -82,7 +83,8 @@ namespace MUI
 
     template <typename T, typename U> inline T &MenuitemBuilderTemplate<T, U>::tagShortcut(const std::string &shortcut)
     {
-        this->PushTag(MUIA_Menuitem_Shortcut, shortcut);
+        auto copy = this->StoreString(MUIA_Menuitem_Shortcut, shortcut);
+        this->PushTag(MUIA_Menuitem_Shortcut, copy);
         return (T &)*this;
     }
 

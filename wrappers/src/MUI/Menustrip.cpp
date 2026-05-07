@@ -60,9 +60,10 @@ namespace MUI
 #endif
 
 #ifdef MUIM_Menustrip_WillOpen
-    unsigned long Menustrip::WillOpen()
+    Menustrip &Menustrip::WillOpen()
     {
-        return DoMethod(muiObject(), MUIM_Menustrip_WillOpen);
+        DoMethod(muiObject(), MUIM_Menustrip_WillOpen);
+        return *this;
     }
 #endif
 

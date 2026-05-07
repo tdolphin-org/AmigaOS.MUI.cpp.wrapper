@@ -32,6 +32,11 @@ namespace MUI
         return GetValueAsBool(MUIA_Menuitem_Enabled);
     }
 
+    long Menuitem::getExclude() const
+    {
+        return GetValueAsLong(MUIA_Menuitem_Exclude);
+    }
+
     std::string Menuitem::getTitle() const
     {
         return GetValueAsString(MUIA_Menuitem_Title);
@@ -57,12 +62,24 @@ namespace MUI
     {
         return GetValueAsString(MUIA_Menuitem_AISSName);
     }
+
+    Menuitem &Menuitem::setAISSName(const std::string &aissName)
+    {
+        SetValue(MUIA_Menuitem_AISSName, StoreString(MUIA_Menuitem_AISSName, aissName));
+        return *this;
+    }
 #endif
 
 #ifdef MUIA_Menuitem_Image
     const ::Image *Menuitem::getImage() const
     {
         return (const ::Image *)GetValueAsULong(MUIA_Menuitem_Image);
+    }
+
+    Menuitem &Menuitem::setImage(const ::Image *image)
+    {
+        SetValue(MUIA_Menuitem_Image, image);
+        return *this;
     }
 #endif
 
@@ -75,6 +92,12 @@ namespace MUI
     Menuitem Menuitem::getMenuitem() const
     {
         return Menuitem(getMenuitemObject());
+    }
+
+    Menuitem &Menuitem::setMenuitem(const Object *menuitem)
+    {
+        SetValue(MUIA_Menuitem_Menuitem, menuitem);
+        return *this;
     }
 #endif
 
@@ -99,6 +122,18 @@ namespace MUI
     Menuitem &Menuitem::setEnabled(const bool enabled)
     {
         SetValue(MUIA_Menuitem_Enabled, enabled);
+        return *this;
+    }
+
+    Menuitem &Menuitem::setExclude(const long exclude)
+    {
+        SetValue(MUIA_Menuitem_Exclude, exclude);
+        return *this;
+    }
+
+    Menuitem &Menuitem::setShortcut(const std::string &shortcut)
+    {
+        SetValue(MUIA_Menuitem_Shortcut, StoreString(MUIA_Menuitem_Shortcut, shortcut));
         return *this;
     }
 
