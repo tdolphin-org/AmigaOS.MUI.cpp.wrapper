@@ -9,6 +9,7 @@
 #include "AOS/Identifier.hpp"
 #include "Core/BuilderRoot.hpp"
 #include "Core/Root.hpp"
+#include "Notifier/Core/NotifyDestType.hpp"
 
 #include <libraries/mui.h>
 #include <type_traits>
@@ -60,50 +61,73 @@ namespace MUI
         // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_ApplicationObject ]
+        /// Obtain a pointer to the application object that this object belongs to.
+        /// Returns NULL if the object is not currently attached to an application.
         Object *getApplicationObject() const;
         /// @brief [ @b MUIA_AppMessage ]
-        AppMessage *getAppMessage() const;
+        /// When the window is an AppWindow, this attribute will be set to the AppMessage whenever an icon is dropped on the object.
+        /// The pointer is valid only while the notification callback is executing.
+        ::AppMessage *getAppMessage() const;
         /// @brief [ @b MUIA_HelpLine ]
+        /// Returns the line number in a help file specified with @b MUIA_Application_HelpFile.
         long getHelpLine() const;
         /// @brief [ @b MUIA_HelpNode ]
+        /// Returns the node name in a help file specified with @b MUIA_Application_HelpFile.
         std::string getHelpNode() const;
         /// @brief [ @b MUIA_ObjectID ]
+        /// Objects with a non-zero ObjectID export their contents during MUIM_Application_Save and import them during MUIM_Application_Load.
         AOS::Identifier getObjectID() const;
         /// @brief [ @b MUIA_Parent ]
+        /// Returns a pointer to the parent group/family object that contains this object. Returns NULL if the object has no parent.
         Object *getParent();
         /// @brief [ @b MUIA_Revision ]
+        /// Returns the revision number of the object's true class.
         long getRevision() const;
         /// @brief [ @b MUIA_UserData ]
+        /// Returns the general purpose user data value stored in this object.
         unsigned long getUserData() const;
         /// @brief [ @b MUIA_Version ]
+        /// Returns the version number of the object's true class.
         long getVersion() const;
 
         /// @brief [ @b MUIA_HelpLine ]
+        /// Sets the line number in a help file specified with @b MUIA_Application_HelpFile.
         Notify &setHelpLine(const long helpLine);
         /// @brief [ @b MUIA_HelpNode ]
+        /// Sets the node name in a help file specified with @b MUIA_Application_HelpFile.
         Notify &setHelpNode(const std::string &helpNode);
         /// @brief [ @b MUIA_HelpNode ]
+        /// Sets the node name in a help file specified with @b MUIA_Application_HelpFile.
         Notify &setHelpNode(const char *helpNode);
         /// @brief [ @b MUIA_NoNotify ]
+        /// Setting to true prevents the next attribute change from triggering notifications.
+        /// This is a "one time" attribute valid only during the current SetAttrs() call.
         Notify &setNoNotify(const bool noNotify);
 #ifdef MUIA_NoNotifyMethod
         /// @brief [ @b MUIA_NoNotifyMethod ]
+        /// Sets a specific method ID whose notification will not be triggered on the next attribute change.
+        /// Unlike @b MUIA_NoNotify, all other notifications will still fire.
+        /// This is a "one time" attribute valid only during the current SetAttrs() call.
         Notify &setNoNotifyMethod(const unsigned long noNotifyMethod);
 #endif
         /// @brief [ @b MUIA_ObjectID ]
+        /// Sets the object ID. Objects with a non-zero ObjectID export their contents during MUIM_Application_Save and import them during MUIM_Application_Load.
         Notify &setObjectID(const AOS::Identifier &objectID);
         /// @brief [ @b MUIA_UserData ]
+        /// Sets the general purpose user data value for this object.
         Notify &setUserData(const unsigned long userData);
 
         // methods, some returns object reference
 
 #ifdef MUIM_FindObject
         /// @brief [ @b MUIM_FindObject ]
-        /// Search for a specific child object within the object tree.
-        Object *FindObject(const Root &findme) const;
+        /// Check if the given object is contained in the object tree of this object.
+        /// @return true if the object is found, false otherwise.
+        bool FindObject(const Root &findme) const;
         /// @brief [ @b MUIM_FindObject ]
-        /// Search for a specific child object within the object tree.
-        Object *FindObject(const Object *findme) const;
+        /// Check if the given object is contained in the object tree of this object.
+        /// @return true if the object is found, false otherwise.
+        bool FindObject(const Object *findme) const;
 #endif
         /// @brief [ @b MUIM_FindUData ]
         /// Walk through the object tree and find the first object with the given @b MUIA_UserData value.
@@ -140,6 +164,13 @@ namespace MUI
             DoMethod(muiObject(), MUIM_NoNotifySet, attr, val, args...);
             return *this;
         }
+
+        // --- low-level notification API ---
+        // These three doNotify overloads map directly to MUIM_Notify.
+        // @note For new code it is recommended to use the higher-level type-safe notification infrastructure
+        //       class MUI::Notifiert (see Notifier/ directory).
+        //       FIXME: That layer is not yet complete — it will be developed after all wrappers and builders are finished.
+
         /// @brief [ @b MUIM_Notify ]
         /// Set up a notification: when @a attr changes to @a val, invoke a method on @a destObj.
         /// The number of additional arguments is passed as FollowParams automatically via sizeof...(Args).
@@ -155,6 +186,15 @@ namespace MUI
             DoMethod(muiObject(), MUIM_Notify, attr, val, destObj, (unsigned long)sizeof...(Args), args...);
             return *this;
         }
+        /// @brief [ @b MUIM_Notify ]
+        /// Set up a notification using a predefined destination type (e.g. @b NotifyDestType::Self, @b NotifyDestType::Window).
+        /// The number of additional arguments is passed as FollowParams automatically via sizeof...(Args).
+        template <typename... Args>
+        Notify &doNotify(const unsigned long attr, const unsigned long val, const NotifyDestType destType, Args... args)
+        {
+            return doNotify(attr, val, reinterpret_cast<const Object *>((unsigned long)destType), args...);
+        }
+
         /// @brief [ @b MUIM_Set ]
         /// Set a single attribute to a value, triggering any registered notifications.
         Notify &Set(const unsigned long attr, const unsigned long val);
@@ -214,10 +254,13 @@ namespace MUI
         }
 
         /// @brief [ @b MUIA_HelpLine ]
+        /// Sets the line number in a help file specified with @b MUIA_Application_HelpFile.
         T &tagHelpLine(const long helpLine);
         /// @brief [ @b MUIA_HelpNode ]
+        /// Sets the node name in a help file specified with @b MUIA_Application_HelpFile.
         T &tagHelpNode(const std::string &helpNode);
         /// @brief [ @b MUIA_HelpNode ]
+        /// Sets the node name in a help file specified with @b MUIA_Application_HelpFile.
         T &tagHelpNode(const char *helpNode);
         /// @brief [ @b MUIA_ObjectID ]
         /// Objects with a non NULL MUIA_ObjectID export their contents during MUIM_Application_Save and import them during

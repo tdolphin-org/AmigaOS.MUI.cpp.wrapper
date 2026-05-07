@@ -137,7 +137,7 @@ ___
 | [MUIC_Menu](https://github.com/amiga-mui/muidev/wiki/MUI_Menu) | [MUI::Menu](/wrappers/src/MUI/Menu.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | in progress | in progress |
 | [MUIC_Menuitem](https://github.com/amiga-mui/muidev/wiki/MUI_Menuitem) | [MUI::Menuitem](/wrappers/src/MUI/Menuitem.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | in progress | in progress |
 | [MUIC_Menustrip](https://github.com/amiga-mui/muidev/wiki/MUI_Menustrip) | [MUI::Menustrip](/wrappers/src/MUI/Menustrip.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | - | - |
-| [MUIC_Notify](https://github.com/amiga-mui/muidev/wiki/MUI_Notify) | [MUI::Notify](/wrappers/src/MUI/Notify.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | in progress | in progress |
+| [MUIC_Notify](https://github.com/amiga-mui/muidev/wiki/MUI_Notify) | [MUI::Notify](/wrappers/src/MUI/Notify.hpp) | Ready | Ready | Ready | Ready | - | - | in progress | in progress |
 | [MUIC_Numericbutton](https://github.com/amiga-mui/muidev/wiki/MUI_Numericbutton) | [MUI::Numericbutton](/wrappers/src/MUI/Numericbutton.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Numeric](https://github.com/amiga-mui/muidev/wiki/MUI_Numeric) | [MUI::Numeric](/wrappers/src/MUI/Numeric.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Objectmap](https://github.com/amiga-mui/muidev/wiki/MUI_Objectmap) | [MUI::Objectmap](/wrappers/src/MUI/Objectmap.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |

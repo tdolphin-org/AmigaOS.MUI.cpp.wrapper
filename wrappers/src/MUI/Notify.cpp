@@ -102,14 +102,14 @@ namespace MUI
     }
 
 #ifdef MUIM_FindObject
-    Object *Notify::FindObject(const Root &findme) const
+    bool Notify::FindObject(const Root &findme) const
     {
-        return (Object *)DoMethod(muiObject(), MUIM_FindObject, findme.muiObject());
+        return DoMethod(muiObject(), MUIM_FindObject, findme.muiObject()) != 0;
     }
 
-    Object *Notify::FindObject(const Object *findme) const
+    bool Notify::FindObject(const Object *findme) const
     {
-        return (Object *)DoMethod(muiObject(), MUIM_FindObject, findme);
+        return DoMethod(muiObject(), MUIM_FindObject, findme) != 0;
     }
 #endif
 
