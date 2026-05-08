@@ -45,19 +45,22 @@ namespace MUI
         // methods, some returns object reference
 
 #ifdef MUIM_Mccprefs_ConfigToGadgets
-        /// @brief [ @bMUIA_Mccprefs_ConfigToGadgets ]
+        /// @brief [ @b MUIM_Mccprefs_ConfigToGadgets ]
         /// This method will be called whenever MUI wants your custom prefs class to transfer configuration values from the configuration to
         /// the GUI.
+        /// @param configdata Instance of Dataspace carrying configuration values for this class.
         Mccprefs &ConfigToGadgets(const Object *configdata);
 #endif
 #ifdef MUIM_Mccprefs_GadgetsToConfig
-        /// @brief [ @bMUIA_Mccprefs_GadgetsToConfig ]
+        /// @brief [ @b MUIM_Mccprefs_GadgetsToConfig ]
         /// This method will be called whenever MUI wants your custom prefs class to transfer configuration values from the GUI to the
         /// configuration.
+        /// @param configdata Instance of Dataspace to be updated with current gadget values.
+        /// @param originator Optional originator object requesting synchronization.
         Mccprefs &GadgetsToConfig(const Object *configdata, const Object *originator);
 #endif
 #ifdef MUIM_Mccprefs_RegisterGadget
-        /// @brief [ @bMUIA_Mccprefs_RegisterGadget ]
+        /// @brief [ @b MUIM_Mccprefs_RegisterGadget ]
         /// Registers a gadget with the MUI custom class preferences system.
         ///
         /// Preferences classes usually contain gadgets which are directly related to certain configuration options of your class, i.e.
@@ -77,6 +80,18 @@ namespace MUI
         /// There's nothing more to be done to add the extra functionality to your gadgets besides registering them with this method. MUI
         /// can then automatically perform all the actions above (defaults, last saved, etc.) by altering the configuration dataspace while
         /// using the ID value you provided as a filter.
+        /// @param gadget Object to register.
+        /// @param id Dataspace configuration ID for this gadget (0 unregisters).
+        /// @param params Number of additional parameters.
+        /// @param title Name of this gadget used by MUI e.g. as popup menu title. Can be nullptr, then MUI uses a default title.
+        /// The string is not copied and must remain valid for the lifetime of this object.
+        /// @param attr Attribute adjusted by this gadget.
+        /// @param label Optional label object associated with this gadget.
+        Mccprefs &RegisterGadget(const Object *gadget, const unsigned long id, const unsigned long params, const char *title,
+                                 const unsigned long attr, const Object *label);
+        /// @brief [ @b MUIM_Mccprefs_RegisterGadget ]
+        /// Registers a gadget with a std::string title.
+        /// @param title Popup/menu title managed by wrapper storage to guarantee lifetime required by MUI.
         Mccprefs &RegisterGadget(const Object *gadget, const unsigned long id, const unsigned long params, const std::string &title,
                                  const unsigned long attr, const Object *label);
 #endif
