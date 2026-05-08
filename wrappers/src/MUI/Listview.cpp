@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Listview.hpp"
@@ -37,9 +37,14 @@ namespace MUI
         return Listview_DragType(GetValueAsLong(MUIA_Listview_DragType));
     }
 
+    Object *Listview::getListObject() const
+    {
+        return GetValueAsObjectPtr(MUIA_Listview_List);
+    }
+
     List Listview::getList() const
     {
-        return List(GetValueAsObjectPtr(MUIA_Listview_List));
+        return List(getListObject());
     }
 
     bool Listview::isSelectChange() const

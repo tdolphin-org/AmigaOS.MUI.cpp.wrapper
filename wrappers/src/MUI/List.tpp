@@ -68,6 +68,22 @@ namespace MUI
     }
 #endif
 
+#ifdef MUIA_List_DefClickColumn
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDefClickColumn(const long defClickColumn)
+    {
+        this->PushTag(MUIA_List_DefClickColumn, defClickColumn);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_List_DoubleClick
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagDoubleClick(const bool doubleClick)
+    {
+        this->PushTag(MUIA_List_DoubleClick, doubleClick);
+        return (T &)*this;
+    }
+#endif
+
 #ifdef MUIA_List_AutoLineHeight
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagAutoLineHeight(const bool autoLineHeight)
     {
@@ -80,6 +96,14 @@ namespace MUI
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagMaxColumns(const long maxColumns)
     {
         this->PushTag(MUIA_List_MaxColumns, maxColumns);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_List_MinLineHeight
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagMinLineHeight(const long minLineHeight)
+    {
+        this->PushTag(MUIA_List_MinLineHeight, minLineHeight);
         return (T &)*this;
     }
 #endif
@@ -105,6 +129,12 @@ namespace MUI
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagCompareHook(const struct Hook *compareHook)
     {
         this->PushTag(MUIA_List_CompareHook, compareHook);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagMultiTestHook(const struct Hook *multiTestHook)
+    {
+        this->PushTag(MUIA_List_MultiTestHook, multiTestHook);
         return (T &)*this;
     }
 
@@ -221,6 +251,14 @@ namespace MUI
     }
 #endif
 
+#ifdef MUIA_List_Editable
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagEditable(const bool editable)
+    {
+        this->PushTag(MUIA_List_Editable, editable);
+        return (T &)*this;
+    }
+#endif
+
 #ifdef MUIA_List_MultiSelect
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagMultiSelect(const enum List_MultiSelect multiSelect)
     {
@@ -241,6 +279,55 @@ namespace MUI
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagSortColumn(const long sortColumn)
     {
         this->PushTag(MUIA_List_SortColumn, sortColumn);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_List_HideColumn
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagHideColumn(const long hideColumn)
+    {
+        this->PushTag(MUIA_List_HideColumn, hideColumn);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_List_ShowColumn
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagShowColumn(const long showColumn)
+    {
+        this->PushTag(MUIA_List_ShowColumn, showColumn);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_List_ShowDropMarks
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagShowDropMarks(const bool showDropMarks)
+    {
+        this->PushTag(MUIA_List_ShowDropMarks, showDropMarks);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_List_Pool
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagPool(const void *pool)
+    {
+        if (pool)
+            this->PushTag(MUIA_List_Pool, pool);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_List_PoolPuddleSize
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagPoolPuddleSize(const unsigned long poolPuddleSize)
+    {
+        this->PushTag(MUIA_List_PoolPuddleSize, poolPuddleSize);
+        return (T &)*this;
+    }
+#endif
+
+#ifdef MUIA_List_PoolThreshSize
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagPoolThreshSize(const unsigned long poolThreshSize)
+    {
+        this->PushTag(MUIA_List_PoolThreshSize, poolThreshSize);
         return (T &)*this;
     }
 #endif
@@ -280,6 +367,14 @@ namespace MUI
         this->PushTag(MUIA_List_Title, title);
         return (T &)*this;
     }
+
+#ifdef MUIA_List_Stripes
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagStripes(const bool stripes)
+    {
+        this->PushTag(MUIA_List_Stripes, stripes);
+        return (T &)*this;
+    }
+#endif
 
 #ifdef MUIA_List_TitleArray
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagTitleArray(const char *titleArray[])
