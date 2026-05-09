@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2026TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "String.hpp"
@@ -26,6 +26,12 @@ namespace MUI
         if (accept == nullptr)
             return { };
         return std::string { accept };
+    }
+
+    String &String::setAccept(const char *accept)
+    {
+        SetValue(MUIA_String_Accept, StoreString(MUIA_String_Accept, accept));
+        return *this;
     }
 
     bool String::isAcceptNull() const
@@ -94,6 +100,12 @@ namespace MUI
         return GetValueAsString(MUIA_String_Contents);
     }
 
+    String &String::setContents(const char *contents)
+    {
+        SetValue(MUIA_String_Contents, StoreString(MUIA_String_Contents, contents));
+        return *this;
+    }
+
     String &String::setContents(const std::string &contents)
     {
         SetValue(MUIA_String_Contents, StoreString(MUIA_String_Contents, contents));
@@ -131,6 +143,12 @@ namespace MUI
     std::string String::getInactiveContents() const
     {
         return GetValueAsString(MUIA_String_InactiveContents);
+    }
+
+    String &String::setInactiveContents(const char *inactiveContents)
+    {
+        SetValue(MUIA_String_InactiveContents, StoreString(MUIA_String_InactiveContents, inactiveContents));
+        return *this;
     }
 
     String &String::setInactiveContents(const std::string &inactiveContents)
@@ -193,6 +211,12 @@ namespace MUI
         return GetValueAsString(MUIA_String_Placeholder);
     }
 
+    String &String::setPlaceholder(const char *placeholder)
+    {
+        SetValue(MUIA_String_Placeholder, StoreString(MUIA_String_Placeholder, placeholder));
+        return *this;
+    }
+
     String &String::setPlaceholder(const std::string &placeholder)
     {
         SetValue(MUIA_String_Placeholder, StoreString(MUIA_String_Placeholder, placeholder));
@@ -224,6 +248,12 @@ namespace MUI
     }
 
     String &String::setReject(const std::string &reject)
+    {
+        SetValue(MUIA_String_Reject, StoreString(MUIA_String_Reject, reject));
+        return *this;
+    }
+
+    String &String::setReject(const char *reject)
     {
         SetValue(MUIA_String_Reject, StoreString(MUIA_String_Reject, reject));
         return *this;

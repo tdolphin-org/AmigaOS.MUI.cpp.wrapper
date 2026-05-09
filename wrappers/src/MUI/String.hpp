@@ -58,6 +58,10 @@ namespace MUI
         Optional<std::string> getAcceptOptional() const;
 
         /// @brief [ @b MUIA_String_Accept ]
+        /// Set the accepted character class for text input filtering.
+        String &setAccept(const char *accept);
+
+        /// @brief [ @b MUIA_String_Accept ]
         /// Query whether accepted-character filter is set to NULL.
         bool isAcceptNull() const;
 
@@ -107,6 +111,10 @@ namespace MUI
 
         /// @brief [ @b MUIA_String_Contents ]
         /// Set the current string contents.
+        String &setContents(const char *contents);
+
+        /// @brief [ @b MUIA_String_Contents ]
+        /// Set the current string contents.
         String &setContents(const std::string &contents);
 
         /// @brief [ @b MUIA_String_DisplayPos ]
@@ -133,6 +141,10 @@ namespace MUI
         /// @brief [ @b MUIA_String_InactiveContents ]
         /// Return the text shown while the gadget is inactive.
         std::string getInactiveContents() const;
+
+        /// @brief [ @b MUIA_String_InactiveContents ]
+        /// Set the text shown while the gadget is inactive.
+        String &setInactiveContents(const char *inactiveContents);
 
         /// @brief [ @b MUIA_String_InactiveContents ]
         /// Set the text shown while the gadget is inactive.
@@ -182,6 +194,10 @@ namespace MUI
 
         /// @brief [ @b MUIA_String_Placeholder ]
         /// Set placeholder text shown for empty input.
+        String &setPlaceholder(const char *placeholder);
+
+        /// @brief [ @b MUIA_String_Placeholder ]
+        /// Set placeholder text shown for empty input.
         String &setPlaceholder(const std::string &placeholder);
 #endif
 
@@ -204,6 +220,10 @@ namespace MUI
         /// @brief [ @b MUIA_String_Reject ]
         /// Set the rejected character class for text input filtering.
         String &setReject(const std::string &reject);
+
+        /// @brief [ @b MUIA_String_Reject ]
+        /// Set the rejected character class for text input filtering.
+        String &setReject(const char *reject);
 
         /// @brief [ @b MUIA_String_Reject, @b reject = NULL ]
         /// Pass NULL to reject no characters (default behavior).

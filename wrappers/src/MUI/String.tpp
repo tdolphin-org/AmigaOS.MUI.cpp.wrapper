@@ -12,10 +12,7 @@ namespace MUI
 {
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagAccept(const char *accept)
     {
-        if (accept == nullptr)
-            this->PushTag(MUIA_String_Accept, accept);
-        else
-            this->PushTag(MUIA_String_Accept, this->StoreString(MUIA_String_Accept, accept));
+        this->PushTag(MUIA_String_Accept, accept == nullptr ? nullptr : this->StoreString(MUIA_String_Accept, accept));
         return (T &)*this;
     }
 
@@ -27,8 +24,7 @@ namespace MUI
 
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagAccept(const std::string &accept)
     {
-        auto copy = this->StoreString(MUIA_String_Accept, accept);
-        this->PushTag(MUIA_String_Accept, copy);
+        this->PushTag(MUIA_String_Accept, this->StoreString(MUIA_String_Accept, accept));
         return (T &)*this;
     }
 
@@ -51,17 +47,13 @@ namespace MUI
 
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagContents(const char *contents)
     {
-        if (contents == nullptr)
-            this->PushTag(MUIA_String_Contents, contents);
-        else
-            this->PushTag(MUIA_String_Contents, this->StoreString(MUIA_String_Contents, contents));
+        this->PushTag(MUIA_String_Contents, contents == nullptr ? nullptr : this->StoreString(MUIA_String_Contents, contents));
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagContents(const std::string &contents)
     {
-        auto copy = this->StoreString(MUIA_String_Contents, contents);
-        this->PushTag(MUIA_String_Contents, copy);
+        this->PushTag(MUIA_String_Contents, this->StoreString(MUIA_String_Contents, contents));
         return (T &)*this;
     }
 
@@ -80,17 +72,14 @@ namespace MUI
 #ifdef MUIA_String_InactiveContents
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagInactiveContents(const char *inactiveContents)
     {
-        if (inactiveContents == nullptr)
-            this->PushTag(MUIA_String_InactiveContents, inactiveContents);
-        else
-            this->PushTag(MUIA_String_InactiveContents, this->StoreString(MUIA_String_InactiveContents, inactiveContents));
+        this->PushTag(MUIA_String_InactiveContents,
+                      inactiveContents == nullptr ? nullptr : this->StoreString(MUIA_String_InactiveContents, inactiveContents));
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagInactiveContents(const std::string &inactiveContents)
     {
-        auto copy = this->StoreString(MUIA_String_InactiveContents, inactiveContents);
-        this->PushTag(MUIA_String_InactiveContents, copy);
+        this->PushTag(MUIA_String_InactiveContents, this->StoreString(MUIA_String_InactiveContents, inactiveContents));
         return (T &)*this;
     }
 #endif
@@ -132,27 +121,20 @@ namespace MUI
 #ifdef MUIA_String_Placeholder
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagPlaceholder(const char *placeholder)
     {
-        if (placeholder == nullptr)
-            this->PushTag(MUIA_String_Placeholder, placeholder);
-        else
-            this->PushTag(MUIA_String_Placeholder, this->StoreString(MUIA_String_Placeholder, placeholder));
+        this->PushTag(MUIA_String_Placeholder, placeholder == nullptr ? nullptr : this->StoreString(MUIA_String_Placeholder, placeholder));
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagPlaceholder(const std::string &placeholder)
     {
-        auto copy = this->StoreString(MUIA_String_Placeholder, placeholder);
-        this->PushTag(MUIA_String_Placeholder, copy);
+        this->PushTag(MUIA_String_Placeholder, this->StoreString(MUIA_String_Placeholder, placeholder));
         return (T &)*this;
     }
 #endif
 
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagReject(const char *reject)
     {
-        if (reject == nullptr)
-            this->PushTag(MUIA_String_Reject, reject);
-        else
-            this->PushTag(MUIA_String_Reject, this->StoreString(MUIA_String_Reject, reject));
+        this->PushTag(MUIA_String_Reject, reject == nullptr ? nullptr : this->StoreString(MUIA_String_Reject, reject));
         return (T &)*this;
     }
 
@@ -164,8 +146,7 @@ namespace MUI
 
     template <typename T, typename U> inline T &StringBuilderTemplate<T, U>::tagReject(const std::string &reject)
     {
-        auto copy = this->StoreString(MUIA_String_Reject, reject);
-        this->PushTag(MUIA_String_Reject, copy);
+        this->PushTag(MUIA_String_Reject, this->StoreString(MUIA_String_Reject, reject));
         return (T &)*this;
     }
 
