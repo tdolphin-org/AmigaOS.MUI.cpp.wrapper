@@ -8,6 +8,8 @@
 #error "Image.tpp should only be included by Image.hpp"
 #endif
 
+#include <cstdio>
+
 namespace MUI
 {
 #ifdef MUIA_Image_BuiltinSpec
@@ -76,8 +78,7 @@ namespace MUI
         this->PushTag(MUIA_Image_CopySpec, true);
         this->PushTag(MUIA_Image_Spec, spec);
 #else
-        auto copy = this->StoreString(MUIA_Image_Spec, spec);
-        this->PushTag(MUIA_Image_Spec, copy);
+        this->PushTag(MUIA_Image_Spec, this->StoreString(MUIA_Image_Spec, spec));
 #endif
         return (T &)*this;
     }
@@ -95,21 +96,29 @@ namespace MUI
         this->PushTag(MUIA_Image_CopySpec, true);
         this->PushTag(MUIA_Image_Spec, spec);
 #else
-        auto copy = this->StoreString(MUIA_Image_Spec, spec);
-        this->PushTag(MUIA_Image_Spec, copy);
+        this->PushTag(MUIA_Image_Spec, this->StoreString(MUIA_Image_Spec, spec));
 #endif
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &ImageBuilderTemplate<T, U>::tagSpecColor(const unsigned long rgbColor)
     {
-        // FIXME add proper convert rgbColor to "2:RRRRRRRR,GGGGGGGG,BBBBBBBB" from rgbColor
+        const unsigned long r8 = (rgbColor >> 16) & 0xff;
+        const unsigned long g8 = (rgbColor >> 8) & 0xff;
+        const unsigned long b8 = rgbColor & 0xff;
+
+        const unsigned long r32 = r8 * 0x01010101UL;
+        const unsigned long g32 = g8 * 0x01010101UL;
+        const unsigned long b32 = b8 * 0x01010101UL;
+
+        char colorSpec[29] = { 0 };
+        std::snprintf(colorSpec, sizeof(colorSpec), "2:%08lx,%08lx,%08lx", r32, g32, b32);
+
 #ifdef MUIA_Image_CopySpec
         this->PushTag(MUIA_Image_CopySpec, true);
         this->PushTag(MUIA_Image_Spec, colorSpec);
 #else
-        auto copy = this->StoreString(MUIA_Image_Spec, colorSpec);
-        this->PushTag(MUIA_Image_Spec, copy);
+        this->PushTag(MUIA_Image_Spec, this->StoreString(MUIA_Image_Spec, colorSpec));
 #endif
         return (T &)*this;
     }

@@ -11,6 +11,7 @@
 
 namespace MUI
 {
+    /// @brief Image class is used to display one of MUI's standard images or some selfmade image data.
     class Image : public Area
     {
       public:
@@ -49,29 +50,51 @@ namespace MUI
         unsigned long getBuiltinSpec() const;
 #endif
 
+#if defined(AOS_MUI_VERSION_5)
         /// @brief [ @b MUIA_Image_FontMatch ]
         Image &setFontMatch(const bool fontMatch);
+#endif
+#if defined(AOS_MUI_VERSION_5)
         /// @brief [ @b MUIA_Image_FontMatchHeight ]
         Image &setFontMatchHeight(const bool fontMatchHeight);
+#endif
 #ifdef MUIA_Image_FontMatchString
         /// @brief [ @b MUIA_Image_FontMatchString ]
         Image &setFontMatchString(const std::string &fontMatchString);
 #endif
+#if defined(AOS_MUI_VERSION_5)
         /// @brief [ @b MUIA_Image_FontMatchWidth ]
         Image &setFontMatchWidth(const bool fontMatchWidth);
+#endif
+#if defined(AOS_MUI_VERSION_5)
         /// @brief [ @b MUIA_Image_FreeHoriz ]
         Image &setFreeHoriz(const bool freeHoriz);
+#endif
+#if defined(AOS_MUI_VERSION_5)
         /// @brief [ @b MUIA_Image_FreeVert ]
         Image &setFreeVert(const bool freeVert);
-#if defined(AOS_MUI_VERSION_5) || defined(MOS_MUI_VERSION_5) // MUI5: AmigaOS or MorphOS
+#endif
+#if defined(AOS_MUI_VERSION_5) || defined(MOS_MUI_VERSION_5)
         /// @brief [ @b MUIA_Image_Spec (settable on AmigaOS and MorphOS MUI 5.0) ]
         Image &setSpec(const std::string &spec);
+#endif
+#if defined(AOS_MUI_VERSION_5) || defined(MOS_MUI_VERSION_5)
         /// @brief [ @b MUIA_Image_Spec with predefined images (like MUI::ImageOrBackground::ArrowUp) ]
         Image &setSpec(const enum ImageOrBackground spec);
+#endif
+#if defined(AOS_MUI_VERSION_5) || defined(MOS_MUI_VERSION_5)
         /// @brief [ @b MUIA_Image_Spec, @b 5:<n> an external picture file that should be loaded with datatypes ]
         Image &setSpecPicture(const std::string &imagePath);
+#endif
+#if defined(AOS_MUI_VERSION_5) || defined(MOS_MUI_VERSION_5)
         /// @brief [ @b MUIA_Image_Spec, @b 2:<RGB> RGB color ]
         Image &setSpecColor(const unsigned long rgbColor);
+#endif
+#ifdef MOS_MUI_VERSION_5
+#ifdef MUIA_Image_BuiltinSpec
+        /// @brief [ @b MUIA_Image_BuiltinSpec ]
+        Image &setBuiltinSpec(const unsigned long builtinSpec);
+#endif
 #endif
         /// @brief [ @b MUIA_Image_State ]
         Image &setState(const long state);
@@ -80,7 +103,6 @@ namespace MUI
     template <typename T, typename U> class ImageBuilderTemplate : public AreaBuilderTemplate<T, U>
     {
         std::string spec;
-        char colorSpec[29] = { '2', ':', 0, 0, 0, 0, 0, 0, 0, 0, ',', 0, 0, 0, 0, 0, 0, 0, 0, ',', 0, 0, 0, 0, 0, 0, 0, 0, '\0' }; // FIXME
 
       public:
         ImageBuilderTemplate(const std::string &uniqueId = MUI::EmptyUniqueId, const std::string &muiClassName = MUIC_Image)
