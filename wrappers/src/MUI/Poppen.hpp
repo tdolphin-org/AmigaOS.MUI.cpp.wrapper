@@ -53,6 +53,10 @@ namespace MUI
 
         /// @brief [ @b MUIA_Window_Title ] Control the window title of the popup window.
         /// The Poppen object will remember its value and use it when creating the popup window.
+        T &tagWindowTitle(const char *title);
+
+        /// @brief [ @b MUIA_Window_Title ] Control the window title of the popup window.
+        /// The Poppen object will remember its value and use it when creating the popup window.
         T &tagWindowTitle(const std::string &title);
     };
 
