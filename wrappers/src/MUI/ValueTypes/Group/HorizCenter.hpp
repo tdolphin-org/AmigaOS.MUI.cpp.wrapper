@@ -1,12 +1,14 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
 
 #include <libraries/mui.h>
+
+#ifdef MUIA_Group_HorizCenter
 
 namespace MUI
 {
@@ -16,6 +18,12 @@ namespace MUI
         Left = MUIV_Group_HorizCenter_Left,
         Center = MUIV_Group_HorizCenter_Center,
         Right = MUIV_Group_HorizCenter_Right
+#else
+        Left = 0,
+        Center = 1,
+        Right = 2
 #endif
     };
 }
+
+#endif
