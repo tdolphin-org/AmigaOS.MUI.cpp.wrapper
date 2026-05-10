@@ -121,7 +121,7 @@ ___
 | [MUIC_Dtpic](https://github.com/amiga-mui/muidev/wiki/MUI_Dtpic) | [MUI::Dtpic](/wrappers/src/MUI/Dtpic.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | - | - |
 | [MUIC_Family](https://github.com/amiga-mui/muidev/wiki/MUI_Family) | [MUI::Family](/wrappers/src/MUI/Family.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | in progress | in progress |
 | [MUIC_Filepanel](https://github.com/amiga-mui/muidev/wiki/MUI_Filepanel) | [MUI::Filepanel](/wrappers/src/MUI/Filepanel.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |
-| [MUIC_Floattext](https://github.com/amiga-mui/muidev/wiki/MUI_Floattext) | [MUI::Floattext](/wrappers/src/MUI/Floattext.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | - | - |
+| [MUIC_Floattext](https://github.com/amiga-mui/muidev/wiki/MUI_Floattext) | [MUI::Floattext](/wrappers/src/MUI/Floattext.hpp) | Ready | Ready | Ready | Ready | Ready | Ready | - | - |
 | [MUIC_Fontdisplay](https://github.com/amiga-mui/muidev/wiki/MUI_Fontdisplay) | [MUI::Fontdisplay](/wrappers/src/MUI/Fontdisplay.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |
 | [MUIC_Fontpanel](https://github.com/amiga-mui/muidev/wiki/MUI_Fontpanel) | [MUI::Fontpanel](/wrappers/src/MUI/Fontpanel.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |
 | [MUIC_Gadget](https://github.com/amiga-mui/muidev/wiki/MUI_Gadget) | [MUI::Gadget](/wrappers/src/MUI/Gadget.hpp) | Ready | - | - | Ready | - | - | not applicable | not applicable |
