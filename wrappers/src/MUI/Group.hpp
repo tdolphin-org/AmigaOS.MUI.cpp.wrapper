@@ -131,23 +131,27 @@ namespace MUI
         /// Set number of pixels inserted between vertical elements.
         Group &setVertSpacing(const long vertSpacing);
 
-        // methods, some returns object reference
+        // methods
 
 #ifdef MUIM_Group_AddHead
         /// @brief [ @b MUIM_Group_AddHead ] Add child object at the beginning of the group child list.
         /// @param pChildObject child object to insert, ignored when nullptr
-        Group &AddHead(const Object *pChildObject);
+        /// @return true on success, false on failure or when child is nullptr.
+        bool AddHead(const Object *pChildObject);
         /// @brief [ @b MUIM_Group_AddHead ] Add child object at the beginning of the group child list.
         /// @param child child wrapper to insert, ignored when it wraps a null object
-        Group &AddHead(const Root &child);
+        /// @return true on success, false on failure or when child wraps nullptr.
+        bool AddHead(const Root &child);
 #endif
 #ifdef MUIM_Group_AddTail
         /// @brief [ @b MUIM_Group_AddTail ] Add child object at the end of the group child list.
         /// @param pChildObject child object to insert, ignored when nullptr
-        Group &AddTail(const Object *pChildObject);
+        /// @return true on success, false on failure or when child is nullptr.
+        bool AddTail(const Object *pChildObject);
         /// @brief [ @b MUIM_Group_AddTail ] Add child object at the end of the group child list.
         /// @param child child wrapper to insert, ignored when it wraps a null object
-        Group &AddTail(const Root &child);
+        /// @return true on success, false on failure or when child wraps nullptr.
+        bool AddTail(const Root &child);
 #endif
         /// @brief [ @b MUIM_Group_ExitChange ] Leave dynamic child-list modification mode and trigger relayout.
         Group &ExitChange();
@@ -157,7 +161,8 @@ namespace MUI
         Group &ExitChange2(const unsigned long flags = 0);
 #endif
         /// @brief [ @b MUIM_Group_InitChange ] Enter dynamic child-list modification mode.
-        Group &InitChange();
+        /// @return true when state was entered, false on failure.
+        bool InitChange();
 #ifdef MUIM_Group_MoveMember
         /// @brief [ @b MUIM_Group_MoveMember ] Move existing child to a new position in the group.
         /// @param pChildObject child object to move
@@ -171,10 +176,12 @@ namespace MUI
 #ifdef MUIM_Group_Remove
         /// @brief [ @b MUIM_Group_Remove ] Remove child object from the group child list.
         /// @param pChildObject child object to remove, ignored when nullptr
-        Group &Remove(const Object *pChildObject);
+        /// @return true on success, false on failure or when child is nullptr.
+        bool Remove(const Object *pChildObject);
         /// @brief [ @b MUIM_Group_Remove ] Remove child object from the group child list.
         /// @param child child wrapper to remove, ignored when it wraps a null object
-        Group &Remove(const Root &child);
+        /// @return true on success, false on failure or when child wraps nullptr.
+        bool Remove(const Root &child);
 #endif
 
 #ifdef MUIM_Group_Reorder

@@ -148,34 +148,38 @@ namespace MUI
     }
 
 #ifdef MUIM_Group_AddHead
-    Group &Group::AddHead(const Object *pChildObject)
+    bool Group::AddHead(const Object *pChildObject)
     {
-        if (pChildObject)
-            DoMethod(muiObject(), MUIM_Group_AddHead, (ULONG)pChildObject);
-        return *this;
+        if (!pChildObject)
+            return false;
+
+        return (bool)DoMethod(muiObject(), MUIM_Group_AddHead, (ULONG)pChildObject);
     }
 
-    Group &Group::AddHead(const Root &child)
+    bool Group::AddHead(const Root &child)
     {
-        if (child.muiObject())
-            DoMethod(muiObject(), MUIM_Group_AddHead, (ULONG)child.muiObject());
-        return *this;
+        if (!child.muiObject())
+            return false;
+
+        return (bool)DoMethod(muiObject(), MUIM_Group_AddHead, (ULONG)child.muiObject());
     }
 #endif
 
 #ifdef MUIM_Group_AddTail
-    Group &Group::AddTail(const Object *pChildObject)
+    bool Group::AddTail(const Object *pChildObject)
     {
-        if (pChildObject)
-            DoMethod(muiObject(), MUIM_Group_AddTail, (ULONG)pChildObject);
-        return *this;
+        if (!pChildObject)
+            return false;
+
+        return (bool)DoMethod(muiObject(), MUIM_Group_AddTail, (ULONG)pChildObject);
     }
 
-    Group &Group::AddTail(const Root &child)
+    bool Group::AddTail(const Root &child)
     {
-        if (child.muiObject())
-            DoMethod(muiObject(), MUIM_Group_AddTail, (ULONG)child.muiObject());
-        return *this;
+        if (!child.muiObject())
+            return false;
+
+        return (bool)DoMethod(muiObject(), MUIM_Group_AddTail, (ULONG)child.muiObject());
     }
 #endif
 
@@ -193,10 +197,9 @@ namespace MUI
     }
 #endif
 
-    Group &Group::InitChange()
+    bool Group::InitChange()
     {
-        DoMethod(muiObject(), MUIM_Group_InitChange);
-        return *this;
+        return DoMethod(muiObject(), MUIM_Group_InitChange) != 0;
     }
 
 #ifdef MUIM_Group_MoveMember
@@ -216,18 +219,20 @@ namespace MUI
 #endif
 
 #ifdef MUIM_Group_Remove
-    Group &Group::Remove(const Object *pChildObject)
+    bool Group::Remove(const Object *pChildObject)
     {
-        if (pChildObject)
-            DoMethod(muiObject(), MUIM_Group_Remove, (ULONG)pChildObject);
-        return *this;
+        if (!pChildObject)
+            return false;
+
+        return (bool)DoMethod(muiObject(), MUIM_Group_Remove, (ULONG)pChildObject);
     }
 
-    Group &Group::Remove(const Root &child)
+    bool Group::Remove(const Root &child)
     {
-        if (child.muiObject())
-            DoMethod(muiObject(), MUIM_Group_Remove, (ULONG)child.muiObject());
-        return *this;
+        if (!child.muiObject())
+            return false;
+
+        return (bool)DoMethod(muiObject(), MUIM_Group_Remove, (ULONG)child.muiObject());
     }
 #endif
 
@@ -286,7 +291,8 @@ namespace MUI
 
     Group &Group::AddMember(const Root &child)
     {
-        DoMethod(muiObject(), OM_ADDMEMBER, child.muiObject());
+        if (child.muiObject())
+            DoMethod(muiObject(), OM_ADDMEMBER, child.muiObject());
         return *this;
     }
 
@@ -299,7 +305,8 @@ namespace MUI
 
     Group &Group::RemMember(const Root &child)
     {
-        DoMethod(muiObject(), OM_REMMEMBER, child.muiObject());
+        if (child.muiObject())
+            DoMethod(muiObject(), OM_REMMEMBER, child.muiObject());
         return *this;
     }
 
