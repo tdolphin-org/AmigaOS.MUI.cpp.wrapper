@@ -12,17 +12,14 @@ namespace MUI
 {
     template <typename T, typename U> inline T &FilepanelBuilderTemplate<T, U>::tagAcceptPattern(const char *acceptPattern)
     {
-        if (acceptPattern == nullptr)
-            this->PushTag(MUIA_Filepanel_AcceptPattern, nullptr);
-        else
-            this->PushTag(MUIA_Filepanel_AcceptPattern, this->StoreString(MUIA_Filepanel_AcceptPattern, std::string { acceptPattern }));
+        this->PushTag(MUIA_Filepanel_AcceptPattern,
+                      acceptPattern == nullptr ? nullptr : this->StoreString(MUIA_Filepanel_AcceptPattern, acceptPattern));
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &FilepanelBuilderTemplate<T, U>::tagAcceptPattern(const std::string &acceptPattern)
     {
-        auto copy = this->StoreString(MUIA_Filepanel_AcceptPattern, acceptPattern);
-        this->PushTag(MUIA_Filepanel_AcceptPattern, copy);
+        this->PushTag(MUIA_Filepanel_AcceptPattern, this->StoreString(MUIA_Filepanel_AcceptPattern, acceptPattern));
         return (T &)*this;
     }
 
@@ -46,17 +43,13 @@ namespace MUI
 
     template <typename T, typename U> inline T &FilepanelBuilderTemplate<T, U>::tagDrawer(const char *drawer)
     {
-        if (drawer == nullptr)
-            this->PushTag(MUIA_Filepanel_Drawer, nullptr);
-        else
-            this->PushTag(MUIA_Filepanel_Drawer, this->StoreString(MUIA_Filepanel_Drawer, std::string { drawer }));
+        this->PushTag(MUIA_Filepanel_Drawer, drawer == nullptr ? nullptr : this->StoreString(MUIA_Filepanel_Drawer, drawer));
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &FilepanelBuilderTemplate<T, U>::tagDrawer(const std::string &drawer)
     {
-        auto copy = this->StoreString(MUIA_Filepanel_Drawer, drawer);
-        this->PushTag(MUIA_Filepanel_Drawer, copy);
+        this->PushTag(MUIA_Filepanel_Drawer, drawer.empty() ? nullptr : this->StoreString(MUIA_Filepanel_Drawer, drawer));
         return (T &)*this;
     }
 
@@ -68,17 +61,13 @@ namespace MUI
 
     template <typename T, typename U> inline T &FilepanelBuilderTemplate<T, U>::tagFile(const char *file)
     {
-        if (file == nullptr)
-            this->PushTag(MUIA_Filepanel_File, nullptr);
-        else
-            this->PushTag(MUIA_Filepanel_File, this->StoreString(MUIA_Filepanel_File, std::string { file }));
+        this->PushTag(MUIA_Filepanel_File, file == nullptr ? nullptr : this->StoreString(MUIA_Filepanel_File, file));
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &FilepanelBuilderTemplate<T, U>::tagFile(const std::string &file)
     {
-        auto copy = this->StoreString(MUIA_Filepanel_File, file);
-        this->PushTag(MUIA_Filepanel_File, copy);
+        this->PushTag(MUIA_Filepanel_File, file.empty() ? nullptr : this->StoreString(MUIA_Filepanel_File, file));
         return (T &)*this;
     }
 
@@ -96,17 +85,13 @@ namespace MUI
 
     template <typename T, typename U> inline T &FilepanelBuilderTemplate<T, U>::tagPattern(const char *pattern)
     {
-        if (pattern == nullptr)
-            this->PushTag(MUIA_Filepanel_Pattern, nullptr);
-        else
-            this->PushTag(MUIA_Filepanel_Pattern, this->StoreString(MUIA_Filepanel_Pattern, std::string { pattern }));
+        this->PushTag(MUIA_Filepanel_Pattern, pattern == nullptr ? nullptr : this->StoreString(MUIA_Filepanel_Pattern, pattern));
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &FilepanelBuilderTemplate<T, U>::tagPattern(const std::string &pattern)
     {
-        auto copy = this->StoreString(MUIA_Filepanel_Pattern, pattern);
-        this->PushTag(MUIA_Filepanel_Pattern, copy);
+        this->PushTag(MUIA_Filepanel_Pattern, pattern.empty() ? nullptr : this->StoreString(MUIA_Filepanel_Pattern, pattern));
         return (T &)*this;
     }
 
@@ -118,17 +103,15 @@ namespace MUI
 
     template <typename T, typename U> inline T &FilepanelBuilderTemplate<T, U>::tagRejectPattern(const char *rejectPattern)
     {
-        if (rejectPattern == nullptr)
-            this->PushTag(MUIA_Filepanel_RejectPattern, nullptr);
-        else
-            this->PushTag(MUIA_Filepanel_RejectPattern, this->StoreString(MUIA_Filepanel_RejectPattern, std::string { rejectPattern }));
+        this->PushTag(MUIA_Filepanel_RejectPattern,
+                      rejectPattern == nullptr ? nullptr : this->StoreString(MUIA_Filepanel_RejectPattern, rejectPattern));
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &FilepanelBuilderTemplate<T, U>::tagRejectPattern(const std::string &rejectPattern)
     {
-        auto copy = this->StoreString(MUIA_Filepanel_RejectPattern, rejectPattern);
-        this->PushTag(MUIA_Filepanel_RejectPattern, copy);
+        this->PushTag(MUIA_Filepanel_RejectPattern,
+                      rejectPattern.empty() ? nullptr : this->StoreString(MUIA_Filepanel_RejectPattern, rejectPattern));
         return (T &)*this;
     }
 }
