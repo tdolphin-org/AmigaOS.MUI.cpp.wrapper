@@ -117,9 +117,9 @@ ___
 | [MUIC_Cycle](https://github.com/amiga-mui/muidev/wiki/MUI_Cycle) | [MUI::Cycle](/wrappers/src/MUI/Cycle.hpp) | Ready | - | - | Ready | - | - | Ready | Ready |
 | [MUIC_Datamap](https://github.com/amiga-mui/muidev/wiki/MUI_Datamap) |  - | - | - | - | - | - | - | - | - |
 | [MUIC_Dataspace](https://github.com/amiga-mui/muidev/wiki/MUI_Dataspace) |  - | - | - | - | - | - | - | - | - |
-| [MUIC_Dirlist](https://github.com/amiga-mui/muidev/wiki/MUI_Dirlist) | [MUI::Dirlist](/wrappers/src/MUI/Dirlist.hpp) | Ready | Ready | in progress | Ready | Ready | in progress | - | - |
-| [MUIC_Dtpic](https://github.com/amiga-mui/muidev/wiki/MUI_Dtpic) | [MUI::Dtpic](/wrappers/src/MUI/Dtpic.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | - | - |
-| [MUIC_Family](https://github.com/amiga-mui/muidev/wiki/MUI_Family) | [MUI::Family](/wrappers/src/MUI/Family.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | in progress | in progress |
+| [MUIC_Dirlist](https://github.com/amiga-mui/muidev/wiki/MUI_Dirlist) | [MUI::Dirlist](/wrappers/src/MUI/Dirlist.hpp) | Ready | Ready | Ready | Ready | Ready | Ready | - | - |
+| [MUIC_Dtpic](https://github.com/amiga-mui/muidev/wiki/MUI_Dtpic) | [MUI::Dtpic](/wrappers/src/MUI/Dtpic.hpp) | Ready | Ready | Ready | Ready | Ready | Ready | - | - |
+| [MUIC_Family](https://github.com/amiga-mui/muidev/wiki/MUI_Family) | [MUI::Family](/wrappers/src/MUI/Family.hpp) | Ready | Ready | Ready | Ready | - | - | in progress | in progress |
 | [MUIC_Filepanel](https://github.com/amiga-mui/muidev/wiki/MUI_Filepanel) | [MUI::Filepanel](/wrappers/src/MUI/Filepanel.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |
 | [MUIC_Floattext](https://github.com/amiga-mui/muidev/wiki/MUI_Floattext) | [MUI::Floattext](/wrappers/src/MUI/Floattext.hpp) | Ready | Ready | Ready | Ready | Ready | Ready | - | - |
 | [MUIC_Fontdisplay](https://github.com/amiga-mui/muidev/wiki/MUI_Fontdisplay) | [MUI::Fontdisplay](/wrappers/src/MUI/Fontdisplay.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |
