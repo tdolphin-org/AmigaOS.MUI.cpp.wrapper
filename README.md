@@ -111,8 +111,8 @@ ___
 | [MUIC_Balance](https://github.com/amiga-mui/muidev/wiki/MUI_Balance) | [MUI::Balance](/wrappers/src/MUI/Balance.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | not applicable | not applicable |
 | [MUIC_Bitmap](https://github.com/amiga-mui/muidev/wiki/MUI_Bitmap) | [MUI::Bitmap](/wrappers/src/MUI/Bitmap.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | - | - |
 | [MUIC_Bodychunk](https://github.com/amiga-mui/muidev/wiki/MUI_Bodychunk) | [MUI::Bodychunk](/wrappers/src/MUI/Bodychunk.hpp) | Ready | - | - | Ready | - | - | - | - |
-| [MUIC_Boopsi](https://github.com/amiga-mui/muidev/wiki/MUI_Boopsi) | [MUI::Coloradjust](/wrappers/src/MUI/Boopsi.hpp) | Ready | - | - | Ready | - | - | - | - |
-| [MUIC_Coloradjust](https://github.com/amiga-mui/muidev/wiki/MUI_Coloradjust) | [MUI::Coloradjust](/wrappers/src/MUI/Coloradjust.hpp) | Ready | - | in progress | Ready | - | in progress | - | - |
+| [MUIC_Boopsi](https://github.com/amiga-mui/muidev/wiki/MUI_Boopsi) | [MUI::Boopsi](/wrappers/src/MUI/Boopsi.hpp) | Ready | - | - | Ready | - | - | - | - |
+| [MUIC_Coloradjust](https://github.com/amiga-mui/muidev/wiki/MUI_Coloradjust) | [MUI::Coloradjust](/wrappers/src/MUI/Coloradjust.hpp) | Ready | - | Ready | Ready | - | Ready | - | - |
 | [MUIC_Colorfield](https://github.com/amiga-mui/muidev/wiki/MUI_Colorfield) | [MUI::Colorfield](/wrappers/src/MUI/Colorfield.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Cycle](https://github.com/amiga-mui/muidev/wiki/MUI_Cycle) | [MUI::Cycle](/wrappers/src/MUI/Cycle.hpp) | Ready | Ready | Ready | Ready | - | - | Ready | Ready |
 | [MUIC_Datamap](https://github.com/amiga-mui/muidev/wiki/MUI_Datamap) | [MUI::Datamap](/wrappers/src/MUI/Datamap.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |

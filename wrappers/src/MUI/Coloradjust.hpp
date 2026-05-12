@@ -10,6 +10,9 @@
 
 #include "Core/RGBColor.hpp"
 
+#include <array>
+#include <deque>
+
 namespace MUI
 {
     /// @brief MUI Coloradjust class wrapper.
@@ -105,6 +108,10 @@ namespace MUI
 
     template <typename T, typename U> class ColoradjustBuilderTemplate : public GroupBuilderTemplate<T, U>
     {
+      private:
+        // Keep RGB triplets alive until object() consumes builder tags.
+        std::deque<std::array<unsigned long, 3>> mStoredRgbValues;
+
       public:
         ColoradjustBuilderTemplate(const std::string &uniqueId = MUI::EmptyUniqueId, const std::string &muiClassName = MUIC_Coloradjust)
           : GroupBuilderTemplate<T, U>(uniqueId, muiClassName)
