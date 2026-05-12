@@ -14,6 +14,8 @@
 
 namespace MUI
 {
+    /// @brief MUI Cycle class wrapper.
+    /// Cycle class generates well known cycle gadgets with a configurable popup menu.
     class Cycle : public Group
     {
       public:
@@ -54,13 +56,19 @@ namespace MUI
         Cycle &setActivePrev();
         /// @brief [ @b MUIA_Cycle_Active ] Set the active cycle entry by zero-based index.
         Cycle &setActive(const unsigned long active);
+#if defined(AOS_MUI_VERSION_5) || defined(MOS_MUI_VERSION_5)
         /// @brief [ @b MUIA_Cycle_Entries ] Set displayed cycle entries using a NULL-terminated C string array.
         Cycle &setEntries(const char *entries[]);
+#endif
+#if defined(AOS_MUI_VERSION_5) || defined(MOS_MUI_VERSION_5)
         /// @brief [ @b MUIA_Cycle_Entries ]
         /// The string copies are stored internally by this C++ wrapper!
         Cycle &setEntries(const std::vector<std::string> &entries);
+#endif
+#if defined(AOS_MUI_VERSION_5) || defined(MOS_MUI_VERSION_5)
         /// @brief [ @b MUIA_Cycle_Entries ] Clear entries by explicitly setting the attribute to nullptr.
         Cycle &setEntriesNull();
+#endif
     };
 
     template <typename T, typename U> class CycleBuilderTemplate : public GroupBuilderTemplate<T, U>

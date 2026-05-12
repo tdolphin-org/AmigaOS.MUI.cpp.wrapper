@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Cycle.hpp"
@@ -39,25 +39,31 @@ namespace MUI
         return *this;
     }
 
+#if defined(AOS_MUI_VERSION_5) || defined(MOS_MUI_VERSION_5)
     Cycle &Cycle::setEntries(const char *entries[])
     {
         SetValue(MUIA_Cycle_Entries, entries);
         return *this;
     }
+#endif
 
+#if defined(AOS_MUI_VERSION_5) || defined(MOS_MUI_VERSION_5)
     Cycle &Cycle::setEntries(const std::vector<std::string> &entries)
     {
         auto copy = StoreStringArray(MUIA_Cycle_Entries, entries);
         SetValue(MUIA_Cycle_Entries, copy);
         return *this;
     }
+#endif
 
+#if defined(AOS_MUI_VERSION_5) || defined(MOS_MUI_VERSION_5)
     Cycle &Cycle::setEntriesNull()
     {
         ClearStoredString(MUIA_Cycle_Entries);
         SetValue(MUIA_Cycle_Entries, nullptr);
         return *this;
     }
+#endif
 
     CycleBuilder::CycleBuilder() { }
 }
