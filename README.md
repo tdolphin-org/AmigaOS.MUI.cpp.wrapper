@@ -115,7 +115,7 @@ ___
 | [MUIC_Coloradjust](https://github.com/amiga-mui/muidev/wiki/MUI_Coloradjust) | [MUI::Coloradjust](/wrappers/src/MUI/Coloradjust.hpp) | Ready | - | in progress | Ready | - | in progress | - | - |
 | [MUIC_Colorfield](https://github.com/amiga-mui/muidev/wiki/MUI_Colorfield) | [MUI::Colorfield](/wrappers/src/MUI/Colorfield.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Cycle](https://github.com/amiga-mui/muidev/wiki/MUI_Cycle) | [MUI::Cycle](/wrappers/src/MUI/Cycle.hpp) | Ready | - | - | Ready | - | - | Ready | Ready |
-| [MUIC_Datamap](https://github.com/amiga-mui/muidev/wiki/MUI_Datamap) |  - | - | - | - | - | - | - | - | - |
+| [MUIC_Datamap](https://github.com/amiga-mui/muidev/wiki/MUI_Datamap) | [MUI::Datamap](/wrappers/src/MUI/Datamap.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |
 | [MUIC_Dataspace](https://github.com/amiga-mui/muidev/wiki/MUI_Dataspace) | [MUI::Dataspace](/wrappers/src/MUI/Dataspace.hpp) | Ready | Ready | Ready | Ready | - | - | - | - |
 | [MUIC_Dirlist](https://github.com/amiga-mui/muidev/wiki/MUI_Dirlist) | [MUI::Dirlist](/wrappers/src/MUI/Dirlist.hpp) | Ready | Ready | Ready | Ready | Ready | Ready | - | - |
 | [MUIC_Dtpic](https://github.com/amiga-mui/muidev/wiki/MUI_Dtpic) | [MUI::Dtpic](/wrappers/src/MUI/Dtpic.hpp) | Ready | Ready | Ready | Ready | Ready | Ready | - | - |
