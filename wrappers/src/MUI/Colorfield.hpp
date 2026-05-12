@@ -10,6 +10,9 @@
 
 #include "Core/RGBColor.hpp"
 
+#include <array>
+#include <deque>
+
 namespace MUI
 {
     /// @brief MUI Colorfield class wrapper.
@@ -69,6 +72,10 @@ namespace MUI
 
     template <typename T, typename U> class ColorfieldBuilderTemplate : public AreaBuilderTemplate<T, U>
     {
+      private:
+        // Keep RGB triplets alive until object() consumes tag list.
+        std::deque<std::array<unsigned long, 3>> mStoredRgbValues;
+
       public:
         ColorfieldBuilderTemplate(const std::string &uniqueId = MUI::EmptyUniqueId, const std::string &muiClassName = MUIC_Colorfield)
           : AreaBuilderTemplate<T, U>(uniqueId, muiClassName)

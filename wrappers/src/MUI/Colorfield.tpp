@@ -31,15 +31,15 @@ namespace MUI
     template <typename T, typename U>
     inline T &ColorfieldBuilderTemplate<T, U>::tagRGB(const unsigned char red, const unsigned char green, const unsigned char blue)
     {
-        unsigned long rgb[3] = { RGBColor::to32Bit(red), RGBColor::to32Bit(green), RGBColor::to32Bit(blue) };
-        this->PushTag(MUIA_Colorfield_RGB, rgb);
+        this->mStoredRgbValues.push_back({ RGBColor::to32Bit(red), RGBColor::to32Bit(green), RGBColor::to32Bit(blue) });
+        this->PushTag(MUIA_Colorfield_RGB, this->mStoredRgbValues.back().data());
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &ColorfieldBuilderTemplate<T, U>::tagRGB(const RGBColor &rgbColor)
     {
-        unsigned long rgb[3] = { rgbColor.red32bit(), rgbColor.green32bit(), rgbColor.blue32bit() };
-        this->PushTag(MUIA_Colorfield_RGB, rgb);
+        this->mStoredRgbValues.push_back({ rgbColor.red32bit(), rgbColor.green32bit(), rgbColor.blue32bit() });
+        this->PushTag(MUIA_Colorfield_RGB, this->mStoredRgbValues.back().data());
         return (T &)*this;
     }
 }
