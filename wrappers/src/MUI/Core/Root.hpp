@@ -76,6 +76,7 @@ namespace MUI
             return StringStorage::instance().Change(mpMuiObject, tagName, string);
         }
 
+        // StoreString for C string, nullptr is allowed and will remove stored string for tagName, and return nullptr
         const char *StoreString(const unsigned long tagName, const char *string) const
         {
             return StringStorage::instance().Change(mpMuiObject, tagName, string);

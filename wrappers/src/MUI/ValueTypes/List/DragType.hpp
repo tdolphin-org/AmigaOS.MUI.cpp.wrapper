@@ -9,6 +9,7 @@
 #include <libraries/mui.h>
 
 #ifdef MUIA_List_DragType
+
 namespace MUI
 {
     enum class List_DragType
@@ -17,4 +18,5 @@ namespace MUI
         Immediate = MUIV_List_DragType_Immediate,
     };
 }
+
 #endif

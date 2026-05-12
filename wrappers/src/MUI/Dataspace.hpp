@@ -7,7 +7,7 @@
 #pragma once
 
 #include "Semaphore.hpp"
-#include "AOS/IFFParse/ValueTypes/IffError.hpp"
+#include "AOS/IFFParse/ValueTypes/IFFError.hpp"
 
 struct IFFHandle;
 
