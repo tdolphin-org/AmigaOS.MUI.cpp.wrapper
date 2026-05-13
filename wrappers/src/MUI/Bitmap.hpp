@@ -13,8 +13,9 @@
 namespace MUI
 {
     /// @brief MUI Bitmap class wrapper.
-    /// Displays a raw AmigaOS bitmap. You supply the bitmap pointer, its dimensions, and an optional
-    /// color mapping table. MUI handles all rendering and remapping to the current screen's color space.
+    /// Allows including self-made image data in MUI applications.
+    /// In its simplest form it just displays a given BitMap, but it also supports automatic
+    /// color remapping to match the current display context and a transparent color.
     class Bitmap : public Area
     {
       public:
@@ -48,66 +49,73 @@ namespace MUI
         /// Returns the pointer to the bitmap currently being displayed.
         struct BitMap *getBitmap() const;
         /// @brief [ @b MUIA_Bitmap_Bitmap ]
-        /// Sets the bitmap to display. The bitmap must remain valid while the object is alive.
+        /// Specifies a pointer to a struct BitMap to display.
+        /// MUIA_Bitmap_Width and MUIA_Bitmap_Height must also be provided for correct display.
         Bitmap &setBitmap(struct BitMap *pBitMap);
 
         /// @brief [ @b MUIA_Bitmap_Height ]
-        /// Returns the height of the bitmap in pixels.
+        /// Returns the pixel height of the bitmap.
         long getHeight() const;
         /// @brief [ @b MUIA_Bitmap_Height ]
-        /// Sets the height of the bitmap in pixels. Must be specified together with Width.
+        /// Defines the pixel height of the bitmap. Usually combined with MUIA_FixHeight to make
+        /// the object exactly as big as the bitmap.
         Bitmap &setHeight(const long height);
 
         /// @brief [ @b MUIA_Bitmap_MappingTable ]
-        /// Returns the pointer to the current pen mapping table.
+        /// Returns the pointer to the pen mapping table used for remapping.
         unsigned char *getMappingTable() const;
         /// @brief [ @b MUIA_Bitmap_MappingTable ]
-        /// Sets a pen mapping table used to remap bitmap pen indices to actual screen pens.
-        /// The array must have 256 entries and remain valid while the object is alive.
+        /// Address of an array of UBYTEs, one for each color of the source BitMap.
+        /// MUI will remap the BitMap according to the contents of the array.
+        /// For context-sensitive remapping, prefer MUIA_Bitmap_SourceColors instead.
         Bitmap &setMappingTable(unsigned char *pMappingTable);
 
         /// @brief [ @b MUIA_Bitmap_Precision ]
-        /// Returns the current color-matching precision used during remapping.
+        /// Returns the precision value used for remapping images.
         long getPrecision() const;
         /// @brief [ @b MUIA_Bitmap_Precision ]
-        /// Sets the color-matching precision when remapping bitmap colors to the current screen palette.
-        /// Use one of the @c PRECISION_* values from @c graphics/rastport.h. Default is @c PRECISION_IMAGE.
+        /// Specifies the precision value for remapping images.
+        /// Use the same predefined values as for ObtainBestPen(), e.g. PRECISION_EXACT,
+        /// PRECISION_IMAGE, PRECISION_ICON or PRECISION_GUI.
         Bitmap &setPrecision(const long precision);
 
         /// @brief [ @b MUIA_Bitmap_RemappedBitmap ]
-        /// Returns a pointer to the internally remapped bitmap. The returned bitmap is owned by MUI;
-        /// do not free it. Only valid after the object has been set up and remapping has been performed.
+        /// Returns a pointer to the remapped bitmap. Valid only between MUIM_Setup and MUIM_Cleanup.
         struct BitMap *getRemappedBitmap() const;
 
         /// @brief [ @b MUIA_Bitmap_SourceColors ]
-        /// Returns the pointer to the source color table used for remapping.
+        /// Returns the pointer to the source color palette used for remapping.
         unsigned long *getSourceColors() const;
         /// @brief [ @b MUIA_Bitmap_SourceColors ]
-        /// Sets the source color table for remapping. The array must contain exactly
-        /// @c (number_of_pens * 3) ULONG values (RGB triplets, each 0..0xFFFFFFFF) and remain valid
-        /// while the object is alive.
+        /// Defines the color palette of the source BitMap as an array of ULONGs,
+        /// three entries per color (32 bits per gun). If specified, MUI will try to locate these colors
+        /// on the current screen and remap the BitMap accordingly.
         Bitmap &setSourceColors(unsigned long *pSourceColors);
 
         /// @brief [ @b MUIA_Bitmap_Transparent ]
-        /// Returns the index of the transparent pen (or -1 if transparency is disabled).
+        /// Returns the color index that is considered transparent (currently only 0 is supported).
         long getTransparent() const;
         /// @brief [ @b MUIA_Bitmap_Transparent ]
-        /// Sets the pen index used as transparent color. Set to -1 to disable transparency.
+        /// If specified, MUI will consider this color of the BitMap to be transparent.
+        /// A mask plane will be generated for blitting so the background shines through.
+        /// Currently, only color index 0 is supported.
         Bitmap &setTransparent(const long transparent);
 
         /// @brief [ @b MUIA_Bitmap_Width ]
-        /// Returns the width of the bitmap in pixels.
+        /// Returns the pixel width of the bitmap.
         long getWidth() const;
         /// @brief [ @b MUIA_Bitmap_Width ]
-        /// Sets the width of the bitmap in pixels. Must be specified together with Height.
+        /// Defines the pixel width of the bitmap. Usually combined with MUIA_FixWidth to make
+        /// the object exactly as big as the bitmap.
         Bitmap &setWidth(const long width);
 
 #ifdef MUIA_Bitmap_Alpha
         /// @brief [ @b MUIA_Bitmap_Alpha ]
-        /// Returns the global alpha value applied to the bitmap (0 = fully transparent, 0xFFFFFFFF = fully opaque).
+        /// Returns the global alpha blending intensity applied to the bitmap.
         unsigned long getAlpha() const;
         /// @brief [ @b MUIA_Bitmap_Alpha ]
-        /// Sets the global alpha blending value for the bitmap. Requires MUI 5 / V20.
+        /// Sets the alpha blending intensity for the bitmap. The BitMap must be in 32-bit ARGB format.
+        /// Specify 0xffffffff for full opacity. Alpha blitting is not supported on CLUT screens.
         Bitmap &setAlpha(const unsigned long alpha);
 #endif
     };
@@ -121,25 +129,34 @@ namespace MUI
         }
 
         /// @brief [ @b MUIA_Bitmap_Bitmap ]
+        /// Specifies a pointer to a struct BitMap. tagWidth() and tagHeight() are also required.
         T &tagBitmap(struct BitMap *pBitMap);
         /// @brief [ @b MUIA_Bitmap_Height ]
+        /// Defines the pixel height of the bitmap. Usually combined with MUIA_FixHeight.
         T &tagHeight(const long height);
         /// @brief [ @b MUIA_Bitmap_MappingTable ]
+        /// Address of an array of UBYTEs, one for each color of the source BitMap, for pen remapping.
+        /// For context-sensitive remapping, prefer tagSourceColors() instead.
         T &tagMappingTable(unsigned char *pMappingTable);
         /// @brief [ @b MUIA_Bitmap_Precision ]
+        /// Precision for remapping; use PRECISION_EXACT, PRECISION_IMAGE, PRECISION_ICON or PRECISION_GUI.
         T &tagPrecision(const long precision);
         /// @brief [ @b MUIA_Bitmap_SourceColors ]
+        /// Color palette of the source BitMap as an array of ULONGs (three entries per color, 32 bits per gun).
         T &tagSourceColors(unsigned long *pSourceColors);
         /// @brief [ @b MUIA_Bitmap_Transparent ]
+        /// Color index to make transparent (background shines through). Currently only 0 is supported.
         T &tagTransparent(const long transparent);
         /// @brief [ @b MUIA_Bitmap_UseFriend ]
-        /// Specifies whether MUI should allocate the remapped bitmap as a "friend" bitmap
-        /// of the current screen bitmap for optimized blitting. Default is false.
+        /// Makes MUI allocate the remapped bitmap as a "friend" bitmap of the current screen bitmap
+        /// for fastest possible displaying.
         T &tagUseFriend(const bool useFriend);
         /// @brief [ @b MUIA_Bitmap_Width ]
+        /// Defines the pixel width of the bitmap. Usually combined with MUIA_FixWidth.
         T &tagWidth(const long width);
 #ifdef MUIA_Bitmap_Alpha
         /// @brief [ @b MUIA_Bitmap_Alpha ]
+        /// Alpha blending intensity for the bitmap (32-bit ARGB format required). 0xffffffff = fully opaque.
         T &tagAlpha(const unsigned long alpha);
 #endif
     };
