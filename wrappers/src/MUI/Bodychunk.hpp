@@ -11,7 +11,9 @@
 namespace MUI
 {
     /// @brief MUI Bodychunk class wrapper.
-    /// Displays ILBM image data from a raw BODY chunk using the base bitmap infrastructure.
+    /// Allows displaying large compressed images (e.g. About-Logos) by storing the picture as a compressed IFF/ILBM BODY chunk.
+    /// MUI automatically decompresses the image when it is about to appear in a window.
+    /// Since Bodychunk is a subclass of Bitmap, all Bitmap remapping and transparency features are available.
     class Bodychunk : public Bitmap
     {
       public:
@@ -42,31 +44,34 @@ namespace MUI
         // is/get/set (attributes), all setters return object reference
 
         /// @brief [ @b MUIA_Bodychunk_Body ]
-        /// Returns the pointer to the raw ILBM BODY chunk data.
+        /// Returns the pointer to the BODY data of the picture. The data follows normal IFF/ILBM conventions.
         unsigned char *getBody() const;
         /// @brief [ @b MUIA_Bodychunk_Body ]
-        /// Sets the raw ILBM BODY chunk data pointer. The buffer must remain valid while the object is alive.
+        /// Specifies a pointer to the BODY data of the picture. The data must follow normal IFF/ILBM conventions.
+        /// MUIA_Bitmap_Width, MUIA_Bitmap_Height and MUIA_Bodychunk_Depth are required for correct decompression.
+        /// Body data may be shared between different Bodychunk objects and does not need to be in chip ram.
         Bodychunk &setBody(unsigned char *pBody);
 
         /// @brief [ @b MUIA_Bodychunk_Compression ]
-        /// Returns the BODY chunk compression mode.
+        /// Returns the BODY chunk compression type (0 = uncompressed, 1 = cmpByteRun1).
         unsigned char getCompression() const;
         /// @brief [ @b MUIA_Bodychunk_Compression ]
-        /// Sets the BODY chunk compression mode, usually one of the ILBM compression constants.
+        /// Sets the BODY chunk compression type. Use cmpByteRun1 (==1) for byte-run compressed data, 0 for uncompressed.
         Bodychunk &setCompression(const unsigned char compression);
 
         /// @brief [ @b MUIA_Bodychunk_Depth ]
-        /// Returns the number of bitplanes in the ILBM data.
+        /// Returns the number of bitplanes in the ILBM BODY data.
         long getDepth() const;
         /// @brief [ @b MUIA_Bodychunk_Depth ]
-        /// Sets the number of bitplanes in the ILBM data.
+        /// Specifies the depth (number of bitplanes) of the picture. Required for correct BODY chunk parsing.
+        /// Also set MUIA_Bodychunk_Masking if the BODY data contains a masking bitplane.
         Bodychunk &setDepth(const long depth);
 
         /// @brief [ @b MUIA_Bodychunk_Masking ]
-        /// Returns the ILBM masking mode.
+        /// Returns the ILBM masking type of the BODY data.
         unsigned char getMasking() const;
         /// @brief [ @b MUIA_Bodychunk_Masking ]
-        /// Sets the ILBM masking mode, usually one of the ILBM masking constants.
+        /// Indicates whether the BODY data contains a masking plane. Required for correct BODY chunk parsing.
         Bodychunk &setMasking(const unsigned char masking);
     };
 
@@ -79,12 +84,17 @@ namespace MUI
         }
 
         /// @brief [ @b MUIA_Bodychunk_Body ]
+        /// Specifies a pointer to the BODY data of the picture. Data must follow normal IFF/ILBM conventions.
+        /// MUIA_Bitmap_Width, MUIA_Bitmap_Height and MUIA_Bodychunk_Depth are required for correct decompression.
         T &tagBody(unsigned char *pBody);
         /// @brief [ @b MUIA_Bodychunk_Compression ]
+        /// Sets the BODY chunk compression type. Use cmpByteRun1 (==1) for byte-run compressed data, 0 for uncompressed.
         T &tagCompression(const unsigned char compression);
         /// @brief [ @b MUIA_Bodychunk_Depth ]
+        /// Specifies the depth (number of bitplanes) of the picture. Required for correct BODY chunk parsing.
         T &tagDepth(const long depth);
         /// @brief [ @b MUIA_Bodychunk_Masking ]
+        /// Indicates whether the BODY data contains a masking plane. Required for correct BODY chunk parsing.
         T &tagMasking(const unsigned char masking);
     };
 
