@@ -108,7 +108,7 @@ ___
 | [MUIC_Aboutmui](https://github.com/amiga-mui/muidev/wiki/MUI_Aboutmui) | [MUI::Aboutmui](/wrappers/src/MUI/Aboutmui.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Area](https://github.com/amiga-mui/muidev/wiki/MUI_Area) | [MUI::Area](/wrappers/src/MUI/Area.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | in progress | in progress |
 | [MUIC_Argstring](https://github.com/amiga-mui/muidev/wiki/MUI_Argstring) | [MUI::Argstring](/wrappers/src/MUI/Argstring.hpp) | n/a | Ready | Ready | n/a | Ready | Ready | - | - |
-| [MUIC_Balance](https://github.com/amiga-mui/muidev/wiki/MUI_Balance) | [MUI::Balance](/wrappers/src/MUI/Balance.hpp) | Ready | in progress | in progress | Ready | in progress | in progress | not applicable | not applicable |
+| [MUIC_Balance](https://github.com/amiga-mui/muidev/wiki/MUI_Balance) | [MUI::Balance](/wrappers/src/MUI/Balance.hpp) | Ready | Ready | Ready | Ready | Ready | Ready | not applicable | not applicable |
 | [MUIC_Bitmap](https://github.com/amiga-mui/muidev/wiki/MUI_Bitmap) | [MUI::Bitmap](/wrappers/src/MUI/Bitmap.hpp) | Ready | Ready | Ready | Ready | Ready | Ready | - | - |
 | [MUIC_Bodychunk](https://github.com/amiga-mui/muidev/wiki/MUI_Bodychunk) | [MUI::Bodychunk](/wrappers/src/MUI/Bodychunk.hpp) | Ready | - | - | Ready | - | - | - | - |
 | [MUIC_Boopsi](https://github.com/amiga-mui/muidev/wiki/MUI_Boopsi) | [MUI::Boopsi](/wrappers/src/MUI/Boopsi.hpp) | Ready | - | - | Ready | - | - | - | - |
