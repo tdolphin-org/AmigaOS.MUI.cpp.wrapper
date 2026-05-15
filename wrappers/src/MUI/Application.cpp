@@ -359,6 +359,12 @@ namespace MUI
         return *this;
     }
 
+    Application &Application::LoadEnv()
+    {
+        DoMethod(muiObject(), MUIM_Application_Load, MUIV_Application_Load_ENV);
+        return *this;
+    }
+
     Application &Application::LoadEnvArc()
     {
         DoMethod(muiObject(), MUIM_Application_Load, MUIV_Application_Load_ENVARC);
@@ -413,6 +419,18 @@ namespace MUI
         return *this;
     }
 
+    Application &Application::SaveEnv()
+    {
+        DoMethod(muiObject(), MUIM_Application_Save, MUIV_Application_Save_ENV);
+        return *this;
+    }
+
+    Application &Application::SaveEnvArc()
+    {
+        DoMethod(muiObject(), MUIM_Application_Save, MUIV_Application_Save_ENVARC);
+        return *this;
+    }
+
     Application &Application::SetConfigItem(const unsigned long item, const void *data)
     {
         DoMethod(muiObject(), MUIM_Application_SetConfigItem, item, data);
@@ -428,12 +446,6 @@ namespace MUI
     Application &Application::SetMenuState(const unsigned long menuId, const bool stat)
     {
         DoMethod(muiObject(), MUIM_Application_SetMenuState, menuId, stat);
-        return *this;
-    }
-
-    Application &Application::SaveEnvArc()
-    {
-        DoMethod(muiObject(), MUIM_Application_Save, MUIV_Application_Save_ENVARC);
         return *this;
     }
 

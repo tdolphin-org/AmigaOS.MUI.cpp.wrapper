@@ -261,6 +261,9 @@ namespace MUI
         /// @brief [ @b MUIM_Application_Load ]
         /// Load application settings from the given file or magic cookie.
         Application &Load(const std::string &name);
+        /// @brief [ @b MUIM_Application_Load, @b MUIV_Application_Load_ENV ]
+        /// Load application settings from ENV:mui/.
+        Application &LoadEnv();
         /// @brief [ @b MUIM_Application_Load, @b MUIV_Application_Load_ENVARC ]
         /// Load application settings from ENVARC:mui/.
         Application &LoadEnvArc();
@@ -300,6 +303,12 @@ namespace MUI
         /// @brief [ @b MUIM_Application_Save ]
         /// Save application settings to the given file or magic cookie.
         Application &Save(const std::string &name);
+        /// @brief [ @b MUIM_Application_Save, @b MUIV_Application_Save_ENV ]
+        /// Save application settings to ENV:mui/.
+        Application &SaveEnv();
+        /// @brief [ @b MUIM_Application_Save, @b MUIV_Application_Save_ENVARC ]
+        /// Save application settings to ENVARC:mui/.
+        Application &SaveEnvArc();
         /// @brief [ @b MUIM_Application_SetConfigItem ]
         /// Private PSI method for setting a configuration item.
         Application &SetConfigItem(const unsigned long item, const void *data);
@@ -311,9 +320,6 @@ namespace MUI
         /// Enable or disable all matching menu items.
         /// Matching is done by the UserData value stored in the menu definition.
         Application &SetMenuState(const unsigned long menuId, const bool stat);
-        /// @brief [ @b MUIM_Application_Save, @b MUIV_Application_Save_ENVARC ]
-        /// Save application settings to ENVARC:mui/.
-        Application &SaveEnvArc();
         /// @brief [ @b MUIM_Application_ShowHelp ]
         /// Display an AmigaGuide help file and optionally jump to a node and line.
         /// The application is put to sleep until the help file is shown.
