@@ -1,7 +1,7 @@
 #
 #  MakeFile for "AmigaOS MUI C++ wrapper" project
 #
-# (c) 2022-2025 TDolphin
+# (c) 2022-2026 TDolphin
 #
 
 SUB_PROJECTS = wrappers tests examples
@@ -18,7 +18,6 @@ cross_aos_m68k: sub_projects_cross_aos_m68k
 mos_ppc: sub_projects_mos_ppc
 
 cross_mos_ppc: sub_projects_cross_mos_ppc
-
 
 sub_projects_build:
 	@echo "------------------------------------------------"
