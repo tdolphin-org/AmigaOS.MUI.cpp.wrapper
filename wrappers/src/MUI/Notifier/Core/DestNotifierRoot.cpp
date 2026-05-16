@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "DestNotifierRoot.hpp"
@@ -9,7 +9,7 @@
 #include "MUI/Core/NullObject.hpp"
 #include "NotifyDestType.hpp"
 
-#include <iostream>
+#include <cstdio>
 
 namespace MUI
 {
@@ -23,7 +23,7 @@ namespace MUI
     DestNotifierRoot::DestNotifierRoot(const NotifierObject &notifierObject, const enum NotifyDestType notifyDestType)
       : mNotifierObject(notifierObject)
       , notifyDestType(notifyDestType)
-      , mObject(MUI::NullObject {})
+      , mObject(MUI::NullObject { })
     {
     }
 
@@ -40,7 +40,8 @@ namespace MUI
                 return (void *)notifyDestType;
 
             default:
-                std::cerr << __PRETTY_FUNCTION__ << "destination object type: " << notifyDestType << " is not supported" << std::endl;
+                std::fprintf(stderr, "%s destination object type: %lu is not supported\n", __PRETTY_FUNCTION__,
+                             static_cast<unsigned long>(notifyDestType));
                 return nullptr;
         }
     }

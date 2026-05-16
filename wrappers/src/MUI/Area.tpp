@@ -326,7 +326,7 @@ namespace MUI
         {
             if (!this->ContainsTag(MUIA_Frame))
             {
-                std::cerr << __PRETTY_FUNCTION__ << ", missing Frame attribute for Area with FrameTitle attribute!" << std::endl;
+                std::fprintf(stderr, "%s, missing Frame attribute for Area with FrameTitle attribute!\n", __PRETTY_FUNCTION__);
                 return false;
             }
         }

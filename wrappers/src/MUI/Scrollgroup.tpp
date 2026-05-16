@@ -71,7 +71,7 @@ namespace MUI
 
         if (!this->ContainsTag(MUIA_Scrollgroup_Contents))
         {
-            std::cerr << __PRETTY_FUNCTION__ << ", missing Contents attribute for Scrollgroup!" << std::endl;
+            std::fprintf(stderr, "%s, missing Contents attribute for Scrollgroup!\n", __PRETTY_FUNCTION__);
             result = false;
         }
 

@@ -1,18 +1,19 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "CustomClassScope.hpp"
 
-#include <iostream>
 #include <stdexcept>
 
 #include <proto/alib.h>
 #include <proto/muimaster.h>
 
 #include "SDI/SDI_hook.h"
+
+#include <cstdio>
 
 DISPATCHER(Empty_Dispatcher)
 {
@@ -25,7 +26,7 @@ namespace MUI
       : mClassName(className)
     {
 #ifdef TRACE_MUI
-        std::cout << __PRETTY_FUNCTION__ << " : " << className << std::endl;
+        std::fprintf(stderr, "%s : %s\n", __PRETTY_FUNCTION__, className.c_str());
 #endif
 
         mpCustomClass = MUI_CreateCustomClass(nullptr, (char *)className.c_str(), nullptr, dataSize,
@@ -40,7 +41,7 @@ namespace MUI
     CustomClassScope::~CustomClassScope()
     {
 #ifdef TRACE_MUI
-        std::cout << __PRETTY_FUNCTION__ << " : " << mpCustomClass << std::endl;
+        std::fprintf(stderr, "%s : %p\n", __PRETTY_FUNCTION__, (void *)mpCustomClass);
 #endif
         if (mpCustomClass != nullptr)
             MUI_DeleteCustomClass(mpCustomClass);

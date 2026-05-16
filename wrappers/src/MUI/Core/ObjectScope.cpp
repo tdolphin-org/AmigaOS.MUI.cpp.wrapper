@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "ObjectScope.hpp"
@@ -12,7 +12,7 @@
 #include <string>
 
 #ifdef TRACE_MUI
-#include <iostream>
+#include <cstdio>
 #endif
 
 namespace MUI
@@ -25,7 +25,7 @@ namespace MUI
     ObjectScope::ObjectScope(Object *pObject)
     {
 #ifdef TRACE_MUI
-        std::cout << __PRETTY_FUNCTION__ << " " << pObject << std::endl;
+        std::fprintf(stderr, "%s %p\n", __PRETTY_FUNCTION__, (void *)pObject);
 #endif
         if (pObject == nullptr)
         {
@@ -39,7 +39,7 @@ namespace MUI
     ObjectScope::~ObjectScope()
     {
 #ifdef TRACE_MUI
-        std::cout << __PRETTY_FUNCTION__ << " MUI_DisposeObject(" << mpObject << ")" << std::endl;
+        std::fprintf(stderr, "%s MUI_DisposeObject(%p)\n", __PRETTY_FUNCTION__, (void *)mpObject);
 #endif
 
         MUI_DisposeObject(mpObject);

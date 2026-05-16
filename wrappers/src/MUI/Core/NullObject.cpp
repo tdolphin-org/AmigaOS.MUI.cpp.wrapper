@@ -1,13 +1,13 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "NullObject.hpp"
 
 #ifdef TRACE_MUI
-#include <iostream>
+#include <cstdio>
 #endif
 
 namespace MUI
@@ -15,7 +15,7 @@ namespace MUI
     NullObject::NullObject()
     {
 #ifdef TRACE_MUI
-        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
 #endif
     }
 }

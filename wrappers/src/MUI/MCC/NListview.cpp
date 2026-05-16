@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "NListview.hpp"
@@ -82,7 +82,7 @@ namespace MUI::MCC
         // So check if there is tag for NList (MUIA_NListview_NList).
         if (!hasNListObject)
         {
-            std::cerr << __PRETTY_FUNCTION__ << ", missing NList object for NListview!";
+            std::fprintf(stderr, "%s, missing NList object for NListview!\n", __PRETTY_FUNCTION__);
             result = false;
         }
 

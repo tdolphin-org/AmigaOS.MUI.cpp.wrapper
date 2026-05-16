@@ -404,7 +404,7 @@ namespace MUI
         {
             if (!this->ContainsTag(MUIA_List_MaxColumns))
             {
-                std::cerr << __PRETTY_FUNCTION__ << ", missing MaxColumns attribute for List with StringArray hooks!" << std::endl;
+                std::fprintf(stderr, "%s, missing MaxColumns attribute for List with StringArray hooks!\n", __PRETTY_FUNCTION__);
                 result = false;
             }
         }

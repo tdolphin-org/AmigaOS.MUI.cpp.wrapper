@@ -302,7 +302,7 @@ namespace MUI
         // So check if there is tag for RootObject (not null).
         if (!hasRootObject)
         {
-            std::cerr << __PRETTY_FUNCTION__ << ", missing RootObject for Window!" << std::endl;
+            std::fprintf(stderr, "%s, missing RootObject for Window!\n", __PRETTY_FUNCTION__);
             result = false;
         }
 

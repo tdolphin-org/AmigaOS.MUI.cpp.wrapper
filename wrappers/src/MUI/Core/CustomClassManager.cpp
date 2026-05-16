@@ -1,12 +1,12 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "CustomClassManager.hpp"
 
-#include <iostream>
+#include <cstdio>
 
 #include "CustomClassScope.hpp"
 
@@ -15,7 +15,7 @@ namespace MUI
     CustomClassesLifeTimeScope::~CustomClassesLifeTimeScope()
     {
 #ifdef TRACE_MUI
-        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
 #endif
         CustomClassManager::instance().Clear();
     }
@@ -25,16 +25,16 @@ namespace MUI
     CustomClassManagerCore::~CustomClassManagerCore()
     {
 #ifdef TRACE_MUI
-        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
 #endif
         if (!mCustomClassesMap.empty())
-            std::cerr << __PRETTY_FUNCTION__ << " map is not empty, use CustomClassesLifeTimeScope!" << std::endl;
+            std::fprintf(stderr, "%s map is not empty, use CustomClassesLifeTimeScope!\n", __PRETTY_FUNCTION__);
     }
 
     void CustomClassManagerCore::Clear()
     {
 #ifdef TRACE_MUI
-        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
 #endif
 
         mCustomClassesMap.clear();

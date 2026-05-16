@@ -76,7 +76,7 @@ namespace MUI
         // So check if there is tag for List (not null).
         if (!hasListObject)
         {
-            std::cerr << __PRETTY_FUNCTION__ << ", missing List object for Listview!" << std::endl;
+            std::fprintf(stderr, "%s, missing List object for Listview!\n", __PRETTY_FUNCTION__);
             result = false;
         }
 

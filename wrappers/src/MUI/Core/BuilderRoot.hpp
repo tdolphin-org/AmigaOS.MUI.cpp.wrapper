@@ -1,7 +1,7 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
@@ -11,7 +11,7 @@
 #include "Core/ToString.hpp"
 #include "Object.hpp"
 
-#include <iostream>
+#include <cstdio>
 #include <stdexcept>
 
 namespace MUI

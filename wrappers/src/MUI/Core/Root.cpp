@@ -10,8 +10,9 @@
 #include <proto/muimaster.h>
 
 #ifdef TRACE_MUI
-#include <iostream>
+#include <cstdio>
 #endif
+
 #include <stdexcept>
 
 namespace MUI
@@ -30,7 +31,7 @@ namespace MUI
       : mpMuiObject(nullptr)
     {
 #ifdef TRACE_MUI
-        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
 #endif
     }
 
