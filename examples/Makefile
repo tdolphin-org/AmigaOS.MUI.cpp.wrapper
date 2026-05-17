@@ -19,8 +19,8 @@ cross_amigaos_m68k: CPPC=m68k-amigaos-g++
 cross_amigaos_m68k: AR=m68k-amigaos-ar
 cross_amigaos_m68k: STRIP=m68k-amigaos-strip
 cross_amigaos_m68k: OBJDUMP=m68k-amigaos-objdump
-cross_amigaos_m68k: MORE_CPP_FLAGS="-DSTD_LIGHT -fno-rtti -ffunction-sections -fdata-sections"
-cross_amigaos_m68k: MORE_LFLAGS="-lMUIcpp.light -Wl,--gc-sections -lmui"
+cross_amigaos_m68k: MORE_CPP_FLAGS="-fno-rtti -ffunction-sections -fdata-sections"
+cross_amigaos_m68k: MORE_LFLAGS="-lMUIcpp -Wl,--gc-sections -lmui"
 cross_amigaos_m68k: build
 
 morphos_ppc: TARGET="MorphOS PPC"

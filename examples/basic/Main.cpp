@@ -8,7 +8,7 @@
 
 #include "Main.hpp"
 
-#include <iostream>
+#include <cstdio>
 #include <proto/alib.h>
 #include <proto/exec.h>
 
@@ -27,7 +27,7 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    cout << "basic MUI app example, showing usage of 'AmigaOS MUI C++ wrapper'" << endl;
+    std::fprintf(stderr, "%s\n", "basic MUI app example, showing usage of 'AmigaOS MUI C++ wrapper'");
 
     MuiMasterBaseScope muiBase;
 
@@ -112,7 +112,7 @@ int main(int argc, char **argv)
 
     // list of application windows
     for (auto window : app.getWindowList())
-        std::cout << "muiObjectPtr = " << window.muiObject() << " id=" << window.getID().toString() << std::endl;
+        std::fprintf(stderr, "muiObjectPtr = %p id=%s\n", (void *)window.muiObject(), window.getID().toString().c_str());
 
     // open window on constructor, close on destructor
     MUI::WindowScope windowScope(mainWindow);

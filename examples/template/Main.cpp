@@ -8,7 +8,7 @@
 
 #include "Main.hpp"
 
-#include <iostream>
+#include <cstdio>
 
 #include "App.hpp"
 
@@ -22,16 +22,16 @@ int main(int argc, char **argv)
     }
     catch (exception &e)
     {
-        cerr << "Exception: " << e.what() << endl;
+        std::fprintf(stderr, "Exception: %s\n", e.what());
         return RETURN_FAIL;
     }
     catch (...)
     {
-        cerr << "Exception(...)" << endl;
+        std::fprintf(stderr, "%s\n", "Exception(...)");
         return RETURN_FAIL;
     }
 
-    cout << "Application finished!" << endl;
+    std::fprintf(stderr, "%s\n", "Application finished!");
 
     return RETURN_OK;
 }
