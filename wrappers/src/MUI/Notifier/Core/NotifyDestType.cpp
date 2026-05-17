@@ -1,12 +1,14 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "NotifyDestType.hpp"
 
-std::ostream &operator<<(std::ostream &os, const MUI::NotifyDestType notifyDestType)
+#include "amiga_std_light/iostream.hpp"
+
+static amiga_std_light::basic_ostream &WriteNotifyDestType(amiga_std_light::basic_ostream &os, const MUI::NotifyDestType notifyDestType)
 {
     os << "MUI::NotifyDestType::";
 
@@ -42,4 +44,9 @@ std::ostream &operator<<(std::ostream &os, const MUI::NotifyDestType notifyDestT
     }
 
     return os;
+}
+
+amiga_std_light::basic_ostream &operator<<(amiga_std_light::basic_ostream &os, const MUI::NotifyDestType notifyDestType)
+{
+    return WriteNotifyDestType(os, notifyDestType);
 }

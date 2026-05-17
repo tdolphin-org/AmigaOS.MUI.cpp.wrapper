@@ -1,13 +1,17 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
 
-#include <iostream>
 #include <libraries/mui.h>
+
+namespace amiga_std_light
+{
+    class basic_ostream;
+}
 
 namespace MUI
 {
@@ -27,4 +31,4 @@ namespace MUI
     };
 }
 
-std::ostream &operator<<(std::ostream &os, const enum MUI::NotifyDestType notifyDestType);
+amiga_std_light::basic_ostream &operator<<(amiga_std_light::basic_ostream &os, const enum MUI::NotifyDestType notifyDestType);
