@@ -3,7 +3,7 @@
 //
 //  Components
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "ActionRoot.hpp"
@@ -14,7 +14,7 @@
 #include "Dispatcher/OnTimerDispatcher.hpp"
 
 #ifdef TRACE_CUSTOM_COMPONENTS
-#include <iostream>
+#include <cstdio>
 #endif
 
 namespace Components::MCC
@@ -28,49 +28,49 @@ namespace Components::MCC
         {
             case OM_NEW:
 #ifdef TRACE_CUSTOM_COMPONENTS
-                std::cout << __PRETTY_FUNCTION__ << "::OM_NEW" << std::endl;
+                std::fprintf(stderr, "%s::OM_NEW\n", __PRETTY_FUNCTION__);
 #endif
                 result.methodResult = methodNew(cl, obj, msg);
                 break;
             case OM_DISPOSE:
 #ifdef TRACE_CUSTOM_COMPONENTS
-                std::cout << __PRETTY_FUNCTION__ << "::OM_DISPOSE" << std::endl;
+                std::fprintf(stderr, "%s::OM_DISPOSE\n", __PRETTY_FUNCTION__);
 #endif
                 result.methodResult = methodDispose(cl, obj, msg);
                 break;
             case MUIM_Setup:
 #ifdef TRACE_CUSTOM_COMPONENTS
-                std::cout << __PRETTY_FUNCTION__ << "::MUIM_Setup" << std::endl;
+                std::fprintf(stderr, "%s::MUIM_Setup\n", __PRETTY_FUNCTION__);
 #endif
                 result.methodResult = methodSetup(cl, obj, msg);
                 break;
             case MUIM_Cleanup:
 #ifdef TRACE_CUSTOM_COMPONENTS
-                std::cout << __PRETTY_FUNCTION__ << "::MUIM_Cleanup" << std::endl;
+                std::fprintf(stderr, "%s::MUIM_Cleanup\n", __PRETTY_FUNCTION__);
 #endif
                 result.methodResult = methodCleanup(cl, obj, msg);
                 break;
             case MUIM_ActionOnClick:
 #ifdef TRACE_CUSTOM_COMPONENTS
-                std::cout << __PRETTY_FUNCTION__ << "::MUIM_ActionOnClick" << std::endl;
+                std::fprintf(stderr, "%s::MUIM_ActionOnClick\n", __PRETTY_FUNCTION__);
 #endif
                 result.methodResult = methodOnClick(cl, obj, msg);
                 break;
             case MUIM_ActionOnTimer:
 #ifdef TRACE_CUSTOM_COMPONENTS
-                std::cout << __PRETTY_FUNCTION__ << "::MUIM_ActionOnTimer" << std::endl;
+                std::fprintf(stderr, "%s::MUIM_ActionOnTimer\n", __PRETTY_FUNCTION__);
 #endif
                 result.methodResult = methodOnTimer(cl, obj, msg);
                 break;
             case MUIM_ActionOnActiveEntry:
 #ifdef TRACE_CUSTOM_COMPONENTS
-                std::cout << __PRETTY_FUNCTION__ << "::MUIM_ActionOnActiveEntry" << std::endl;
+                std::fprintf(stderr, "%s::MUIM_ActionOnActiveEntry\n", __PRETTY_FUNCTION__);
 #endif
                 result.methodResult = methodOnActiveEntry(cl, obj, msg);
                 break;
             case MUIM_ActionOnDoubleClickEntry:
 #ifdef TRACE_CUSTOM_COMPONENTS
-                std::cout << __PRETTY_FUNCTION__ << "::MUIM_ActionOnDoubleClickEntry" << std::endl;
+                std::fprintf(stderr, "%s::MUIM_ActionOnDoubleClickEntry\n", __PRETTY_FUNCTION__);
 #endif
                 result.methodResult = methodOnDoubleClickEntry(cl, obj, msg);
                 break;

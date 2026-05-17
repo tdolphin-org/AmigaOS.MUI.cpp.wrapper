@@ -3,14 +3,10 @@
 //
 //  Components
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "ActionText.hpp"
-
-#ifdef TRACE_CUSTOM_COMPONENTS
-#include <iostream>
-#endif
 
 #include <proto/alib.h>
 #include <proto/exec.h>
@@ -21,11 +17,15 @@
 #include "SDI/SDI_compiler.h"
 #include "SDI/SDI_hook.h"
 
+#ifdef TRACE_CUSTOM_COMPONENTS
+#include <cstdio>
+#endif
+
 DISPATCHER(ActionTextDispatcherFunc)
 {
-    // Be careful with std::cout, when here is some "debug" info !!!
+    // Be careful with debug output here.
     // It causes that MUI interface hangs during "drag&drop"!
-    // std::cout << __PRETTY_FUNCTION__ << std::hex << "MethodID: 0x" << msg->MethodID << std::endl;
+    // std::fprintf(stderr, "%s MethodID: 0x%lx\n", __PRETTY_FUNCTION__, msg->MethodID);
 
     auto dispatchMethodResult = Components::MCC::dispatchMethod(msg->MethodID, cl, obj, msg);
     if (dispatchMethodResult.dispatchResult)
@@ -44,7 +44,7 @@ namespace Components::MCC
     ActionRoot<MUI::Text> ActionTextBuilder::object(OnClickDispatcher &dispatcher)
     {
 #ifdef TRACE_CUSTOM_COMPONENTS
-        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
 #endif
         PushTag(MUIA_ActionDispatcher, (void *)&dispatcher);
 
