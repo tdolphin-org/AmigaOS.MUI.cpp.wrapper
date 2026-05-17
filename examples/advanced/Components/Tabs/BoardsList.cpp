@@ -3,7 +3,7 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "BoardsList.hpp"
@@ -12,8 +12,6 @@
 #include "Components/MCC/BoardsList.hpp"
 
 #include <iomanip>
-#include <iostream>
-#include <sstream>
 
 namespace Components
 {

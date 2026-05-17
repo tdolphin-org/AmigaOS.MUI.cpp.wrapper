@@ -3,7 +3,7 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "BoardsList.hpp"
@@ -12,7 +12,7 @@
 #include "MUI/Notifier/Notifier.hpp"
 
 #ifdef TRACE_CUSTOM_COMPONENTS
-#include <iostream>
+#include <cstdio>
 #endif
 
 #include <proto/alib.h>
@@ -80,7 +80,7 @@ namespace Components::MCC
       : MUI::ListBuilderTemplate<BoardsListBuilder, ActionRoot<MUI::List>>("BoardsList")
     {
 #ifdef TRACE_CUSTOM_COMPONENTS
-        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
 #endif
         tagMaxColumns(2);
     }
@@ -88,7 +88,7 @@ namespace Components::MCC
     ActionRoot<MUI::List> BoardsListBuilder::object()
     {
 #ifdef TRACE_CUSTOM_COMPONENTS
-        std::cout << __PRETTY_FUNCTION__ << std::endl;
+        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
 #endif
         auto list = MUI::ListBuilderTemplate<BoardsListBuilder, ActionRoot<MUI::List>>::object(sizeof(CustomObjectData),
                                                                                                DISPATCHER_REF(BoardsList));

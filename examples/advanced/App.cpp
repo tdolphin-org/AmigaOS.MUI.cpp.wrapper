@@ -3,7 +3,7 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "App.hpp"
@@ -11,7 +11,7 @@
 #include "MUI/Context/ApplicationContext.hpp"
 #include "MUI/Core/CustomClassManager.hpp"
 
-#include <iostream>
+#include <cstdio>
 #include <proto/alib.h>
 #include <proto/exec.h>
 
@@ -31,7 +31,7 @@ void AppCore::Run()
 
     // list of application windows
     for (auto window : mApplication.muiRoot().getWindowList())
-        std::cout << "muiObjectPtr = " << window.muiObject() << " id=" << window.getID().toString() << std::endl;
+        std::fprintf(stderr, "muiObjectPtr = %p id=%s\n", (void *)window.muiObject(), window.getID().toString().c_str());
 
     auto appWindow = MUI::ApplicationContext::instance().getAppWindow();
     // open window on constructor, close on destructor

@@ -3,20 +3,20 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Main.hpp"
 
 #include "App.hpp"
 
-#include <iostream>
+#include <cstdio>
 
 using namespace std;
 
 int main(int argc, char **argv)
 {
-    cout << "advanced MUI application example, showing usage of 'AmigaOS MUI C++ wrapper'" << endl;
+    std::fprintf(stderr, "%s\n", "advanced MUI application example, showing usage of 'AmigaOS MUI C++ wrapper'");
 
     try
     {
@@ -24,21 +24,21 @@ int main(int argc, char **argv)
     }
     catch (const runtime_error &e)
     {
-        cerr << "Runtime exception: " << e.what() << endl;
+        std::fprintf(stderr, "Runtime exception: %s\n", e.what());
         return -1;
     }
     catch (const exception &e)
     {
-        cerr << "Exception: " << e.what() << endl;
+        std::fprintf(stderr, "Exception: %s\n", e.what());
         return RETURN_FAIL;
     }
     catch (...)
     {
-        cerr << "Unknown exception (...)" << endl;
+        std::fprintf(stderr, "%s\n", "Unknown exception (...)");
         return RETURN_FAIL;
     }
 
-    std::cout << "Application finished!" << std::endl;
+    std::fprintf(stderr, "%s\n", "Application finished!");
 
     return RETURN_OK;
 }
