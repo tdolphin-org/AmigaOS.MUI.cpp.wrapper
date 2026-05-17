@@ -28,7 +28,8 @@ DEBUG_FLAGS = #-ggdb -g3
 # compiler/linker flags
 # WARNING: use the same -Ox option for this lib and Your application, diffrent values can cause linking errors
 # -fno-rtti disables RTTI (Run-Time Type Information) support, which is not needed for MUI C++ wrapper
-CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS) -I${AOSCPP_PATH}/wrappers/src -Isrc -Os
+CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS) -I${AOSCPP_PATH}/wrappers/src -Isrc \
+	-fno-rtti -ffunction-sections -fdata-sections -fvisibility=hidden -fvisibility-inlines-hidden -Os
 AFLAGS = rcs
 
 dir_guard = mkdir -p $(@D)

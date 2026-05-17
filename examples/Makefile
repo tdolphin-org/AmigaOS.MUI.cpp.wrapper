@@ -19,8 +19,8 @@ cross_amigaos_m68k: CPPC=m68k-amigaos-g++
 cross_amigaos_m68k: AR=m68k-amigaos-ar
 cross_amigaos_m68k: STRIP=m68k-amigaos-strip
 cross_amigaos_m68k: OBJDUMP=m68k-amigaos-objdump
-cross_amigaos_m68k: MORE_CPP_FLAGS="-fno-rtti -ffunction-sections -fdata-sections"
-cross_amigaos_m68k: MORE_LFLAGS="-lMUIcpp -Wl,--gc-sections -lmui"
+cross_amigaos_m68k: MORE_CPP_FLAGS=""
+cross_amigaos_m68k: MORE_LFLAGS="-lmui"
 cross_amigaos_m68k: build
 
 morphos_ppc: TARGET="MorphOS PPC"
@@ -30,7 +30,7 @@ morphos_ppc: AR=ar
 morphos_ppc: STRIP=strip
 morphos_ppc: OBJDUMP=objdump
 morphos_ppc: MORE_CPP_FLAGS="-noixemul"
-morphos_ppc: MORE_LFLAGS="-lMUIcpp"
+morphos_ppc: MORE_LFLAGS=""
 morphos_ppc: build
 
 cross_morphos_ppc: TARGET="Cross MorphOS PPC"
@@ -40,7 +40,7 @@ cross_morphos_ppc: AR=ppc-morphos-ar
 cross_morphos_ppc: STRIP=ppc-morphos-strip
 cross_morphos_ppc: OBJDUMP=ppc-morphos-objdump
 cross_morphos_ppc: MORE_CPP_FLAGS="-noixemul"
-cross_morphos_ppc: MORE_LFLAGS="-lMUIcpp"
+cross_morphos_ppc: MORE_LFLAGS=""
 cross_morphos_ppc: build
 
 build:
