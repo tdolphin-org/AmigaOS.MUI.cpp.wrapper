@@ -6,7 +6,7 @@
 
 #include "Volumelist.hpp"
 
-#include <libraries/mui.h>
+#include "mui.hpp"
 #include <proto/muimaster.h>
 
 namespace MUI

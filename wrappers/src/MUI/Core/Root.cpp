@@ -6,6 +6,7 @@
 
 #include "Root.hpp"
 
+#include "mui.hpp"
 #include <proto/intuition.h>
 #include <proto/muimaster.h>
 

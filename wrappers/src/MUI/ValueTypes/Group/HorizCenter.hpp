@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <libraries/mui.h>
+#include "mui.hpp"
 
 #ifdef MUIA_Group_HorizCenter
 

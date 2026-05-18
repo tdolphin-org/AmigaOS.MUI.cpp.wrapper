@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <libraries/mui.h>
+#include "mui.hpp"
 
 // detect MUI Version
 #ifdef __MORPHOS__

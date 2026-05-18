@@ -8,11 +8,9 @@
 
 #include <stdexcept>
 
+#include "mui.hpp"
 #include <proto/exec.h>
 #include <proto/muimaster.h>
-#ifndef MUIMASTER_NAME
-#include <libraries/mui.h>
-#endif
 
 struct Library *MUIMasterBase = nullptr;
 

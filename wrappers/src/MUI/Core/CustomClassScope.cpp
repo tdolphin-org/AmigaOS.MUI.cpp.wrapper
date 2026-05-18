@@ -8,6 +8,7 @@
 
 #include <stdexcept>
 
+#include "mui.hpp"
 #include <proto/alib.h>
 #include <proto/muimaster.h>
 

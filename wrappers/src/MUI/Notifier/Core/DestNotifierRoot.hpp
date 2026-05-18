@@ -1,14 +1,14 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
 
 #include "NotifierObject.hpp"
 
-#include <libraries/mui.h>
+#include "mui.hpp"
 
 namespace MUI
 {

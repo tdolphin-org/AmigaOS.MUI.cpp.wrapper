@@ -1,11 +1,12 @@
 //
 //  AmigaOS MUI C++ wrapper
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
 
+#include "mui.hpp"
 #include <proto/muimaster.h>
 
 #include "MUI/ValueTypes/ImageOrBackground.hpp"

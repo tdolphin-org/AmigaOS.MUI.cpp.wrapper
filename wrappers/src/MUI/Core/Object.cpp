@@ -10,6 +10,7 @@
 #include "CustomClassManager.hpp"
 #include "CustomClassScope.hpp"
 
+#include "mui.hpp"
 #include <proto/intuition.h>
 #include <proto/muimaster.h>
 

@@ -11,7 +11,7 @@
 #include "Core/Root.hpp"
 #include "Notifier/Core/NotifyDestType.hpp"
 
-#include <libraries/mui.h>
+#include "mui.hpp"
 #include <type_traits>
 #include <workbench/workbench.h>
 

@@ -6,6 +6,7 @@
 
 #include "ObjectScope.hpp"
 
+#include "mui.hpp"
 #include <proto/muimaster.h>
 
 #include <stdexcept>

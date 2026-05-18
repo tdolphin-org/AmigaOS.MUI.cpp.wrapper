@@ -9,7 +9,7 @@
 #include "Core/BuilderRoot.hpp"
 #include "Core/Root.hpp"
 
-#include <libraries/mui.h>
+#include "mui.hpp"
 
 namespace MUI
 {
