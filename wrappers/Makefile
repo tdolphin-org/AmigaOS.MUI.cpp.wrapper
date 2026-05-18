@@ -29,14 +29,22 @@ cross_amigaos_m68k: TARGET="Cross AmigaOS m68k"
 cross_amigaos_m68k: SUB_BUILD_PATH=amigaos/m68k
 cross_amigaos_m68k: CPPC=m68k-amigaos-g++
 cross_amigaos_m68k: AR=m68k-amigaos-ar
-cross_amigaos_m68k: MORE_CPP_FLAGS=""
-cross_amigaos_m68k: build
+cross_amigaos_m68k: cross_amigaos_m68k_MUI38 cross_amigaos_m68k_MUI5
+
+cross_amigaos_m68k_MUI38: MORE_CPP_FLAGS="-DAOS_MUI38"
+cross_amigaos_m68k_MUI38: LIB_MUICPP_NAME=libMUIcpp38.a
+cross_amigaos_m68k_MUI38: build
+
+cross_amigaos_m68k_MUI5: MORE_CPP_FLAGS="-DAOS_MUI5"
+cross_amigaos_m68k_MUI5: LIB_MUICPP_NAME=libMUIcpp5.a
+cross_amigaos_m68k_MUI5: build
 
 morphos_ppc: TARGET="MorphOS PPC"
 morphos_ppc: SUB_BUILD_PATH=morphos/ppc
 morphos_ppc: CPPC=g++
 morphos_ppc: AR=ar
 morphos_ppc: MORE_CPP_FLAGS="-noixemul -fno-threadsafe-statics -D_GLIBCXX_HAS_GTHREADS=0"
+morphos_ppc: LIB_MUICPP_NAME=libMUIcpp.a
 morphos_ppc: build
 
 cross_morphos_ppc: TARGET="Cross MorphOS PPC"
@@ -44,14 +52,16 @@ cross_morphos_ppc: SUB_BUILD_PATH=morphos/ppc
 cross_morphos_ppc: CPPC=ppc-morphos-g++
 cross_morphos_ppc: AR=ppc-morphos-ar
 cross_morphos_ppc: MORE_CPP_FLAGS="-noixemul -fno-threadsafe-statics -D_GLIBCXX_HAS_GTHREADS=0"
+cross_morphos_ppc: LIB_MUICPP_NAME=libMUIcpp.a
 cross_morphos_ppc: build
-
+	
 build:
 	@echo "# Build ... $(TARGET) ... $(SUB_BUILD_PATH)"
 	$(MAKE) -f makefile.generic.gcc.mk \
 	AOSCPP_PATH=../../AmigaOS.cpp.wrapper \
 	SUB_BUILD_PATH=$(SUB_BUILD_PATH) CPPC=$(CPPC) AR=$(AR) \
 	MORE_CPP_FLAGS=$(MORE_CPP_FLAGS) \
+	LIB_MUICPP_NAME=$(LIB_MUICPP_NAME) \
 	all
 
 clean.obj:

@@ -23,7 +23,8 @@
 # trace flags
 # TRACE_MUI - trace MUI (-DTRACE_MUI)
 # TRACE_SSC - trace String Storage Collector (-DTRACE_SSC)
-DEBUG_FLAGS = #-ggdb -g3 
+# DEBUG_TAG_SYMBOLS - include debug symbols for tag names
+DEBUG_FLAGS = #-ggdb -g3
 
 # compiler/linker flags
 # WARNING: use the same -Ox option for this lib and Your application, diffrent values can cause linking errors
@@ -40,24 +41,24 @@ AOS_WRAPPER_PATH = ${AOSCPP_PATH}/wrappers
 AOS_WRAPPER_MODULES = Core AOS amiga_std_light
 AOS_WRAPPER_SRC_DIRS = $(addprefix $(AOS_WRAPPER_PATH)/src/,$(AOS_WRAPPER_MODULES))
 AOS_WRAPPER_SRCS = $(foreach sdir,$(AOS_WRAPPER_SRC_DIRS),$(wildcard $(sdir)/*.cpp))
-AOS_WRAPPER_CPP_FLAGS = $(CPP_FLAGS) -DDEBUG_TAG_SYMBOLS
+AOS_WRAPPER_CPP_FLAGS = $(CPP_FLAGS)
 
 MODULES = Core MUI MUI/Context MUI/Core MUI/MCC MUI/Notifier MUI/Notifier/Core MUI/Notifier/Dest MUI/Notifier/Source
 SRC_DIRS = src $(addprefix src/,$(MODULES))
 SRCS = $(foreach sdir,$(SRC_DIRS),$(wildcard $(sdir)/*.cpp))
-OBJS = $(patsubst src/%.cpp,obj/$(SUB_BUILD_PATH)/normal/%.o,$(SRCS))\
-	$(patsubst $(AOS_WRAPPER_PATH)/src/%.cpp,$(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)/normal/%.o,$(AOS_WRAPPER_SRCS))
+OBJS = $(patsubst src/%.cpp,obj/$(SUB_BUILD_PATH)/%.o,$(SRCS))\
+	$(patsubst $(AOS_WRAPPER_PATH)/src/%.cpp,$(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)/%.o,$(AOS_WRAPPER_SRCS))
 
 # target libs
-LIB_MUICPP = lib/$(SUB_BUILD_PATH)/libMUIcpp.a
+LIB_MUICPP = lib/$(SUB_BUILD_PATH)/$(LIB_MUICPP_NAME)
 
 all: $(LIB_MUICPP)
 
-obj/$(SUB_BUILD_PATH)/normal/%.o: src/%.cpp src/%.hpp
+obj/$(SUB_BUILD_PATH)/%.o: src/%.cpp src/%.hpp
 	$(dir_guard)
 	$(CPPC) $(CPP_FLAGS) -c $< -o $@
 
-$(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)/normal/%.o: $(AOS_WRAPPER_PATH)/src/%.cpp $(AOS_WRAPPER_PATH)/src/%.hpp
+$(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)/%.o: $(AOS_WRAPPER_PATH)/src/%.cpp $(AOS_WRAPPER_PATH)/src/%.hpp
 	$(dir_guard)
 	$(CPPC) $(AOS_WRAPPER_CPP_FLAGS) -c $< -o $@
 
