@@ -14,14 +14,14 @@
 namespace Components
 {
     TabsContainerTitles::TabsContainerTitles(const std::vector<std::pair<std::string, MUI::Area &>> &tabs)
-#ifdef AOS_MUI_VERSION_5
+#ifdef MUIC_Title
       : mTabsTitle(MUI::TitleBuilder().tagClosable(true).tagNewable(true).object())
 #else
       : mTitleNotSupportedText(MUI::TextBuilder().tagContents("MUI::Title not supported (compiled) by this MUI version").object())
 #endif
       , mComponent(MUI::GroupBuilder()
                        .tagCycleChain()
-#ifdef AOS_MUI_VERSION_5
+#ifdef MUIC_Title
                        .tagChild(mTabsTitle)
 #else
                        .tagChild(mTitleNotSupportedText)
@@ -33,7 +33,7 @@ namespace Components
 #endif
                        .object())
     {
-#ifdef AOS_MUI_VERSION_5
+#ifdef MUIC_Title
         for (auto &tab : tabs)
             mTabsTitle.AddTail(MUI::TextBuilder().tagContents(tab.first).object());
 #endif
