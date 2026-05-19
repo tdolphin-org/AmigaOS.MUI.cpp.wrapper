@@ -35,7 +35,7 @@ AFLAGS = rcs
 
 dir_guard = mkdir -p $(@D)
 
-BINPATH = out/$(SUB_BUILD_PATH)
+LIBPATH = lib/$(SUB_BUILD_PATH)
 
 AOS_WRAPPER_PATH = ${AOSCPP_PATH}/wrappers
 AOS_WRAPPER_MODULES = Core AOS amiga_std_light
@@ -46,19 +46,19 @@ AOS_WRAPPER_CPP_FLAGS = $(CPP_FLAGS)
 MODULES = Core MUI MUI/Context MUI/Core MUI/MCC MUI/Notifier MUI/Notifier/Core MUI/Notifier/Dest MUI/Notifier/Source
 SRC_DIRS = src $(addprefix src/,$(MODULES))
 SRCS = $(foreach sdir,$(SRC_DIRS),$(wildcard $(sdir)/*.cpp))
-OBJS = $(patsubst src/%.cpp,obj/$(SUB_BUILD_PATH)/%.o,$(SRCS))\
-	$(patsubst $(AOS_WRAPPER_PATH)/src/%.cpp,$(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)/%.o,$(AOS_WRAPPER_SRCS))
+OBJS = $(patsubst src/%.cpp,obj/$(SUB_BUILD_PATH)$(OBJ_PATH_SUFFIX)/%.o,$(SRCS))\
+	$(patsubst $(AOS_WRAPPER_PATH)/src/%.cpp,$(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)$(OBJ_PATH_SUFFIX)/%.o,$(AOS_WRAPPER_SRCS))
 
 # target libs
-LIB_MUICPP = lib/$(SUB_BUILD_PATH)/$(LIB_MUICPP_NAME)
+LIB_MUICPP = $(LIBPATH)/$(LIB_MUICPP_NAME)
 
 all: $(LIB_MUICPP)
 
-obj/$(SUB_BUILD_PATH)/%.o: src/%.cpp src/%.hpp
+obj/$(SUB_BUILD_PATH)$(OBJ_PATH_SUFFIX)/%.o: src/%.cpp src/%.hpp
 	$(dir_guard)
 	$(CPPC) $(CPP_FLAGS) -c $< -o $@
 
-$(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)/%.o: $(AOS_WRAPPER_PATH)/src/%.cpp $(AOS_WRAPPER_PATH)/src/%.hpp
+$(AOS_WRAPPER_PATH)/obj/$(SUB_BUILD_PATH)$(OBJ_PATH_SUFFIX)/%.o: $(AOS_WRAPPER_PATH)/src/%.cpp $(AOS_WRAPPER_PATH)/src/%.hpp
 	$(dir_guard)
 	$(CPPC) $(AOS_WRAPPER_CPP_FLAGS) -c $< -o $@
 

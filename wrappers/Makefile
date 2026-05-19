@@ -4,6 +4,8 @@
 #  (c) 2022-2026 TDolphin
 #
 
+.PHONY: all build clean clean.obj cross_amigaos_m68k_MUI38 cross_amigaos_m68k_MUI5 cross_amigaos_m68k morphos_ppc cross_morphos_ppc
+
 all:
 	@echo "make cross_amigaos_m68k - cross compilation on linux"
 	@echo "make morphos_ppc - build on MorphOS"
@@ -25,18 +27,26 @@ all:
 # -noixemul (MorphOS):
 #   build against native ABI/runtime (without ixemul emulation layer).
 
-cross_amigaos_m68k: TARGET="Cross AmigaOS m68k"
-cross_amigaos_m68k: SUB_BUILD_PATH=amigaos/m68k
-cross_amigaos_m68k: CPPC=m68k-amigaos-g++
-cross_amigaos_m68k: AR=m68k-amigaos-ar
-cross_amigaos_m68k: cross_amigaos_m68k_MUI38 cross_amigaos_m68k_MUI5
+cross_amigaos_m68k:
+	$(MAKE) cross_amigaos_m68k_MUI38
+	$(MAKE) cross_amigaos_m68k_MUI5
 
+cross_amigaos_m68k_MUI38: TARGET="Cross AmigaOS m68k"
+cross_amigaos_m68k_MUI38: SUB_BUILD_PATH=amigaos/m68k
+cross_amigaos_m68k_MUI38: CPPC=m68k-amigaos-g++
+cross_amigaos_m68k_MUI38: AR=m68k-amigaos-ar
 cross_amigaos_m68k_MUI38: MORE_CPP_FLAGS="-DAOS_MUI38"
 cross_amigaos_m68k_MUI38: LIB_MUICPP_NAME=libMUIcpp38.a
+cross_amigaos_m68k_MUI38: OBJ_PATH_SUFFIX=/MUI38
 cross_amigaos_m68k_MUI38: build
 
+cross_amigaos_m68k_MUI5: TARGET="Cross AmigaOS m68k"
+cross_amigaos_m68k_MUI5: SUB_BUILD_PATH=amigaos/m68k
+cross_amigaos_m68k_MUI5: CPPC=m68k-amigaos-g++
+cross_amigaos_m68k_MUI5: AR=m68k-amigaos-ar
 cross_amigaos_m68k_MUI5: MORE_CPP_FLAGS="-DAOS_MUI5"
 cross_amigaos_m68k_MUI5: LIB_MUICPP_NAME=libMUIcpp5.a
+cross_amigaos_m68k_MUI5: OBJ_PATH_SUFFIX=/MUI5
 cross_amigaos_m68k_MUI5: build
 
 morphos_ppc: TARGET="MorphOS PPC"
@@ -62,6 +72,7 @@ build:
 	SUB_BUILD_PATH=$(SUB_BUILD_PATH) CPPC=$(CPPC) AR=$(AR) \
 	MORE_CPP_FLAGS=$(MORE_CPP_FLAGS) \
 	LIB_MUICPP_NAME=$(LIB_MUICPP_NAME) \
+	OBJ_PATH_SUFFIX=$(OBJ_PATH_SUFFIX) \
 	all
 
 clean.obj:
