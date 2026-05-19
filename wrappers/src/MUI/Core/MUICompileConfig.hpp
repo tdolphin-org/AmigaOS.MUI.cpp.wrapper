@@ -17,7 +17,7 @@
 #endif
 
 #define MOS_MUI_VERSION_5
-#elif defined(MUIMASTER_VMIN) && defined(MUIMASTER_VLATEST) && (MUIMASTER_VMIN == 19) && (MUIMASTER_VLATEST == 20)
+#elif defined(MUIMASTER_VMIN) && defined(MUIMASTER_VLATEST) && (MUIMASTER_VMIN == 11) && (MUIMASTER_VLATEST == 19)
 // MUI 3.8 for amigaos3
 
 #ifdef DEBUG
@@ -25,7 +25,7 @@
 #endif
 
 #define AOS_MUI_VERSION_3_8
-#elif defined(MUIMASTER_VMIN) && defined(MUIMASTER_VLATEST) && (MUIMASTER_VMIN == 11) && (MUIMASTER_VLATEST == 19)
+#elif defined(MUIMASTER_VMIN) && defined(MUIMASTER_VLATEST) && (MUIMASTER_VMIN == 20) && (MUIMASTER_VLATEST == 20)
 // MUI 5.0 for amigaos3
 
 #ifdef DEBUG

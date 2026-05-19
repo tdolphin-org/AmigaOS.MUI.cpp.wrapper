@@ -24,10 +24,10 @@ namespace MUI
 
     RGBColor Pendisplay::getRGBcolor() const
     {
-#ifdef MOS_MUI_VERSION_5
-        auto *rgbColor = reinterpret_cast<MUI_RGBColor *>(GetValueAsULongPtr(MUIA_Pendisplay_RGBcolor));
-#else
+#ifdef AOS_MUI_VERSION_3_8
         auto *rgbColor = reinterpret_cast<MUI_RGBcolor *>(GetValueAsULongPtr(MUIA_Pendisplay_RGBcolor));
+#else
+        auto *rgbColor = reinterpret_cast<MUI_RGBColor *>(GetValueAsULongPtr(MUIA_Pendisplay_RGBcolor));
 #endif
         return rgbColor == nullptr ? RGBColor() : RGBColor(*rgbColor);
     }
@@ -59,10 +59,10 @@ namespace MUI
 
     Pendisplay &Pendisplay::setRGBcolor(const RGBColor &rgbColor)
     {
-#ifdef MOS_MUI_VERSION_5
-        MUI_RGBColor rgb { rgbColor.red32bit(), rgbColor.green32bit(), rgbColor.blue32bit() };
-#else
+#ifdef AOS_MUI_VERSION_3_8
         MUI_RGBcolor rgb { rgbColor.red32bit(), rgbColor.green32bit(), rgbColor.blue32bit() };
+#else
+        MUI_RGBColor rgb { rgbColor.red32bit(), rgbColor.green32bit(), rgbColor.blue32bit() };
 #endif
         SetValue(MUIA_Pendisplay_RGBcolor, &rgb);
         return *this;
