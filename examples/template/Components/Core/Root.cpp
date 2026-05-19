@@ -8,6 +8,7 @@
 
 #include "Root.hpp"
 
+#include "mui.hpp"
 #include <proto/muimaster.h>
 
 namespace Components

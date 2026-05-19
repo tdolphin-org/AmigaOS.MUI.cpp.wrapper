@@ -10,7 +10,7 @@
 
 CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS) -I${AOSCPP_PATH}/wrappers/src -I$(PROJECT) -I../wrappers/src -I../components/src \
 	-fno-rtti -ffunction-sections -fdata-sections -Os
-LFLAGS = -L../wrappers/lib/$(SUB_BUILD_PATH) -lstdc++ -noixemul -lMUIcpp $(MORE_LFLAGS) -Wl,--gc-sections
+LFLAGS = -L../wrappers/lib/$(SUB_BUILD_PATH) -lstdc++ -noixemul $(MORE_LFLAGS) -Wl,--gc-sections
 
 dir_guard = mkdir -p $(@D)
 

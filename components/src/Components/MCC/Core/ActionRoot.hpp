@@ -3,13 +3,13 @@
 //
 //  Components
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #pragma once
 
+#include "mui.hpp"
 #include <intuition/classusr.h>
-#include <libraries/mui.h>
 #include <proto/alib.h>
 #include <proto/utility.h>
 
