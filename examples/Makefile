@@ -20,7 +20,7 @@ cross_amigaos_m68k: AR=m68k-amigaos-ar
 cross_amigaos_m68k: STRIP=m68k-amigaos-strip
 cross_amigaos_m68k: OBJDUMP=m68k-amigaos-objdump
 cross_amigaos_m68k: MORE_CPP_FLAGS="-DAOS_MUI5"
-cross_amigaos_m68k: MORE_LFLAGS=" -lMUIcpp5"
+cross_amigaos_m68k: MORE_LFLAGS="-lMUIcpp5 -lstdc++"
 cross_amigaos_m68k: build
 
 morphos_ppc: TARGET="MorphOS PPC"
@@ -30,7 +30,7 @@ morphos_ppc: AR=ar
 morphos_ppc: STRIP=strip
 morphos_ppc: OBJDUMP=objdump
 morphos_ppc: MORE_CPP_FLAGS="-noixemul"
-morphos_ppc: MORE_LFLAGS="-lMUIcpp"
+morphos_ppc: MORE_LFLAGS="-lMUIcpp -lauto -noixemul -Wl,-u,__CSTP___initstdio -Wl,--gc-keep-exported"
 morphos_ppc: build
 
 cross_morphos_ppc: TARGET="Cross MorphOS PPC"
@@ -40,7 +40,7 @@ cross_morphos_ppc: AR=ppc-morphos-ar
 cross_morphos_ppc: STRIP=ppc-morphos-strip
 cross_morphos_ppc: OBJDUMP=ppc-morphos-objdump
 cross_morphos_ppc: MORE_CPP_FLAGS="-noixemul"
-cross_morphos_ppc: MORE_LFLAGS="-lMUIcpp"
+cross_morphos_ppc: MORE_LFLAGS="-lMUIcpp -lauto -noixemul -Wl,-u,__CSTP___initstdio -Wl,--gc-keep-exported"
 cross_morphos_ppc: build
 
 build:
