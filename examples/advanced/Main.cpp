@@ -10,13 +10,13 @@
 
 #include "App.hpp"
 
-#include <cstdio>
+#include "amiga_std_light/iostream.hpp"
 
 using namespace std;
 
 int main(int argc, char **argv)
 {
-    std::fprintf(stderr, "%s\n", "advanced MUI application example, showing usage of 'AmigaOS MUI C++ wrapper'");
+    std::cerr << "advanced MUI application example, showing usage of 'AmigaOS MUI C++ wrapper'\n";
 
     try
     {
@@ -24,21 +24,21 @@ int main(int argc, char **argv)
     }
     catch (const runtime_error &e)
     {
-        std::fprintf(stderr, "Runtime exception: %s\n", e.what());
+        std::cerr << "Runtime exception: " << e.what() << "\n";
         return -1;
     }
     catch (const exception &e)
     {
-        std::fprintf(stderr, "Exception: %s\n", e.what());
+        std::cerr << "Exception: " << e.what() << "\n";
         return RETURN_FAIL;
     }
     catch (...)
     {
-        std::fprintf(stderr, "%s\n", "Unknown exception (...)");
+        std::cerr << "Unknown exception (...)\n";
         return RETURN_FAIL;
     }
 
-    std::fprintf(stderr, "%s\n", "Application finished!");
+    std::cout << "Application finished!\n";
 
     return RETURN_OK;
 }

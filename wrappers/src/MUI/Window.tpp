@@ -8,6 +8,8 @@
 #error "Window.tpp should only be included by Window.hpp"
 #endif
 
+#include "Core/DebugLog.hpp"
+
 namespace MUI
 {
     template <typename T, typename U> inline T &WindowBuilderTemplate<T, U>::tagActiveObject(const enum Window_ActiveObject activeObject)
@@ -302,7 +304,7 @@ namespace MUI
         // So check if there is tag for RootObject (not null).
         if (!hasRootObject)
         {
-            std::fprintf(stderr, "%s, missing RootObject for Window!\n", __PRETTY_FUNCTION__);
+            DebugLogError(std::string(__PRETTY_FUNCTION__) + ", missing RootObject for Window!");
             result = false;
         }
 

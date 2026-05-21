@@ -10,6 +10,8 @@
 
 #include "Menustrip.hpp"
 
+#include "Core/DebugLog.hpp"
+
 namespace MUI
 {
     template <typename T, typename U> T &AreaBuilderTemplate<T, U>::tagBackground(const enum ImageOrBackground background)
@@ -326,7 +328,7 @@ namespace MUI
         {
             if (!this->ContainsTag(MUIA_Frame))
             {
-                std::fprintf(stderr, "%s, missing Frame attribute for Area with FrameTitle attribute!\n", __PRETTY_FUNCTION__);
+                DebugLogError(std::string(__PRETTY_FUNCTION__) + ", missing Frame attribute for Area with FrameTitle attribute!");
                 return false;
             }
         }

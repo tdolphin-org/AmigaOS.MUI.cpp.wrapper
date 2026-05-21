@@ -11,7 +11,7 @@
 #include "MUI/Context/ApplicationContext.hpp"
 #include "MUI/Core/CustomClassManager.hpp"
 
-#include <cstdio>
+#include "amiga_std_light/iostream.hpp"
 #include <proto/alib.h>
 #include <proto/exec.h>
 
@@ -31,7 +31,7 @@ void AppCore::Run()
 
     // list of application windows
     for (auto window : mApplication.muiRoot().getWindowList())
-        std::fprintf(stderr, "muiObjectPtr = %p id=%s\n", (void *)window.muiObject(), window.getID().toString().c_str());
+        std::cerr << "muiObjectPtr = " << static_cast<void *>(window.muiObject()) << " id=" << window.getID().toString() << "\n";
 
     auto appWindow = MUI::ApplicationContext::instance().getAppWindow();
     // open window on constructor, close on destructor

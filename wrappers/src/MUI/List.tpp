@@ -8,6 +8,8 @@
 #error "List.tpp should only be included by List.hpp"
 #endif
 
+#include "Core/DebugLog.hpp"
+
 namespace MUI
 {
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::stringHooks()
@@ -404,7 +406,7 @@ namespace MUI
         {
             if (!this->ContainsTag(MUIA_List_MaxColumns))
             {
-                std::fprintf(stderr, "%s, missing MaxColumns attribute for List with StringArray hooks!\n", __PRETTY_FUNCTION__);
+                DebugLogError(std::string(__PRETTY_FUNCTION__) + ", missing MaxColumns attribute for List with StringArray hooks!");
                 result = false;
             }
         }

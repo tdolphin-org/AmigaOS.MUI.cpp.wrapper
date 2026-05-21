@@ -8,6 +8,8 @@
 #error "Listview.tpp should only be included by Listview.hpp"
 #endif
 
+#include "Core/DebugLog.hpp"
+
 namespace MUI
 {
 #ifdef MUIA_Listview_AgainClick
@@ -76,7 +78,7 @@ namespace MUI
         // So check if there is tag for List (not null).
         if (!hasListObject)
         {
-            std::fprintf(stderr, "%s, missing List object for Listview!\n", __PRETTY_FUNCTION__);
+            DebugLogError(std::string(__PRETTY_FUNCTION__) + ", missing List object for Listview!");
             result = false;
         }
 

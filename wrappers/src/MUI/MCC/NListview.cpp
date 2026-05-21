@@ -7,6 +7,8 @@
 #include "NListview.hpp"
 
 #include <proto/alib.h>
+
+#include "amiga_std_light/iostream.hpp"
 #include <stdexcept>
 
 namespace MUI::MCC
@@ -82,7 +84,7 @@ namespace MUI::MCC
         // So check if there is tag for NList (MUIA_NListview_NList).
         if (!hasNListObject)
         {
-            std::fprintf(stderr, "%s, missing NList object for NListview!\n", __PRETTY_FUNCTION__);
+            std::cerr << __PRETTY_FUNCTION__ << ", missing NList object for NListview!\n";
             result = false;
         }
 

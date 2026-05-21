@@ -8,7 +8,7 @@
 
 #include "Main.hpp"
 
-#include <cstdio>
+#include "amiga_std_light/iostream.hpp"
 
 #include "App.hpp"
 
@@ -22,16 +22,16 @@ int main(int argc, char **argv)
     }
     catch (exception &e)
     {
-        std::fprintf(stderr, "Exception: %s\n", e.what());
+        std::cerr << "Exception: " << e.what() << "\n";
         return RETURN_FAIL;
     }
     catch (...)
     {
-        std::fprintf(stderr, "%s\n", "Exception(...)");
+        std::cerr << "Exception(...)\n";
         return RETURN_FAIL;
     }
 
-    std::fprintf(stderr, "%s\n", "Application finished!");
+    std::cout << "Application finished!\n";
 
     return RETURN_OK;
 }

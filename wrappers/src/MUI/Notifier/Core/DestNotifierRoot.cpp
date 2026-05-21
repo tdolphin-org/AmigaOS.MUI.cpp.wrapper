@@ -8,8 +8,7 @@
 
 #include "MUI/Core/NullObject.hpp"
 #include "NotifyDestType.hpp"
-
-#include <cstdio>
+#include "amiga_std_light/iostream.hpp"
 
 namespace MUI
 {
@@ -40,8 +39,7 @@ namespace MUI
                 return (void *)notifyDestType;
 
             default:
-                std::fprintf(stderr, "%s destination object type: %lu is not supported\n", __PRETTY_FUNCTION__,
-                             static_cast<unsigned long>(notifyDestType));
+                std::cerr << __PRETTY_FUNCTION__ << " destination object type: " << notifyDestType << " is not supported\n";
                 return nullptr;
         }
     }

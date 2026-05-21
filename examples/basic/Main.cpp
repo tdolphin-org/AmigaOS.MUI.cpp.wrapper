@@ -3,12 +3,12 @@
 //
 //  Basic Example
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Main.hpp"
 
-#include <cstdio>
+#include "amiga_std_light/iostream.hpp"
 #include <proto/alib.h>
 #include <proto/exec.h>
 
@@ -27,7 +27,7 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    std::fprintf(stderr, "%s\n", "basic MUI app example, showing usage of 'AmigaOS MUI C++ wrapper'");
+    std::cerr << "basic MUI app example, showing usage of 'AmigaOS MUI C++ wrapper'\n";
 
     MuiMasterBaseScope muiBase;
 
@@ -112,7 +112,7 @@ int main(int argc, char **argv)
 
     // list of application windows
     for (auto window : app.getWindowList())
-        std::fprintf(stderr, "muiObjectPtr = %p id=%s\n", (void *)window.muiObject(), window.getID().toString().c_str());
+        std::cerr << "muiObjectPtr = " << static_cast<void *>(window.muiObject()) << " id=" << window.getID().toString() << "\n";
 
     // open window on constructor, close on destructor
     MUI::WindowScope windowScope(mainWindow);

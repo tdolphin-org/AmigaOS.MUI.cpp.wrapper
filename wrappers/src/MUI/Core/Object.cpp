@@ -15,7 +15,7 @@
 #include <proto/muimaster.h>
 
 #ifdef TRACE_MUI
-#include <cstdio>
+#include "amiga_std_light/iostream.hpp"
 #endif
 #include <stdexcept>
 
@@ -24,17 +24,17 @@ namespace MUI
     Object *muiObject(const std::string &className, const std::vector<AOS::TagItemObject> &tags)
     {
 #ifdef TRACE_MUI
-        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
-        std::fprintf(stderr, "%s:\n", className.c_str());
+        std::cerr << __PRETTY_FUNCTION__ << "\n";
+        std::cerr << className << ":\n";
 #endif
         AOS::TagsScope tagsScope(tags);
 #ifdef TRACE_MUI
         const auto tagsString = tagsScope.toString();
-        std::fprintf(stderr, "# tags [%zu]: %s\n", tags.size(), tagsString.c_str());
+        std::cerr << "# tags [" << tags.size() << "]: " << tagsString << "\n";
 #endif
         auto *pObject = MUI_NewObjectA((char *)className.c_str(), tagsScope.tagItems());
 #ifdef TRACE_MUI
-        std::fprintf(stderr, "==> %p\n", (void *)pObject);
+        std::cerr << "==> " << static_cast<void *>(pObject) << "\n";
 #endif
         if (pObject == nullptr)
         {
@@ -49,19 +49,19 @@ namespace MUI
                        const unsigned long dataSize, const void *dispatcher)
     {
 #ifdef TRACE_MUI
-        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
-        std::fprintf(stderr, "%s:\n", className.c_str());
+        std::cerr << __PRETTY_FUNCTION__ << "\n";
+        std::cerr << className << ":\n";
 #endif
         AOS::TagsScope tagsScope(tags);
         auto &mccScope = CustomClassManager::instance().get(uniqueId, className, dataSize, dispatcher);
 #ifdef TRACE_MUI
         const auto tagsString = tagsScope.toString();
-        std::fprintf(stderr, "# tags [%zu]: %s\n", tags.size(), tagsString.c_str());
+        std::cerr << "# tags [" << tags.size() << "]: " << tagsString << "\n";
 #endif
         // TODO? for #?.mcc MUI_NewObject could be used (see muimaster doc)
         auto *pObject = (Object *)NewObjectA(mccScope.mcc()->mcc_Class, nullptr, tagsScope.tagItems());
 #ifdef TRACE_MUI
-        std::fprintf(stderr, "==> %p\n", (void *)pObject);
+        std::cerr << "==> " << static_cast<void *>(pObject) << "\n";
 #endif
         if (pObject == nullptr)
         {

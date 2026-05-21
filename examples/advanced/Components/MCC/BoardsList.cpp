@@ -12,7 +12,7 @@
 #include "MUI/Notifier/Notifier.hpp"
 
 #ifdef TRACE_CUSTOM_COMPONENTS
-#include <cstdio>
+#include "amiga_std_light/iostream.hpp"
 #endif
 
 #include <proto/alib.h>
@@ -80,7 +80,7 @@ namespace Components::MCC
       : MUI::ListBuilderTemplate<BoardsListBuilder, ActionRoot<MUI::List>>("BoardsList")
     {
 #ifdef TRACE_CUSTOM_COMPONENTS
-        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
+        std::cerr << __PRETTY_FUNCTION__ << "\n";
 #endif
         tagMaxColumns(2);
     }
@@ -88,7 +88,7 @@ namespace Components::MCC
     ActionRoot<MUI::List> BoardsListBuilder::object()
     {
 #ifdef TRACE_CUSTOM_COMPONENTS
-        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
+        std::cerr << __PRETTY_FUNCTION__ << "\n";
 #endif
         auto list = MUI::ListBuilderTemplate<BoardsListBuilder, ActionRoot<MUI::List>>::object(sizeof(CustomObjectData),
                                                                                                DISPATCHER_REF(BoardsList));

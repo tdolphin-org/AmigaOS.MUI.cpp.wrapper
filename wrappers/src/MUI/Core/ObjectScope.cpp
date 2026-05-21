@@ -13,7 +13,7 @@
 #include <string>
 
 #ifdef TRACE_MUI
-#include <cstdio>
+#include "amiga_std_light/iostream.hpp"
 #endif
 
 namespace MUI
@@ -26,7 +26,7 @@ namespace MUI
     ObjectScope::ObjectScope(Object *pObject)
     {
 #ifdef TRACE_MUI
-        std::fprintf(stderr, "%s %p\n", __PRETTY_FUNCTION__, (void *)pObject);
+        std::cerr << __PRETTY_FUNCTION__ << " " << static_cast<void *>(pObject) << "\n";
 #endif
         if (pObject == nullptr)
         {
@@ -40,7 +40,7 @@ namespace MUI
     ObjectScope::~ObjectScope()
     {
 #ifdef TRACE_MUI
-        std::fprintf(stderr, "%s MUI_DisposeObject(%p)\n", __PRETTY_FUNCTION__, (void *)mpObject);
+        std::cerr << __PRETTY_FUNCTION__ << " MUI_DisposeObject(" << static_cast<void *>(mpObject) << ")\n";
 #endif
 
         MUI_DisposeObject(mpObject);

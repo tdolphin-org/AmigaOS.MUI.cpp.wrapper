@@ -11,7 +11,7 @@
 #include <proto/muimaster.h>
 
 #ifdef TRACE_MUI
-#include <cstdio>
+#include "amiga_std_light/iostream.hpp"
 #endif
 
 #include <stdexcept>
@@ -32,7 +32,7 @@ namespace MUI
       : mpMuiObject(nullptr)
     {
 #ifdef TRACE_MUI
-        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
+        std::cerr << __PRETTY_FUNCTION__ << "\n";
 #endif
     }
 

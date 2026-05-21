@@ -6,16 +6,16 @@
 
 #include "CustomClassManager.hpp"
 
-#include <cstdio>
-
 #include "CustomClassScope.hpp"
+
+#include "amiga_std_light/iostream.hpp"
 
 namespace MUI
 {
     CustomClassesLifeTimeScope::~CustomClassesLifeTimeScope()
     {
 #ifdef TRACE_MUI
-        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
+        std::cerr << __PRETTY_FUNCTION__ << "\n";
 #endif
         CustomClassManager::instance().Clear();
     }
@@ -25,16 +25,16 @@ namespace MUI
     CustomClassManagerCore::~CustomClassManagerCore()
     {
 #ifdef TRACE_MUI
-        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
+        std::cerr << __PRETTY_FUNCTION__ << "\n";
 #endif
         if (!mCustomClassesMap.empty())
-            std::fprintf(stderr, "%s map is not empty, use CustomClassesLifeTimeScope!\n", __PRETTY_FUNCTION__);
+            std::cerr << __PRETTY_FUNCTION__ << " map is not empty, use CustomClassesLifeTimeScope!\n";
     }
 
     void CustomClassManagerCore::Clear()
     {
 #ifdef TRACE_MUI
-        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
+        std::cerr << __PRETTY_FUNCTION__ << "\n";
 #endif
 
         mCustomClassesMap.clear();

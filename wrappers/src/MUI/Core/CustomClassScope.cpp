@@ -14,7 +14,7 @@
 
 #include "SDI/SDI_hook.h"
 
-#include <cstdio>
+#include "amiga_std_light/iostream.hpp"
 
 DISPATCHER(Empty_Dispatcher)
 {
@@ -27,7 +27,7 @@ namespace MUI
       : mClassName(className)
     {
 #ifdef TRACE_MUI
-        std::fprintf(stderr, "%s : %s\n", __PRETTY_FUNCTION__, className.c_str());
+        std::cerr << __PRETTY_FUNCTION__ << " : " << className << "\n";
 #endif
 
         mpCustomClass = MUI_CreateCustomClass(nullptr, (char *)className.c_str(), nullptr, dataSize,
@@ -42,7 +42,7 @@ namespace MUI
     CustomClassScope::~CustomClassScope()
     {
 #ifdef TRACE_MUI
-        std::fprintf(stderr, "%s : %p\n", __PRETTY_FUNCTION__, (void *)mpCustomClass);
+        std::cerr << __PRETTY_FUNCTION__ << " : " << static_cast<void *>(mpCustomClass) << "\n";
 #endif
         if (mpCustomClass != nullptr)
             MUI_DeleteCustomClass(mpCustomClass);

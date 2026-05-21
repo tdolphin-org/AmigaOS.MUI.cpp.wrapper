@@ -8,6 +8,8 @@
 #error "Scrollgroup.tpp should only be included by Scrollgroup.hpp"
 #endif
 
+#include "Core/DebugLog.hpp"
+
 namespace MUI
 {
 #ifdef MUIA_Scrollgroup_AutoBars
@@ -71,7 +73,7 @@ namespace MUI
 
         if (!this->ContainsTag(MUIA_Scrollgroup_Contents))
         {
-            std::fprintf(stderr, "%s, missing Contents attribute for Scrollgroup!\n", __PRETTY_FUNCTION__);
+            DebugLogError(std::string(__PRETTY_FUNCTION__) + ", missing Contents attribute for Scrollgroup!");
             result = false;
         }
 

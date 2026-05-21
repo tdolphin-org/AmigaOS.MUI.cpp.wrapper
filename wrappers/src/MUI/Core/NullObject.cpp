@@ -7,7 +7,7 @@
 #include "NullObject.hpp"
 
 #ifdef TRACE_MUI
-#include <cstdio>
+#include "amiga_std_light/iostream.hpp"
 #endif
 
 namespace MUI
@@ -15,7 +15,7 @@ namespace MUI
     NullObject::NullObject()
     {
 #ifdef TRACE_MUI
-        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
+        std::cerr << __PRETTY_FUNCTION__ << "\n";
 #endif
     }
 }

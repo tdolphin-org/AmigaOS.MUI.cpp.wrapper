@@ -9,9 +9,16 @@
 #include "AOS/TagUtil.hpp"
 #include "Core/ToString.hpp"
 
-#include <cstdio>
+#include "amiga_std_light/iostream.hpp"
 #include <cstring>
 #include <stdexcept>
+
+#ifdef Remove
+#undef Remove
+#endif
+#ifdef Input
+#undef Input
+#endif
 
 StringStorageCore::StringStorageCore()
   : mObjectIdCounter(0)
@@ -32,8 +39,8 @@ const char *StringStorageCore::Add(unsigned long &objectId, Tag tagName, const c
 {
 #ifdef TRACE_SSC
     const auto tagString = AOS::TagUtil::toString(tagName);
-    std::fprintf(stderr, "SSC::Add(objectId = %lu, tag = %s, c-string = %s%s%s)\n", objectId, tagString.c_str(),
-                 string != nullptr ? "\"" : "", string != nullptr ? string : "nullptr", string != nullptr ? "\"" : "");
+    std::cerr << "SSC::Add(objectId = " << objectId << ", tag = " << tagString << ", c-string = " << (string != nullptr ? "\"" : "")
+              << (string != nullptr ? string : "nullptr") << (string != nullptr ? "\"" : "") << ")\n";
 #endif
 
     if (string == nullptr)
@@ -70,7 +77,7 @@ const char **StringStorageCore::Add(unsigned long &objectId, Tag tagName, const 
 {
 #ifdef TRACE_SSC
     const auto tagString = AOS::TagUtil::toString(tagName);
-    std::fprintf(stderr, "SSC::AddArray(objectId = %lu, tag = %s, strings.size() = %zu)\n", objectId, tagString.c_str(), strings.size());
+    std::cerr << "SSC::AddArray(objectId = " << objectId << ", tag = " << tagString << ", strings.size() = " << strings.size() << ")\n";
 #endif
 
     auto pStrings = new const char *[strings.size() + 1];
@@ -133,7 +140,7 @@ const char **StringStorageCore::Add(unsigned long &objectId, Tag tagName, const 
 void StringStorageCore::Invalidate(const unsigned long objectId)
 {
 #ifdef TRACE_SSC
-    std::fprintf(stderr, "SSC::Invalidate(objectId = %lu)\n", objectId);
+    std::cerr << "SSC::Invalidate(objectId = " << objectId << ")\n";
 #endif
 
     if (objectId == 0)
@@ -165,7 +172,7 @@ void StringStorageCore::FinalizeObject(const unsigned long objectId, const Objec
 {
 #ifdef TRACE_SSC
     const auto objectString = ToString::FromDataPointer(object);
-    std::fprintf(stderr, "SSC::FinalizeObject(objectId = %lu, object = %s)\n", objectId, objectString.c_str());
+    std::cerr << "SSC::FinalizeObject(objectId = " << objectId << ", object = " << objectString << ")\n";
 #endif
 
     if (objectId == 0 || object == nullptr)
@@ -204,8 +211,8 @@ const char *StringStorageCore::Change(const Object *object, Tag tagName, const c
 #ifdef TRACE_SSC
     const auto objectString = ToString::FromDataPointer(object);
     const auto tagString = AOS::TagUtil::toString(tagName);
-    std::fprintf(stderr, "SSC::Change(object = %s, tag = %s, c-string = %s%s%s)\n", objectString.c_str(), tagString.c_str(),
-                 string != nullptr ? "\"" : "", string != nullptr ? string : "nullptr", string != nullptr ? "\"" : "");
+    std::cerr << "SSC::Change(object = " << objectString << ", tag = " << tagString << ", c-string = " << (string != nullptr ? "\"" : "")
+              << (string != nullptr ? string : "nullptr") << (string != nullptr ? "\"" : "") << ")\n";
 #endif
 
     if (string == nullptr)
@@ -242,8 +249,7 @@ const char **StringStorageCore::Change(const Object *object, Tag tagName, const 
 #ifdef TRACE_SSC
     const auto objectString = ToString::FromDataPointer(object);
     const auto tagString = AOS::TagUtil::toString(tagName);
-    std::fprintf(stderr, "SSC::Change(object = %s, tag = %s, strings.size() = %zu)\n", objectString.c_str(), tagString.c_str(),
-                 strings.size());
+    std::cerr << "SSC::Change(object = " << objectString << ", tag = " << tagString << ", strings.size() = " << strings.size() << ")\n";
 #endif
 
     auto pStrings = new const char *[strings.size() + 1];
@@ -307,7 +313,7 @@ void StringStorageCore::Remove(const Object *object, Tag tagName)
 #ifdef TRACE_SSC
     const auto objectString = ToString::FromDataPointer(object);
     const auto tagString = AOS::TagUtil::toString(tagName);
-    std::fprintf(stderr, "SSC::Remove(object = %s, tag = %s)\n", objectString.c_str(), tagString.c_str());
+    std::cerr << "SSC::Remove(object = " << objectString << ", tag = " << tagString << ")\n";
 #endif
 
     ClearGarbage();
@@ -341,7 +347,7 @@ void StringStorageCore::Remove(const unsigned long objectId, Tag tagName)
 {
 #ifdef TRACE_SSC
     const auto tagString = AOS::TagUtil::toString(tagName);
-    std::fprintf(stderr, "SSC::Remove(objectId = %lu, tag = %s)\n", objectId, tagString.c_str());
+    std::cerr << "SSC::Remove(objectId = " << objectId << ", tag = " << tagString << ")\n";
 #endif
 
     if (objectId == 0)

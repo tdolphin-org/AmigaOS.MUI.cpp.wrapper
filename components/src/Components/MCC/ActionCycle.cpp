@@ -18,7 +18,7 @@
 #include "SDI/SDI_hook.h"
 
 #ifdef TRACE_CUSTOM_COMPONENTS
-#include <cstdio>
+#include "amiga_std_light/iostream.hpp"
 #endif
 
 unsigned long methodActionCycleActive(struct IClass *cl, Object *obj, Msg msg)
@@ -34,7 +34,7 @@ DISPATCHER(ActionCycleDispatcherFunc)
 {
     // Be careful with debug output here.
     // It causes that MUI interface hangs during "drag&drop"!
-    // std::fprintf(stderr, "%s MethodID: 0x%lx\n", __PRETTY_FUNCTION__, msg->MethodID);
+    // std::cerr << __PRETTY_FUNCTION__ << " MethodID: 0x" << msg->MethodID << "\n";
 
     switch (msg->MethodID)
     {
@@ -61,7 +61,7 @@ namespace Components::MCC
     ActionRoot<MUI::Cycle> ActionCycleBuilder::object(ActionCycleDispatcher &dispatcher)
     {
 #ifdef TRACE_CUSTOM_COMPONENTS
-        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
+        std::cerr << __PRETTY_FUNCTION__ << "\n";
 #endif
         PushTag(MUIA_ActionDispatcher, (void *)&dispatcher);
 

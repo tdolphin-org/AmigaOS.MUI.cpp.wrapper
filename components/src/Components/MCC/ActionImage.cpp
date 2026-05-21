@@ -18,7 +18,7 @@
 #include "SDI/SDI_hook.h"
 
 #ifdef TRACE_CUSTOM_COMPONENTS
-#include <cstdio>
+#include "amiga_std_light/iostream.hpp"
 #endif
 
 #include "Core/Dispatcher/OnClickDispatcher.hpp"
@@ -27,7 +27,7 @@ DISPATCHER(ActionImageDispatcher)
 {
     // Be careful with debug output here.
     // It causes that MUI interface hangs during "drag&drop"!
-    // std::fprintf(stderr, "%s MethodID: 0x%lx\n", __PRETTY_FUNCTION__, msg->MethodID);
+    // std::cerr << __PRETTY_FUNCTION__ << " MethodID: 0x" << msg->MethodID << "\n";
 
     auto dispatchMethodResult = Components::MCC::dispatchMethod(msg->MethodID, cl, obj, msg);
     if (dispatchMethodResult.dispatchResult)
@@ -46,7 +46,7 @@ namespace Components::MCC
     ActionRoot<MUI::Image> ActionImageBuilder::object(OnClickDispatcher &dispatcher)
     {
 #ifdef TRACE_CUSTOM_COMPONENTS
-        std::fprintf(stderr, "%s\n", __PRETTY_FUNCTION__);
+        std::cerr << __PRETTY_FUNCTION__ << "\n";
 #endif
         PushTag(MUIA_ActionDispatcher, (void *)&dispatcher);
 
