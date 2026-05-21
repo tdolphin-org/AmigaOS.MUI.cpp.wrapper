@@ -38,7 +38,7 @@ dir_guard = mkdir -p $(@D)
 LIBPATH = lib/$(SUB_BUILD_PATH)
 
 AOS_WRAPPER_PATH = ${AOSCPP_PATH}/wrappers
-AOS_WRAPPER_MODULES = Core AOS amiga_std_light
+AOS_WRAPPER_MODULES = Core AOS
 AOS_WRAPPER_SRC_DIRS = $(addprefix $(AOS_WRAPPER_PATH)/src/,$(AOS_WRAPPER_MODULES))
 AOS_WRAPPER_SRCS = $(foreach sdir,$(AOS_WRAPPER_SRC_DIRS),$(wildcard $(sdir)/*.cpp))
 AOS_WRAPPER_CPP_FLAGS = $(CPP_FLAGS)
