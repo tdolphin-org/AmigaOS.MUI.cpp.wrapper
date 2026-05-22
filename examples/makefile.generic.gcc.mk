@@ -10,8 +10,7 @@
 
 CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS) -I${AOSCPP_PATH}/wrappers/src -I$(PROJECT) -I../wrappers/src -I../components/src \
 	-fno-rtti -ffunction-sections -fdata-sections -Os
-AOS_STD_LIGHT_LIB = $(AOSCPP_PATH)/wrappers/lib/$(SUB_BUILD_PATH)/amiga_std_light.lib
-LFLAGS = -I${AOSCPP_PATH}/wrappers/lib/$(SUB_BUILD_PATH) -L../wrappers/lib/$(SUB_BUILD_PATH) $(MORE_LFLAGS) $(AOS_STD_LIGHT_LIB) -Wl,--gc-sections
+LFLAGS = -L${AOSCPP_PATH}/wrappers/lib/$(SUB_BUILD_PATH) -L../wrappers/lib/$(SUB_BUILD_PATH) -lamiga_std_light $(MORE_LFLAGS) -Wl,--gc-sections
 
 dir_guard = mkdir -p $(@D)
 
