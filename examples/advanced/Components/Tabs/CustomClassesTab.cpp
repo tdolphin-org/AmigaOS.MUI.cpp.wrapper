@@ -3,14 +3,14 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2024 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "CustomClassesTab.hpp"
 
 const char *items[] = { "AmigaOS", "MorphOS", "AROS", nullptr };
 const char *itemsWrapped[] = { "AmigaOS 3.1", "MorphOS 3.18", "AROS 2k23", nullptr };
-const char *itemLong = "AmigaOS MUI C++ wrapper .. Advanced Example .. (c) 2022-2024 TDolphin";
+const char *itemLong = "AmigaOS MUI C++ wrapper .. Advanced Example .. (c) 2022-2026 TDolphin";
 
 namespace Components
 {

@@ -3,7 +3,7 @@
 //
 //  Advanced Example
 //
-//  (c) 2022-2025 TDolphin
+//  (c) 2022-2026 TDolphin
 //
 
 #include "Application.hpp"
@@ -17,7 +17,7 @@ namespace Components
       : mComponent(MUI::ApplicationBuilder()
                        .tagAuthor("rz")
                        .tagBase("advanced.example.bin")
-                       .tagCopyright("(c) 2022-2025 TDolphin")
+                       .tagCopyright("(c) 2022-2026 TDolphin")
                        .tagDescription("Advanced Example of usage MUI C++ wrapper")
                        .tagTitle("Advanced Example")
                        .tagVersion("$VER: 1.1")
