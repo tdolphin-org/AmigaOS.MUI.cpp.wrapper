@@ -27,20 +27,24 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    std::cerr << "basic MUI app example, showing usage of 'AmigaOS MUI C++ wrapper'\n";
+    std::cout << "basic MUI app example, showing usage of 'AmigaOS MUI C++ wrapper'\n";
 
     MuiMasterBaseScope muiBase;
 
     char const *items[] = { "AmigaOS", "MorphOS", "AROS", nullptr };
-    auto itemsList = MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).object();
-    itemsList.InsertTop((const void **)items);
+    auto itemsList = MUI::ListBuilder().tagFrame(MUI::Frame::ReadList).tagSourceArray(items).object();
+    std::cout << "itemsList muiObjectPtr = " << static_cast<void *>(itemsList.muiObject()) << "\n";
 
     std::vector<std::string> cycleItems = { "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth" };
     auto cycleList = MUI::CycleBuilder().tagShortHelp("Example Cycle").tagEntries(cycleItems).object();
+    std::cout << "cycleList muiObjectPtr = " << static_cast<void *>(cycleList.muiObject()) << "\n";
 
     MUI::Area closeButton { MUI::MakeObject::SimpleButton("_Quit Application") };
     MUI::Area leftButton { MUI::MakeObject::SimpleButton("_Open subwindow") };
     MUI::Area closeSubWindowButton { MUI::MakeObject::SimpleButton("_Close Window") };
+    std::cout << "closeButton muiObjectPtr = " << static_cast<void *>(closeButton.muiObject()) << "\n";
+    std::cout << "leftButton muiObjectPtr = " << static_cast<void *>(leftButton.muiObject()) << "\n";
+    std::cout << "closeSubWindowButton muiObjectPtr = " << static_cast<void *>(closeSubWindowButton.muiObject()) << "\n";
 
     auto mainWindow
         = MUI::WindowBuilder()
@@ -55,7 +59,7 @@ int main(int argc, char **argv)
                   MUI::GroupBuilder()
                       .tagChild(MUI::TextBuilder()
                                     .tagShortHelp("help text")
-                                    .tagContents(MUIX_C "some centered text in MUI::Text\n\n" MUIX_PH " (c) 2022-2025 TDolphin")
+                                    .tagContents(MUIX_C "some centered text in MUI::Text\n\n" MUIX_PH " (c) 2022-2026 TDolphin")
                                     .object())
                       .tagChild(cycleList)
                       .tagChild(closeButton)
@@ -74,6 +78,8 @@ int main(int argc, char **argv)
                       .object())
               .object();
 
+    std::cout << "mainWindow muiObjectPtr = " << static_cast<void *>(mainWindow.muiObject()) << "\n";
+
     auto subWindow = MUI::WindowBuilder()
                          .tagTitle("Sub Window Title")
                          .tagScreenTitle("Application Screen Title for sub window")
@@ -88,6 +94,8 @@ int main(int argc, char **argv)
                                             .object())
                          .object();
 
+    std::cout << "subWindow muiObjectPtr = " << static_cast<void *>(subWindow.muiObject()) << "\n";
+
     auto app = MUI::ApplicationBuilder()
                    .tagAuthor("rz")
                    .tagBase("basic.example.bin")
@@ -98,6 +106,8 @@ int main(int argc, char **argv)
                    .tagWindow(mainWindow)
                    .tagWindows({ subWindow })
                    .object();
+
+    std::cout << "app muiObjectPtr = " << static_cast<void *>(app.muiObject()) << "\n";
 
     // do MUI_DisposeObject(..) on destructor
     MUI::ApplicationScope application(app);
@@ -112,7 +122,8 @@ int main(int argc, char **argv)
 
     // list of application windows
     for (auto window : app.getWindowList())
-        std::cerr << "muiObjectPtr = " << static_cast<void *>(window.muiObject()) << " id=" << window.getID().toString() << "\n";
+        std::cout << "muiObjectPtr = " << static_cast<void *>(window.muiObject()) << " id=" << window.getID().toString() << "\n";
+    std::cout << app.getWindowList().size() << " window(s) in application\n";
 
     // open window on constructor, close on destructor
     MUI::WindowScope windowScope(mainWindow);
