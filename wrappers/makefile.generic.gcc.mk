@@ -24,7 +24,8 @@
 # TRACE_MUI - trace MUI (-DTRACE_MUI)
 # TRACE_SSC - trace String Storage Collector (-DTRACE_SSC)
 # DEBUG_TAG_SYMBOLS - include debug symbols for tag names
-DEBUG_FLAGS = #-ggdb -g3
+# DEBUG - general debug flag, can be used for additional debug code in sources
+DEBUG_FLAGS = # -ggdb -g3
 
 # compiler/linker flags
 # WARNING: use the same -Ox option for this lib and Your application, diffrent values can cause linking errors

@@ -29,8 +29,8 @@ morphos_ppc: CPPC=g++
 morphos_ppc: AR=ar
 morphos_ppc: STRIP=strip
 morphos_ppc: OBJDUMP=objdump
-morphos_ppc: MORE_CPP_FLAGS="-noixemul"
-morphos_ppc: MORE_LFLAGS="-lMUIcpp -lauto -noixemul"
+morphos_ppc: MORE_CPP_FLAGS="-noixemul -flto"
+morphos_ppc: MORE_LFLAGS="-lMUIcpp -lauto -noixemul -flto"
 morphos_ppc: build
 
 cross_morphos_ppc: TARGET="Cross MorphOS PPC"
@@ -39,8 +39,8 @@ cross_morphos_ppc: CPPC=ppc-morphos-g++
 cross_morphos_ppc: AR=ppc-morphos-ar
 cross_morphos_ppc: STRIP=ppc-morphos-strip
 cross_morphos_ppc: OBJDUMP=ppc-morphos-objdump
-cross_morphos_ppc: MORE_CPP_FLAGS="-noixemul"
-cross_morphos_ppc: MORE_LFLAGS="-lMUIcpp -lauto -noixemul"
+cross_morphos_ppc: MORE_CPP_FLAGS="-noixemul -flto"
+cross_morphos_ppc: MORE_LFLAGS="-lMUIcpp -lauto -noixemul -flto"
 cross_morphos_ppc: build
 
 build:

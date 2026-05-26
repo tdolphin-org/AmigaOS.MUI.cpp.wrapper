@@ -53,7 +53,7 @@ morphos_ppc: TARGET="MorphOS PPC"
 morphos_ppc: SUB_BUILD_PATH=morphos/ppc
 morphos_ppc: CPPC=g++
 morphos_ppc: AR=ar
-morphos_ppc: MORE_CPP_FLAGS="-noixemul -fno-threadsafe-statics -D_GLIBCXX_HAS_GTHREADS=0"
+morphos_ppc: MORE_CPP_FLAGS="-noixemul -fno-threadsafe-statics -D_GLIBCXX_HAS_GTHREADS=0 -flto"
 morphos_ppc: LIB_MUICPP_NAME=libMUIcpp.a
 morphos_ppc: build
 
@@ -61,7 +61,7 @@ cross_morphos_ppc: TARGET="Cross MorphOS PPC"
 cross_morphos_ppc: SUB_BUILD_PATH=morphos/ppc
 cross_morphos_ppc: CPPC=ppc-morphos-g++
 cross_morphos_ppc: AR=ppc-morphos-ar
-cross_morphos_ppc: MORE_CPP_FLAGS="-noixemul -fno-threadsafe-statics -D_GLIBCXX_HAS_GTHREADS=0"
+cross_morphos_ppc: MORE_CPP_FLAGS="-noixemul -fno-threadsafe-statics -D_GLIBCXX_HAS_GTHREADS=0 -flto"
 cross_morphos_ppc: LIB_MUICPP_NAME=libMUIcpp.a
 cross_morphos_ppc: build
 	
