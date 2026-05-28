@@ -35,7 +35,7 @@ namespace MUI
         blue = from32Bit(rgb[2]);
     }
 
-#ifdef AOS_MUI_VERSION_3_8
+#if defined(AOS_MUI_VERSION_3_8) || defined(AOS_MUI_VERSION_5)
     RGBColor::RGBColor(const MUI_RGBcolor &rgbColor)
 #else
     RGBColor::RGBColor(const MUI_RGBColor &rgbColor)

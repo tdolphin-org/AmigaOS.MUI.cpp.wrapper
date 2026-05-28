@@ -8,6 +8,15 @@
 
 #include "MUICompileConfig.hpp"
 
+#ifdef AOS_MUI_VERSION_5
+struct MUI_RGBcolor
+{
+    ULONG red;
+    ULONG green;
+    ULONG blue;
+};
+#endif
+
 namespace MUI
 {
     struct RGBColor
@@ -19,7 +28,7 @@ namespace MUI
         RGBColor();
         RGBColor(const unsigned char red, const unsigned char green, const unsigned char blue);
         RGBColor(const unsigned long *rgb);
-#ifdef AOS_MUI_VERSION_3_8
+#if defined(AOS_MUI_VERSION_3_8) || defined(AOS_MUI_VERSION_5)
         RGBColor(const MUI_RGBcolor &rgbColor);
 #else
         RGBColor(const MUI_RGBColor &rgbColor);
