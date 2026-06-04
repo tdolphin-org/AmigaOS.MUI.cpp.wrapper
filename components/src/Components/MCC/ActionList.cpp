@@ -41,7 +41,7 @@ namespace Components::MCC
     {
     }
 
-    ActionRoot<MUI::List> ActionListBuilder::object(OnActiveEntryDispatcher &dispatcher)
+    ActionRoot<MUI::List> ActionListBuilder::object(ActionListDispatcher &dispatcher)
     {
 #ifdef TRACE_CUSTOM_COMPONENTS
         std::cout << __PRETTY_FUNCTION__ << "\n";
