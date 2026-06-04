@@ -21,8 +21,6 @@
 #include "amiga_std_light/iostream.hpp"
 #endif
 
-#include "Core/Dispatcher/OnClickDispatcher.hpp"
-
 DISPATCHER(ActionImageDispatcher)
 {
     // Be careful with debug output here.
