@@ -54,8 +54,10 @@ namespace Components::MCC
         // any list item selected -> call dispatcher method
         MUI::Notifier::from(object).onActiveEveryTime().notifySelf().method(MUIM_ActionOnActiveEntry);
 
+#ifdef MUIA_List_DoubleClick        
         // double click -> call dispatcher method
         MUI::Notifier::from(object).onDoubleClick(true).notifySelf().method(MUIM_ActionOnDoubleClickEntry);
+#endif
 
         return object;
     }
