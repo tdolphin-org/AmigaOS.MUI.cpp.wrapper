@@ -154,6 +154,28 @@ gwarantowany przez własne nagłówki Zune. Do zrobienia:
    `MOS_MUI_VERSION_5`, `AOS_MUI_VERSION_3_8`) i opisz w podsumowaniu, które
    elementy są dostępne/nieobecne w Zune.
 
+### Wynik Etapu 2 (zweryfikowano 2026-08)
+
+Wybrano podejście **zalecane**: gałąź `__AROS__` definiuje `AROS_ZUNE_VERSION`
+**oraz** `AOS_MUI_VERSION_3_8`. Skutek:
+
+- Gwardy `AOS_MUI_VERSION_3_8` aktywne dla Zune → **dostępne**:
+  `RGBColor.hpp:31`, `RGBColor.cpp:38`, `Pendisplay.cpp:27`, `Pendisplay.cpp:62`
+  (ścieżki używające `struct MUI_RGBcolor { ULONG red, green, blue; }` — typ
+  zdefiniowany identycznie w SDK AROS, potwierdzone w `Development/include/libraries/mui.h`).
+  Uwaga: `MUI_RGBColor` (duże `C`) w Zune **nie istnieje** — dlatego Zune nie
+  może iść ścieżką `#else`.
+- Gwardy `*_MUI_VERSION_5` dla Zune **nieaktywne** → cechy wyłączone (bezpieczne,
+  Zune to API MUI 3.x). Niewystawione przez wrapper dla AROS m.in.:
+  atrybuty MUI5 w `Image`, `Window`, `List`, `Cycle`, `Text`, `Register`,
+  `MUIA_Dirlist_AcceptPattern` (warunek `AOS_MUI_VERSION_5 && MUIA_Dirlist_AcceptPattern`),
+  oraz własna definicja `struct MUI_RGBcolor` w `RGBColor.hpp:11` (zarezerwowana
+  dla `AOS_MUI_VERSION_5` — w Zune dostarcza ją SDK).
+- **Brak** wersjonowanych `#include` w całym `wrappers/src` (audyt: zero trafień),
+  więc mapowanie nie wciąga nagłówków specyficznych dla AmigaOS.
+- Kompilator AROS definiuje `__AROS__` (potwierdzone `-dM`), hostowy gcc nie —
+  gałęzie AmigaOS/MorphOS bez zmian (regresja do zweryfikowania w Etapie 6).
+
 ---
 
 ## Etap 3 – Includes i makra platformowe
