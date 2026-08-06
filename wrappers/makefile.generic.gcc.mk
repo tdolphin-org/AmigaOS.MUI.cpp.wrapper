@@ -19,6 +19,12 @@
 #
 #    requires: MUI dev (MorphOS SDK) + NList Dev, TextEditor Dev
 #
+#  3. AROS x86_64 cross compilation setup from -> https://elwis.github.io/aros-getting-started/docs/01-build-environment.html
+#
+#    requires: AROS stable (ABIv11) sources (https://github.com/deadwood2/AROS),
+#              cross-compiler built via scripts/rebuild.sh (x86_64-aros-g++),
+#              Zune (MUI 3.x-compatible) headers are part of the AROS SDK
+#
 
 # trace flags
 # TRACE_MUI - trace MUI (-DTRACE_MUI)

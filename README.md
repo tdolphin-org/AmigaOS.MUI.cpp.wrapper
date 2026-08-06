@@ -27,6 +27,14 @@ ___
 - [setup-cross-sdk.sh script](https://bigfoot.morphos-team.net/files/setup-cross-sdk.sh)
 - [TextEditor developer files](https://github.com/amiga-mui/texteditor)
 - [NList developer files](https://github.com/amiga-mui/nlist)
+
+### Linux cross compilation for AROS (Zune)
+
+- AmigaOS.cpp.wrapper (https://github.com/tdolphin-org/AmigaOS.cpp.wrapper) located in path *../AmigaOS.cpp.wrapper*
+- [AROS stable (ABIv11) sources](https://github.com/deadwood2/AROS) (not the bleeding edge tree!)
+- AROS cross-compiler + hosted AROS built from the sources via `scripts/rebuild.sh` - see [AROS Getting Started](https://elwis.github.io/aros-getting-started/docs/01-build-environment.html)
+- System dependencies: `sudo apt install gcc g++ make git flex bison gawk python3 python3-mako libx11-dev libpng-dev genisoimage cmake curl nasm autoconf automake libxext-dev liblzo2-dev libxxf86vm-dev libsdl1.2-dev byacc yasm xorriso mtools`
+- AROS uses **Zune**, a MUI 3.x-compatible toolkit; the Zune headers are part of the AROS SDK (platform detection in code via `__AROS__`)
 ___
 ## Build
 
