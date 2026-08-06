@@ -99,6 +99,21 @@ Shella po nazwie.
 > biblioteka do linkowania (`muimaster.library`). Potwierdź nazwę flagi linkera
 > (spodziewane `-lmui`).
 
+> **Znany problem środowiska (zweryfikowano 2026-08):** build `core-linux-x86_64`
+> (DEBUG) potrafi paść w `workbench/devs/AHI` — reguła `$(MODEFILE).o` w
+> `Drivers/Common/Makefile.common.in` przekazuje gołe `--defsym CPU=x86_64 ...`
+> (z `@ASFLAGS@`) do `$(CC)`, a GCC 10.5 odrzuca `--defsym` bez prefiksu `-Wa,`
+> (hostowy gcc również). Objaw:
+> `x86_64-aros-gcc: error: unrecognized command-line option '--defsym'`.
+> Poprawka zastosowana na `~/Aros/arosbuilds` (source `.in` + wygenerowany
+> `Makefile.common`):
+> ```makefile
+> 	$(CC) $(shell echo '$(ASFLAGS)' | sed 's/--defsym /-Wa,--defsym,/g') \
+> 	       -c - -o $@
+> ```
+> (nie używaj `$(subst --defsym ,-Wa,--defsym,,...)` — make rozbija argumenty po
+> przecinkach). Po patchu buduj dalej przez `make -jN` w katalogu build.
+
 ---
 
 ## Etap 2 – Detekcja platformy w kodzie
