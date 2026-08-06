@@ -10,7 +10,9 @@
 
 namespace MUI
 {
-    enum class Font
+    // Note: underlying type is IPTR because MUIV_Font_* constants are typed as
+    // (IPTR) which is 64-bit on AROS x86_64 (e.g. MUIV_Font_Normal == (IPTR)-1)
+    enum class Font : IPTR
     {
         Inherit = MUIV_Font_Inherit, // the same font as the surrounding object, this is the default
         Normal = MUIV_Font_Normal, // the normal font

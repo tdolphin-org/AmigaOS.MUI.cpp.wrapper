@@ -28,28 +28,28 @@ namespace MUI
     Family &Family::AddHead(const Object *pChildObject)
     {
         if (pChildObject)
-            DoMethod(muiObject(), MUIM_Family_AddHead, (ULONG)pChildObject);
+            DoMethod(muiObject(), MUIM_Family_AddHead, (IPTR)pChildObject);
         return *this;
     }
 
     Family &Family::AddHead(const Root &child)
     {
         if (child.muiObject())
-            DoMethod(muiObject(), MUIM_Family_AddHead, (ULONG)child.muiObject());
+            DoMethod(muiObject(), MUIM_Family_AddHead, (IPTR)child.muiObject());
         return *this;
     }
 
     Family &Family::AddTail(const Object *pChildObject)
     {
         if (pChildObject)
-            DoMethod(muiObject(), MUIM_Family_AddTail, (ULONG)pChildObject);
+            DoMethod(muiObject(), MUIM_Family_AddTail, (IPTR)pChildObject);
         return *this;
     }
 
     Family &Family::AddTail(const Root &child)
     {
         if (child.muiObject())
-            DoMethod(muiObject(), MUIM_Family_AddTail, (ULONG)child.muiObject());
+            DoMethod(muiObject(), MUIM_Family_AddTail, (IPTR)child.muiObject());
         return *this;
     }
 
@@ -94,10 +94,12 @@ namespace MUI
         return GetChild(MUIV_Family_GetChild_Previous, ref);
     }
 
+#ifdef MUIV_Family_GetChild_Iterate
     Object *Family::GetChildIterate(void *iteratorRef) const
     {
         return (Object *)DoMethod(muiObject(), MUIM_Family_GetChild, MUIV_Family_GetChild_Iterate, iteratorRef);
     }
+#endif
 #endif
 
     Family &Family::Insert(const Object *pChildObject, const Object *pPredecessorObject)

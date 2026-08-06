@@ -118,7 +118,9 @@ namespace MUI
         /// @brief [ @b MUIA_Application_Menu ]
         /// Obsolete gadtools NewMenu definition for the application.
         /// Prefer @b MUIA_Application_Menustrip.
+#ifdef MUIA_Application_Menu
         const ::NewMenu *getMenu() const;
+#endif
         /// @brief [ @b MUIA_Application_MenuHelp ]
         /// Returns UserData of the menu item selected with the help key.
         unsigned long getMenuHelp() const;
@@ -414,7 +416,9 @@ namespace MUI
         /// @brief [ @b MUIA_Application_Menu ]
         /// Obsolete gadtools NewMenu definition for the application.
         /// Prefer @b MUIA_Application_Menustrip.
+#ifdef MUIA_Application_Menu
         ApplicationBuilder &tagMenu(const ::NewMenu *menu);
+#endif
         /// @brief [ @b MUIA_Application_Menustrip ]
         /// Menu strip shared by all windows of the application that do not define a private menu.
         ApplicationBuilder &tagMenustrip(const Menustrip &menustrip);

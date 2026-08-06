@@ -116,10 +116,12 @@ namespace MUI
         return GetValueAsULong(MUIA_Application_MenuAction);
     }
 
+#ifdef MUIA_Application_Menu
     const ::NewMenu *Application::getMenu() const
     {
         return GetValueAsNewMenuPtr(MUIA_Application_Menu);
     }
+#endif
 
     unsigned long Application::getMenuHelp() const
     {
@@ -601,11 +603,13 @@ namespace MUI
     }
 #endif
 
+#ifdef MUIA_Application_Menu
     ApplicationBuilder &ApplicationBuilder::tagMenu(const ::NewMenu *menu)
     {
         this->PushTag(MUIA_Application_Menu, menu);
         return *this;
     }
+#endif
 
     ApplicationBuilder &ApplicationBuilder::tagMenustrip(const Menustrip &menustrip)
     {

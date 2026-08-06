@@ -67,7 +67,7 @@ namespace MUI
 #ifdef MUIM_Floattext_Append
     Floattext &Floattext::Append(const std::string &text)
     {
-        DoMethod(muiObject(), MUIM_Floattext_Append, (ULONG)text.c_str());
+        DoMethod(muiObject(), MUIM_Floattext_Append, (IPTR)text.c_str());
         return *this;
     }
 #endif
