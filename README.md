@@ -35,6 +35,12 @@ ___
 - AROS cross-compiler + hosted AROS built from the sources via `scripts/rebuild.sh` - see [AROS Getting Started](https://elwis.github.io/aros-getting-started/docs/01-build-environment.html)
 - System dependencies: `sudo apt install gcc g++ make git flex bison gawk python3 python3-mako libx11-dev libpng-dev genisoimage cmake curl nasm autoconf automake libxext-dev liblzo2-dev libxxf86vm-dev libsdl1.2-dev byacc yasm xorriso mtools`
 - AROS uses **Zune**, a MUI 3.x-compatible toolkit; the Zune headers are part of the AROS SDK (platform detection in code via `__AROS__`)
+- To make the AROS cross environment machine-independent (AROS has no fixed install location and `x86_64-aros-g++` needs an explicit `--sysroot`), use the helper script from AmigaOS.cpp.wrapper to map your existing AROS build onto the conventional `/opt/aros` layout:
+  ```
+  sudo /bin/sh ../AmigaOS.cpp.wrapper/tools/install-aros-cross.sh /path/to/your/arosbuilds
+  echo 'export PATH=/opt/aros/bin:$PATH' >> ~/.bashrc && source ~/.bashrc
+  ```
+  Run it **once** (not before every `make`); `AROS_SYSROOT` in AmigaOS.cpp.wrapper's `wrappers/Makefile` defaults to `/opt/aros/Development`.
 ___
 ## Build
 
