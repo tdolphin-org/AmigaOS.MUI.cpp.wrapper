@@ -77,19 +77,35 @@ cd ~/Aros/arosbuilds/core-linux-x86_64-d/bin/linux-x86_64/AROS
 ./boot/linux/AROSBootstrap
 ```
 
-**5. PATH + wrapper z `--sysroot`:**
+**5. Standaryzacja ścieżki `/opt/aros` + wrapper z `--sysroot`:**
 ```bash
 echo 'export PATH="$HOME/Aros/arosbuilds/toolchain-core-x86_64:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
 Bez `--sysroot` kompilator podłączy hostowe nagłówki Linuxa zamiast AROS — zawsze
-kompiluj z `--sysroot`. Najwygodniej przez skrypt-wrappper:
+kompiluj z `--sysroot`.
+
+Aby ścieżka była **maszynowo-niezależna** (w duchu `/opt/amiga` dla m68k i
+wbudowanego sysroot w toolchainie MorphOS), zmapuj build AROSA na konwencjonalne
+**`/opt/aros`** przez skrypt `tools/install-aros-cross.sh` (tworzy symlinki
+`/opt/aros/{toolchain,Development}` + generuje wrappery w `/opt/aros/bin`, które
+wpisują `--sysroot=` na sztywno):
 ```sh
-#!/bin/sh
-exec /home/<user>/Aros/arosbuilds/toolchain-core-x86_64/x86_64-aros-gcc \
-     --sysroot=/home/<user>/Aros/arosbuilds/core-linux-x86_64-d/bin/linux-x86_64/AROS/Development "$@"
+sudo /bin/sh /home/<user>/AmigaOS.cpp.wrapper/tools/install-aros-cross.sh \
+     /home/<user>/Aros/arosbuilds
+echo 'export PATH=/opt/aros/bin:$PATH' >> ~/.bashrc
 ```
-Sprawdzenie: `x86_64-aros-gcc --version`.
+Ręcznie (odpowiednik powyższego):
+```sh
+sudo ln -sfn ~/Aros/arosbuilds/toolchain-core-x86_64 /opt/aros/toolchain
+sudo ln -sfn ~/Aros/arosbuilds/core-linux-x86_64-d/bin/linux-x86_64/AROS/Development /opt/aros/Development
+# wrapper w /opt/aros/bin:
+#!/bin/sh
+exec /opt/aros/toolchain/x86_64-aros-gcc --sysroot=/opt/aros/Development "$@"
+```
+Dzięki temu `AROS_SYSROOT` w Makefile ma domyślnie `/opt/aros/Development`
+(bez żadnej ścieżki użytkownika), a nadpisanie per-build działa tak:
+`make cross_aros_x86_64 AROS_SYSROOT=/custom`. Sprawdzenie: `x86_64-aros-gcc --version`.
 
 **6. Test loop:** skopiuj zbudowany binarny do `C:` (katalog AROS) i uruchom z
 Shella po nazwie.
@@ -270,6 +286,93 @@ Zaktualizuj też listę "Requirements for build" o wymagania dla AROS.
    do `C:` i sprawdź, że okno się otwiera.
 4. Jeśli to możliwe, uruchom przykładowe elementy korzystające z dyspozytora
    (custom classes) — potwierdź, że makra dla `__AROS__` działają poprawnie.
+
+---
+
+## Etap 7 – Wnioski z portowania (learning notes, zweryfikowano 2026-08)
+
+Ustalenia z praktycznej kompilacji wrapperów (MUI + sibling `AmigaOS.cpp.wrapper`)
+dla AROS x86_64. **Czytaj przed dalszymi zmianami AROS** — unikniesz regresji
+na m68k/MorphOS.
+
+### 1. `IPTR` NIE istnieje w SDK AmigaOS m68k
+- Brak go w `ndk-include/exec/types.h` i całym NDK 68k. Jest na MorphOS
+  (`typedef unsigned long IPTR`) i AROS (64-bit `AROS_INTPTR_TYPE`).
+- Fallback `#define IPTR ULONG` istnieje tylko w `wrappers/src/SDI/SDI_compiler.h:240`
+  (gałąź `!__AROS__ && !__MORPHOS__ && !IPTR`), ale **nie każdy TU go includuje**,
+  a sibling (`AmigaOS.cpp.wrapper`) **nie ma SDI w ogóle**.
+- **Zasada:** we wspólnym kodzie (MUI + sibling) **nie używaj gołego `IPTR`**:
+  - zrzuty wskaźników przez varargs/`GetAttr`/`DoMethod`: używaj `(long)` — jest
+    pointer-sized na wszystkich targetach (64-bit AROS, 32-bit m68k/MorphOS),
+    bit-identyczne jak `(ULONG)`/`(IPTR)`; zgodne z istniejącym wzorcem
+    `PushTag(MUIA_Font, (long)font)`. Zastosowano w: `MUI/{List,Group,Family,
+    Floattext}.cpp`, `AOS/Intuition/Library.cpp` (`(long *)&pXxx` w `GetAttr`).
+  - sibling `AOS/ValueObject.{hpp,cpp}`: alias `AOS::TagData` —
+    `IPTR` tylko pod `#ifdef __AROS__`, poza `ULONG` (wartość trafia do `tag.ti_Data`).
+
+### 2. Enumy z wartościami `MUIV_*` — nie używaj `: IPTR`
+`MUIV_Font_*` są typowane różnie:
+- AmigaOS/MorphOS: zwykłe `-1`, `-2`, … (signed int)
+- AROS Zune: `((IPTR)-1)` → 64-bit unsigned `0xFF..FF`
+Sprzeczność: unsigned `IPTR` nie trzyma gołego `-1`, a signed `long` nie trzyma
+surowego `0xFF..FF`. **Rozwiązanie (wzorzec do powtórzenia):**
+```cpp
+enum class Font // domyślna baza int
+{
+    Normal = static_cast<int>(MUIV_Font_Normal), // normalizuje AROS 0xFF..FF -> -1
+    ...
+};
+```
+
+### 3. `std::optional` (sibling `wrappers/src/std/optional.hpp`)
+- Fallbackowy `std::optional` był redefiniowany pod prawdziwym `<optional>` przy
+  `-std=gnu++17`. Guard: `#if defined(__MORPHOS__) || __cplusplus >= 201703L`
+  → `#include <optional>`, poza → własna implementacja.
+- **AROS buduj z `-std=gnu++17`** (nie C++14).
+
+### 4. Biblioteki PCI nie istnieją w AROS
+`PCIX`, `Picasso96`, `Identify` (zależy od `openpci`), `PCIIDS` — brak nagłówków
+w SDK AROS. W nagłówkach `*BaseScope.hpp` i `Library.hpp` dodano:
+```cpp
+#ifdef __AROS__
+#error "AOS::<Xxx> wrapper is not available on AROS - <lib> does not exist on AROS"
+#endif
+```
+(po `#pragma once`, przed includami → jasny komunikat zamiast krypticznego
+"No such file"). Katalogi leżą w podkatalogach `src/AOS/*/` — makefile zbierają
+tylko `src/AOS/*.cpp` (wierzch), więc te moduły nie wchodzą do zwykłego builda.
+
+### 5. Kolizje nazw z makrami/globalami AROS
+- Makra w `proto/dos.h` (np. 3-argumentowe `NameFromLock`, `Write`) "zjadały"
+  metody klas o tej samej nazwie → `#undef NameFromLock` / `#undef Write` po include.
+- AROS `proto/{expansion,rexxsyslib}.h` deklarują własne globals `ExpansionBase`
+  / `RexxSysBase` → sibling zmienił swoje globals na `static sExpansionBase`
+  / `static sRxsSysBase` (i dodał `#include <rexx/rxslib.h>` dla `RXSNAME`).
+- Brak `MA_EngineClock` w AROS → `#ifdef MA_EngineClock` wokół `GetAttr`.
+
+### 6. `--sysroot` jest obowiązkowy dla `x86_64-aros-g++`
+Bez `--sysroot` kompilator podpina hostowe nagłówki Linuxa. W sibling
+`wrappers/Makefile` target (`AROS_SYSROOT` domyślnie `/opt/aros/Development` —
+konwencja maszynowo-niezależna, patrz Etap 1 krok 5):
+```makefile
+AROS_SYSROOT ?= /opt/aros/Development
+cross_aros_x86_64: MORE_CPP_FLAGS="-std=gnu++17 --sysroot=$(AROS_SYSROOT)"
+```
+Nadpisanie: `make cross_aros_x86_64 AROS_SYSROOT=/custom`.
+
+### 7. Uwagi do API AROS SDK
+- Zune header: `Development/include/libraries/mui.h` (klasy jak `MUIC_Gadget`
+  NIE istnieją — guardy `#ifdef MUIA_Gadget_*` / fallback `#define MUIC_Gadget`).
+- AROS ma variadic `NewRawDoFmt` + `RAWFMTFUNC_STRING` (`exec/rawfmt.h`) —
+  nie używaj `RawDoFmt`/`RAWARG` (przy 64-bit wymaga wrappera `RAWARG_s`).
+- `GetAttr(...)` storage jest pointer-sized (na AROS `IPTR*`) — stąd `(long *)`.
+- `RXSNAME` jest w `rexx/rxslib.h`, nie w `proto/rexxsyslib.h`.
+
+### 8. Stan weryfikacji (stan na 2026-08, zmiany niezacommitowane)
+- MUI wrapper: AROS sweep 106 plików `.cpp` czysto; **m68k** (`cross_amigaos_m68k`,
+  MUI38+MUI5) exit 0 (177 jednostek); **MorphOS** (`cross_morphos_ppc`) exit 0.
+- Sibling `amiga_std_light`: targety `cross_amigaos_m68k`, `cross_morphos_ppc`,
+  `cross_aros_x86_64` — exit 0.
 
 ---
 
