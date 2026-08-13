@@ -28,28 +28,28 @@ namespace MUI
     Family &Family::AddHead(const Object *pChildObject)
     {
         if (pChildObject)
-            DoMethod(muiObject(), MUIM_Family_AddHead, (IPTR)pChildObject);
+            DoMethod(muiObject(), MUIM_Family_AddHead, pChildObject);
         return *this;
     }
 
     Family &Family::AddHead(const Root &child)
     {
         if (child.muiObject())
-            DoMethod(muiObject(), MUIM_Family_AddHead, (IPTR)child.muiObject());
+            DoMethod(muiObject(), MUIM_Family_AddHead, child.muiObject());
         return *this;
     }
 
     Family &Family::AddTail(const Object *pChildObject)
     {
         if (pChildObject)
-            DoMethod(muiObject(), MUIM_Family_AddTail, (IPTR)pChildObject);
+            DoMethod(muiObject(), MUIM_Family_AddTail, pChildObject);
         return *this;
     }
 
     Family &Family::AddTail(const Root &child)
     {
         if (child.muiObject())
-            DoMethod(muiObject(), MUIM_Family_AddTail, (IPTR)child.muiObject());
+            DoMethod(muiObject(), MUIM_Family_AddTail, child.muiObject());
         return *this;
     }
 
