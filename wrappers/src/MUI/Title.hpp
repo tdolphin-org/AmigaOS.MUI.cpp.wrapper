@@ -48,33 +48,47 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
+#ifdef MUIA_Title_Closable
         /// @brief [ @b MUIA_Title_Closable ]
         /// Returns whether each tab has a close button.
         bool getClosable() const;
+#endif
 #ifdef MUIA_Title_Newable
         /// @brief [ @b MUIA_Title_Newable ]
         /// Returns whether a "+" new-tab button is visible.
         bool getNewable() const;
 #endif
+#ifdef MUIA_Title_Position
         /// @brief [ @b MUIA_Title_Position ]
         /// Returns the position of the tab titles (top/bottom/left/right).
         enum Title_Position getPosition() const;
+#endif
+#ifdef MUIA_Title_Sortable
         /// @brief [ @b MUIA_Title_Sortable ]
         /// Returns whether tabs can be rearranged via drag-and-drop.
         bool getSortable() const;
+#endif
 
+#ifdef MUIA_Title_Closable
         /// @brief [ @b MUIA_Title_Closable ]
         /// Setting this to true adds a close button to each tab. By default false.
         Title &setClosable(const bool closable);
+#endif
+#ifdef MUIA_Title_OnLastClose
         /// @brief [ @b MUIA_Title_OnLastClose ]
         /// Defines behaviour when the last tab is closed (@ref Title_OnLastClose).
         Title &setOnLastClose(const enum Title_OnLastClose onLastClose);
+#endif
+#ifdef MUIA_Title_Position
         /// @brief [ @b MUIA_Title_Position ]
         /// Sets the position of the tab titles (@ref Title_Position).
         Title &setPosition(const enum Title_Position position);
+#endif
+#ifdef MUIA_Title_Sortable
         /// @brief [ @b MUIA_Title_Sortable ]
         /// Setting this to true allows tabs to be rearranged via drag-and-drop. By default false.
         Title &setSortable(const bool sortable);
+#endif
 #ifdef MUIA_Title_Newable
         /// @brief [ @b MUIA_Title_Newable ]
         /// Setting this to true adds a "+" new-tab button. By default false.
@@ -83,9 +97,11 @@ namespace MUI
 
         // methods, return object reference
 
+#ifdef MUIM_Title_Close
         /// @brief [ @b MUIM_Title_Close ]
         /// Closes the given tab object. Title class itself does NOT remove the tab; the application subclass must handle this.
         Title &Close(Object *pTitleObject);
+#endif
 #ifdef MUIM_Title_FindPage
         /// @brief [ @b MUIM_Title_FindPage ]
         /// Returns the page object corresponding to the given title button object, or NULL if none found.
@@ -105,10 +121,13 @@ namespace MUI
         {
         }
 
+#ifdef MUIA_Title_Clickable
         /// @brief [ @b MUIA_Title_Clickable ]
         /// Setting this attribute to false will let the Title object ignore all clicks on its tabs and hence prevent page changes.
         /// By default is true.
         T &tagClickable(const bool clickable);
+#endif
+#ifdef MUIA_Title_Closable
         /// @brief [ @b MUIA_Title_Closable ]
         /// Setting this attribute to true will add a close button to each tab object. Clicking the close button will invoke the
         /// MUIM_Title_Close method with a pointer to the tab object the close button corresponds to. Title class will NOT close the tab
@@ -116,11 +135,14 @@ namespace MUI
         /// subclass of Title class to handle the method.
         /// By default is false.
         T &tagClosable(const bool closable);
+#endif
+#ifdef MUIA_Title_EventHandlerPriority
         /// @brief [ @b MUIA_Title_EventHandlerPriority ]
         /// Defines the priority of the internal eventhandler. This attribute is of use only if you need to do something before the internal
         /// eventhandler and eventually might eat the events you are interested in.
         /// By default is MUIV_Title_EventHandlerPriority_Default.
         T &tagEventHandlerPriority(const long eventHandlerPriority);
+#endif
 #ifdef MUIA_Title_Newable
         /// @brief [ @b MUIA_Title_Newable ]
         /// Setting this attribute to true will add a "+" button after the rightmost tab object. Clicking the "+" button will invoke the
@@ -130,22 +152,28 @@ namespace MUI
         /// By default is false.
         T &tagNewable(const bool newable);
 #endif
+#ifdef MUIA_Title_OnLastClose
         /// @brief [ @b MUIA_Title_OnLastClose ]
         /// This attribute defines how the object will react when the last tab is to be closed. Setting this attribute to
         /// MUIV_Title_OnLastClose_Remove will invoke the usual MUIM_Title_Close method on the object. Setting the attribute to
         /// MUIV_Title_OnLastClose_WindowAction will trigger a close request on the object's window.
         /// By default is MUIV_Title_OnLastClose_Remove.
         T &tagOnLastClose(const enum Title_OnLastClose onLastClose);
+#endif
+#ifdef MUIA_Title_Position
         /// @brief [ @b MUIA_Title_Position ]
         /// Defines the position of the tab titles. Currently only top and bottom placement is implemented. Left and right placement will
         /// hopefully be implemented in the near future.
         /// By default is MUIV_Title_Position_Top.
         T &tagPosition(const enum Title_Position position);
+#endif
+#ifdef MUIA_Title_Sortable
         /// @brief [ @b MUIA_Title_Sortable ]
         /// Define whether the individual tabs can be rearranged by drag'n'drop operations. Title class will rearrange both the tab title
         /// objects as well as the page objects after a drag'n'drop operation.
         /// By default is false.
         T &tagSortable(const bool sortable);
+#endif
     };
 
     class TitleBuilder : public TitleBuilderTemplate<TitleBuilder, Title>

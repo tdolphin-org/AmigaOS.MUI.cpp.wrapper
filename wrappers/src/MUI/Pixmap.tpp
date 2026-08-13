@@ -22,11 +22,13 @@ namespace MUI
         return static_cast<T &>(*this);
     }
 
+#ifdef MUIA_Pixmap_CLUTSize
     template <typename T, typename U> inline T &PixmapBuilderTemplate<T, U>::tagCLUTSize(const unsigned long clutSize)
     {
         this->PushTag(MUIA_Pixmap_CLUTSize, clutSize);
         return static_cast<T &>(*this);
     }
+#endif
 
     template <typename T, typename U> inline T &PixmapBuilderTemplate<T, U>::tagCompressedSize(const unsigned long compressedSize)
     {
@@ -58,11 +60,13 @@ namespace MUI
         return static_cast<T &>(*this);
     }
 
+#ifdef MUIA_Pixmap_TransparencyThreshold
     template <typename T, typename U> inline T &PixmapBuilderTemplate<T, U>::tagTransparencyThreshold(const unsigned char value)
     {
         this->PushTag(MUIA_Pixmap_TransparencyThreshold, value);
         return static_cast<T &>(*this);
     }
+#endif
 
     template <typename T, typename U> inline T &PixmapBuilderTemplate<T, U>::tagWidth(const long value)
     {
