@@ -8,6 +8,8 @@
 
 #include "mui.hpp"
 
+#ifdef MUIA_Title_Position
+
 namespace MUI
 {
     enum class Title_Position
@@ -18,3 +20,5 @@ namespace MUI
         Right = MUIV_Title_Position_Right,
     };
 }
+
+#endif
