@@ -302,11 +302,15 @@ na m68k/MorphOS.
   (gałąź `!__AROS__ && !__MORPHOS__ && !IPTR`), ale **nie każdy TU go includuje**,
   a sibling (`AmigaOS.cpp.wrapper`) **nie ma SDI w ogóle**.
 - **Zasada:** we wspólnym kodzie (MUI + sibling) **nie używaj gołego `IPTR`**:
-  - zrzuty wskaźników przez varargs/`GetAttr`/`DoMethod`: używaj `(long)` — jest
-    pointer-sized na wszystkich targetach (64-bit AROS, 32-bit m68k/MorphOS),
-    bit-identyczne jak `(ULONG)`/`(IPTR)`; zgodne z istniejącym wzorcem
-    `PushTag(MUIA_Font, (long)font)`. Zastosowano w: `MUI/{List,Group,Family,
-    Floattext}.cpp`, `AOS/Intuition/Library.cpp` (`(long *)&pXxx` w `GetAttr`).
+  - przekazuj wskaźniki przez varargs/`DoMethod` **wprost (bez rzutowania)** —
+    pola `MUIP_*` w mui.h są typowane wskaźnikowo (`Object *obj`, `APTR entry`,
+    `APTR *entries`, `CONST_STRPTR Text`), a AROS-owy `DoMethod` i tak
+    normalizuje argumenty przez `AROS_PP_VARIADIC_CAST2IPTR` → `(IPTR)(...)`.
+    Surowy wskaźnik kompiluje się na wszystkich targetach (m68k/MorphOS/AROS)
+    bez rzutowań. Zastosowano w: `MUI/{List,Group,Family,Floattext}.cpp`.
+  - wartości intowe (np. `MUIM_List_Jump` `LONG pos`, `MUIM_TextEditor_InsertText`)
+    — `(long)`/`(ULONG)` wg pola; to nie są wskaźniki.
+  - `GetAttr`: patrz pkt 7 (`AOS_GETATTR_STORAGE`).
   - sibling `AOS/ValueObject.{hpp,cpp}`: alias `AOS::TagData` —
     `IPTR` tylko pod `#ifdef __AROS__`, poza `ULONG` (wartość trafia do `tag.ti_Data`).
 
@@ -349,6 +353,15 @@ tylko `src/AOS/*.cpp` (wierzch), więc te moduły nie wchodzą do zwykłego buil
   / `RexxSysBase` → sibling zmienił swoje globals na `static sExpansionBase`
   / `static sRxsSysBase` (i dodał `#include <rexx/rxslib.h>` dla `RXSNAME`).
 - Brak `MA_EngineClock` w AROS → `#ifdef MA_EngineClock` wokół `GetAttr`.
+- **`DoMethod` w AROS to makro variadic** (`clib/alib_protos.h`), używające
+  `AROS_PP_VARIADIC_CAST2IPTR` → `(IPTR)(arg)` per argument. Nie rozwija pack-ów
+  szablonowych (`args...`), więc szablony `MUI::Notify`/`Application::PushMethod`
+  wołają funkcję przez `(DoMethod)(...)` (paren-theza pomija ekspansję makra).
+  Realna funkcja `IPTR DoMethod(Object*, STACKULONG, ...)` (`clib/alib_protos.h`)
+  czyta varargs jako `IPTR`. Wymaga widocznej deklaracji funkcji w punkcie
+  definicji szablonu (brak ADL) → `#include <proto/alib.h>` PRZED szablonami.
+  `CallHook` to w AROS też makro → `#undef CallHook` pod `#ifdef __AROS__`.
+  Na m68k/MorphOS `DoMethod` to zwykła funkcja — paren-theza jest bezpieczna.
 
 ### 6. `--sysroot` jest obowiązkowy dla `x86_64-aros-g++`
 Bez `--sysroot` kompilator podpina hostowe nagłówki Linuxa. W sibling
@@ -365,14 +378,49 @@ Nadpisanie: `make cross_aros_x86_64 AROS_SYSROOT=/custom`.
   NIE istnieją — guardy `#ifdef MUIA_Gadget_*` / fallback `#define MUIC_Gadget`).
 - AROS ma variadic `NewRawDoFmt` + `RAWFMTFUNC_STRING` (`exec/rawfmt.h`) —
   nie używaj `RawDoFmt`/`RAWARG` (przy 64-bit wymaga wrappera `RAWARG_s`).
-- `GetAttr(...)` storage jest pointer-sized (na AROS `IPTR*`) — stąd `(long *)`.
+- `GetAttr(...)` storage jest pointer-sized. NIE używaj gołego `(long *)` —
+  na AROS `ULONG` to 32 bity (storage jest `IPTR*`), na m68k/MorphOS `ULONG*`.
+  Sibling: makro `AOS_GETATTR_STORAGE` (`__AROS__`→`IPTR`, poza→`ULONG`) + cast
+  `(AOS_GETATTR_STORAGE *)&pXxx` (dos/Intuition).
 - `RXSNAME` jest w `rexx/rxslib.h`, nie w `proto/rexxsyslib.h`.
 
+### 7b. AROS nagłówki używają gołego `UBYTE*` zamiast `CONST_STRPTR`
+- W C++ `CONST_STRPTR` = `const char*` na WSZYSTKICH platformach (AROS przez
+  `__AROS_CPP_BYTE`). ALE AROS deklaruje `FindResident`, `CreateArgstring`,
+  `CreateRexxMsg`, `DeleteArgstring` jako `const UBYTE*`/`UBYTE*` — twardo, nie
+  przez `CONST_STRPTR` (nie inline-vs-clib, obie wersje tak mają).
+- Więc przekazując `std::string::c_str()` na AROS potrzebny cast `(const UBYTE *)`,
+  na m68k/MorphOS nie. **Zasada:** casty `(UBYTE*)`-klasy zamykaj w
+  `#ifdef __AROS__` (a `DeleteArgstring` — w `#ifdef __MORPHOS__`, bo m68k/AOS też
+  chcą `UBYTE*`); reszta platform dostaje `c_str()` bez castu. To samo dla
+  `FindToolType` (`__MORPHOS__||__AROS__`→`(char*const*)`, m68k→`(CONST_STRPTR*)`).
+
 ### 8. Stan weryfikacji (stan na 2026-08, zmiany niezacommitowane)
-- MUI wrapper: AROS sweep 106 plików `.cpp` czysto; **m68k** (`cross_amigaos_m68k`,
-  MUI38+MUI5) exit 0 (177 jednostek); **MorphOS** (`cross_morphos_ppc`) exit 0.
+- MUI wrapper: AROS sweep 106 plików `.cpp` czysto; target `cross_aros_x86_64`
+  (w `wrappers/Makefile`, `LIB_MUICPP_NAME=libMUIcpp.a`, z `AROS_SYSROOT`) —
+  exit 0; **m68k** (`cross_amigaos_m68k`, MUI38+MUI5) exit 0 (177 jednostek);
+  **MorphOS** (`cross_morphos_ppc`) exit 0.
+- **Top-level `Makefile`** (repo root): `cross_aros_x86_64` buduje pełny łańcuch
+  wrappers + tests + examples (basic i advanced) — exit 0 na m68k/MorphOS/AROS
+  (`cross_aos_m68k`, `cross_mos_ppc`, `cross_aros_x86_64`).
+- AROS-specific fixes: `DoMethod`/`CallHook` w `Notify.hpp` (patrz pkt 5);
+  `examples/advanced` — guardy `#ifdef MUIA_Title_Closable/Newable` (Zune nie ma
+  `MUIA_Title_*`) i `#ifdef MUIA_List_MaxColumns`.
 - Sibling `amiga_std_light`: targety `cross_amigaos_m68k`, `cross_morphos_ppc`,
-  `cross_aros_x86_64` — exit 0.
+  `cross_aros_x86_64` — exit 0 (także z top-level `Makefile` siblinga, któremu
+  dodano `cross_aros_x86_64` + help; `tests/Makefile`: AROS target z
+  `--no-gc-sections` — Zune/AROS ld wymaga entry/undefined symbol przy
+  `--gc-sections`; `iostream.{hpp,cpp}`: na 64-bit `long` aliassuje
+  `int64_t`/`uint64_t`, ale `long long` jest typem odrębnym → guard
+  `#if ULONG_MAX == UINT64_MAX` dodaje overloady `long long`/`unsigned long long`).
+- Konsumenci siblinga (pliki w podkatalogach `src/AOS/*/`): `Exec/Library.cpp`,
+  `Rexxsyslib/*`, `Intuition/Library.cpp`, `Icon/DiskObjectScope.cpp`,
+  `Dos/{Library,LockScope,FileHandleScope}.cpp`, `DataTypes/Library.cpp`,
+  `Expansion/ExpansionBaseScope.cpp` — 0 błędów na m68k/MorphOS/AROS po guardach
+  platformowych (m68k `Intuition/Library.cpp`=1: brak `intuition/monitorclass.h`
+  w NDK 68k — dotyczy tylko MorphOS/AROS).
+- Pre-existing błędy poza portem (identyczne na HEAD): ASL/* (kolizja makra
+  `AslRequest`), PCIX/*/Picasso96 (brak SDK) — NIE dotknięte.
 
 ---
 
