@@ -82,7 +82,9 @@ namespace Components::MCC
 #ifdef TRACE_CUSTOM_COMPONENTS
         std::cerr << __PRETTY_FUNCTION__ << "\n";
 #endif
+#ifdef MUIA_List_MaxColumns
         tagMaxColumns(2);
+#endif
     }
 
     ActionRoot<MUI::List> BoardsListBuilder::object()
