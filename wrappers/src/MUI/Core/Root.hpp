@@ -8,6 +8,19 @@
 
 #include "Core/StringStorage.hpp"
 
+#ifdef __AROS__
+// AROS: DoMethod() from proto/alib.h relies on AROS_PP_VARIADIC_CAST2IPTR which
+// is provided by the muimaster proto headers (clib/muimaster_protos.h).
+#include <proto/muimaster.h>
+
+// AROS Zune has no Gadget class - MUI Gadget_3.x puts Boopsi/Prop directly on
+// Area. The wrapper's Gadget remains a nominal base, so provide a placeholder
+// class name to keep Gadget/Prop/Boopsi hierarchies compiling.
+#ifndef MUIC_Gadget
+#define MUIC_Gadget "Gadget.mui"
+#endif
+#endif
+
 #include <intuition/classusr.h>
 
 // declaration for AmigaOS

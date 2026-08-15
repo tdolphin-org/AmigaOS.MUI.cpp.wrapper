@@ -23,6 +23,11 @@
 // Zune is treated like MUI 3.8 for the existing guards: features guarded by
 // AOS_MUI_VERSION_3_8 are available, MUI 5.x-only guards (*_MUI_VERSION_5)
 // stay disabled. Verified against the AROS SDK (e.g. struct MUI_RGBcolor).
+//
+// AROS: DoMethod() from proto/alib.h needs AROS_PP_VARIADIC_CAST2IPTR which is
+// provided by the muimaster proto headers (clib/muimaster_protos.h).
+
+#include <proto/muimaster.h>
 
 #ifdef DEBUG
 #pragma message("AROS Zune (MUI 3.x compatible) detected")

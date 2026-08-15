@@ -284,7 +284,7 @@ namespace MUI
         /// This is the safe way to talk to MUI from a secondary task.
         template <typename... Args> unsigned long PushMethod(const Object *dest, Args... args)
         {
-            return DoMethod(muiObject(), MUIM_Application_PushMethod, dest, (long)sizeof...(Args), args...);
+            return (DoMethod)(muiObject(), MUIM_Application_PushMethod, dest, (long)sizeof...(Args), args...);
         }
         /// @brief [ @b MUIM_Application_RemInputHandler ]
         /// Remove a previously registered input handler node.
