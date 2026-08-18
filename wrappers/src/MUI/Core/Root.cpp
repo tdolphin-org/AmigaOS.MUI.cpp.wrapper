@@ -228,6 +228,11 @@ namespace MUI
         SetAttrs(muiObject(), tagName, (unsigned long)string.c_str(), TAG_END);
     }
 
+    void Root::SetValue(const unsigned long tagName, const char *pString) const
+    {
+        SetAttrs(muiObject(), tagName, (unsigned long)pString, TAG_END);
+    }
+
     void Root::SetValue(const unsigned long tagName, const unsigned long ulong) const
     {
         SetAttrs(muiObject(), tagName, ulong, TAG_END);

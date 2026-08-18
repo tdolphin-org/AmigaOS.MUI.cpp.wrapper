@@ -145,6 +145,7 @@ namespace MUI
 
         void SetValue(const unsigned long tagName, const std::nullptr_t &null) const;
         void SetValue(const unsigned long tagName, const std::string &string) const;
+        void SetValue(const unsigned long tagName, const char *pString) const;
         void SetValue(const unsigned long tagName, const unsigned long ulong) const;
         void SetValue(const unsigned long tagName, const signed long slong) const;
         void SetValue(const unsigned long tagName, const bool boolean) const;
