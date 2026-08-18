@@ -287,6 +287,38 @@ Zaktualizuj też listę "Requirements for build" o wymagania dla AROS.
 4. Jeśli to możliwe, uruchom przykładowe elementy korzystające z dyspozytora
    (custom classes) — potwierdź, że makra dla `__AROS__` działają poprawnie.
 
+### Wynik Etapu 6 (zweryfikowano 2026-08-18, hosted AROS x86_64)
+
+Wszystkie trzy programy przykładowe uruchamiają się w hosted AROS:
+
+- `stream.tests.bin` — działa (test strumieni siblinga).
+- `basic.example.bin` — okno otwiera się poprawnie.
+- `advanced.example.bin` — okno otwiera się poprawnie; **nie wszystkie opcje
+  przykładu działają w Zune**, ale to kwestia przebudowy przykładu — poza
+  zakresem tego zadania.
+
+**Pułapki wykryte podczas weryfikacji runtime:**
+
+- **Na AROS kopiuj do `C:` wersję `*_nonstripped`, nie stripped.**
+  `examples/Makefile` produkuje obie: `advanced.example.bin_nonstripped`
+  (2.2 MB, `file`: "with debug_info, not stripped") i stripped
+  `advanced.example.bin` (548 KB, `file`: "stripped"). AROS-owy ELF jest
+  relocatable — stripped binarka crashuje natychmiast (trap z `RIP=0` /
+  "call through NULL"). Z `_nonstripped` działa.
+- **`tagTitle(true)` = crash w Zune.** `MUIA_NList_Title` to w dokumentacji
+  NList `char *` (MCC_NList.doc) — wartość BOOL/LONG jest dozwolona **tylko
+  gdy używany jest display hook**. W `examples/advanced/.../CustomClassesTab.cpp`
+  `.tagTitle(true)` (w połączeniu z `tagConstructHookString()`, bez display
+  hooka) przekazywało `MUIA_NList_Title = 1` → Zune traktował to jako
+  wskaźnik tytułu → `NL_GetDisplayArray` (`useptr = (char *)data->NList_Title`)
+  → dereferencja adresu 1 w `ParseColumn` (NList_mcc4.c) → SIGSEGV.
+  Kod Zune i oryginalnego `amiga-mui/nlist` jest w tym miejscu identyczny —
+  to nie bug Zune. Poprawka: tytuł jako string z kolumnami tabulatorem
+  (`.tagTitle("Nazwa\tSystem\tKlasa")`) lub wyłączenie tytułu.
+- **Config w `ENVARC:Zune/`**: AROS zapisuje config programu
+  (`ENVARC:Zune/advanced.example.bin.1.cfg`, prawie pusty FORM) — nie jest
+  przyczyną crashów, można go usunąć między testami.
+
 ---
 
 ## Etap 7 – Wnioski z portowania (learning notes, zweryfikowano 2026-08)
