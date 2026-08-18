@@ -15,7 +15,14 @@ namespace Components
 {
     TabsContainerTitles::TabsContainerTitles(const std::vector<std::pair<std::string, MUI::Area &>> &tabs)
 #ifdef MUIC_Title
-      : mTabsTitle(MUI::TitleBuilder().tagClosable(true).tagNewable(true).object())
+      : mTabsTitle(MUI::TitleBuilder()
+#ifdef MUIA_Title_Closable
+                       .tagClosable(true)
+#endif
+#ifdef MUIA_Title_Newable
+                       .tagNewable(true)
+#endif
+                       .object())
 #else
       : mTitleNotSupportedText(MUI::TextBuilder().tagContents("MUI::Title not supported (compiled) by this MUI version").object())
 #endif

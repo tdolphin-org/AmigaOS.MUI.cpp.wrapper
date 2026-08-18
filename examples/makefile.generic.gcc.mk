@@ -7,6 +7,12 @@
 #
 #  generic makefile for gcc
 #
+#  AROS x86_64 cross compilation (hosted, Linux):
+#    setup from -> https://elwis.github.io/aros-getting-started/docs/01-build-environment.html
+#    requires: AROS stable (ABIv11) sources (https://github.com/deadwood2/AROS),
+#              cross-compiler built via scripts/rebuild.sh (x86_64-aros-g++),
+#              Zune (MUI 3.x-compatible) headers are part of the AROS SDK
+#
 
 CPP_FLAGS = $(DEBUG_FLAGS) $(MORE_CPP_FLAGS) -I${AOSCPP_PATH}/wrappers/src -I$(PROJECT) -I../wrappers/src -I../components/src \
 	-fno-rtti -ffunction-sections -fdata-sections -Os

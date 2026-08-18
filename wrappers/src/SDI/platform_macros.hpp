@@ -19,8 +19,18 @@ static ULONG Name##_Dispatcher(void) { struct IClass *cl=(struct IClass*)REG_A0;
 #define DISPATCHER_END }
 #endif
 
-#else
+#elif defined(__AROS__)
+// AROS: dispatcher for custom classes uses the AROS-specific machinery
+// (handles the x86_64 ABI). SDI_hook.h provides DISPATCHER and ENTRY().
 
+#include "SDI_hook.h"
+
+#define REG(x)
+
+#define DISPATCHER_REF(Name) ENTRY(Name)
+#define DISPATCHER_END
+
+#else
 #define REG(x)
 
 #define DISPATCHER(Name) ULONG ASM SAVEDS Name##Dispatcher(struct IClass *cl, Msg msg, Object *obj)

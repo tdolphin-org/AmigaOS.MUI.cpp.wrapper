@@ -15,6 +15,18 @@
 #include <type_traits>
 #include <workbench/workbench.h>
 
+// AROS's variadic DoMethod() macro (clib/alib_protos.h) cannot expand C++
+// template parameter packs. Including proto/alib.h here makes the real
+// DoMethod() function visible before the templates below, so (DoMethod)(...)
+// resolves to the function (not the macro) on all platforms.
+#include <proto/alib.h>
+
+#ifdef __AROS__
+// AROS clib/alib_protos.h defines a variadic CallHook() macro that would clash
+// with the MUI::Notify::CallHook method below.
+#undef CallHook
+#endif
+
 namespace MUI
 {
     template <typename... Ts> struct AllRootDerived : std::true_type
@@ -75,7 +87,8 @@ namespace MUI
         /// Returns the node name in a help file specified with @b MUIA_Application_HelpFile.
         std::string getHelpNode() const;
         /// @brief [ @b MUIA_ObjectID ]
-        /// Objects with a non-zero ObjectID export their contents during MUIM_Application_Save and import them during MUIM_Application_Load.
+        /// Objects with a non-zero ObjectID export their contents during MUIM_Application_Save and import them during
+        /// MUIM_Application_Load.
         AOS::Identifier getObjectID() const;
         /// @brief [ @b MUIA_Parent ]
         /// Returns a pointer to the parent group/family object that contains this object. Returns NULL if the object has no parent.
@@ -111,7 +124,8 @@ namespace MUI
         Notify &setNoNotifyMethod(const unsigned long noNotifyMethod);
 #endif
         /// @brief [ @b MUIA_ObjectID ]
-        /// Sets the object ID. Objects with a non-zero ObjectID export their contents during MUIM_Application_Save and import them during MUIM_Application_Load.
+        /// Sets the object ID. Objects with a non-zero ObjectID export their contents during MUIM_Application_Save and import them during
+        /// MUIM_Application_Load.
         Notify &setObjectID(const AOS::Identifier &objectID);
         /// @brief [ @b MUIA_UserData ]
         /// Sets the general purpose user data value for this object.
@@ -154,14 +168,14 @@ namespace MUI
         Notify &MultiSet(const unsigned long attr, const unsigned long val, const Root &obj0, const Args &...obj)
         {
             static_assert(AllRootDerived<Args...>::value, "MultiSet: all Args must derive from MUI::Root");
-            DoMethod(muiObject(), MUIM_MultiSet, attr, val, obj0.muiObject(), obj.muiObject()..., nullptr);
+            (DoMethod)(muiObject(), MUIM_MultiSet, attr, val, obj0.muiObject(), obj.muiObject()..., nullptr);
             return *this;
         }
         /// @brief [ @b MUIM_NoNotifySet ]
         /// Set an attribute without triggering any notifications on this object.
         template <typename... Args> Notify &NoNotifySet(const unsigned long attr, const unsigned long val, Args... args)
         {
-            DoMethod(muiObject(), MUIM_NoNotifySet, attr, val, args...);
+            (DoMethod)(muiObject(), MUIM_NoNotifySet, attr, val, args...);
             return *this;
         }
 
@@ -183,7 +197,7 @@ namespace MUI
         /// The number of additional arguments is passed as FollowParams automatically via sizeof...(Args).
         template <typename... Args> Notify &doNotify(const unsigned long attr, const unsigned long val, const Object *destObj, Args... args)
         {
-            DoMethod(muiObject(), MUIM_Notify, attr, val, destObj, (unsigned long)sizeof...(Args), args...);
+            (DoMethod)(muiObject(), MUIM_Notify, attr, val, destObj, (unsigned long)sizeof...(Args), args...);
             return *this;
         }
         /// @brief [ @b MUIM_Notify ]
@@ -202,7 +216,7 @@ namespace MUI
         /// Set a string attribute using printf-style formatting. The result replaces the attribute value.
         template <typename... Args> Notify &SetAsString(const unsigned long attr, const char *format, Args... args)
         {
-            DoMethod(muiObject(), MUIM_SetAsString, attr, format, args...);
+            (DoMethod)(muiObject(), MUIM_SetAsString, attr, format, args...);
             return *this;
         }
         /// @brief [ @b MUIM_SetAsString ]
@@ -226,7 +240,7 @@ namespace MUI
         /// Call a standard Amiga hook callback with zero or more parameters.
         template <typename... Args> unsigned long CallHook(const Hook *hook, Args... args)
         {
-            return DoMethod(muiObject(), MUIM_CallHook, hook, args...);
+            return (DoMethod)(muiObject(), MUIM_CallHook, hook, args...);
         }
         /// @brief [ @b MUIM_Export ]
         /// Export the object's persistent data into the given dataspace. Used with MUIM_Application_Save.

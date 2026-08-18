@@ -40,6 +40,8 @@
 #undef VSpace
 #undef HCenter
 #undef VCenter
+#undef HBar
+#undef VBar
 
 namespace MUI
 {

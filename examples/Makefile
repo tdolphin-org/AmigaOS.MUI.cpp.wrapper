@@ -11,6 +11,7 @@ all:
 	@echo "make cross_amigaos_m68k - AmigaOS m68k build (cross compilation on linux)"
 	@echo "make morphos_ppc - MorphOS PowerPC build"
 	@echo "make cross_morphos_ppc - MorphOS PowerPC build (cross compilation on linux)"
+	@echo "make cross_aros_x86_64 - AROS x86_64 build (cross compilation on linux)"
 	@echo "make clean - remove all obj files"
 
 cross_amigaos_m68k: TARGET="Cross AmigaOS m68k"
@@ -42,6 +43,22 @@ cross_morphos_ppc: OBJDUMP=ppc-morphos-objdump
 cross_morphos_ppc: MORE_CPP_FLAGS="-noixemul -flto"
 cross_morphos_ppc: MORE_LFLAGS="-lMUIcpp -lauto -noixemul -flto"
 cross_morphos_ppc: build
+
+# AROS "Development" tree (sysroot with Zune headers/libs). Machine-independent
+# path: on machines that follow the convention it is /opt/aros/Development.
+# Override per-build with:
+#   make cross_aros_x86_64 AROS_SYSROOT=/custom/path
+AROS_SYSROOT ?= /opt/aros/Development
+
+cross_aros_x86_64: TARGET="Cross AROS x86_64"
+cross_aros_x86_64: SUB_BUILD_PATH=aros/x86_64
+cross_aros_x86_64: CPPC=x86_64-aros-g++
+cross_aros_x86_64: AR=x86_64-aros-ar
+cross_aros_x86_64: STRIP=x86_64-aros-strip
+cross_aros_x86_64: OBJDUMP=x86_64-aros-objdump
+cross_aros_x86_64: MORE_CPP_FLAGS="-std=gnu++17 --sysroot=$(AROS_SYSROOT)"
+cross_aros_x86_64: MORE_LFLAGS="-lMUIcpp -lstdc++ -lmui --sysroot=$(AROS_SYSROOT)"
+cross_aros_x86_64: build
 
 build:
 	@echo "# Build ... $(TARGET) ... $(SUB_BUILD_PATH)"

@@ -153,7 +153,7 @@ namespace MUI
         if (!pChildObject)
             return false;
 
-        return (bool)DoMethod(muiObject(), MUIM_Group_AddHead, (ULONG)pChildObject);
+        return (bool)DoMethod(muiObject(), MUIM_Group_AddHead, pChildObject);
     }
 
     bool Group::AddHead(const Root &child)
@@ -161,7 +161,7 @@ namespace MUI
         if (!child.muiObject())
             return false;
 
-        return (bool)DoMethod(muiObject(), MUIM_Group_AddHead, (ULONG)child.muiObject());
+        return (bool)DoMethod(muiObject(), MUIM_Group_AddHead, child.muiObject());
     }
 #endif
 
@@ -171,7 +171,7 @@ namespace MUI
         if (!pChildObject)
             return false;
 
-        return (bool)DoMethod(muiObject(), MUIM_Group_AddTail, (ULONG)pChildObject);
+        return (bool)DoMethod(muiObject(), MUIM_Group_AddTail, pChildObject);
     }
 
     bool Group::AddTail(const Root &child)
@@ -179,7 +179,7 @@ namespace MUI
         if (!child.muiObject())
             return false;
 
-        return (bool)DoMethod(muiObject(), MUIM_Group_AddTail, (ULONG)child.muiObject());
+        return (bool)DoMethod(muiObject(), MUIM_Group_AddTail, child.muiObject());
     }
 #endif
 
@@ -224,7 +224,7 @@ namespace MUI
         if (!pChildObject)
             return false;
 
-        return (bool)DoMethod(muiObject(), MUIM_Group_Remove, (ULONG)pChildObject);
+        return (bool)DoMethod(muiObject(), MUIM_Group_Remove, pChildObject);
     }
 
     bool Group::Remove(const Root &child)
@@ -232,7 +232,7 @@ namespace MUI
         if (!child.muiObject())
             return false;
 
-        return (bool)DoMethod(muiObject(), MUIM_Group_Remove, (ULONG)child.muiObject());
+        return (bool)DoMethod(muiObject(), MUIM_Group_Remove, child.muiObject());
     }
 #endif
 
@@ -285,7 +285,7 @@ namespace MUI
     Group &Group::AddMember(const Object *pChildObject)
     {
         if (pChildObject)
-            DoMethod(muiObject(), OM_ADDMEMBER, (ULONG)pChildObject);
+            DoMethod(muiObject(), OM_ADDMEMBER, pChildObject);
         return *this;
     }
 
@@ -299,7 +299,7 @@ namespace MUI
     Group &Group::RemMember(const Object *pChildObject)
     {
         if (pChildObject)
-            DoMethod(muiObject(), OM_REMMEMBER, (ULONG)pChildObject);
+            DoMethod(muiObject(), OM_REMMEMBER, pChildObject);
         return *this;
     }
 

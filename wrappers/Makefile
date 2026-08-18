@@ -4,12 +4,13 @@
 #  (c) 2022-2026 TDolphin
 #
 
-.PHONY: all build clean clean.obj cross_amigaos_m68k_MUI38 cross_amigaos_m68k_MUI5 cross_amigaos_m68k morphos_ppc cross_morphos_ppc
+.PHONY: all build clean clean.obj cross_amigaos_m68k_MUI38 cross_amigaos_m68k_MUI5 cross_amigaos_m68k morphos_ppc cross_morphos_ppc cross_aros_x86_64
 
 all:
 	@echo "make cross_amigaos_m68k - cross compilation on linux"
 	@echo "make morphos_ppc - build on MorphOS"
 	@echo "make cross_morphos_ppc - cross compilation on linux"
+	@echo "make cross_aros_x86_64 - cross compilation on linux (AROS x86_64)"
 	@echo "make clean - remove all .o and .lib files"
 
 # Why these flags for static library (.a) build:
@@ -64,6 +65,21 @@ cross_morphos_ppc: AR=ppc-morphos-ar
 cross_morphos_ppc: MORE_CPP_FLAGS="-noixemul -fno-threadsafe-statics -D_GLIBCXX_HAS_GTHREADS=0 -flto"
 cross_morphos_ppc: LIB_MUICPP_NAME=libMUIcpp.a
 cross_morphos_ppc: build
+
+# AROS "Development" tree (sysroot with Zune headers/libs). Like the other
+# targets (m68k via /opt/amiga, MorphOS via the compiler's own sysroot) this
+# is a machine-independent path: on machines that follow the convention it is
+# /opt/aros/Development. Override per-build with:
+#   make cross_aros_x86_64 AROS_SYSROOT=/custom/path
+AROS_SYSROOT ?= /opt/aros/Development
+
+cross_aros_x86_64: TARGET="Cross AROS x86_64"
+cross_aros_x86_64: SUB_BUILD_PATH=aros/x86_64
+cross_aros_x86_64: CPPC=x86_64-aros-g++
+cross_aros_x86_64: AR=x86_64-aros-ar
+cross_aros_x86_64: MORE_CPP_FLAGS="-std=gnu++17 --sysroot=$(AROS_SYSROOT)"
+cross_aros_x86_64: LIB_MUICPP_NAME=libMUIcpp.a
+cross_aros_x86_64: build
 	
 build:
 	@echo "# Build ... $(TARGET) ... $(SUB_BUILD_PATH)"
