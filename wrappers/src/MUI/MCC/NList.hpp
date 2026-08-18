@@ -119,6 +119,8 @@ namespace MUI::MCC
 
     template <typename T, typename U> class NListBuilderTemplate : public AreaBuilderTemplate<T, U>
     {
+        bool hasTitleSetWithBoolOrLong { false }; // true if tagTitle is set with bool or long, false if set with string (default)
+
       public:
         NListBuilderTemplate(const std::string &uniqueId = MUI::EmptyUniqueId, const std::string &muiClassName = U::className)
           : AreaBuilderTemplate<T, U>(uniqueId, muiClassName)
@@ -256,6 +258,9 @@ namespace MUI::MCC
         T &tagSourceInsert(const struct MUIP_NList_InsertWrap *sourceInsert);
         /// @brief [ @b MUIA_NList_TitleSeparator ]
         T &tagTitleSeparator(const bool titleSeparator);
+
+      protected:
+        bool Validate() const override;
     };
 
     class NListBuilder : public NListBuilderTemplate<NListBuilder, NList>
@@ -524,12 +529,14 @@ namespace MUI::MCC
 
     template <typename T, typename U> inline T &NListBuilderTemplate<T, U>::tagTitle(const bool title)
     {
+        hasTitleSetWithBoolOrLong = true;
         this->PushTag(MUIA_NList_Title, title);
         return (T &)*this;
     }
 
     template <typename T, typename U> inline T &NListBuilderTemplate<T, U>::tagTitle(const long title)
     {
+        hasTitleSetWithBoolOrLong = true;
         this->PushTag(MUIA_NList_Title, title);
         return (T &)*this;
     }
@@ -629,5 +636,33 @@ namespace MUI::MCC
     {
         this->PushTag(MUIA_NList_TitleSeparator, titleSeparator);
         return (T &)*this;
+    }
+
+    template <typename T, typename U> inline bool NListBuilderTemplate<T, U>::Validate() const
+    {
+        auto result = AreaBuilderTemplate<T, U>::Validate();
+
+        if (hasTitleSetWithBoolOrLong)
+        {
+            // If MUIA_NList_Title is set with a bool or long, then the display hook must be set
+            if (!this->ContainsTag(MUIA_NList_DisplayHook) && !this->ContainsTag(MUIA_NList_DisplayHook2))
+            {
+                DebugLogError(std::string(__PRETTY_FUNCTION__)
+                              + ", MUIA_NList_Title is set with a bool or long, but MUIA_NList_DisplayHook/2 is not set.");
+                return false;
+            }
+        }
+        else
+        {
+            // If MUIA_NList_Title is set with a string, then the display hook must not be set
+            if (this->ContainsTag(MUIA_NList_DisplayHook) || this->ContainsTag(MUIA_NList_DisplayHook2))
+            {
+                DebugLogError(std::string(__PRETTY_FUNCTION__)
+                              + ", MUIA_NList_Title is set with a string, but MUIA_NList_DisplayHook/2 is set.");
+                return false;
+            }
+        }
+
+        return result;
     }
 }
