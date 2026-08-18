@@ -40,8 +40,10 @@ namespace MUI
 
         // is/get/set (attributes), all setters return object reference
 
+#ifdef MUIA_Gadget_Gadget
         /// @brief [ @b MUIA_Gadget_Gadget ] Read underlying Intuition gadget pointer.
         ::Gadget *getGadget() const;
+#endif
     };
 
     template <typename T, typename U> class GadgetBuilderTemplate : public AreaBuilderTemplate<T, U>

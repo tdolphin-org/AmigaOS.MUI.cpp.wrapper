@@ -11,6 +11,7 @@ all:
 	@echo "make cross_aos_m68k - AmigaOS m68k build (cross compilation on linux)"
 	@echo "make mos_ppc - MorphOS PowerPC build"
 	@echo "make cross_mos_ppc - MorphOS PowerPC build (cross compilation on linux)"
+	@echo "make cross_aros_x86_64 - AROS x86_64 build (cross compilation on linux)"
 	@echo "make clean - remove all obj files and lib file"
 
 cross_aos_m68k: sub_projects_cross_aos_m68k
@@ -18,6 +19,8 @@ cross_aos_m68k: sub_projects_cross_aos_m68k
 mos_ppc: sub_projects_mos_ppc
 
 cross_mos_ppc: sub_projects_cross_mos_ppc
+
+cross_aros_x86_64: sub_projects_cross_aros_x86_64
 
 sub_projects_build:
 	@echo "------------------------------------------------"
@@ -36,6 +39,9 @@ sub_projects_mos_ppc: sub_projects_build
 
 sub_projects_cross_mos_ppc: BUILD_TARGET=cross_morphos_ppc
 sub_projects_cross_mos_ppc: sub_projects_build
+
+sub_projects_cross_aros_x86_64: BUILD_TARGET=cross_aros_x86_64
+sub_projects_cross_aros_x86_64: sub_projects_build
 
 clean_examples:
 	$(MAKE) clean -C examples

@@ -14,3 +14,6 @@ morphos_ppc:
 
 cross_morphos_ppc:
 	@echo "TODO tests"
+
+cross_aros_x86_64:
+	@echo "TODO tests"

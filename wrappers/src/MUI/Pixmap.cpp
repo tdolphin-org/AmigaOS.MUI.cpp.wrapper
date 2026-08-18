@@ -24,10 +24,12 @@ namespace MUI
         return reinterpret_cast<const unsigned long *>(GetValueAsPtr(MUIA_Pixmap_CLUT));
     }
 
+#ifdef MUIA_Pixmap_CLUTSize
     unsigned long Pixmap::getCLUTSize() const
     {
         return GetValueAsLong(MUIA_Pixmap_CLUTSize);
     }
+#endif
 
     unsigned long Pixmap::getCompressedSize() const
     {
@@ -54,10 +56,12 @@ namespace MUI
         return GetValueAsLong(MUIA_Pixmap_Height);
     }
 
+#ifdef MUIA_Pixmap_TransparencyThreshold
     unsigned char Pixmap::getTransparencyThreshold() const
     {
         return static_cast<unsigned char>(GetValueAsLong(MUIA_Pixmap_TransparencyThreshold));
     }
+#endif
 
     long Pixmap::getWidth() const
     {
@@ -81,11 +85,13 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIA_Pixmap_CLUTSize
     Pixmap &Pixmap::setCLUTSize(const unsigned long value)
     {
         SetValue(MUIA_Pixmap_CLUTSize, value);
         return *this;
     }
+#endif
 
     Pixmap &Pixmap::setCompressedSize(const unsigned long value)
     {
@@ -129,11 +135,13 @@ namespace MUI
         return *this;
     }
 
+#ifdef MUIA_Pixmap_TransparencyThreshold
     Pixmap &Pixmap::setTransparencyThreshold(const unsigned char value)
     {
         SetValue(MUIA_Pixmap_TransparencyThreshold, static_cast<unsigned long>(value));
         return *this;
     }
+#endif
 
     Pixmap &Pixmap::setWidth(const long value)
     {

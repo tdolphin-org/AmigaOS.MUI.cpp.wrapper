@@ -12,8 +12,10 @@ namespace MUI
 
     GadgetBuilder::GadgetBuilder() { }
 
+#ifdef MUIA_Gadget_Gadget
     ::Gadget *Gadget::getGadget() const
     {
         return GetValueAsGadgetPtr(MUIA_Gadget_Gadget);
     }
+#endif
 }

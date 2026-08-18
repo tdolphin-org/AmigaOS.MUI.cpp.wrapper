@@ -10,6 +10,8 @@
 
 #ifdef MUIC_Title
 
+#ifdef MUIA_Title_OnLastClose
+
 namespace MUI
 {
     enum class Title_OnLastClose
@@ -18,5 +20,7 @@ namespace MUI
         WindowAction = MUIV_Title_OnLastClose_WindowAction,
     };
 }
+
+#endif // MUIA_Title_OnLastClose
 
 #endif

@@ -586,55 +586,55 @@ namespace MUI
 
     List &List::InsertSingleTop(const void *entry)
     {
-        DoMethod(muiObject(), MUIM_List_InsertSingle, (ULONG)entry, MUIV_List_Insert_Top);
+        DoMethod(muiObject(), MUIM_List_InsertSingle, entry, MUIV_List_Insert_Top);
         return *this;
     }
 
     List &List::InsertSingleBottom(const void *entry)
     {
-        DoMethod(muiObject(), MUIM_List_InsertSingle, (ULONG)entry, MUIV_List_Insert_Bottom);
+        DoMethod(muiObject(), MUIM_List_InsertSingle, entry, MUIV_List_Insert_Bottom);
         return *this;
     }
 
     List &List::InsertSingleSorted(const void *entry)
     {
-        DoMethod(muiObject(), MUIM_List_InsertSingle, (ULONG)entry, MUIV_List_Insert_Sorted);
+        DoMethod(muiObject(), MUIM_List_InsertSingle, entry, MUIV_List_Insert_Sorted);
         return *this;
     }
 
     List &List::InsertSingleTop(const std::string &entry)
     {
-        DoMethod(muiObject(), MUIM_List_InsertSingle, (ULONG)entry.c_str(), MUIV_List_Insert_Top);
+        DoMethod(muiObject(), MUIM_List_InsertSingle, entry.c_str(), MUIV_List_Insert_Top);
         return *this;
     }
 
     List &List::InsertSingleBottom(const std::string &entry)
     {
-        DoMethod(muiObject(), MUIM_List_InsertSingle, (ULONG)entry.c_str(), MUIV_List_Insert_Bottom);
+        DoMethod(muiObject(), MUIM_List_InsertSingle, entry.c_str(), MUIV_List_Insert_Bottom);
         return *this;
     }
 
     List &List::InsertSingleSorted(const std::string &entry)
     {
-        DoMethod(muiObject(), MUIM_List_InsertSingle, (ULONG)entry.c_str(), MUIV_List_Insert_Sorted);
+        DoMethod(muiObject(), MUIM_List_InsertSingle, entry.c_str(), MUIV_List_Insert_Sorted);
         return *this;
     }
 
     List &List::InsertTop(const void *entries[])
     {
-        DoMethod(muiObject(), MUIM_List_Insert, (ULONG)entries, -1, MUIV_List_Insert_Top);
+        DoMethod(muiObject(), MUIM_List_Insert, entries, -1, MUIV_List_Insert_Top);
         return *this;
     }
 
     List &List::InsertBottom(const void *entries[])
     {
-        DoMethod(muiObject(), MUIM_List_Insert, (ULONG)entries, -1, MUIV_List_Insert_Bottom);
+        DoMethod(muiObject(), MUIM_List_Insert, entries, -1, MUIV_List_Insert_Bottom);
         return *this;
     }
 
     List &List::InsertSorted(const void *entries[])
     {
-        DoMethod(muiObject(), MUIM_List_Insert, (ULONG)entries, -1, MUIV_List_Insert_Sorted);
+        DoMethod(muiObject(), MUIM_List_Insert, entries, -1, MUIV_List_Insert_Sorted);
         return *this;
     }
 

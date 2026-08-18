@@ -111,10 +111,12 @@ namespace MUI
         /// @brief [ @b MUIM_Family_GetChild, @b MUIV_Family_GetChild_Previous ] Returns the previous child before the given reference
         /// child.
         Object *GetChildPrevious(const Root &ref) const;
+#ifdef MUIV_Family_GetChild_Iterate
         /// @brief [ @b MUIM_Family_GetChild, @b MUIV_Family_GetChild_Iterate ] Iterates over the family using an iterator state array.
         /// @param iteratorRef Pointer to the iterator state array described by the MUI docs.
         /// @return Next child object in iteration order or nullptr when iteration is complete.
         Object *GetChildIterate(void *iteratorRef) const;
+#endif
 #endif
 
         /// @brief [ @b MUIM_Family_Insert ] Inserts an object after another object in the family.

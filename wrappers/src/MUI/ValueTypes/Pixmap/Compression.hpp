@@ -16,8 +16,12 @@ namespace MUI
         None = MUIV_Pixmap_Compression_None,
         RLE = MUIV_Pixmap_Compression_RLE,
         BZip2 = MUIV_Pixmap_Compression_BZip2,
+#ifdef MUIV_Pixmap_Compression_Z
         Z = MUIV_Pixmap_Compression_Z,
+#endif
+#ifdef MUIV_Pixmap_Compression_LZMA
         LZMA = MUIV_Pixmap_Compression_LZMA
+#endif
     };
 }
 

@@ -145,8 +145,10 @@ namespace MUI::MCC
 
         /// @brief [ @b MUIA_NList_ListBackground ]
         T &tagListBackground(const long listBackground);
+#ifdef MUIA_NList_ListAltBackground
         /// @brief [ @b MUIA_NList_ListAltBackground ]
         T &tagListAltBackground(const long listAltBackground);
+#endif
         /// @brief [ @b MUIA_NList_TitleBackground ]
         T &tagTitleBackground(const long titleBackground);
         /// @brief [ @b MUIA_NList_SelectBackground ]
@@ -317,11 +319,13 @@ namespace MUI::MCC
         return (T &)*this;
     }
 
+#ifdef MUIA_NList_ListAltBackground
     template <typename T, typename U> inline T &NListBuilderTemplate<T, U>::tagListAltBackground(const long listAltBackground)
     {
         this->PushTag(MUIA_NList_ListAltBackground, listAltBackground);
         return (T &)*this;
     }
+#endif
 
     template <typename T, typename U> inline T &NListBuilderTemplate<T, U>::tagTitleBackground(const long titleBackground)
     {
