@@ -370,6 +370,12 @@ namespace MUI
         return (T &)*this;
     }
 
+    template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagTitle(const char *title)
+    {
+        this->PushTag(MUIA_List_Title, title);
+        return (T &)*this;
+    }
+
 #ifdef MUIA_List_Stripes
     template <typename T, typename U> inline T &ListBuilderTemplate<T, U>::tagStripes(const bool stripes)
     {

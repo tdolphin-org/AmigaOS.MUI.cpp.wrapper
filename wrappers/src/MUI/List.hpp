@@ -672,6 +672,9 @@ namespace MUI
         T &tagTitle(const bool title = true);
         /// @brief [ @b MUIA_List_Title ]
         T &tagTitle(const std::string &title);
+        /// @brief [ @b MUIA_List_Title ]
+        /// String literal overload so that tagTitle("text") binds here (exact match) instead of to the bool overload
+        T &tagTitle(const char *title);
 #ifdef MUIA_List_Stripes
         /// @brief [ @b MUIA_List_Stripes ]
         T &tagStripes(const bool stripes);
