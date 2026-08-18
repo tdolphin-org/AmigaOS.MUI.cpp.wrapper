@@ -16,7 +16,7 @@
 namespace Components
 {
     BoardsList::BoardsList()
-      : mList(MCC::BoardsListBuilder().tagFormat("BAR,").tagTitle(true).tagFrame(MUI::Frame::Group).object())
+      : mList(MCC::BoardsListBuilder().tagFormat("BAR,").tagTitle("names").tagFrame(MUI::Frame::Group).object())
       , mComponent(MUI::ListviewBuilder().tagList(mList).object())
     {
 
