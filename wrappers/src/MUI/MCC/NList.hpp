@@ -222,6 +222,9 @@ namespace MUI::MCC
         /// When you use a display hook, its value is used as a BOOL/LONG
         T &tagTitle(const bool title);
         /// @brief [ @b MUIA_NList_Title ]
+        /// String literal overload so that tagTitle("text") binds here (exact match) instead of to the bool/long overloads
+        T &tagTitle(const char *title);
+        /// @brief [ @b MUIA_NList_Title ]
         /// When you use a display hook, its value is used as a BOOL/LONG
         T &tagTitle(const long title);
         /// @brief [ @b MUIA_NList_CopyEntryToClipHook ]
@@ -522,6 +525,12 @@ namespace MUI::MCC
     }
 
     template <typename T, typename U> inline T &NListBuilderTemplate<T, U>::tagTitle(const std::string &title)
+    {
+        this->PushTag(MUIA_NList_Title, title);
+        return (T &)*this;
+    }
+
+    template <typename T, typename U> inline T &NListBuilderTemplate<T, U>::tagTitle(const char *title)
     {
         this->PushTag(MUIA_NList_Title, title);
         return (T &)*this;
