@@ -192,6 +192,9 @@ ___
 | MCC class | C++ class | Wrapper | Builder | Source Notifier | Dest Notifier |
 |-|-|:-:|:-:|:-:|:-:|
 | MUIC_Busy | [MUI::Busy](/wrappers/src/MUI/MCC/Busy.hpp) | Ready | Ready | - | - |
+| MUIC_NList | [MUI::NList](/wrappers/src/MUI/MCC/NList.hpp) | in progress | in progress | - | - |
+| MUIC_NListview | [MUI::NListview](/wrappers/src/MUI/MCC/NListview.hpp) | in progress | Ready | - | - |
+| MUIC_TextEditor | [MUI::TextEditor](/wrappers/src/MUI/MCC/TextEditor.hpp) | in progress | in progress | - | - |
 | ... | ... | - | - | - | - |
 ___
 ## Additional info
