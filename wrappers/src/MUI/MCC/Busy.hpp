@@ -92,27 +92,8 @@ namespace MUI::MCC
         BusyBuilder();
     };
 
-    template <typename T, typename U> inline T &BusyBuilderTemplate<T, U>::tagShowHideIH(const bool showHideIH)
-    {
-        this->PushTag(MUIA_Busy_ShowHideIH, showHideIH);
-        return (T &)*this;
-    }
-
-    template <typename T, typename U> inline T &BusyBuilderTemplate<T, U>::tagSpeedOff()
-    {
-        this->PushTag(MUIA_Busy_Speed, (long)MUIV_Busy_Speed_Off);
-        return (T &)*this;
-    }
-
-    template <typename T, typename U> inline T &BusyBuilderTemplate<T, U>::tagSpeedUser()
-    {
-        this->PushTag(MUIA_Busy_Speed, (long)MUIV_Busy_Speed_User);
-        return (T &)*this;
-    }
-
-    template <typename T, typename U> inline T &BusyBuilderTemplate<T, U>::tagSpeed(const unsigned char speed)
-    {
-        this->PushTag(MUIA_Busy_Speed, speed);
-        return (T &)*this;
-    }
 }
+
+#define MUI_MCC_BUSY_TPP_INCLUDE
+#include "Busy.tpp"
+#undef MUI_MCC_BUSY_TPP_INCLUDE
